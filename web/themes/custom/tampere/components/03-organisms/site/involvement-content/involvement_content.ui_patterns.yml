@@ -1,0 +1,14 @@
+involvement_content:
+  label: Involvement content
+  fields:
+    main_image:
+      label: Main image
+    sign_up_information:
+      label: Sign up information
+    main_title:
+      label: Main title
+    main_content:
+      label: Main content
+    paragraph_content:
+      label: Paragraph content
+  use: "@organisms/site/involvement-content/involvement-content.twig"

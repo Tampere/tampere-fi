@@ -1,0 +1,32 @@
+uuid: edec602f-a92d-4056-a91a-b46cc0607afd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.notice.field_notice_title
+    - field.field.paragraph.notice.field_text_content
+    - paragraphs.paragraphs_type.notice
+  module:
+    - text
+id: paragraph.notice.default
+targetEntityType: paragraph
+bundle: notice
+mode: default
+content:
+  field_notice_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_text_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

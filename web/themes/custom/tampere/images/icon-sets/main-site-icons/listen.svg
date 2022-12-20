@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="30px" viewBox="0 0 34 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ED85E563-E25D-44C6-8CDD-9D832B26065A</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/Readspeaker" stroke="#3C3C3B" stroke-width="2" style="stroke: var(--icon-primary-color)">
+            <path d="M19.5,17.0228721 L19.5,21.8095238 C19.5,24.1238599 17.4852814,26 15,26 L6,26 C3.51471863,26 1.5,24.1238599 1.5,21.8095238 L1.5,8.19047619 C1.5,5.8761401 3.51471863,4 6,4 L15,4" id="Path-Copy" stroke-linecap="round" transform="translate(10.500000, 15.000000) scale(1, -1) translate(-10.500000, -15.000000) "></path>
+            <line x1="13.5" y1="9.5" x2="7.5" y2="9.5" id="Line-Copy-4" stroke-linecap="round"></line>
+            <line x1="13.5" y1="14.5" x2="7.5" y2="14.5" id="Line-Copy-5" stroke-linecap="round"></line>
+            <line x1="11.5" y1="19.5" x2="7.5" y2="19.5" id="Line-Copy-7" stroke-linecap="round"></line>
+            <path d="M25,15.4842147 L25,25.3944914 L20.3523828,23.1109937 L17,23.1110841 L17,17.888676 L20.4567799,17.88794 C22.0553717,16.9031611 23.5429033,16.1178542 25,15.4842147 L25,15.4842147 Z" id="Combined-Shape-Copy" fill="#FFFFFF"></path>
+            <path d="M28.5849523,19 C29.0250796,20.4725986 29.0250796,21.805932 28.5849523,23" id="Path-2-Copy-4" stroke-linecap="round"></path>
+            <path d="M31.6699045,17 C32.5501591,19.9451972 32.5501591,22.6118639 31.6699045,25" id="Path-2-Copy-3" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

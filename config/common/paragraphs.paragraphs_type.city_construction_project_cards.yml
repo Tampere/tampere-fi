@@ -1,0 +1,15 @@
+uuid: 84931852-e6a9-46d4-9dbe-ad2bb81dff34
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: city_construction_project_cards
+label: 'Kaupunkisuunnittelu- ja rakentamishankekortit'
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää kaupunkisuunnittelu- ja rakentamishankkeiden yhteystietojen esittämiseen.'
+behavior_plugins: {  }

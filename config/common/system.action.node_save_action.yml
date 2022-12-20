@@ -1,0 +1,13 @@
+uuid: 21978193-3f78-4231-915e-53298f3d0a15
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: LhdsoZPL_pFas2fjaAWue4zvrQ_tEVofLYtcNec-JGM
+id: node_save_action
+label: 'Tallenna sisältö'
+type: node
+plugin: 'entity:save_action:node'
+configuration: {  }

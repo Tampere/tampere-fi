@@ -1,0 +1,14 @@
+uuid: 895a2d13-42e0-4f0b-8238-f9bd190ea929
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.section_editor
+  module:
+    - user
+id: user_remove_role_action.section_editor
+label: 'Remove the Section editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: section_editor

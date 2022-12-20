@@ -1,0 +1,90 @@
+$material-image-size: 90px;
+
+.downloadable-material {
+  @include list-reset;
+
+  $base_class: &;
+
+  @include large {
+    align-items: flex-start;
+    display: flex;
+    gap: $space-l-plus;
+  }
+
+  &__image-wrapper {
+    flex-shrink: 0;
+
+    @include large-down {
+      display: flex;
+      gap: $space-s;
+    }
+  }
+
+  &__image {
+    width: $material-image-size;
+    height: $material-image-size;
+    object-fit: cover;
+  }
+
+  &__content-wrapper {
+    @include large {
+      flex-basis: 45%;
+      flex-grow: 1;
+    }
+  }
+
+  &__heading {
+    display: none;
+    font-family: $font-body;
+    font-size: $font-16;
+    margin: 0;
+
+    @include large {
+      display: block;
+      font-size: $font-20;
+    }
+
+    &--shown-on-mobile {
+      display: block;
+
+      @include large {
+        display: none;
+      }
+    }
+  }
+
+  &__summary {
+    font-size: $font-14;
+
+    @include large {
+      font-size: $font-18;
+      margin-top: $space-xs;
+    }
+  }
+
+  &__link-wrapper {
+    margin-left: auto;
+
+    @include large-down {
+      margin-top: $space-xs;
+    }
+  }
+
+  &__download {
+    @include button-default;
+    @include button;
+  }
+
+  &__icon {
+    width: $icon-small;
+    height: $icon-small;
+    margin-left: $space-m;
+  }
+
+  // Variations
+  &--no-image {
+    #{$base_class}__heading {
+      display: block;
+    }
+  }
+}

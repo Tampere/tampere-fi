@@ -1,0 +1,13 @@
+uuid: 1b1803d6-160b-4ca8-addd-60f05fbf11e4
+langcode: fi
+status: true
+dependencies: {  }
+id: node__small_news_item
+label: 'Sisältö: Pikku-uutinen'
+tags:
+  article_modified_time: '[node:changed:html_datetime]'
+  article_published_time: '[node:published:html_datetime]'
+  article_tag: '[node:field_topics],[node:field_keywords],[node:field_life_situations],[node:field_geographical_areas]'
+  description: '[node:field_body:value]'
+  og_description: '[node:field_body:value]'
+  og_type: article

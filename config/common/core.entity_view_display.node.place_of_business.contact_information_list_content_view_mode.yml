@@ -1,0 +1,185 @@
+uuid: 3b42636a-7a79-4dc2-a6c4-80145eb624f8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.contact_information_list_content_view_mode
+    - field.field.node.place_of_business.field_accessibility_and_services
+    - field.field.node.place_of_business.field_accessibility_info_title
+    - field.field.node.place_of_business.field_additional_information
+    - field.field.node.place_of_business.field_additional_phones
+    - field.field.node.place_of_business.field_address_postal
+    - field.field.node.place_of_business.field_addresses
+    - field.field.node.place_of_business.field_alternative_name
+    - field.field.node.place_of_business.field_body_md
+    - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_exception_hours
+    - field.field.node.place_of_business.field_geographical_areas
+    - field.field.node.place_of_business.field_hr_organizational_unit
+    - field.field.node.place_of_business.field_keywords
+    - field.field.node.place_of_business.field_life_situations
+    - field.field.node.place_of_business.field_links
+    - field.field.node.place_of_business.field_opening_hours
+    - field.field.node.place_of_business.field_opening_hours_2
+    - field.field.node.place_of_business.field_opening_hours_3
+    - field.field.node.place_of_business.field_opening_hours_info
+    - field.field.node.place_of_business.field_opening_hours_info_2
+    - field.field.node.place_of_business.field_opening_hours_info_3
+    - field.field.node.place_of_business.field_search_keywords
+    - field.field.node.place_of_business.field_summary
+    - field.field.node.place_of_business.field_topics
+    - field.field.node.place_of_business.migrate_override_data
+    - node.type.place_of_business
+  module:
+    - ds
+    - telephone_plus
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: place
+    regions:
+      listing_item__type:
+        - 'bundle_field:node'
+      listing_item__main_content:
+        - node_title
+        - field_addresses
+      listing_item__additional_information:
+        - field_additional_phones
+        - field_email
+    fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 0
+        label: hidden
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: h3
+          class: h3
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.place_of_business.contact_information_list_content_view_mode
+targetEntityType: node
+bundle: place_of_business
+mode: contact_information_list_content_view_mode
+content:
+  field_additional_phones:
+    type: telephone_plus_plain
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: Puhelin
+            lb-col: true
+            classes: {  }
+    weight: 3
+    region: listing_item__additional_information
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: Osoite
+            lb-col: true
+            classes: {  }
+    weight: 2
+    region: listing_item__main_content
+  field_addresses:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: address_only
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: Osoite
+            lb-col: true
+            classes: {  }
+    weight: 2
+    region: listing_item__main_content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 4
+    region: listing_item__additional_information
+  field_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 3
+    region: listing_item__additional_information
+hidden:
+  field_accessibility_and_services: true
+  field_accessibility_info_title: true
+  field_additional_information: true
+  field_address_postal: true
+  field_alternative_name: true
+  field_body_md: true
+  field_exception_hours: true
+  field_geographical_areas: true
+  field_hr_organizational_unit: true
+  field_keywords: true
+  field_life_situations: true
+  field_links: true
+  field_opening_hours: true
+  field_opening_hours_2: true
+  field_opening_hours_3: true
+  field_opening_hours_info: true
+  field_opening_hours_info_2: true
+  field_opening_hours_info_3: true
+  field_search_keywords: true
+  field_summary: true
+  field_topics: true
+  langcode: true
+  links: true
+  migrate_override_data: true
+  search_api_excerpt: true

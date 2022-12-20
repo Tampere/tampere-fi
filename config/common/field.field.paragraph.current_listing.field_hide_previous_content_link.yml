@@ -1,0 +1,23 @@
+uuid: 23e1f56b-b0c9-4d27-ae34-3f19dc649353
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_previous_content_link
+    - paragraphs.paragraphs_type.current_listing
+id: paragraph.current_listing.field_hide_previous_content_link
+field_name: field_hide_previous_content_link
+entity_type: paragraph
+bundle: current_listing
+label: 'Piilota aiemmat sisällöt -linkki'
+description: 'Valitse tämä, jollet halua näyttää Aiemmat sisällöt -linkkiä paragraafissa.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

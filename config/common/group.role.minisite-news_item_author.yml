@@ -1,0 +1,21 @@
+uuid: fc72b27f-edde-4ab4-a923-5b589a641bb3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: minisite-news_item_author
+label: Uutistoimittaja
+weight: 33
+internal: false
+audience: member
+group_type: minisite
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:news_item entity'
+  - 'delete any group_node:news_item entity'
+  - 'update any group_node:news_item entity'
+  - 'view group_node:front_page entity'
+  - 'view group_node:news_item entity'
+  - 'view unpublished group_node:news_item entity'

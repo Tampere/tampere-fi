@@ -1,0 +1,38 @@
+uuid: 7241f125-5bb7-4ed3-be4b-9c36f65afd52
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.automatic_anchor_list.field_listing_title
+    - paragraphs.paragraphs_type.automatic_anchor_list
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_in_page_menu
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: dynamic
+    regions:
+      in_page_menu__heading:
+        - field_listing_title
+id: paragraph.automatic_anchor_list.default
+targetEntityType: paragraph
+bundle: automatic_anchor_list
+mode: default
+content:
+  field_listing_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: in_page_menu__heading
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,5 @@
+services:
+  tre_news_archive.commands:
+    class: \Drupal\tre_news_archive\Commands\TreNewsArchiveCommands
+    tags:
+      - { name: drush.command }

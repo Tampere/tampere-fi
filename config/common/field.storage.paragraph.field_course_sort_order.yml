@@ -1,0 +1,27 @@
+uuid: 2edf9c68-6eb5-4918-8ec5-571f52bb072a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_course_sort_order
+field_name: field_course_sort_order
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: date_asc
+      label: 'Alkamispäivämäärä (nouseva)'
+    -
+      value: date_desc
+      label: 'Alkamispäivämäärä (laskeva)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

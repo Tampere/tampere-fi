@@ -1,0 +1,188 @@
+uuid: 85568ef2-08b2-477e-90db-729588579d44
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.person_contact_information_list_content_view_mode
+    - field.field.node.person.field_additional_information
+    - field.field.node.person.field_additional_phones
+    - field.field.node.person.field_address_postal
+    - field.field.node.person.field_address_street
+    - field.field.node.person.field_contract_begins
+    - field.field.node.person.field_contract_ends
+    - field.field.node.person.field_email
+    - field.field.node.person.field_first_names
+    - field.field.node.person.field_hr_company
+    - field.field.node.person.field_hr_cost_center
+    - field.field.node.person.field_hr_id
+    - field.field.node.person.field_hr_organizational_unit
+    - field.field.node.person.field_hr_title
+    - field.field.node.person.field_image
+    - field.field.node.person.field_keywords
+    - field.field.node.person.field_last_name
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_phone_supplementary
+    - field.field.node.person.field_place
+    - field.field.node.person.field_search_keywords
+    - field.field.node.person.field_topics
+    - field.field.node.person.migrate_override_data
+    - node.type.person
+  module:
+    - ds
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: person
+    regions:
+      listing_item__type:
+        - 'bundle_field:node'
+      listing_item__main_content:
+        - field_hr_title
+        - node_title
+        - field_hr_organizational_unit
+      listing_item__additional_information:
+        - field_phone
+        - field_additional_information
+    fields:
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 0
+        label: hidden
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 2
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: h3
+          class: h3
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.person.person_contact_information_list_content_view_mode
+targetEntityType: node
+bundle: person
+mode: person_contact_information_list_content_view_mode
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_additional_information:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: true
+            lbw-el: ''
+            lbw-cl: ''
+            lbw-at: ''
+            lb-col: true
+            ow: false
+            ow-el: ''
+            ow-cl: ''
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-el: ''
+            fis-cl: ''
+            fis-at: ''
+            fis-def-at: false
+            fi: true
+            fi-el: ''
+            fi-cl: field-person-info-list-additional-information
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 5
+    region: listing_item__additional_information
+  field_hr_organizational_unit:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 3
+    region: listing_item__main_content
+  field_hr_title:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: listing_item__main_content
+  field_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 4
+    region: listing_item__additional_information
+hidden:
+  field_additional_phones: true
+  field_address_postal: true
+  field_address_street: true
+  field_contract_begins: true
+  field_contract_ends: true
+  field_email: true
+  field_first_names: true
+  field_hr_company: true
+  field_hr_cost_center: true
+  field_hr_id: true
+  field_image: true
+  field_keywords: true
+  field_last_name: true
+  field_phone_supplementary: true
+  field_place: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  migrate_override_data: true
+  search_api_excerpt: true

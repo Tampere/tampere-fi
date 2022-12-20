@@ -1,0 +1,19 @@
+uuid: 929a725b-8599-4b54-92a3-5096ae8fce14
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metadata_description
+    - node.type.collection_page
+id: node.collection_page.field_metadata_description
+field_name: field_metadata_description
+entity_type: node
+bundle: collection_page
+label: 'Kuvaus (metatieto)'
+description: 'Lisää tähän lyhyt kuvaus sivun sisällöstä. Kentän sisältöä käytetään sivun metatiedoissa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: 507c4dbd-cf3d-47b6-b6bf-9c7441a8a673
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.anchor_list
+id: paragraph.anchor_list.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: anchor_list
+label: 'Listan otsikko'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

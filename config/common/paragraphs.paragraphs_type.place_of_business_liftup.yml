@@ -1,0 +1,15 @@
+uuid: b697f6ce-5072-4ebb-875d-4e6a000b0d33
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: place_of_business_liftup
+label: Toimipistenosto
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

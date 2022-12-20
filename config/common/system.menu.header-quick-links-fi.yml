@@ -1,0 +1,8 @@
+uuid: 7b266fc4-ab76-45a6-92b0-4fb1e163021b
+langcode: fi
+status: true
+dependencies: {  }
+id: header-quick-links-fi
+label: 'Ylätunnisteen pikalinkit'
+description: 'Linkit kaupungin vetovoimapalveluista kertoviin tietosivuihin.'
+locked: false

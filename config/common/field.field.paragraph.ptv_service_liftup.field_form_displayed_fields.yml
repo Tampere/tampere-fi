@@ -1,0 +1,21 @@
+uuid: a7879ba6-30d4-4291-b034-1a8e9253e37f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_form_displayed_fields
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - options
+id: paragraph.ptv_service_liftup.field_form_displayed_fields
+field_name: field_form_displayed_fields
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Lomakkeiden näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

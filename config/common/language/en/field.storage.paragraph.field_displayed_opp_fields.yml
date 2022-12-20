@@ -1,0 +1,16 @@
+settings:
+  allowed_values:
+    -
+      label: Name
+    -
+      label: 'Sign up schedule'
+    -
+      label: 'Lead paragraph'
+    -
+      label: 'Street address'
+    -
+      label: 'Web location'
+    -
+      label: 'Additional link'
+    -
+      label: 'Location on map'

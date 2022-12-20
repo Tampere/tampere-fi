@@ -1,0 +1,21 @@
+uuid: b7125398-f4b0-41aa-b4ae-8aba735121dc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_participate_phase
+    - node.type.involvement_opportunity
+  module:
+    - options
+id: node.involvement_opportunity.field_participate_phase
+field_name: field_participate_phase
+entity_type: node
+bundle: involvement_opportunity
+label: Vaihe
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

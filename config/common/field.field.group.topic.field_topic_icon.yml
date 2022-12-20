@@ -1,0 +1,22 @@
+uuid: d7ddd3e6-2963-42c3-b659-b14aa3f2dc18
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_topic_icon
+    - group.type.topic
+  module:
+    - ex_icons
+id: group.topic.field_topic_icon
+field_name: field_topic_icon
+entity_type: group
+bundle: topic
+label: 'Aihepiirin ikoni'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+field_type: ex_icon

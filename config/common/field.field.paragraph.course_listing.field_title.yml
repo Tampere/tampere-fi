@@ -1,0 +1,19 @@
+uuid: 60cd9f1b-b7bb-4e93-9071-3902a9c38be4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.course_listing
+id: paragraph.course_listing.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: course_listing
+label: 'Listauksen otsikko'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

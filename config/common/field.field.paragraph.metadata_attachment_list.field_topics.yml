@@ -1,0 +1,29 @@
+uuid: a48686ac-7672-4ff9-b234-7cbfdc61f679
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topics
+    - paragraphs.paragraphs_type.metadata_attachment_list
+    - taxonomy.vocabulary.topics
+id: paragraph.metadata_attachment_list.field_topics
+field_name: field_topics
+entity_type: paragraph
+bundle: metadata_attachment_list
+label: Aihealueet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

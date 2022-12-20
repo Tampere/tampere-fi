@@ -1,0 +1,29 @@
+uuid: 1669c2a2-8a09-4ae1-859e-1ef6a696b945
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_keywords
+    - group.type.minisite
+    - taxonomy.vocabulary.keywords
+id: group.minisite.field_keywords
+field_name: field_keywords
+entity_type: group
+bundle: minisite
+label: Asiasanat
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      keywords: keywords
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

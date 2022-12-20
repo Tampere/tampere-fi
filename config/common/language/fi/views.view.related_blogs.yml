@@ -1,0 +1,4 @@
+display:
+  default:
+    display_options:
+      title: 'Blogin aikaisemmat kirjoitukset'

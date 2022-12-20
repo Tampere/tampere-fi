@@ -1,0 +1,20 @@
+uuid: de10988b-5de4-4b09-9ce8-ca9dc2545f5c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+id: paragraph.field_involvement_opportunity
+field_name: field_involvement_opportunity
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

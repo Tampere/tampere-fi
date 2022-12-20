@@ -1,0 +1,125 @@
+uuid: 36f144a5-31b5-4e95-b3c8-0ce630a83ace
+langcode: fi
+status: true
+dependencies:
+  module:
+    - feeds
+id: feeds_feed_type--feeds_feed_type
+disabled: true
+path: feeds_feed_type/feeds_feed_type
+resourceType: feeds_feed_type--feeds_feed_type
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''
+  help:
+    disabled: false
+    fieldName: help
+    publicName: help
+    enhancer:
+      id: ''
+  import_period:
+    disabled: false
+    fieldName: import_period
+    publicName: import_period
+    enhancer:
+      id: ''
+  fetcher:
+    disabled: false
+    fieldName: fetcher
+    publicName: fetcher
+    enhancer:
+      id: ''
+  fetcher_configuration:
+    disabled: false
+    fieldName: fetcher_configuration
+    publicName: fetcher_configuration
+    enhancer:
+      id: ''
+  parser:
+    disabled: false
+    fieldName: parser
+    publicName: parser
+    enhancer:
+      id: ''
+  parser_configuration:
+    disabled: false
+    fieldName: parser_configuration
+    publicName: parser_configuration
+    enhancer:
+      id: ''
+  processor:
+    disabled: false
+    fieldName: processor
+    publicName: processor
+    enhancer:
+      id: ''
+  processor_configuration:
+    disabled: false
+    fieldName: processor_configuration
+    publicName: processor_configuration
+    enhancer:
+      id: ''
+  custom_sources:
+    disabled: false
+    fieldName: custom_sources
+    publicName: custom_sources
+    enhancer:
+      id: ''
+  mappings:
+    disabled: false
+    fieldName: mappings
+    publicName: mappings
+    enhancer:
+      id: ''

@@ -1,0 +1,17 @@
+uuid: b1370ba4-cefb-4bea-8121-030ea5909fbd
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Perussisältösivu
+type: basic_content_page
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

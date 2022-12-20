@@ -1,0 +1,17 @@
+uuid: 671274f2-22a1-4191-b055-2636a1f51e9e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: search_widget_medium_image_style
+label: 'Hakuwidgetti - medium (985×625)'
+effects:
+  12651ae6-cc08-4be2-8bfb-791e5be465db:
+    uuid: 12651ae6-cc08-4be2-8bfb-791e5be465db
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 985
+      height: 625
+      crop_type: focal_point

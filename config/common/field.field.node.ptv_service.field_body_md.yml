@@ -1,0 +1,26 @@
+uuid: f893df04-348c-4176-baf3-e3c0fa033398
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body_md
+    - node.type.ptv_service
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - ptv_markdown
+id: node.ptv_service.field_body_md
+field_name: field_body_md
+entity_type: node
+bundle: ptv_service
+label: Kuvaus
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

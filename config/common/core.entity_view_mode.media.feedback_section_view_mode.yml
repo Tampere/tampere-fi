@@ -1,0 +1,10 @@
+uuid: b4ee9c7a-1d91-413f-b679-4469e4437041
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.feedback_section_view_mode
+label: Palauteosio
+targetEntityType: media
+cache: true

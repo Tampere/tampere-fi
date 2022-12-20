@@ -1,0 +1,18 @@
+uuid: c4d98877-0c7c-49bd-86f5-df81c4119b65
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.project
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.project
+target_entity_type_id: node
+target_bundle: project
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,17 @@
+uuid: 2f049f38-5d18-4be2-8e12-f1c5841c419f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_listing_liftup_large_view_mode
+label: 'Ajankohtaislistaus nosto - large (605×340)'
+effects:
+  2af9c1a1-045c-485d-a429-960c60c300c3:
+    uuid: 2af9c1a1-045c-485d-a429-960c60c300c3
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 605
+      height: 340
+      crop_type: focal_point

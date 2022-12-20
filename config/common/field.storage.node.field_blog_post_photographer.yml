@@ -1,0 +1,21 @@
+uuid: 48c3aee9-4308-456d-b24b-096fa4a35ca6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_blog_post_photographer
+field_name: field_blog_post_photographer
+entity_type: node
+type: string
+settings:
+  max_length: 100
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

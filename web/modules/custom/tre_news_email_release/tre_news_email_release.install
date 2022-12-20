@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Update and install hooks.
+ */
+
+use Drupal\tre_news_email_release\Service\NodeHooks;
+
+/**
+ * Clears the old state entries so that the new data format can be used.
+ */
+function tre_news_email_release_update_9000(&$sandbox) {
+  \Drupal::state()->delete(NodeHooks::STATE_KEY);
+}

@@ -1,0 +1,13 @@
+uuid: fabbb0a2-93c1-43c5-a1a7-802c9ad5d3ba
+langcode: fi
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: comment_delete_action
+label: 'Poista kommentti'
+type: comment
+plugin: 'entity:delete_action:comment'
+configuration: {  }

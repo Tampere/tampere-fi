@@ -1,0 +1,25 @@
+third_party_settings:
+  field_group:
+    group_addresses:
+      label: Addresses
+content:
+  field_additional_phones:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: Phone
+  field_addresses:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: Address
+  field_email:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            pattern_settings:
+              icon_field_group:
+                field_label: Email

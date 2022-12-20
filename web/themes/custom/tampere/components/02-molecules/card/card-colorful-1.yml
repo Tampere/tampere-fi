@@ -1,0 +1,5 @@
+card__modifiers:
+  - colorful
+  - colorful-1
+card__image__src:
+card__body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.'

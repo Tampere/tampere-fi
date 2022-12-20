@@ -1,0 +1,11 @@
+rss_feed__heading: 'Lorem ipsum dolor'
+rss_feed__items:
+  - url: '#'
+    date: '1.1.2022'
+    heading: 'Lorem ipsum dolor sit amet'
+  - url: '#'
+    date: '20.12.2021'
+    heading: 'Etiam scelerisque eros'
+  - url: '#'
+    date: '20.12.2021'
+    heading: 'Cras lacinia sagittis mauris a volutpat ipsum dolor sit amet scelerisque'

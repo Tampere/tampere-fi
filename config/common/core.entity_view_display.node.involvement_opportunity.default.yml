@@ -1,0 +1,399 @@
+uuid: fb9b3246-d823-4dab-b61a-278bc5be8092
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.involvement_opportunity.field_additional_information
+    - field.field.node.involvement_opportunity.field_address_street
+    - field.field.node.involvement_opportunity.field_contact_info_paragraph
+    - field.field.node.involvement_opportunity.field_display_location_on_map
+    - field.field.node.involvement_opportunity.field_end_time
+    - field.field.node.involvement_opportunity.field_epsg_3067_easting
+    - field.field.node.involvement_opportunity.field_epsg_3067_northing
+    - field.field.node.involvement_opportunity.field_geographical_areas
+    - field.field.node.involvement_opportunity.field_help_text
+    - field.field.node.involvement_opportunity.field_keywords
+    - field.field.node.involvement_opportunity.field_life_situations
+    - field.field.node.involvement_opportunity.field_link_single
+    - field.field.node.involvement_opportunity.field_location
+    - field.field.node.involvement_opportunity.field_main_image
+    - field.field.node.involvement_opportunity.field_opportunity_description
+    - field.field.node.involvement_opportunity.field_paragraphs
+    - field.field.node.involvement_opportunity.field_participate_end_time
+    - field.field.node.involvement_opportunity.field_participate_phase
+    - field.field.node.involvement_opportunity.field_participate_start_time
+    - field.field.node.involvement_opportunity.field_participate_summary
+    - field.field.node.involvement_opportunity.field_participate_type
+    - field.field.node.involvement_opportunity.field_sign_up_link
+    - field.field.node.involvement_opportunity.field_sign_up_summary
+    - field.field.node.involvement_opportunity.field_sign_up_title
+    - field.field.node.involvement_opportunity.field_single_additional_link
+    - field.field.node.involvement_opportunity.field_start_time
+    - field.field.node.involvement_opportunity.field_topics
+    - node.type.involvement_opportunity
+  module:
+    - address_display
+    - ds
+    - entity_reference_revisions
+    - field_group
+    - geofield
+    - link
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_involvement_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      main_image:
+        - field_main_image
+      sign_up_information:
+        - 'dynamic_twig_field:node-involvement_opp_sign_up_info'
+      main_title:
+        - node_title
+      main_content:
+        - field_participate_summary
+        - field_opportunity_description
+        - field_address_street
+        - group_address
+        - field_location
+        - field_link_single
+        - field_sign_up_title
+        - group_sign_up
+        - field_sign_up_summary
+        - field_additional_information
+        - field_sign_up_link
+        - field_contact_info_paragraph
+      paragraph_content:
+        - field_paragraphs
+    fields:
+      'dynamic_twig_field:node-involvement_opp_sign_up_info':
+        plugin_id: 'dynamic_twig_field:node-involvement_opp_sign_up_info'
+        weight: 1
+        label: hidden
+        formatter: default
+        ft:
+          id: reset
+          settings:
+            lb: ''
+      node_title:
+        plugin_id: node_title
+        weight: 2
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+  field_group:
+    group_address:
+      children:
+        - field_address_street
+      label: Osoite
+      parent_name: ''
+      region: main_content
+      weight: 5
+      format_type: pattern_formatter
+      format_settings:
+        pattern: icon_field_group
+        pattern_mapping:
+          'fields:field_address_street':
+            destination: icon_field_group_content
+            weight: 0
+            plugin: fields
+            source: field_address_street
+        pattern_settings:
+          icon_field_group:
+            field_label: Paikka
+            field_label_token: ''
+            label_highlight: '1'
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+        pattern_variant: location
+    group_sign_up:
+      children:
+        - field_sign_up_title
+        - field_sign_up_summary
+        - field_sign_up_link
+      label: Ilmoittaudu
+      parent_name: ''
+      region: main_content
+      weight: 8
+      format_type: pattern_formatter
+      format_settings:
+        pattern: text-with-title
+        variants:
+          figure: large
+          icon_field_group: location
+          link_field: default
+          regular_field: above
+          listing_item: default
+          in_page_menu: default
+          rss_card: default
+          topical_card: default
+          popup_card: default
+          topical_content: default
+          topics_and_life_situations: default
+        pattern_mapping:
+          'fields:field_sign_up_title':
+            destination: text_with_title__heading
+            weight: 0
+            plugin: fields
+            source: field_sign_up_title
+          'fields:field_sign_up_summary':
+            destination: text_with_title__content
+            weight: 1
+            plugin: fields
+            source: field_sign_up_summary
+          'fields:field_sign_up_link':
+            destination: text_with_title__content
+            weight: 2
+            plugin: fields
+            source: field_sign_up_link
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+            label_highlight: 0
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+id: node.involvement_opportunity.default
+targetEntityType: node
+bundle: involvement_opportunity
+mode: default
+content:
+  field_additional_information:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 9
+    region: main_content
+  field_address_street:
+    type: address_display_formatter
+    label: hidden
+    settings:
+      address_display:
+        organization:
+          glue: ''
+          weight: '-10'
+          display: 0
+        address_line1:
+          display: '1'
+          glue: ''
+          weight: '-9'
+        address_line2:
+          display: '1'
+          glue: ','
+          weight: '-8'
+        postal_code:
+          display: '1'
+          glue: ''
+          weight: '-7'
+        locality:
+          display: '1'
+          glue: ''
+          weight: '-6'
+        country_code:
+          glue: ''
+          weight: '-5'
+          display: 0
+        langcode:
+          glue: ','
+          weight: '-4'
+          display: 0
+        administrative_area:
+          glue: ','
+          weight: '-3'
+          display: 0
+        dependent_locality:
+          glue: ','
+          weight: '-2'
+          display: 0
+        sorting_code:
+          glue: ','
+          weight: '-1'
+          display: 0
+        given_name:
+          glue: ''
+          weight: '0'
+          display: 0
+        family_name:
+          glue: ','
+          weight: '1'
+          display: 0
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
+    region: main_content
+  field_contact_info_paragraph:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 10
+    region: main_content
+  field_link_single:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: 'Osallistu verkossa'
+            lb-col: false
+            classes: {  }
+    weight: 7
+    region: main_content
+  field_location:
+    type: geofield_latlon
+    label: above
+    settings:
+      output_format: decimal
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: 'Sijainti kartalla'
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: main_content
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: hero_widescreen_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: main_image
+  field_opportunity_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: main_content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 11
+    region: paragraph_content
+  field_participate_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: main_content
+  field_sign_up_link:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 10
+    region: main_content
+  field_sign_up_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 9
+    region: main_content
+  field_sign_up_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 8
+    region: main_content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_end_time: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_participate_end_time: true
+  field_participate_phase: true
+  field_participate_start_time: true
+  field_participate_type: true
+  field_single_additional_link: true
+  field_start_time: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

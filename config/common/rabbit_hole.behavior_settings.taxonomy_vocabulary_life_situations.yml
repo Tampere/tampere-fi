@@ -1,0 +1,14 @@
+uuid: 7673c265-2148-47f5-b6f3-a95fc518b67d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.life_situations
+id: taxonomy_vocabulary_life_situations
+entity_type_id: taxonomy_vocabulary
+entity_id: life_situations
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

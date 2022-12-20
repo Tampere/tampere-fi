@@ -1,0 +1,20 @@
+uuid: cf9d9341-913b-412d-b4c6-53077ec8991f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_geographical_areas
+field_name: field_geographical_areas
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

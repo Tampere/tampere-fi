@@ -1,0 +1,23 @@
+uuid: 36cd3a83-5ed8-4e48-9d04-5c3a5ad09fa0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_phones
+    - node.type.person
+  module:
+    - telephone_plus
+id: node.person.field_additional_phones
+field_name: field_additional_phones
+entity_type: node
+bundle: person
+label: Lisäpuhelinnumerot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  default_country_code: FI
+  country_code_enabled: 0
+field_type: telephone_plus_field

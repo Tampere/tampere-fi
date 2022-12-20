@@ -1,0 +1,21 @@
+uuid: 93cabd3d-25b4-48c0-90eb-84d331bc6eda
+langcode: fi
+status: true
+dependencies:
+  module:
+    - config_pages
+id: config_pages.field_site_copyrights
+field_name: field_site_copyrights
+entity_type: config_pages
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

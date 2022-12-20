@@ -1,0 +1,13 @@
+uuid: bf70f240-cd21-49bf-bb34-3f744618637c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - taxonomy
+_core:
+  default_config_hash: z2sNRM3ECa7FPCGnSNje_9SmZJQgwhD_6fG_L4Mr8zI
+id: taxonomy_term_unpublish_action
+label: 'Poista julkaisusta luokittelutermi'
+type: taxonomy_term
+plugin: 'entity:unpublish_action:taxonomy_term'
+configuration: {  }

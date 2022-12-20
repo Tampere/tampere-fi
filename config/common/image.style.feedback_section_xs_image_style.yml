@@ -1,0 +1,17 @@
+uuid: 448f9fc6-35bb-4f76-bab1-e93e853f1073
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: feedback_section_xs_image_style
+label: 'Palauteosio - xs (480×215)'
+effects:
+  5f99cff7-348d-4e44-b629-7add000be4fa:
+    uuid: 5f99cff7-348d-4e44-b629-7add000be4fa
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 215
+      crop_type: focal_point

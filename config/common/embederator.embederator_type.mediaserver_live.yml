@@ -1,0 +1,13 @@
+uuid: a4359d81-b941-4f84-a181-45e93097e03c
+langcode: fi
+status: true
+dependencies: {  }
+id: mediaserver_live
+label: Mediaserver-live
+use_ssi: false
+embed_markup:
+  value: '<iframe allowfullscreen="" class="lazyload" loading="lazy" style="position: absolute; top:0; left: 0; width: 100%; height:100%;" data-src="https://www.mediaserver.fi/embed/live/tampere" title="[embederator:field_mediaserver_video_title]" width="640" height="360" frameborder="0"></iframe>'
+  format: embederator_html
+embed_url: ''
+wrapper_class: ''
+description: 'Tällä elementillä voidaan upottaa Mediaserver-livestriimi.'

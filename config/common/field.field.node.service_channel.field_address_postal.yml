@@ -1,0 +1,48 @@
+uuid: 105f9df4-d7f7-4ca0-8d77-a10fca6d761e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address_postal
+    - node.type.service_channel
+  module:
+    - address
+id: node.service_channel.field_address_postal
+field_name: field_address_postal
+entity_type: node
+bundle: service_channel
+label: Postiosoite
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    FI: FI
+  langcode_override: fi
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: optional
+    addressLine2:
+      override: optional
+    postalCode:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: optional
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

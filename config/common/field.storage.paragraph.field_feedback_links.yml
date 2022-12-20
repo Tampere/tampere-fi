@@ -1,0 +1,20 @@
+uuid: a2b57402-04a2-4038-9971-7409043258bb
+langcode: fi
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_feedback_links
+field_name: field_feedback_links
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 2
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

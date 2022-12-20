@@ -1,0 +1,52 @@
+uuid: 8251a51d-c94f-4f9d-a21b-fd3f6a905ad7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mailing_list_information.field_mailing_list
+    - field.field.paragraph.mailing_list_information.field_media_contact_person
+    - field.field.paragraph.mailing_list_information.field_media_images
+    - paragraphs.paragraphs_type.mailing_list_information
+  module:
+    - link
+id: paragraph.mailing_list_information.default
+targetEntityType: paragraph
+bundle: mailing_list_information
+mode: default
+content:
+  field_mailing_list:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_contact_person:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_images:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

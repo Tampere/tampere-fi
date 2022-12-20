@@ -1,0 +1,8 @@
+uuid: 0ca818f9-21f8-438d-ae9e-342986517a0b
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Henkilöstön tehtävänimikkeet'
+vid: personnel_titles
+description: ''
+weight: 0

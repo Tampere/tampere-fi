@@ -1,0 +1,19 @@
+uuid: f888c31b-5796-4835-b6dc-7173e802c2d5
+langcode: en
+status: true
+dependencies: {  }
+id: local_split
+label: 'Local split'
+description: "Set of configurations that should run in a local environment.\r\nIt is actived by default but you can disable it by adding this to settings.php:\r\n$config['config_split.config_split.local_split']['status'] = FALSE;"
+weight: 0
+stackable: false
+storage: folder
+folder: ../config/local
+module:
+  dblog: 0
+  stage_file_proxy: 0
+theme: {  }
+complete_list: {  }
+partial_list:
+  - environment_indicator.indicator
+  - system.performance

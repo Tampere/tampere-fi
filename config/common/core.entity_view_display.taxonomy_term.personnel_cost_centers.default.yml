@@ -1,0 +1,17 @@
+uuid: 5f25dbee-54ae-46f8-9edc-1d60ff2a5715
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.personnel_cost_centers.field_hr_id
+    - taxonomy.vocabulary.personnel_cost_centers
+id: taxonomy_term.personnel_cost_centers.default
+targetEntityType: taxonomy_term
+bundle: personnel_cost_centers
+mode: default
+content: {  }
+hidden:
+  description: true
+  field_hr_id: true
+  langcode: true
+  search_api_excerpt: true

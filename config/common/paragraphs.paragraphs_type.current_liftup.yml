@@ -1,0 +1,10 @@
+uuid: 16f5f193-b177-4f16-b743-f5866409e444
+langcode: fi
+status: true
+dependencies: {  }
+id: current_liftup
+label: Ajankohtaisnosto
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

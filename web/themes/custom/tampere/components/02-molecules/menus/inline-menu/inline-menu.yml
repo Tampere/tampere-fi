@@ -1,0 +1,9 @@
+inline_menu_label_id: "inline-menu-label"
+inline_menu_aria_label: "Inline menu"
+inline_menu_items:
+  - title: 'Test'
+    url: '#'
+  - title: 'Number 2'
+    url: '#'
+  - title: 'Item Number 3'
+    url: '#'

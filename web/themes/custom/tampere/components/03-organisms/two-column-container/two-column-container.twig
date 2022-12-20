@@ -1,0 +1,42 @@
+{#
+ # Available variables:
+ # - two_col_container__base_class - base classname of the wrapper.
+ # - two_col_container__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - two_col_container__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - two_col_container__content__modifiers - array of modifiers to add to the base classname of the content.
+ #
+ # - two_col_container__left_column__modifiers - array of modifiers to add to the base classname of the left column.
+ # - left_column - the content of the left column.
+ #
+ # - two_col_container__right_column__modifiers - array of modifiers to add to the base classname of the right column.
+ # - right_column - the content of the right column.
+ #
+ # - entity_id - ID for the entity using the pattern.
+ #}
+
+{% set two_col_container__base_class = "two-column-container" %}
+
+{% set attributes = [] %}
+
+{% embed "@organisms/_paragraph.twig" with {
+  "entity_id": entity_id,
+  "paragraph_anchor_link__modifiers": [ "extra-wide-parent" ],
+} %}
+  {% block paragraph_content %}
+    <div {{ bem(two_col_container__base_class, two_col_container__modifiers|default([]), two_col_container__blockname) }}>
+      <div {{ bem("content", two_col_container__content__modifiers|default([]), two_col_container__base_class) }}>
+        <div {{ bem("left-column", two_col_container__left_column__modifiers|default([]), two_col_container__base_class) }}>
+          {% block two_column_container_left_column %}
+            {{ left_column }}
+          {% endblock %}
+        </div>
+        <div {{ bem("right-column", two_col_container__right_column__modifiers|default([]), two_col_container__base_class) }}>
+          {% block two_column_container_right_column %}
+            {{ right_column }}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}

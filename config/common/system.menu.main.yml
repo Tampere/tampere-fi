@@ -1,0 +1,10 @@
+uuid: d6ce8145-3d6a-4ecf-b775-fc8ce4058470
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Q2Ra3jfoIVk0f3SjxJX61byRQFVBAbpzYDQOiY-kno8
+id: main
+label: 'Järjestelmän päävalikko'
+description: ''
+locked: true

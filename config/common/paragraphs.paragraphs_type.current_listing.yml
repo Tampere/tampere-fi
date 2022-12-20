@@ -1,0 +1,10 @@
+uuid: f2f37a3b-3895-4adb-a444-36a4e2234372
+langcode: fi
+status: true
+dependencies: {  }
+id: current_listing
+label: Ajankohtaislistaus
+icon_uuid: null
+icon_default: null
+description: 'Esittää ajankohtaissisältöjä metatietojen ja muiden valintojen perusteella.'
+behavior_plugins: {  }

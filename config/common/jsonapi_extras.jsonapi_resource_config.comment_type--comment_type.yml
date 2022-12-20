@@ -1,0 +1,71 @@
+uuid: 1549aa2e-cb1c-4b11-9c32-538902d2029a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - comment
+id: comment_type--comment_type
+disabled: true
+path: comment_type/comment_type
+resourceType: comment_type--comment_type
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  target_entity_type_id:
+    disabled: false
+    fieldName: target_entity_type_id
+    publicName: target_entity_type_id
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''

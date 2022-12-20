@@ -1,0 +1,28 @@
+uuid: e4e7d78a-4b6b-49f7-8e76-dc4faee71a58
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_link_to_content
+    - message.template.news_item_to_media
+  module:
+    - link
+id: message.news_item_to_media.field_link_to_content
+field_name: field_link_to_content
+entity_type: message
+bundle: news_item_to_media
+label: 'Linkki uutiseen'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    attributes: {  }
+    uri: 'http://example.com'
+    title: 'Lue tiedote Tampere.fi:ssä'
+    options: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 16
+field_type: link

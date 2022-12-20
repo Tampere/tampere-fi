@@ -1,0 +1,5 @@
+label: 'Override heading: To whom and on what terms'
+default_value:
+  -
+    size: h2
+    text: 'To whom and on what terms'

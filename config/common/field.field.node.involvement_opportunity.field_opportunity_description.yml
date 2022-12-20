@@ -1,0 +1,26 @@
+uuid: 82146091-70d0-4167-b031-54f84925bae4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opportunity_description
+    - node.type.involvement_opportunity
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - plain_html
+id: node.involvement_opportunity.field_opportunity_description
+field_name: field_opportunity_description
+entity_type: node
+bundle: involvement_opportunity
+label: Kuvaus
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

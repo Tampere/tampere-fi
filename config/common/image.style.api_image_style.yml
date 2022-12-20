@@ -1,0 +1,15 @@
+uuid: 8df8d60c-ba8f-4afb-917e-2a35cc8df4b9
+langcode: fi
+status: true
+dependencies: {  }
+name: api_image_style
+label: Rajapintakuva
+effects:
+  397a59e6-6e53-4026-a4ac-af2b15de51ba:
+    uuid: 397a59e6-6e53-4026-a4ac-af2b15de51ba
+    id: image_scale
+    weight: 1
+    data:
+      width: 768
+      height: null
+      upscale: false

@@ -1,0 +1,9 @@
+id: author_and_photographer
+label: 'Author and photographer'
+ui_limit: 'news_item|*'
+type: twig
+type_label: 'Twig field'
+entities:
+  node: node
+properties:
+  content: "{% if node.field_author.value.0|trim %}\r\n{{- node.field_author.fieldDefinition.label -}}: {{ node.field_author.value -}}\r\n{% endif %}\r\n{% if node.field_author.value.0|trim and node.field_photographer.value.0|trim %}{{- \"<br>\"|raw -}}{% endif %}\r\n{% if node.field_photographer.value.0|trim %}\r\n{{- node.field_photographer.fieldDefinition.label -}}: {{ node.field_photographer.value -}}\r\n{% endif %}"

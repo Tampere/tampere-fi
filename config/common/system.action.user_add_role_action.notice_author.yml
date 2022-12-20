@@ -1,0 +1,14 @@
+uuid: 35eff475-bd7e-4354-8d5c-a0a065e21bbd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.notice_author
+  module:
+    - user
+id: user_add_role_action.notice_author
+label: 'Add the Ilmoitustoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: notice_author

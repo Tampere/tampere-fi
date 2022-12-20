@@ -1,0 +1,23 @@
+uuid: 644613d4-7411-4ed7-9a59-21fdf6641351
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_wider
+    - paragraphs.paragraphs_type.map_embed
+id: paragraph.map_embed.field_display_wider
+field_name: field_display_wider
+entity_type: paragraph
+bundle: map_embed
+label: 'Näytä leveämpänä kapeilla sisältösivuilla'
+description: 'Valitse tämä, kun haluat, että kartta näytetään leveämpänä kuin muu sisältö kapeammilla sisältösivuilla (esim. Perussisältösivu).'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

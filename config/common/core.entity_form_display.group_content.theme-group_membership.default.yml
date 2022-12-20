@@ -1,0 +1,45 @@
+uuid: 8158c58a-7b8a-4640-929b-24c9849ade08
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group_content.theme-group_membership.group_roles
+    - group.content_type.theme-group_membership
+  module:
+    - path
+id: group_content.theme-group_membership.default
+targetEntityType: group_content
+bundle: theme-group_membership
+mode: default
+content:
+  entity_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  group_roles:
+    type: options_buttons
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

@@ -1,0 +1,22 @@
+diff --git a/src/Entity/Storage/GroupContentStorage.php b/src/Entity/Storage/GroupContentStorage.php
+index 490d3a6..d71337b 100644
+--- a/src/Entity/Storage/GroupContentStorage.php
++++ b/src/Entity/Storage/GroupContentStorage.php
+@@ -67,7 +67,7 @@ class GroupContentStorage extends SqlContentEntityStorage implements GroupConten
+   public function loadByGroup(GroupInterface $group, $plugin_id = NULL, $filters = []) {
+     // An unsaved group cannot have any content.
+     if ($group->id() === NULL) {
+-      throw new EntityStorageException("Cannot load GroupContent entities for an unsaved group.");
++      return [];
+     }
+
+     $properties = ['gid' => $group->id()] + $filters;
+@@ -89,7 +89,7 @@ class GroupContentStorage extends SqlContentEntityStorage implements GroupConten
+     // An unsaved entity cannot have any group content.
+     $entity_id = $entity->id();
+     if ($entity_id === NULL) {
+-      throw new EntityStorageException("Cannot load GroupContent entities for an unsaved entity.");
++      return [];
+     }
+
+     $entity_type_id = $entity->getEntityTypeId();

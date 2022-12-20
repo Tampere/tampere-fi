@@ -1,0 +1,19 @@
+uuid: 07bd99d9-6a82-435d-8f3b-de0b2caa2e2c
+langcode: en
+status: true
+dependencies:
+  module:
+    - migrate_override
+    - node
+id: node.migrate_override_data
+field_name: migrate_override_data
+entity_type: node
+type: migrate_override_field_item
+settings: {  }
+module: migrate_override
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

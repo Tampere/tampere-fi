@@ -1,0 +1,63 @@
+.feedback-links {
+  $base_class: &;
+
+  @include list-reset;
+
+  display: grid;
+  gap: $space-m;
+  grid-template-columns: repeat(2, 1fr);
+
+  &__link {
+    border: 0;
+    color: clr(text);
+    display: flex;
+    font-size: $font-15;
+    font-weight: $font-weight-bold;
+    flex-direction: column-reverse;
+    padding: 0;
+    text-decoration: none;
+    text-transform: none;
+
+    @include large {
+      font-size: $font-22;
+    }
+
+    &:focus,
+    &:hover {
+      #{$base_class}__icon {
+        background-color: clr(primary);
+        color: clr(text-inverse);
+      }
+    }
+  }
+
+  &__icon {
+    color: clr(primary);
+    align-self: flex-start;
+    margin-bottom: $space-s;
+    margin-left: 0;
+    height: $icon-medium;
+    width: $icon-medium;
+
+    @include large {
+      height: $icon-large;
+      width: $icon-large;
+    }
+
+    &.mobile {
+      display: block;
+
+      @include large {
+        display: none;
+      }
+    }
+
+    &.regular {
+      display: none;
+
+      @include large {
+        display: block;
+      }
+    }
+  }
+}

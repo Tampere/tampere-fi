@@ -1,0 +1,73 @@
+uuid: e901596a-c0d3-43e7-9669-3b8a6397bdcd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.blogs.field_author
+    - field.field.taxonomy_term.blogs.field_description
+    - field.field.taxonomy_term.blogs.field_image
+    - field.field.taxonomy_term.blogs.field_title
+    - taxonomy.vocabulary.blogs
+  module:
+    - ds
+    - text
+id: taxonomy_term.blogs.default
+targetEntityType: taxonomy_term
+bundle: blogs
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_author:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_description:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 8
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: blog_header
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

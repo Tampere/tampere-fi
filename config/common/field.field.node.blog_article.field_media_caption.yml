@@ -1,0 +1,19 @@
+uuid: 399be26b-7d62-4d92-912d-8646cdc99668
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_caption
+    - node.type.blog_article
+id: node.blog_article.field_media_caption
+field_name: field_media_caption
+entity_type: node
+bundle: blog_article
+label: Pääkuvateksti
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

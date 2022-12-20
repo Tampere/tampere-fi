@@ -1,0 +1,10 @@
+<nav class="inline-navigation" aria-labelledby="{{ inline_menu_label_id }}">
+  {% if inline_menu_aria_label %}
+    <span id="{{ inline_menu_label_id }}" class="visually-hidden">{{ inline_menu_aria_label }}</span>
+  {% endif %}
+  {% include "@molecules/menus/_menu.twig" with {
+    menu_class: "inline-menu",
+    items: inline_menu_items,
+    menu_modifiers: menu_modifiers
+  } %}
+</nav>

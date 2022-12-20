@@ -1,0 +1,29 @@
+uuid: 75907b11-6023-48b1-90cc-039096d1c6a9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_image
+    - media.type.image
+    - node.type.involvement_opportunity
+id: node.involvement_opportunity.field_main_image
+field_name: field_main_image
+entity_type: node
+bundle: involvement_opportunity
+label: Pääkuva
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

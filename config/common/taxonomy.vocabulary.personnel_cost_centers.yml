@@ -1,0 +1,8 @@
+uuid: baf419d5-1419-4014-8620-4c445e6cc277
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Henkilöstön kustannuspaikat'
+vid: personnel_cost_centers
+description: ''
+weight: 0

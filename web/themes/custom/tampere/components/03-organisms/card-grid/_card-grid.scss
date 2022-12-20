@@ -1,0 +1,112 @@
+.card-grid {
+  $base_class: &;
+
+  &__wrapper {
+    display: grid;
+    gap: $gutter-mobile;
+
+    @include large {
+      grid-auto-rows: 1fr;
+      grid-template-columns: repeat(auto-fill, minmax(calc(var(--basic-content-max-width) / 2), 1fr));
+    }
+  }
+
+  &--3-col-expand,
+  &--4-col {
+    @include page-element-spacer;
+
+    .layout-container:not(.layout-container--with-sidebar) & {
+      @include large {
+        @include breakout(0);
+      }
+
+      #{$base_class}__wrapper {
+        @include large {
+          @include centered-content($max-width: $max-width);
+        }
+      }
+    }
+
+    .layout-container--with-sidebar & {
+      &:not(#{$base_class}--always-full-width) {
+        max-width: var(--basic-component-max-width);
+
+        #{$base_class}__wrapper {
+          @include large-down {
+            @include centered-content($max-width: $max-width, $use-padding: false);
+          }
+        }
+      }
+    }
+  }
+
+  &--3-col,
+  &--3-col-expand {
+    #{$base_class}__wrapper {
+      gap: $gutter-small;
+
+      @include large {
+        grid-auto-rows: 1fr;
+      }
+    }
+  }
+
+  &--3-col {
+    #{$base_class}__wrapper {
+      @include large {
+        grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 4)), 1fr));
+      }
+    }
+
+    .layout-container--with-sidebar & {
+      &:not(#{$base_class}--always-full-width) {
+        #{$base_class}__wrapper {
+          @include large {
+            grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 2.5)), 1fr));
+          }
+        }
+      }
+    }
+  }
+
+  &--3-col-expand {
+    #{$base_class}__wrapper {
+      @include large {
+        grid-template-columns: repeat(auto-fit, minmax(calc((var(--basic-component-max-width) / 4)), 1fr));
+      }
+    }
+
+    .layout-container--with-sidebar & {
+      &:not(#{$base_class}--always-full-width) {
+        #{$base_class}__wrapper {
+          @include large {
+            grid-template-columns: repeat(auto-fit, minmax(calc((var(--basic-component-max-width) / 3)), 1fr));
+          }
+        }
+      }
+    }
+  }
+
+  &--4-col {
+    #{$base_class}__wrapper {
+      gap: $gutter-medium;
+
+      @include large {
+        grid-auto-rows: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 5)), 1fr));
+      }
+    }
+
+    .layout-container--with-sidebar & {
+      &:not(#{$base_class}--always-full-width) {
+        #{$base_class}__wrapper {
+          @include large {
+            column-gap: $gutter-small;
+            row-gap: 0;
+            grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 2.5)), 1fr));
+          }
+        }
+      }
+    }
+  }
+}

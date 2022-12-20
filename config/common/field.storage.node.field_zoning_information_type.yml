@@ -1,0 +1,27 @@
+uuid: 925e5327-cf7b-473e-8397-6a379a7dec2b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_zoning_information_type
+field_name: field_zoning_information_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: city_plan
+      label: Asemakaava
+    -
+      value: zoning_plan
+      label: Yleiskaava
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

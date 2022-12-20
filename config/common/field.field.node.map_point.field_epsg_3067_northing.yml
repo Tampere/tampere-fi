@@ -1,0 +1,23 @@
+uuid: 0969cebf-2b23-485d-b89f-627d5619ea5f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_epsg_3067_northing
+    - node.type.map_point
+id: node.map_point.field_epsg_3067_northing
+field_name: field_epsg_3067_northing
+entity_type: node
+bundle: map_point
+label: Pohjoisuus
+description: 'ETRS-TM35FIN-järjestelmän (EPSG:3067) mukainen pohjoisuus metreinä.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: 'N'
+field_type: decimal

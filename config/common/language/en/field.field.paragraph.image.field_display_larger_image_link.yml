@@ -1,0 +1,5 @@
+label: 'Display as link to larger image'
+description: 'Select this option if you want to allow opening a larger version of the image in a new tab.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

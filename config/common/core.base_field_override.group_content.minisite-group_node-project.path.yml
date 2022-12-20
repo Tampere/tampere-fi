@@ -1,0 +1,20 @@
+uuid: f4786f3b-a404-41c7-8b93-e5c55606a504
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-project
+  module:
+    - path
+id: group_content.minisite-group_node-project.path
+field_name: path
+entity_type: group_content
+bundle: minisite-group_node-project
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

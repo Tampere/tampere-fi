@@ -1,0 +1,8 @@
+listing_card__location: 'Tampere'
+listing_card__title: 'Kurssin nimi pitkä pidempi useammalle kuin kolmelle riville menevä lorem ipsum dolor sit amet'
+listing_card__date: '15.10.2022 - 30.10.2022'
+listing_card__status: 'Kurssi on täynnä'
+listing_card__info_link: 'Lisätiedot ja ilmoittautuminen'
+listing_card__url: '#'
+listing_card__modifiers:
+ - 'full'

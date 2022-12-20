@@ -1,0 +1,25 @@
+.icon-with-text {
+  display: flex;
+  
+  &__icon {
+    flex-shrink: 0;
+    width: $icon-medium;
+    height: $icon-medium;
+    margin-right: $space-s;
+
+    @include large {
+      width: $icon-medium-plus;
+      height: $icon-medium-plus;
+      margin-right: $space-m;
+    }
+  }
+
+  &__content {
+    font-size: $font-16;
+    margin-top: (-1) * $space-xxs;
+
+    @include large {
+      font-size: $font-20;
+    }
+  }
+}

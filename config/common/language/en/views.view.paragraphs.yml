@@ -1,0 +1,65 @@
+display:
+  default:
+    display_options:
+      fields:
+        uid:
+          label: 'Authored by'
+          separator: ', '
+        id:
+          label: ID
+          separator: ', '
+        created:
+          label: 'Authored on'
+          separator: ', '
+        parent_id:
+          label: Parent
+          separator: ', '
+        parent_type:
+          label: 'Parent type'
+          separator: ', '
+        status:
+          label: Published
+          separator: ', '
+        type:
+          label: Type
+          separator: ', '
+        nothing:
+          label: Action
+          alter:
+            text: delete
+            path: 'paragraph/{{ id }}/delete'
+            alt: delete
+      empty:
+        area:
+          content:
+            value: 'No paragraphs available.'
+      title: Paragraphs
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      filters:
+        type:
+          expose:
+            label: Type
+    display_title: Master
+  page_admin_paragraphs:
+    display_title: 'Page: paragraphs'
+    display_options:
+      display_description: 'Find and manage paragraphs.'
+      menu:
+        title: Paragraphs
+label: Paragraphs
+description: 'Find and manage paragraphs.'

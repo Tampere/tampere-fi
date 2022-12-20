@@ -1,0 +1,173 @@
+uuid: ee989ed3-90dd-4cb0-a77b-ad8370982cb5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.rich_article.field_archive_search_content
+    - field.field.node.rich_article.field_author
+    - field.field.node.rich_article.field_body
+    - field.field.node.rich_article.field_date_of_publication
+    - field.field.node.rich_article.field_geographical_areas
+    - field.field.node.rich_article.field_help_text
+    - field.field.node.rich_article.field_keywords
+    - field.field.node.rich_article.field_life_situations
+    - field.field.node.rich_article.field_link_list
+    - field.field.node.rich_article.field_main_image
+    - field.field.node.rich_article.field_media_caption
+    - field.field.node.rich_article.field_minisites
+    - field.field.node.rich_article.field_paragraphs
+    - field.field.node.rich_article.field_photographer
+    - field.field.node.rich_article.field_search_keywords
+    - field.field.node.rich_article.field_social_media_share
+    - field.field.node.rich_article.field_topic
+    - field.field.node.rich_article.field_topics
+    - node.type.rich_article
+  module:
+    - ds
+    - entity_reference_revisions
+    - text
+    - user
+id: node.rich_article.search_index
+targetEntityType: node
+bundle: rich_article
+mode: search_index
+content:
+  field_author:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_geographical_areas:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 7
+    region: content
+  field_life_situations:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 8
+    region: content
+  field_link_list:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_main_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_media_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_photographer:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_search_keywords:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 10
+    region: content
+hidden:
+  content_moderation_control: true
+  field_archive_search_content: true
+  field_date_of_publication: true
+  field_help_text: true
+  field_minisites: true
+  field_social_media_share: true
+  field_topic: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

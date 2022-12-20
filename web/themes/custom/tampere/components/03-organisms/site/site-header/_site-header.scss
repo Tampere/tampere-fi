@@ -1,0 +1,238 @@
+$header-secondary-inline-padding: 13px;
+
+.site-header {
+  $base_class: &;
+
+  &.menu-closed {
+    @include large-down {
+      border-bottom: $border-thick-default;
+    }
+  }
+
+  @include large {
+    border-bottom: $border-thick-default;
+  }
+
+  &__inner {
+    margin: 0 auto;
+    max-width: $max-width;
+    position: relative;
+  }
+
+  &__top-content {
+    margin-right: $gutter-mobile;
+    margin-bottom: $gutter-mobile;
+    margin-left: $gutter-mobile;
+
+    @include large-plus {
+      margin-right: $gutter-large;
+      margin-left: $gutter-large;
+    }
+  }
+
+  &__first-line {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: $space-xs;
+
+    @include large {
+      padding-bottom: $space-m;
+    }
+  }
+
+  &__first-line-wrapper {
+    display: flex;
+  }
+
+  &__second-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    @include large {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $space-s;
+    }
+  }
+
+  &__search {
+    display: none;
+
+    @include large-down {
+      width: 100%;
+    }
+
+    @include large {
+      display: block;
+      margin-right: auto;
+      margin-left: $space-xs;
+    }
+
+    &--mobile {
+      display: block;
+      flex-basis: 100%;
+      margin-top: $space-xs;
+
+      @include large {
+        display: none;
+      }
+    }
+  }
+
+  &__tampere-logo {
+    @include to-rem('width', 123);
+    @include to-rem('height', 44);
+
+    margin-left: -7px;
+
+    @include large {
+      @include to-rem('width', 187);
+      @include to-rem('height', 67);
+
+      margin-left: 0;
+    }
+  }
+
+  &__quick-links {
+    display: none;
+
+    @include large {
+      display: block;
+      padding-top: $header-secondary-inline-padding;
+    }
+
+    &--mobile {
+      display: block;
+
+      @include large {
+        display: none;
+      }
+    }
+  }
+
+  &__language-dropdown {
+    display: none;
+    margin-right: $space-s;
+
+    @include large {
+      display: block;
+      padding-top: $header-secondary-inline-padding;
+    }
+
+    &--mobile {
+      margin-left: auto;
+      display: block;
+
+      @include large {
+        display: none;
+      }
+    }
+  }
+
+  &__tampere-finland-logo {
+    @include to-rem('height', 44);
+    @include to-rem('width', 112);
+
+    margin-right: -10px;
+
+    @include large {
+      @include to-rem('width', 165);
+      @include to-rem('height', 67);
+      
+      margin-right: (-1) * $space-s;
+    }
+  }
+
+  &__menu {
+    // Not an interactable element, but Safari shows the outline
+    // because of the negative tab index.
+    &:focus {
+      outline: none;
+    }
+
+    &--mobile {
+      display: block;
+
+      @include large {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include large {
+        display: block;
+      }
+    }
+  }
+
+  &__secondary-navigation {
+    display: none;
+
+    @include main-menu-breakpoint {
+      display: block;
+    }
+
+    &--mobile {
+      display: block;
+
+      @include large {
+        display: none;
+      }
+    }
+
+    &--hamburger-menu {
+      background-color: clr(primary);
+      display: block;
+      padding: $space-l $gutter-mobile;
+
+      @include large-plus {
+        padding-right: $space-xl;
+        padding-left: $space-xl;
+      }
+
+      @include main-menu-breakpoint {
+        display: none;
+      }
+    }
+  }
+
+  &__navigation-container {
+    // Not an interactable element, but Safari shows the outline
+    // because of the negative tab index.
+    &:focus {
+      outline: none;
+    }
+
+    @include large {
+      background-color: clr(background);
+      box-shadow: 0 8px 4px 0 clr(border-transparent);
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 5;
+      margin-top: $gutter-mobile;
+    }
+
+    &.is-closed {
+      display: none;
+    }
+  }
+
+  &__mobile-quick-links-and-language {
+    @include dynamic-color(secondary, $set-main-property: false);
+
+    background-color: clr(secondary);
+    display: flex;
+    padding: $space-s;
+    line-height: 1;
+
+    @include large {
+      display: none;
+    }
+  }
+}

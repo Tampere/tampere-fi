@@ -1,0 +1,18 @@
+uuid: 3d2efbf9-297d-49b2-a9c2-eef84cf9a8fb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: group.minisite.created
+field_name: created
+entity_type: group
+bundle: minisite
+label: Luotu
+description: 'Ryhmän luontiajankohta.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

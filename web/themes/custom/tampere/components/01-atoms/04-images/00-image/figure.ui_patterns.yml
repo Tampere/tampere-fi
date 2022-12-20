@@ -1,0 +1,15 @@
+figure:
+  label: Figure
+  variants:
+    large:
+      label: Large
+    medium:
+      label: Medium
+    small:
+      label: Small
+  fields:
+    figure_image:
+      label: Image
+    img_caption:
+      label: Caption
+  use: "@atoms/04-images/00-image/figure.twig"

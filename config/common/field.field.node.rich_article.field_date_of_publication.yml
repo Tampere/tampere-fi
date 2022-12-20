@@ -1,0 +1,24 @@
+uuid: ecafa231-a0e8-4442-aafb-acf1faacd1fe
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_of_publication
+    - node.type.rich_article
+  module:
+    - datetime
+id: node.rich_article.field_date_of_publication
+field_name: field_date_of_publication
+entity_type: node
+bundle: rich_article
+label: Ensijulkaisupäivämäärä
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

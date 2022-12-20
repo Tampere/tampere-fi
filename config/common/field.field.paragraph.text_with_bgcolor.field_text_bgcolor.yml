@@ -1,0 +1,26 @@
+uuid: 04b923ba-9369-415b-92d5-10d388ec5ea3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_bgcolor
+    - paragraphs.paragraphs_type.text_with_bgcolor
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.text_with_bgcolor.field_text_bgcolor
+field_name: field_text_bgcolor
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: 'Teksti taustavärillä'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

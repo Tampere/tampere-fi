@@ -1,0 +1,658 @@
+langcode: fi
+entities:
+  block_content:
+    content_section:
+      migrate_override_enabled: false
+  comment:
+    blog_article_comment:
+      migrate_override_enabled: false
+  config_pages:
+    footer_information:
+      migrate_override_enabled: false
+    404_page_content:
+      migrate_override_enabled: false
+  content_moderation_state:
+    content_moderation_state:
+      migrate_override_enabled: false
+  crop:
+    focal_point:
+      migrate_override_enabled: false
+  feeds_subscription:
+    feeds_subscription:
+      migrate_override_enabled: false
+  feeds_feed:
+    rss_feed:
+      migrate_override_enabled: false
+  file:
+    file:
+      migrate_override_enabled: false
+  group:
+    life_situation:
+      migrate_override_enabled: false
+    minisite:
+      migrate_override_enabled: false
+    subsite:
+      migrate_override_enabled: false
+    topic:
+      migrate_override_enabled: false
+    theme:
+      migrate_override_enabled: false
+  group_content:
+    group_content_type_2192f025ecfe4:
+      migrate_override_enabled: false
+    group_content_type_3e00eae0ddb57:
+      migrate_override_enabled: false
+    group_content_type_54ac5f15b7221:
+      migrate_override_enabled: false
+    group_content_type_54e72f3acfa68:
+      migrate_override_enabled: false
+    group_content_type_7ca5a062ed2e5:
+      migrate_override_enabled: false
+    group_content_type_9e556b10a3693:
+      migrate_override_enabled: false
+    group_content_type_a26224e317972:
+      migrate_override_enabled: false
+    group_content_type_be580e4460fc2:
+      migrate_override_enabled: false
+    group_content_type_d23d2b4b19ca1:
+      migrate_override_enabled: false
+    group_content_type_e3adb31f025fd:
+      migrate_override_enabled: false
+    life_situation-group_membership:
+      migrate_override_enabled: false
+    minisite-group_membership:
+      migrate_override_enabled: false
+    subsite-group_membership:
+      migrate_override_enabled: false
+    subsite-group_node-news_item:
+      migrate_override_enabled: false
+    topic-group_membership:
+      migrate_override_enabled: false
+    group_content_type_0eff653d61300:
+      migrate_override_enabled: false
+    group_content_type_1bcd5b388ed86:
+      migrate_override_enabled: false
+    group_content_type_399819f395a9e:
+      migrate_override_enabled: false
+    group_content_type_3f47bfd30dcca:
+      migrate_override_enabled: false
+    group_content_type_636b622e9c5af:
+      migrate_override_enabled: false
+    group_content_type_791854d8dd98b:
+      migrate_override_enabled: false
+    group_content_type_7d61b8d3b8736:
+      migrate_override_enabled: false
+    group_content_type_8655c3d480a07:
+      migrate_override_enabled: false
+    group_content_type_94e899c8fb925:
+      migrate_override_enabled: false
+    group_content_type_9f490f1eb902f:
+      migrate_override_enabled: false
+    group_content_type_a29f3e69663e2:
+      migrate_override_enabled: false
+    group_content_type_add8143923ab5:
+      migrate_override_enabled: false
+    group_content_type_b08008e9b7e4c:
+      migrate_override_enabled: false
+    group_content_type_cd1e5bdc28a6f:
+      migrate_override_enabled: false
+    group_content_type_ce8aebe86d4d6:
+      migrate_override_enabled: false
+    group_content_type_d579c14c7955a:
+      migrate_override_enabled: false
+    group_content_type_df352bd5fd507:
+      migrate_override_enabled: false
+    group_content_type_e2d67bdaab139:
+      migrate_override_enabled: false
+    life_situation-group_node-place:
+      migrate_override_enabled: false
+    minisite-group_node-news_item:
+      migrate_override_enabled: false
+    minisite-group_node-organization:
+      migrate_override_enabled: false
+    minisite-group_node-place:
+      migrate_override_enabled: false
+    minisite-group_node-project:
+      migrate_override_enabled: false
+    subsite-group_node-organization:
+      migrate_override_enabled: false
+    subsite-group_node-place:
+      migrate_override_enabled: false
+    subsite-group_node-project:
+      migrate_override_enabled: false
+    theme-group_membership:
+      migrate_override_enabled: false
+    theme-group_node-collection_page:
+      migrate_override_enabled: false
+    theme-group_node-news_item:
+      migrate_override_enabled: false
+    theme-group_node-organization:
+      migrate_override_enabled: false
+    theme-group_node-place:
+      migrate_override_enabled: false
+    theme-group_node-project:
+      migrate_override_enabled: false
+    theme-group_node-small_news_item:
+      migrate_override_enabled: false
+    topic-group_node-collection_page:
+      migrate_override_enabled: false
+    topic-group_node-news_item:
+      migrate_override_enabled: false
+    topic-group_node-organization:
+      migrate_override_enabled: false
+    topic-group_node-place:
+      migrate_override_enabled: false
+    topic-group_node-project:
+      migrate_override_enabled: false
+    topic-group_node-small_news_item:
+      migrate_override_enabled: false
+    group_content_type_07c6e9965f686:
+      migrate_override_enabled: false
+    group_content_type_459453987b921:
+      migrate_override_enabled: false
+    group_content_type_fe308d5f59604:
+      migrate_override_enabled: false
+    theme-group_node-moderated_page:
+      migrate_override_enabled: false
+    topic-group_node-moderated_page:
+      migrate_override_enabled: false
+    minisite-group_node-front_page:
+      migrate_override_enabled: false
+  group_content_menu:
+    minisite_main_menu_en:
+      migrate_override_enabled: false
+    minisite_main_menu_fi:
+      migrate_override_enabled: false
+    subsite_main_menu_en:
+      migrate_override_enabled: false
+    subsite_main_menu_fi:
+      migrate_override_enabled: false
+  media:
+    file:
+      migrate_override_enabled: false
+    image:
+      migrate_override_enabled: false
+    remote_video:
+      migrate_override_enabled: false
+    dream_broker_video:
+      migrate_override_enabled: false
+  node:
+    basic_content_page:
+      migrate_override_enabled: false
+    blog_article:
+      migrate_override_enabled: false
+    city_planning_project:
+      migrate_override_enabled: false
+    collection_page:
+      migrate_override_enabled: false
+    construction_project:
+      migrate_override_enabled: false
+    emergency_notice:
+      migrate_override_enabled: false
+    front_page:
+      migrate_override_enabled: false
+    news_item:
+      migrate_override_enabled: false
+    notice:
+      migrate_override_enabled: false
+    organization:
+      migrate_override_enabled: false
+    person:
+      migrate_override_enabled: true
+      fields:
+        nid: 0
+        uuid: 0
+        vid: 0
+        langcode: 0
+        type: 0
+        revision_timestamp: 0
+        revision_uid: 0
+        revision_log: 0
+        status: 2
+        uid: 0
+        title: 0
+        created: 0
+        changed: 0
+        promote: 0
+        sticky: 0
+        default_langcode: 0
+        revision_default: 0
+        revision_translation_affected: 0
+        metatag: 0
+        path: 0
+        publish_on: 0
+        unpublish_on: 0
+        menu_link: 0
+        content_translation_source: 0
+        content_translation_outdated: 0
+        migrate_override_data: 0
+        field_additional_information: 0
+        field_additional_phones: 0
+        field_address_postal: 0
+        field_address_street: 0
+        field_contract_begins: 1
+        field_contract_ends: 1
+        field_email: 1
+        field_first_names: 2
+        field_hr_company: 1
+        field_hr_cost_center: 1
+        field_hr_id: 1
+        field_hr_organizational_unit: 1
+        field_hr_title: 2
+        field_image: 0
+        field_last_name: 2
+        field_phone: 1
+        field_phone_supplementary: 0
+        field_place: 0
+        moderation_state: 0
+        field_keywords: 0
+        field_search_keywords: 0
+        field_topics: 0
+        rh_action: 0
+        rh_redirect: 0
+        rh_redirect_response: 0
+        rh_redirect_fallback_action: 0
+    place:
+      migrate_override_enabled: false
+    place_of_business:
+      migrate_override_enabled: true
+      fields:
+        nid: 0
+        uuid: 0
+        vid: 0
+        langcode: 0
+        type: 0
+        revision_timestamp: 0
+        revision_uid: 0
+        revision_log: 0
+        status: 0
+        uid: 0
+        title: 0
+        created: 0
+        changed: 0
+        promote: 0
+        sticky: 0
+        default_langcode: 0
+        revision_default: 0
+        revision_translation_affected: 0
+        moderation_state: 0
+        metatag: 0
+        path: 0
+        menu_link: 0
+        content_translation_source: 0
+        content_translation_outdated: 0
+        migrate_override_data: 0
+        field_accessibility_information: 0
+        field_additional_information: 0
+        field_additional_phones: 2
+        field_address_postal: 1
+        field_addresses: 1
+        field_alternative_name: 1
+        field_description: 1
+        field_geographical_areas: 0
+        field_hr_organizational_unit: 0
+        field_keywords: 0
+        field_life_situations: 0
+        field_links: 1
+        field_more_information_link: 0
+        field_opening_hours: 1
+        field_opening_hours_info: 2
+        field_search_keywords: 0
+        field_summary: 2
+        field_topics: 0
+        rh_action: 0
+        rh_redirect: 0
+        rh_redirect_response: 0
+        rh_redirect_fallback_action: 0
+        field_email: 1
+        field_opening_hours_2: 1
+        field_opening_hours_3: 1
+        field_opening_hours_info_2: 2
+        field_opening_hours_info_3: 2
+        field_accessibility_and_services: 0
+        field_accessibility_info_title: 0
+        field_body_md: 1
+        field_exception_hours: 2
+    project:
+      migrate_override_enabled: false
+    ptv_service:
+      migrate_override_enabled: true
+      fields:
+        nid: 0
+        uuid: 0
+        vid: 0
+        langcode: 0
+        type: 0
+        revision_timestamp: 0
+        revision_uid: 0
+        revision_log: 0
+        status: 0
+        uid: 0
+        title: 1
+        created: 0
+        changed: 0
+        promote: 0
+        sticky: 0
+        default_langcode: 0
+        revision_default: 0
+        revision_translation_affected: 0
+        moderation_state: 0
+        metatag: 0
+        path: 0
+        rh_action: 0
+        rh_redirect: 0
+        rh_redirect_response: 0
+        rh_redirect_fallback_action: 0
+        menu_link: 0
+        content_translation_source: 0
+        content_translation_outdated: 0
+        migrate_override_data: 0
+        field_additional_information: 1
+        field_alternate_name: 1
+        field_area_type: 1
+        field_body: 1
+        field_geographical_areas: 0
+        field_keywords: 1
+        field_life_situations: 1
+        field_places_of_business: 1
+        field_search_keywords: 0
+        field_service_charge_type: 1
+        field_service_vouchers: 1
+        field_summary: 1
+        field_topics: 0
+        field_user_instruction: 1
+        field_available_languages: 1
+        field_chargeability_heading: 0
+        field_requirements: 0
+        field_service_voucher_heading: 0
+        field_service_voucher_links: 1
+        field_service_vouchers_in_use: 1
+        field_area_text: 1
+        field_body_md: 1
+        field_chargeability_info_md: 1
+        field_requirements_md: 1
+        field_user_instruction_md: 1
+    rich_article:
+      migrate_override_enabled: false
+    rss_item:
+      migrate_override_enabled: false
+    small_news_item:
+      migrate_override_enabled: false
+    city_planning_and_constructions:
+      migrate_override_enabled: false
+    map_point:
+      migrate_override_enabled: false
+    moderated_page:
+      migrate_override_enabled: false
+    zoning_information:
+      migrate_override_enabled: false
+    involvement_opportunity:
+      migrate_override_enabled: false
+  path_alias:
+    path_alias:
+      migrate_override_enabled: false
+  redirect:
+    redirect:
+      migrate_override_enabled: false
+  search_api_task:
+    search_api_task:
+      migrate_override_enabled: false
+  shortcut:
+    default:
+      migrate_override_enabled: false
+  taxonomy_term:
+    blogs:
+      migrate_override_enabled: false
+    cross_site_publications:
+      migrate_override_enabled: false
+    geographical_areas:
+      migrate_override_enabled: false
+    keywords:
+      migrate_override_enabled: false
+    life_situations:
+      migrate_override_enabled: false
+    mailing_lists:
+      migrate_override_enabled: false
+    media_folders:
+      migrate_override_enabled: false
+    notice_types:
+      migrate_override_enabled: false
+    other_identifiers:
+      migrate_override_enabled: false
+    personnel_companies:
+      migrate_override_enabled: false
+    personnel_cost_centers:
+      migrate_override_enabled: false
+    personnel_organization_units:
+      migrate_override_enabled: false
+    personnel_titles:
+      migrate_override_enabled: false
+    plan_numbers:
+      migrate_override_enabled: false
+    record_numbers:
+      migrate_override_enabled: false
+    service_classes:
+      migrate_override_enabled: false
+    service_vouchers:
+      migrate_override_enabled: false
+    topics:
+      migrate_override_enabled: false
+    minisite:
+      migrate_override_enabled: false
+    minisites:
+      migrate_override_enabled: false
+    accessibility_and_service_infos:
+      migrate_override_enabled: false
+    zoning_information_types:
+      migrate_override_enabled: false
+  user:
+    user:
+      migrate_override_enabled: false
+  menu_link_content:
+    account:
+      migrate_override_enabled: false
+    admin:
+      migrate_override_enabled: false
+    footer:
+      migrate_override_enabled: false
+    footer-main-menu-en:
+      migrate_override_enabled: false
+    footer-main-menu-fi:
+      migrate_override_enabled: false
+    header-quick-links-en:
+      migrate_override_enabled: false
+    header-quick-links-fi:
+      migrate_override_enabled: false
+    life-situation-menu-en:
+      migrate_override_enabled: false
+    life-situation-menu-fi:
+      migrate_override_enabled: false
+    main:
+      migrate_override_enabled: false
+    main-menu-en:
+      migrate_override_enabled: false
+    main-menu-fi:
+      migrate_override_enabled: false
+    secondary-menu-en:
+      migrate_override_enabled: false
+    secondary-menu-fi:
+      migrate_override_enabled: false
+    tools:
+      migrate_override_enabled: false
+  paragraph:
+    accessibility_information:
+      migrate_override_enabled: false
+    accordion_item:
+      migrate_override_enabled: false
+    accordions:
+      migrate_override_enabled: false
+    attachment:
+      migrate_override_enabled: false
+    balanced_content_liftup:
+      migrate_override_enabled: false
+    colorful_content_liftup:
+      migrate_override_enabled: false
+    content_liftup:
+      migrate_override_enabled: false
+    content_liftup_with_image:
+      migrate_override_enabled: false
+    embedded_content_and_map_tabs:
+      migrate_override_enabled: false
+    event_and_hobby_listing:
+      migrate_override_enabled: false
+    external_link:
+      migrate_override_enabled: false
+    external_link_with_link_text:
+      migrate_override_enabled: false
+    grouped_content_liftup:
+      migrate_override_enabled: false
+    highlighted_content_liftup_w_img:
+      migrate_override_enabled: false
+    highlighted_link_list:
+      migrate_override_enabled: false
+    icon_and_text_link:
+      migrate_override_enabled: false
+    infograph:
+      migrate_override_enabled: false
+    infographs:
+      migrate_override_enabled: false
+    internal_link:
+      migrate_override_enabled: false
+    internal_link_with_link_text:
+      migrate_override_enabled: false
+    link_list:
+      migrate_override_enabled: false
+    list_of_attachments:
+      migrate_override_enabled: false
+    metadata_attachment_list:
+      migrate_override_enabled: false
+    mosaic_liftup:
+      migrate_override_enabled: false
+    notice:
+      migrate_override_enabled: false
+    person_liftup:
+      migrate_override_enabled: false
+    person_liftups:
+      migrate_override_enabled: false
+    picture_mosaic:
+      migrate_override_enabled: false
+    place_card:
+      migrate_override_enabled: false
+    place_cards:
+      migrate_override_enabled: false
+    place_of_business_liftup:
+      migrate_override_enabled: false
+    project_and_organization_cards:
+      migrate_override_enabled: false
+    project_or_organization_card:
+      migrate_override_enabled: false
+    rss_feed:
+      migrate_override_enabled: false
+    service_highlight:
+      migrate_override_enabled: false
+    single_colorful_content_liftup:
+      migrate_override_enabled: false
+    social_media_feed_embed:
+      migrate_override_enabled: false
+    social_media_link:
+      migrate_override_enabled: false
+    table:
+      migrate_override_enabled: false
+    text:
+      migrate_override_enabled: false
+    two_column_liftup:
+      migrate_override_enabled: false
+    webform:
+      migrate_override_enabled: false
+    city_construction_project_card:
+      migrate_override_enabled: false
+    city_construction_project_cards:
+      migrate_override_enabled: false
+    contact_information_liftups:
+      migrate_override_enabled: false
+    contact_information_list:
+      migrate_override_enabled: false
+    current_liftup:
+      migrate_override_enabled: false
+    current_listing:
+      migrate_override_enabled: false
+    feedback_section:
+      migrate_override_enabled: false
+    highlighted_links_with_feedback:
+      migrate_override_enabled: false
+    image:
+      migrate_override_enabled: false
+    image_gallery:
+      migrate_override_enabled: false
+    image_gallery_item:
+      migrate_override_enabled: false
+    login_link_with_text:
+      migrate_override_enabled: false
+    mailing_list_information:
+      migrate_override_enabled: false
+    map_embed:
+      migrate_override_enabled: false
+    place_liftup:
+      migrate_override_enabled: false
+    process_accordions:
+      migrate_override_enabled: false
+    process_accordion_item:
+      migrate_override_enabled: false
+    separator:
+      migrate_override_enabled: false
+    video_embed:
+      migrate_override_enabled: false
+    zoning_project_card:
+      migrate_override_enabled: false
+    zoning_project_cards:
+      migrate_override_enabled: false
+    login_link:
+      migrate_override_enabled: false
+    positioned_image:
+      migrate_override_enabled: false
+    text_and_images:
+      migrate_override_enabled: false
+    ptv_service_liftup:
+      migrate_override_enabled: false
+    text_with_bgcolor:
+      migrate_override_enabled: false
+    anchor_link:
+      migrate_override_enabled: false
+    anchor_list:
+      migrate_override_enabled: false
+    automatic_anchor_list:
+      migrate_override_enabled: false
+    back_to_top_link:
+      migrate_override_enabled: false
+    embederator_embed:
+      migrate_override_enabled: false
+    involvement_opportunity_card:
+      migrate_override_enabled: false
+    involvement_opportunity_cards:
+      migrate_override_enabled: false
+    persons_contact_information_list:
+      migrate_override_enabled: false
+    accordion_text_content:
+      migrate_override_enabled: false
+    generic_listing:
+      migrate_override_enabled: false
+  scheduled_transition:
+    scheduled_transition:
+      migrate_override_enabled: false
+  webform_submission:
+    kaavan_123_palautekysely:
+      migrate_override_enabled: false
+    palaute:
+      migrate_override_enabled: false
+    testi:
+      migrate_override_enabled: false
+  embederator:
+    quickchannel_embed:
+      migrate_override_enabled: false
+    mediaserver_live:
+      migrate_override_enabled: false
+    mediaserver_video:
+      migrate_override_enabled: false
+  message:
+    news_item_to_media:
+      migrate_override_enabled: false

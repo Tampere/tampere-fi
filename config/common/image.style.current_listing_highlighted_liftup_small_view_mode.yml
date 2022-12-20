@@ -1,0 +1,17 @@
+uuid: 7c70b99d-9787-4e67-a64b-61c5cd4fa678
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_listing_highlighted_liftup_small_view_mode
+label: 'Ajankohtaislistaus korostettu nosto - small (720×405)'
+effects:
+  289024a1-839b-4533-a9e5-7b456ef51945:
+    uuid: 289024a1-839b-4533-a9e5-7b456ef51945
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 405
+      crop_type: focal_point

@@ -1,0 +1,29 @@
+uuid: f6a76610-5364-40e6-975d-e0fea5c5c38c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_theme_life_situation
+    - group.type.life_situation
+    - group.type.theme
+id: group.theme.field_theme_life_situation
+field_name: field_theme_life_situation
+entity_type: group
+bundle: theme
+label: 'Teeman elämäntilanne'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      life_situation: life_situation
+    sort:
+      field: label
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,37 @@
+uuid: 5fba2e0c-778e-49fc-aad1-71afc1eceeab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.involvement_opportunity_card.field_displayed_opp_fields
+    - field.field.paragraph.involvement_opportunity_card.field_involvement_opportunity
+    - paragraphs.paragraphs_type.involvement_opportunity_card
+id: paragraph.involvement_opportunity_card.default
+targetEntityType: paragraph
+bundle: involvement_opportunity_card
+mode: default
+content:
+  field_displayed_opp_fields:
+    type: options_buttons
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_involvement_opportunity:
+    type: entity_reference_autocomplete
+    weight: 11
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

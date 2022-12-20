@@ -1,0 +1,10 @@
+uuid: 8cf90a99-3882-422c-8a5e-7d489d4707a7
+langcode: en
+status: true
+dependencies: {  }
+machine: staging
+description: null
+name: Staging
+url: 'https://tampere-staging.exove.eu'
+fg_color: '#abacab'
+bg_color: '#de7123'

@@ -1,0 +1,18 @@
+uuid: 295124ed-d123-4830-93ab-3cd8fc2d07e5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.involvement_opportunity
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.involvement_opportunity
+target_entity_type_id: node
+target_bundle: involvement_opportunity
+default_langcode: current_interface
+language_alterable: true

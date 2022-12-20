@@ -1,0 +1,34 @@
+uuid: 0847c9db-dab6-42ae-96b8-32179505754d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+id: subsite-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: subsite
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'add scheduled transitions'
+  - 'leave group'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:city_planning_and_constructions entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view group_node:involvement_opportunity entity'
+  - 'view group_node:moderated_page entity'
+  - 'view group_node:news_item entity'
+  - 'view group_node:organization entity'
+  - 'view group_node:place entity'
+  - 'view group_node:project entity'
+  - 'view group_node:small_news_item entity'
+  - 'view group_node:zoning_information entity'
+  - 'view latest group version'
+  - 'view own unpublished group'
+  - 'view scheduled transitions'

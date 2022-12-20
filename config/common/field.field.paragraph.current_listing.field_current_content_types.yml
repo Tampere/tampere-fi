@@ -1,0 +1,21 @@
+uuid: 7f3bcc1c-043c-4deb-b192-115b9eeb2bba
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_current_content_types
+    - paragraphs.paragraphs_type.current_listing
+  module:
+    - options
+id: paragraph.current_listing.field_current_content_types
+field_name: field_current_content_types
+entity_type: paragraph
+bundle: current_listing
+label: 'Näytettävät sisältötyypit'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

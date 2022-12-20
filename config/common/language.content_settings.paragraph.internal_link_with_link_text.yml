@@ -1,0 +1,18 @@
+uuid: c30ffadb-9107-4293-ac86-1bb554f66b48
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.internal_link_with_link_text
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.internal_link_with_link_text
+target_entity_type_id: paragraph
+target_bundle: internal_link_with_link_text
+default_langcode: current_interface
+language_alterable: true

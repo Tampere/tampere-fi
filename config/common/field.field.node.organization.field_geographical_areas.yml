@@ -1,0 +1,29 @@
+uuid: e4d82e38-4dec-4b7e-9db6-eaf9d1765d46
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_geographical_areas
+    - node.type.organization
+    - taxonomy.vocabulary.geographical_areas
+id: node.organization.field_geographical_areas
+field_name: field_geographical_areas
+entity_type: node
+bundle: organization
+label: 'Maantieteelliset alueet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      geographical_areas: geographical_areas
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,2 @@
+label: 'End time'
+description: 'The date and time after which the emergency notice should no longer be visible on the site.'

@@ -1,0 +1,31 @@
+{{ attach_library("tampere/accordion") }}
+
+{% set ac_base_class = ac_base_class|default("accordion") %}
+<div {{ bem(ac_base_class, (ac_modifiers), ac_blockname) }}>
+  {% if accordion_heading %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      "heading_level": 2,
+      "heading_base_class": "accordions-heading",
+      "heading_blockname": ac_base_class,
+      "heading": accordion_heading,
+    } %}
+  {% endif %}
+
+  {% if accordion_description %}
+    {% include "@atoms/02-text/text/01-paragraph.twig" with {
+      paragraph_base_class: "description",
+      paragraph_blockname: ac_base_class,
+      paragraph_content: accordion_description,
+    } %}
+  {% endif %}
+  
+  {% block accordion_items %}
+    {% for ac_item in accordion_list %}
+      {% include "@organisms/accordion/accordion-item.twig" with {
+        accordion_heading: ac_item.dl_heading,
+        accordion_content: ac_item.dl_content,
+        id: ac_item.id
+      } %}
+    {% endfor %}
+  {% endblock %}
+</div>

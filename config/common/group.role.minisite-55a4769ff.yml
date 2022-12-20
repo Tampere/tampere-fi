@@ -1,0 +1,17 @@
+uuid: eca25aa3-a481-4110-baa8-0a4f660ead52
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  enforced:
+    config:
+      - user.role.blog_article_author
+id: minisite-55a4769ff
+label: Blogitoimittaja
+weight: -7
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: false
+permissions: {  }

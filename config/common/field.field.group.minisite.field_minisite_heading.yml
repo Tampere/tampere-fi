@@ -1,0 +1,19 @@
+uuid: 6fc0d3a1-3972-4adc-8b87-ddb00276c2ed
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_minisite_heading
+    - group.type.minisite
+id: group.minisite.field_minisite_heading
+field_name: field_minisite_heading
+entity_type: group
+bundle: minisite
+label: 'Minikotisivuston tunniste-elementti'
+description: 'Otsikko joka näytetään minikotisivuston ylätunnisteen keskellä. Oletusarvoisesti ryhmän nimi.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

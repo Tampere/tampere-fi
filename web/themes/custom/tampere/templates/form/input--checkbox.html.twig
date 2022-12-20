@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+
+{% if attributes.value == "1" %}
+  {% set checkbox__wrapper__element = "div" %}
+{% endif %}
+
+{% include "@atoms/05-forms/checkbox/_checkbox-item.twig" with {
+  "checkbox_item": element["#title"],
+  "checkbox__wrapper__element": checkbox__wrapper__element,
+  "key": attributes.id,
+  "checkbox__input__attributes": attributes.removeAttribute("id"),
+  "attributes": [],
+} %}

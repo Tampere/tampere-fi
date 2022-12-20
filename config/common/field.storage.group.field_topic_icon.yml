@@ -1,0 +1,20 @@
+uuid: 164c79bc-c5c4-4588-8ae7-724d0be237da
+langcode: fi
+status: true
+dependencies:
+  module:
+    - ex_icons
+    - group
+id: group.field_topic_icon
+field_name: field_topic_icon
+entity_type: group
+type: ex_icon
+settings:
+  case_sensitive: false
+module: ex_icons
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

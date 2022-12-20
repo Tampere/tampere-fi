@@ -1,0 +1,18 @@
+uuid: 835480bc-f514-4279-af28-e320d6baee9d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.personnel_organization_units
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.personnel_organization_units
+target_entity_type_id: taxonomy_term
+target_bundle: personnel_organization_units
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,10 @@
+collection_page_content:
+  label: Collection page content
+  fields:
+    main_title:
+      label: Main title
+    main_image:
+      label: Main image
+    main_content:
+      label: Main content
+  use: "@organisms/site/collection-page-content/collection-page-content.twig"

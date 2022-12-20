@@ -1,0 +1,78 @@
+uuid: 16adbb5c-b6ce-457c-b432-4ea3a57d2477
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordion_item.field_accordion_content
+    - field.field.paragraph.accordion_item.field_accordion_heading
+    - field.field.paragraph.accordion_item.field_content_help
+    - paragraphs.paragraphs_type.accordion_item
+  module:
+    - field_group
+    - limited_field_widgets
+    - markup
+    - paragraphs
+third_party_settings:
+  field_group:
+    group_content_help_text:
+      children:
+        - field_content_help
+        - field_accordion_content
+      label: 'Sisällön aputeksti'
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
+id: paragraph.accordion_item.default
+targetEntityType: paragraph
+bundle: accordion_item
+mode: default
+content:
+  field_accordion_content:
+    type: entity_reference_paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+  field_accordion_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_content_help:
+    type: markup
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

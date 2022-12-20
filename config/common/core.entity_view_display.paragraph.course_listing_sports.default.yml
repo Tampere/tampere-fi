@@ -1,0 +1,19 @@
+uuid: 87f6f182-dfaa-4b56-aed7-dcdea9638829
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.course_listing_sports.field_course_sort_order
+    - field.field.paragraph.course_listing_sports.field_summary
+    - field.field.paragraph.course_listing_sports.field_title
+    - paragraphs.paragraphs_type.course_listing_sports
+id: paragraph.course_listing_sports.default
+targetEntityType: paragraph
+bundle: course_listing_sports
+mode: default
+content: {  }
+hidden:
+  field_course_sort_order: true
+  field_summary: true
+  field_title: true
+  search_api_excerpt: true

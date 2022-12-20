@@ -1,0 +1,17 @@
+uuid: a350fde7-a1bb-4c9f-9161-b5788ec3822c
+langcode: fi
+status: true
+dependencies: {  }
+id: footer_information
+label: 'Alatunnisteen tiedot'
+token: false
+context:
+  show_warning: true
+  group:
+    language: true
+  fallback:
+    language: ''
+menu:
+  path: /admin/structure/footer-information
+  weight: 0
+  description: 'Hallinnoi alatunnisteessa näkyviä tietoja.'

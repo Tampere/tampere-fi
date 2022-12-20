@@ -1,0 +1,15 @@
+uuid: 8f3fa674-026a-412f-b65a-86059b2e97c0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: rss_feed
+label: RSS-syöte
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää RSS-syötteen upottamiseen sivulle.'
+behavior_plugins: {  }

@@ -1,0 +1,18 @@
+uuid: 6bbcf74a-2826-41d7-a18d-2ac97c23a5b1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.project_and_organization_cards
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.project_and_organization_cards
+target_entity_type_id: paragraph
+target_bundle: project_and_organization_cards
+default_langcode: current_interface
+language_alterable: true

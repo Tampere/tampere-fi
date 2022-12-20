@@ -1,0 +1,149 @@
+uuid: f9475752-53bf-49c8-8a12-4ae895872573
+id: ptv_services
+label: 'PTV Services'
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - tre_ptv_import
+migration_group: tre_ptv
+
+source:
+  plugin: ptv_services
+  language: fi
+  key: default
+  target: default
+  batch_size: 100
+  track_changes: true
+  constants:
+    LANGUAGE: fi
+
+process:
+  status:
+    plugin: default_value
+    default_value: 1
+  langcode:
+    plugin: default_value
+    default_value: fi
+  title:
+    plugin: get
+    source: name
+    language: constants/LANGUAGE
+  field_summary:
+    plugin: get
+    source: summary
+    language: constants/LANGUAGE
+  field_body_md/value:
+    plugin: get
+    source: description
+    language: constants/LANGUAGE
+  field_body_md/format:
+    plugin: default_value
+    default_value: ptv_markdown
+  field_places_of_business:
+    plugin: migration_lookup
+    source: service_locations
+    no_stub: true
+    migration: ptv_service_locations
+  field_user_instruction_md/value:
+    plugin: get
+    source: user_instruction
+    language: constants/LANGUAGE
+  field_user_instruction_md/format:
+    plugin: default_value
+    default_value: ptv_markdown
+  field_requirements_md/value:
+    plugin: get
+    source: requirements
+    language: constants/LANGUAGE
+  field_requirements_md/format:
+    plugin: default_value
+    default_value: ptv_markdown
+  field_service_charge_type:
+    plugin: static_map
+    source: chargeability
+    map:
+      Chargeable: 'Palvelu on maksullinen.'
+      FreeOfCharge: 'Palvelu on maksuton.'
+    default_value: null
+    language: contants/LANGUAGE
+  field_chargeability_info_md/value:
+    plugin: get
+    source: chargeability_info
+    language: contants/LANGUAGE
+  field_chargeability_info_md/format:
+    plugin: default_value
+    default_value: ptv_markdown
+  field_chargeability_heading:
+    plugin: default_value
+    default_value: '<h2>Maksullisuus</h2>'
+  field_service_vouchers_in_use:
+    plugin: get
+    source: service_vouchers_in_use
+    language: constants/LANGUAGE
+  field_service_voucher_links:
+    plugin: get
+    source: service_voucher_links
+    language: constants/LANGUAGE
+  field_service_voucher_heading:
+    plugin: default_value
+    default_value: '<h2>Palvelusetelit</h2>'
+  field_available_languages:
+    plugin: get
+    source: languages
+    language: constants/LANGUAGE
+  field_area_text/value:
+    plugin: get
+    source: areas_text
+    language: constants/LANGUAGE
+  field_area_text/format:
+    plugin: default_value
+    default_value: basic_html
+  field_service_producer:
+    plugin: get
+    source: service_producer
+    language: constants/LANGUAGE
+  field_service_responsible:
+    plugin: get
+    source: service_responsible
+    language: constants/LANGUAGE
+  field_service_other_responsible:
+    plugin: get
+    source: service_other_responsible
+    language: constants/LANGUAGE
+  field_eservice_channels:
+    plugin: migration_lookup
+    source: eservice_channels
+    no_stub: true
+    migration: ptv_service_channels
+    language: constants/LANGUAGE
+  field_phone_service_channels:
+    plugin: migration_lookup
+    source: phone_service_channels
+    no_stub: true
+    migration: ptv_service_channels
+    language: constants/LANGUAGE
+  field_web_page_channels:
+    plugin: migration_lookup
+    source: web_page_service_channels
+    no_stub: true
+    migration: ptv_service_channels
+    language: constants/LANGUAGE
+  field_form_service_channels:
+    plugin: migration_lookup
+    source: form_service_channels
+    no_stub: true
+    migration: ptv_service_channels
+    language: constants/LANGUAGE
+
+
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: 'ptv_service'
+
+migration_dependencies:
+  optional:
+    - ptv_service_locations
+    - ptv_service_channels

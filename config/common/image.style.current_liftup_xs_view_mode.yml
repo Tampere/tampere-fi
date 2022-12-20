@@ -1,0 +1,17 @@
+uuid: 48d55736-9d07-4472-be0c-5e49c6158703
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_liftup_xs_view_mode
+label: 'Ajankohtaisnosto - xs (480×227)'
+effects:
+  03d82a13-a9d6-4915-a381-cca6745c9caa:
+    uuid: 03d82a13-a9d6-4915-a381-cca6745c9caa
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 227
+      crop_type: focal_point

@@ -1,0 +1,12 @@
+third_party_settings:
+  field_group:
+    group_main_image:
+      label: 'Main image and caption'
+    group_categorization:
+      label: Categorization
+    group_tabs:
+      label: Tabs
+    group_common:
+      label: Common
+    group_search_keywords:
+      label: 'Search keywords'

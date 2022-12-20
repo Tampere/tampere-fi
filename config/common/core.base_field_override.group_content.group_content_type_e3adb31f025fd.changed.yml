@@ -1,0 +1,18 @@
+uuid: 6c58a8be-d5fe-44e5-8665-c4b872f0b86a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_e3adb31f025fd
+id: group_content.group_content_type_e3adb31f025fd.changed
+field_name: changed
+entity_type: group_content
+bundle: group_content_type_e3adb31f025fd
+label: Muuttunut
+description: 'Ajankohta jolloin ryhmäsisältöä viimeksi muokattiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,8 @@
+uuid: 5d2fe0a3-42e6-4724-9b9e-96374d867ad1
+langcode: fi
+status: true
+dependencies: {  }
+id: footer-main-menu-fi
+label: 'Alatunnisteen päävalikko'
+description: 'Oikopolkulinkit sivuston tärkeimpiin palveluihin ja organisaatiotietoihin.'
+locked: false

@@ -1,0 +1,63 @@
+uuid: 013675fb-0dbf-4aee-84ff-097da52a7ca8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.accessibility_and_service_infos.field_icon
+    - taxonomy.vocabulary.accessibility_and_service_infos
+  module:
+    - ds
+    - options
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_icon-with-text
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      icon_with_text__icon:
+        - field_icon
+      icon_with_text__content:
+        - taxonomy_term_title
+    fields:
+      taxonomy_term_title:
+        plugin_id: taxonomy_term_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: taxonomy_term.accessibility_and_service_infos.default
+targetEntityType: taxonomy_term
+bundle: accessibility_and_service_infos
+mode: default
+content:
+  field_icon:
+    type: list_key
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 0
+    region: icon_with_text__icon
+hidden:
+  description: true
+  langcode: true
+  search_api_excerpt: true

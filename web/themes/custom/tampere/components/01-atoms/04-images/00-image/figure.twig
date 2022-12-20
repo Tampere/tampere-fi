@@ -1,0 +1,45 @@
+{% set image_figure_base_class = image_figure_base_class|default("figure") %}
+{% set image_link_base_class = image_link_base_class|default("link") %}
+
+{% if img_caption|render|trim %}
+  {% set has_caption = TRUE %}
+{% endif %}
+
+{% if not image_figure_modifiers %}
+  {% set image_figure_modifiers = [] %}
+{% endif %}
+
+{% if variant %}
+  {% set image_figure_modifiers = image_figure_modifiers|merge([ variant ]) %}
+{% endif %}
+
+<figure
+  {{ bem(image_figure_base_class, (image_figure_modifiers), image_figure_blockname) }}
+>
+  {% if img_url %}
+    <a
+      {{ bem(image_link_base_class, (image_link_modifiers), image_link_blockname|default(image_figure_base_class)) }}
+      href="{{ img_url }}"
+      {% if img_link_aria_label %}aria-label="{{ img_link_aria_label }}"{% endif %}
+      {% if img_link_target %}target="{{ img_link_target }}"{% endif %}
+    >
+  {% endif %}
+      {% block figure_content %}
+        {% if img_src %}
+          {% include "@atoms/04-images/00-image/responsive-image.twig" with {
+            responsive_image_blockname: responsive_image_blockname|default(image_figure_base_class),
+          } %}
+        {% else %}
+          {{ figure_image }}
+        {% endif %}
+      {% endblock %}
+  {% if img_url %}
+    </a>
+  {% endif %}
+
+  {% if has_caption %}
+    <figcaption {{ bem("caption", (figcaption_modifiers), figcaption_blockname|default(image_figure_base_class), [ "hyphenate" ]) }}>
+      {{ img_caption }}
+    </figcaption>
+  {% endif %}
+</figure>

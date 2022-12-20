@@ -1,0 +1,10 @@
+uuid: 5b03183a-5115-4324-80d9-0242438b1051
+langcode: fi
+status: true
+dependencies: {  }
+id: image_gallery_item
+label: 'Kuvagallerian kuva'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

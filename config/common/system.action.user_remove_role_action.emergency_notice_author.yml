@@ -1,0 +1,14 @@
+uuid: a6f8644d-923c-4d16-a7dc-005e38de7713
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.emergency_notice_author
+  module:
+    - user
+id: user_remove_role_action.emergency_notice_author
+label: 'Remove the Häiriöilmoitustoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: emergency_notice_author

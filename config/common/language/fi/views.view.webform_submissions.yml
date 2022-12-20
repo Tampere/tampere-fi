@@ -1,0 +1,139 @@
+display:
+  default:
+    display_title: Isäntä
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Käytä
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        created:
+          label: Luotu
+          separator: ', '
+        remote_addr:
+          label: 'IP osoite'
+          separator: ', '
+        view_webform_submission:
+          label: Toimenpiteet
+          text: näkymä
+      arguments:
+        in_draft:
+          exception:
+            title: Kaikki
+  embed_administer:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Toiminto
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          label: Kiinnitetty
+          separator: ', '
+        locked:
+          label: Lukittu
+          separator: ', '
+        created:
+          label: Luotu
+          separator: ', '
+        completed:
+          separator: ', '
+        remote_addr:
+          label: 'IP osoite'
+          separator: ', '
+        operations:
+          label: Toimenpiteet
+      filters:
+        sticky:
+          expose:
+            label: Kiinnitetty
+        locked:
+          expose:
+            label: Lukittu
+  embed_manage:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Toiminto
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          label: Kiinnitetty
+          separator: ', '
+        locked:
+          label: Lukittu
+          separator: ', '
+        created:
+          label: Luotu
+          separator: ', '
+        completed:
+          separator: ', '
+        remote_addr:
+          label: 'IP osoite'
+          separator: ', '
+        view_webform_submission:
+          label: Toimenpiteet
+          text: näkymä
+        edit_webform_submission:
+          label: Toimenpiteet
+          text: muokkaa
+      filters:
+        sticky:
+          expose:
+            label: Kiinnitetty
+        locked:
+          expose:
+            label: Lukittu
+  embed_review:
+    display_options:
+      fields:
+        sid:
+          separator: ', '
+        in_draft:
+          separator: ', '
+        sticky:
+          label: Kiinnitetty
+          separator: ', '
+        locked:
+          label: Lukittu
+          separator: ', '
+        created:
+          label: Luotu
+          separator: ', '
+        completed:
+          separator: ', '
+        remote_addr:
+          label: 'IP osoite'
+          separator: ', '
+        view_webform_submission:
+          label: Toimenpiteet
+          text: näkymä
+      filters:
+        sticky:
+          expose:
+            label: Kiinnitetty
+        locked:
+          expose:
+            label: Lukittu

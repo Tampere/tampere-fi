@@ -1,0 +1,53 @@
+{% set blog_header__base_class = "blog-header" %}
+
+<div {{ bem(blog_header__base_class, blog_header__modifiers, blog_header__blockname)}}>
+  <div {{ bem("container", blog_header__container__modifiers, blog_header__base_class)}}>
+    <div class="blog-header__inner-container">
+      {# Image #}
+      <div {{ bem("image-container", blog_header__image_container__modifiers, blog_header__base_class)}}>
+        {% block blog_header__img %}
+          {% include "@atoms/04-images/00-image/_image.twig" with {
+            image_base_class: "image",
+            image_blockname: blog_header__base_class,
+            img_src: blog_header__image__src,
+            img_alt: blog_header__image__alt,
+          } %}
+        {% endblock %}
+      </div>
+      
+      <div {{ bem("content", blog_header__content__modifiers|default([]), blog_header__base_class) }}>
+        {# Heading #}
+        {% if blog_header__heading %}
+          {{ title_prefix }}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_base_class: blog_header__heading__base_class|default("heading"),
+            heading_modifiers: blog_header__heading__modifiers,
+            heading_blockname: blog_header__base_class,
+            heading_level: 2,
+            heading: blog_header__heading,
+          } %}
+          {{ title_suffix }}
+        {% endif %}
+        {# Body #}
+        {% if blog_header__body %}
+          {% include "@atoms/02-text/text/01-paragraph.twig" with {
+            paragraph_base_class: blog_header__body__base_class|default("body"),
+            paragraph_modifiers: blog_header__body__modifiers,
+            paragraph_blockname: blog_header__base_class,
+            paragraph_content: blog_header__body,
+          } %}
+        {% endif %}
+        {# Author #}
+        {% if blog_header__author %}
+          {% include "@atoms/02-text/text/01-paragraph.twig" with {
+            paragraph_base_class: blog_header__author__base_class|default("author"),
+            paragraph_modifiers: blog_header__author__modifiers,
+            paragraph_blockname: blog_header__base_class,
+            paragraph_content: blog_header__author,
+          } %}
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</div>

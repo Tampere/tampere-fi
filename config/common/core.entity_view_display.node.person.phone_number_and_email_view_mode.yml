@@ -1,0 +1,132 @@
+uuid: 92e73ff8-40c9-4af2-9b7a-7cf98a0d71f7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.phone_number_and_email_view_mode
+    - field.field.node.person.field_additional_information
+    - field.field.node.person.field_additional_phones
+    - field.field.node.person.field_address_postal
+    - field.field.node.person.field_address_street
+    - field.field.node.person.field_contract_begins
+    - field.field.node.person.field_contract_ends
+    - field.field.node.person.field_email
+    - field.field.node.person.field_first_names
+    - field.field.node.person.field_hr_company
+    - field.field.node.person.field_hr_cost_center
+    - field.field.node.person.field_hr_id
+    - field.field.node.person.field_hr_organizational_unit
+    - field.field.node.person.field_hr_title
+    - field.field.node.person.field_image
+    - field.field.node.person.field_keywords
+    - field.field.node.person.field_last_name
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_phone_supplementary
+    - field.field.node.person.field_place
+    - field.field.node.person.field_search_keywords
+    - field.field.node.person.field_topics
+    - field.field.node.person.migrate_override_data
+    - node.type.person
+  module:
+    - ds
+    - field_delimiter
+    - tre_phone_field_formatter
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+          ds_content: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - field_phone
+        - field_additional_phones
+        - field_email
+id: node.person.phone_number_and_email_view_mode
+targetEntityType: node
+bundle: person
+mode: phone_number_and_email_view_mode
+content:
+  field_additional_phones:
+    type: tre_phone_field_plain
+    label: above
+    settings:
+      force_format: as_is
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 1
+    region: ds_content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 2
+    region: ds_content
+  field_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 0
+    region: ds_content
+hidden:
+  field_additional_information: true
+  field_address_postal: true
+  field_address_street: true
+  field_contract_begins: true
+  field_contract_ends: true
+  field_first_names: true
+  field_hr_company: true
+  field_hr_cost_center: true
+  field_hr_id: true
+  field_hr_organizational_unit: true
+  field_hr_title: true
+  field_image: true
+  field_keywords: true
+  field_last_name: true
+  field_phone_supplementary: true
+  field_place: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  migrate_override_data: true
+  search_api_excerpt: true

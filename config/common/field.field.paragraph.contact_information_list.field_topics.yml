@@ -1,0 +1,29 @@
+uuid: 76f2dbc5-873f-4d83-be6a-ed19eb081206
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topics
+    - paragraphs.paragraphs_type.contact_information_list
+    - taxonomy.vocabulary.topics
+id: paragraph.contact_information_list.field_topics
+field_name: field_topics
+entity_type: paragraph
+bundle: contact_information_list
+label: Aihealueet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

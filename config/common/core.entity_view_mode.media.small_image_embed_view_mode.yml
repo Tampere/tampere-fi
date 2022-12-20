@@ -1,0 +1,10 @@
+uuid: fd6b030b-19a4-4aba-a8d3-0fc18f0aba1d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.small_image_embed_view_mode
+label: 'Pieni kuvaupotus'
+targetEntityType: media
+cache: true

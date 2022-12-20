@@ -1,0 +1,8 @@
+uuid: 28be0343-dfb5-4fc4-9223-24f1f7f08cc7
+langcode: en
+status: true
+dependencies: {  }
+id: footer-main-menu-en
+label: 'Footer main menu'
+description: 'Shortcut links to the site''s key services and organizational information.'
+locked: false

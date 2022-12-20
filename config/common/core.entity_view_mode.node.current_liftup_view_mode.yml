@@ -1,0 +1,10 @@
+uuid: adf4c80d-ef17-493a-842c-c475a2b67e45
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.current_liftup_view_mode
+label: Ajankohtaisnosto
+targetEntityType: node
+cache: true

@@ -1,0 +1,17 @@
+uuid: 8ab43097-5632-48d9-989e-e7cdfe7bca56
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.front_page_author
+id: topic-4cfe32d48
+label: Etusivutoimittaja
+weight: -7
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,18 @@
+uuid: 8fa52423-cd21-48b0-b6ad-0d23cdfd9300
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.moderated_page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.moderated_page
+target_entity_type_id: node
+target_bundle: moderated_page
+default_langcode: site_default
+language_alterable: true

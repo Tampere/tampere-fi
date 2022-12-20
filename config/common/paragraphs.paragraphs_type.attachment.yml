@@ -1,0 +1,15 @@
+uuid: 2969ae60-bcd4-41b7-86c4-e7653dfc4341
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: attachment
+label: Liite
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

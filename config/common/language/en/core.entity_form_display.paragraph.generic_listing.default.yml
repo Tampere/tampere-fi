@@ -1,0 +1,8 @@
+third_party_settings:
+  field_group:
+    group_shared_taxonomies:
+      label: 'Shared taxonomy fields'
+    group_content_type_taxonomies:
+      label: 'Content type specific taxonomy fields'
+    group_zoning_information:
+      label: 'Zoning information'

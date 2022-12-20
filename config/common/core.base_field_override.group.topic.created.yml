@@ -1,0 +1,18 @@
+uuid: 5735dc26-52b7-40bd-8f6b-089f6506d458
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+id: group.topic.created
+field_name: created
+entity_type: group
+bundle: topic
+label: Luotu
+description: 'Ryhmän luontiajankohta.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

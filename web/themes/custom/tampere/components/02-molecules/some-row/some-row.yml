@@ -1,0 +1,21 @@
+some_row_items:
+  - title: 'Facebook'
+    url: '#'
+    icon: 'facebook'
+    aria_label: "Tampereen facebook"
+  - title: 'Twitter'
+    url: '#'
+    icon: 'twitter'
+    aria_label: "Tampereen twitter"
+  - title: 'Instagram'
+    url: '#'
+    icon: 'instagram'
+    aria_label: "Tampereen insta"
+  - title: 'LinkedIn'
+    url: '#'
+    icon: 'linkedin'
+    aria_label: "Tampereen linkedIn"
+  - title: 'YouTube'
+    url: '#'
+    icon: 'youtube'
+    aria_label: "Tampereen youTube"

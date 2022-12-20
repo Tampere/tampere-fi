@@ -1,0 +1,37 @@
+uuid: d66f49bb-68d8-44d8-af7e-f16b1fc958f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.project_or_organization_card.field_displayed_fields
+    - field.field.paragraph.project_or_organization_card.field_project_or_organization
+    - paragraphs.paragraphs_type.project_or_organization_card
+id: paragraph.project_or_organization_card.default
+targetEntityType: paragraph
+bundle: project_or_organization_card
+mode: default
+content:
+  field_displayed_fields:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_project_or_organization:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

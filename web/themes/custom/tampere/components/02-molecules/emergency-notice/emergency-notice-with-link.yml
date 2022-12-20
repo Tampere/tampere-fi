@@ -1,0 +1,4 @@
+emergency_notice__heading: 'Tärkeä koko Tamperetta koskeva kriisitiedote. Lorem ipsum dolor sit amet.'
+emergency_notice__icon__label: 'Lue koko tiedote'
+emergency_notice__icon__name: 'arrow'
+emergency_notice__url: '#'

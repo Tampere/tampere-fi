@@ -1,0 +1,19 @@
+uuid: 09cba4ba-2287-4589-9ce9-13f5a87906a9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.place
+id: node.place.field_address
+field_name: field_address
+entity_type: node
+bundle: place
+label: 'Osoite tai sijainnin kuvaus'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

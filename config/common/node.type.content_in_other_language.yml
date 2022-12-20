@@ -1,0 +1,17 @@
+uuid: 543b3691-1103-4a0b-bdd9-c9df3d044302
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Muunkielinen sisältö'
+type: content_in_other_language
+description: "Sisältötyyppi muunkieliselle sisällölle kuin suomi ja englanti. Tukee arabiaa, venäjää ja persiaa (farsia).\t\r\n"
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

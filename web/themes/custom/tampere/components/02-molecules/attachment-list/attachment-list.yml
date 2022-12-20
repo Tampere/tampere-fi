@@ -1,0 +1,17 @@
+attachment_list:
+  - name: 'Lorem ipsum dolor sit amet'
+    icon_name: 'download'
+    link_url: '#'
+  - name: 'Lorem ipsum dolor sit amet'
+    icon_name: 'download'
+    summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis id est at elementum. Etiam elementum laoreet magna quis bibendum.'
+    link_url: '#'
+  - name: 'Lorem ipsum dolor sit amet consectetur adipiscing elit vivamus quis ipsum diam'
+    icon_name: 'download'
+    link_url: '#'
+  - name: 'Lorem ipsum dolor sit amet'
+    icon_name: 'download'
+    link_url: '#'
+attachment_list__heading: 'Neque porro quisquam est qui'
+attachment_list__body: 'Nunc porttitor porta velit, vel efficitur felis dictum et. Phasellus nibh dolor, scelerisque id nulla at, varius ornare sapien. Sed imperdiet risus nec tempus mattis.'
+

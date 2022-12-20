@@ -1,0 +1,10 @@
+uuid: 9446bca7-c861-4611-8969-56652a79d343
+langcode: fi
+status: true
+dependencies: {  }
+id: icon_and_text_link
+label: 'Kuvake ja teksti -linkki'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

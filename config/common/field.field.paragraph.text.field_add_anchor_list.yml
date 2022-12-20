@@ -1,0 +1,23 @@
+uuid: 2ac786e9-9f39-4dcd-bdfd-676aeb41ede9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_add_anchor_list
+    - paragraphs.paragraphs_type.text
+id: paragraph.text.field_add_anchor_list
+field_name: field_add_anchor_list
+entity_type: paragraph
+bundle: text
+label: 'Lisää ankkurilista'
+description: 'Muodostaa tämän teksti-paragraafin väliotsikoista automaattisen ankkurilistan.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

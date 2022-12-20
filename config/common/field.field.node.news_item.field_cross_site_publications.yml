@@ -1,0 +1,29 @@
+uuid: 3f3abe84-1fc6-44ac-a70b-608a7fb07f98
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cross_site_publications
+    - node.type.news_item
+    - taxonomy.vocabulary.cross_site_publications
+id: node.news_item.field_cross_site_publications
+field_name: field_cross_site_publications
+entity_type: node
+bundle: news_item
+label: WordPress-julkaisut
+description: 'Valitse WordPress-sivustot, joilla tämä uutinen julkaistaan.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cross_site_publications: cross_site_publications
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,177 @@
+uuid: a64897ac-9401-44cd-b3af-f5433accaebe
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.notice.field_author
+    - field.field.node.notice.field_body
+    - field.field.node.notice.field_date_of_publication
+    - field.field.node.notice.field_display_period
+    - field.field.node.notice.field_event_time
+    - field.field.node.notice.field_geographical_areas
+    - field.field.node.notice.field_help_text
+    - field.field.node.notice.field_keywords
+    - field.field.node.notice.field_life_situations
+    - field.field.node.notice.field_main_image
+    - field.field.node.notice.field_media_caption
+    - field.field.node.notice.field_minisites
+    - field.field.node.notice.field_notice_type
+    - field.field.node.notice.field_paragraphs
+    - field.field.node.notice.field_search_keywords
+    - field.field.node.notice.field_social_media_share
+    - field.field.node.notice.field_time_limit
+    - field.field.node.notice.field_topic
+    - field.field.node.notice.field_topics
+    - node.type.notice
+  module:
+    - ds
+    - entity_reference_revisions
+    - text
+    - user
+id: node.notice.search_index
+targetEntityType: node
+bundle: notice
+mode: search_index
+content:
+  field_author:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_geographical_areas:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 7
+    region: content
+  field_life_situations:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 10
+    region: content
+  field_main_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_notice_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_search_keywords:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 9
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 11
+    region: content
+hidden:
+  content_moderation_control: true
+  field_date_of_publication: true
+  field_display_period: true
+  field_event_time: true
+  field_help_text: true
+  field_minisites: true
+  field_social_media_share: true
+  field_time_limit: true
+  field_topic: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

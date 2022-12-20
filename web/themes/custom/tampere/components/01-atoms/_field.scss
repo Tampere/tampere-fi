@@ -1,0 +1,164 @@
+/* Store here styles related to Drupal fields */
+$field-sections-v-gutter: $space-m;
+$field-sections-v-gutter-desktop: $space-xl;
+
+.field {
+  a {
+    @include link;
+  }
+
+  // The address display module's field formatter adds this class to all invidual address field items.
+  .address-display-element {
+    display: block;
+  }
+
+  &-additional-information {
+    &.field--view-mode-content-tab-card-view-mode {
+      font-size: $font-14;
+
+      @include large {
+        font-size: $font-16;
+      }
+
+      p {
+        @include paragraph($margin: 0 0 $text-paragraph-margin-bottom--small);
+      }
+    }
+  }
+
+  &-address {
+    &.field--view-mode-full {
+      @include page-element-spacer;
+      @include summary;
+    }
+  }
+
+  &--type-address,
+  &-name-field-address-postal {
+    .address {
+      margin: 0;
+    }
+
+    + .field--type-address {
+      .address {
+        margin-top: $space-m;
+      }
+    }
+  }
+
+  &-name-field-address-street {
+    margin-bottom: $space-m;
+  }
+
+  &-description {
+    &.field--view-mode-full {
+      @include page-element-spacer;
+
+      max-width: var(--text-content-max-width);
+    }
+  }
+
+  &:not(.field--no-visible-label) {
+    .office-hours {
+      margin-top: $space-m;
+    }
+  }
+
+  /* entity reference revisions field containing paragraphs in Codebase */
+  &-section {
+    > .field__items > .field__item {
+      &:not(:last-child) {
+        margin-bottom: $field-sections-v-gutter;
+
+        @include medium {
+          margin-bottom: $field-sections-v-gutter-desktop;
+        }
+      }
+    }
+  }
+
+  &-label-above,
+  &-label-inline {
+    font-weight: var(--field-label-font-weight);
+
+    .field--display-colon-after-label & {
+      position: relative;
+
+      &::after {
+        content: ":";
+        display: inline-block;
+        position: absolute;
+      }
+    }
+  }
+
+  &-label-inline,
+  &__label.inline {
+    display: inline;
+    margin-right: $space-xs;
+
+    ~ * {
+      display: inline;
+    }
+  }
+
+  &-social-media-share {
+
+    @include large {
+      display: flex;
+      align-items: center;
+    }
+
+    & .field__label  {
+      padding-right: $space-m;
+      font-size: $font-18;
+      font-family: $font-heading;
+
+      @include large {
+        font-size: $font-20;
+      }
+    }
+
+    .social-media-sharing {
+      margin-left: (-1) * 24px;
+
+      @include large {
+        margin-left: 0;
+      }
+
+      .share {
+        display: block;
+      }
+    }
+
+    .social-media-sharing .share img {
+      height: $icon-small;
+      margin: 0 $space-xs;
+    }
+  }
+
+  &-name-field-additional-phones {
+    .number {
+      display: inline-block;
+    }
+    .number:not(:last-child)::after,
+    .supplementary:not(:last-child)::after {
+      content: ',\a';
+      white-space: pre;
+    }
+    .number--supplementary:not(:last-child)::after {
+      content: none;
+    }
+  }
+
+  &-authors__label  {
+    font-weight: $font-weight-regular;
+  }
+
+  &-person-info-list-additional-information {
+    p:first-of-type {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+uuid: e3cd32b2-377e-408c-b3ee-70ed2263e1c1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: group.minisite.uid
+field_name: uid
+entity_type: group
+bundle: minisite
+label: 'Ryhmän luoja'
+description: 'Ryhmän luoneen käyttäjän käyttäjätunnus.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\Group::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

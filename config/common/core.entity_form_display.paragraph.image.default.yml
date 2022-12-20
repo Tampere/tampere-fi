@@ -1,0 +1,157 @@
+uuid: 29033878-645a-4131-86bb-bce168837dac
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image.field_content_link
+    - field.field.paragraph.image.field_display_as_thumbnail
+    - field.field.paragraph.image.field_display_larger_image_link
+    - field.field.paragraph.image.field_image_caption
+    - field.field.paragraph.image.field_language
+    - field.field.paragraph.image.field_link_aria_label
+    - field.field.paragraph.image.field_media
+    - field.field.paragraph.image.field_media_file_in_other_lang
+    - paragraphs.paragraphs_type.image
+  module:
+    - field_group
+    - field_states_ui
+    - maxlength
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+third_party_settings:
+  field_group:
+    group_image_link:
+      children:
+        - field_display_larger_image_link
+        - group_display_as_link_to_content
+      label: 'Kuvan linkki'
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Kuvan voi näyttää joko linkkinä isompaan kuvaan tai sisältöön. Jos molemmat vaihtoehdot ovat valittuina, näytetään kuva linkkinä isompaan kuvaan.'
+        required_fields: true
+    group_display_as_link_to_content:
+      children:
+        - field_content_link
+        - field_link_aria_label
+      label: 'Näytä linkkinä sisältöön'
+      region: content
+      parent_name: group_image_link
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.image.default
+targetEntityType: paragraph
+bundle: image
+mode: default
+content:
+  field_content_link:
+    type: paragraphs_classic_asymmetric
+    weight: 6
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_display_as_thumbnail:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_larger_image_link:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_image_caption:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 100
+      placeholder: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+  field_language:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link_aria_label:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            3d00be23-8775-4bd0-8482-0d7dbf833370:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
+        field_states:
+          3d00be23-8775-4bd0-8482-0d7dbf833370:
+            uuid: 3d00be23-8775-4bd0-8482-0d7dbf833370
+            id: required
+            data:
+              target: field_content_link
+              comparison: filled
+              value: ''
+              submit: Lähetä
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+  field_media:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types:
+        - image
+        - image_in_other_language
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_file_in_other_lang: true
+  status: true

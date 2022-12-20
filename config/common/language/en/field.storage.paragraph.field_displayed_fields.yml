@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: Name
+    -
+      label: Description
+    -
+      label: 'Contact information'

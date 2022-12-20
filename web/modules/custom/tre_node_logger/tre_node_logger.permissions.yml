@@ -1,0 +1,3 @@
+view node logs:
+  title: 'View node logs'
+  description: 'View logs for a node in the logs tab'

@@ -1,0 +1,8 @@
+<div {{ bem("item", (image_gallery_item__modifiers|default([])), image_gallery_item__blockname|default("image-gallery")) }}>
+  {% if image_gallery_item_name %}
+    <span {{ bem("item-name", (image_gallery_item__modifiers|default([])), image_gallery_item__blockname|default("image-gallery")) }} hidden>
+      {{ image_gallery_item_name }}
+    </span>
+  {% endif %}
+  {% block image_gallery_item_content %}{% endblock %}
+</div>

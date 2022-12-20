@@ -1,0 +1,36 @@
+uuid: 7d731f8d-3d15-4ba9-ba43-32116dc39fc4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_social_media
+field_name: field_social_media
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: facebook
+      label: Facebook
+    -
+      value: instagram
+      label: Instagram
+    -
+      value: linkedin
+      label: LinkedIn
+    -
+      value: twitter
+      label: Twitter
+    -
+      value: youtube
+      label: YouTube
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

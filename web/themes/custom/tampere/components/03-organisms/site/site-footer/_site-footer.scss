@@ -1,0 +1,263 @@
+$footer-background-color: clr(primary-light);
+$footer-secondary-background-color: clr(primary);
+$footer-font-size: $font-18;
+$footer-padding: $space-xl;
+$footer-section-spacing: $space-xl;
+$footer-section-spacing--desktop: $space-l;
+$footer-secondary-logo-max-width: 144px;
+$footer-gap-size: $space-xl;
+$footer-background-image-right-position: 0;
+$footer-background-image-right-position-large: -220px;
+$footer-background-image-bottom-position: -160px;
+$footer-background-image-bottom-position--desktop: 93px;
+
+.footer {
+  @include dynamic-color(primary-light, $set-main-property: false);
+
+  $base-class: &;
+
+  --footer-background-image-mobile: url('/themes/custom/tampere/images/waves-light-blue.svg');
+
+  background-color: $footer-background-color;
+  color: clr(text-inverse);
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  &__container,
+  &__bottom-content {
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+
+  &__container {
+    background-image: var(--footer-background-image-mobile);
+    background-repeat: no-repeat;
+    background-position: bottom $footer-background-image-bottom-position right $footer-background-image-right-position;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: $space-xl;
+
+    @include large {
+      background-image: none;
+      padding: $space-xxl 0 0 96px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+  }
+
+  &__desktop-background-image {
+    display: none;
+
+    @include large {
+      display: block;
+      position: absolute;
+      right: $footer-background-image-right-position-large;
+      bottom: $footer-background-image-bottom-position--desktop;
+    }
+
+    @include max-width {
+      right: $footer-background-image-right-position;
+      bottom: $footer-background-image-bottom-position--desktop;
+    }
+  }
+
+  &__main-logo {
+    align-self: flex-start;
+    margin-top: (-1) * $space-m;
+    margin-left: (-1) * $space-l;
+    width: 100%;
+
+    @include large {
+      width: 30rem;
+    }
+  }
+
+  &__content {
+    flex-basis: 100%;
+    padding-top: $space-l;
+    padding-bottom: 160px;
+
+    @include large {
+      display: grid;
+      gap: $footer-gap-size;
+      grid-auto-flow: column;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__paragraph {
+    font-size: $footer-font-size;
+    color: clr(text-inverse);
+    padding-bottom: $space-l;
+    margin: 0;
+    overflow-wrap: break-word;
+
+    + #{$base_class}__paragraph {
+      padding-bottom: $footer-section-spacing;
+
+      @include large {
+        padding-bottom: $space-l;
+      }
+    }
+
+    @include large {
+      border-right: $border-thick-light-blue;
+      padding-right: $footer-section-spacing--desktop;
+    }
+  }
+
+  &__paragraph .text-long a {
+    color: clr(text-inverse);
+    text-underline-offset: 2px;
+  }
+
+  &__links {
+    width: 100%;
+
+    @include large {
+      padding-right: $footer-section-spacing--desktop;
+    }
+  }
+
+  &__some-row {
+    padding-bottom: $footer-section-spacing;
+
+    &--mobile {
+      @include large {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include large {
+        display: block;
+        position: absolute;
+        top: 156px;
+        left: 34rem;
+      }
+    }
+  }
+
+  &__secondary-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__secondary-container,
+  &__bottom-content {
+    background-color: $footer-secondary-background-color;
+  }
+
+  &__bottom-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $space-m $space-s $space-xs $space-s;
+    position: relative;
+    justify-content: space-between;
+
+    @include large {
+      justify-content: flex-start;
+      align-items: center;
+      padding: $space-m $space-m $space-m $space-xxl;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__secondary-logo {
+    height: 50px;
+    align-self: flex-start;
+    margin-bottom: $footer-padding;
+    margin-left: -10px;
+    max-width: $footer-secondary-logo-max-width;
+
+    @include large {
+      align-self: center;
+      margin: $space-xxs 0 0 0;
+    }
+  }
+
+  &__copyright {
+    @include word-wrap;
+
+    color: clr(text-inverse);
+    font-size: $font-12;
+    order: 3;
+
+    @include large {
+      font-size: $font-16;
+      padding-left: $space-l;
+    }
+  }
+
+  &__site-links {
+    order: 3;
+    width: 100%;
+
+    @include large {
+      order: 4;
+      width: auto;
+      padding-left: $space-l;
+    }
+  }
+
+  &__back-to-top {
+    align-self: flex-start;
+    padding-top: $space-xs;
+
+    @include large {
+      order: 4;
+      align-self: center;
+      margin-left: auto;
+    }
+  }
+
+  &--minisite {
+    @include dynamic-color(minisite-identifier-background, $set-focus-color: false);
+
+    --footer-background-image-mobile: url('/themes/custom/tampere/images/waves-transparent-30.svg');
+
+    background-color: clr(minisite-identifier-background);
+
+    #{$base_class}__container {
+      @include dynamic-color(minisite-identifier-background);
+    }
+
+    #{$base_class}__content {
+      @include large {
+        gap: $footer-section-spacing--desktop;
+        padding-right: $footer-gap-size;
+      }
+    }
+
+    #{$base_class}__paragraph {
+      @include dynamic-color(minisite-identifier-background);
+
+      @include large {
+        border-right: 0;
+        padding-right: 0;
+      }
+
+      + #{$base_class}__paragraph {
+        @include large {
+          border-left: $border-thick-inverse;
+          padding-left: $footer-gap-size;
+        }
+      }
+
+      & .text-long a {
+        @include link-inherit;
+      }
+    }
+
+    #{$base_class}__links {
+      @include large {
+        display: none;
+      }
+    }
+  }
+}

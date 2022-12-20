@@ -1,0 +1,18 @@
+uuid: b2ff5773-d483-4163-bf6d-57a27d1c01cb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.theme-group_node-organization
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_content.theme-group_node-organization
+target_entity_type_id: group_content
+target_bundle: theme-group_node-organization
+default_langcode: site_default
+language_alterable: false

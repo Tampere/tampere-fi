@@ -1,0 +1,28 @@
+label: 'Current content'
+display:
+  default:
+    display_options:
+      fields:
+        view_node:
+          text: view
+        nothing:
+          admin_label: 'Creator (webmaster@tampere.fi)'
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: Sort
+  feed_articles_fi:
+    display_title: 'Articles feed (FI)'
+  feed_news_en:
+    display_title: 'News feed (EN)'
+  feed_news_fi:
+    display_title: 'News feed (FI)'
+  feed_notices_fi:
+    display_title: 'Notices feed (FI)'
+    display_options:
+      fields:
+        nothing:
+          admin_label: 'Creator (webmaster@tampere.fi)'
+        nothing_1:
+          admin_label: 'Notice type and main text field'

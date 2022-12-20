@@ -1,0 +1,17 @@
+uuid: 35877ea2-d98e-4579-9801-716920709d7e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.service_author
+id: theme-5a3543202
+label: Palvelutoimittaja
+weight: 9
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,5 @@
+entity.node.tre_node_logger:
+  route_name: entity.node.tre_node_logger
+  title: 'Logs'
+  base_route: entity.node.canonical
+  weight: 130

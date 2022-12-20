@@ -1,0 +1,25 @@
+uuid: 18024f07-1f36-44ad-999d-8fc635c8e0c4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.project_or_organization_card.field_displayed_fields
+    - field.field.paragraph.project_or_organization_card.field_project_or_organization
+    - paragraphs.paragraphs_type.project_or_organization_card
+id: paragraph.project_or_organization_card.default
+targetEntityType: paragraph
+bundle: project_or_organization_card
+mode: default
+content:
+  field_project_or_organization:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: zoning_city_planning_construction_project_card_view_mode
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_displayed_fields: true
+  search_api_excerpt: true

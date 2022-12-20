@@ -1,0 +1,37 @@
+{% set material_list__base_class = "material-download-list" %}
+
+<div {{ bem(material_list__base_class, material_list__modifiers, material_list__blockname)}}>
+  {% if material_list__heading %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      "heading_base_class": material_list__heading__base_class|default("heading"),
+      "heading_modifiers": material_list__heading__modifiers,
+      "heading_blockname": material_list__base_class,
+      "heading_level": 2,
+      "heading": material_list__heading,
+    } %}
+  {% endif %}
+
+  {% if material_list__summary %}
+    {% include "@atoms/02-text/text/01-paragraph.twig" with {
+      "paragraph_base_class": material_list__summary__base_class|default("summary"),
+      "paragraph_modifiers": material_list__summary__modifiers,
+      "paragraph_blockname": material_list__base_class,
+      "paragraph_content": material_list__summary,
+    } %}
+  {% endif %}
+
+  <ul {{bem("list", material_list__list__modifiers, material_list__base_class)}}>
+    {% block material_list__content %}
+      {% for material in material_list__materials %}
+        {% include "@molecules/downloadable-material/downloadable-material.twig" with {
+          "material__image__src": material.img_src,
+          "material__image__alt": material.img_alt,
+          "material__download_url": material.img_src,
+          "material__heading": material.heading,
+          "material__summary": material.summary,
+        } %}
+      {% endfor %}
+    {% endblock %}
+  </ul>
+  
+</div>

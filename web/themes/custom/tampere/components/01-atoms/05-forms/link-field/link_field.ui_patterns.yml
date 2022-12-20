@@ -1,0 +1,15 @@
+link_field:
+  label: Link field
+  variants:
+    default:
+      label: Default
+    involvement_opportunity_card:
+      label: Involvement opportunity card
+  fields:
+    link_field_label:
+      label: Label
+    link_field_link_url:
+      label: Url
+    link_field_link_text:
+      label: Text
+  use: "@atoms/05-forms/link-field/link-field.twig"

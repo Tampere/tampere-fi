@@ -1,0 +1,77 @@
+uuid: 4aa32a60-cdf1-4cd6-973d-c817fb6e9846
+langcode: fi
+status: true
+dependencies:
+  module:
+    - webform
+id: webform_options--webform_options
+disabled: true
+path: webform_options/webform_options
+resourceType: webform_options--webform_options
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  category:
+    disabled: false
+    fieldName: category
+    publicName: category
+    enhancer:
+      id: ''
+  likert:
+    disabled: false
+    fieldName: likert
+    publicName: likert
+    enhancer:
+      id: ''
+  options:
+    disabled: false
+    fieldName: options
+    publicName: options
+    enhancer:
+      id: ''

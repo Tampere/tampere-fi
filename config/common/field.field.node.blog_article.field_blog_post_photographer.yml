@@ -1,0 +1,19 @@
+uuid: 0b70af84-50de-4424-a07d-885f70c9c43e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_blog_post_photographer
+    - node.type.blog_article
+id: node.blog_article.field_blog_post_photographer
+field_name: field_blog_post_photographer
+entity_type: node
+bundle: blog_article
+label: Kuvat
+description: 'Syötä kuvaajan tiedot.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

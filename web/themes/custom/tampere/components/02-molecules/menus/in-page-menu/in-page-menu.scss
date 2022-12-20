@@ -1,0 +1,101 @@
+$in-page-menu-list-padding-left-mobile: $space-s;
+$in-page-menu-list-padding-left-desktop: $space-l;
+$in-page-menu-list-item-negative-left-margin-mobile: calc(#{$in-page-menu-list-padding-left-mobile} * (-1) - #{$thick-border-width});
+$in-page-menu-list-item-negative-left-margin-desktop: calc(#{$in-page-menu-list-padding-left-desktop} * (-1) - #{$thick-border-width});
+
+.in-page-menu {
+  $base_class: &;
+
+  margin-top: $gutter-small;
+  margin-bottom: $gutter-small;
+
+  @include large {
+    margin-top: $gutter-medium-plus;
+    margin-bottom: $gutter-medium-plus;
+  }
+
+  &__heading {
+    @include heading-large;
+
+    margin-bottom: $space-s;
+  }
+
+  &__list {
+    border-left: $border-thick-light-blue;
+    list-style: none;
+    margin-top: 0;
+    padding-left: $in-page-menu-list-padding-left-mobile;
+
+    @include large {
+      padding-left: $in-page-menu-list-padding-left-desktop;
+    }
+  }
+
+  &__icon {
+    color: clr(accent-tertiary);
+    margin-right: $space-xs;
+    height: $icon-small;
+    width: $icon-small;
+
+    @include large {
+      margin-right: $space-s;
+      width: $icon-medium;
+    }
+  }
+
+  &__list-item + #{$base_class}__list-item {
+    margin-top: $space-s;
+
+    @include large {
+      margin-top: $space-m-plus;
+    }
+  }
+
+  &__link {
+    @include link;
+    @include word-wrap;
+
+    display: inline-block;
+    font-weight: $font-weight-regular;
+    width: 100%;
+  }
+
+  &__list-item--back-to-top {
+    background: clr(background);
+    margin-left: $in-page-menu-list-item-negative-left-margin-mobile;
+
+    @include large {
+      margin-left: $in-page-menu-list-item-negative-left-margin-desktop;
+    }
+
+    &:not(:first-child) {
+      padding-top: $space-s;
+
+      @include large {
+        padding-top: $space-m-plus;
+      }
+    }
+
+    &:not(:last-child) {
+      padding-bottom: $space-s;
+
+      @include large {
+        padding-bottom: $space-m-plus;
+      }
+    }
+
+    #{$base_class}__link {
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  &__list-item + #{$base_class}__list-item--back-to-top,
+  &__list-item--back-to-top + #{$base_class}__list-item {
+    margin-top: 0;
+  }
+
+  .paragraph--view-mode-accordion-content-view-mode & {
+    @include accordion-content-spacer;
+  }
+}

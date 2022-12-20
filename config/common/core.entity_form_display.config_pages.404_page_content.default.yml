@@ -1,0 +1,40 @@
+uuid: 09724d85-a1be-49b9-bd9e-884d48f878ab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.404_page_content
+    - field.field.config_pages.404_page_content.field_page_content
+  module:
+    - allowed_formats
+    - field_states_ui
+    - maxlength
+    - text
+id: config_pages.404_page_content.default
+targetEntityType: config_pages
+bundle: 404_page_content
+mode: default
+content:
+  field_page_content:
+    type: text_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 10
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+      allowed_formats:
+        hide_help: '0'
+        hide_guidelines: '0'
+hidden:
+  label: true

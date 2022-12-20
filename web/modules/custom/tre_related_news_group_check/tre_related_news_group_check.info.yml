@@ -1,0 +1,7 @@
+name: 'TRE Related news group check'
+type: module
+description: 'Checks if related news views block belongs to any group and shows the block if not.'
+core_version_requirement: ^9
+package: 'TRE'
+dependencies:
+  - tre_preprocess_utility_functions:tre_preprocess_utility_functions

@@ -1,0 +1,71 @@
+.iframe-wrapper {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  &__heading {
+    margin-bottom: $space-m;
+  }
+
+  &__content {
+    overflow: hidden;
+    position: relative;
+    padding-top: 66%;
+    width: 100%;
+  }
+
+  &__iframe {
+    border: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    // Only set height for iframes that don't have a fixed height.
+    #{$base_class}:not(#{$base_class}--fixed-height) & {
+      height: 100%;
+    }
+  }
+
+  &--fixed-height {
+    #{$base_class}__content {
+      padding-top: 0;
+    }
+
+    #{$base_class}__iframe {
+      position: static;
+    }
+  }
+
+  &--extra-wide {
+    #{$base_class}__content {
+      width: auto;
+    }
+
+    #{$base_class}__iframe {
+      display: block;
+    }
+
+    .layout-container--with-sidebar & {
+      #{$base_class}__iframe {
+        @include large {
+          max-width: none;
+          padding: 0;
+        }
+      }
+    }
+
+    .layout-container:not(.layout-container--with-sidebar) & {
+      #{$base_class}__heading,
+      #{$base_class}__content {
+        @include large {
+          @include centered-content($max-width: $max-width, $use-v-margin: false);
+        }
+      }
+
+      @include large {
+        @include breakout(0);
+      }
+    }
+  }
+}

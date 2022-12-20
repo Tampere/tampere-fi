@@ -1,0 +1,19 @@
+content:
+  field_main_image_caption:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_main_image_link:
+    settings:
+      title: Link
+      title_plural: Links
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Tabs
+    group_categorization:
+      label: Categorization
+    group_common:
+      label: Common
+    group_search_keywords:
+      label: 'Search keywords'

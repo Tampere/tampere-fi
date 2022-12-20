@@ -1,0 +1,8 @@
+uuid: 5f3fcbb5-af9e-4111-8dd0-571324464d21
+langcode: fi
+status: true
+dependencies: {  }
+id: life-situation-menu-fi
+label: Elämäntilanne-valikko
+description: ''
+locked: false

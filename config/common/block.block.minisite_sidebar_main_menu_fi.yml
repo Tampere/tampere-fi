@@ -1,0 +1,48 @@
+uuid: 83fa972c-2eb1-42c7-8315-d58c2874e34d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.minisite_main_menu_fi
+  module:
+    - group
+    - group_content_menu
+    - language
+    - system
+  theme:
+    - tampere
+id: minisite_sidebar_main_menu_fi
+theme: tampere
+region: sidebar
+weight: -17
+provider: null
+plugin: 'group_content_menu:minisite_main_menu_fi'
+settings:
+  id: 'group_content_menu:minisite_main_menu_fi'
+  label: 'Minikotisivuston sivupalkin päävalikko (FI)'
+  label_display: '0'
+  provider: group_content_menu
+  context_mapping:
+    group: '@group.group_route_context:group'
+  level: 2
+  depth: 2
+  expand_all_items: true
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      fi: fi
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      minisite: minisite
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/user/*'

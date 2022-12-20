@@ -1,0 +1,23 @@
+uuid: 74ec1415-30a8-4313-82c3-1e9222b3f7f2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_as_thumbnail
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.field_display_as_thumbnail
+field_name: field_display_as_thumbnail
+entity_type: paragraph
+bundle: image
+label: 'Näytä pikkukuvana'
+description: 'Valitse tämä, kun haluat, että kuvatiedosto näytetään sivulla pikkukuvana. Kuvat näytetään oletusarvoisesti koko sivun levyisinä.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

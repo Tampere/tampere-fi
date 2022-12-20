@@ -1,0 +1,17 @@
+uuid: 23550526-8555-4b8f-88e1-c26808e57e4c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: downloadable_material
+label: 'Ladattava materiaali (90x90)'
+effects:
+  468463db-214a-4a18-a2da-015bd610a167:
+    uuid: 468463db-214a-4a18-a2da-015bd610a167
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 90
+      height: 90
+      crop_type: focal_point

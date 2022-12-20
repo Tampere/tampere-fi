@@ -1,0 +1,19 @@
+uuid: fd14230e-330f-4519-bbbc-e379389df92a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+    - node.type.collection_page
+  module:
+    - gnode
+    - node
+id: theme-group_node-collection_page
+label: 'Teema: Group node (Koontisivu)'
+description: 'Adds <em class="placeholder">Koontisivu</em> content to groups both publicly and privately.'
+group_type: theme
+content_plugin: 'group_node:collection_page'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

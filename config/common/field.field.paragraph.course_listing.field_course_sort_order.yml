@@ -1,0 +1,23 @@
+uuid: 63eb3167-7ed1-4fbc-aa13-8062f2eb7315
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_course_sort_order
+    - paragraphs.paragraphs_type.course_listing
+  module:
+    - options
+id: paragraph.course_listing.field_course_sort_order
+field_name: field_course_sort_order
+entity_type: paragraph
+bundle: course_listing
+label: 'Kurssien lajittelujärjestys'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: date_desc
+default_value_callback: ''
+settings: {  }
+field_type: list_string

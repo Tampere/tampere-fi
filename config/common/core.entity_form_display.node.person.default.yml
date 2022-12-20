@@ -1,0 +1,376 @@
+uuid: fd18cf95-b355-476f-ae93-9263e3efe40c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.all_places_entity_browser
+    - field.field.node.person.field_additional_information
+    - field.field.node.person.field_additional_phones
+    - field.field.node.person.field_address_postal
+    - field.field.node.person.field_address_street
+    - field.field.node.person.field_contract_begins
+    - field.field.node.person.field_contract_ends
+    - field.field.node.person.field_email
+    - field.field.node.person.field_first_names
+    - field.field.node.person.field_hr_company
+    - field.field.node.person.field_hr_cost_center
+    - field.field.node.person.field_hr_id
+    - field.field.node.person.field_hr_organizational_unit
+    - field.field.node.person.field_hr_title
+    - field.field.node.person.field_image
+    - field.field.node.person.field_keywords
+    - field.field.node.person.field_last_name
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_phone_supplementary
+    - field.field.node.person.field_place
+    - field.field.node.person.field_search_keywords
+    - field.field.node.person.field_topics
+    - field.field.node.person.migrate_override_data
+    - node.type.person
+  module:
+    - address
+    - allowed_formats
+    - content_moderation
+    - entity_browser
+    - field_group
+    - field_states_ui
+    - limited_field_widgets
+    - maxlength
+    - media_library
+    - migrate_override
+    - telephone
+    - text
+    - tre_phone_field_formatter
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_header
+        - group_main_content
+        - group_integrated_data
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_header:
+      children:
+        - langcode
+        - field_image
+        - field_first_names
+        - field_last_name
+        - migrate_override_data
+      label: 'Nimi ja kuva'
+      region: content
+      parent_name: group_tabs
+      weight: 18
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_main_content:
+      children:
+        - field_phone_supplementary
+        - field_additional_phones
+        - field_place
+        - field_address_street
+        - field_address_postal
+        - field_additional_information
+      label: Rikastussisältö
+      region: content
+      parent_name: group_tabs
+      weight: 19
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_integrated_data:
+      children:
+        - field_email
+        - field_phone
+        - field_hr_title
+        - field_hr_cost_center
+        - field_hr_organizational_unit
+        - field_hr_company
+      label: 'Integroidut tiedot'
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_categorization:
+      children:
+        - field_topics
+        - field_keywords
+        - group_search_keywords
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_search_keywords:
+      children:
+        - field_search_keywords
+      label: Avainsanat
+      region: content
+      parent_name: group_categorization
+      weight: 45
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: node.person.default
+targetEntityType: node
+bundle: person
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_additional_information:
+    type: text_textarea
+    weight: 42
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_additional_phones:
+    type: tre_telephone_plus_widget
+    weight: 38
+    region: content
+    settings:
+      hide_subelements:
+        telephone_extension: telephone_extension
+        display_international_number: display_international_number
+        telephone_title: 0
+        telephone_supplementary: 0
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '5'
+  field_address_postal:
+    type: address_default
+    weight: 41
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_address_street:
+    type: address_default
+    weight: 40
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 29
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_first_names:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hr_company:
+    type: options_select
+    weight: 36
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hr_cost_center:
+    type: options_select
+    weight: 34
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hr_organizational_unit:
+    type: options_select
+    weight: 35
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hr_title:
+    type: options_select
+    weight: 33
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: media_library_widget
+    weight: 7
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 44
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_default
+    weight: 30
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone_supplementary:
+    type: string_textfield
+    weight: 37
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_place:
+    type: entity_browser_entity_reference
+    weight: 39
+    region: content
+    settings:
+      entity_browser: all_places_entity_browser
+      field_widget_display: label
+      field_widget_edit: false
+      field_widget_remove: true
+      field_widget_replace: true
+      open: false
+      field_widget_display_settings: {  }
+      selection_mode: selection_append
+    third_party_settings: {  }
+  field_search_keywords:
+    type: string_textfield
+    weight: 45
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 43
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 6
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  migrate_override_data:
+    type: override_widget_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_contract_begins: true
+  field_contract_ends: true
+  field_hr_id: true
+  path: true
+  promote: true
+  publish_on: true
+  published_at: true
+  sticky: true
+  title: true
+  unpublish_on: true
+  url_redirects: true

@@ -1,0 +1,23 @@
+uuid: 3ba6c701-53f6-43fb-bce3-c2383ea1e900
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.migrate_override_data
+    - node.type.place_of_business
+  module:
+    - migrate_override
+id: node.place_of_business.migrate_override_data
+field_name: migrate_override_data
+entity_type: node
+bundle: place_of_business
+label: 'Select fields to override:'
+description: 'The fields to override in this place''s data. If you elect to override a field here, it won''t be updated on subsequent automated update runs.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 'a:2:{s:24:"field_opening_hours_info";i:0;s:13:"field_summary";i:0;}'
+default_value_callback: ''
+settings: {  }
+field_type: migrate_override_field_item

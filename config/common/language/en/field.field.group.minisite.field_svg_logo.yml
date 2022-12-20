@@ -1,0 +1,1 @@
+description: "If the minisite doesn't have a logo, the minisite's name will be used as the tagline under the existing logo in the header.\r\n</br>\r\nIf you want the icon color to change dynamically with font color, make sure the color values (i.e. #fff) are changed to currentColor."

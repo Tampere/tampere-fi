@@ -1,0 +1,17 @@
+uuid: 1aeff2ff-24d7-421e-9b1b-0887c3723b9a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.contact_info_author
+id: theme-497bd0061
+label: Yhteystietotoimittaja
+weight: 8
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

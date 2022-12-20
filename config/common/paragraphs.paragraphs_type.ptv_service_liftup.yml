@@ -1,0 +1,10 @@
+uuid: 966894a7-bada-40b0-bf4c-8c61059258ff
+langcode: fi
+status: true
+dependencies: {  }
+id: ptv_service_liftup
+label: PTV-palvelunosto
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

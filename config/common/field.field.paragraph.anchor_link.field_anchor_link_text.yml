@@ -1,0 +1,19 @@
+uuid: eb8f8d42-8bcc-436e-addd-f4a3d65f87d2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor_link_text
+    - paragraphs.paragraphs_type.anchor_link
+id: paragraph.anchor_link.field_anchor_link_text
+field_name: field_anchor_link_text
+entity_type: paragraph
+bundle: anchor_link
+label: 'Ankkurilinkin teksti'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

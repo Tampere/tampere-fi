@@ -1,0 +1,31 @@
+uuid: e7954700-b2a4-4a42-860e-53fbf94b9f3d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.entity_browsers
+  module:
+    - views
+name: all_places_entity_browser
+label: 'Sisältöselain: kaikki paikat'
+display: modal
+display_configuration:
+  width: '800'
+  height: '600'
+  link_text: 'Valitse paikat'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  828ca723-4520-4613-b0a5-ab1cc0034499:
+    id: view
+    uuid: 828ca723-4520-4613-b0a5-ab1cc0034499
+    label: 'Kaikki paikat'
+    weight: 1
+    settings:
+      submit_text: 'Valitse paikat'
+      auto_select: false
+      view: entity_browsers
+      view_display: entity_browser_all_places

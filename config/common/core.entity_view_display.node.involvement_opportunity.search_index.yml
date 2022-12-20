@@ -1,0 +1,221 @@
+uuid: db7d3626-5bc6-4537-8d55-8bfdd8cbcac7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.involvement_opportunity.field_additional_information
+    - field.field.node.involvement_opportunity.field_address_street
+    - field.field.node.involvement_opportunity.field_contact_info_paragraph
+    - field.field.node.involvement_opportunity.field_display_location_on_map
+    - field.field.node.involvement_opportunity.field_end_time
+    - field.field.node.involvement_opportunity.field_epsg_3067_easting
+    - field.field.node.involvement_opportunity.field_epsg_3067_northing
+    - field.field.node.involvement_opportunity.field_geographical_areas
+    - field.field.node.involvement_opportunity.field_help_text
+    - field.field.node.involvement_opportunity.field_keywords
+    - field.field.node.involvement_opportunity.field_life_situations
+    - field.field.node.involvement_opportunity.field_link_single
+    - field.field.node.involvement_opportunity.field_location
+    - field.field.node.involvement_opportunity.field_main_image
+    - field.field.node.involvement_opportunity.field_opportunity_description
+    - field.field.node.involvement_opportunity.field_paragraphs
+    - field.field.node.involvement_opportunity.field_participate_end_time
+    - field.field.node.involvement_opportunity.field_participate_phase
+    - field.field.node.involvement_opportunity.field_participate_start_time
+    - field.field.node.involvement_opportunity.field_participate_summary
+    - field.field.node.involvement_opportunity.field_participate_type
+    - field.field.node.involvement_opportunity.field_sign_up_link
+    - field.field.node.involvement_opportunity.field_sign_up_summary
+    - field.field.node.involvement_opportunity.field_sign_up_title
+    - field.field.node.involvement_opportunity.field_single_additional_link
+    - field.field.node.involvement_opportunity.field_start_time
+    - field.field.node.involvement_opportunity.field_topics
+    - node.type.involvement_opportunity
+  module:
+    - address
+    - ds
+    - entity_reference_revisions
+    - link
+    - options
+    - text
+    - user
+id: node.involvement_opportunity.search_index
+targetEntityType: node
+bundle: involvement_opportunity
+mode: search_index
+content:
+  field_additional_information:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_address_street:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_contact_info_paragraph:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_geographical_areas:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_life_situations:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
+    region: content
+  field_link_single:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 10
+    region: content
+  field_main_image:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+  field_opportunity_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_participate_phase:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_participate_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_participate_type:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_sign_up_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_end_time: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_help_text: true
+  field_location: true
+  field_participate_end_time: true
+  field_participate_start_time: true
+  field_sign_up_link: true
+  field_sign_up_title: true
+  field_single_additional_link: true
+  field_start_time: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

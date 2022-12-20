@@ -1,0 +1,95 @@
+{#
+ # Available variables:
+ # - place_contact__base_class - base classname of the wrapper.
+ # - place_contact__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - place_contact__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - place_contact__heading_container__modifiers - array of modifiers to add to the base classname of the heading container.
+ # - place_contact__name - the name of the contact.
+ # - place_contact__url - the URL to the contact page.
+ #
+ # - place_contact__main_content__modifiers - array of modifiers to add to the base classname of the main content.
+ # - place_contact__main_content - the main content for the contact.
+ #
+ # - place_contact__two_column_container__modifiers - array of modifiers to add to the base classname of the two column container.
+ # - place_contact__column__modifiers - array of modifiers to add to the base classname of the column containers.
+ # - place_contact__left_column_content - the content for the left column.
+ # - place_contact__right_column_content - the content for the right column.
+ #
+ # - place_contact__additional_content__modifiers - array of modifiers to add to the base classname of the additional content.
+ # - place_contact__additional_content - any additional content for the contact.
+ #}
+
+{% set place_contact__base_class = "place-contact" %}
+
+{% set name_markup = place_contact__name|render %}
+{% set main_content_markup = place_contact__main_content|render %}
+{% set left_column_content_markup = place_contact__left_column_content|render %}
+{% set right_column_content_markup = place_contact__right_column_content|render %}
+{% set additional_content_markup = place_contact__additional_content|render %}
+
+<div {{ bem(place_contact__base_class, place_contact__modifiers|default([]), place_contact__blockname) }}>
+  <div {{ bem("content", place_contact__content__modifiers|default([]), place_contact__base_class) }}>
+    {% if name_markup|trim %}
+      <div {{ bem("heading-container", place_contact__heading_container__modifiers|default([]), place_contact__base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_base_class": "name",
+          "heading_blockname": place_contact__base_class,
+          "heading_level": place_contact__heading_level|default(2),
+          "heading": name_markup,
+          "heading_url": place_contact__url,
+          "heading_link_base_class": "name-link",
+          "heading_link_blockname": place_contact__base_class,
+        } %}
+      </div>
+    {% endif %}
+  
+    {% if main_content_markup|trim %}
+      <div {{ bem("main-content", place_contact__main_content__modifiers|default([]), place_contact__base_class) }}>
+        {{ main_content_markup }}
+      </div>
+    {% endif %}
+  
+    {% if left_column_content_markup|trim or right_column_content_markup|trim %}
+      <div {{ bem("two-column-container", place_contact__two_column_container__modifiers|default([]), place_contact__base_class) }}>
+        {% if left_column_content_markup|trim %}
+          <div {{ bem("column", place_contact__column__modifiers|default([]), place_contact__base_class) }}>
+            {% block left_column %}
+              {{ left_column_content_markup }}
+            {% endblock %}
+          </div>
+        {% endif %}
+
+        {% if right_column_content_markup|trim %}
+          <div {{ bem("column", place_contact__column__modifiers|default([]), place_contact__base_class) }}>
+            {% block right_column %}
+              {{ right_column_content_markup }}
+            {% endblock %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if additional_content_markup|trim %}
+      {% if additional_content_label %}
+        {% set place_contact__additional_content__modifiers = [ "with-label" ] %}
+      {% endif %}
+
+      <div {{ bem("additional-content", place_contact__additional_content__modifiers|default([]), place_contact__base_class) }}>
+        {% if additional_content_label %}
+          <div {{ bem("additional-content-label", place_contact__additional_content_label__modifiers|default([]), place_contact__base_class) }}>
+            {{ additional_content_label }}
+          </div>
+        {% endif %}
+
+        {{ additional_content_markup }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if place_contact__map %}
+    {% include "@organisms/accordion/horizontal-accordion/horizontal-accordion.twig" with {
+      "available_tabs": place_contact__map,
+      "horizontal_accordion__paragraph_id": place_contact__paragraph_id,
+    } %}
+  {% endif %}
+</div>

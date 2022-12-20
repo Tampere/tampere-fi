@@ -1,0 +1,26 @@
+uuid: 17dbca12-f613-44d4-997c-4c2ea8e8cdce
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.footer_information
+    - field.storage.config_pages.field_second_text_column
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - footer_text
+id: config_pages.footer_information.field_second_text_column
+field_name: field_second_text_column
+entity_type: config_pages
+bundle: footer_information
+label: 'Toinen tekstisarake'
+description: 'Kentän sisältö näytetään alatunnisteen toisessa sarakkeessa isoilla näytöillä.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

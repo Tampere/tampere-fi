@@ -1,0 +1,38 @@
+uuid: fa2f890f-535b-44bf-a3fc-2f3f8bfe2064
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.quickchannel_embed
+    - field.field.embederator.quickchannel_embed.field_quickchannel_title
+  module:
+    - ds
+    - embederator
+id: embederator.quickchannel_embed.default
+targetEntityType: embederator
+bundle: quickchannel_embed
+mode: default
+content:
+  embed_id:
+    type: embederator_default
+    label: hidden
+    settings:
+      append_unique_id: false
+      nullify_cache: false
+      loadstyle: ''
+      initial_height: '500'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  field_quickchannel_title: true
+  label: true
+  search_api_excerpt: true
+  user_id: true

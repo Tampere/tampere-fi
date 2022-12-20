@@ -1,0 +1,175 @@
+uuid: 327e3c4f-c59e-471f-99a0-df99dfbbf285
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_images
+    - paragraphs.paragraphs_type.image_gallery
+    - paragraphs.paragraphs_type.image_gallery_item
+  module:
+    - entity_reference_revisions
+id: paragraph.image_gallery.field_images
+field_name: field_images
+entity_type: paragraph
+bundle: image_gallery
+label: Kuvat
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      image_gallery_item: image_gallery_item
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 55
+        enabled: false
+      accordion_item:
+        weight: 57
+        enabled: false
+      accordions:
+        weight: 56
+        enabled: false
+      attachment:
+        weight: 58
+        enabled: false
+      balanced_content_liftup:
+        weight: 59
+        enabled: false
+      city_construction_project_card:
+        weight: 60
+        enabled: false
+      city_construction_project_cards:
+        weight: 61
+        enabled: false
+      colorful_content_liftup:
+        weight: 62
+        enabled: false
+      contact_information_liftups:
+        weight: 63
+        enabled: false
+      content_liftup:
+        weight: 64
+        enabled: false
+      content_liftup_with_image:
+        weight: 65
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 66
+        enabled: false
+      event_and_hobby_listing:
+        weight: 67
+        enabled: false
+      external_link:
+        weight: 68
+        enabled: false
+      external_link_with_link_text:
+        weight: 69
+        enabled: false
+      grouped_content_liftup:
+        weight: 75
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 76
+        enabled: false
+      highlighted_link_list:
+        weight: 77
+        enabled: false
+      icon_and_text_link:
+        weight: 78
+        enabled: false
+      image_gallery:
+        weight: 79
+        enabled: false
+      image_gallery_item:
+        weight: 80
+        enabled: true
+      infograph:
+        weight: 81
+        enabled: false
+      infographs:
+        weight: 82
+        enabled: false
+      internal_link:
+        weight: 83
+        enabled: false
+      internal_link_with_link_text:
+        weight: 84
+        enabled: false
+      link_list:
+        weight: 85
+        enabled: false
+      list_of_attachments:
+        weight: 86
+        enabled: false
+      metadata_attachment_list:
+        weight: 87
+        enabled: false
+      mosaic_liftup:
+        weight: 88
+        enabled: false
+      notice:
+        weight: 89
+        enabled: false
+      person_liftup:
+        weight: 90
+        enabled: false
+      person_liftups:
+        weight: 91
+        enabled: false
+      picture_mosaic:
+        weight: 92
+        enabled: false
+      place_liftup:
+        weight: 93
+        enabled: false
+      place_of_business_liftup:
+        weight: 94
+        enabled: false
+      project_and_organization_cards:
+        weight: 95
+        enabled: false
+      project_or_organization_card:
+        weight: 96
+        enabled: false
+      rss_feed:
+        weight: 97
+        enabled: false
+      service_highlight:
+        weight: 98
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 99
+        enabled: false
+      social_media_feed_embed:
+        weight: 100
+        enabled: false
+      social_media_link:
+        weight: 101
+        enabled: false
+      table:
+        weight: 102
+        enabled: false
+      text:
+        weight: 103
+        enabled: false
+      two_column_liftup:
+        weight: 104
+        enabled: false
+      video_embed:
+        weight: 105
+        enabled: false
+      webform:
+        weight: 106
+        enabled: false
+      zoning_project_card:
+        weight: 107
+        enabled: false
+      zoning_project_cards:
+        weight: 108
+        enabled: false
+field_type: entity_reference_revisions

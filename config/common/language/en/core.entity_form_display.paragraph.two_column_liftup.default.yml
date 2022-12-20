@@ -1,0 +1,9 @@
+content:
+  field_left_column:
+    settings:
+      title: 'Content liftup'
+      title_plural: 'Content liftups'
+  field_right_column:
+    settings:
+      title: 'Content liftup'
+      title_plural: 'Content liftups'

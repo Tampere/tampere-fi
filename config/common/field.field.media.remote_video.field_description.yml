@@ -1,0 +1,26 @@
+uuid: a00c6d5a-6d11-4a29-8864-f85c6b866138
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_description
+    - media.type.remote_video
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - plain_html
+id: media.remote_video.field_description
+field_name: field_description
+entity_type: media
+bundle: remote_video
+label: Description
+description: 'A short description, or captions for the video.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

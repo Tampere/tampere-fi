@@ -1,0 +1,15 @@
+uuid: d33b3a6c-3ffb-4f82-af3c-b90ace504b34
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: list_of_attachments
+label: Liitelista
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

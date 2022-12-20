@@ -1,0 +1,92 @@
+card_grid__modifiers:
+  - '3-col-expand'
+cards:
+  - card__heading: 'Lorem ipsum dolor sit amet'
+    card__link__url: '#'
+    card__image__src:
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-1'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-2'
+  - card__heading: 'Etiam scelerisque eros'
+    card__link__url: '#'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-3'
+  - card__heading: 'Lorem ipsum dolor sit amet'
+    card__link__url: '#'
+    card__image__src:
+    card__body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-1'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-2'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-3'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-1'
+  - card__heading: 'Lorem ipsum dolor sit amet'
+    card__link__url: '#'
+    card__image__src:
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-2'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-3'
+  - card__heading: 'Lorem ipsum dolor sit amet'
+    card__link__url: '#'
+    card__image__src:
+    card__body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-1'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-2'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-3'
+  - card__heading: 'Lorem ipsum dolor sit amet'
+    card__link__url: '#'
+    card__image__src:
+    card__body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-1'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-2'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__modifiers:
+      - 'colorful'
+      - 'colorful-3'

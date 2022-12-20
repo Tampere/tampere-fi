@@ -1,0 +1,5 @@
+card__modifiers:
+  - colorful
+  - colorful-2
+card__image__src:
+card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.'

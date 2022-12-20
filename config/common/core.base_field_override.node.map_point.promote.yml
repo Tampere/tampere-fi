@@ -1,0 +1,22 @@
+uuid: 265b04e8-1390-42f6-b181-132e93f8f4a2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.map_point
+id: node.map_point.promote
+field_name: promote
+entity_type: node
+bundle: map_point
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

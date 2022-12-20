@@ -1,0 +1,18 @@
+uuid: 5e7e3680-8e66-4b46-92d8-5a93e1800468
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group.minisite
+target_entity_type_id: group
+target_bundle: minisite
+default_langcode: current_interface
+language_alterable: true

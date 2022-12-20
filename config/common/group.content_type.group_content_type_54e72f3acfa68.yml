@@ -1,0 +1,19 @@
+uuid: dbb686a2-2bf5-4c84-8c1f-2658ca6eb292
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - node.type.basic_content_page
+  module:
+    - gnode
+    - node
+id: group_content_type_54e72f3acfa68
+label: 'Alasivusto: Group node (Basic content page)'
+description: 'Adds <em class="placeholder">Basic content page</em> content to groups both publicly and privately.'
+group_type: subsite
+content_plugin: 'group_node:basic_content_page'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

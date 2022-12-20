@@ -1,0 +1,29 @@
+uuid: fd25bdd0-03e0-41c6-bd9f-f7278e6d18ca
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_subsite_life_situation
+    - group.type.life_situation
+    - group.type.subsite
+id: group.subsite.field_subsite_life_situation
+field_name: field_subsite_life_situation
+entity_type: group
+bundle: subsite
+label: 'Alasivuston elämäntilanne'
+description: 'Tällä kentällä merkitset alasivuston <em>alisteiseksi</em> tietylle elämäntilanteelle. Valinta vaikuttaa alasivuston sisällön URL-polkuihin ja murupolkuun. Voit merkitä alasivuston alisteiseksi <em>joko</em> teemalle, elämäntilanteelle <em>tai</em> aihepiirille.  Jos merkitset usemman alistussuhteen, ei murupolkua tai sisällön polkua käsitellä näiden suhteen mitenkään.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      life_situation: life_situation
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

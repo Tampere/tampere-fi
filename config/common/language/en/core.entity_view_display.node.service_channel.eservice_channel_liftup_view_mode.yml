@@ -1,0 +1,17 @@
+content:
+  field_links:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            pattern_settings:
+              link_with_icon:
+                link_text: 'Go to the e-service'
+  field_service_hours_daily:
+    settings:
+      closed_format: Closed
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: 'Service hours'

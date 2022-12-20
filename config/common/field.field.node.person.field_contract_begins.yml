@@ -1,0 +1,21 @@
+uuid: 66feadb2-ac29-4302-b780-33cb6072f60a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contract_begins
+    - node.type.person
+  module:
+    - datetime
+id: node.person.field_contract_begins
+field_name: field_contract_begins
+entity_type: node
+bundle: person
+label: 'Työsopimus voimassa alkaen'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,16 @@
+uuid: d21384bb-a6cf-4a2c-a6a5-9f56a2876eb6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: hDLn9YTUEsl60FRQ-VRuZpd0ULZkERz39AsYqXyI_HA
+id: content_default
+label: 'Content Default'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria: {  }
+selection_logic: and
+weight: 7
+relationships: {  }

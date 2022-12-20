@@ -1,0 +1,8 @@
+name: 'TRE Preprocess'
+type: module
+description: 'Custom module meant for organizing preprocessing functions.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - preprocess:preprocess
+  - tre_preprocess_utility_functions:tre_preprocess_utility_functions

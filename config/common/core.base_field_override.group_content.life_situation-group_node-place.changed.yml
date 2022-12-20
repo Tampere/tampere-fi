@@ -1,0 +1,18 @@
+uuid: dd9416f5-5165-45ad-b7fb-f1824be42bd3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_node-place
+id: group_content.life_situation-group_node-place.changed
+field_name: changed
+entity_type: group_content
+bundle: life_situation-group_node-place
+label: 'Changed on'
+description: 'The time that the group content was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

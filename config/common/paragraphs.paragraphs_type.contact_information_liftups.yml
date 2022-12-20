@@ -1,0 +1,15 @@
+uuid: 48b4ce19-5533-483a-98d5-99d550d5eec4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: contact_information_liftups
+label: Yhteystietonostot
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

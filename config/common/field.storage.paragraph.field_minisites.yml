@@ -1,0 +1,20 @@
+uuid: 0a6c06d6-6bb5-4ff8-9632-7f27f0a4a547
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_minisites
+field_name: field_minisites
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

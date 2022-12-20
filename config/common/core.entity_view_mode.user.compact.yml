@@ -1,0 +1,12 @@
+uuid: df18923e-17cd-4d26-83f9-250e2710c178
+langcode: fi
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: 71CSAr_LNPcgu6D6jI4INl1KATkahmeyUFBETAWya8g
+id: user.compact
+label: Kompakti
+targetEntityType: user
+cache: true

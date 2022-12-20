@@ -1,0 +1,54 @@
+uuid: a31f3628-6a19-43a4-a462-c607d12631dd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.zoning_project_card.field_display_map
+    - field.field.paragraph.zoning_project_card.field_display_project_descr
+    - field.field.paragraph.zoning_project_card.field_link_to_place_content
+    - field.field.paragraph.zoning_project_card.field_zoning_information
+    - paragraphs.paragraphs_type.zoning_project_card
+id: paragraph.zoning_project_card.default
+targetEntityType: paragraph
+bundle: zoning_project_card
+mode: default
+content:
+  field_display_map:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_project_descr:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_link_to_place_content:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_zoning_information:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,222 @@
+uuid: 46963a91-c034-43f8-a6e1-cb11ab328589
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.news_media_delivery
+    - field.field.node.news_item.field_archive_search_content
+    - field.field.node.news_item.field_author
+    - field.field.node.news_item.field_body
+    - field.field.node.news_item.field_contact_info_paragraph
+    - field.field.node.news_item.field_cross_site_publications
+    - field.field.node.news_item.field_date_of_publication
+    - field.field.node.news_item.field_geographical_areas
+    - field.field.node.news_item.field_help_text
+    - field.field.node.news_item.field_keywords
+    - field.field.node.news_item.field_lead
+    - field.field.node.news_item.field_life_situations
+    - field.field.node.news_item.field_link_list
+    - field.field.node.news_item.field_mailing_list_information
+    - field.field.node.news_item.field_main_image
+    - field.field.node.news_item.field_markup
+    - field.field.node.news_item.field_media_caption
+    - field.field.node.news_item.field_minisites
+    - field.field.node.news_item.field_paragraphs
+    - field.field.node.news_item.field_photographer
+    - field.field.node.news_item.field_search_keywords
+    - field.field.node.news_item.field_send_to_media
+    - field.field.node.news_item.field_social_media_share
+    - field.field.node.news_item.field_topic
+    - field.field.node.news_item.field_topics
+    - node.type.news_item
+  module:
+    - ds
+    - entity_reference_revisions
+    - field_delimiter
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - published_at
+        - 'dynamic_twig_field:node-title_h1'
+        - field_lead
+        - field_body
+        - field_paragraphs
+        - field_link_list
+        - field_contact_info_paragraph
+        - 'dynamic_twig_field:node-author_and_photographer'
+    fields:
+      'dynamic_twig_field:node-author_and_photographer':
+        plugin_id: 'dynamic_twig_field:node-author_and_photographer'
+        weight: 7
+        label: hidden
+        formatter: default
+      'dynamic_twig_field:node-title_h1':
+        plugin_id: 'dynamic_twig_field:node-title_h1'
+        weight: 1
+        label: hidden
+        formatter: default
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.news_item.news_media_delivery
+targetEntityType: node
+bundle: news_item
+mode: news_media_delivery
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: Pääsisältö
+            lb-col: true
+            classes: {  }
+    weight: 3
+    region: content
+  field_contact_info_paragraph:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: news_media_delivery
+      link: ''
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: expert
+          settings:
+            lb: Lisätietoja
+            lbw: true
+            lbw-el: h2
+            lbw-cl: h2
+            lbw-at: ''
+            lb-col: true
+            ow: false
+            ow-el: ''
+            ow-cl: ''
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-el: ''
+            fis-cl: ''
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 6
+    region: content
+  field_lead:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 2
+    region: content
+  field_link_list:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: news_media_delivery
+      link: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: news_media_delivery
+      link: ''
+    third_party_settings:
+      field_delimiter:
+        delimiter: '<hr>'
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: Lisäsisältö
+            lb-col: true
+            classes: {  }
+    weight: 4
+    region: content
+  published_at:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: custom
+      custom_date_format: 'j.n.Y H.i'
+      timezone: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  content_moderation_control: true
+  field_archive_search_content: true
+  field_author: true
+  field_cross_site_publications: true
+  field_date_of_publication: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_mailing_list_information: true
+  field_main_image: true
+  field_markup: true
+  field_media_caption: true
+  field_minisites: true
+  field_photographer: true
+  field_search_keywords: true
+  field_send_to_media: true
+  field_social_media_share: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

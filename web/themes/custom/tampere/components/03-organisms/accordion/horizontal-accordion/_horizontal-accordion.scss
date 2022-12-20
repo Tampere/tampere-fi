@@ -1,0 +1,146 @@
+.horizontal-accordion {
+  $base_class: &;
+
+  &__item-container {
+    border-top: $border-contact;
+
+    @include medium {
+      display: flex;
+    }
+  }
+
+  &__button {
+    align-items: center;
+    background-color: clr(accent-tertiary);
+    border: 0;
+    color: clr(primary-text-on-tertiary, #{clr(text)});
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: $space-m $space-xl;
+    text-align: left;
+    text-decoration: none;
+
+    @include medium-down {
+      width: 100%;
+    }
+
+    @include medium {
+      flex-grow: 1;
+    }
+
+    + #{$base_class}__button {
+      border-top: 2px solid clr(background);
+
+      @include medium {
+        border-top: 0;
+        border-left: 2px solid clr(background);
+      }
+    }
+
+    &:hover {
+      background-color: clr(accent-tertiary-transparent);
+    }
+
+    &.is-active {
+      background-color: clr(background);
+
+      #{$base_class}__icon {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__title {
+    font-size: $font-16;
+    margin: 0;
+
+    @include medium {
+      font-size: $font-20;
+    }
+  }
+
+  &__icon {
+    pointer-events: none;
+    transform: rotate(180deg);
+    height: $icon-small;
+    width: $icon-small;
+  }
+
+  &__content {
+    display: none;
+    margin: $space-l;
+
+    &.active {
+      display: block;
+    }
+
+    @include medium {
+      margin: $space-xl;
+      
+      &--two-columns {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: $space-s;
+        row-gap: $space-s;
+
+        &.active {
+          display: grid;
+        }
+      }
+    }
+
+    &--no-margin {
+      margin: 0;
+    }
+  }
+
+  &--involvement {
+    border: 0;
+
+    #{$base_class}__item-container {
+      border-top: 0;
+    }
+
+    #{$base_class}__button {
+      background-color: clr(background);
+      border: $border-thick-involvement;
+
+      &:hover {
+        background-color: clr(involvement);
+      }
+    }
+
+    #{$base_class}__content {
+      border: $border-thick-involvement;
+      border-top: 0;
+      background-color: white;
+    }
+  }
+
+  &--general-contact {
+    #{$base_class}__item-container {
+      border-top: 0;
+    }
+
+    #{$base_class}__button {
+      background-color: clr(background);
+      border: $border-thick-general-contact;
+
+      &:hover {
+        background-color: clr(background-transparent);
+      }
+
+      &.is-active {
+        border-top: $border-thick-inverse;
+        border-bottom: 0;
+        background-color: clr(secondary-accent);
+      }
+    }
+
+
+    #{$base_class}__content {
+      border: $border-thick-general-contact;
+      border-top: 0;
+    }
+  }
+}

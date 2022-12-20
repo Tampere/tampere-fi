@@ -1,0 +1,19 @@
+uuid: 1bac6dd3-3c8c-4384-9cc6-6711bc6c9f11
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - node.type.place
+  module:
+    - gnode
+    - node
+id: topic-group_node-place
+label: 'Aihepiiri: Group node (Paikka)'
+description: 'Adds <em class="placeholder">Paikka</em> content to groups both publicly and privately.'
+group_type: topic
+content_plugin: 'group_node:place'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

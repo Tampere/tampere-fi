@@ -1,0 +1,292 @@
+uuid: 4534d94c-87b7-42ce-abd9-a74b1ed75e89
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.news_item
+    - paragraphs.paragraphs_type.city_construction_project_cards
+    - paragraphs.paragraphs_type.contact_information_liftups
+    - paragraphs.paragraphs_type.embederator_embed
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.infographs
+    - paragraphs.paragraphs_type.involvement_opportunity_cards
+    - paragraphs.paragraphs_type.list_of_attachments
+    - paragraphs.paragraphs_type.map_embed
+    - paragraphs.paragraphs_type.material_download_list
+    - paragraphs.paragraphs_type.metadata_attachment_list
+    - paragraphs.paragraphs_type.place_liftup
+    - paragraphs.paragraphs_type.process_accordions
+    - paragraphs.paragraphs_type.project_and_organization_cards
+    - paragraphs.paragraphs_type.separator
+    - paragraphs.paragraphs_type.service_highlight
+    - paragraphs.paragraphs_type.table
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.video_embed
+    - paragraphs.paragraphs_type.zoning_project_cards
+  module:
+    - entity_reference_revisions
+id: node.news_item.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: news_item
+label: Paragraafit
+description: 'Lisää tarvittavat paragraafit'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      text: text
+      service_highlight: service_highlight
+      separator: separator
+      infographs: infographs
+      zoning_project_cards: zoning_project_cards
+      map_embed: map_embed
+      city_construction_project_cards: city_construction_project_cards
+      image: image
+      list_of_attachments: list_of_attachments
+      material_download_list: material_download_list
+      metadata_attachment_list: metadata_attachment_list
+      involvement_opportunity_cards: involvement_opportunity_cards
+      place_liftup: place_liftup
+      project_and_organization_cards: project_and_organization_cards
+      table: table
+      embederator_embed: embederator_embed
+      process_accordions: process_accordions
+      video_embed: video_embed
+      contact_information_liftups: contact_information_liftups
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 36
+        enabled: false
+      accordion_text_content:
+        weight: 29
+        enabled: false
+      accordions:
+        weight: 12
+        enabled: false
+      anchor_link:
+        weight: 31
+        enabled: false
+      anchor_list:
+        weight: 33
+        enabled: false
+      attachment:
+        weight: 38
+        enabled: false
+      automatic_anchor_list:
+        weight: 30
+        enabled: false
+      back_to_top_link:
+        weight: 34
+        enabled: false
+      balanced_content_liftup:
+        weight: 39
+        enabled: false
+      city_construction_project_card:
+        weight: 61
+        enabled: false
+      city_construction_project_cards:
+        weight: 16
+        enabled: true
+      colorful_content_liftup:
+        weight: 40
+        enabled: false
+      contact_information_liftups:
+        weight: 28
+        enabled: true
+      contact_information_list:
+        weight: 68
+        enabled: false
+      content_liftup:
+        weight: 42
+        enabled: false
+      current_liftup:
+        weight: 73
+        enabled: false
+      current_listing:
+        weight: 71
+        enabled: false
+      downloadable_material:
+        weight: 32
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 60
+        enabled: false
+      embederator_embed:
+        weight: 25
+        enabled: true
+      event_and_hobby_listing:
+        weight: 43
+        enabled: false
+      external_link:
+        weight: 44
+        enabled: false
+      external_link_with_link_text:
+        weight: 63
+        enabled: false
+      feedback_section:
+        weight: 76
+        enabled: false
+      generic_listing:
+        weight: 35
+        enabled: false
+      grouped_content_liftup:
+        weight: 45
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 47
+        enabled: false
+      highlighted_link_list:
+        weight: 65
+        enabled: false
+      highlighted_links_with_feedback:
+        weight: 80
+        enabled: false
+      icon_and_text_link:
+        weight: 66
+        enabled: false
+      image:
+        weight: 17
+        enabled: true
+      image_gallery:
+        weight: 77
+        enabled: false
+      image_gallery_item:
+        weight: 79
+        enabled: false
+      infograph:
+        weight: 67
+        enabled: false
+      infographs:
+        weight: 13
+        enabled: true
+      internal_link:
+        weight: 48
+        enabled: false
+      internal_link_with_link_text:
+        weight: 70
+        enabled: false
+      involvement_opportunity_card:
+        weight: 41
+        enabled: false
+      involvement_opportunity_cards:
+        weight: 21
+        enabled: true
+      link_list:
+        weight: 72
+        enabled: false
+      list_of_attachments:
+        weight: 18
+        enabled: true
+      login_link:
+        weight: 46
+        enabled: false
+      login_link_with_text:
+        weight: 83
+        enabled: false
+      mailing_list_information:
+        weight: 84
+        enabled: false
+      map_embed:
+        weight: 15
+        enabled: true
+      material_download_list:
+        weight: 19
+        enabled: true
+      metadata_attachment_list:
+        weight: 20
+        enabled: true
+      mosaic_liftup:
+        weight: 74
+        enabled: false
+      notice:
+        weight: 49
+        enabled: false
+      person_liftup:
+        weight: 50
+        enabled: false
+      person_liftups:
+        weight: 51
+        enabled: false
+      persons_contact_information_list:
+        weight: 59
+        enabled: false
+      picture_mosaic:
+        weight: 75
+        enabled: false
+      place_liftup:
+        weight: 22
+        enabled: true
+      place_of_business_liftup:
+        weight: 52
+        enabled: false
+      positioned_image:
+        weight: 56
+        enabled: false
+      process_accordion_item:
+        weight: 57
+        enabled: false
+      process_accordions:
+        weight: 26
+        enabled: true
+      project_and_organization_cards:
+        weight: 23
+        enabled: true
+      project_or_organization_card:
+        weight: 53
+        enabled: false
+      ptv_service_liftup:
+        weight: 62
+        enabled: false
+      rss_feed:
+        weight: 54
+        enabled: false
+      separator:
+        weight: 11
+        enabled: true
+      service_highlight:
+        weight: 10
+        enabled: true
+      single_colorful_content_liftup:
+        weight: 78
+        enabled: false
+      social_media_feed_embed:
+        weight: 55
+        enabled: false
+      social_media_link:
+        weight: 58
+        enabled: false
+      table:
+        weight: 24
+        enabled: true
+      text:
+        weight: 9
+        enabled: true
+      text_and_images:
+        weight: 64
+        enabled: false
+      text_with_bgcolor:
+        weight: 69
+        enabled: false
+      two_column_liftup:
+        weight: 81
+        enabled: false
+      video_embed:
+        weight: 27
+        enabled: true
+      webform:
+        weight: 37
+        enabled: false
+      zoning_project_card:
+        weight: 82
+        enabled: false
+      zoning_project_cards:
+        weight: 14
+        enabled: true
+field_type: entity_reference_revisions

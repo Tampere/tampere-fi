@@ -1,0 +1,27 @@
+uuid: 73e9666f-fa32-4b80-9fa5-7b2f8d2d82dd
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_liftup_display
+field_name: field_liftup_display
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: images
+      label: 'Kuvalliset nostot'
+    -
+      value: no_images
+      label: 'Nostot ilman kuvia'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

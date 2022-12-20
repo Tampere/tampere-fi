@@ -1,0 +1,15 @@
+uuid: e13bbc81-918f-4ceb-b0f7-e1c9f8bb285e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: course_listing
+label: 'Kurssilistaus (työväenopisto)'
+icon_uuid: null
+icon_default: null
+description: '<i>Tampereen seudun työväenopiston</i> kurssit Hellewi-järjestelmän rajapinnasta.'
+behavior_plugins: {  }

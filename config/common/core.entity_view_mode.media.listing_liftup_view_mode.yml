@@ -1,0 +1,10 @@
+uuid: 17abc307-d5c1-4f12-b918-c2d06383dc8d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.listing_liftup_view_mode
+label: Listausnosto
+targetEntityType: media
+cache: true

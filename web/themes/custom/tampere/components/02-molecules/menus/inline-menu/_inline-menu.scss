@@ -1,0 +1,210 @@
+$inline-menu-mobile-font-size: $font-14;
+$inline-menu-desktop-font-size: $font-16;
+$inline-menu-mobile-main-font-size: $font-18;
+$inline-menu-desktop-main-font-size: $font-22;
+$inline-menu-main-font-size--small: $font-18;
+$inline-menu-item-margin-bottom: $space-s;
+$inline-menu-item-margin-right: $space-m;
+
+@mixin inline-default {
+  @include list-reset;
+
+  font-family: $font-heading;
+  font-size: $inline-menu-mobile-font-size;
+
+  @include large {
+    font-size: $inline-menu-desktop-font-size;
+  }
+
+  &__item {
+    margin: 0 $inline-menu-item-margin-right $inline-menu-item-margin-bottom 0;
+    display: inline;
+  
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {    
+    @include word-wrap;
+
+    text-decoration: none;
+  }
+}
+
+.inline-menu {
+  $base_class: &;
+  
+  @include inline-default;
+
+  &--footer {
+    font-family: $font-body;
+
+    #{$base_class}__item {
+      margin-right: $space-xs;
+    }
+
+    #{$base-class}__item::before {
+      content: '\2022';
+      color: clr(text-inverse);
+      margin-right: $space-xs;
+    }
+
+    #{$base-class}__link {
+      @include link(clr(text-inverse), clr(text-inverse));
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+  }
+
+  &--main-secondary {
+    #{$base-class}__link {
+      @include link(clr(text-inverse), clr(text-inverse));
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      @include large {
+        @include link(clr(text));
+      }
+
+      &.is-active {
+        @include large {
+          font-weight: $font-weight-semi-bold;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &--main {
+    font-size: $inline-menu-mobile-main-font-size;
+
+    @include large-down {
+      background-color: clr(primary);
+      padding: $space-l;
+    }
+
+    @include large {
+      font-size: $inline-menu-desktop-main-font-size;
+    }
+
+    #{$base-class}__item {
+      display: block;
+
+      @include large {
+        display: inline;
+      }
+
+      + #{$base-class}__item {
+        margin-top: $space-m;
+      }
+    }
+
+    #{$base-class}__link {
+      display: block;
+
+      @include large {
+        @include link(clr(text));
+
+        display: inline-block;
+
+        &:hover,
+        &:focus {
+          &::after {
+            background-color: clr(secondary);
+          }
+        }
+      }
+
+      &.is-active {
+        @include large {
+          border-bottom: $border-thick-secondary;
+        }
+      }
+    }
+  }
+
+  &--main,
+  &--main-inverted {
+    font-weight: $font-weight-semi-bold;
+
+    #{$base-class}__item {
+      margin-bottom: 0;
+    }
+
+    #{$base-class}__link {
+      @include link(clr(text-inverse), clr(text-inverse));
+
+      position: relative;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+
+      @include large {
+        @include link(clr(text));
+
+        display: inline-block;
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+          }
+        }
+      }
+
+      &.is-active {
+        @include large {
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+  }
+
+  &--main-inverted {
+    font-size: $inline-menu-desktop-main-font-size;
+    font-weight: $font-weight-semi-bold;
+
+    #{$base-class}__item {
+      display: inline;
+      margin-bottom: 0;
+
+      + #{$base-class}__item {
+        margin-top: $space-m;
+      }
+    }
+
+    #{$base-class}__link {
+      @include link(clr(text-inverse), clr(text-inverse));
+
+      display: inline-block;
+      position: relative;
+
+      &:hover,
+      &:focus {
+        &::after {
+          background-color: clr(background);
+        }
+      }
+
+      &.is-active {
+        border-bottom: $border-thick-inverse;
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+uuid: 5b8b2fc0-a5e3-487b-b7c0-44b3b5b8840b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-news_item
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_content.minisite-group_node-news_item
+target_entity_type_id: group_content
+target_bundle: minisite-group_node-news_item
+default_langcode: site_default
+language_alterable: false

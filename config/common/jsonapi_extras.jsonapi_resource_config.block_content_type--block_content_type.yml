@@ -1,0 +1,71 @@
+uuid: c712b0f1-e3b7-49d5-90cb-4e6a49674286
+langcode: fi
+status: true
+dependencies:
+  module:
+    - block_content
+id: block_content_type--block_content_type
+disabled: true
+path: block_content_type/block_content_type
+resourceType: block_content_type--block_content_type
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  revision:
+    disabled: false
+    fieldName: revision
+    publicName: revision
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''

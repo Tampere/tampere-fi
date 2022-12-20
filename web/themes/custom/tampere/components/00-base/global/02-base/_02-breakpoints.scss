@@ -1,0 +1,205 @@
+/**
+ * Breakpoint Configuration
+ * @see https://github.com/Team-Sass/breakpoint/wiki
+ *
+ */
+
+/* Global Breakpoints */
+
+/**
+ * Avoid using in favor of atomic, content-specific, breakpoints.
+ * These should be used for generic code, like layouts and typography, only.
+ */
+$xs: 20rem;
+$xs-down: 19.99rem;
+$small: 30rem;
+$small-down: 29.99rem;
+$medium: 45rem;
+$medium-down: 44.99rem;
+$medium-plus-down: 50.99rem;
+$large: 61.56rem;
+$large-down: 61.559rem;
+$large-plus: 76rem;
+$large-plus-down: 75.99rem;
+$xl: 90rem;
+$xl-down: 89.99rem;
+
+/**
+ * The max-width breakpoint is used when the design should be applied at whatever the
+ * largest breakpoint is regardless of actual pixel value. e.g. removing outer margin on body wrapper
+ */
+$max-width: $xl;
+$main-menu-width: 83rem;
+$main-menu-width-down: 82.99rem;
+$picture-mosaic-breakpoint: 70rem;
+$picture-mosaic-breakpoint-down: 69.99rem;
+
+/**
+ * Mixin - xs Breakpoint
+ * Allows easier @include xs {} syntax
+ */
+@mixin xs {
+  @include breakpoint($xs) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - small Breakpoint
+ * Allows easier @include small {} syntax
+ */
+@mixin small {
+  @include breakpoint($small) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - medium Breakpoint
+ * Allows easier @include medium {} syntax
+ */
+@mixin medium {
+  @include breakpoint($medium) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - large Breakpoint
+ * Allows easier @include large {} syntax
+ */
+@mixin large {
+  @include breakpoint($large) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - large plus Breakpoint
+ * Allows easier @include large-plus {} syntax
+ */
+ @mixin large-plus {
+  @include breakpoint($large-plus) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - xl Breakpoint
+ * Allows easier @include xl {} syntax
+ */
+@mixin xl {
+  @include breakpoint($xl) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - max-width Breakpoint
+ * Allows easier @include max-width {} syntax
+ */
+@mixin max-width {
+  @include breakpoint($max-width) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - main-menu-width Breakpoint
+ * Allows easier @include main-menu-width {} syntax
+ */
+ @mixin main-menu-breakpoint {
+  @include breakpoint($main-menu-width) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - small down Breakpoint
+ * Allows easier @include small-down {} syntax
+ */
+@mixin small-down {
+  @include breakpoint(0 $small-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - medium down Breakpoint
+ * Allows easier @include medium-down {} syntax
+ */
+@mixin medium-down {
+  @include breakpoint(0 $medium-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - medium plus down Breakpoint
+ * Allows easier @include medium-plus-down {} syntax
+ */
+ @mixin medium-plus-down {
+  @include breakpoint(0 $medium-plus-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - large down Breakpoint
+ * Allows easier @include large-down {} syntax
+ */
+@mixin large-down {
+  @include breakpoint(0 $large-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - large plus down Breakpoint
+ * Allows easier @include large-plus-down {} syntax
+ */
+ @mixin large-plus-down {
+  @include breakpoint(0 $large-plus-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - xl down Breakpoint
+ * Allows easier @include xl-down {} syntax
+ */
+@mixin xl-down {
+  @include breakpoint(0 $xl-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - main-menu-width-down Breakpoint
+ * Allows easier @include main-menu-width-down {} syntax
+ */
+ @mixin main-menu-breakpoint-down {
+  @include breakpoint(0 $main-menu-width-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - Picture Mosaic Breakpoint
+ * Allows easier @include picture-mosaic-breakpoint {} syntax
+ */
+ @mixin picture-mosaic-breakpoint {
+  @include breakpoint($picture-mosaic-breakpoint) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - Picture Mosaic Down Breakpoint
+ * Allows easier @include picture-mosaic-breakpoint-down {} syntax
+ */
+ @mixin picture-mosaic-breakpoint-down {
+  @include breakpoint(0 $picture-mosaic-breakpoint-down) {
+    @content;
+  }
+}

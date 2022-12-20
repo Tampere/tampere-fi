@@ -1,0 +1,33 @@
+uuid: 01af5ce0-42bb-4808-8e06-3d268c33791f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_service_channel_type
+field_name: field_service_channel_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: EChannel
+      label: Verkkoasiointikanava
+    -
+      value: WebPage
+      label: Verkkosivuasiointikanava
+    -
+      value: Phone
+      label: Puhelinasiointikanava
+    -
+      value: PrintableForm
+      label: 'Tulostettava lomake'
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

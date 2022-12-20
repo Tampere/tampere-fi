@@ -1,0 +1,18 @@
+uuid: e8adfe32-c31d-4421-ba5e-1d384b4ba070
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.organization
+id: node.organization.title
+field_name: title
+entity_type: node
+bundle: organization
+label: Nimi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

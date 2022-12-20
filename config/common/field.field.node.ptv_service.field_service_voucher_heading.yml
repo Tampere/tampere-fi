@@ -1,0 +1,21 @@
+uuid: 3fab9788-eb8a-4ab8-9e2e-77394a31f376
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_voucher_heading
+    - node.type.ptv_service
+  module:
+    - markup_field
+id: node.ptv_service.field_service_voucher_heading
+field_name: field_service_voucher_heading
+entity_type: node
+bundle: ptv_service
+label: Palveluseteliotsikko
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: markup_field

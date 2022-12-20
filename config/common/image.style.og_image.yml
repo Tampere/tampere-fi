@@ -1,0 +1,17 @@
+uuid: 635a9044-3f0a-4d29-b4bc-9aa9f8871218
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: og_image
+label: 'OG kuva'
+effects:
+  18e8beb4-f0f5-4905-9ba8-668ef826dbf8:
+    uuid: 18e8beb4-f0f5-4905-9ba8-668ef826dbf8
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1250
+      height: 656
+      crop_type: focal_point

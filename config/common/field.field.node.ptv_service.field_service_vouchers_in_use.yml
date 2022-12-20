@@ -1,0 +1,23 @@
+uuid: e5ab9cf8-5595-4267-ab2c-c8a4f35d4135
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_vouchers_in_use
+    - node.type.ptv_service
+id: node.ptv_service.field_service_vouchers_in_use
+field_name: field_service_vouchers_in_use
+entity_type: node
+bundle: ptv_service
+label: 'Palvelusetelit käytössä'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Palvelussa on käytössä palveluseteli.'
+  off_label: 'Palvelussa ei ole käytössä palveluseteliä.'
+field_type: boolean

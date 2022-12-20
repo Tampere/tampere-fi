@@ -1,0 +1,18 @@
+settings:
+  allowed_values:
+    -
+      label: 'Palette 1'
+    -
+      label: 'Palette 2'
+    -
+      label: 'Palette 3'
+    -
+      label: 'Palette 4'
+    -
+      label: 'Palette 5'
+    -
+      label: 'Palette 6'
+    -
+      label: 'Palette 7'
+    -
+      label: 'Palette 8'

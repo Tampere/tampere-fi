@@ -1,0 +1,22 @@
+uuid: a8620959-e18d-4d07-8998-c04484bd9141
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_life_situation_icon
+    - group.type.life_situation
+  module:
+    - ex_icons
+id: group.life_situation.field_life_situation_icon
+field_name: field_life_situation_icon
+entity_type: group
+bundle: life_situation
+label: 'Elämäntilanteen ikoni'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+field_type: ex_icon

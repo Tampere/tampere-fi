@@ -1,0 +1,18 @@
+uuid: 49c8aca6-1860-4ad4-81f5-9f8c944ec9dc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.service_channel
+id: node.service_channel.title
+field_name: title
+entity_type: node
+bundle: service_channel
+label: Nimi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

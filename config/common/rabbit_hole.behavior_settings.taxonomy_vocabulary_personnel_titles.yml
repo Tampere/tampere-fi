@@ -1,0 +1,14 @@
+uuid: 55d52c4e-ff05-4fb1-8486-cb355c055712
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.personnel_titles
+id: taxonomy_vocabulary_personnel_titles
+entity_type_id: taxonomy_vocabulary
+entity_id: personnel_titles
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

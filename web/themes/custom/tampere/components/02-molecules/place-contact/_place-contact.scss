@@ -1,0 +1,107 @@
+.place-contact {
+  @include page-element-spacer;
+
+  $base-class: &;
+
+  border: $border-contact;
+  font-size: $font-14;
+
+  @include large {
+    font-size: $font-18;
+  }
+
+  &__content {
+    padding: $space-s $space-xs;
+
+    @include large {
+      padding: $space-xl;
+    }
+
+    > * + * {
+      margin-top: $space-l;
+    }
+  }
+
+  &__heading-container {
+    position: relative;
+    width: fit-content;
+  }
+
+  &__name { 
+    @include heading-medium(
+      $line-height: $contact-card-line-height,
+      $mobile-line-height: $contact-card-line-height--mobile
+    );
+  }
+
+  &__name-link {
+    @include link(clr(text), clr(text), $underline-offset: 0);
+
+    text-underline-position: under;
+    text-decoration-color: clr(accent-tertiary);
+    text-decoration-thickness: 2px;
+  }
+
+  &__icon {
+    position: absolute;
+    right: $space-l * (-1);
+    bottom: -6px;
+    height: $icon-xs;
+    width: $icon-xs;
+  }
+
+  &__main-content,
+  &__column {
+    > * + * {
+      margin-top: $space-m;
+    }
+  }
+
+  &__two-column-container {
+    @include large {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: $gutter-large;
+    }
+  }
+
+  &__additional-content-label {
+    font-weight: $font-weight-bold;
+  }
+
+  &__additional-content {
+    --field-label-font-weight: $font-weight-normal;
+
+    @include large {
+      font-size: $font-16;
+    }
+
+    > *:not(#{$base_class}__additional-content-label) {
+      display: inline;
+    }
+
+    > ::before {
+      content: ", ";
+      margin-left: -4px;
+    }
+
+    &:not(#{$base_class}--with-label) {
+      > :first-child::before {
+        content: none;
+        margin-left: 0;
+      }
+    }
+
+    &--with-label {
+      > :nth-child(2)::before {
+        content: none;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &--accordion-content-view-mode,
+  .paragraph--view-mode-accordion-content-view-mode & {
+    @include accordion-content-spacer;
+  }
+}

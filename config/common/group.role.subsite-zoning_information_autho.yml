@@ -1,0 +1,20 @@
+uuid: 21cad2ce-7023-47c5-b26a-8ca6ceb77ddf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+id: subsite-zoning_information_autho
+label: Kaavatoimittaja
+weight: 19
+internal: false
+audience: member
+group_type: subsite
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:zoning_information entity'
+  - 'delete any group_node:zoning_information entity'
+  - 'update any group_node:zoning_information entity'
+  - 'view group_node:zoning_information entity'
+  - 'view unpublished group_node:zoning_information entity'

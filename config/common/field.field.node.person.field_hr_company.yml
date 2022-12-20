@@ -1,0 +1,29 @@
+uuid: 622478da-36ca-4b3d-abb8-b79db8816956
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hr_company
+    - node.type.person
+    - taxonomy.vocabulary.personnel_companies
+id: node.person.field_hr_company
+field_name: field_hr_company
+entity_type: node
+bundle: person
+label: Yhtiö
+description: 'Käännä yhtiöt englanniksi <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_companies/overview">luokittelutermien hallinnan kautta</a>!'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      personnel_companies: personnel_companies
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

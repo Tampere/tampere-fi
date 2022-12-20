@@ -1,0 +1,10 @@
+uuid: b2a19dfc-ef50-4110-bd15-7a9633f44a67
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.highlighted_current_liftup
+label: 'Korostettu ajankohtaisnosto'
+targetEntityType: node
+cache: true

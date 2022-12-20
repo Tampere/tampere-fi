@@ -1,0 +1,22 @@
+uuid: c18da2f4-7e5b-4e51-9b27-4ce3c4fb5ecb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.promote
+field_name: promote
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

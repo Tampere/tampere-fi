@@ -1,0 +1,18 @@
+uuid: adc6ce8a-5f16-47ea-9a69-65118946b7b0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.zoning_information
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.zoning_information
+target_entity_type_id: node
+target_bundle: zoning_information
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,36 @@
+uuid: c477bb41-f729-429f-9a1b-2c53b10a14b6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.place_of_business_liftup.field_link_to_pob_content
+    - field.field.paragraph.place_of_business_liftup.field_place_of_business
+    - field.field.paragraph.place_of_business_liftup.field_pob_displayed_fields
+    - paragraphs.paragraphs_type.place_of_business_liftup
+  module:
+    - ds
+id: paragraph.place_of_business_liftup.default
+targetEntityType: paragraph
+bundle: place_of_business_liftup
+mode: default
+content:
+  field_place_of_business:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: contact_information_liftup_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  field_link_to_pob_content: true
+  field_pob_displayed_fields: true
+  search_api_excerpt: true

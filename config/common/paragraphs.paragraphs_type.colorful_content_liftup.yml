@@ -1,0 +1,10 @@
+uuid: 520a089c-796c-412c-a944-f8e990f27f68
+langcode: fi
+status: true
+dependencies: {  }
+id: colorful_content_liftup
+label: 'Värikäs sisältönosto'
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää korostamaan etsityimpiä sisältöjä käyttäjälle. Jokaisen yksittäisen noston väri on erikseen valittavissa.'
+behavior_plugins: {  }

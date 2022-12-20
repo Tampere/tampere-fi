@@ -1,0 +1,29 @@
+uuid: 14417372-be1d-47da-b7a0-3829773e5fc9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_involvement_opportunity
+    - node.type.involvement_opportunity
+    - paragraphs.paragraphs_type.involvement_opportunity_card
+id: paragraph.involvement_opportunity_card.field_involvement_opportunity
+field_name: field_involvement_opportunity
+entity_type: paragraph
+bundle: involvement_opportunity_card
+label: Osallistumismahdollisuus
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      involvement_opportunity: involvement_opportunity
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

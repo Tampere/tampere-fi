@@ -1,0 +1,17 @@
+uuid: cc9ed9ba-2cdd-4715-928b-9b96c92e7846
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  enforced:
+    config:
+      - user.role.small_news_item_author
+id: minisite-3ec618eb1
+label: Pikku-uutistoimittaja
+weight: -7
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: false
+permissions: {  }

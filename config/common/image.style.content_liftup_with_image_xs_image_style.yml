@@ -1,0 +1,17 @@
+uuid: f18e1d8a-6711-481e-8890-1531effd1a73
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: content_liftup_with_image_xs_image_style
+label: 'Kuvallinen sisältönosto - xs (480×320)'
+effects:
+  d9afff5f-3e70-4cc3-8523-efebe38c5d30:
+    uuid: d9afff5f-3e70-4cc3-8523-efebe38c5d30
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 320
+      crop_type: focal_point

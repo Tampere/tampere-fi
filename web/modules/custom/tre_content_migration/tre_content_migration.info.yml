@@ -1,0 +1,5 @@
+name: 'TRE Content Migration'
+type: module
+description: 'Migrates news_item and blog_article content from XML.'
+core_version_requirement: '>=9.3'
+package: 'TRE Integrations'

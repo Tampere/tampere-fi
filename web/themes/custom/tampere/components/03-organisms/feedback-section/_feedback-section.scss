@@ -1,0 +1,16 @@
+.feedback-section {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  &__content {
+    @include centered-content($max-width: $max-width, $use-padding: false);
+
+    display: grid;
+
+    @include large {
+      grid-auto-rows: 1fr;
+      grid-template-columns: 2fr minmax(300px, 1fr);
+    }
+  }
+}

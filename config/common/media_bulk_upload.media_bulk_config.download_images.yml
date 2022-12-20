@@ -1,0 +1,14 @@
+uuid: 77148fbe-3972-4e96-8733-f6680800cd0d
+langcode: fi
+status: true
+dependencies: {  }
+id: download_images
+label: 'Kuvien lataaminen'
+media_types:
+  image: image
+  dream_broker_video: 0
+  file: 0
+  remote_video: 0
+form_mode: bulk_upload
+show_alt: null
+show_title: null

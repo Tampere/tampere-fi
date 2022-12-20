@@ -1,0 +1,8 @@
+uuid: ee804052-2c9b-4004-9fcb-6d3938a6e553
+langcode: fi
+status: true
+dependencies: {  }
+name: Postituslistat
+vid: mailing_lists
+description: ''
+weight: 0

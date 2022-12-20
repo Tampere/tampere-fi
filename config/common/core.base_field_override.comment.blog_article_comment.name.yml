@@ -1,0 +1,20 @@
+uuid: 9f8216ee-8dcb-43a0-a158-cd06f3147c67
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.name
+field_name: name
+entity_type: comment
+bundle: blog_article_comment
+label: Nimi
+description: 'Kommentin kirjoittajan nimi.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

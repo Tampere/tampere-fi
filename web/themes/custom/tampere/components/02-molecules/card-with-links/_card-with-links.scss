@@ -1,0 +1,83 @@
+$card-with-links-image-mobile-height: 375px;
+$card-with-links-image-max-height: 720px;
+
+.card-with-links {
+  
+  @include page-element-spacer;
+
+  &__wrapper {
+    @include centered-content($max-width: $max-width, $use-padding: false);
+
+    display: flex;
+    flex-direction: column;
+
+    @include large {
+      flex-direction: row;
+    }
+  }
+
+  &__image-container {
+    overflow: hidden;
+
+    // Drupal image containers.
+    div {
+      height: 100%;
+    }
+
+    @include large-down {
+      height: $card-with-links-image-mobile-height;
+    }
+
+    @include large {
+      max-height: $card-with-links-image-max-height;
+      width: 50%;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__content {
+    background-color: clr(muted);
+    padding: $gutter-large $gutter-medium;
+
+    @include large {
+      padding: clamp($gutter-small, 5%, $gutter-default);
+      width: 50%;
+    }
+  }
+
+  &__heading {
+    color: clr(primary);
+    font-size: $font-24;
+    font-weight: $font-weight-black;
+    margin-top: 0;
+    margin-bottom: $space-s;
+
+    @include large {
+      font-size: $font-32;
+      margin-bottom: $space-l;
+    }
+  }
+
+  &__body {
+    font-size: $font-16;
+    margin-top: $space-xs;
+    margin-bottom: $space-m;
+
+    @include large {
+      font-size: $font-20;
+      margin-bottom: $space-xl;
+    }
+  }
+
+  .layout-container--with-sidebar & {
+    @include large {
+      margin-left: $gutter-sidebar-content * (-1);
+      margin-right: $gutter-sidebar-content * (-1);
+    }
+  }
+}

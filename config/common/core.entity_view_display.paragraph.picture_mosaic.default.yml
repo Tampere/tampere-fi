@@ -1,0 +1,25 @@
+uuid: 87e05616-3272-4bf8-a3cd-b38f6c9ae290
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.picture_mosaic.field_mosaic_liftups
+    - paragraphs.paragraphs_type.picture_mosaic
+  module:
+    - entity_reference_revisions
+id: paragraph.picture_mosaic.default
+targetEntityType: paragraph
+bundle: picture_mosaic
+mode: default
+content:
+  field_mosaic_liftups:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

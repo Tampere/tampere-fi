@@ -1,0 +1,74 @@
+{% set pre_content = true %}
+
+{% extends "@templates/_default.twig" %}
+
+  {% block page_pre_content %}
+    {% include "@organisms/site/site-precontent/site-precontent.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+    {% embed "@organisms/site/involvement-content/involvement-content.twig" with {
+      "involvement_content__way": involvement_header__way,
+      "involvement_content__phase": involvement_header__phase,
+      "time_mobile": involvement_header__time__mobile,
+      "time_desktop": involvement_header__time__desktop,
+    } %}
+      {% block involvement_content_main_content %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_level: "1",
+          heading: "Lorem ipsum dolor sit amet",
+        } %}
+
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_content: "At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.",
+        } %}
+
+        {% include "@molecules/involvement-card/involvement-card.twig" %}
+
+        {% include "@organisms/accordion/accordion.twig" %}
+
+        {% include "@organisms/accordion/process-accordion/process-accordion.twig" %}
+
+        {% include "@molecules/cta/cta.twig" %}
+
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_content: "Tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.. Nulla quis lorem ut libero malesuada feugiat.",
+        } %}
+
+        {% include "@molecules/cta/cta.twig" with {
+          cta__heading: "",
+          cta__content: "",
+        } %}
+
+        {% include "@molecules/separator/separator.twig" %}
+
+        {% include "@molecules/attachment-list/attachment-list.twig" %}
+
+        {% include "@organisms/rss-feed/rss-feed.twig" %}
+
+        {% include "@molecules/general-contact-card/general-contact-card.twig" %}
+
+        {% include "@atoms/07-tables/tables.twig" %}
+
+        {% include "@molecules/separator/separator.twig" %}
+
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_content: "Tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.. Nulla quis lorem ut libero malesuada feugiat. Tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.. Nulla quis lorem ut libero malesuada feugiat.",
+        } %}
+
+        {% include "@molecules/place-contact/place-contact.twig" %}
+
+        {% include "@molecules/place-of-business-contact/place-of-business-contact.twig" %}
+
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_content: "Tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.. Nulla quis lorem ut libero malesuada feugiat.",
+        } %}
+
+        {% include "@molecules/person-contact/person-contact.twig" %}
+        {% include "@molecules/person-contact/person-contact.twig" %}
+
+        {% include "@organisms/infographics/infographics.twig" %}
+
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}

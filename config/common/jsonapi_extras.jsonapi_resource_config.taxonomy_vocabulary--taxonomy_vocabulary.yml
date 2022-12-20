@@ -1,0 +1,71 @@
+uuid: dcb31b9f-e9ee-486d-a1fe-b3e3747e125d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_vocabulary--taxonomy_vocabulary
+disabled: true
+path: taxonomy_vocabulary/taxonomy_vocabulary
+resourceType: taxonomy_vocabulary--taxonomy_vocabulary
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  name:
+    disabled: false
+    fieldName: name
+    publicName: name
+    enhancer:
+      id: ''
+  vid:
+    disabled: false
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''
+  weight:
+    disabled: false
+    fieldName: weight
+    publicName: weight
+    enhancer:
+      id: ''

@@ -1,0 +1,128 @@
+.facet-accordion {
+  $base_class: &;
+
+  &__headings {
+    display: flex;
+    flex-wrap: wrap;
+
+    .accordion-heading:not(:last-child) {
+      margin-right: $space-s;
+  
+      @include large {
+        margin-right: -2px;
+      }
+    }
+  }
+}
+
+.facet-accordion-item {
+  $base_class: &;
+
+  &__heading {
+    @include button-default;
+    @include button;
+    
+    text-decoration: none;
+    margin-bottom: $space-s;
+      
+    &.is-active {
+      background-color: clr(primary);
+      color: clr(text-inverse);
+
+      #{$base_class}__title {
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+    &:hover, &:focus {
+      text-decoration: none;
+
+      #{$base_class}__title {
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-16;
+    font-weight: $font-weight-medium;
+
+    @include large {
+      font-size: $font-20;
+    }
+  }
+
+  &__facet-number {
+    margin: 0;
+    margin-left: $space-m;
+    background-color: clr(facet);
+    color: clr(text-inverse);
+    padding: 0 12px;
+    border-radius: 48px;
+    display: none;
+  }
+
+  &__content {
+    display: none;
+
+    &.active {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__content-item {
+    color: clr(primary);
+    border: $border-thick-primary;
+    border-radius: 64px;
+    margin: $space-xs;
+    padding: $space-xs $space-m;
+    font-size: $font-18;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+
+    &.is-active {
+      background-color: clr(primary);
+      color: clr(text-inverse);
+    }
+
+    a {
+      color: clr(primary);
+      text-decoration: none;
+
+      &::after {
+          display: none;
+        }
+      
+      &:hover, &:focus, &.is-active {
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+
+      &.is-active {
+        color: clr(text-inverse);
+
+        &::after {
+          margin-left: $space-xs;
+          margin-bottom: -3px;
+          content: "";
+          width: $icon-xs;
+          height: $icon-xs;
+          display: inline-block;
+
+          @include close-icon-white();
+        }
+      }
+      .facet-item__status {
+       display: none;
+      }
+    }
+
+    @include large {
+      font-size: $font-20;
+    }
+  }
+}

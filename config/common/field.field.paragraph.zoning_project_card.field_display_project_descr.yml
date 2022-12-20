@@ -1,0 +1,23 @@
+uuid: 7768c38c-b7b1-493b-8e1c-d4bbd6bc0eb2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_project_descr
+    - paragraphs.paragraphs_type.zoning_project_card
+id: paragraph.zoning_project_card.field_display_project_descr
+field_name: field_display_project_descr
+entity_type: paragraph
+bundle: zoning_project_card
+label: 'Näytä kaavan kuvaus'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

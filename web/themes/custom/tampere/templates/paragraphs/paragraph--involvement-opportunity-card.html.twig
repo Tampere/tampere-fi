@@ -1,0 +1,124 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - involvement_opportunity_phase - The involvement phase name for the referenced node.
+ * - involvement_opportunity_type - The involvement type name for the referenced node.
+ * - involvement_opportunity_date - The date to display for the referenced node.
+ * - involvement_opportunity_sign_up_link - Render array for the referenced node's sign up link field.
+ * - involvement_opportunity_title - Title of the referenced node as a string.
+ * - involvement_opportunity_sign_up_information - Render array for the referenced node's sign up information.
+ * - involvement_opportunity_lead_paragraph - The referenced node's lead paragraph content as a string.
+ * - involvement_opportunity_street_address - Render array for the referenced node's street address field.
+ * - involvement_opportunity_website - Render array for the referenced node's website link field.
+ * - involvement_opportunity_additional_link - Render array for the referenced node's additional link field.
+ * - involvement_opportunity_node_url - URL for the referenced node as a string.
+ * - involvement_opportunity_map: Optional. The map for the 'Involvement opportunity' node as a render array.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set involvement_opportunity_sign_up_information_markup = involvement_opportunity_sign_up_information|render %}
+{% set involvement_opportunity_street_address_markup = involvement_opportunity_street_address|render %}
+{% set involvement_opportunity_website_markup = involvement_opportunity_website|render %}
+{% set involvement_opportunity_map_markup = involvement_opportunity_map|render %}
+
+{% set has_sign_up_information = involvement_opportunity_sign_up_information_markup|trim %}
+{% set has_street_address = involvement_opportunity_street_address_markup|trim %}
+{% set has_map = involvement_opportunity_map_markup|trim %}
+
+{% if
+  has_sign_up_information or
+  has_street_address or
+  has_map or
+  involvement_opportunity_phase or
+  involvement_opportunity_type or
+  involvement_opportunity_date or
+  involvement_opportunity_sign_up_link|render|trim or
+  involvement_opportunity_title or
+  involvement_opportunity_lead_paragraph or
+  involvement_opportunity_website_markup|trim or
+  involvement_opportunity_additional_link|render|trim or
+  involvement_opportunity_node_url
+%}
+  {% set has_fields_to_display = TRUE %}
+{% endif %}
+
+{% set involvement_opportunity_links = [ involvement_opportunity_sign_up_link, involvement_opportunity_additional_link ] %}
+
+{% if has_map %}
+  {% set accordion_tabs = [
+    {
+      "title": "Location on map"|t,
+      "content": involvement_opportunity_map_markup,
+      "accordion_content_modifiers": [ "no-margin" ],
+    },
+  ] %}
+{% endif %}
+
+{% if has_fields_to_display %}
+  {% embed "@organisms/_paragraph.twig" %}
+    {% block paragraph_content %}
+
+      {% embed "@molecules/involvement-card/involvement-card.twig" with {
+        "involvement_card__heading": involvement_opportunity_title,
+        "involvement_card__heading__url": involvement_opportunity_node_url,
+        "involvement_card__way": involvement_opportunity_type,
+        "involvement_card__phase": involvement_opportunity_phase,
+        "involvement_card__time": involvement_opportunity_date,
+        "involvement_card__sign_up": has_sign_up_information,
+        "involvement_card__summary": involvement_opportunity_lead_paragraph,
+        "involvement_card__address": has_street_address,
+        "involvement_card__links": involvement_opportunity_links,
+        "involvement_card__accordion_tabs": accordion_tabs,
+        "involvement_card__paragraph_id": paragraph.id.value,
+      } %}
+        {% block involvement_card_sign_up_information %}
+          {{ involvement_opportunity_sign_up_information_markup }}
+        {% endblock %}
+
+        {% block involvement_card_address %}
+          {{ involvement_opportunity_street_address_markup }}
+        {% endblock %}
+
+        {% block involvement_card_web_location %}
+          {{ involvement_opportunity_website_markup }}
+        {% endblock %}
+      {% endembed %}
+
+      {{ content['#cache'] }}
+
+    {% endblock %}
+  {% endembed %}
+{% endif %}

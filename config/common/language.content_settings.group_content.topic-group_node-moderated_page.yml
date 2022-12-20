@@ -1,0 +1,18 @@
+uuid: c9fd8ebc-0fe8-41ab-95b8-0c9d3e457b23
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.topic-group_node-moderated_page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_content.topic-group_node-moderated_page
+target_entity_type_id: group_content
+target_bundle: topic-group_node-moderated_page
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,21 @@
+uuid: dc2f43f1-8d32-4d7e-8165-9e150ebe03f4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - embederator
+id: embederator.field_mediaserver_live_title
+field_name: field_mediaserver_live_title
+entity_type: embederator
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 31c9d660-a2c6-44a5-9f73-972d40b0bd03
+langcode: fi
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_accessibility_links
+field_name: field_accessibility_links
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

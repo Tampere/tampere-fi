@@ -1,0 +1,10 @@
+uuid: 06f6903e-c199-4ad1-8713-89a97134d717
+langcode: fi
+status: true
+dependencies: {  }
+id: embederator_embed
+label: 'Ulkoinen mediaupotus'
+icon_uuid: null
+icon_default: null
+description: 'Tällä paragraafilla voi upottaa sivulle esim. Quickchannel striimejä.'
+behavior_plugins: {  }

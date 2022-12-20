@@ -1,0 +1,29 @@
+uuid: 4852dd33-966e-4e2a-8166-cc2199d65a77
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_life_situations
+    - media.type.image_in_other_language
+    - taxonomy.vocabulary.life_situations
+id: media.image_in_other_language.field_life_situations
+field_name: field_life_situations
+entity_type: media
+bundle: image_in_other_language
+label: 'Life situations'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      life_situations: life_situations
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

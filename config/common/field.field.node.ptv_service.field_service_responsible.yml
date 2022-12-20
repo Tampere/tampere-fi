@@ -1,0 +1,19 @@
+uuid: 227fcefb-46b8-4f4f-9f65-e5bceb9db8f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_responsible
+    - node.type.ptv_service
+id: node.ptv_service.field_service_responsible
+field_name: field_service_responsible
+entity_type: node
+bundle: ptv_service
+label: 'Palvelusta vastaa'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

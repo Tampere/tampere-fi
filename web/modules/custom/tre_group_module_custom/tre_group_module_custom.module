@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_group_module_custom module.
+ */
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function tre_group_module_custom_module_implements_alter(&$implementations, $hook) {
+  // Revert form alteration made by group_content_menu contrib module in
+  // web/modules/contrib/group_content_menu/group_content_menu.module to not
+  // display group content menu on node/edit pages. This is to prevent
+  // arising from users assigning nodes into the group content menu, such as
+  // menu items disappearing from the sub site menu.
+  // For more informmation, see: https://jira.exove.net/browse/TRE-476
+  if ($hook === 'form_alter' && isset($implementations['group_content_menu'])) {
+    unset($implementations['group_content_menu']);
+  }
+}

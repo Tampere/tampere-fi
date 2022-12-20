@@ -1,0 +1,14 @@
+uuid: c7e69cbb-5fa1-4765-aa5c-2a6e6d2a7522
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.front_page_author
+  module:
+    - user
+id: user_remove_role_action.front_page_author
+label: 'Remove the Etusivutoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: front_page_author

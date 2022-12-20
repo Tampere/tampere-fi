@@ -1,0 +1,17 @@
+uuid: f7f5d878-d188-4485-9d5f-c244f3cf587f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.personnel_companies.field_hr_id
+    - taxonomy.vocabulary.personnel_companies
+id: taxonomy_term.personnel_companies.default
+targetEntityType: taxonomy_term
+bundle: personnel_companies
+mode: default
+content: {  }
+hidden:
+  description: true
+  field_hr_id: true
+  langcode: true
+  search_api_excerpt: true

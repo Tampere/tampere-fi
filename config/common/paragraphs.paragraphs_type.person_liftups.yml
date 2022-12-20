@@ -1,0 +1,15 @@
+uuid: 1198420a-b4ac-4c69-98eb-a96fa7ff94c0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: person_liftups
+label: Henkilönostot
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

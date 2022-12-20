@@ -1,0 +1,21 @@
+uuid: 6daa71a8-f059-42e9-8212-8c5ea78f2757
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_hours_overnight
+    - node.type.service_channel
+  module:
+    - office_hours
+id: node.service_channel.field_service_hours_overnight
+field_name: field_service_hours_overnight
+entity_type: node
+bundle: service_channel
+label: 'Normaalit palveluajat vuorokauden yli'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: office_hours

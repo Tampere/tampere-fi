@@ -1,0 +1,75 @@
+services:
+  cache.tre_ptv_import_services_response:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments:
+      - tre_ptv_import_services_response
+  cache.tre_ptv_import_servicechannels_response:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments:
+      - tre_ptv_import_servicechannels_response
+  cache.tre_ptv_import_organization_names:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments:
+      - tre_ptv_import_organization_names
+  tre_ptv_import.import_config:
+    class: Drupal\tre_ptv_import\PtvV11\PtvApi\PtvConfiguration
+    arguments:
+      - '%tre_ptv_import.api_host%'
+  tre_ptv_import.service_api:
+    class: Tampere\PtvV11\PtvApi\ServiceApi
+    arguments:
+      - '@http_client'
+      - '@tre_ptv_import.import_config'
+  tre_ptv_import.servicechannel_api:
+    class: Drupal\tre_ptv_import\PtvV11\PtvApi\CorrectedServiceChannelApi
+    arguments:
+      - '@http_client'
+      - '@tre_ptv_import.import_config'
+  tre_ptv_import.service_iterator:
+    class: Drupal\tre_ptv_import\Service\PtvServiceListIterator
+    arguments:
+      - '@tre_ptv_import.service_api'
+      - '%tre_ptv_import.area_type%'
+      - '%tre_ptv_import.area_code%'
+      - '%tre_ptv_import.include_whole_country_data%'
+      - '%tre_ptv_import.include_general_descriptions%'
+      - '%tre_ptv_import.include_headers%'
+  tre_ptv_import.servicechannel_iterator:
+    class: Drupal\tre_ptv_import\Service\PtvServiceChannelListIterator
+    arguments:
+      - '@tre_ptv_import.servicechannel_api'
+      - '%tre_ptv_import.include_headers%'
+  tre_ptv_import.ptv_data_helpers:
+    class: Drupal\tre_ptv_import\Service\PtvDataHelpers
+  tre_ptv_import.ptv_intermediate_storage:
+    class: Drupal\tre_ptv_import\Service\PtvServiceIntermediateStorage
+    arguments:
+      - '@database'
+      - '@tre_ptv_import.ptv_data_helpers'
+      - '@tre_ptv_import.service_iterator'
+      - '@tre_ptv_import.servicechannel_iterator'
+      - '@cache.tre_ptv_import_services_response'
+      - '@cache.tre_ptv_import_servicechannels_response'
+      - '@serialization.phpserialize'
+  tre_ptv_import.map_point_cleaner:
+    class: Drupal\tre_ptv_import\EventSubscriber\MigrateImportPrepareSubscriber
+    arguments:
+      - '@entity_type.manager'
+    tags:
+      - { name: event_subscriber }
+parameters:
+  tre_ptv_import.area_type: 'Municipality'
+  tre_ptv_import.area_code: '837'
+  tre_ptv_import.include_whole_country_data: 'false'
+  tre_ptv_import.include_general_descriptions: 'true'
+  tre_ptv_import.include_headers: 'true'
+  tre_ptv_import.api_host: 'https://api.palvelutietovaranto.suomi.fi'

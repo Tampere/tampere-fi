@@ -1,0 +1,18 @@
+uuid: c198e9d7-47ae-4d94-ae33-2b2b33d3e3b6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.subsite-group_membership
+id: group_content.subsite-group_membership.changed
+field_name: changed
+entity_type: group_content
+bundle: subsite-group_membership
+label: Muuttunut
+description: 'Ajankohta jolloin ryhmäsisältöä viimeksi muokattiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

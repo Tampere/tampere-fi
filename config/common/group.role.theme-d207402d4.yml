@@ -1,0 +1,17 @@
+uuid: 16146fe3-4fe0-45c8-9816-2f563292a1b5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.mailing_list_admin
+id: theme-d207402d4
+label: 'Mediajakelulistojen ylläpitäjä'
+weight: -7
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,23 @@
+uuid: baf36fd2-625c-48f2-8e46-4964d1573d89
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.migrate_override_data
+    - node.type.person
+  module:
+    - migrate_override
+id: node.person.migrate_override_data
+field_name: migrate_override_data
+entity_type: node
+bundle: person
+label: 'Select Fields to override:'
+description: 'The fields to override in this person''s data. If you elect to override a field here, it won''t be updated on subsequent automated update runs. Choose first name, last name and hr title fields also when you are adding a new person manually (outside of city personnel). By default only the "Published" field is overridden for all persons so that each person can be published and unpublished at will by the editors.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'a:4:{s:6:"status";i:1;s:17:"field_first_names";i:0;s:14:"field_hr_title";i:0;s:15:"field_last_name";i:0;}'
+default_value_callback: ''
+settings: {  }
+field_type: migrate_override_field_item

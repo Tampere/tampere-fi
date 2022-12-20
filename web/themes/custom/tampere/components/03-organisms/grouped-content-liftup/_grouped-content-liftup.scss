@@ -1,0 +1,56 @@
+.grouped-content-liftup {
+  @include page-element-spacer;
+
+  &__content {
+    max-width: --text-content-max-width;
+  }
+
+  &__heading {
+    @include section-heading;
+
+    margin-bottom: $space-m;
+
+    @include large {
+      margin-bottom: $space-l;
+    }
+  }
+
+  &__summary {
+    font-size: $font-14;
+    font-family: $font-body;
+    margin: $space-m 0;
+
+    @include large {
+      font-size: $font-18;
+      margin: $space-l 0;
+    }
+  }
+
+  &__liftups {
+    .card--grouped:nth-of-type(3n + 2) {
+      @include dynamic-color(#{$colorful-card-2-color-name}, $set-focus-color: false);
+
+      background-color: clr('alternative-#{$colorful-card-2-color-name}', #{clr(#{$colorful-card-2-color-name})});
+
+      &:focus,
+      &:hover {
+        .card__heading {
+          @include dynamic-color(#{$colorful-card-2-color-name}, border-bottom-color, $set-focus-color: false);
+        }
+      }
+    }
+
+    .card--grouped:nth-of-type(3n + 3) {
+      @include dynamic-color(#{$colorful-card-3-color-name}, $set-focus-color: false);
+
+      background-color: clr('alternative-#{$colorful-card-3-color-name}', #{clr(#{$colorful-card-3-color-name})});
+
+      &:focus,
+      &:hover {
+        .card__heading {
+          @include dynamic-color(#{$colorful-card-3-color-name}, border-bottom-color, $set-focus-color: false);
+        }
+      }
+    }
+  }
+}

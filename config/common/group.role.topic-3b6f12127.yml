@@ -1,0 +1,17 @@
+uuid: 3fcc8d2b-2ec6-46df-a1a3-e68c39d86c6a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.basic_content_page_author
+id: topic-3b6f12127
+label: Perussisältösivutoimittaja
+weight: 7
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

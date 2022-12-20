@@ -1,0 +1,17 @@
+uuid: 801b90c9-df5c-4fd1-97e9-d4540762bef4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.news_item_author
+id: theme-dc5326e1f
+label: Uutistoimittaja
+weight: 1
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

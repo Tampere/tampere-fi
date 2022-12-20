@@ -1,0 +1,23 @@
+uuid: 21c5b981-a096-4462-a485-a3c9dd99560e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_to_place_content
+    - paragraphs.paragraphs_type.city_construction_project_card
+id: paragraph.city_construction_project_card.field_link_to_place_content
+field_name: field_link_to_place_content
+entity_type: paragraph
+bundle: city_construction_project_card
+label: 'Linkitä sisältöön'
+description: 'Valitse tämä, kun haluat, että nosto toimii linkkinä viitattuun Kaupunkisuunnittelu- ja rakennushanke-sisältöön.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

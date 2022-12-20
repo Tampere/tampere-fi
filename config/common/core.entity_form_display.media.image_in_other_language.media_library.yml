@@ -1,0 +1,236 @@
+uuid: 524c826e-f8c0-41ac-bd2d-5e7a1399453b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.image_in_other_language.field_author
+    - field.field.media.image_in_other_language.field_category_instructions_bulk
+    - field.field.media.image_in_other_language.field_description
+    - field.field.media.image_in_other_language.field_geographical_areas
+    - field.field.media.image_in_other_language.field_keywords
+    - field.field.media.image_in_other_language.field_life_situations
+    - field.field.media.image_in_other_language.field_media_folder
+    - field.field.media.image_in_other_language.field_media_image
+    - field.field.media.image_in_other_language.field_other_identifiers
+    - field.field.media.image_in_other_language.field_plan_numbers
+    - field.field.media.image_in_other_language.field_record_numbers
+    - field.field.media.image_in_other_language.field_topics
+    - image.style.thumbnail
+    - media.type.image_in_other_language
+  module:
+    - field_group
+    - image
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_general
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_general:
+      children:
+        - name
+        - field_author
+        - group_image_upload
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_categorization:
+      children:
+        - field_media_folder
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - field_record_numbers
+        - field_plan_numbers
+        - field_other_identifiers
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_image_upload:
+      children:
+        - field_media_image
+      label: 'Kuvan lataaminen'
+      region: content
+      parent_name: group_general
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: media.image_in_other_language.media_library
+targetEntityType: media
+bundle: image_in_other_language
+mode: media_library
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_author:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 13
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 14
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_folder:
+    type: entity_reference_autocomplete
+    weight: 11
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_image:
+    type: image_image
+    weight: 4
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_other_identifiers:
+    type: entity_reference_autocomplete
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_plan_numbers:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_record_numbers:
+    type: entity_reference_autocomplete
+    weight: 16
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_category_instructions_bulk: true
+  field_description: true
+  langcode: true
+  path: true
+  replace_file: true

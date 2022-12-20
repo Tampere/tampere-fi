@@ -1,0 +1,8 @@
+text-with-title:
+  label: Text with title
+  fields:
+    text_with_title__heading:
+      label: Heading
+    text_with_title__content:
+      label: Content
+  use: "@molecules/text-with-title/text-with-title.twig"

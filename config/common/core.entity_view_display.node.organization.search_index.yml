@@ -1,0 +1,117 @@
+uuid: e7c39469-d5c2-4635-bab4-474ade355da7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.organization.field_contact_info_paragraph
+    - field.field.node.organization.field_description
+    - field.field.node.organization.field_geographical_areas
+    - field.field.node.organization.field_help_text
+    - field.field.node.organization.field_keywords
+    - field.field.node.organization.field_main_image
+    - field.field.node.organization.field_paragraphs
+    - field.field.node.organization.field_search_keywords
+    - field.field.node.organization.field_topics
+    - node.type.organization
+  module:
+    - ds
+    - entity_reference_revisions
+    - user
+id: node.organization.search_index
+targetEntityType: node
+bundle: organization
+mode: search_index
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_contact_info_paragraph:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_geographical_areas:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 3
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_search_keywords:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: content
+hidden:
+  field_help_text: true
+  field_main_image: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

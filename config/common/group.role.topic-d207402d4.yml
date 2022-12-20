@@ -1,0 +1,17 @@
+uuid: 56eb3152-805d-48b0-9bda-3a38f66612ef
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.mailing_list_admin
+id: topic-d207402d4
+label: 'Mediajakelulistojen ylläpitäjä'
+weight: -2
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

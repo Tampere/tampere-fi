@@ -1,0 +1,10 @@
+uuid: 19ebad11-dd52-41c4-ae71-e16d8270c751
+langcode: fi
+status: true
+dependencies: {  }
+id: text_and_images
+label: 'Tekstiä ja kuvia'
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää esittämään kuvia tekstin seassa.'
+behavior_plugins: {  }

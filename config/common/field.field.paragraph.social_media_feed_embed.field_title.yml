@@ -1,0 +1,19 @@
+uuid: dd5875ee-cc0d-4740-bec5-d2e9e936ac27
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.social_media_feed_embed
+id: paragraph.social_media_feed_embed.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: social_media_feed_embed
+label: Otsikko
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

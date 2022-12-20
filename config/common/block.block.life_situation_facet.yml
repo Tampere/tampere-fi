@@ -1,0 +1,23 @@
+uuid: 67f45d61-3400-400e-b159-6ccd54d545df
+langcode: fi
+status: false
+dependencies:
+  config:
+    - facets.facet.life_situation
+  module:
+    - facets
+  theme:
+    - tampere
+id: life_situation_facet
+theme: tampere
+region: content
+weight: 0
+provider: null
+plugin: 'facet_block:life_situation'
+settings:
+  id: 'facet_block:life_situation'
+  label: Elämäntilanne
+  label_display: '0'
+  provider: facets
+  block_id: life_situation_facet
+visibility: {  }

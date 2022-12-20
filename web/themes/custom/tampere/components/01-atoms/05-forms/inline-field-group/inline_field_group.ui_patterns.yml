@@ -1,0 +1,8 @@
+inline_field_group:
+  label: Inline field group
+  fields:
+    inline_field_group_label:
+      label: Label
+    inline_field_group_content:
+      label: Content
+  use: "@atoms/05-forms/inline-field-group/inline-field-group.twig"

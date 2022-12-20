@@ -1,0 +1,19 @@
+uuid: 1d5dc75c-80bb-4c7a-87cf-45584b42a271
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_support_emails
+    - node.type.service_channel
+id: node.service_channel.field_support_emails
+field_name: field_support_emails
+entity_type: node
+bundle: service_channel
+label: Tukisähköpostit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

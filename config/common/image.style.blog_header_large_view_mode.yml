@@ -1,0 +1,17 @@
+uuid: ae557bad-3a29-4d9b-9981-d84726b29215
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: blog_header_large_view_mode
+label: 'Blogin ylätunniste - large (154x154)'
+effects:
+  eb581022-6ccb-43db-8c31-465829fc0422:
+    uuid: eb581022-6ccb-43db-8c31-465829fc0422
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 154
+      height: 154
+      crop_type: focal_point

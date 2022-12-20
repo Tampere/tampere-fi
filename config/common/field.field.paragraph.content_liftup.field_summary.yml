@@ -1,0 +1,19 @@
+uuid: 5a987a29-c3f7-45ab-9a0c-02859b6b43cd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.content_liftup
+id: paragraph.content_liftup.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: content_liftup
+label: Lyhennelmä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

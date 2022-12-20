@@ -1,0 +1,10 @@
+uuid: e81b9536-7477-40d6-a2ce-ca3d2dffbbb0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.hero_short_view_mode
+label: 'Hero (matala)'
+targetEntityType: media
+cache: true

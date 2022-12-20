@@ -1,0 +1,23 @@
+uuid: ef7aff3a-5e4a-4882-8c45-53cfdbefd4eb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_to_pob_content
+    - paragraphs.paragraphs_type.place_of_business_liftup
+id: paragraph.place_of_business_liftup.field_link_to_pob_content
+field_name: field_link_to_pob_content
+entity_type: paragraph
+bundle: place_of_business_liftup
+label: 'Linkitä sisältöön'
+description: 'Valitse tämä, jos haluat, että toimipisteen nimestä on linkki toimipistetietoon PTV:ssä tallennettuun toimipisteen verkkosivuun.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -1,0 +1,61 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+// Focus styles take into consideration browsers
+// that do not support :focus-visible yet.
+*:focus {
+  outline: 1px solid clr(focus) !important;
+  outline-offset: var(--focus-outline-offset) !important;
+}
+
+// Undo above focus styles if element has focus but
+// browser wouldn't normally show default focus styles.
+*:focus:not(:focus-visible) {
+  outline: 0 !important;
+}
+
+body {
+  background-color: $body-bg-color;
+  color: $body-color;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+
+  .node-preview-container {
+    background-color: $node-preview-container-bg-color;
+    border: $border-default;
+    bottom: 0;
+    position: absolute;
+    top: initial;
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+/* needed for hyphenopoly */
+.hyphenate {
+  hyphens: auto;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+%undo-content-centering-with-sidebar {
+  .main-content--with-sidebar & {
+    @include large {
+      margin: 0;
+      max-width: unset;
+      padding-left: 0;
+    }
+  }
+}

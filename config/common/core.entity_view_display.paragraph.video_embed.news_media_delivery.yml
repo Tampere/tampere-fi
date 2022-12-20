@@ -1,0 +1,35 @@
+uuid: 2985958b-6d98-4d14-90a3-0bd09384f664
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.news_media_delivery
+    - field.field.paragraph.video_embed.field_language
+    - field.field.paragraph.video_embed.field_video_file
+    - paragraphs.paragraphs_type.video_embed
+  module:
+    - ds
+id: paragraph.video_embed.news_media_delivery
+targetEntityType: paragraph
+bundle: video_embed
+mode: news_media_delivery
+content:
+  field_video_file:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: news_media_delivery
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  field_language: true
+  search_api_excerpt: true

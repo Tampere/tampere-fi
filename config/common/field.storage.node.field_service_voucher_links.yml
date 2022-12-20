@@ -1,0 +1,19 @@
+uuid: eb188274-86b7-434b-8e18-f2467e97414e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_service_voucher_links
+field_name: field_service_voucher_links
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

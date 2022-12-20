@@ -1,0 +1,46 @@
+uuid: 12555619-ffa1-4b3e-adbd-89503674bbb8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_link.field_link_alt_text
+    - field.field.paragraph.social_media_link.field_social_media
+    - field.field.paragraph.social_media_link.field_social_media_profile_url
+    - paragraphs.paragraphs_type.social_media_link
+  module:
+    - elb
+id: paragraph.social_media_link.default
+targetEntityType: paragraph
+bundle: social_media_link
+mode: default
+content:
+  field_link_alt_text:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_social_media:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_social_media_profile_url:
+    type: ext_link_blocklist_widget
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

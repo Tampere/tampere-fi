@@ -1,0 +1,20 @@
+uuid: 3a5d2dd7-5004-44b0-8eac-e54483559ae9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-news_item
+  module:
+    - path
+id: group_content.minisite-group_node-news_item.path
+field_name: path
+entity_type: group_content
+bundle: minisite-group_node-news_item
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

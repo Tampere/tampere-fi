@@ -1,0 +1,23 @@
+uuid: b32e672f-21d4-4aff-9a14-ac3d5da699fc
+langcode: fi
+status: false
+dependencies:
+  config:
+    - facets.facet.location
+  module:
+    - facets
+  theme:
+    - tampere
+id: location_facet
+theme: tampere
+region: content
+weight: 0
+provider: null
+plugin: 'facet_block:location'
+settings:
+  id: 'facet_block:location'
+  label: Sijainti
+  label_display: '0'
+  provider: facets
+  block_id: location_facet
+visibility: {  }

@@ -1,0 +1,65 @@
+footer_menu_items:
+  - title: 'Organisaatio'
+    url: '#'
+  - title: 'Päättäjät ja päätökset'
+    url: '#'
+  - title: 'Talous'
+    url: '#'
+  - title: 'Strategia'
+    url: '#'
+  - title: 'Tampere-tietoa'
+    url: '#'
+  - title: 'Meille töihin'
+    url: '#'
+  - title: 'Viestintä'
+    url: '#'
+
+footer_inline_menu_items:
+  - title: 'Saavutettavuus'
+    url: '#'
+  - title: 'Tietosuojaselosteet'
+    url: '#'
+
+footer_some_row_items:
+  - title: 'Facebook'
+    url: '#'
+    icon: 'facebook'
+    aria_label: "Tampereen facebook"
+  - title: 'Twitter'
+    url: '#'
+    icon: 'twitter'
+    aria_label: "Tampereen twitter"
+  - title: 'Instagram'
+    url: '#'
+    icon: 'instagram'
+    aria_label: "Tampereen insta"
+  - title: 'LinkedIn'
+    url: '#'
+    icon: 'linkedin'
+    aria_label: "Tampereen linkedIn"
+  - title: 'YouTube'
+    url: '#'
+    icon: 'youtube'
+    aria_label: "Tampereen youTube"
+
+first_paragraph_content:
+  'Tampereen Kaupunki </br></br> pl 487
+  </br> 33101 Tampere
+  </br> Vaihde:
+  </br> 03 565 611'
+
+second_paragraph_content:
+  'Tampereen palvelupiste 
+  </br> sähköposti
+  </br> tampereenpalvelupiste@tampere.fi
+  </br> 041 730 8168
+  </br> Frenkelinaukio 2 B
+  </br> pl 487
+  </br> 33101 Tampere
+  </br> Avoinna:
+  </br> ma-pe 09-16'
+
+footer_copyright_content: 
+  'Copyright © Tampereen kaupunki'
+
+is_storybook: true

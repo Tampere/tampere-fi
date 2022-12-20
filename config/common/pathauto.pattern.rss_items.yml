@@ -1,0 +1,22 @@
+uuid: 014ba2d7-3105-40b3-b305-0cd2a434c397
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: rss_items
+label: RSS-otsikot
+type: 'canonical_entities:node'
+pattern: 'rss_items/[node:title]'
+selection_criteria:
+  50a900d5-f102-4627-b712-78cae15e2fbe:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 50a900d5-f102-4627-b712-78cae15e2fbe
+    context_mapping:
+      node: node
+    bundles:
+      rss_item: rss_item
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,15 @@
+link_list__items:
+  1:
+    text: 'Lorem ipsum'
+    url: '#'
+  2:
+    text: 'Dolor'
+    url: '#'
+  3:
+    text: 'Sit'
+    url: '#'
+  4:
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue.'
+    url: '#'
+link_list__modifiers:
+  - 'center'

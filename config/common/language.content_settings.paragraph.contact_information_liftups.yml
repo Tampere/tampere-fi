@@ -1,0 +1,18 @@
+uuid: d4a60f30-f56b-4be8-b836-025ab2565639
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.contact_information_liftups
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.contact_information_liftups
+target_entity_type_id: paragraph
+target_bundle: contact_information_liftups
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,17 @@
+uuid: 9a2dba77-ea69-450d-b08c-dc5dba20d966
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  enforced:
+    config:
+      - user.role.mailing_list_admin
+id: minisite-d207402d4
+label: 'Mediajakelulistojen ylläpitäjä'
+weight: -2
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: false
+permissions: {  }

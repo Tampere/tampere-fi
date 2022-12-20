@@ -1,0 +1,10 @@
+uuid: 3fe948ac-be82-41b3-a405-e567f1d4b53a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.service_highlight_view_mode
+label: Asiointilinkki
+targetEntityType: paragraph
+cache: true

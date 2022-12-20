@@ -1,0 +1,19 @@
+uuid: 56888d1c-a7fb-4ba9-a758-7dad3e29d95a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_subsite_life_situation
+field_name: field_subsite_life_situation
+entity_type: group
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

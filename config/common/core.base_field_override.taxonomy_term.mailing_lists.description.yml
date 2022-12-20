@@ -1,0 +1,20 @@
+uuid: 37c2d8b1-9016-43d4-be4b-4edacb7da3e8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mailing_lists
+  module:
+    - text
+id: taxonomy_term.mailing_lists.description
+field_name: description
+entity_type: taxonomy_term
+bundle: mailing_lists
+label: Kuvaus
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

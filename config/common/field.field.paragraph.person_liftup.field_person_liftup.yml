@@ -1,0 +1,29 @@
+uuid: c52d69b0-c65b-4ace-b0f7-02108558285a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_person_liftup
+    - node.type.person
+    - paragraphs.paragraphs_type.person_liftup
+id: paragraph.person_liftup.field_person_liftup
+field_name: field_person_liftup
+entity_type: paragraph
+bundle: person_liftup
+label: Henkilö
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

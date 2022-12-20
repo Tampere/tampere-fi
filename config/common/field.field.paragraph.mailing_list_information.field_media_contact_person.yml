@@ -1,0 +1,29 @@
+uuid: 7eea862b-3f55-4127-b268-8dbc278ef023
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_contact_person
+    - node.type.person
+    - paragraphs.paragraphs_type.mailing_list_information
+id: paragraph.mailing_list_information.field_media_contact_person
+field_name: field_media_contact_person
+entity_type: paragraph
+bundle: mailing_list_information
+label: Mediayhteyshenkilö
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

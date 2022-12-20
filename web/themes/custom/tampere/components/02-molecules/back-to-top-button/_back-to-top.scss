@@ -1,0 +1,40 @@
+$btt-icon-color: clr(text-inverse);
+
+.back-to-top {
+  @include button-reset;
+
+  --c-focus: #{clr(text-inverse)};
+
+  color: clr(text-inverse);
+  font-size: $font-18;
+  font-family: $font-heading;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  max-width: 105px;
+
+  @include large {
+    font-size: $font-20;
+    max-width: 100%;
+  }
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: clr(text-inverse);
+  }
+
+  &__icon {
+    min-height: $space-l;
+    min-width: $space-l;
+    max-height: $space-l;
+    max-width: $space-l;
+
+    --icon-secondary-color: #{$btt-icon-color};
+
+    @include large {
+      margin-left: $space-s;
+    }
+  }
+}

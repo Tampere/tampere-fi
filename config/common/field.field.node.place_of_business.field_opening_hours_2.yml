@@ -1,0 +1,21 @@
+uuid: f3eefa5b-7386-4d0f-9baf-642b13648d43
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opening_hours_2
+    - node.type.place_of_business
+  module:
+    - office_hours
+id: node.place_of_business.field_opening_hours_2
+field_name: field_opening_hours_2
+entity_type: node
+bundle: place_of_business
+label: 'Aukioloajat 2'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: office_hours

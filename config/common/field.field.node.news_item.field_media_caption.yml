@@ -1,0 +1,19 @@
+uuid: 66eb8146-b004-41ff-b9fc-2d11b3b981cc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_caption
+    - node.type.news_item
+id: node.news_item.field_media_caption
+field_name: field_media_caption
+entity_type: node
+bundle: news_item
+label: Pääkuvateksti
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

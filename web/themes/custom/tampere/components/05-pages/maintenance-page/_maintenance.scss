@@ -1,0 +1,11 @@
+.maintenance-page {
+  margin: 32px;
+
+  @include medium {
+    margin: 64px;
+  }
+
+  @include large {
+    margin: 128px;
+  }
+}

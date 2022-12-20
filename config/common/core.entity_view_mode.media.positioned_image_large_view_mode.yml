@@ -1,0 +1,10 @@
+uuid: e8787a95-e5ca-4b5f-857f-e7a79a15441c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.positioned_image_large_view_mode
+label: 'Asemoitu kuva (iso)'
+targetEntityType: media
+cache: true

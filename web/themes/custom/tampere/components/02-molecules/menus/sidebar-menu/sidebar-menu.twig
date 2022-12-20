@@ -1,0 +1,10 @@
+{{ attach_library("tampere/sidebar-menu") }}
+
+<nav class="sidebar-navigation" aria-label="{{ sidebar_menu_aria_label|default("Sidebar navigation"|t) }}">
+  {% include "@molecules/menus/_menu.twig" with {
+    menu_class: "sidebar-menu",
+    menu_modifiers: sidebar_menu_modifiers,
+    items: sidebar_menu_items,
+    attributes: attributes,
+  } %}
+</nav>

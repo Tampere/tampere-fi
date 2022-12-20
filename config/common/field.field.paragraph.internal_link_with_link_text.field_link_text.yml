@@ -1,0 +1,19 @@
+uuid: db424518-b616-4c52-a51e-d9ce189479ac
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_text
+    - paragraphs.paragraphs_type.internal_link_with_link_text
+id: paragraph.internal_link_with_link_text.field_link_text
+field_name: field_link_text
+entity_type: paragraph
+bundle: internal_link_with_link_text
+label: 'Linkin teksti'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

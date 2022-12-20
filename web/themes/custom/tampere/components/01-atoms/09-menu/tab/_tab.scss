@@ -1,0 +1,34 @@
+$tab-border: 1px solid $color-dark-blue;
+$tab-font-size: $space-s;
+$tab-padding: $space-s $space-l;
+$tab-padding-desktop: $space-s $space-l;
+
+.tabs__link,
+.tabs__link--local-tasks {
+  background-color: $tab-color-bg;
+  border: $tab-border;
+  color: $tab-color;
+  display: block;
+  font-size: $tab-font-size;
+  padding: $tab-padding;
+  text-align: center;
+  text-decoration: none;
+
+  @include transition(color, 0.3, ease-out);
+
+  @include medium {
+    display: inline-block;
+    padding: $tab-padding-desktop;
+    position: relative;
+    width: auto;
+
+    @include to-rem('top', 1);
+  }
+
+  &:hover,
+  &:active,
+  &.is-active {
+    background-color: $tab-color-bg-hover;
+    color: $tab-color-hover;
+  }
+}

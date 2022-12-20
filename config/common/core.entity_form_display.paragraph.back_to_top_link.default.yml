@@ -1,0 +1,19 @@
+uuid: ed9b021b-531f-4d17-b92e-e45e9465722a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.back_to_top_link
+id: paragraph.back_to_top_link.default
+targetEntityType: paragraph
+bundle: back_to_top_link
+mode: default
+content:
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

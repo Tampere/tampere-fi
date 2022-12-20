@@ -1,0 +1,17 @@
+uuid: 516e8c15-0200-463b-a23b-34d85b4a6af8
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Etusivu
+type: front_page
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

@@ -1,0 +1,37 @@
+uuid: 78589662-d6b5-4a42-a206-853ba9fb01e5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.city_construction_project_cards.field_project_cards
+    - paragraphs.paragraphs_type.city_construction_project_cards
+  module:
+    - limited_field_widgets
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.city_construction_project_cards.default
+targetEntityType: paragraph
+bundle: city_construction_project_cards
+mode: default
+content:
+  field_project_cards:
+    type: paragraphs_classic_asymmetric
+    weight: 0
+    region: content
+    settings:
+      title: Kortti
+      title_plural: Kortit
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: city_construction_project_card
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

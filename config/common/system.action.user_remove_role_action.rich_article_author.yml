@@ -1,0 +1,14 @@
+uuid: 25ca0a55-a66c-4bce-b65a-7291a607c7fc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.rich_article_author
+  module:
+    - user
+id: user_remove_role_action.rich_article_author
+label: 'Remove the Artikkelitoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: rich_article_author

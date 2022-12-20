@@ -1,0 +1,23 @@
+uuid: 038a1132-8ccb-4c91-a7ab-637018828f15
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accessibility_info_title
+    - node.type.place_of_business
+  module:
+    - options
+id: node.place_of_business.field_accessibility_info_title
+field_name: field_accessibility_info_title
+entity_type: node
+bundle: place_of_business
+label: 'Esteettömyystietojen otsikko'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: accessibility
+default_value_callback: ''
+settings: {  }
+field_type: list_string

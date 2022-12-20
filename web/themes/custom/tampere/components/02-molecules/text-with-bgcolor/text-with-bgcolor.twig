@@ -1,0 +1,15 @@
+{% set text_with_bgcolor__base_class = "text-with-bgcolor" %}
+
+<div {{ bem (text_with_bgcolor__base_class, text_with_bgcolor__modifiers|default([]), text_with_bgcolor__blockname) }}>
+
+  {% for textbox__content in textbox__contents %}
+    {% if textbox__content is not empty %}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        text_block_base_class: text_with_bgcolor__content__base_class|default("text-box"),
+        text_block_blockname: text_with_bgcolor__base_class,
+        text_block_content: textbox__content,
+      } %}
+    {% endif %}
+  {% endfor %}
+
+</div>

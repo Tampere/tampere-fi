@@ -1,0 +1,19 @@
+uuid: 8252d6d7-63a8-4d83-8565-d690399f505a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordion_main_title
+    - paragraphs.paragraphs_type.accordions
+id: paragraph.accordions.field_accordion_main_title
+field_name: field_accordion_main_title
+entity_type: paragraph
+bundle: accordions
+label: Pääotsikko
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

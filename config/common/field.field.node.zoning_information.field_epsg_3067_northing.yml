@@ -1,0 +1,23 @@
+uuid: ec132082-24b5-4789-829d-0169c99ed87f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_epsg_3067_northing
+    - node.type.zoning_information
+id: node.zoning_information.field_epsg_3067_northing
+field_name: field_epsg_3067_northing
+entity_type: node
+bundle: zoning_information
+label: Pohjoisuus
+description: 'ETRS-TM35FIN-järjestelmän (EPSG:3067) mukainen pohjoisuus metreinä.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: 'N'
+field_type: decimal

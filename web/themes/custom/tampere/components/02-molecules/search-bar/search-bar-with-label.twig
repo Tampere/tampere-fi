@@ -1,0 +1,55 @@
+{% set search_bar__base_class = "search-bar" %}
+
+{% if use_form %}
+  {% set search_bar_wrapper_element = "form" %}
+{% else %}
+  {% set search_bar_wrapper_element = "div" %}
+{% endif %}
+
+{% set search_bar_input_id = search_bar_input_id|default("place-list-search-input") %}
+
+{% set search_bar_input_attributes = {
+    "id": search_bar_input_id,
+    "placeholder": search_bar_input_placeholder|default("Search for location"|t ({}, { "context" : "Embedded content and map tabs search placeholder" })),
+    "value": search_bar_value,
+    "type": "text",
+  }
+%}
+
+{% if search_bar_input_name %}
+  {% set search_bar_input_attributes = search_bar_input_attributes|merge({ "name": search_bar_input_name, }) %}
+{% endif %}
+
+{% set search_button_attributes = {
+  "type": search_bar_button_type,
+  "aria-label": search_bar_button_aria_label|default("Search from list"|t ({}, { "context" : "Embedded content and map tabs search button description for screenreaders in list view" })),
+} %}
+
+{% if not search_bar__modifiers %}
+  {% set search_bar__modifiers = [] %}
+{% endif %}
+
+{% set search_bar__modifiers = search_bar__modifiers|merge([ "with-label" ]) %}
+
+<div {{ bem(search_bar__base_class, search_bar__modifiers|default([]), search_bar__blockname) }}>
+  <{{ search_bar_wrapper_element }} {{ bem("search-form", search_bar__search_form__modifiers|default([]), search_bar__base_class) }} {% if use_form %}action="{{ search_bar_form_action }}" method="{{ search_bar_form_method }}"{% endif %}>
+    <label
+      for="{{ search_bar_input_id }}"
+      {{ bem(search_bar__label__base_class|default("label"), search_bar__label__modifiers|default([]), search_bar__label__blockname|default(search_bar__base_class), [ "hyphenate" ]) }}
+    >
+      {{ search_bar_input_label }}
+    </label>
+    <span {{ bem("input-wrapper", search_bar__input__modifiers|default([]), search_bar__base_class) }}>
+      {% include "@atoms/05-forms/_input.twig" with {
+        "custom_classes": search_bar__base_class ~ "__input",
+        "input_attributes": search_bar_input_attributes,
+      } %}
+      {% include "@atoms/06-buttons/01-button.twig" with {
+        "button_blockname": search_bar__base_class,
+        "button_attributes": search_button_attributes,
+        "button_icon_name": "search",
+        "button_icon_blockname": search_bar__base_class,
+      } %}
+    </span>
+  </{{ search_bar_wrapper_element }}>
+</div>

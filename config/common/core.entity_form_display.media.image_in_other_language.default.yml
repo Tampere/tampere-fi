@@ -1,0 +1,258 @@
+uuid: e6c9bc3b-0dcb-47bc-8d23-07b9f5e3a6ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image_in_other_language.field_author
+    - field.field.media.image_in_other_language.field_category_instructions_bulk
+    - field.field.media.image_in_other_language.field_description
+    - field.field.media.image_in_other_language.field_geographical_areas
+    - field.field.media.image_in_other_language.field_keywords
+    - field.field.media.image_in_other_language.field_life_situations
+    - field.field.media.image_in_other_language.field_media_folder
+    - field.field.media.image_in_other_language.field_media_image
+    - field.field.media.image_in_other_language.field_other_identifiers
+    - field.field.media.image_in_other_language.field_plan_numbers
+    - field.field.media.image_in_other_language.field_record_numbers
+    - field.field.media.image_in_other_language.field_topics
+    - image.style.focal_point_thumbnail
+    - media.type.image_in_other_language
+  module:
+    - decorative_image_widget
+    - field_group
+    - field_states_ui
+    - focal_point
+    - term_reference_tree
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_general
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_general:
+      children:
+        - name
+        - field_author
+        - group_image_upload
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_image_upload:
+      children:
+        - field_media_image
+        - replace_file
+      label: 'Kuvan lataaminen'
+      region: content
+      parent_name: group_general
+      weight: 3
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_categorization:
+      children:
+        - field_media_folder
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - field_record_numbers
+        - field_plan_numbers
+        - field_other_identifiers
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: media.image_in_other_language.default
+targetEntityType: media
+bundle: image_in_other_language
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_author:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 16
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_folder:
+    type: term_reference_tree
+    weight: 14
+    region: content
+    settings:
+      start_minimized: true
+      leaves_only: false
+      select_parents: false
+      cascading_selection: 0
+      max_depth: 0
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_media_image:
+    type: image_focal_point
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: focal_point_thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings:
+      decorative_image_widget:
+        use_decorative_checkbox: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_other_identifiers:
+    type: entity_reference_autocomplete
+    weight: 22
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_plan_numbers:
+    type: entity_reference_autocomplete
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_record_numbers:
+    type: entity_reference_autocomplete
+    weight: 19
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  replace_file:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_category_instructions_bulk: true
+  field_description: true
+  langcode: true
+  path: true

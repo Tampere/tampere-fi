@@ -1,0 +1,13 @@
+topics_and_life_situations:
+  label: Topics and life situations
+  variants:
+    default:
+      label: Default
+    primary:
+      label: Primary
+  fields:
+    heading:
+      label: Heading
+    content:
+      label: Content
+  use: "@organisms/topics-and-life-situations/topics-and-life-situations.twig"

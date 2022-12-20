@@ -1,0 +1,49 @@
+uuid: 3aa754d2-4b45-4fe0-bfa4-4b1dfefcfc5a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.rss_feed.field_feed_block
+    - field.field.paragraph.rss_feed.field_feed_title
+    - field.field.paragraph.rss_feed.field_number_of_items_to_show
+    - field.field.paragraph.rss_feed.field_sort_order
+    - paragraphs.paragraphs_type.rss_feed
+id: paragraph.rss_feed.default
+targetEntityType: paragraph
+bundle: rss_feed
+mode: default
+content:
+  field_feed_block:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_feed_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_number_of_items_to_show:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_sort_order:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

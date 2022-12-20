@@ -1,0 +1,18 @@
+uuid: 72f9ec93-52ae-409a-aa41-bdf78c0a1ff2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-organization
+id: group_content.minisite-group_node-organization.metatag
+field_name: metatag
+entity_type: group_content
+bundle: minisite-group_node-organization
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

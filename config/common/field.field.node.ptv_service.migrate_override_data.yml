@@ -1,0 +1,21 @@
+uuid: 974341ab-7a78-4983-8c03-47539df17abe
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.migrate_override_data
+    - node.type.ptv_service
+  module:
+    - migrate_override
+id: node.ptv_service.migrate_override_data
+field_name: migrate_override_data
+entity_type: node
+bundle: ptv_service
+label: 'Select Fields to override:'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: migrate_override_field_item

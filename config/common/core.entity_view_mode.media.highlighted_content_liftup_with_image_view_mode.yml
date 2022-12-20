@@ -1,0 +1,10 @@
+uuid: 8d18c0b6-4097-4f00-bcf9-de1955b6ab47
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.highlighted_content_liftup_with_image_view_mode
+label: 'Korostettu kuvallinen sisältönosto'
+targetEntityType: media
+cache: true

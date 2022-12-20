@@ -1,0 +1,7 @@
+name: 'TRE Node Location Coordinate Conversion'
+type: module
+description: 'Converts node location field value on save and stores the resulting coordinates in separate fields.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - tre_preprocess_utility_functions:tre_preprocess_utility_functions

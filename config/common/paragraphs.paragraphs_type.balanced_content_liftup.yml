@@ -1,0 +1,10 @@
+uuid: 28ab59af-2c3f-47d6-b6a3-20ac419728e2
+langcode: fi
+status: true
+dependencies: {  }
+id: balanced_content_liftup
+label: 'Tasapainoinen sisältönosto'
+icon_uuid: null
+icon_default: null
+description: 'Soveltuu parhaiten listaamaan suuremman määrän keskenään tasa-arvoisia sisältölinkkejä.'
+behavior_plugins: {  }

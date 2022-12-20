@@ -1,0 +1,12 @@
+oskari-rpc-client:
+  js:
+    /libraries/rpc-client/rpc-client.min.js: { minified: true }
+
+liftup-map-rpc:
+  version: 1.0
+  js:
+    js/liftup-map-rpc.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - tre_preprocess/oskari-rpc-client

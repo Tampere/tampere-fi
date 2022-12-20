@@ -1,0 +1,2 @@
+label: 'Valitse ylikirjoitettavat kentät:'
+description: 'Tämän henkilön ylikirjoitettavat kentät. Jos merkitset tässä kentän ylikirjoitetuksi, sen tietoja ei enää päivitetä seuraavilla automaattisilla päivityskerroilla. Valitse etunimi-, sukunimi- ja titteli -kentät ylikirjoitettaviksi myös silloin, kun olet lisäämässä uutta henkilöä manuaalisesti (ei kaupungin henkilöstöön kuuluvaa). Oletuksena vain "Julkaistu"-kenttä on ylikirjoitettava, jotta henkilön voi julkaista tai muuttaa ei-julkaistuksi tarpeen mukaan.'

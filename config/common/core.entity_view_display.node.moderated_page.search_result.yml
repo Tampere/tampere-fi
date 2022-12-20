@@ -1,0 +1,71 @@
+uuid: f1e698fd-6408-468d-99f5-52c3162fd0b9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.moderated_page.field_geographical_areas
+    - field.field.node.moderated_page.field_help_text
+    - field.field.node.moderated_page.field_keywords
+    - field.field.node.moderated_page.field_life_situations
+    - field.field.node.moderated_page.field_main_image
+    - field.field.node.moderated_page.field_metadata_description
+    - field.field.node.moderated_page.field_paragraphs
+    - field.field.node.moderated_page.field_search_keywords
+    - field.field.node.moderated_page.field_topic
+    - field.field.node.moderated_page.field_topics
+    - node.type.moderated_page
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default-search
+    regions:
+      listing_item__main_content:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': listing-item__title--link
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.moderated_page.search_result
+targetEntityType: node
+bundle: moderated_page
+mode: search_result
+content: {  }
+hidden:
+  content_moderation_control: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_main_image: true
+  field_metadata_description: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

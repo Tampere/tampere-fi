@@ -1,0 +1,19 @@
+uuid: 75083f89-1011-4a09-931a-ac74b9bdadc1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.place_of_business
+id: node.place_of_business.field_summary
+field_name: field_summary
+entity_type: node
+bundle: place_of_business
+label: Tiivistelmä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

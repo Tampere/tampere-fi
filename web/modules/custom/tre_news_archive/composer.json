@@ -1,0 +1,14 @@
+{
+    "name": "tampere/tre_news_archive",
+    "type": "drupal-drush",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^10|^11"
+            }
+        }
+    },
+    "require": {
+        "mpdf/mpdf": "^8.1"
+    }
+}

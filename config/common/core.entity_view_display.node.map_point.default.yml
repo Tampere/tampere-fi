@@ -1,0 +1,138 @@
+uuid: c8029b76-1385-486b-a0a8-b7ae69f27c97
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.map_point.field_address_hash
+    - field.field.node.map_point.field_address_street
+    - field.field.node.map_point.field_description
+    - field.field.node.map_point.field_epsg_3067_easting
+    - field.field.node.map_point.field_epsg_3067_northing
+    - field.field.node.map_point.field_location
+    - node.type.map_point
+  module:
+    - address_display
+    - ds
+    - geofield
+    - user
+id: node.map_point.default
+targetEntityType: node
+bundle: map_point
+mode: default
+content:
+  field_address_hash:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_address_street:
+    type: address_display_formatter
+    label: above
+    settings:
+      address_display:
+        organization:
+          display: '1'
+          glue: ''
+          weight: '-1'
+        address_line1:
+          display: '1'
+          glue: ''
+          weight: '0'
+        address_line2:
+          display: '1'
+          glue: ','
+          weight: '1'
+        locality:
+          display: '1'
+          glue: ','
+          weight: '2'
+        postal_code:
+          display: '1'
+          glue: ''
+          weight: '3'
+        country_code:
+          glue: ''
+          weight: '4'
+          display: 0
+        langcode:
+          glue: ','
+          weight: '100'
+          display: 0
+        administrative_area:
+          glue: ','
+          weight: '100'
+          display: 0
+        dependent_locality:
+          glue: ','
+          weight: '100'
+          display: 0
+        sorting_code:
+          glue: ','
+          weight: '100'
+          display: 0
+        given_name:
+          display: '1'
+          glue: ''
+          weight: '100'
+        family_name:
+          display: '1'
+          glue: ','
+          weight: '100'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 101
+    region: content
+  field_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_epsg_3067_easting:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_epsg_3067_northing:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_location:
+    type: geofield_latlon
+    label: above
+    settings:
+      output_format: dms
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  search_api_excerpt: true

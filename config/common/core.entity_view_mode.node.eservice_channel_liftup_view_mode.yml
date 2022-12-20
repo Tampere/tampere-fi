@@ -1,0 +1,10 @@
+uuid: 7c5c8127-01c4-4f35-b431-96bbf2518245
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.eservice_channel_liftup_view_mode
+label: Verkkoasiointikanava-nosto
+targetEntityType: node
+cache: true

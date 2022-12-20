@@ -1,0 +1,54 @@
+label: Message
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          tags:
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
+      fields:
+        message_bulk_form_1:
+          label: 'Message operations bulk form'
+          action_title: 'With selection'
+        mid:
+          label: 'Message ID'
+          separator: ', '
+        template:
+          label: 'Message template'
+          separator: ', '
+        get_text:
+          label: 'Message text'
+        uid:
+          label: Author
+          separator: ', '
+        created:
+          label: 'Published date'
+      filters:
+        template:
+          expose:
+            label: Template
+      title: Message
+      empty:
+        area:
+          content:
+            value: 'No messages created yet'
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: Message

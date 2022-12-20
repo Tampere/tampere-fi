@@ -1,0 +1,18 @@
+uuid: f391636f-3eaf-44cf-ba6a-acb77c1d7317
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.theme-group_node-organization
+id: group_content.theme-group_node-organization.changed
+field_name: changed
+entity_type: group_content
+bundle: theme-group_node-organization
+label: 'Changed on'
+description: 'The time that the group content was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

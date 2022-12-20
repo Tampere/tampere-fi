@@ -1,0 +1,38 @@
+label: Search
+description: 'Search results'
+display:
+  default:
+    display_title: Default
+    display_options:
+      title: Search
+      pager:
+        options:
+          tags:
+            first: 'First page'
+            last: 'Last page'
+          expose:
+            items_per_page_label: 'Results by page'
+            items_per_page_options_all_label: '- All -'
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: Sort
+      filters:
+        search_api_fulltext:
+          expose:
+            label: 'Site search'
+            placeholder: Search
+  page_1:
+    display_title: Page
+    display_options:
+      title: 'Search results'
+      exposed_form:
+        options:
+          submit_button: Search
+          exposed_sorts_label: Sort
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      header:
+        result:
+          content: 'Total of @total results'

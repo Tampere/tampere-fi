@@ -1,0 +1,15 @@
+uuid: 75050ec5-1823-429c-a82a-f81f1daee239
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: infographs
+label: Infograafit
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

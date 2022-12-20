@@ -1,0 +1,20 @@
+uuid: 46f55a24-db60-4be7-a40b-4532668834f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - tampere
+id: languageswitcher
+theme: tampere
+region: header
+weight: -21
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Language switcher'
+  label_display: '0'
+  provider: language
+visibility: {  }

@@ -1,0 +1,115 @@
+uuid: a5e3349d-0a7b-43a9-a49f-e1cb10b68d22
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.content_in_other_language.field_geographical_areas
+    - field.field.node.content_in_other_language.field_keywords
+    - field.field.node.content_in_other_language.field_language
+    - field.field.node.content_in_other_language.field_life_situations
+    - field.field.node.content_in_other_language.field_main_image
+    - field.field.node.content_in_other_language.field_metadata_description
+    - field.field.node.content_in_other_language.field_paragraphs
+    - field.field.node.content_in_other_language.field_search_keywords
+    - field.field.node.content_in_other_language.field_topic
+    - field.field.node.content_in_other_language.field_topics
+    - node.type.content_in_other_language
+  module:
+    - ds
+    - entity_reference_revisions
+    - user
+id: node.content_in_other_language.search_index
+targetEntityType: node
+bundle: content_in_other_language
+mode: search_index
+content:
+  field_geographical_areas:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: content
+  field_life_situations:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 3
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_search_keywords:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
+    region: content
+hidden:
+  field_language: true
+  field_main_image: true
+  field_metadata_description: true
+  field_topic: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

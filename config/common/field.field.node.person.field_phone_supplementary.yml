@@ -1,0 +1,19 @@
+uuid: dbf05e67-6606-4787-aa20-983710b7d1e1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone_supplementary
+    - node.type.person
+id: node.person.field_phone_supplementary
+field_name: field_phone_supplementary
+entity_type: node
+bundle: person
+label: 'Puhelinnumeron lisätieto'
+description: 'Integroidut tiedot -välilehdellä olevan pääasiallisen puhelinnumeron vapaaehtoinen lisätieto.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

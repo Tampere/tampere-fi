@@ -1,0 +1,7 @@
+tablefield-column-drag:
+  version: 1.0
+  js:
+    js/tablefield-column-drag.js: {}
+  dependecies:
+    - core/drupal
+    - core/once

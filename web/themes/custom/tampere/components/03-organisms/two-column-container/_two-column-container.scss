@@ -1,0 +1,38 @@
+.two-column-container {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  &__content {
+    display: grid;
+    column-gap: $gutter-small;
+    row-gap: $gutter-medium;
+    grid-auto-rows: 0.8fr;
+    overflow: hidden;
+
+    @include large {
+      @include centered-content($max-width: $max-width);
+
+      grid-auto-rows: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(calc((var(--basic-component-max-width) / 4)), 1fr));
+    }
+  }
+
+  .layout-container--with-sidebar & {
+    max-width: var(--basic-component-max-width);
+
+    #{$base_class}__content {
+      @include large {
+        grid-template-columns: repeat(auto-fit, minmax(calc((var(--basic-component-max-width) / 2.5)), 1fr));
+        max-width: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .layout-container:not(.layout-container--with-sidebar) & {
+    @include large {
+      @include breakout(0);
+    }
+  }
+}

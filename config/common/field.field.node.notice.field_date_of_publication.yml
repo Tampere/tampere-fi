@@ -1,0 +1,24 @@
+uuid: b2762696-5294-47f0-8917-5790d664dda1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_of_publication
+    - node.type.notice
+  module:
+    - datetime
+id: node.notice.field_date_of_publication
+field_name: field_date_of_publication
+entity_type: node
+bundle: notice
+label: Ensijulkaisupäivämäärä
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

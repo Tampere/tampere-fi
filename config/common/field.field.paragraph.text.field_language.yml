@@ -1,0 +1,21 @@
+uuid: 238f66c2-c19d-4ea0-889e-8bf973a5c3f4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_language
+    - paragraphs.paragraphs_type.text
+  module:
+    - options
+id: paragraph.text.field_language
+field_name: field_language
+entity_type: paragraph
+bundle: text
+label: Kielivalinta
+description: 'Valitse kieli, jos kyseessä on arabian-, venäjän- tai persian-/farsinkielinen sisältö.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

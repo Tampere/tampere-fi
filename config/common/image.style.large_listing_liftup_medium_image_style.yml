@@ -1,0 +1,17 @@
+uuid: 225775e9-2495-4886-b22f-c1d79c4b7e5f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: large_listing_liftup_medium_image_style
+label: 'Iso listausnosto - medium (858×491)'
+effects:
+  ec074460-a850-49c7-981a-2c956c2b29f9:
+    uuid: ec074460-a850-49c7-981a-2c956c2b29f9
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 858
+      height: 491
+      crop_type: focal_point

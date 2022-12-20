@@ -1,0 +1,18 @@
+uuid: 84fc82fe-7850-4e30-98f1-4c0bcac79ece
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_display_map
+field_name: field_display_map
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

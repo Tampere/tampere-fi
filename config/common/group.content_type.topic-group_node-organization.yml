@@ -1,0 +1,19 @@
+uuid: 372a8fb8-b34c-442c-8fdd-d545487c3031
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - node.type.organization
+  module:
+    - gnode
+    - node
+id: topic-group_node-organization
+label: 'Aihepiiri: Group node (Organisaatio)'
+description: 'Adds <em class="placeholder">Organisaatio</em> content to groups both publicly and privately.'
+group_type: topic
+content_plugin: 'group_node:organization'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

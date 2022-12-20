@@ -1,0 +1,76 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - zoning_project_title: The title of the referenced content as a string.
+ * - zoning_project_url: Optional. The URL of the referenced content as a string.
+ * - zoning_project_dates: Optional, depending if zoning_project_description
+ *   is selected. Date ranges for the display period and the processing time.
+ * - zoning_project_description: Optional. The description for the referenced content
+ *   as a string.
+ * - zoning_project_address: Optional. The address for the referenced content as a render array.
+ * - zoning_project_map: Optional. The map for the 'Zoning information' node as a render array.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if zoning_project_map %}
+  {% set accordion_tabs = [
+    {
+      "title": "Location on map"|t,
+      "content": zoning_project_map,
+      "accordion_content_modifiers": [ "no-margin" ],
+    },
+  ] %}
+{% endif %}
+
+{% if zoning_project_title or zoning_project_description|render|trim or zoning_project_address %}
+  {% embed "@organisms/_paragraph.twig" %}
+    {% block paragraph_content %}
+      {% include "@molecules/general-contact-card/general-contact-card.twig" with {
+        "general_contact_card__name": zoning_project_title,
+        "general_contact_card__url": zoning_project_url,
+        "general_contact_card__pre_main_content": zoning_project_dates,
+        "general_contact_card__main_content": zoning_project_description,
+        "general_contact_card__additional_content": zoning_project_address,
+        "general_contact_card__map": accordion_tabs,
+        "general_contact_card__paragraph_id": paragraph.id.value,
+        "attributes": [],
+      } %}
+
+      {{ content['#cache'] }}
+
+    {% endblock %}
+  {% endembed %}
+{% endif %}

@@ -1,0 +1,29 @@
+uuid: a5830844-88f4-4f49-95e4-dabb3b1c5368
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_folder
+    - media.type.image_in_other_language
+    - taxonomy.vocabulary.media_folders
+id: media.image_in_other_language.field_media_folder
+field_name: field_media_folder
+entity_type: media
+bundle: image_in_other_language
+label: Mediakansio
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media_folders: media_folders
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

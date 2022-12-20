@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Starting date (ascending)'
+    -
+      label: 'Starting date (descending)'

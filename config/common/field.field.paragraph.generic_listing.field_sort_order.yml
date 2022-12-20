@@ -1,0 +1,23 @@
+uuid: ed11e5b8-14a7-4cac-97c2-6d287b7fe981
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sort_order
+    - paragraphs.paragraphs_type.generic_listing
+  module:
+    - options
+id: paragraph.generic_listing.field_sort_order
+field_name: field_sort_order
+entity_type: paragraph
+bundle: generic_listing
+label: Lajittelujärjestys
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: date
+default_value_callback: ''
+settings: {  }
+field_type: list_string

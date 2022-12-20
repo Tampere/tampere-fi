@@ -1,0 +1,23 @@
+uuid: 2e089a40-da22-4461-90e7-99c8566debfc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_align
+    - paragraphs.paragraphs_type.positioned_image
+  module:
+    - options
+id: paragraph.positioned_image.field_align
+field_name: field_align
+entity_type: paragraph
+bundle: positioned_image
+label: Tasaa
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: none
+default_value_callback: ''
+settings: {  }
+field_type: list_string

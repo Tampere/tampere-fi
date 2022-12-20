@@ -1,0 +1,18 @@
+uuid: fd0d3a7b-c4d0-4df2-8b93-9d8464c31ba5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+id: group.subsite.label
+field_name: label
+entity_type: group
+bundle: subsite
+label: Alasivusto
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

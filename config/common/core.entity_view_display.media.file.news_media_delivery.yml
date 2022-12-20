@@ -1,0 +1,73 @@
+uuid: ba7ba890-6686-4740-8aaa-c8bebe6144b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.news_media_delivery
+    - field.field.media.file.field_author
+    - field.field.media.file.field_category_instructions_bulk
+    - field.field.media.file.field_geographical_areas
+    - field.field.media.file.field_keywords
+    - field.field.media.file.field_life_situations
+    - field.field.media.file.field_media_description
+    - field.field.media.file.field_media_file
+    - field.field.media.file.field_media_folder
+    - field.field.media.file.field_other_identifiers
+    - field.field.media.file.field_plan_numbers
+    - field.field.media.file.field_record_numbers
+    - field.field.media.file.field_topics
+    - media.type.file
+  module:
+    - ds
+    - file
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: true
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - field_media_file
+_core:
+  default_config_hash: fskYAUrB0-bsQaeLn3PNFiIjotVB5rYnH0_ABKDhNlU
+id: media.file.news_media_delivery
+targetEntityType: media
+bundle: file
+mode: news_media_delivery
+content:
+  field_media_file:
+    type: file_url_plain
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: 'Linkki tiedostoon'
+            lb-col: true
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_author: true
+  field_category_instructions_bulk: true
+  field_geographical_areas: true
+  field_keywords: true
+  field_life_situations: true
+  field_media_description: true
+  field_media_folder: true
+  field_other_identifiers: true
+  field_plan_numbers: true
+  field_record_numbers: true
+  field_topics: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

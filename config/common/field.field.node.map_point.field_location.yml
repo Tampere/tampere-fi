@@ -1,0 +1,21 @@
+uuid: 9be00390-2435-45bf-aafe-b888355aab94
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.map_point
+  module:
+    - geofield
+id: node.map_point.field_location
+field_name: field_location
+entity_type: node
+bundle: map_point
+label: 'Sijainti (WGS84)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

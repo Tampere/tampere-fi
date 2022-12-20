@@ -1,0 +1,47 @@
+uuid: 3e448ce0-6c0d-48b3-9669-f91e06b0b012
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.two_column_liftup.field_left_column
+    - field.field.paragraph.two_column_liftup.field_right_column
+    - paragraphs.paragraphs_type.two_column_liftup
+  module:
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.two_column_liftup.default
+targetEntityType: paragraph
+bundle: two_column_liftup
+mode: default
+content:
+  field_left_column:
+    type: paragraphs_classic_asymmetric
+    weight: 1
+    region: content
+    settings:
+      title: Sisältönosto
+      title_plural: Sisältönostot
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+  field_right_column:
+    type: paragraphs_classic_asymmetric
+    weight: 3
+    region: content
+    settings:
+      title: Sisältönosto
+      title_plural: Sisältönostot
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,19 @@
+uuid: 0549b905-26da-42d2-8f38-cf0ce4509ae3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - link
+    - message
+id: message.field_link_to_content
+field_name: field_link_to_content
+entity_type: message
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,10 @@
+uuid: 63381455-bbe8-436a-acf2-74cb52cf1181
+langcode: fi
+status: true
+dependencies: {  }
+id: anchor_list
+label: Ankkurilista
+icon_uuid: null
+icon_default: null
+description: 'Paragraafin avulla voi luoda listan ankkurilinkkejä, jotka voivat osoittaa sivun eri paragraafeihin ja väliotsikoihin.'
+behavior_plugins: {  }

@@ -1,0 +1,92 @@
+.listing-card {
+  $base-class: &;
+
+  text-decoration: none;
+  color: clr(text);
+
+  &__content-wrapper {
+    border: 2px solid clr(primary);
+    padding: $space-m;
+  }
+
+  &__location {
+    color: clr(primary);
+    font-weight: $font-weight-bold;
+    font-size: $font-16;
+    margin: 0;
+
+    @include large {
+      font-size: $font-18;
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-weight: $font-weight-bold;
+    font-size: $font-18;
+    margin-top: $space-s;
+
+    @include large {
+      font-size: $font-24;
+      margin-top: $space-xxs;
+    }
+  }
+
+  &__date-icon,
+  &__link-icon,
+  &__circle {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__date-wrapper,
+  &__status-wrapper,
+  &__info-link-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__date,
+  &__status {
+    margin: 0;
+    padding-left: $space-m;
+
+    @include large {
+      font-size: $font-18;
+    }
+  }
+
+  &__status-wrapper {
+    padding: $space-s 0 $space-m;
+
+    @include large {
+      padding: $space-s 0 $space-l;
+    }
+  }
+
+  &__circle {
+    background-color: clr(course-space);
+    border-radius: 100%;
+  }
+
+  &__info-link {
+    font-family: $font-heading;
+    font-size: $font-15;
+    color: clr(primary);
+    text-transform: uppercase;
+    padding-right: $space-l;
+    margin: 0;
+    width: min-content;
+
+    @include large {
+      font-size: $font-18;
+      padding-right: $space-xl;
+    }
+  }
+
+  &--full {
+    #{$base-class}__circle {
+      background-color: clr(course-full);
+    }
+  }
+}

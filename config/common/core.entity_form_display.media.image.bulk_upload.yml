@@ -1,0 +1,258 @@
+uuid: ac2d29b3-a475-4577-acac-5f865d3707e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.bulk_upload
+    - field.field.media.image.field_author
+    - field.field.media.image.field_category_instructions_bulk
+    - field.field.media.image.field_description
+    - field.field.media.image.field_geographical_areas
+    - field.field.media.image.field_keywords
+    - field.field.media.image.field_life_situations
+    - field.field.media.image.field_media_folder
+    - field.field.media.image.field_media_image
+    - field.field.media.image.field_other_identifiers
+    - field.field.media.image.field_plan_numbers
+    - field.field.media.image.field_record_numbers
+    - field.field.media.image.field_topics
+    - image.style.focal_point_thumbnail
+    - media.type.image
+  module:
+    - decorative_image_widget
+    - field_group
+    - focal_point
+    - markup
+    - term_reference_tree
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_general
+        - group_categorization
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_general:
+      children:
+        - name
+        - field_author
+        - group_image_upload
+        - langcode
+      label: General
+      region: content
+      parent_name: group_tabs
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_categorization:
+      children:
+        - field_media_folder
+        - field_category_instructions_bulk
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - field_record_numbers
+        - field_plan_numbers
+        - field_other_identifiers
+      label: Categorization
+      region: content
+      parent_name: group_tabs
+      weight: 6
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_image_upload:
+      children:
+        - field_media_image
+      label: 'Kuvien lataaminen'
+      region: content
+      parent_name: group_general
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Valitse kuvaa klikkaamalla kohdistuspiste, joka osoittaa kuvan tärkeintä sisältöä. Tämä varmistaa, että keskeinen sisältö näkyy skaalatessa kuvaa eri kokoihin eri käyttötilanteissa.'
+        required_fields: true
+_core:
+  default_config_hash: XjNDN9Z1sPQ9aM6wpOThSzqlcYigDAUBZeSp4KQc1No
+id: media.image.bulk_upload
+targetEntityType: media
+bundle: image
+mode: bulk_upload
+content:
+  created:
+    type: datetime_timestamp
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_author:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_category_instructions_bulk:
+    type: markup
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete_tags
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete_tags
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete_tags
+    weight: 11
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_folder:
+    type: term_reference_tree
+    weight: 7
+    region: content
+    settings:
+      start_minimized: true
+      leaves_only: false
+      select_parents: false
+      cascading_selection: 0
+      max_depth: 0
+    third_party_settings: {  }
+  field_media_image:
+    type: image_focal_point
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: focal_point_thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings:
+      decorative_image_widget:
+        use_decorative_checkbox: true
+  field_other_identifiers:
+    type: entity_reference_autocomplete_tags
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_plan_numbers:
+    type: entity_reference_autocomplete_tags
+    weight: 14
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_record_numbers:
+    type: entity_reference_autocomplete_tags
+    weight: 13
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete_tags
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 5
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete_tags
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_description: true
+  path: true

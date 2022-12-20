@@ -1,0 +1,10 @@
+uuid: dc92fac5-d677-4fb0-acb6-01ec50b816b3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.jsonapi
+label: 'JSON:API'
+targetEntityType: node
+cache: true

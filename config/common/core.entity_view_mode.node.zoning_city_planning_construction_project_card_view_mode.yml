@@ -1,0 +1,10 @@
+uuid: 6492ab9c-b376-4873-baff-901dabac601c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.zoning_city_planning_construction_project_card_view_mode
+label: 'Kaavakortti tai kaupunkisuunnittelu- ja rakentamishankekortti'
+targetEntityType: node
+cache: true

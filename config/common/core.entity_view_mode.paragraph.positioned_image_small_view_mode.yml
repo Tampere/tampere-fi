@@ -1,0 +1,10 @@
+uuid: 0a91354c-eb0f-4600-b935-872ad509a73f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.positioned_image_small_view_mode
+label: 'Asemoitu kuva (pieni)'
+targetEntityType: paragraph
+cache: true

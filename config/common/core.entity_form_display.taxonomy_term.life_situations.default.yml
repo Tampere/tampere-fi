@@ -1,0 +1,35 @@
+uuid: 4568e74e-62a0-4524-958e-c9dd5f970876
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.life_situations
+id: taxonomy_term.life_situations.default
+targetEntityType: taxonomy_term
+bundle: life_situations
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  status: true

@@ -1,0 +1,37 @@
+uuid: 9d7c96ee-c5bd-4978-88f9-42ca1607d73e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.all_content_entity_browser
+    - field.field.paragraph.internal_link.field_internal_link
+    - paragraphs.paragraphs_type.internal_link
+  module:
+    - entity_browser
+id: paragraph.internal_link.default
+targetEntityType: paragraph
+bundle: internal_link
+mode: default
+content:
+  field_internal_link:
+    type: entity_browser_entity_reference
+    weight: 0
+    region: content
+    settings:
+      entity_browser: all_content_entity_browser
+      field_widget_display: label
+      field_widget_edit: true
+      field_widget_remove: true
+      field_widget_replace: false
+      open: true
+      field_widget_display_settings: {  }
+      selection_mode: selection_append
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,10 @@
+uuid: 8e371e26-70d1-4a2e-a760-3df4d1723b24
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.colorful_content_liftup_view_mode
+label: 'Värikäs sisältönosto'
+targetEntityType: paragraph
+cache: true

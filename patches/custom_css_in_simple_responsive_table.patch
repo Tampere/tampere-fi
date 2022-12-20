@@ -1,0 +1,83 @@
+diff --git a/css/simple-responsive-table.css b/css/simple-responsive-table.css
+index 2688606..70b1cab 100644
+--- a/css/simple-responsive-table.css
++++ b/css/simple-responsive-table.css
+@@ -1,26 +1,26 @@
+ /* Start table responsive */
+ /* Force table to not be like tables anymore */
+-table,
+-thead,
+-tbody,
+-th,
+-td,
+-tr {
++.paragraph--type-table table,
++.paragraph--type-table thead,
++.paragraph--type-table tbody,
++.paragraph--type-table th,
++.paragraph--type-table td,
++.paragraph--type-table tr {
+   display: block;
+ }
+ 
+ /* Hide table headers (but not display: none;, for accessibility) */
+-thead tr {
++.paragraph--type-table thead tr {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+ }
+ 
+-tr {
++.paragraph--type-table tr {
+   border: 1px solid #ccc;
+ }
+ 
+-td {
++.paragraph--type-table td {
+   /* Behave  like a "row" */
+   border: none !important;
+   border-bottom: 1px solid #eee !important;
+@@ -30,7 +30,7 @@ td {
+   text-align: left !important;
+ }
+ 
+-td:before {
++.paragraph--type-table td:before {
+   /* Now like a table header */
+   position: absolute;
+   left: 1%;
+@@ -41,17 +41,17 @@ td:before {
+ }
+ 
+ /* Label the data */
+-td:before {
++.paragraph--type-table td:before {
+   content: attr(data-title);
+   white-space: normal;
+ }
+ /* Empty row data */
+-td>div.simple-responsive-table-empty-row-data {
++.paragraph--type-table td>div.simple-responsive-table-empty-row-data {
+   min-height: 1.5em;
+ }
+ /* End table responsive */
+ /* Start action dropdown multiple */
+-.js table td .dropbutton-multiple {
++.js .paragraph--type-table table td .dropbutton-multiple {
+   padding-right: inherit;
+ }
+ /* End action dropdown multiple */
+diff --git a/js/simple-responsive-table.js b/js/simple-responsive-table.js
+index e286556..37510e4 100644
+--- a/js/simple-responsive-table.js
++++ b/js/simple-responsive-table.js
+@@ -18,7 +18,7 @@
+            href: cssFilePath
+         }).appendTo("head");
+         // Add data title for each table row td.
+-        $(context).find('table').once('processTable').each(function () {
++        $(context).find('.paragraph--type-table table').once('processTable').each(function () {
+           headers = [];
+           $(this).find('tr th').each(function () {
+             header = $(this).text();

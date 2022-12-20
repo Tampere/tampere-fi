@@ -1,0 +1,7 @@
+name: TRE phone field formatter
+type: module
+description: 'Customized field formatter for Telephone Plus field.'
+package: TRE
+core_version_requirement: ^9
+dependencies:
+  - telephone_plus:telephone_plus

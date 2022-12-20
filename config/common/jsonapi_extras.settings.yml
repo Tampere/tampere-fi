@@ -1,0 +1,6 @@
+_core:
+  default_config_hash: eZ7KZ6nM56SRhfriFWCo1372Z9UiKufhSLRbkdhVmUg
+langcode: fi
+path_prefix: api
+include_count: true
+default_disabled: false

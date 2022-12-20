@@ -1,0 +1,6 @@
+<nav class="footer-navigation" {% if footer_menu_aria_label %}aria-label="{{ footer_menu_aria_label }}"{% endif %}>
+  {% include "@molecules/menus/_menu.twig" with {
+    menu_class: "footer-menu",
+    items: footer_menu_items
+  } %}
+</nav>

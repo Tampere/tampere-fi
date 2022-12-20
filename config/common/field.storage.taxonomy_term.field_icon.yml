@@ -1,0 +1,111 @@
+uuid: 3693c851-519e-4b0c-84ed-a14ff74f830b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - taxonomy
+id: taxonomy_term.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: assistant
+      label: Avustaja
+    -
+      value: lift
+      label: Hissi
+    -
+      value: induction_loop
+      label: Induktiosilmukka
+    -
+      value: information
+      label: Info
+    -
+      value: internet
+      label: Internet
+    -
+      value: isa
+      label: ISA
+    -
+      value: coffee_shop
+      label: Kahvila
+    -
+      value: store
+      label: Kauppa
+    -
+      value: conference_room
+      label: Kokoustila
+    -
+      value: lend_items
+      label: 'Lainattavia välineitä'
+    -
+      value: childcare_room
+      label: Lastenhoitotila
+    -
+      value: charging
+      label: Latauspiste
+    -
+      value: ticket_sales
+      label: Lipunmyynti
+    -
+      value: ramp
+      label: Luiska
+    -
+      value: visual_services
+      label: 'Näkövammaisia helpottavat palvelut'
+    -
+      value: guide_dog
+      label: 'Opaskoirat sallittu'
+    -
+      value: braille
+      label: Pistekirjoitus
+    -
+      value: stair_lift
+      label: Porrashissi
+    -
+      value: stairs
+      label: Portaat
+    -
+      value: wheelchair_lift
+      label: Pyörätuolihissi
+    -
+      value: rollator
+      label: Rollaattori
+    -
+      value: skooter
+      label: 'Sähkömopon säilytys'
+    -
+      value: locker
+      label: Säilytyslokero
+    -
+      value: large_text
+      label: 'Suuri teksti'
+    -
+      value: cloakroom
+      label: 'Vaate säilytys'
+    -
+      value: signed_services
+      label: 'Viittomakielinen palvelu'
+    -
+      value: wc
+      label: WC
+    -
+      value: wc_left
+      label: 'Esteetön wc, yksipuolisesti käytettävä vasen'
+    -
+      value: wc_right
+      label: 'Esteetön wc, yksipuolisesti käytettävä oikea'
+    -
+      value: sound_guidance
+      label: Ääniopastus
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

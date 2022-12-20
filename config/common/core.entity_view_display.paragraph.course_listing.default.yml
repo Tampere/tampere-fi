@@ -1,0 +1,19 @@
+uuid: 1d3f0968-94fc-46d0-9c2d-0928a43229e2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.course_listing.field_course_sort_order
+    - field.field.paragraph.course_listing.field_summary
+    - field.field.paragraph.course_listing.field_title
+    - paragraphs.paragraphs_type.course_listing
+id: paragraph.course_listing.default
+targetEntityType: paragraph
+bundle: course_listing
+mode: default
+content: {  }
+hidden:
+  field_course_sort_order: true
+  field_summary: true
+  field_title: true
+  search_api_excerpt: true

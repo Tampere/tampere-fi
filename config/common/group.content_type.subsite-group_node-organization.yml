@@ -1,0 +1,19 @@
+uuid: 1341c51a-6c59-4c29-aad5-5a6f4209eff1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - node.type.organization
+  module:
+    - gnode
+    - node
+id: subsite-group_node-organization
+label: 'Alasivusto: Group node (Organisaatio)'
+description: 'Adds <em class="placeholder">Organisaatio</em> content to groups both publicly and privately.'
+group_type: subsite
+content_plugin: 'group_node:organization'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

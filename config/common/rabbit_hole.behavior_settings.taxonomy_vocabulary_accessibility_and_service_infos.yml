@@ -1,0 +1,14 @@
+uuid: 9ce7c507-38fc-4d1f-b463-9ab347c68f81
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.accessibility_and_service_infos
+id: taxonomy_vocabulary_accessibility_and_service_infos
+entity_type_id: taxonomy_vocabulary
+entity_id: accessibility_and_service_infos
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

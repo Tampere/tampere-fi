@@ -1,0 +1,20 @@
+uuid: c74317fe-cb04-4f63-9342-af5164f0d345
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - tampere
+id: language_switcher_mobile
+theme: tampere
+region: header
+weight: -7
+provider: null
+plugin: 'language_block:language_interface'
+settings:
+  id: 'language_block:language_interface'
+  label: 'Kielen vaihtaja: mobiili'
+  label_display: '0'
+  provider: language
+visibility: {  }

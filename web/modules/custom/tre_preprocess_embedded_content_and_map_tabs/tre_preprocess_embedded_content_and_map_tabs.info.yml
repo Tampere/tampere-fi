@@ -1,0 +1,7 @@
+name: 'TRE Preprocess Embedded Content and Map Tabs'
+type: module
+description: 'Custom module meant for grouping preprocessing functions related to the Embedded content and map tabs paragraph type.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - tre_preprocess:tre_preprocess

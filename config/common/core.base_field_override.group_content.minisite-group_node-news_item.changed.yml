@@ -1,0 +1,18 @@
+uuid: e966e0ce-9eee-4189-a272-feeead5dca55
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-news_item
+id: group_content.minisite-group_node-news_item.changed
+field_name: changed
+entity_type: group_content
+bundle: minisite-group_node-news_item
+label: Muuttunut
+description: 'Ajankohta jolloin ryhmäsisältöä viimeksi muokattiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

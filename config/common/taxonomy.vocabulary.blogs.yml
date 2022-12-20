@@ -1,0 +1,8 @@
+uuid: a999cf30-b6e3-4aff-b77c-b65bb925cf94
+langcode: fi
+status: true
+dependencies: {  }
+name: Blogit
+vid: blogs
+description: ''
+weight: 0

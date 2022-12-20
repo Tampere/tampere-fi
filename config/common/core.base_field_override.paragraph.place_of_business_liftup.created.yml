@@ -1,0 +1,18 @@
+uuid: 437f046d-29f0-4299-ad0b-506d0950101f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.place_of_business_liftup
+id: paragraph.place_of_business_liftup.created
+field_name: created
+entity_type: paragraph
+bundle: place_of_business_liftup
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

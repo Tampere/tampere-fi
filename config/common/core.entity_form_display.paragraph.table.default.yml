@@ -1,0 +1,29 @@
+uuid: 82e9007b-3b42-4a23-bc4a-a416371f13d3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.table.field_tablefield
+    - paragraphs.paragraphs_type.table
+  module:
+    - tablefield
+id: paragraph.table.default
+targetEntityType: paragraph
+bundle: table
+mode: default
+content:
+  field_tablefield:
+    type: tablefield
+    weight: 0
+    region: content
+    settings:
+      input_type: textfield
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

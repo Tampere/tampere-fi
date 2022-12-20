@@ -1,0 +1,4 @@
+settings:
+  markup:
+    value: "<h3>Pick the organizational units to include in the search. The person need not belong in all of the units, only one.</h3>\r\n"
+    format: basic_html

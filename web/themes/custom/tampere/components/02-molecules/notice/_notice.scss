@@ -1,0 +1,56 @@
+.notice {
+  @include page-element-spacer;
+
+  font-size: $font-16;
+  border: $border-notice;
+  display: flex;
+  max-width: var(--basic-component-max-width);
+
+  @include large {
+    font-size: $font-20;
+  }
+
+  &__exclamation {
+    background-color: clr(notice);
+    color: clr(text-inverse);
+    font-weight: $font-weight-bold;
+    padding: $space-xxs $space-s;
+    // Move the box slightly on top of the borders
+    // to account for Chrome border rendering quirks when zooming.
+    margin-top: -1px;
+    margin-bottom: -1px;
+    margin-left: -1px;
+  }
+
+  &__content {
+    padding: $space-xxs $space-s;
+
+    @include large {
+      padding: $space-xxs $space-xxl $space-xxs $space-l;
+    }
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    margin: 0 0 $space-xxs 0;
+    font-weight: $font-weight-bold;
+
+    @include large {
+      margin-bottom: $space-s;
+    }
+  }
+
+  &__body {
+    font-family: $font-body;
+    margin: 0;
+    max-width: var(--text-content-max-width);
+
+    p:first-of-type {
+      margin-top: $space-xs;
+    }
+
+    p:last-of-type {
+      margin-bottom: $space-xs;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+uuid: 7460c049-5c9c-4e5a-a25e-3e0fbb3ed044
+langcode: fi
+status: true
+dependencies: {  }
+id: node__basic_content_page
+label: 'Sisältö: Perussisältösivu'
+tags:
+  description: '[node:field_metadata_description:value]'
+  og_description: '[node:field_metadata_description:value]'

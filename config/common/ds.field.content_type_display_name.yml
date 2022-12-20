@@ -1,0 +1,9 @@
+id: content_type_display_name
+label: 'Sisältötyypin näyttönimi'
+ui_limit: 'rich_article|*'
+type: twig
+type_label: 'Twig field'
+entities:
+  node: node
+properties:
+  content: "{% set content_type_names = {\r\n  \"rich_article\": \"Article\"|t({}, {\"context\": \"Display name for content type\"}),\r\n} %}\r\n\r\n{{ content_type_names[entity.bundle] }}"

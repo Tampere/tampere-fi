@@ -1,0 +1,17 @@
+regular_field:
+  label: Regular field
+  settings:
+    display_colon_after_label:
+      type: boolean
+      label: Display colon after label
+  variants:
+    above:
+      label: Label above
+    inline:
+      label: Label inline
+  fields:
+    field_label:
+      label: Label
+    field_content:
+      label: Content
+  use: "@atoms/05-forms/regular-field/regular-field.twig"

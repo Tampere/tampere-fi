@@ -1,0 +1,17 @@
+uuid: b9f4a21d-938d-4089-92c5-e63e0fd1e9ab
+langcode: fi
+status: true
+dependencies: {  }
+id: 404_page_content
+label: '404 sivun sisältö'
+token: false
+context:
+  show_warning: true
+  group:
+    language: true
+  fallback:
+    language: ''
+menu:
+  path: /admin/structure/404-content
+  weight: 0
+  description: 'Hallinnoi 404 sivun sisältöä.'

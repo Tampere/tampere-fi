@@ -1,0 +1,186 @@
+.archive-page {
+  margin-bottom: $space-xl;
+  padding: 0 $gutter-mobile;
+
+  @include large {
+    margin-bottom: $space-xxl;
+    padding: 0 $gutter-default;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    margin-top: $space-m;
+    margin-bottom: $space-m;
+
+    @include large {
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+
+    @include large-down {
+      margin-top: $space-m;
+    }
+
+    @include large {
+      margin-left: auto;
+      padding-left: $space-m;
+    }
+  }
+
+  &__link-icon {
+    height: $icon-small;
+    width: $icon-small;
+    margin-left: $space-xs;
+  }
+
+  &__archive-results {
+    margin-bottom: $space-xl;
+
+    @include large-down {
+      @include breakout($gutter-mobile);
+    }
+
+    @include large {
+      margin-bottom: $space-xxl;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+
+    .form-item.form-item--side-by-side {
+      flex-basis: 100%;
+      margin: $gutter-small 0;
+
+      @include small {
+        flex-basis: 50%;
+      }
+
+      @include large {
+        flex-basis: 25%;
+      }
+
+      .form-item__dropdown {
+        width: calc(100% - #{$dash-width} - #{$datepicker-margin});
+        border: 2px solid clr(primary);
+
+        @include small {
+          width: 90%;
+        }
+      }
+    }
+
+    & .form-item.form-item-date-of-publication-max {
+      align-items: flex-end;
+      display: flex;
+      width: calc(100% - #{$dash-width} - #{$datepicker-margin});
+
+      @include small {
+        width: $date-picker-field-width;
+        margin: $space-m 0 $space-m 0;
+      }
+
+      // Calendar icon.
+      &::before {
+        content: url("/themes/custom/tampere/images/calendar-blue.svg");
+        position: absolute;
+        pointer-events: none;
+        bottom: $date-picker-calendar-icon-spacing-bottom;
+        right: $datepicker-margin;
+        z-index: 2;
+      }
+    }
+
+    & .form-item.form-item-date-of-publication-min,
+    & .form-item.form-item-date-of-publication-max {
+      position: relative;
+    }
+
+    & .form-item.form-item-date-of-publication-min {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: $space-m;
+      margin-bottom: $space-m;
+      margin-left: 0;
+
+      @include small {
+        margin-right: $datepicker-margin;
+        width: calc(#{$date-picker-field-width} + #{$dash-width} + #{$datepicker-margin});
+      }
+
+      .form-item__textfield {
+        width: calc(100% - #{$dash-width} - #{$datepicker-margin});
+      }
+
+      .form-item__label {
+        @include small-down {
+          flex-basis: 100%;
+        }
+      }
+
+      // Dash between datepicker fields.
+      &::after {
+        display: flex;
+        align-items: center;
+        content: "\2014";
+        width: $dash-width;
+        margin-left: $datepicker-margin;
+        color: clr(text);
+      }
+
+      // Calendar icon.
+      &::before {
+        content: url("/themes/custom/tampere/images/calendar-blue.svg");
+        position: absolute;
+        pointer-events: none;
+        bottom: $date-picker-calendar-icon-spacing-bottom;
+        right: $date-picker-calendar-icon-spacing-right;
+      }
+    }
+
+    .form-item-field-archive-search-content-value {
+      margin-top: $space-m;
+      margin-bottom: $space-m;
+
+      @include large {
+        margin-left: $space-l;
+        width: auto;
+      }
+
+      .form-item__textfield {
+        width: calc(100% - #{$dash-width} - #{$datepicker-margin});
+
+        @include large {
+          width: auto;
+        }
+      }
+    }
+
+    & .form-item__textfield--with-icon {
+      border: 2px solid clr(primary);
+
+      &::placeholder {
+        color: clr(text);
+        opacity: 1;
+      }
+    }
+
+    .form-actions {
+      @include small {
+        display: flex;
+        flex-basis: 100%;
+      }
+    }
+
+    .form-submit:first-of-type {
+      margin-right: $space-xl;
+    }
+  }
+}

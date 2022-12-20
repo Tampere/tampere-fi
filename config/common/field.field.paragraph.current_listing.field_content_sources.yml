@@ -1,0 +1,21 @@
+uuid: b7f6aa37-4bf1-45b9-a7ee-4f7ee86f2f3b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_sources
+    - paragraphs.paragraphs_type.current_listing
+  module:
+    - options
+id: paragraph.current_listing.field_content_sources
+field_name: field_content_sources
+entity_type: paragraph
+bundle: current_listing
+label: Sisältölähteet
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

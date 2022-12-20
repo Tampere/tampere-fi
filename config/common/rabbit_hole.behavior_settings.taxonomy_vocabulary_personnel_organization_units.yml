@@ -1,0 +1,14 @@
+uuid: 606aa4eb-56a0-46ad-855c-3ccb4a169d0d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.personnel_organization_units
+id: taxonomy_vocabulary_personnel_organization_units
+entity_type_id: taxonomy_vocabulary
+entity_id: personnel_organization_units
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

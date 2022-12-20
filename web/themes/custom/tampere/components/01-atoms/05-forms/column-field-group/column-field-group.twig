@@ -1,0 +1,53 @@
+{% set column_field_group__base_class = "column-field-group" %}
+
+{% if not column_field_group__modifiers %}
+  {% set column_field_group__modifiers = [] %}
+{% endif %}
+
+{% if variant %}
+  {% set column_field_group__modifiers = column_field_group__modifiers|merge([ variant ]) %}
+{% endif %}
+
+{% if pre_columns_content|render|trim %}
+  {% set has_pre_columns_content = TRUE %}
+{% endif %}
+
+{% if left_column|render|trim %}
+  {% set has_left_column = TRUE %}
+{% endif %}
+
+{% if right_column|render|trim %}
+  {% set has_right_column = TRUE %}
+{% endif %}
+
+{% if post_columns_content|render|trim %}
+  {% set has_post_columns_content = TRUE %}
+{% endif %}
+
+<div {{ bem(column_field_group__base_class, column_field_group__modifiers, column_field_group__blockname, [ "hyphenate" ]) }}>
+  {% if has_pre_columns_content %}
+    <div {{ bem("pre-columns-content", column_field_group__pre_columns_content__modifiers|default([]), column_field_group__base_class) }}>
+      {{ pre_columns_content }}
+    </div>
+  {% endif %}
+
+  <div {{ bem("columns", column_field_group__columns__modifiers|default([]), column_field_group__base_class) }}>
+    {% if has_left_column %}
+      <div {{ bem("column", "", column_field_group__base_class) }}>
+        {{ left_column }}
+      </div>
+    {% endif %}
+
+    {% if has_right_column %}
+      <div {{ bem("column", "", column_field_group__base_class) }}>
+        {{ right_column }}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if post_columns_content %}
+    <div {{ bem("post-columns-content", column_field_group__post_columns_content__modifiers|default([]), column_field_group__base_class) }}>
+      {{ post_columns_content }}
+    </div>
+  {% endif %}
+</div>

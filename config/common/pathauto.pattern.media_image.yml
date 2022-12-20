@@ -1,0 +1,24 @@
+uuid: 52d63f07-85f0-4aac-ab3a-11a865e11173
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: iV849WT7yqBQsA5enhjM-tzg4I-JZ_Pg1QEGGBWe7WQ
+id: media_image
+label: 'Media Image'
+type: 'canonical_entities:media'
+pattern: 'image/[media:name]'
+selection_criteria:
+  a56ceba4-5873-432b-9cf1-363dd536347b:
+    id: 'entity_bundle:media'
+    negate: false
+    uuid: a56ceba4-5873-432b-9cf1-363dd536347b
+    context_mapping:
+      media: media
+    bundles:
+      image: image
+selection_logic: and
+weight: 4
+relationships: {  }

@@ -1,0 +1,18 @@
+uuid: 359b34dd-5bae-42a8-a088-74287b22aa6a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.minisites
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.minisites
+target_entity_type_id: taxonomy_term
+target_bundle: minisites
+default_langcode: current_interface
+language_alterable: true

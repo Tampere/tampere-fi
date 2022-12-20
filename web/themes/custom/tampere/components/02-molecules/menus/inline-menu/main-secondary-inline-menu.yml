@@ -1,0 +1,9 @@
+inline_menu_label_id: "main-secondary-inline-menu-label"
+inline_menu_aria_label: "Main secondary inline menu"
+inline_menu_items:
+  - title: 'Matkailijalle'
+    url: '#'
+  - title: 'Investoijalle'
+    url: '#'
+menu_modifiers:
+  - 'main-secondary'

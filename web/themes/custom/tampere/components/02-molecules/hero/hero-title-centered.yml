@@ -1,0 +1,6 @@
+hero__image__src: 'https://placeimg.com/1280/800/arch'
+hero__heading: 'Lorem ipsum dolor sit amet adipisci'
+hero__modifiers:
+  - 'title-centered'
+  - 'title-without-icon'
+has_image: true

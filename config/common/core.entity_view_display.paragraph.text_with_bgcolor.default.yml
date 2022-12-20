@@ -1,0 +1,92 @@
+uuid: 134e6253-da75-4f2b-b6a1-0b43cdb59944
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_with_bgcolor.field_color_textbox_alignment
+    - field.field.paragraph.text_with_bgcolor.field_columns
+    - field.field.paragraph.text_with_bgcolor.field_text
+    - field.field.paragraph.text_with_bgcolor.field_text_bgcolor
+    - paragraphs.paragraphs_type.text_with_bgcolor
+  module:
+    - ds
+    - text
+id: paragraph.text_with_bgcolor.default
+targetEntityType: paragraph
+bundle: text_with_bgcolor
+mode: default
+content:
+  field_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: false
+            lbw-el: ''
+            lbw-cl: ''
+            lbw-at: ''
+            lb-col: false
+            ow: true
+            ow-el: ''
+            ow-cl: text-with-bgcolor__plain-textbox
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-el: ''
+            fis-cl: ''
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 1
+    region: content
+  field_text_bgcolor:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: false
+            lbw-el: ''
+            lbw-cl: ''
+            lbw-at: ''
+            lb-col: false
+            ow: false
+            ow-el: ''
+            ow-cl: ''
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-el: ''
+            fis-cl: ''
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 0
+    region: content
+hidden:
+  field_color_textbox_alignment: true
+  field_columns: true
+  search_api_excerpt: true

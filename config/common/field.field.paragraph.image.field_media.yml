@@ -1,0 +1,31 @@
+uuid: 716e5bc2-7b9d-43a1-a437-a9b39fa052b3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media.type.image
+    - media.type.image_in_other_language
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: image
+label: Kuvatiedosto
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image_in_other_language: image_in_other_language
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

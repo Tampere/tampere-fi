@@ -1,0 +1,31 @@
+uuid: 8f6056be-b8a8-4f13-82b4-1252b71370e5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.metadata_attachment_list.field_geographical_areas
+    - field.field.paragraph.metadata_attachment_list.field_keywords
+    - field.field.paragraph.metadata_attachment_list.field_life_situations
+    - field.field.paragraph.metadata_attachment_list.field_other_identifiers
+    - field.field.paragraph.metadata_attachment_list.field_plan_numbers
+    - field.field.paragraph.metadata_attachment_list.field_record_numbers
+    - field.field.paragraph.metadata_attachment_list.field_summary
+    - field.field.paragraph.metadata_attachment_list.field_title
+    - field.field.paragraph.metadata_attachment_list.field_topics
+    - paragraphs.paragraphs_type.metadata_attachment_list
+id: paragraph.metadata_attachment_list.default
+targetEntityType: paragraph
+bundle: metadata_attachment_list
+mode: default
+content: {  }
+hidden:
+  field_geographical_areas: true
+  field_keywords: true
+  field_life_situations: true
+  field_other_identifiers: true
+  field_plan_numbers: true
+  field_record_numbers: true
+  field_summary: true
+  field_title: true
+  field_topics: true
+  search_api_excerpt: true

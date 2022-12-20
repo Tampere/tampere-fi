@@ -1,0 +1,19 @@
+uuid: 8019e61e-e7a1-44e7-a88b-5bf52268eee2
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_subsite_topic
+field_name: field_subsite_topic
+entity_type: group
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+uuid: d277a1ba-1387-4895-be86-61b5412aa195
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.life-situation-menu-fi
+id: menu_link_content.life-situation-menu-fi.changed
+field_name: changed
+entity_type: menu_link_content
+bundle: life-situation-menu-fi
+label: Muuttunut
+description: 'The time that the menu link was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

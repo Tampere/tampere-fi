@@ -1,0 +1,12 @@
+card_with_links:
+  label: Card with links
+  fields:
+    card__image:
+      label: Image
+    card__heading:
+      label: Heading
+    card__body:
+      label: Body
+    card__links:
+      label: Links
+  use: "@molecules/card-with-links/card-with-links.twig"

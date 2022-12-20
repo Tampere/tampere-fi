@@ -1,0 +1,17 @@
+uuid: 69989c70-5904-474b-b8f5-17720cbd37d6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_xs_image_style
+label: 'Hero - xs (480×352)'
+effects:
+  2e553485-e78d-400b-961d-185ac59de6ed:
+    uuid: 2e553485-e78d-400b-961d-185ac59de6ed
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 352
+      crop_type: focal_point

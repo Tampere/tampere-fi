@@ -1,0 +1,20 @@
+uuid: 9f0fa248-45a1-449a-afe3-18127defd0b4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_contract_ends
+field_name: field_contract_ends
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

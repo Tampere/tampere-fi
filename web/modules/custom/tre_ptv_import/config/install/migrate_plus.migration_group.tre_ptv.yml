@@ -1,0 +1,12 @@
+uuid: c1c206a1-1ec4-484e-a8c8-100c4ffc7b84
+langcode: fi
+status: true
+dependencies:
+  module:
+    - tre_ptv_import
+id: tre_ptv
+label: 'Tampere PTV integrations'
+description: null
+source_type: DB
+module: tre_ptv_import
+shared_configuration: {  }

@@ -1,0 +1,12 @@
+wide_content:
+  label: Wide content
+  fields:
+    main_title:
+      label: Main title
+    main_image:
+      label: Main image
+    main_image_caption:
+      label: Main image caption
+    main_content:
+      label: Main content
+  use: "@organisms/site/wide-content/wide-content.twig"

@@ -1,0 +1,307 @@
+uuid: 824ccf9d-d13a-4c0d-aa80-1882c03218bc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.place.field_additional_information
+    - field.field.node.place.field_address
+    - field.field.node.place.field_description
+    - field.field.node.place.field_display_location_on_map
+    - field.field.node.place.field_epsg_3067_easting
+    - field.field.node.place.field_epsg_3067_northing
+    - field.field.node.place.field_geographical_areas
+    - field.field.node.place.field_help_text
+    - field.field.node.place.field_keywords
+    - field.field.node.place.field_location
+    - field.field.node.place.field_main_image
+    - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_search_keywords
+    - field.field.node.place.field_topics
+    - node.type.place
+    - workflows.workflow.scheduled_transitions
+  module:
+    - allowed_formats
+    - content_moderation
+    - field_group
+    - field_states_ui
+    - geofield
+    - limited_field_widgets
+    - markup
+    - maxlength
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_categorization:
+      children:
+        - field_topics
+        - field_keywords
+        - field_geographical_areas
+        - group_search_keywords
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_tabs:
+      children:
+        - group_common
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_common:
+      children:
+        - field_main_image
+        - title
+        - field_description
+        - langcode
+        - translation
+        - field_location
+        - field_display_location_on_map
+        - field_address
+        - field_additional_information
+        - field_paragraphs
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_search_keywords:
+      children:
+        - field_search_keywords
+      label: Avainsanat
+      region: content
+      parent_name: group_categorization
+      weight: 30
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: node.place.default
+targetEntityType: node
+bundle: place
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_additional_information:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_address:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_display_location_on_map:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 29
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_help_text:
+    type: markup
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 27
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_location:
+    type: geofield_latlon
+    weight: 7
+    region: content
+    settings:
+      html5_geolocation: false
+    third_party_settings: {  }
+  field_main_image:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_paragraphs:
+    type: paragraphs_classic_asymmetric
+    weight: 11
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_search_keywords:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 5
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  promote: true
+  published_at: true
+  sticky: true

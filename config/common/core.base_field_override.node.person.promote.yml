@@ -1,0 +1,22 @@
+uuid: 7cd84bab-8619-4f60-989a-b1a545efe550
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.person
+id: node.person.promote
+field_name: promote
+entity_type: node
+bundle: person
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

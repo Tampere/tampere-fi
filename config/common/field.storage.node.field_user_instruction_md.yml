@@ -1,0 +1,19 @@
+uuid: a089502a-0ea9-4f68-a934-e286e8b54cd1
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_user_instruction_md
+field_name: field_user_instruction_md
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,16 @@
+uuid: b3af0b46-bc60-41a1-a7ce-aadd59a4713c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.zoning_information_types
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.zoning_information_types
+target_entity_type_id: taxonomy_term
+target_bundle: zoning_information_types
+default_langcode: current_interface
+language_alterable: true

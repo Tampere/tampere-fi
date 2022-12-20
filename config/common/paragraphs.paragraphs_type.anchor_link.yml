@@ -1,0 +1,10 @@
+uuid: 53315b10-0f07-4a0c-882c-736d23af5a9c
+langcode: fi
+status: true
+dependencies: {  }
+id: anchor_link
+label: Ankkurilinkki
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

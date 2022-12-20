@@ -1,0 +1,89 @@
+uuid: f6102c5e-14c9-4e3e-9f21-970014b84e30
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.ptv_service_liftup.field_field_selection_help
+    - field.field.paragraph.ptv_service_liftup.field_form_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_heading__basic_info
+    - field.field.paragraph.ptv_service_liftup.field_heading__instruction
+    - field.field.paragraph.ptv_service_liftup.field_heading__requirements
+    - field.field.paragraph.ptv_service_liftup.field_online_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_phone_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_pob_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_service
+    - field.field.paragraph.ptv_service_liftup.field_service_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_web_displayed_fields
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - ds
+    - options
+id: paragraph.ptv_service_liftup.preview
+targetEntityType: paragraph
+bundle: ptv_service_liftup
+mode: preview
+content:
+  field_form_displayed_fields:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_online_displayed_fields:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_phone_displayed_fields:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_pob_displayed_fields:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_service:
+    type: entity_reference_label
+    label: inline
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+  field_service_displayed_fields:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_web_displayed_fields:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  field_field_selection_help: true
+  field_heading__basic_info: true
+  field_heading__instruction: true
+  field_heading__requirements: true
+  search_api_excerpt: true

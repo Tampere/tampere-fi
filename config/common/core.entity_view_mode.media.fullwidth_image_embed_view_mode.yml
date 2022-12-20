@@ -1,0 +1,10 @@
+uuid: 73c9f45d-34d7-4e06-ab9f-abf9751ee904
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.fullwidth_image_embed_view_mode
+label: 'Kokoleveä kuvaupotus'
+targetEntityType: media
+cache: true

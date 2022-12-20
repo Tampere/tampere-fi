@@ -1,0 +1,23 @@
+uuid: 0ca12c43-afb6-4363-8724-d2a10025ac67
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.footer_information
+    - field.storage.config_pages.field_site_statement_links
+  module:
+    - link
+id: config_pages.footer_information.field_site_statement_links
+field_name: field_site_statement_links
+entity_type: config_pages
+bundle: footer_information
+label: 'Sivuston selostelinkit'
+description: 'Linkit sivuston eri seloisteisiin (esim. saavutettavuusseloste). Näytetään tekijänoikeustekstin jälkeen alatunnisteen lopussa.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

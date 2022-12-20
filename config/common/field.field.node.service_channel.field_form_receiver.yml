@@ -1,0 +1,19 @@
+uuid: 8f94c971-dcbb-4720-9a1e-4beb8e0b7907
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_form_receiver
+    - node.type.service_channel
+id: node.service_channel.field_form_receiver
+field_name: field_form_receiver
+entity_type: node
+bundle: service_channel
+label: 'Lomakkeen vastaanottaja'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

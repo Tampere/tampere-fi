@@ -1,0 +1,31 @@
+uuid: 4549543b-496e-4dd9-b48c-cdb30839b55f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.internal_link_with_link_text.field_internal_link
+    - field.field.paragraph.internal_link_with_link_text.field_link_text
+    - paragraphs.paragraphs_type.internal_link_with_link_text
+id: paragraph.internal_link_with_link_text.default
+targetEntityType: paragraph
+bundle: internal_link_with_link_text
+mode: default
+content:
+  field_internal_link:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link_text:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

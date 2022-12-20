@@ -1,0 +1,26 @@
+uuid: 52d06eda-d359-420d-86f8-ea88cd8f0865
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text
+    - paragraphs.paragraphs_type.text_with_bgcolor
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.text_with_bgcolor.field_text
+field_name: field_text
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: 'Teksti ilman taustaväriä'
+description: 'Tähän voit lisätä tekstiä, jos taustavärillisen tekstin leveys on kolmaosan tai puoli palstaa. Ei näytetä, jos taustavärillinen teksti vie koko palstan leveyden.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

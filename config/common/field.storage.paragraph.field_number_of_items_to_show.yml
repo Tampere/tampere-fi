@@ -1,0 +1,33 @@
+uuid: 5c050e76-d3f0-420b-843f-aec49434f174
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_number_of_items_to_show
+field_name: field_number_of_items_to_show
+entity_type: paragraph
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 5
+      label: '5'
+    -
+      value: 10
+      label: '10'
+    -
+      value: 20
+      label: '20'
+    -
+      value: 100
+      label: Kaikki
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

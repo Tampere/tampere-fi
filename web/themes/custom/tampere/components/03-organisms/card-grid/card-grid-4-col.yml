@@ -1,0 +1,28 @@
+card_grid__modifiers:
+  - '4-col'
+cards:
+  - card__heading: 'Lorem ipsum dolor sit amet'
+    card__link__url: '#'
+    card__image__src:
+    card__body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue.'
+    card__modifiers:
+      - 'slim'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod.'
+    card__modifiers:
+      - 'slim'
+  - card__heading: 'Etiam scelerisque eros'
+    card__link__url: '#'
+    card__body: 'Nam non nunc vulputate ipsum viverra commodo quis nec velit. Praesent euismod porttitor leo, nec suscipit justo convallis at.'
+    card__modifiers:
+      - 'slim'
+  - card__heading: 'Maecenas dictum sed velit ac euismod'
+    card__link__url: '#'
+    card__modifiers:
+      - 'slim'
+  - card__heading: 'Praesent euismod porttitor leo'
+    card__link__url: '#'
+    card__body: 'Nunc nec velit bibendum, pulvinar ante nec.'
+    card__modifiers:
+      - 'slim'

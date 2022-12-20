@@ -1,0 +1,14 @@
+.separator {
+  @include page-element-spacer;
+
+  max-width: var(--basic-component-max-width);
+  border-bottom: 2px solid clr(accent-tertiary);
+
+  &--some-share {
+    margin-bottom: $space-xs;
+
+    @include large {
+      margin-bottom: $space-xs;
+    }
+  }
+}

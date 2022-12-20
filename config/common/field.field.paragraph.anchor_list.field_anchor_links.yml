@@ -1,0 +1,234 @@
+uuid: 2294b066-c685-4f9d-b4a8-799e5dab4850
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor_links
+    - paragraphs.paragraphs_type.anchor_link
+    - paragraphs.paragraphs_type.anchor_list
+    - paragraphs.paragraphs_type.back_to_top_link
+  module:
+    - entity_reference_revisions
+id: paragraph.anchor_list.field_anchor_links
+field_name: field_anchor_links
+entity_type: paragraph
+bundle: anchor_list
+label: Ankkurilinkit
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      anchor_link: anchor_link
+      back_to_top_link: back_to_top_link
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 67
+        enabled: false
+      accordion_item:
+        weight: 69
+        enabled: false
+      accordions:
+        weight: 68
+        enabled: false
+      anchor_link:
+        weight: 70
+        enabled: true
+      anchor_list:
+        weight: 71
+        enabled: false
+      attachment:
+        weight: 72
+        enabled: false
+      back_to_top_link:
+        weight: 75
+        enabled: true
+      balanced_content_liftup:
+        weight: 73
+        enabled: false
+      city_construction_project_card:
+        weight: 74
+        enabled: false
+      city_construction_project_cards:
+        weight: 75
+        enabled: false
+      colorful_content_liftup:
+        weight: 76
+        enabled: false
+      contact_information_liftups:
+        weight: 77
+        enabled: false
+      contact_information_list:
+        weight: 78
+        enabled: false
+      content_liftup:
+        weight: 79
+        enabled: false
+      current_liftup:
+        weight: 80
+        enabled: false
+      current_listing:
+        weight: 81
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 82
+        enabled: false
+      event_and_hobby_listing:
+        weight: 83
+        enabled: false
+      external_link:
+        weight: 84
+        enabled: false
+      external_link_with_link_text:
+        weight: 85
+        enabled: false
+      feedback_section:
+        weight: 86
+        enabled: false
+      grouped_content_liftup:
+        weight: 87
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 88
+        enabled: false
+      highlighted_link_list:
+        weight: 90
+        enabled: false
+      highlighted_links_with_feedback:
+        weight: 89
+        enabled: false
+      icon_and_text_link:
+        weight: 91
+        enabled: false
+      image:
+        weight: 92
+        enabled: false
+      image_gallery:
+        weight: 93
+        enabled: false
+      image_gallery_item:
+        weight: 94
+        enabled: false
+      infograph:
+        weight: 95
+        enabled: false
+      infographs:
+        weight: 96
+        enabled: false
+      internal_link:
+        weight: 97
+        enabled: false
+      internal_link_with_link_text:
+        weight: 98
+        enabled: false
+      link_list:
+        weight: 99
+        enabled: false
+      list_of_attachments:
+        weight: 100
+        enabled: false
+      login_link:
+        weight: 101
+        enabled: false
+      login_link_with_text:
+        weight: 102
+        enabled: false
+      mailing_list_information:
+        weight: 103
+        enabled: false
+      map_embed:
+        weight: 104
+        enabled: false
+      metadata_attachment_list:
+        weight: 105
+        enabled: false
+      mosaic_liftup:
+        weight: 106
+        enabled: false
+      notice:
+        weight: 107
+        enabled: false
+      person_liftup:
+        weight: 108
+        enabled: false
+      person_liftups:
+        weight: 109
+        enabled: false
+      picture_mosaic:
+        weight: 110
+        enabled: false
+      place_liftup:
+        weight: 111
+        enabled: false
+      place_of_business_liftup:
+        weight: 112
+        enabled: false
+      positioned_image:
+        weight: 113
+        enabled: false
+      process_accordion_item:
+        weight: 115
+        enabled: false
+      process_accordions:
+        weight: 114
+        enabled: false
+      project_and_organization_cards:
+        weight: 116
+        enabled: false
+      project_or_organization_card:
+        weight: 117
+        enabled: false
+      ptv_service_liftup:
+        weight: 121
+        enabled: false
+      rss_feed:
+        weight: 118
+        enabled: false
+      separator:
+        weight: 119
+        enabled: false
+      service_highlight:
+        weight: 120
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 121
+        enabled: false
+      social_media_feed_embed:
+        weight: 122
+        enabled: false
+      social_media_link:
+        weight: 123
+        enabled: false
+      table:
+        weight: 124
+        enabled: false
+      text:
+        weight: 125
+        enabled: false
+      text_and_images:
+        weight: 126
+        enabled: false
+      text_with_bgcolor:
+        weight: 127
+        enabled: false
+      two_column_liftup:
+        weight: 128
+        enabled: false
+      video_embed:
+        weight: 129
+        enabled: false
+      webform:
+        weight: 130
+        enabled: false
+      zoning_project_card:
+        weight: 131
+        enabled: false
+      zoning_project_cards:
+        weight: 132
+        enabled: false
+field_type: entity_reference_revisions

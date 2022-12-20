@@ -1,0 +1,41 @@
+{{ attach_library("tampere/accordion") }}
+
+{% set ac__base_class = ac__base_class|default("accordion") %}
+
+{% if accordion_item_h_element %}
+ {% set h_element = accordion_item_h_element %}
+{% elseif "mini" in ac__item__modifiers %}
+  {% set h_element = "div" %}
+{% else %}
+  {% set h_element = "h3" %}
+{% endif %}
+
+<div {{ bem("item", ac__item__modifiers, ac__base_class, ["accordion__item"])}}>
+  <{{ h_element }} {{ bem(ac__title_wrapper__blockname|default("title-wrapper"), ac__title_wrapper__modifiers, ac__base_class)}}>
+    <button {{ bem(ac__heading__blockname|default("heading"), (ac__heading__modifiers), ac__base_class, [ 'accordion__heading' ]) }} aria-controls="content-{{ id }}" aria-expanded="false" id="accordion-control-{{ id }}" {% if accordion_item_aria_label %}aria-label="{{ accordion_item_aria_label }}"{% endif %}>
+      <span {{ bem(ac__title__blockname|default("title"), ac_title__modifiers, ac__base_class, [ "hyphenate" ]) }}>{{ accordion_heading }}</span>
+
+      {# Icon #}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: "icon",
+        icon_blockname: ac__base_class,
+        icon_name: accordion__icon_name|default("arrow-plain-new"),
+        icon_decorative: true,
+      } %}
+    </button>
+  </{{ h_element }}>
+
+  <div {{ bem(ac__content__base_class|default("content"), (ac__content__modifiers), ac__base_class, [ "accordion-content-section", "accordion__content" ]) }} role="region" aria-labelledby="accordion-control-{{ id }}" aria-hidden="true" id="content-{{ id }}">
+    {% block accordion_item_content %}
+      {{ accordion_content }}
+    {% endblock %}
+  </div>
+  {% if process_accordion %}
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      icon_base_class: "process-icon",
+      icon_blockname: ac__base_class,
+      icon_name: accordion__icon_name|default("arrow-plain-new"),
+      icon_decorative: true,
+    } %}
+  {% endif %}
+</div>

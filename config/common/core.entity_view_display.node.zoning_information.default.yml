@@ -1,0 +1,256 @@
+uuid: 425a76f5-b21b-4ba6-9a92-4334873a195a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.zoning_information.field_address
+    - field.field.node.zoning_information.field_description
+    - field.field.node.zoning_information.field_display_location_on_map
+    - field.field.node.zoning_information.field_display_period
+    - field.field.node.zoning_information.field_epsg_3067_easting
+    - field.field.node.zoning_information.field_epsg_3067_northing
+    - field.field.node.zoning_information.field_feedback_form
+    - field.field.node.zoning_information.field_geographical_areas
+    - field.field.node.zoning_information.field_help_text
+    - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_location
+    - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_other_identifiers
+    - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_plan_number
+    - field.field.node.zoning_information.field_plan_type
+    - field.field.node.zoning_information.field_processing_time
+    - field.field.node.zoning_information.field_record_number
+    - field.field.node.zoning_information.field_search_keywords
+    - field.field.node.zoning_information.field_topics
+    - field.field.node.zoning_information.field_zoning_information_type
+    - node.type.zoning_information
+  module:
+    - datetime_range
+    - ds
+    - entity_reference_revisions
+    - field_group
+    - geofield
+    - user
+    - webform
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_basic_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      main_image:
+        - field_main_image
+      pre_title_content:
+        - group_zoning_information_dates
+        - field_display_period
+        - field_processing_time
+      main_title:
+        - node_title
+      main_content:
+        - content_moderation_control
+        - field_address
+        - field_description
+        - field_location
+        - field_feedback_form
+        - field_paragraphs
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 2
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+  field_group:
+    group_zoning_information_dates:
+      children:
+        - field_display_period
+        - field_processing_time
+      label: 'Zoning information dates'
+      parent_name: ''
+      region: pre_title_content
+      weight: 1
+      format_type: pattern_formatter
+      format_settings:
+        pattern: dates_field_group
+        variants:
+          figure: large
+          icon_field_group: location
+          link_field: default
+          regular_field: above
+          link_with_icon: default
+          cta: default
+          listing_item: default
+          in_page_menu: default
+          rss_card: default
+          topical_card: default
+          popup_card: default
+          topical_content: default
+          topics_and_life_situations: default
+        pattern_mapping:
+          'fields:field_display_period':
+            destination: dates_content
+            weight: 0
+            plugin: fields
+            source: field_display_period
+          'fields:field_processing_time':
+            destination: dates_content
+            weight: 1
+            plugin: fields
+            source: field_processing_time
+        pattern_settings:
+          dates_field_group:
+            use_smaller_font_size: '1'
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+            label_highlight: 0
+          link_with_icon:
+            link_text: ''
+          cta:
+            heading_level: ''
+            skip_paragraph_id: 0
+          place_contact:
+            additional_content_label: ''
+            place_contact__heading_level: ''
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+id: node.zoning_information.default
+targetEntityType: node
+bundle: zoning_information
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: main_content
+  field_address:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: main_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
+  field_display_period:
+    type: daterange_default
+    label: inline
+    settings:
+      timezone_override: Europe/Helsinki
+      format_type: date_only
+      separator: '-'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: pre_title_content
+  field_feedback_form:
+    type: webform_entity_reference_entity_view
+    label: hidden
+    settings:
+      source_entity: true
+    third_party_settings: {  }
+    weight: 7
+    region: main_content
+  field_location:
+    type: geofield_latlon
+    label: above
+    settings:
+      output_format: decimal
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: 'Sijainti kartalla'
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: main_content
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: hero_widescreen_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: main_image
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 8
+    region: main_content
+  field_processing_time:
+    type: daterange_default
+    label: inline
+    settings:
+      timezone_override: Europe/Helsinki
+      format_type: date_only
+      separator: '-'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 3
+    region: pre_title_content
+hidden:
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_other_identifiers: true
+  field_plan_number: true
+  field_plan_type: true
+  field_record_number: true
+  field_search_keywords: true
+  field_topics: true
+  field_zoning_information_type: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

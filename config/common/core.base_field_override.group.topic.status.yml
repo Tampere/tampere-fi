@@ -1,0 +1,22 @@
+uuid: 6da11b5a-951f-4d9a-ae88-03cacb6883ce
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+id: group.topic.status
+field_name: status
+entity_type: group
+bundle: topic
+label: Julkaistu
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

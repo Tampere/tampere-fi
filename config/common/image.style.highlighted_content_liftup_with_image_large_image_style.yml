@@ -1,0 +1,15 @@
+uuid: 767d28c6-6fec-49f8-ac50-86a25ec9a8c5
+langcode: fi
+status: true
+dependencies: {  }
+name: highlighted_content_liftup_with_image_large_image_style
+label: 'Korostettu kuvallinen sisältönosto - large (height 720)'
+effects:
+  2eea1bbb-7d80-4c05-87a6-a2429fd39a8d:
+    uuid: 2eea1bbb-7d80-4c05-87a6-a2429fd39a8d
+    id: image_scale
+    weight: 2
+    data:
+      width: null
+      height: 720
+      upscale: false

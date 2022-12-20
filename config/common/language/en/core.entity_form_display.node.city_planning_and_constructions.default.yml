@@ -1,0 +1,10 @@
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Tabs
+    group_common:
+      label: Common
+    group_categorization:
+      label: Categorization
+    group_search_keywords:
+      label: 'Search keywords'

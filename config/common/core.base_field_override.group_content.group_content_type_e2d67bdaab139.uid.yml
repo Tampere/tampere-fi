@@ -1,0 +1,20 @@
+uuid: 20f6faa5-b818-43f4-a548-d63fc0de0ec1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_e2d67bdaab139
+id: group_content.group_content_type_e2d67bdaab139.uid
+field_name: uid
+entity_type: group_content
+bundle: group_content_type_e2d67bdaab139
+label: 'Group content creator'
+description: 'The username of the group content creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

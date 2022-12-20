@@ -1,0 +1,62 @@
+uuid: 7bb4d8e8-13c1-4565-a33e-cd1e0a4e0b61
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.map_embed.field_display_wider
+    - field.field.paragraph.map_embed.field_embed_description
+    - field.field.paragraph.map_embed.field_map_embed_code
+    - field.field.paragraph.map_embed.field_map_height
+    - field.field.paragraph.map_embed.field_title
+    - paragraphs.paragraphs_type.map_embed
+id: paragraph.map_embed.default
+targetEntityType: paragraph
+bundle: map_embed
+mode: default
+content:
+  field_display_wider:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_embed_description:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_map_embed_code:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_map_height:
+    type: number
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

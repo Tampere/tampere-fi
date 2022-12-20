@@ -1,0 +1,33 @@
+uuid: 394ab9f8-7aba-4a2a-afe4-be3ce0b4039d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.life-situation-menu-en
+  module:
+    - language
+    - system
+  theme:
+    - tampere
+id: life_situation_menu_en
+theme: tampere
+region: header
+weight: -15
+provider: null
+plugin: 'system_menu_block:life-situation-menu-en'
+settings:
+  id: 'system_menu_block:life-situation-menu-en'
+  label: 'Elämäntilanne-valikko (EN)'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 2
+  expand_all_items: true
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      en: en

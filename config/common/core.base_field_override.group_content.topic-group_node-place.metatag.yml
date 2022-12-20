@@ -1,0 +1,18 @@
+uuid: 5bd198d6-e5d2-4aad-8ae4-49e42d46d69a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.topic-group_node-place
+id: group_content.topic-group_node-place.metatag
+field_name: metatag
+entity_type: group_content
+bundle: topic-group_node-place
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -1,0 +1,191 @@
+uuid: 9a5fb2c3-4cac-4630-b0fc-72973d6fb9ea
+id: ptv_service_locations_en
+label: 'PTV Service Locations in English'
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - tre_ptv_import
+migration_group: tre_ptv
+
+source:
+  plugin: ptv_service_locations
+  language: en
+  key: default
+  target: default
+  batch_size: 100
+  track_changes: true
+  constants:
+    LANGUAGE: en
+    TELEPHONE_SUPPLEMENTARY_OFFSET: 0
+    TELEPHONE_SUPPLEMENTARY_MAXLENGTH: 255
+    MB_SUBSTR_ENCODING: UTF-8
+
+process:
+  langcode:
+    plugin: default_value
+    default_value: en
+  title:
+    plugin: get
+    source: name
+    language: constants/LANGUAGE
+  field_alternative_name:
+    plugin: get
+    source: additional_name
+    language: constants/LANGUAGE
+  field_summary:
+    plugin: get
+    source: summary
+    language: constants/LANGUAGE
+  field_body_md/value:
+    plugin: get
+    source: description
+    language: constants/LANGUAGE
+  field_body_md/format:
+    plugin: default_value
+    default_value: ptv_markdown
+  field_address_postal:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: postal_address
+    -
+      plugin: addressfield
+      language: constants/LANGUAGE
+
+  field_addresses:
+    plugin: sub_process
+    source: street_addresses
+    process:
+      # The sub_process plugin returns a newly keyed array. In this case the only key needed in the new array is
+      # target_id. The value for that can be generated this way, using the entity_generate plugin, but that breaks the
+      # pure ETL principles: the resulting nodes will not be updateable and they won't get deleted when doing rollbacks
+      # for the migration. The other option would be to create a separate migration to load the map_point nodes into the
+      # system and use the migration_lookup plugin here, but to save time in the implementation phase we won't implement
+      # that now.
+      target_id:
+        plugin: entity_generate
+        access_check: false
+        entity_type: node
+        bundle: map_point
+        bundle_key: type
+        value_key: field_address_hash
+        source: address_hash
+        default_values:
+          langcode: en
+        values:
+          # This process does not handle the field_location geofield yet. To do that, we must introduce a process plugin
+          # before this to transform the N and E values to lat and lon using Proj4Php. The processing result can then
+          # be extracted into pseudo values using the extract process plugin and inserted as values using the POINT
+          # notation: e.g. field_location: 'POINT (25.5 63.1)' where 25.5 is the longitude and 63.1 the latitude.
+          title: address_label
+          field_address_hash: address_hash
+          field_description: description
+          field_epsg_3067_northing: northing
+          field_epsg_3067_easting: easting
+          field_address_street/address_line1: thoroughfare
+          field_address_street/postal_code: postal_code
+          field_address_street/locality: locality
+          field_address_street/country_code: country
+
+  field_additional_phones:
+    plugin: sub_process
+    source: phones
+    process:
+      telephone_number: number
+      telephone_title: title
+      telephone_supplementary: label
+      # This subfield is a NOT NULL field in the schema, so we must insert a value.
+      display_international_number:
+        plugin: default_value
+        default_value: 0
+      # This subfield is a NOT NULL field in the schema, so we must insert a value.
+      # More mapping values can be added as necessary. Starting with FI is fine.
+      country_code:
+        source: country_code
+        plugin: static_map
+        map:
+          '+358': FI
+        default_value: FI
+
+  field_links: web_pages
+
+  # Only use the first value of the PTV emails, as agreed with the client.
+  field_email:
+    -
+      plugin: array_shift
+      source: emails
+
+  field_opening_hours:
+    # As the field only supports 1 value, we extract the first value from the input array.
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 0
+      language: en
+    -
+      plugin: get
+
+  field_opening_hours_2:
+    # As the field only supports 1 value, we extract the second value from the input array.
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 1
+      language: en
+    -
+      plugin: get
+
+  field_opening_hours_3:
+    # As the field only supports 1 value, we extract the third value from the input array.
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 2
+      language: en
+    -
+      plugin: get
+
+  field_opening_hours_info:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 0
+      language: en
+
+  field_opening_hours_info_2:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 1
+      language: en
+
+  field_opening_hours_info_3:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 2
+      language: en
+
+  # The source exists as an array and the destination field is a multi-value field with cardinality -1.
+  field_exception_hours:
+    plugin: get
+    source: exception_hours_info
+    language: constants/LANGUAGE
+
+destination:
+  plugin: 'entity:node'
+  default_bundle: 'place_of_business'

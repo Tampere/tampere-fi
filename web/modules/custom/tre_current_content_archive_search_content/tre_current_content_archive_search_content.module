@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for tre_current_content_archive_search_content module.
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\paragraphs\ParagraphInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function tre_current_content_archive_search_content_node_presave(NodeInterface $node) {
+  if (!$node->hasField('field_archive_search_content')) {
+    return;
+  }
+
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
+  $renderer = \Drupal::service('renderer');
+
+  $title = $node->getTitle();
+
+  $paragraphs = $node->get('field_paragraphs')->referencedEntities();
+
+  $text_content = [];
+  foreach ($paragraphs as $paragraph) {
+    if (!($paragraph instanceof ParagraphInterface)) {
+      continue;
+    }
+
+    /** @var \Drupal\paragraphs\ParagraphInterface $translated_paragraph */
+    $translated_paragraph = \Drupal::service('entity.repository')->getTranslationFromContext($paragraph);
+
+    $bundle = $paragraph->bundle();
+    switch ($bundle) {
+      case 'text':
+        $rendered_text = $translated_paragraph->get('field_text')->view();
+        $text_content[] = $renderer->renderPlain($rendered_text);
+        break;
+
+      case 'accordions':
+      case 'process_accordions':
+        if ($translated_paragraph->hasField('field_process_accordions')) {
+          $accordion_items = $translated_paragraph->get('field_process_accordions')->referencedEntities();
+        }
+        else {
+          $accordion_items = $translated_paragraph->get('field_accordions')->referencedEntities();
+        }
+
+        foreach ($accordion_items as $accordion_item) {
+          if (!($accordion_item instanceof ParagraphInterface)) {
+            continue;
+          }
+
+          /** @var \Drupal\paragraphs\ParagraphInterface $translated_accordion_item_paragraph */
+          $translated_accordion_item_paragraph = \Drupal::service('entity.repository')->getTranslationFromContext($accordion_item);
+
+          $accordion_content_paragraphs = $translated_accordion_item_paragraph->get('field_accordion_content')->referencedEntities();
+
+          foreach ($accordion_content_paragraphs as $accordion_content_paragraph) {
+            $accordion_content_paragraph_bundle = $accordion_content_paragraph->bundle();
+
+            if ($accordion_content_paragraph_bundle !== 'accordion_text_content') {
+              continue;
+            }
+
+            if (!($accordion_content_paragraph instanceof ParagraphInterface)) {
+              continue;
+            }
+
+            /** @var \Drupal\paragraphs\ParagraphInterface $translated_accordion_text_paragraph */
+            $translated_accordion_text_paragraph = \Drupal::service('entity.repository')->getTranslationFromContext($accordion_content_paragraph);
+            $rendered_text = $translated_accordion_text_paragraph->get('field_accordion_text')->view();
+            $text_content[] = $renderer->renderPlain($rendered_text);
+          }
+        }
+
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  $potential_text_fields = [
+    'field_lead',
+    'field_body',
+  ];
+
+  foreach ($potential_text_fields as $text_field) {
+    if (!$node->hasField($text_field)) {
+      continue;
+    }
+
+    $rendered_field = $node->get($text_field)->view();
+    $text_content[] = $renderer->renderPlain($rendered_field);
+  }
+
+  $text_string = implode("\n", $text_content);
+  $text_without_tags = strip_tags($text_string);
+  $node->set('field_archive_search_content', "{$title}\n{$text_without_tags}");
+}

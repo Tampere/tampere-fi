@@ -1,0 +1,34 @@
+topical_listing__heading: 'Lorem ipsum dolor sit amet'
+has_highlighted_liftup: TRUE
+topical_card__date: '14.12.2021'
+topical_card__tag:
+  'News item'
+topical_card__heading:
+  'Lorem ipsum dolor sit amet'
+topical_card__summary:
+  'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit.'
+topical_card__link__url:
+  '#'
+topical_listing__highlighted_liftup__modifiers:
+  - "event"
+liftups:
+  - card__date: '12.12.2021'
+    card__tag: 'News item'
+    card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__image__src: 'https://placeimg.com/450/800/nature'
+  - card__date: '10.12.2021'
+    card__tag: 'News item'
+    card__heading: 'Felis sed felis bibendum tristique'
+    card__link__url: '#'
+    card__image__src: 'https://placeimg.com/650/400/arch'
+  - card__date: '08.12.2021'
+    card__tag: 'News item'
+    card__heading: 'Sed ac ipsum quis massa'
+    card__link__url: '#'
+link_list__items:
+  - text: 'Previous contents'
+    url: '#'
+  - text: 'Search and filter all current content'
+    url: '#'
+is_example: TRUE

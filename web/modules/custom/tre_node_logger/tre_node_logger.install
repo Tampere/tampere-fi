@@ -1,0 +1,57 @@
+<?php
+/**
+ * Install, update and uninstall functions for the tre_node_logger module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function tre_node_logger_schema() {
+  $tables = [];
+
+  $tables['tre_node_logger'] = [
+    'description' => 'Stores logs',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for a log.',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'nid' => [
+        'description' => 'The node id for which this log is',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'message' => [
+        'description' => 'Log message.',
+        'type' => 'blob',
+        'serialize' => TRUE,
+        'not null' => TRUE,
+        'size' => 'big',
+      ],
+      'logging_date' => [
+        'description' => 'The date that the log was created at',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 255,
+      ],
+    ],
+    'primary key' => [
+      'id',
+    ],
+    'foreign keys' => [
+      'log_node' => [
+        'table' => 'node',
+        'columns' => ['nid' => 'nid'],
+      ],
+    ],
+    'unique keys' => [],
+    'indexes' => [],
+  ];
+
+  return $tables;
+}
+

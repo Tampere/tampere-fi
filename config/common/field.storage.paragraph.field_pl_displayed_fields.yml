@@ -1,0 +1,60 @@
+uuid: 5a32c398-02f3-4692-a453-4e309429c825
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_pl_displayed_fields
+field_name: field_pl_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: image
+      label: Kuva
+    -
+      value: title
+      label: Titteli
+    -
+      value: name
+      label: Nimi
+    -
+      value: task_area
+      label: Tehtäväalue
+    -
+      value: area_of_responsibility
+      label: Vastuualue
+    -
+      value: phone_number
+      label: Puhelinnumero
+    -
+      value: additional_phone_number_1
+      label: 'Lisäpuhelinnumero 1'
+    -
+      value: additional_phone_number_2
+      label: 'Lisäpuhelinnumero 2'
+    -
+      value: additional_phone_number_3
+      label: 'Lisäpuhelinnumero 3'
+    -
+      value: additional_phone_number_4
+      label: 'Lisäpuhelinnumero 4'
+    -
+      value: additional_phone_number_5
+      label: 'Lisäpuhelinnumero 5'
+    -
+      value: email_address
+      label: Sähköpostiosoite
+    -
+      value: additional_information
+      label: Lisätiedot
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

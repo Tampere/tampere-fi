@@ -1,0 +1,70 @@
+$social-media-icon-height: 40px;
+$social-media-icon-width: 40px;
+$social-media-icon-height--desktop: 29px;
+$social-media-icon-width--desktop: 29px;
+$social-media-icon-width--narrow: 20px;
+$social-media-icon-width--wide: $social-media-icon-width;
+
+.some-row {
+  $base_class: &;
+
+  @include list-reset;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: $space-xs * (-1);
+  margin-left: $space-xs * (-1);
+
+  @include medium {
+    justify-content: flex-start;
+  }
+
+  @include large {
+    margin-top: $space-m * (-1);
+  }
+
+  &__link {
+    @include link(clr(text-inverse), clr(accent-secondary-transparent));
+
+    display: block;
+    text-decoration: none;
+    padding: $space-m $space-xs;
+
+    @include large {
+      padding: $space-m $space-s;
+    }
+  }
+
+  &__icon {
+    display: block;
+    fill: clr(text-inverse);
+    height: $social-media-icon-height--desktop;
+    width: $social-media-icon-width--desktop;
+
+    @include large {
+      height: $social-media-icon-height--desktop;
+      width: $social-media-icon-width--desktop;
+    }
+
+    &--facebook {
+      width: $social-media-icon-width--narrow;
+    }
+
+    &--youtube,
+    &--twitter {
+      width: $social-media-icon-width--wide;
+    }
+  }
+
+  &--inherited-colors {
+    #{$base_class}__link {
+      @include link-inherit;
+
+      &:focus,
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+current: 2
+items:
+  pages: {
+    1: { href: '#' },
+    2: { href: '#' },
+    3: { href: '#' },
+    4: { href: '#' },
+    5: { href: '#' }
+  }
+  next: true
+  previous: true

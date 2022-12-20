@@ -1,0 +1,17 @@
+uuid: 2ebf15b8-27a5-4f52-924e-f2f24ab766e9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: picture_mosaic_medium_view_mode
+label: 'Kuvamosaiikki - medium (985×218)'
+effects:
+  a6e91c16-8bbd-4700-a36e-ee408ebcf6eb:
+    uuid: a6e91c16-8bbd-4700-a36e-ee408ebcf6eb
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 985
+      height: 218
+      crop_type: focal_point

@@ -1,0 +1,38 @@
+settings:
+  allowed_values:
+    -
+      label: Name
+    -
+      label: 'Alternative name'
+    -
+      label: Organisation
+    -
+      label: Summary
+    -
+      label: Description
+    -
+      label: 'Street address'
+    -
+      label: 'Post address'
+    -
+      label: Region
+    -
+      label: Links
+    -
+      label: Phone
+    -
+      label: Email
+    -
+      label: 'Opening hours 1'
+    -
+      label: 'Opening hours 2'
+    -
+      label: 'Opening hours 3'
+    -
+      label: 'Additional information'
+    -
+      label: 'Accessibility information'
+    -
+      label: Map
+    -
+      label: 'Exception hours'

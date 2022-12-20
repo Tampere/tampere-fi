@@ -1,0 +1,19 @@
+uuid: 796bc2c8-e587-4694-839f-1de3da7048fd
+langcode: fi
+status: true
+dependencies:
+  module:
+    - markup
+    - paragraphs
+id: paragraph.field_organization_units_help
+field_name: field_organization_units_help
+entity_type: paragraph
+type: markup
+settings: {  }
+module: markup
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

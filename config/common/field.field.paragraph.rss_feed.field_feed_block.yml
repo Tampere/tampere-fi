@@ -1,0 +1,29 @@
+uuid: ce573a9f-6872-47e9-8b86-24541a295245
+langcode: fi
+status: true
+dependencies:
+  config:
+    - feeds.feed_type.rss_feed
+    - field.storage.paragraph.field_feed_block
+    - paragraphs.paragraphs_type.rss_feed
+id: paragraph.rss_feed.field_feed_block
+field_name: field_feed_block
+entity_type: paragraph
+bundle: rss_feed
+label: RSS-syöte
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings:
+    target_bundles:
+      rss_feed: rss_feed
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

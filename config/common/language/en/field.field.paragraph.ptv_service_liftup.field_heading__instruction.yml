@@ -1,0 +1,5 @@
+label: 'Override heading: Do the following'
+default_value:
+  -
+    size: h2
+    text: 'Do the following'

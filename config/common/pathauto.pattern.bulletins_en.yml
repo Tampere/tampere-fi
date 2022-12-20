@@ -1,0 +1,33 @@
+uuid: d7223405-f57e-4327-afba-d56d80e66cfe
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: bulletins_en
+label: 'Notices EN'
+type: 'canonical_entities:node'
+pattern: 'notices/[node:title]'
+selection_criteria:
+  38b31853-4058-4546-a1e2-16b288e49ae3:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 38b31853-4058-4546-a1e2-16b288e49ae3
+    context_mapping:
+      node: node
+    bundles:
+      notice: notice
+  e3d650bb-17ab-4c3d-ad64-0e133e09c207:
+    id: language
+    negate: false
+    uuid: e3d650bb-17ab-4c3d-ad64-0e133e09c207
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -7
+relationships:
+  'node:langcode:language':
+    label: Kieli

@@ -1,0 +1,103 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables["paragraph"]->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without("field_example") }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if not paragraph_anchor_link__modifiers %}
+  {% set paragraph_anchor_link__modifiers = [] %}
+{% endif %}
+
+{% set extra_wide_parents = [
+  "current_listing",
+  "contact_information_list",
+  "colorful_content_liftup",
+  "course_listing",
+  "course_listing_sports",
+  "rss_feed",
+  "social_media_feed_embed",
+  "persons_contact_information_list",
+  "generic_listing",
+  "embedded_content_and_map_tabs",
+  "event_and_hobby_listing",
+] %}
+
+{% set use_right_to_left = lang_code == "arb" or lang_code == "fa" %}
+
+{% if (paragraph.bundle in extra_wide_parents) or display_extra_wide %}
+  {% set paragraph_anchor_link__modifiers = paragraph_anchor_link__modifiers|merge([ "extra-wide-parent" ]) %}
+{% endif %}
+
+{% if paragraph.bundle == "text" or paragraph.bundle == "accordion_item" or view_mode == "accordion_content_view_mode" or skip_paragraph_id %}
+  {% set hide_anchor = TRUE %}
+{% endif %}
+
+{% set paragraph__base_class = "paragraph" %}
+
+{% if entity_id %}
+  {% set paragraph__id = "paragraph-" ~ entity_id %}
+{% else %}
+  {% set paragraph__id = "paragraph-" ~ paragraph.id.value %}
+{% endif %}
+
+{% set paragraph__anchor = "#" ~ paragraph__id %}
+
+{%
+  set classes = [
+    paragraph__base_class,
+    paragraph__base_class ~ "--type-" ~ paragraph.bundle|clean_class,
+    paragraph__base_class ~ "--view-mode-" ~ view_mode|clean_class
+  ]
+%}
+
+<div
+  {% if attributes %}{{ attributes.addClass(classes) }}{% else %}class="{{ paragraph__base_class }}"{% endif %}
+  {% if not skip_paragraph_id %}id="{{ paragraph__id }}"{% endif %}
+  {% if lang_code %}lang="{{ lang_code }}"{% endif %}
+  {% if use_right_to_left %} dir="rtl"{% endif %}
+>
+  {% if not hide_anchor %}
+    {% include "@atoms/anchor-link/anchor-link.twig" with {
+      "anchor_link__modifiers": paragraph_anchor_link__modifiers,
+      "anchor_link__url": paragraph__anchor,
+      "attributes": [],
+    } %}
+  {% endif %}
+
+  {% block paragraph_content %}
+    {{ content }}
+  {% endblock %}
+</div>

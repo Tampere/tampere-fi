@@ -1,0 +1,21 @@
+uuid: e9da51d7-3669-4557-9ae9-f1508415dc34
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_chargeability_heading
+    - node.type.ptv_service
+  module:
+    - markup_field
+id: node.ptv_service.field_chargeability_heading
+field_name: field_chargeability_heading
+entity_type: node
+bundle: ptv_service
+label: Maksullisuus-otsikko
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: markup_field

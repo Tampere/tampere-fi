@@ -1,0 +1,26 @@
+topical_listing__modifiers:
+  - 'events'
+topical_listing__summary:
+  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+topical_card__tag:
+  'Event location'
+liftups:
+  - card__date: '12.12.2021'
+    card__tag: 'Event location'
+    card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__image__src: 'https://placeimg.com/450/800/nature'
+  - card__date: '10.12.2021'
+    card__tag: 'Event location'
+    card__heading: 'Felis sed felis bibendum tristique'
+    card__link__url: '#'
+    card__image__src: 'https://placeimg.com/1280/800/arch'
+  - card__date: '08.12.2021'
+    card__tag: 'Event location'
+    card__heading: 'Sed ac ipsum quis massa'
+    card__link__url: '#'
+    card__image__src: 'images/placeholder-green-waves.svg'
+topical_listing__link__icon: 'external'
+display_archive_link: false
+topical_listing__highlighted__image_src: 'https://placeimg.com/1280/800/arch'
+

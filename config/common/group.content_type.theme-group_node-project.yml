@@ -1,0 +1,19 @@
+uuid: 6846f49c-2b7e-4838-a5f4-ea4bed64cdab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+    - node.type.project
+  module:
+    - gnode
+    - node
+id: theme-group_node-project
+label: 'Teema: Group node (Projekti)'
+description: 'Adds <em class="placeholder">Projekti</em> content to groups both publicly and privately.'
+group_type: theme
+content_plugin: 'group_node:project'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

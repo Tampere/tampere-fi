@@ -1,0 +1,31 @@
+{#
+ # Available variables:
+ # - in_page_menu__base_class - base classname of the wrapper.
+ #
+ # - in_page_menu__list_item__modifiers - array of modifiers to add to the base classname of the list item.
+ # - in_page_menu__link__modifiers - array of modifiers to add to the base classname of the link.
+ #
+ # - in_page_menu__link__url - URL for the link to point to.
+ # - in_page_menu__link__title - title for the link.
+ #}
+
+{% set in_page_menu__base_class = "in-page-menu" %}
+{% set use_right_to_left = in_page_menu__link__language == "arb" or in_page_menu__link__language == "fa" %}
+
+<li
+  {{ bem("list-item", (in_page_menu__list_item__modifiers), in_page_menu__base_class) }}
+  {% if in_page_menu__link__language %}lang="{{ in_page_menu__link__language }}"{% endif %}
+  {% if use_right_to_left %} dir="rtl"{% endif %}
+>
+  <a {{ bem("link", (in_page_menu__link__modifiers), in_page_menu__base_class, [ "hyphenate" ]) }} href="{{ in_page_menu__link__url }}">
+    {% if "back-to-top" in in_page_menu__list_item__modifiers %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_name: "arrow-plain-new",
+        icon_base_class: "icon",
+        icon_blockname: in_page_menu__base_class,
+        icon_decorative: true,
+      } %}
+    {% endif %}
+    {{ in_page_menu__link__title }}
+  </a>
+</li>

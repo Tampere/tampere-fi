@@ -1,0 +1,46 @@
+.rss-feed {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include large {
+      @include centered-content($max-width: $max-width);
+    }
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    margin-bottom: $space-m;
+  }
+
+  &__heading {
+    margin-right: $space-s;
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    color: clr(primary);
+    height: $icon-medium;
+    width: $icon-medium;
+  }
+
+  .layout-container--with-sidebar & {
+    #{$base_class}__wrapper {
+      @include large {
+        max-width: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .layout-container:not(.layout-container--with-sidebar) & {
+    @include large {
+      @include breakout(0);
+    }
+  }
+}

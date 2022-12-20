@@ -1,0 +1,10 @@
+uuid: 44573ebe-51dc-46c0-96cf-b94aa5e91081
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.positioned_image_large_view_mode
+label: 'Asemoitu kuva (iso)'
+targetEntityType: paragraph
+cache: true

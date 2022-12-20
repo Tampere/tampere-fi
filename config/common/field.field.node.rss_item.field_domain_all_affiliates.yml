@@ -1,0 +1,23 @@
+uuid: dddfbc79-e1bc-4eda-b79d-6354fe690160
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_domain_all_affiliates
+    - node.type.rss_item
+id: node.rss_item.field_domain_all_affiliates
+field_name: field_domain_all_affiliates
+entity_type: node
+bundle: rss_item
+label: 'Lähetä kaikille yhteistyökumppaneille'
+description: 'Avaa tämä sisältö kaikille domaineille saatavaksi'
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

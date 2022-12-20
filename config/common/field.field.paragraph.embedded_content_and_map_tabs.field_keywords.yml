@@ -1,0 +1,29 @@
+uuid: 44c23f6c-696c-4962-a9af-ab3a5da3fe52
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_keywords
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+    - taxonomy.vocabulary.keywords
+id: paragraph.embedded_content_and_map_tabs.field_keywords
+field_name: field_keywords
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: Asiasanat
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      keywords: keywords
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

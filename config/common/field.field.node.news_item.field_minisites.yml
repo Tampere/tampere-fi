@@ -1,0 +1,29 @@
+uuid: 84700525-d174-45a9-a9fe-5b3b4d789918
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_minisites
+    - node.type.news_item
+    - taxonomy.vocabulary.minisites
+id: node.news_item.field_minisites
+field_name: field_minisites
+entity_type: node
+bundle: news_item
+label: Minikotisivustot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      minisites: minisites
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

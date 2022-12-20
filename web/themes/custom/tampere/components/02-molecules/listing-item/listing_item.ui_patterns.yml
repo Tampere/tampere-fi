@@ -1,0 +1,21 @@
+listing_item:
+  label: Listing item
+  variants:
+    default:
+      label: Default
+    person:
+      label: Person
+    place:
+      label: Place
+    default-search:
+      label: Default search result
+    contact-search:
+      label: Contact search result
+  fields:
+    listing_item__type:
+      label: Content type
+    listing_item__main_content:
+      label: Main content
+    listing_item__additional_information:
+      label: Additional information
+  use: "@molecules/listing-item/listing-item.twig"

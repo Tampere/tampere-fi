@@ -1,0 +1,19 @@
+uuid: 86f65735-79e4-4c6d-ade6-31e05c7ffb21
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alternative_name
+    - node.type.place_of_business
+id: node.place_of_business.field_alternative_name
+field_name: field_alternative_name
+entity_type: node
+bundle: place_of_business
+label: 'Vaihtoehtoinen nimi'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

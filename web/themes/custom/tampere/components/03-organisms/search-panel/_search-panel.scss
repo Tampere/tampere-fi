@@ -1,0 +1,111 @@
+$search-panel-height: 490px;
+$search-panel-height--mobile: 560px;
+$search-panel-results-restricted-height: 491px;
+$search-panel-results-restricted-height--mobile: 321px;
+
+.search-panel {
+  $base_class: &;
+
+  background-color: clr(tabbed-container-background);
+
+  &__panel-wrapper {
+    min-height: $search-panel-height--mobile;
+
+    @include large {
+      display: grid;
+      grid-template-columns: minmax(300px, 1fr) 2fr;
+      min-height: $search-panel-height;
+    }
+  }
+
+  &__search-section {
+    padding: $space-m-plus $space-s $space-xl;
+
+    @include large {
+      padding-top: $space-l;
+      padding-right: $space-l;
+      padding-left: $space-l;
+    }
+  }
+
+  &__filters {
+    color: clr(primary);
+  }
+
+  &__text,
+  &__description {
+    margin-bottom: 0;
+
+    @include large {
+      margin-top: $space-l;
+    }
+  }
+
+  &__filter-reset {
+    @include button-reset;
+    @include link;
+
+    margin-top: $space-s;
+    text-decoration: underline;
+  }
+
+  &__reset-wrapper {
+    display: none;
+  }
+
+  &__results-section {
+    padding: $space-s;
+
+    @include large {
+      padding-top: $space-l;
+      padding-right: $space-l;
+      padding-bottom: $space-m;
+    }
+  }
+
+  .layout-container--with-sidebar & {
+    #{$base_class}__panel-wrapper {
+      @include large-plus-down {
+        display: block;
+        min-height: auto;
+      }
+
+      @include large-plus {
+        display: grid;
+        min-height: $search-panel-height;
+      }
+    }
+  }
+
+  // Variations
+  &--restricted-height {
+    #{$base_class}__panel-wrapper {
+      height: 100%;
+      min-height: auto;
+
+      @include large {
+        min-height: $search-panel-height;
+      }
+    }
+
+    #{$base_class}__results-section {
+      height: $search-panel-results-restricted-height--mobile;
+      overflow: hidden;
+      padding: 0;
+
+      @include large {
+        display: contents;
+        height: $search-panel-results-restricted-height;
+      }
+    }
+
+    .layout-container--with-sidebar & {
+      #{$base_class}__results-section {
+        @include large-plus-down {
+          display: block;
+          height: $search-panel-results-restricted-height--mobile;
+        }
+      }
+    }
+  }
+}

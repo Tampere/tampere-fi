@@ -1,0 +1,10 @@
+uuid: 58ca62b3-120e-4ce2-aa26-c7641a536ec0
+langcode: fi
+status: true
+dependencies: {  }
+id: highlighted_links_with_feedback
+label: 'Korostettu linkkilista ja palauteosio'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

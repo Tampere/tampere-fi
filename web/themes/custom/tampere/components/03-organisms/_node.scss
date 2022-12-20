@@ -1,0 +1,17 @@
+/* Drupal content type specific styles */
+
+.node {
+  &__title {
+    .main-content--with-sidebar & {
+      max-width: var(--basic-component-max-width);
+    }
+
+    &--inside-accordion {
+      @include heading-large();
+    }
+  }
+
+  &--view-mode-address-only + .node--view-mode-address-only {
+    margin-top: $space-m;
+  }
+}

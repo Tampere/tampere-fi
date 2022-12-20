@@ -1,0 +1,17 @@
+uuid: d5f18727-e5e7-4742-8b91-5d321864a7fd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  enforced:
+    config:
+      - user.role.media_editor
+id: minisite-c1a19dc53
+label: Mediatoimittaja
+weight: 8
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: false
+permissions: {  }

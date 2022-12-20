@@ -1,0 +1,26 @@
+uuid: 1cba78e2-4fec-4d60-863d-2143816c4dbd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_help_text
+    - node.type.zoning_information
+  module:
+    - markup
+id: node.zoning_information.field_help_text
+field_name: field_help_text
+entity_type: node
+bundle: zoning_information
+label: help_text
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    markup: null
+default_value_callback: ''
+settings:
+  markup:
+    value: "<ul type=\"square\">\r\n\t<li>Ajastaaksesi Julkaistu-tilassa olevan sivun sisällön muutoksia julkaistumaan, valitse sivun tilaksi Luonnos, ennen kuin tallennat ajastettaviksi tarkoitetut muutokset. Tee sen jälkeen muutosten (sivun) julkaistumisen ajastus Ajastetut muutokset -toiminnolla.</li>\r\n\t<li>Arkistoitu-tilassa tallentaminen poistaa sivun julkisuudesta.</li>\r\n</ul>\r\n"
+    format: basic_html
+field_type: markup

@@ -1,0 +1,9 @@
+{% set footer_base_class = footer_base_class|default("footer") %}
+
+<div class={{ footer_base_class ~ "__paragraph" }}>
+  {% block footer_paragraph %}
+    <div class="text-long">
+      {{ footer_paragraph_content }}
+    </div>
+  {% endblock %}
+</div>

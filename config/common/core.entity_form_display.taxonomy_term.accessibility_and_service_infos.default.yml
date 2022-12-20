@@ -1,0 +1,63 @@
+uuid: bb90e28a-1218-4a04-b5b2-5f1278e153d7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.accessibility_and_service_infos.field_icon
+    - taxonomy.vocabulary.accessibility_and_service_infos
+  module:
+    - path
+    - text
+id: taxonomy_term.accessibility_and_service_infos.default
+targetEntityType: taxonomy_term
+bundle: accessibility_and_service_infos
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_icon:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 3
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

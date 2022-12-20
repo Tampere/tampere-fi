@@ -1,0 +1,69 @@
+.contact-listing {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  &__content-wrapper {
+    width: 100%;
+
+    @include large {
+      @include centered-content($max-width: $max-width);
+    }
+  }
+
+  &__header {
+    border-top: $border-contact;
+    padding: $space-l $space-m;
+
+    @include large {
+      padding: $space-xl $space-l;
+    }
+  }
+
+  &__heading {
+    @include section-heading;
+
+    margin-bottom: 0;
+  }
+
+  &__item {
+    // Move the contents slightly on top of the borders
+    // to account for Chrome border rendering quirks when zooming.
+    margin: -1px;
+  }
+
+  &__summary {
+    margin-bottom: 0;
+  }
+
+  &__content {
+    border-right: $border-contact;
+    border-bottom: $border-contact;
+    border-left: $border-contact;
+  }
+
+  .layout-container--with-sidebar & {
+    max-width: var(--basic-component-max-width);
+
+    @include large {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    #{$base_class}__content-wrapper {
+      @include large {
+        max-width: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .layout-container:not(.layout-container--with-sidebar) & {
+    @include large {
+      @include breakout(0);
+    }
+  }
+}

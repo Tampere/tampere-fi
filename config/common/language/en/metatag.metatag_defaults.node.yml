@@ -1,0 +1,6 @@
+tags:
+  og_title: '[node:title] [City of Tampere]'
+  title: '[node:title] | [site:name]'
+  description: '[node:summary]'
+  canonical_url: '[node:url]'
+label: Content

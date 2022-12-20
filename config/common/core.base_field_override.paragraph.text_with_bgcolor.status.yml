@@ -1,0 +1,22 @@
+uuid: 43e7f626-fad1-403c-8372-909009a6278e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.text_with_bgcolor
+id: paragraph.text_with_bgcolor.status
+field_name: status
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: Julkaistu
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

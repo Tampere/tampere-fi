@@ -1,0 +1,42 @@
+uuid: a4652c8a-1a5c-4e39-b317-2a43bc5f1288
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.icon_and_text_link.field_content_link
+    - field.field.paragraph.icon_and_text_link.field_icon
+    - paragraphs.paragraphs_type.icon_and_text_link
+  module:
+    - ex_icons
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.icon_and_text_link.default
+targetEntityType: paragraph
+bundle: icon_and_text_link
+mode: default
+content:
+  field_content_link:
+    type: paragraphs_classic_asymmetric
+    weight: 1
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+  field_icon:
+    type: ex_icon_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

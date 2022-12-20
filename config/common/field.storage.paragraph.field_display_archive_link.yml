@@ -1,0 +1,18 @@
+uuid: 43a786df-e3e9-4dff-a353-3459c6161341
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_display_archive_link
+field_name: field_display_archive_link
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

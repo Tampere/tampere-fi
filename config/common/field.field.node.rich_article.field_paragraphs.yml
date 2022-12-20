@@ -1,0 +1,304 @@
+uuid: 092f9e10-d986-4200-a09c-42c266765724
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.rich_article
+    - paragraphs.paragraphs_type.accordions
+    - paragraphs.paragraphs_type.city_construction_project_cards
+    - paragraphs.paragraphs_type.colorful_content_liftup
+    - paragraphs.paragraphs_type.contact_information_liftups
+    - paragraphs.paragraphs_type.highlighted_content_liftup_w_img
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.image_gallery
+    - paragraphs.paragraphs_type.infographs
+    - paragraphs.paragraphs_type.involvement_opportunity_cards
+    - paragraphs.paragraphs_type.link_list
+    - paragraphs.paragraphs_type.list_of_attachments
+    - paragraphs.paragraphs_type.map_embed
+    - paragraphs.paragraphs_type.material_download_list
+    - paragraphs.paragraphs_type.metadata_attachment_list
+    - paragraphs.paragraphs_type.place_liftup
+    - paragraphs.paragraphs_type.process_accordions
+    - paragraphs.paragraphs_type.project_and_organization_cards
+    - paragraphs.paragraphs_type.separator
+    - paragraphs.paragraphs_type.service_highlight
+    - paragraphs.paragraphs_type.table
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.text_with_bgcolor
+    - paragraphs.paragraphs_type.two_column_liftup
+    - paragraphs.paragraphs_type.video_embed
+    - paragraphs.paragraphs_type.zoning_project_cards
+  module:
+    - entity_reference_revisions
+id: node.rich_article.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: rich_article
+label: Paragraafit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      text: text
+      service_highlight: service_highlight
+      separator: separator
+      accordions: accordions
+      infographs: infographs
+      zoning_project_cards: zoning_project_cards
+      two_column_liftup: two_column_liftup
+      map_embed: map_embed
+      city_construction_project_cards: city_construction_project_cards
+      highlighted_content_liftup_w_img: highlighted_content_liftup_w_img
+      image: image
+      image_gallery: image_gallery
+      list_of_attachments: list_of_attachments
+      link_list: link_list
+      material_download_list: material_download_list
+      metadata_attachment_list: metadata_attachment_list
+      involvement_opportunity_cards: involvement_opportunity_cards
+      place_liftup: place_liftup
+      project_and_organization_cards: project_and_organization_cards
+      table: table
+      text_with_bgcolor: text_with_bgcolor
+      process_accordions: process_accordions
+      video_embed: video_embed
+      colorful_content_liftup: colorful_content_liftup
+      contact_information_liftups: contact_information_liftups
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 41
+        enabled: false
+      accordion_text_content:
+        weight: 36
+        enabled: false
+      accordions:
+        weight: 12
+        enabled: true
+      anchor_link:
+        weight: 34
+        enabled: false
+      anchor_list:
+        weight: 35
+        enabled: false
+      attachment:
+        weight: 42
+        enabled: false
+      automatic_anchor_list:
+        weight: 37
+        enabled: false
+      back_to_top_link:
+        weight: 38
+        enabled: false
+      balanced_content_liftup:
+        weight: 48
+        enabled: false
+      city_construction_project_card:
+        weight: 64
+        enabled: false
+      city_construction_project_cards:
+        weight: 17
+        enabled: true
+      colorful_content_liftup:
+        weight: 32
+        enabled: true
+      contact_information_liftups:
+        weight: 33
+        enabled: true
+      contact_information_list:
+        weight: 70
+        enabled: false
+      content_liftup:
+        weight: 49
+        enabled: false
+      current_liftup:
+        weight: 75
+        enabled: false
+      current_listing:
+        weight: 73
+        enabled: false
+      downloadable_material:
+        weight: 40
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 65
+        enabled: false
+      embederator_embed:
+        weight: 39
+        enabled: false
+      event_and_hobby_listing:
+        weight: 50
+        enabled: false
+      external_link:
+        weight: 52
+        enabled: false
+      external_link_with_link_text:
+        weight: 67
+        enabled: false
+      feedback_section:
+        weight: 79
+        enabled: false
+      generic_listing:
+        weight: 44
+        enabled: false
+      grouped_content_liftup:
+        weight: 53
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 18
+        enabled: true
+      highlighted_link_list:
+        weight: 69
+        enabled: false
+      highlighted_links_with_feedback:
+        weight: 81
+        enabled: false
+      icon_and_text_link:
+        weight: 71
+        enabled: false
+      image:
+        weight: 19
+        enabled: true
+      image_gallery:
+        weight: 20
+        enabled: true
+      image_gallery_item:
+        weight: 77
+        enabled: false
+      infograph:
+        weight: 72
+        enabled: false
+      infographs:
+        weight: 13
+        enabled: true
+      internal_link:
+        weight: 54
+        enabled: false
+      internal_link_with_link_text:
+        weight: 74
+        enabled: false
+      involvement_opportunity_card:
+        weight: 47
+        enabled: false
+      involvement_opportunity_cards:
+        weight: 25
+        enabled: true
+      link_list:
+        weight: 22
+        enabled: true
+      list_of_attachments:
+        weight: 21
+        enabled: true
+      login_link:
+        weight: 51
+        enabled: false
+      login_link_with_text:
+        weight: 82
+        enabled: false
+      mailing_list_information:
+        weight: 84
+        enabled: false
+      map_embed:
+        weight: 16
+        enabled: true
+      material_download_list:
+        weight: 23
+        enabled: true
+      metadata_attachment_list:
+        weight: 24
+        enabled: true
+      mosaic_liftup:
+        weight: 76
+        enabled: false
+      notice:
+        weight: 55
+        enabled: false
+      person_liftup:
+        weight: 56
+        enabled: false
+      person_liftups:
+        weight: 57
+        enabled: false
+      persons_contact_information_list:
+        weight: 63
+        enabled: false
+      picture_mosaic:
+        weight: 78
+        enabled: false
+      place_liftup:
+        weight: 26
+        enabled: true
+      place_of_business_liftup:
+        weight: 58
+        enabled: false
+      positioned_image:
+        weight: 59
+        enabled: false
+      process_accordion_item:
+        weight: 61
+        enabled: false
+      process_accordions:
+        weight: 30
+        enabled: true
+      project_and_organization_cards:
+        weight: 27
+        enabled: true
+      project_or_organization_card:
+        weight: 60
+        enabled: false
+      ptv_service_liftup:
+        weight: 66
+        enabled: false
+      rss_feed:
+        weight: 43
+        enabled: false
+      separator:
+        weight: 11
+        enabled: true
+      service_highlight:
+        weight: 10
+        enabled: true
+      single_colorful_content_liftup:
+        weight: 80
+        enabled: false
+      social_media_feed_embed:
+        weight: 45
+        enabled: false
+      social_media_link:
+        weight: 62
+        enabled: false
+      table:
+        weight: 28
+        enabled: true
+      text:
+        weight: 9
+        enabled: true
+      text_and_images:
+        weight: 68
+        enabled: false
+      text_with_bgcolor:
+        weight: 29
+        enabled: true
+      two_column_liftup:
+        weight: 15
+        enabled: true
+      video_embed:
+        weight: 31
+        enabled: true
+      webform:
+        weight: 46
+        enabled: false
+      zoning_project_card:
+        weight: 83
+        enabled: false
+      zoning_project_cards:
+        weight: 14
+        enabled: true
+field_type: entity_reference_revisions

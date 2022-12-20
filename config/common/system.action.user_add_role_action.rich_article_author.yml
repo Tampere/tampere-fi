@@ -1,0 +1,14 @@
+uuid: f6cdb3f8-c17b-47b0-938b-93817832a2aa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.rich_article_author
+  module:
+    - user
+id: user_add_role_action.rich_article_author
+label: 'Add the Artikkelitoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: rich_article_author

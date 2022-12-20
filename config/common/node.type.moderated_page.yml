@@ -1,0 +1,17 @@
+uuid: c9b58d21-a124-4510-a937-22fa8e52f3a3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Moderoitu sivu'
+type: moderated_page
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

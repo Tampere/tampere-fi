@@ -1,0 +1,10 @@
+uuid: 8c58ff97-db58-4afe-b055-88de6c75932d
+langcode: fi
+status: true
+dependencies: {  }
+id: material_download_list
+label: 'Materiaalin latauslista'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

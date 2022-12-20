@@ -1,0 +1,45 @@
+uuid: 32fc4ebd-ead6-44db-b129-9f2c52983884
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.place_of_business_liftup.field_link_to_pob_content
+    - field.field.paragraph.place_of_business_liftup.field_place_of_business
+    - field.field.paragraph.place_of_business_liftup.field_pob_displayed_fields
+    - paragraphs.paragraphs_type.place_of_business_liftup
+id: paragraph.place_of_business_liftup.default
+targetEntityType: paragraph
+bundle: place_of_business_liftup
+mode: default
+content:
+  field_link_to_pob_content:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_place_of_business:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pob_displayed_fields:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

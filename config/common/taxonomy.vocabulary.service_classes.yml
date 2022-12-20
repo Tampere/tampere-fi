@@ -1,0 +1,8 @@
+uuid: 6f4e445f-d4a2-42b4-b465-d86c330420f8
+langcode: fi
+status: true
+dependencies: {  }
+name: Palveluluokat
+vid: service_classes
+description: ''
+weight: 0

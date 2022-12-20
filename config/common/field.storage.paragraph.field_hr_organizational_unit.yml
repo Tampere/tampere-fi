@@ -1,0 +1,20 @@
+uuid: 414e79a0-58c3-4d07-9c7f-ceaa3e39e808
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_hr_organizational_unit
+field_name: field_hr_organizational_unit
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

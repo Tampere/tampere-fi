@@ -1,0 +1,39 @@
+.generic-listing {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include large {
+      @include centered-content($max-width: $max-width);
+    }
+  }
+
+  &__heading {
+    @include heading-large;
+
+    margin-bottom: $space-xs;
+
+    @include large {
+      margin-bottom: $space-m;
+    }
+  }
+
+  .layout-container--with-sidebar & {
+    #{$base_class}__wrapper {
+      @include large {
+        max-width: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .layout-container:not(.layout-container--with-sidebar) & {
+    @include large {
+      @include breakout(0);
+    }
+  }
+}

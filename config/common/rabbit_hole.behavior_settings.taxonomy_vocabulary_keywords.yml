@@ -1,0 +1,14 @@
+uuid: dd384d41-4a6d-4fda-8957-f24bbdc64117
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.keywords
+id: taxonomy_vocabulary_keywords
+entity_type_id: taxonomy_vocabulary
+entity_id: keywords
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

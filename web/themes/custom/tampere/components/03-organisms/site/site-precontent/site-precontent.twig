@@ -1,0 +1,13 @@
+{% set precontent__base_class = precontent__base_class|default("site-precontent") %}
+
+<div {{ bem(precontent__base_class, (precontent__modifiers|default([])), precontent__blockname) }}>
+  <div {{ bem("breadcrumbs", (precontent__breadcrumbs__modifiers|default([])), precontent__base_class)}}>
+    {% block precontent_breadcrumbs %}
+      {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" %}
+    {% endblock %}
+  </div>
+  <div {{ bem("readspeaker", (precontent__readspeaker__modifiers|default([])), precontent__base_class)}}>
+    {% block precontent_readspeaker %}
+    {% endblock %}
+  </div>
+</div>

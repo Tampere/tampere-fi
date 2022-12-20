@@ -1,0 +1,35 @@
+{% set menu_button__base_class = "menu-button" %}
+
+<button
+  {{ bem(menu_button__base_class, (menu_button__modifiers|default([])), menu_button__blockname) }}
+  aria-controls="{{ menu_button_controls }}"
+  aria-expanded="false"
+  aria-label="{{ "Show menu"|t }}"
+>
+  {% block menu_button__content %}
+    <span>{{ "Menu"|t ({}, { "context" : "Header menu button text" }) }}</span>
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      icon_name: "close",
+      icon_base_class: "icon",
+      icon_modifiers: [ "open" ],
+      icon_extra_class: [ "shown-on-mobile" ],
+      icon_blockname: menu_button__base_class,
+      icon_decorative: menu_button__icon_decorative|default(true),
+    } %}
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      icon_name: "close-desktop",
+      icon_base_class: "icon",
+      icon_modifiers: [ "open" ],
+      icon_extra_class: [ "shown-on-desktop" ],
+      icon_blockname: menu_button__base_class,
+      icon_decorative: menu_button__icon_decorative|default(true),
+    } %}
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      icon_name: "hamburger-menu",      
+      icon_base_class: "icon",
+      icon_modifiers: [ "closed" ],
+      icon_blockname: menu_button__base_class,
+      icon_decorative: menu_button__icon_decorative|default(true),
+    } %}
+  {% endblock %}
+</button>

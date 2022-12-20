@@ -1,0 +1,23 @@
+uuid: 5e9afca7-a0c3-4ad8-817e-289e3095e57b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_size
+    - paragraphs.paragraphs_type.positioned_image
+  module:
+    - options
+id: paragraph.positioned_image.field_image_size
+field_name: field_image_size
+entity_type: paragraph
+bundle: positioned_image
+label: 'Kuvan koko'
+description: 'Valitse kuvan suurin mahdollinen koko. Näytön koko vaikuttaa kuvan lopulliseen kokoon.'
+required: true
+translatable: true
+default_value:
+  -
+    value: large
+default_value_callback: ''
+settings: {  }
+field_type: list_string

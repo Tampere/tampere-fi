@@ -1,0 +1,10 @@
+uuid: d46d083a-e119-4c81-aa2b-d0905f6710ee
+langcode: fi
+status: true
+dependencies: {  }
+id: process_accordions
+label: Vaiheistushaitarit
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

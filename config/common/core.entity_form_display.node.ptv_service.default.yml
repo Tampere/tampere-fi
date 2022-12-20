@@ -1,0 +1,420 @@
+uuid: 547fbcaa-2253-4594-b9d9-b9934516b010
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.ptv_service.field_alternate_name
+    - field.field.node.ptv_service.field_area_text
+    - field.field.node.ptv_service.field_available_languages
+    - field.field.node.ptv_service.field_body_md
+    - field.field.node.ptv_service.field_chargeability_heading
+    - field.field.node.ptv_service.field_chargeability_info_md
+    - field.field.node.ptv_service.field_eservice_channels
+    - field.field.node.ptv_service.field_form_service_channels
+    - field.field.node.ptv_service.field_geographical_areas
+    - field.field.node.ptv_service.field_keywords
+    - field.field.node.ptv_service.field_life_situations
+    - field.field.node.ptv_service.field_phone_service_channels
+    - field.field.node.ptv_service.field_places_of_business
+    - field.field.node.ptv_service.field_requirements_md
+    - field.field.node.ptv_service.field_service_charge_type
+    - field.field.node.ptv_service.field_service_other_responsible
+    - field.field.node.ptv_service.field_service_producer
+    - field.field.node.ptv_service.field_service_responsible
+    - field.field.node.ptv_service.field_service_voucher_heading
+    - field.field.node.ptv_service.field_service_voucher_links
+    - field.field.node.ptv_service.field_service_vouchers_in_use
+    - field.field.node.ptv_service.field_summary
+    - field.field.node.ptv_service.field_topics
+    - field.field.node.ptv_service.field_user_instruction_md
+    - field.field.node.ptv_service.field_web_page_channels
+    - field.field.node.ptv_service.migrate_override_data
+    - node.type.ptv_service
+  module:
+    - allowed_formats
+    - content_moderation
+    - field_group
+    - field_states_ui
+    - link
+    - maxlength
+    - migrate_override
+    - text
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_general
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_general:
+      children:
+        - title
+        - field_alternate_name
+        - field_summary
+        - field_body_md
+        - langcode
+        - field_user_instruction_md
+        - field_requirements_md
+        - field_service_charge_type
+        - field_chargeability_info_md
+        - field_service_vouchers_in_use
+        - field_service_voucher_links
+        - field_available_languages
+        - field_service_producer
+        - field_service_other_responsible
+        - field_service_responsible
+        - field_area_text
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_categorization:
+      children:
+        - field_geographical_areas
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 6
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_search_keywords:
+      children:
+        - field_keywords
+      label: Avainsanat
+      region: hidden
+      parent_name: ''
+      weight: 22
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: node.ptv_service.default
+targetEntityType: node
+bundle: ptv_service
+mode: default
+content:
+  field_alternate_name:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_area_text:
+    type: text_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_available_languages:
+    type: options_buttons
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_body_md:
+    type: text_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_chargeability_info_md:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_eservice_channels:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_form_service_channels:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 28
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone_service_channels:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_places_of_business:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_requirements_md:
+    type: text_textarea
+    weight: 8
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_service_charge_type:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_service_other_responsible:
+    type: string_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_service_producer:
+    type: string_textarea
+    weight: 14
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_service_responsible:
+    type: string_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_service_voucher_links:
+    type: link_default
+    weight: 12
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_service_vouchers_in_use:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_summary:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_instruction_md:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_web_page_channels:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 6
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  migrate_override_data:
+    type: override_widget_default
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_chargeability_heading: true
+  field_keywords: true
+  field_life_situations: true
+  field_service_voucher_heading: true
+  field_topics: true
+  path: true
+  promote: true
+  publish_on: true
+  published_at: true
+  sticky: true
+  translation: true
+  unpublish_on: true
+  url_redirects: true

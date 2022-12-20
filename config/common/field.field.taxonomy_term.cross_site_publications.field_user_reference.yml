@@ -1,0 +1,29 @@
+uuid: c626e308-c7ef-4543-b544-0f0144fa48f0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_user_reference
+    - taxonomy.vocabulary.cross_site_publications
+id: taxonomy_term.cross_site_publications.field_user_reference
+field_name: field_user_reference
+entity_type: taxonomy_term
+bundle: cross_site_publications
+label: 'Käyttäjä, jolla julkaisuoikeus'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

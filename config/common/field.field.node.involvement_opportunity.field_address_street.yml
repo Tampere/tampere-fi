@@ -1,0 +1,61 @@
+uuid: 1f583f92-a837-4307-be22-06dc69aa9c13
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address_street
+    - node.type.involvement_opportunity
+  module:
+    - address
+id: node.involvement_opportunity.field_address_street
+field_name: field_address_street
+entity_type: node
+bundle: involvement_opportunity
+label: Katuosoite
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    langcode: fi
+    country_code: FI
+    administrative_area: null
+    locality: ''
+    dependent_locality: null
+    postal_code: ''
+    sorting_code: null
+    address_line1: ''
+    address_line2: ''
+    organization: ''
+    given_name: ''
+    additional_name: null
+    family_name: ''
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: optional
+    addressLine2:
+      override: optional
+    postalCode:
+      override: optional
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: optional
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

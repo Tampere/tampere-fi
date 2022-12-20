@@ -1,0 +1,21 @@
+uuid: 15cdf0bc-bdf3-4408-bf31-3f5f6c7d4a02
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_link_aria_label
+field_name: field_link_aria_label
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

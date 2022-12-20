@@ -1,0 +1,17 @@
+link_with_icon:
+  label: Link with icon
+  settings:
+    link_text:
+      type: textfield
+      label: Fallback link text (used if 'Link text' field is empty)
+  variants:
+    default:
+      label: Default
+    service:
+      label: Service
+  fields:
+    link_with_icon__url:
+      label: Link URL
+    link_with_icon__link_text:
+      label: Link text
+  use: "@atoms/link-with-icon/link-with-icon.twig"

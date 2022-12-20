@@ -1,0 +1,15 @@
+uuid: 9fca6a66-210f-420c-8c67-2a5470aea951
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+  enforced:
+    module:
+      - media_library
+_core:
+  default_config_hash: pkq0uj-IoqEQRBOP_ddUDV0ZJ-dKQ_fLcppsEDF2UO8
+id: media.media_library
+label: Mediakirjasto
+targetEntityType: media
+cache: true

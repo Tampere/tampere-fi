@@ -1,0 +1,19 @@
+uuid: 2ff76b3b-c661-4ca2-9baf-ab7eb6c0799c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - node.type.project
+  module:
+    - gnode
+    - node
+id: subsite-group_node-project
+label: 'Alasivusto: Group node (Projekti)'
+description: 'Adds <em class="placeholder">Projekti</em> content to groups both publicly and privately.'
+group_type: subsite
+content_plugin: 'group_node:project'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

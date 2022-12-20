@@ -1,0 +1,22 @@
+uuid: 4c066c65-b55b-423e-9ccb-1bf22ccecabe
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cross_site_publications
+id: taxonomy_term.cross_site_publications.status
+field_name: status
+entity_type: taxonomy_term
+bundle: cross_site_publications
+label: Julkaistu
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

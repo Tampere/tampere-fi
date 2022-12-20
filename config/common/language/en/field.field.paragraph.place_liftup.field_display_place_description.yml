@@ -1,0 +1,4 @@
+label: 'Display place description'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

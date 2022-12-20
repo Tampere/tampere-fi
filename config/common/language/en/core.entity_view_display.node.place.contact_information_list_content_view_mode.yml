@@ -1,0 +1,8 @@
+content:
+  field_address:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: Address
+            lb-col: true

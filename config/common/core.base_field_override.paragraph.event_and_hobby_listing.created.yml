@@ -1,0 +1,18 @@
+uuid: 6aae947c-598c-4fc0-9608-2c5cfa886fcf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+id: paragraph.event_and_hobby_listing.created
+field_name: created
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

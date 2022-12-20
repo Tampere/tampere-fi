@@ -1,0 +1,129 @@
+uuid: 4ac0633e-dc7f-45a5-9152-47971e509f35
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.place.field_additional_information
+    - field.field.node.place.field_address
+    - field.field.node.place.field_description
+    - field.field.node.place.field_display_location_on_map
+    - field.field.node.place.field_epsg_3067_easting
+    - field.field.node.place.field_epsg_3067_northing
+    - field.field.node.place.field_geographical_areas
+    - field.field.node.place.field_help_text
+    - field.field.node.place.field_keywords
+    - field.field.node.place.field_location
+    - field.field.node.place.field_main_image
+    - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_search_keywords
+    - field.field.node.place.field_topics
+    - node.type.place
+  module:
+    - ds
+    - entity_reference_revisions
+    - text
+    - user
+id: node.place.search_index
+targetEntityType: node
+bundle: place
+mode: search_index
+content:
+  field_additional_information:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_address:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_geographical_areas:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_search_keywords:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 7
+    region: content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_help_text: true
+  field_location: true
+  field_main_image: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,8 @@
+button_url:
+  "#"
+button_content:
+  "Secondary Button"
+button_modifiers:
+  - "secondary"
+button_icon_name:
+  "service-arrow"

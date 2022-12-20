@@ -1,0 +1,62 @@
+uuid: 0deaaa7c-145b-4bd3-8c51-4b109e3ad8a3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.city_construction_project_card.field_display_additional_info
+    - field.field.paragraph.city_construction_project_card.field_display_map
+    - field.field.paragraph.city_construction_project_card.field_display_project_descr
+    - field.field.paragraph.city_construction_project_card.field_link_to_place_content
+    - field.field.paragraph.city_construction_project_card.field_project
+    - paragraphs.paragraphs_type.city_construction_project_card
+id: paragraph.city_construction_project_card.default
+targetEntityType: paragraph
+bundle: city_construction_project_card
+mode: default
+content:
+  field_display_additional_info:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_map:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_project_descr:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_link_to_place_content:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_project:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

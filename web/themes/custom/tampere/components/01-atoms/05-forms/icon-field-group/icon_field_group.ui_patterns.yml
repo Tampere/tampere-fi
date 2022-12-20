@@ -1,0 +1,23 @@
+icon_field_group:
+  label: Icon field group
+  settings:
+    field_label:
+      type: textfield
+      label: Field label
+      allow_token: true
+    label_highlight:
+      type: boolean
+      label: Highlight heading
+  variants:
+    location:
+      label: Location
+    arrow:
+      label: Arrow
+    phone-outline:
+      label: Phone
+    contact:
+      label: Contact
+  fields:
+    icon_field_group_content:
+      label: Content
+  use: "@atoms/05-forms/icon-field-group/icon-field-group.twig"

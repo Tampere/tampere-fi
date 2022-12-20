@@ -1,0 +1,8 @@
+name: 'TRE Display external events'
+type: module
+description: 'Display external events from Pirkanmaa region'
+package: 'TRE Integrations'
+core_version_requirement: '>=9.3'
+dependencies:
+  - external_data_source:external_data_source
+  - tre_preprocess:tre_preprocess

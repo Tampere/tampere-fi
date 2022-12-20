@@ -1,0 +1,10 @@
+uuid: aa445b5b-dfeb-4db9-86ce-89eb1870a5a6
+langcode: fi
+status: true
+dependencies: {  }
+id: project_and_organization_cards
+label: 'Projekti- ja organisaatiokortit'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

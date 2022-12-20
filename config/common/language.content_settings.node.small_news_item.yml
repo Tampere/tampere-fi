@@ -1,0 +1,18 @@
+uuid: f39c86e5-2d45-4f1e-88ff-d7d931508a17
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.small_news_item
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.small_news_item
+target_entity_type_id: node
+target_bundle: small_news_item
+default_langcode: current_interface
+language_alterable: true

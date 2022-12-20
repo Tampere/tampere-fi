@@ -1,0 +1,34 @@
+{% set text_logo_w_tagline__base_class = text_logo_w_tagline__base_class|default("text-logo-with-tagline") %}
+
+{% if text_logo_w_tagline__url %}
+  {% set text_logo_with_tagline__element = "a" %}
+
+  {% set text_logo_with_tagline__attributes = {
+    "href": text_logo_w_tagline__url,
+    "aria-label": "Back to front page"|t,
+  } %}
+{% else %}
+  {% set text_logo_with_tagline__element = "span" %}
+{% endif %}
+
+<{{ text_logo_with_tagline__element }}
+  {{ bem(text_logo_w_tagline__base_class, (text_logo_w_tagline__modifiers|default([])), text_logo_w_tagline__blockname)}}
+  {% for attribute, value in text_logo_with_tagline__attributes %}
+    {{ attribute }}="{{ value }}"
+  {% endfor %}
+>
+  {% block text_logo_w_tagline__logo %}
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      "icon_filename": "logo-icons",
+      "icon_name": "coat-of-arms-logo",
+      "icon_base_class": "main-logo",
+      "icon_blockname": text_logo_w_tagline__base_class,
+      "icon_decorative": true,
+    } %}
+  {% endblock %}
+  {% if display_tagline %}
+    <span {{ bem("tagline", (text_logo_w_tagline__tagline__modifiers|default([])), text_logo_w_tagline__base_class)}}>
+      {{ text_logo_w_tagline__tagline }}
+    </span>
+  {% endif %}
+</{{ text_logo_with_tagline__element }}>

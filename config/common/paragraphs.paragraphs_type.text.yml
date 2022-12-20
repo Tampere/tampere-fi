@@ -1,0 +1,10 @@
+uuid: 4af12361-d0a3-481f-81f4-f4c31f935878
+langcode: fi
+status: true
+dependencies: {  }
+id: text
+label: Teksti
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

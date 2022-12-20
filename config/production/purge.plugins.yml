@@ -1,0 +1,5 @@
+purgers:
+  -
+    instance_id: 9b59071696
+    plugin_id: varnish_zeroconfig_purger
+    order_index: 2

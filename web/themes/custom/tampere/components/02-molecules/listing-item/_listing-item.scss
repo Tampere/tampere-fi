@@ -1,0 +1,301 @@
+$listing-item-accent-border: 20px solid var(--border-color);
+$listing-item-person-link-column-min-width: 295px;
+
+.listing-item {
+  $base_class: &;
+
+  --border-color: #{clr(accent-tertiary)};
+  --field-label-font-weight: #{$font-weight-semi-bold};
+
+  border-top: 2px solid var(--border-color);
+  border-left: $listing-item-accent-border;
+  display: flex;
+  flex-direction: column;
+  padding: $space-m;
+  position: relative;
+  width: 100%;
+
+  @include large {
+    align-items: center;
+    border-left: 0;
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    padding: 0;
+  }
+
+  &__type {
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    display: flex;
+    font-size: $font-16;
+    height: 100%;
+    min-width: 190px;
+
+    @include large {
+      border-right: $listing-item-accent-border;
+      text-align: left;
+      justify-content: flex-start;
+      // Move the box slightly on top of the border
+      // to account for Chrome border rendering quirks when zooming.
+      margin-top: -1px;
+      margin-bottom: -1px;
+      height: calc(100% + 1px);
+
+      // Since the listing items can have a different accent color,
+      // the pseudo elements will make sure the accent area doesn't overlap the borders.
+      &::before,
+      &::after {
+        background-color: clr(primary);
+        content: "";
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: 1px;
+        width: 100%;
+      }
+
+      &::before {
+        top: -1px;
+      }
+
+      &::after {
+        bottom: -1px;
+      }
+    }
+  }
+
+  &__type-wrapper {
+    @include large-down {
+      font-size: $font-12;
+    }
+
+    @include large {
+      font-size: $font-16;
+      margin-right: $space-xl;
+      margin-left: $space-xl;
+    }
+  }
+
+  &__content-wrapper {
+    @include large {
+      display: grid;
+      grid-auto-rows: max-content;
+      grid-template-columns: repeat(auto-fit, minmax(calc(100% / 3), 1fr));
+    }
+  }
+
+  &__main-content,
+  &__additional-information {
+    @include word-wrap;
+
+    @include large {
+      margin: $space-l $space-l;
+    }
+  }
+
+  &__main-content {
+    max-width: var(--text-content-max-width);
+
+    h3 {
+      margin-bottom: 0;
+    }
+  }
+
+  &__breadcrumbs {
+    margin-top: $space-xxs;
+
+    @include large {
+      margin-top: $space-xs;
+    }
+  }
+
+  &__title--link {
+    @include link;
+  }
+
+  &__additional-content {
+    @include large {
+      display: flex;
+      align-items: space-between;
+    }
+  }
+
+  &__additional-information {
+    @include large-down {
+      font-size: $font-14;
+      margin-top: $space-s;
+    }
+
+    @include large {
+      align-self: flex-end;
+    }
+  }
+
+  &__link {
+    align-self: flex-start;
+    display: flex;
+    height: 100%;
+    margin-top: $space-s;
+    width: 100%;
+
+    @include large {
+      grid-column-start: 4;
+      justify-content: flex-end;
+      margin-top: 0;
+      min-width: calc(#{$larger-link-surface-icon-spacing-desktop} * 2 + #{$listing-link-icon-size--desktop});
+    }
+  }
+
+  &__icon {
+    align-self: center;
+    color: clr(primary);
+    height: $listing-link-icon-size--desktop;
+    width: $listing-link-icon-size--desktop;
+
+    @include large {
+      margin-right: $larger-link-surface-icon-spacing-desktop;
+      margin-left: $larger-link-surface-icon-spacing-desktop;
+    }
+  }
+
+  &--person,
+  &--place {
+    @include large {
+      border-left: $listing-item-accent-border;
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: $space-m;
+    }
+
+    #{$base_class}__content-wrapper {
+      @include large {
+        width: 100%;
+      }
+    }
+  }
+
+  &--person {
+    #{$base_class}__content-wrapper{
+      @include large {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+    #{$base_class}__additional-information {
+      @include large {
+        width: 100%;
+      }
+    }
+
+    #{$base_class}__link {
+      width: auto;
+
+      @include large {
+        justify-content: normal;
+      }
+    }
+
+  }
+
+  &--default-search,
+  &--contact-search {
+    position: relative;
+
+    @include large-down {
+      &::before {
+        background-color: clr(primary);
+        content: "";
+        height: 2px;
+        position: absolute;
+        top: -2px;
+        left: -20px;
+        width: calc(100% + 20px);
+      }
+    }
+
+    @include large {
+      border-top: $border-thick-primary;
+      grid-template-columns: 270px 1fr;
+    }
+
+    &:last-child {
+      @include large-down {
+        &::after {
+          background-color: clr(primary);
+          content: "";
+          height: 2px;
+          position: absolute;
+          bottom: -2px;
+          left: -20px;
+          width: calc(100% + 20px);
+        }
+      }
+
+      @include large {
+        border-bottom: $border-thick-primary;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      #{$base_class}__main-content {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+
+  &--default-search {
+    --border-color: #{clr(primary)};
+
+    &:hover,
+    &:focus {
+      @include large {
+        #{$base_class}__type {
+          color: clr(text-inverse);
+          background-color: clr(primary);
+        }
+      }
+    }
+  }
+
+  &--contact-search {
+    --border-color: #{clr(accent-tertiary)};
+
+    &:hover,
+    &:focus {
+      @include large {
+        #{$base_class}__type {
+          background-color: clr(accent-tertiary);
+        }
+      }
+    }
+  }
+
+  &--link-wrapper {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @each $palette in $minisitePalettes {
+    $i: index($minisitePalettes, $palette);
+    &--palette-#{$i} {
+      $color: map-get($palette, "secondary");
+      $primary-color: map-get($palette, "primary");
+      
+      --border-color: #{$color};
+
+      &:hover,
+      &:focus {
+        @include large {
+          #{$base_class}__type {
+            color: set-color($color);
+            background-color: $color;
+          }
+        }
+      }
+    }
+  }
+}

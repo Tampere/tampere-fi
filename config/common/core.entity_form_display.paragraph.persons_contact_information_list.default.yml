@@ -1,0 +1,110 @@
+uuid: 2efa5cda-df85-45bc-9505-73ea5f167f08
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.persons_contact_information_list.field_description_text
+    - field.field.paragraph.persons_contact_information_list.field_hr_organizational_unit
+    - field.field.paragraph.persons_contact_information_list.field_keywords
+    - field.field.paragraph.persons_contact_information_list.field_organization_units_help
+    - field.field.paragraph.persons_contact_information_list.field_taxonomy_combination
+    - field.field.paragraph.persons_contact_information_list.field_title
+    - field.field.paragraph.persons_contact_information_list.field_topics
+    - paragraphs.paragraphs_type.persons_contact_information_list
+  module:
+    - field_group
+    - markup
+third_party_settings:
+  field_group:
+    group_organizational_units:
+      children:
+        - field_organization_units_help
+        - field_hr_organizational_unit
+      label: 'Organizational units'
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: html_element
+      format_settings:
+        classes: form-item
+        show_empty_fields: true
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+id: paragraph.persons_contact_information_list.default
+targetEntityType: paragraph
+bundle: persons_contact_information_list
+mode: default
+content:
+  field_description_text:
+    type: string_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hr_organizational_unit:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_organization_units_help:
+    type: markup
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_taxonomy_combination:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,18 @@
+uuid: 6023eb66-071f-4f1b-95f2-bcb2510eda7b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cross_site_publications
+id: taxonomy_term.cross_site_publications.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: cross_site_publications
+label: Muuttunut
+description: 'Kellonaika jolloin termiä viimeksi päivitettiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

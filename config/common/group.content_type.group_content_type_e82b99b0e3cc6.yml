@@ -1,0 +1,19 @@
+uuid: 2c09f757-f62b-41a5-ba94-0eda262afe75
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.content_in_other_language
+  module:
+    - gnode
+    - node
+id: group_content_type_e82b99b0e3cc6
+label: 'Minikotisivusto: Group node (Muunkielinen sisältö)'
+description: 'Adds <em class="placeholder">Muunkielinen sisältö</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:content_in_other_language'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

@@ -1,0 +1,17 @@
+uuid: 4afd4ffa-b0e6-4685-91d0-235b220f783d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_liftup_large_view_mode
+label: 'Ajankohtaisnosto - large (670×365)'
+effects:
+  1a46f8a6-806c-4f49-98df-1489c0100e44:
+    uuid: 1a46f8a6-806c-4f49-98df-1489c0100e44
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 670
+      height: 365
+      crop_type: focal_point

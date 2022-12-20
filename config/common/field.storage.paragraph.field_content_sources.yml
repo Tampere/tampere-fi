@@ -1,0 +1,27 @@
+uuid: 5c6c1d42-7b5d-4b06-9371-f3c9ebb679cd
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_content_sources
+field_name: field_content_sources
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: display_minisite_content
+      label: 'Näytä minikotisivustojen sisältöä'
+    -
+      value: display_mainsite_content
+      label: 'Näytä pääsivuston sisältöä'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

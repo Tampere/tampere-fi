@@ -1,0 +1,14 @@
+liftup__heading: 'Curabitur pulvinar'
+liftups:
+  - card__heading: 'Vivamus'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Cras lacinia'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Etiam scelerisque'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'

@@ -1,0 +1,24 @@
+uuid: 0ac4d7b4-bbee-43a3-b7d4-6f6b04dd0595
+langcode: fi
+status: true
+dependencies:
+  config:
+    - image.style.current_listing_liftup_large_view_mode
+    - image.style.current_listing_liftup_xs_view_mode
+  theme:
+    - tampere
+id: listing_liftup_responsive_image_style
+label: 'Responsiivinen listausnosto'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: current_listing_liftup_large_view_mode
+    breakpoint_id: tampere.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: current_listing_liftup_xs_view_mode
+    breakpoint_id: tampere.xs
+    multiplier: 1x
+breakpoint_group: tampere
+fallback_image_style: current_listing_liftup_xs_view_mode

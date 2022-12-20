@@ -1,0 +1,104 @@
+{#
+ # Available variables:
+ # - topical_listing__base_class - base classname of the wrapper.
+ # - topical_listing__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - topical_listing__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - topical_listing__extra_classes - array of extra classes to add to the wrapper.
+ #
+ # - topical_listing__wrapper__modifiers - array of modifiers to add to the base classname of the wrapper.
+ #
+ # - topical_listing__content__modifiers - array of modifiers to add to the base classname of the copy wrapper.
+ #
+ # - topical_listing__heading - the content of the title component.
+ # - topical_listing__heading__base_class - base classname of the title component. Defaults to "heading".
+ # - topical_listing__heading__modifiers - array of modifiers to add to the base classname of the title.
+ #
+ # - topical_listing__summary - the content of the field_summary.
+ # - topical_listing__summary__base_class - base classname of the summary component. Defaults to "summary".
+ # - topical_listing__summary__modifiers - array of modifiers to add to the base classname of the title.
+ #
+ # - topical_listing__liftups__modifiers - array of modifiers to add to the base classname of the liftups.
+ #
+ # - has_highlighted_liftup - a flag for whether or not there is a highlighted liftup.
+ # - topical_listing__highlighted_liftup_wrapper__modifiers - array of modifiers to add to the base clasname of the highlighted liftup wrapper.
+ # - topical_listing__highlighted__image_src - the source URL for the highlighted liftup image.
+ # - topical_listing__highlighted_liftup__modifiers - array of modifiers to add to the base classname of the highlighted topical card.
+ #
+ # - topical_listing__liftup__modifiers - array of modifiers to add to the base classname of the topical card.
+ #
+ # - liftups - array of liftups to display.
+ #
+ # - topical_listing__link_wrapper__modifiers - array of modifiers to add to the base classname of the link wrapper.
+ # - topical_listing__link__modifiers - array of modifiers to add to the base classname of the link.
+ # - topical_listing__link__url - the URL the link should point to.
+ # - topical_listing__link__text - the link text for the topical listing link.
+ # - topical_listing__link_icon__modifiers - array of modifiers to add to the base classname of the link icon.
+ # - topical_listing__link__icon - the name of the icon to use on the link. Defaults to "arrow".
+ #}
+{% set topical_listing__base_class = "topical-listing" %}
+
+{% if not topical_listing__highlighted_liftup__modifiers %}
+  {% set topical_listing__highlighted_liftup__modifiers = [] %}
+{% endif %}
+
+{% if not topical_listing__liftup__modifiers %}
+  {% set topical_listing__liftup__modifiers = [] %}
+{% endif %}
+
+{% set topical_listing__highlighted_liftup__modifiers = topical_listing__highlighted_liftup__modifiers|merge([ "big" ]) %}
+
+{% set topical_listing__liftup__modifiers = topical_listing__liftup__modifiers|merge([ "alt" ]) %}
+
+<div {{ bem(topical_listing__base_class, topical_listing__modifiers|default([]), topical_listing__blockname, topical_listing__extra_classes) }}>
+  <div {{ bem("wrapper", topical_listing__wrapper__modifiers|default([]), topical_listing__base_class) }}>
+    {# Heading #}
+    {% if topical_listing__heading %}
+      {{ title_prefix }}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        "heading_base_class": topical_listing__heading__base_class|default("heading"),
+        "heading_modifiers": topical_listing__heading__modifiers,
+        "heading_blockname": topical_listing__base_class,
+        "heading_level": 2,
+        "heading": topical_listing__heading,
+      } %}
+      {{ title_suffix }}
+    {% endif %}
+    {# Summary #}
+    {% if topical_listing__summary %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        "paragraph_base_class": topical_listing__summary__base_class|default("summary"),
+        "paragraph_modifiers": topical_listing__summary__modifiers,
+        "paragraph_blockname": topical_listing__base_class,
+        "paragraph_content": topical_listing__summary,
+      } %}
+    {% endif %}
+    {# Liftups #}
+    <div {{ bem("liftups", topical_listing__liftups__modifiers|default([]), topical_listing__base_class) }}>
+      {% if has_highlighted_liftup %}
+        <div {{ bem("highlighted-liftup", topical_listing__highlighted_liftup_wrapper__modifiers, topical_listing__base_class) }}>
+          {% block highlighed_liftup %}
+            {% include "@molecules/topical-card/topical-card.twig" with {
+              "topical_card__image__src": topical_listing__highlighted__image_src,
+              "topical_card__modifiers": topical_listing__highlighted_liftup__modifiers,
+            } %}
+          {% endblock %}
+        </div>
+      {% endif %}
+      {% block topical_listing_liftups %}
+        {% include "@organisms/card-grid/card-grid.twig" with {
+          "card_type": "topical-card",
+          "topical_card__modifiers": topical_listing__liftup__modifiers,
+          "card_grid__modifiers": [ "3-col" ],
+          "cards": liftups,
+        } %}
+      {% endblock %}
+    </div>
+    {# Links #}
+    {% if link_list__items %}
+      {% include "@atoms/link-list/link-list.twig" with {
+        "link_list__items": link_list__items,
+        "link_list__modifiers": ["center", "more-space"],
+      } %}
+    {% endif %}
+  </div>
+</div>

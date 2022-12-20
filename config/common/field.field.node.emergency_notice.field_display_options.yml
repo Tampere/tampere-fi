@@ -1,0 +1,23 @@
+uuid: c914223d-e8ef-4752-be81-d647e5a09b6e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_options
+    - node.type.emergency_notice
+  module:
+    - options
+id: node.emergency_notice.field_display_options
+field_name: field_display_options
+entity_type: node
+bundle: emergency_notice
+label: Näyttövaihtoehdot
+description: 'Valitse, näytetäänkö häiriöilmoitus vain etusivulla vai kaikilla sivuilla.'
+required: true
+translatable: false
+default_value:
+  -
+    value: show_everywhere
+default_value_callback: ''
+settings: {  }
+field_type: list_string

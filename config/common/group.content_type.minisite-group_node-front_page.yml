@@ -1,0 +1,19 @@
+uuid: 25d1e8a9-38e3-4e95-b2af-8a7006beccf6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.front_page
+  module:
+    - gnode
+    - node
+id: minisite-group_node-front_page
+label: 'Minikotisivusto: Group node (Etusivu)'
+description: 'Adds <em class="placeholder">Etusivu</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:front_page'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

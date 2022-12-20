@@ -1,0 +1,17 @@
+uuid: 5ad130a9-7943-49aa-b7b9-17abd224bedf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  enforced:
+    config:
+      - user.role.participation_section_editor
+id: minisite-daa7f2c13
+label: 'Osallistumisen osiovastaava'
+weight: 9
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: false
+permissions: {  }

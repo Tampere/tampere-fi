@@ -1,0 +1,29 @@
+uuid: 5e327ef2-fae9-4a3c-b3ba-91c1c0794c48
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_form_service_channels
+    - node.type.ptv_service
+    - node.type.service_channel
+id: node.ptv_service.field_form_service_channels
+field_name: field_form_service_channels
+entity_type: node
+bundle: ptv_service
+label: Lomakeasiointikanavat
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      service_channel: service_channel
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

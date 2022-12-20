@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: Place
+    -
+      label: 'Zoning information'
+    -
+      label: 'City planning and construction project'
+    -
+      label: 'Place of business'

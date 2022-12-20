@@ -1,0 +1,10 @@
+uuid: f3835121-8023-417b-9d82-8f3ed05871f7
+langcode: fi
+status: true
+dependencies: {  }
+id: image_gallery
+label: Kuvagalleria
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

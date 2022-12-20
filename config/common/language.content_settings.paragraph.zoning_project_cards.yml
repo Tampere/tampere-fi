@@ -1,0 +1,18 @@
+uuid: d577d3f3-6e9f-461e-af7e-a49d6ef29dd0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.zoning_project_cards
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.zoning_project_cards
+target_entity_type_id: paragraph
+target_bundle: zoning_project_cards
+default_langcode: current_interface
+language_alterable: true

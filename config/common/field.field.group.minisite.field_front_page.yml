@@ -1,0 +1,31 @@
+uuid: 11e8d3fd-0927-47df-8cd9-826dab9d3a14
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_front_page
+    - group.type.minisite
+    - node.type.collection_page
+    - node.type.front_page
+id: group.minisite.field_front_page
+field_name: field_front_page
+entity_type: group
+bundle: minisite
+label: Etusivu
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      front_page: front_page
+      collection_page: collection_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: front_page
+field_type: entity_reference

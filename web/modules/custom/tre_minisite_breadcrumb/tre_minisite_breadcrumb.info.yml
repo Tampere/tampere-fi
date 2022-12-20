@@ -1,0 +1,7 @@
+name: 'TRE Breadcrumbs Alterations'
+type: module
+description: 'Customises breadcrumb in minisite content.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - tre_preprocess_utility_functions:tre_preprocess_utility_functions

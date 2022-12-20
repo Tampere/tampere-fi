@@ -1,0 +1,14 @@
+uuid: a7c98cb2-20fa-4148-80c6-cd79e1af4ae1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.map_point
+id: node_type_map_point
+entity_type_id: node_type
+entity_id: map_point
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

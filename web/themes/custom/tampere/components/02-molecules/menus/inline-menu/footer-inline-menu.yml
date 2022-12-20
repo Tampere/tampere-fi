@@ -1,0 +1,9 @@
+inline_menu_label_id: "footer-inline-menu-label"
+inline_menu_aria_label: "Footer inline menu"
+inline_menu_items:
+  - title: 'Saavutettavuus'
+    url: '#'
+  - title: 'Tietosuojaselosteet'
+    url: '#'
+menu_modifiers:
+  - 'footer'

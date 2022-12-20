@@ -1,0 +1,50 @@
+uuid: 9f5b2f49-74f9-4654-9c7a-0ece11032d1b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - search_api.index.content
+    - views.view.search
+  module:
+    - views
+    - search_api_autocomplete
+id: search
+label: Etsi
+index_id: content
+suggester_settings:
+  live_results:
+    fields: {  }
+    highlight:
+      enabled: false
+      field: ''
+    view_modes:
+      'entity:node':
+        basic_content_page: ''
+        blog_article: ''
+        city_planning_and_constructions: ''
+        collection_page: ''
+        involvement_opportunity: ''
+        moderated_page: ''
+        news_item: ''
+        notice: ''
+        organization: ''
+        place: ''
+        project: ''
+        rich_article: ''
+        zoning_information: ''
+suggester_weights:
+  live_results: 0
+suggester_limits:
+  live_results: 10
+search_settings:
+  'views:search':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 10
+  min_length: 3
+  show_count: false
+  delay: null
+  submit_button_selector: ':submit'
+  autosubmit: true

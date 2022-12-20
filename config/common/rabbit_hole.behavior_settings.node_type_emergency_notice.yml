@@ -1,0 +1,14 @@
+uuid: 0baec5ad-3cbf-4354-92ac-9708c6d23001
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.emergency_notice
+id: node_type_emergency_notice
+entity_type_id: node_type
+entity_id: emergency_notice
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

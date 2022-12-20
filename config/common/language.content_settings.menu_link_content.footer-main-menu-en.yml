@@ -1,0 +1,18 @@
+uuid: 5243f4b1-5019-418c-8ce8-3e3a2db5e786
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.footer-main-menu-en
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.footer-main-menu-en
+target_entity_type_id: menu_link_content
+target_bundle: footer-main-menu-en
+default_langcode: site_default
+language_alterable: false

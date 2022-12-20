@@ -1,0 +1,7 @@
+name: 'TRE search exclusion'
+type: module
+description: 'Exclude node from search results.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - search_api:search_api

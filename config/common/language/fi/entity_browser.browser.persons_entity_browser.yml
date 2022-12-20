@@ -1,0 +1,8 @@
+label: 'Sisältöselain: henkilöt'
+display_configuration:
+  link_text: 'Valitse henkilöt'
+widgets:
+  561f5887-2ab8-4268-8aea-48d050c7708e:
+    settings:
+      submit_text: 'Valitse henkilöt'
+    label: Henkilöt

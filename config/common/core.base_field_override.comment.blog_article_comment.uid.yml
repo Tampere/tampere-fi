@@ -1,0 +1,20 @@
+uuid: a5443846-96cc-4b37-ba08-8b6aa84cf457
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.uid
+field_name: uid
+entity_type: comment
+bundle: blog_article_comment
+label: 'Käyttäjän ID'
+description: 'Kommentin kirjoittajan käyttäjä ID.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

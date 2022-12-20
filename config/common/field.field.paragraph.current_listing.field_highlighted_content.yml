@@ -1,0 +1,37 @@
+uuid: cccc1608-5901-4b5c-b6e1-97457520d53b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_highlighted_content
+    - node.type.blog_article
+    - node.type.news_item
+    - node.type.notice
+    - node.type.rich_article
+    - node.type.small_news_item
+    - paragraphs.paragraphs_type.current_listing
+id: paragraph.current_listing.field_highlighted_content
+field_name: field_highlighted_content
+entity_type: paragraph
+bundle: current_listing
+label: 'Korostettu sisältö'
+description: 'Valittu ajankohtaisartikkeli esitetään korostetusti ennen listauksen muuta sisältöä.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      blog_article: blog_article
+      notice: notice
+      small_news_item: small_news_item
+      rich_article: rich_article
+      news_item: news_item
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: blog_article
+field_type: entity_reference

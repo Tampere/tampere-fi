@@ -1,0 +1,8 @@
+feedback_section:
+  label: Feedback section
+  fields:
+    feedback_section__tls_content:
+      label: Left column
+    feedback_section__card_content:
+      label: Right column
+  use: "@organisms/feedback-section/feedback-section.twig"

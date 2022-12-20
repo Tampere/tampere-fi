@@ -1,0 +1,18 @@
+uuid: 20b0589b-c5ad-472d-ace6-7005e1bd9c1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.colorful_content_liftup
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.colorful_content_liftup
+target_entity_type_id: paragraph
+target_bundle: colorful_content_liftup
+default_langcode: current_interface
+language_alterable: true

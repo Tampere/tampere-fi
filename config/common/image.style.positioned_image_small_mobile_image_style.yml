@@ -1,0 +1,17 @@
+uuid: b3528986-c8aa-4d4f-acd2-3d100a2ccc35
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: positioned_image_small_mobile_image_style
+label: 'Asemoitu kuva (pieni) - mobile (255×170)'
+effects:
+  6de770b9-5264-4977-8c4b-fb8bdc20023e:
+    uuid: 6de770b9-5264-4977-8c4b-fb8bdc20023e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 255
+      height: 170
+      crop_type: focal_point

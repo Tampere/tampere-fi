@@ -1,0 +1,17 @@
+uuid: 1bf36133-99ce-47e5-90e6-832601f89910
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: feedback_section_medium_image_style
+label: 'Palauteosio - medium (985×215)'
+effects:
+  82e9cf87-cdc4-4c78-b885-43c856407a5f:
+    uuid: 82e9cf87-cdc4-4c78-b885-43c856407a5f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 985
+      height: 215
+      crop_type: focal_point

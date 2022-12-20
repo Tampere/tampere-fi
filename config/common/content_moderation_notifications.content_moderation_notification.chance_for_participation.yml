@@ -1,0 +1,18 @@
+uuid: b0ec47fd-1f92-41cf-b23a-63f0633dad33
+langcode: fi
+status: true
+dependencies: {  }
+id: chance_for_participation
+workflow: chance_for_participation_moderation
+transitions:
+  send_for_review: send_for_review
+roles:
+  participation_section_editor: participation_section_editor
+author: false
+site_mail: false
+emails: ''
+subject: 'Uusi ilmoitus osallistumismahdollisuudesta'
+body:
+  value: "<p><strong>Sisältö&nbsp;[node:nid]&nbsp;on siirretty arviointitilaan.</strong></p>\r\n\r\n<p>Tarkemmat tiedot:</p>\r\n\r\n<p>Sisällön otsikko:&nbsp;<strong>[node:title]</strong><br />\r\nPäivitysaika:&nbsp;<strong>[node:changed:custom:j.n.Y - H:i]</strong><br />\r\nAlkamisaika:&nbsp;<strong>[node:field_start_time:date:custom:j.n.Y - H:i]</strong><br />\r\nSisällön osoite: <a>[node:url:absolute] </a></p>\r\n"
+  format: basic_html
+label: Osallistumismahdollisuus

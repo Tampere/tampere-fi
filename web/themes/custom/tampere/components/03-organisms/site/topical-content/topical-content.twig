@@ -1,0 +1,55 @@
+{#
+ # Available variables:
+ # - blog_header__heading: Blog heading.
+ # - blog_header__author: Blog author/s.
+ # - blog_header__description: Blog description.
+ # - blog_header__image: Blog image src.
+ # - blog_header__field_author__label: field_author label text.
+ #}
+
+{% set topical_content_base_class = topical_content_base_class|default("topical-content") %}
+
+{% if blog_header__author %}
+  {% set blog_header__author_full_string = blog_header__field_author__label ~ ": " ~ blog_header__author %}
+{% endif %}
+
+{% set has_blog_header = blog_header__heading or blog_header__description or blog_header__author_full_string or blog_header__image %}
+
+{% if blog_header__image %}
+  {% set blog_header__modifiers = [ "with-image" ] %}
+{% endif %}
+
+<article {{ bem(topical_content_base_class, (topical_content_modifiers|default([])), topical_content_blockname) }}>
+  {# Additional Blog header #}
+  {% if variant == "blog" and has_blog_header %}
+    {% embed "@molecules/blog-header/blog-header.twig"  with {
+      "blog_header__modifiers": blog_header__modifiers,
+      "blog_header__heading": blog_header__heading,
+      "blog_header__body": blog_header__description,
+      "blog_header__author": blog_header__author_full_string,
+    } %}
+      {% block blog_header__img %}
+        {{ blog_header__image }}
+      {% endblock blog_header__img %}
+    {% endembed %}
+  {% endif %}
+  <div {{ bem("header", (topical_content__header__modifiers), topical_content_base_class) }}>
+    {% embed "@molecules/content-image/content-image.twig" with {
+      "content_img__heading__modifiers": [ variant ],
+      "content_img__tag": main_image_tag,
+      "content_img__optional_tag": main_image_optional_tag,
+      "content_img__date": publication_date,
+      "content_img__img__caption": main_image_caption,
+    } %}
+      {% block content_image %}
+        {{ main_image }}
+      {% endblock %}
+    {% endembed %}
+  </div>
+
+  <div {{ bem("main-content", (topical_content__main_content__modifiers|default([])), topical_content_base_class) }}>
+    {% block topical_content_main_content %}
+      {{ main_content }}
+    {% endblock %}
+  </div>
+</article>

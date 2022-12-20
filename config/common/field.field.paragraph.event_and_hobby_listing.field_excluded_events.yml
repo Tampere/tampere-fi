@@ -1,0 +1,19 @@
+uuid: 78a59a6d-731c-4c47-aea4-d53786680562
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_excluded_events
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+id: paragraph.event_and_hobby_listing.field_excluded_events
+field_name: field_excluded_events
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: 'Poisjätettävät tapahtumat'
+description: 'Jos haluat poistaa listauksesta tiettyjä tapahtumia, lisää niiden ID:t tämän kentän arvoiksi.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,25 @@
+uuid: e4e1c694-2934-49b5-a375-6e550923dfe3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group_content.minisite-group_membership.group_roles
+    - group.content_type.minisite-group_membership
+id: group_content.minisite-group_membership.default
+targetEntityType: group_content
+bundle: minisite-group_membership
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

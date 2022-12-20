@@ -1,0 +1,11 @@
+<div class="sg-header-styles">
+  {% for i in 1..4 %}
+    <div class="sg-pattern pl-heading-examples">
+      <h3 class="sg-pattern-title">h{{ i }}</h3>
+      <h{{ i }} class="h{{ i }}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque enim turpis, eu hendrerit augue sagittis non.</h{{ i }}>
+    </div>
+  {% endfor %}
+</div>
+{% if meta %}
+  <p> <small>{{ meta.description }}</small> </p>
+{% endif %}

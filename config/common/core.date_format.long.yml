@@ -1,0 +1,10 @@
+uuid: d50c25a2-8b37-40b9-8883-4f4ade6465e0
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: og8sWXhBuHbLMw3CoiBEZjgqSyhFBFmcbUW_wLcfNbo
+id: long
+label: 'Päivämäärä pitkässä muodossa'
+locked: false
+pattern: 'l, F j, Y - H:i'

@@ -1,0 +1,18 @@
+uuid: d858c887-6548-4d1b-97df-bebbd2565827
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.process_accordions
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.process_accordions
+target_entity_type_id: paragraph
+target_bundle: process_accordions
+default_langcode: site_default
+language_alterable: true

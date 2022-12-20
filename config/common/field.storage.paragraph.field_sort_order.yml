@@ -1,0 +1,27 @@
+uuid: 5986d75b-1aff-446e-ac61-8d0b0d4091d3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_sort_order
+field_name: field_sort_order
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: date
+      label: Päivämäärä
+    -
+      value: title
+      label: Otsikko
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

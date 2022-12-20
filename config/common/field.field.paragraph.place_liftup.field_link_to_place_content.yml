@@ -1,0 +1,23 @@
+uuid: 0752d930-92bc-43ef-8cc6-0d665f42812f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_to_place_content
+    - paragraphs.paragraphs_type.place_liftup
+id: paragraph.place_liftup.field_link_to_place_content
+field_name: field_link_to_place_content
+entity_type: paragraph
+bundle: place_liftup
+label: 'Linkitä sisältöön'
+description: 'Valitse tämä, kun haluat, että nosto toimii linkkinä viitattuun Paikka-sisältöön.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

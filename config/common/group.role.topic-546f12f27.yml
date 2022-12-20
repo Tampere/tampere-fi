@@ -1,0 +1,17 @@
+uuid: cd7fd57b-5409-4be7-a519-e70111d18474
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.section_editor
+id: topic-546f12f27
+label: Osiovastaava
+weight: -6
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

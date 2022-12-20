@@ -1,0 +1,54 @@
+uuid: c4433dd7-b2b4-4bea-897d-5aeb4447d948
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_gl_displayed_content_types
+field_name: field_gl_displayed_content_types
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: front_page
+      label: Etusivu
+    -
+      value: zoning_information
+      label: Kaava
+    -
+      value: city_planning_and_constructions
+      label: 'Kaupunkisuunnittelu- ja rakentamishanke'
+    -
+      value: collection_page
+      label: Koontisivu
+    -
+      value: moderated_page
+      label: 'Moderoitu sivu'
+    -
+      value: organization
+      label: Organisaatio
+    -
+      value: involvement_opportunity
+      label: Osallistumismahdollisuus
+    -
+      value: place
+      label: Paikka
+    -
+      value: ptv_service
+      label: Palvelu
+    -
+      value: basic_content_page
+      label: Perussisältösivu
+    -
+      value: project
+      label: Projekti
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

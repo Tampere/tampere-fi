@@ -1,0 +1,10 @@
+uuid: c7896377-7a16-4496-9657-9f8fa4f671ff
+langcode: fi
+status: true
+dependencies: {  }
+id: infograph
+label: Infograafi
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

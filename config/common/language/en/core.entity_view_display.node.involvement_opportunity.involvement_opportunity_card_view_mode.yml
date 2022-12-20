@@ -1,0 +1,7 @@
+content:
+  field_address_street:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: 'Visiting address'

@@ -1,0 +1,4 @@
+$databases['default']['default']['collation'] = 'utf8mb4_swedish_ci';
+$databases['default']['default']['pdo'] = [
+  PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4",
+];

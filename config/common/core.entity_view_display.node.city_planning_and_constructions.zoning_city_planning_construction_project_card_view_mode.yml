@@ -1,0 +1,107 @@
+uuid: c3d29489-ac9b-4133-9b60-ae1365545a6a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.zoning_city_planning_construction_project_card_view_mode
+    - field.field.node.city_planning_and_constructions.field_additional_information
+    - field.field.node.city_planning_and_constructions.field_address
+    - field.field.node.city_planning_and_constructions.field_description
+    - field.field.node.city_planning_and_constructions.field_display_location_on_map
+    - field.field.node.city_planning_and_constructions.field_epsg_3067_easting
+    - field.field.node.city_planning_and_constructions.field_epsg_3067_northing
+    - field.field.node.city_planning_and_constructions.field_geographical_areas
+    - field.field.node.city_planning_and_constructions.field_help_text
+    - field.field.node.city_planning_and_constructions.field_keywords
+    - field.field.node.city_planning_and_constructions.field_location
+    - field.field.node.city_planning_and_constructions.field_main_image
+    - field.field.node.city_planning_and_constructions.field_paragraphs
+    - field.field.node.city_planning_and_constructions.field_search_keywords
+    - field.field.node.city_planning_and_constructions.field_topics
+    - node.type.city_planning_and_constructions
+  module:
+    - ds
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - field_description
+        - field_address
+        - field_additional_information
+id: node.city_planning_and_constructions.zoning_city_planning_construction_project_card_view_mode
+targetEntityType: node
+bundle: city_planning_and_constructions
+mode: zoning_city_planning_construction_project_card_view_mode
+content:
+  field_additional_information:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 2
+    region: ds_content
+  field_address:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: Osoite
+            lb-col: true
+            classes: {  }
+    weight: 1
+    region: ds_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 0
+    region: ds_content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_location: true
+  field_main_image: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

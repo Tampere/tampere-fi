@@ -1,0 +1,18 @@
+uuid: 304dcfb8-4cb1-4754-880c-52ccc2f4a14f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.homepage
+field_name: homepage
+entity_type: comment
+bundle: blog_article_comment
+label: Kotisivu
+description: 'Kommentin kirjoittajan kotisivun osoite.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

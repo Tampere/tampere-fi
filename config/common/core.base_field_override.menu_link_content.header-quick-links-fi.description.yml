@@ -1,0 +1,18 @@
+uuid: ed28f78b-7af0-4d72-ada8-da70d704f771
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.header-quick-links-fi
+id: menu_link_content.header-quick-links-fi.description
+field_name: description
+entity_type: menu_link_content
+bundle: header-quick-links-fi
+label: Kuvaus
+description: 'Näytetään vietäessä hiirtä linkin yli.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

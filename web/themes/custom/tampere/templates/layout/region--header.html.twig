@@ -1,0 +1,157 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ * - is_minisite_group: Flag for whether or not the header is on Minisite group content.
+ * - group_front_page_url: Group's front page URL as a string. Currently only in use with Minisites.
+ * - group_main_heading: Group's main heading as a string. Currently only in use with Minisites.
+ * - group_name: Group's name as a string. Currently only in use with Minisites.
+ * - group_logo: A view for the group logo.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{# Default to using group name as the main heading if there is no main heading. #}
+{% if group_main_heading is not null and group_main_heading is not empty %}
+  {% set minisite_header_heading = group_main_heading %}
+{% else %}
+  {% set minisite_header_heading = group_name %}
+{% endif %}
+
+{% if is_minisite_group %}
+  {% embed "@organisms/site/minisite-header/minisite-header.twig" with {
+    "front_page_url": group_front_page_url,
+    "header__heading": minisite_header_heading,
+    "display_header_tagline": TRUE,
+    "header__tagline": group_name,
+  } %}
+    {% block header_language_dropdown %}
+      {{ elements.languageswitcher }}
+    {% endblock %}
+
+      {% block header_text_logo_with_tagline %}
+        {% if group_logo %}
+          {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+            "text_logo_w_tagline__url": group_front_page_url,
+            "display_tagline": FALSE,
+            "text_logo_w_tagline__modifiers": ["desktop-svg"],
+          } %}
+            {% block text_logo_w_tagline__logo %}
+              {{ group_logo }}
+            {% endblock %}
+          {% endembed %}
+        {% else %}
+          {{ parent() }}
+        {% endif %}
+
+      {% endblock %}
+
+      {% block header_mobile_text_logo_with_tagline %}
+        {% if group_logo %}
+        {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+          "text_logo_w_tagline__url": group_front_page_url,
+          "display_tagline": FALSE,
+          "text_logo_w_tagline__modifiers": ["mobile-svg"],
+        } %}
+          {% block text_logo_w_tagline__logo %}
+            {{ group_logo }}
+          {% endblock %}
+        {% endembed %}
+        {% else %}
+          {{ parent() }}
+        {% endif %}
+      {% endblock %}
+    
+
+    {% block header_search %}
+      {{ elements.search_form }}
+    {% endblock %}
+
+    {% block header_mobile_search %}
+      {{ elements.search_form_mobile }}
+    {% endblock %}
+
+    {% block header_mobile_language_dropdown %}
+      {{ elements.language_switcher_mobile }}
+    {% endblock %}
+
+    {% block header_main_navigation %}
+      {{ elements.minisite_main_menu_fi }}
+      {{ elements.minisite_main_menu_en }}
+    {% endblock %}
+  {% endembed %}
+{% else %}
+  {% embed "@organisms/site/site-header/site-header.twig" %}
+    {% block header_main_logo %}
+      {{ elements.tampere_branding }}
+    {% endblock %}
+
+    {% block header_quick_links %}
+      {{ elements.header_quick_links_fi }}
+      {{ elements.header_quick_links_en }}
+    {% endblock %}
+
+    {% block header_language_dropdown %}
+      {{ elements.languageswitcher }}
+    {% endblock %}
+
+    {% block header_mobile_language_dropdown %}
+      {{ elements.language_switcher_mobile }}
+    {% endblock %}
+
+    {% block header_secondary_navigation %}
+      {{ elements.secondary_menu_fi }}
+      {{ elements.secondary_menu_en }}
+    {% endblock %}
+
+    {% block header_mobile_quick_links %}
+      {{ elements.header_quick_links_mobile_fi }}
+      {{ elements.header_quick_links_mobile_en }}
+    {% endblock %}
+
+    {% block header_main_navigation %}
+      {{ elements.main_menu_fi }}
+      {{ elements.main_menu_en }}
+    {% endblock %}
+
+    {% block header_hamburger_menu_secondary_navigation %}
+      {{ elements.secondary_menu_large_hamburger_menu_fi }}
+      {{ elements.secondary_menu_large_hamburger_menu_en }}
+    {% endblock %}
+
+    {% block header_mobile_secondary_navigation %}
+      {{ elements.secondary_menu_mobile_fi }}
+      {{ elements.secondary_menu_mobile_en }}
+    {% endblock %}
+
+    {% block header_secondary_main_navigation %}
+      {{ elements.life_situation_menu_fi }}
+      {{ elements.life_situation_menu_en }}
+    {% endblock %}
+
+    {% block header_search %}
+      {{ elements.search_form }}
+    {% endblock %}
+
+    {% block header_search_mobile %}
+      {{ elements.search_form_mobile }}
+    {% endblock %}
+
+    {% block header_mobile_main_navigation %}
+      {{ elements.main_menu_mobile_fi }}
+      {{ elements.main_menu_mobile_en }}
+    {% endblock %}
+
+    {% block header_mobile_secondary_main_navigation %}
+      {{ elements.life_situation_menu_mobile_fi }}
+      {{ elements.life_situation_menu_mobile_en }}
+    {% endblock %}
+  {% endembed %}
+{% endif %}

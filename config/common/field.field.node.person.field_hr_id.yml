@@ -1,0 +1,19 @@
+uuid: 0ffc43da-9f52-455b-96c6-118ecf564bbd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hr_id
+    - node.type.person
+id: node.person.field_hr_id
+field_name: field_hr_id
+entity_type: node
+bundle: person
+label: ID
+description: 'SAP HR -kenttien "CENTRAL_PERSON_NBR" ja "CONTRACT_NBR" yhdistelmä.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

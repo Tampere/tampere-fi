@@ -1,0 +1,12 @@
+{% if variant == "involvement_opportunity_card" %}
+  {% set link_field_label = "Other contact information"|t({}, {"context": "Involvement opportunity field_link_single field label"}) ~ ":" %}
+{% endif %}
+
+<div class="field">
+  {% if link_field_label %}
+    <div class="field-label-above">{{ link_field_label }}</div>
+  {% endif %}
+  <a class="link" href="{{ link_field_link_url }}">
+    {{ link_field_link_text }}
+  </a>
+</div>

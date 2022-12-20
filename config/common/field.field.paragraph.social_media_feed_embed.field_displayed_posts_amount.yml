@@ -1,0 +1,23 @@
+uuid: cb48ae08-227e-41ce-a8d6-2a18a796a9ea
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_displayed_posts_amount
+    - paragraphs.paragraphs_type.social_media_feed_embed
+id: paragraph.social_media_feed_embed.field_displayed_posts_amount
+field_name: field_displayed_posts_amount
+entity_type: paragraph
+bundle: social_media_feed_embed
+label: 'Näytettyjen postauksien määrä'
+description: 'Määrittää alussa näytettävien postauksien määrän sekä uusien postauksien latausmäärän (esim. 6).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,18 @@
+third_party_settings:
+  ds:
+    fields:
+      node_link:
+        settings:
+          'link text': 'Read more'
+        ft:
+          settings:
+            lb: Website
+content:
+  field_address:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            pattern_settings:
+              icon_field_group:
+                field_label: Address

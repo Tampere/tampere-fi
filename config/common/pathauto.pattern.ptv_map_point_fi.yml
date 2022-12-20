@@ -1,0 +1,33 @@
+uuid: 1a5dc6e1-8eaf-4912-9db0-c3ce30bc2506
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: ptv_map_point_fi
+label: 'PTV-karttapiste FI'
+type: 'canonical_entities:node'
+pattern: 'ptv/karttapiste/[node:title]'
+selection_criteria:
+  24dd257d-2e6c-4161-8cf7-cfa1723cb28c:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 24dd257d-2e6c-4161-8cf7-cfa1723cb28c
+    context_mapping:
+      node: node
+    bundles:
+      map_point: map_point
+  6f1e4eb1-fc5f-4b12-b429-11c9b7a57084:
+    id: language
+    negate: false
+    uuid: 6f1e4eb1-fc5f-4b12-b429-11c9b7a57084
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fi: fi
+selection_logic: and
+weight: -6
+relationships:
+  'node:langcode:language':
+    label: Kieli

@@ -1,0 +1,18 @@
+uuid: 0f066289-afdd-4b3b-a2c6-32463bf0f89c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_membership
+id: group_content.life_situation-group_membership.changed
+field_name: changed
+entity_type: group_content
+bundle: life_situation-group_membership
+label: Muuttunut
+description: 'Ajankohta jolloin ryhmäsisältöä viimeksi muokattiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

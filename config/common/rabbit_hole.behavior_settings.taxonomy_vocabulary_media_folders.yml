@@ -1,0 +1,14 @@
+uuid: 0895dc2b-0774-44f6-bfb2-34030ae6d099
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.media_folders
+id: taxonomy_vocabulary_media_folders
+entity_type_id: taxonomy_vocabulary
+entity_id: media_folders
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,20 @@
+uuid: aa02e645-5145-473a-b8d1-843dfae12ab8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cross_site_publications
+  module:
+    - text
+id: taxonomy_term.cross_site_publications.description
+field_name: description
+entity_type: taxonomy_term
+bundle: cross_site_publications
+label: Kuvaus
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

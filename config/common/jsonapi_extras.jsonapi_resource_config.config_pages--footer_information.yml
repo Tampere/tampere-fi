@@ -1,0 +1,83 @@
+uuid: 5ee006f1-cc4a-41f9-887d-bd096369671f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.footer_information
+id: config_pages--footer_information
+disabled: true
+path: config_pages/footer_information
+resourceType: config_pages--footer_information
+resourceFields:
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  type:
+    disabled: false
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  context:
+    disabled: false
+    fieldName: context
+    publicName: context
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  metatag:
+    disabled: false
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  field_first_text_column:
+    disabled: false
+    fieldName: field_first_text_column
+    publicName: field_first_text_column
+    enhancer:
+      id: ''
+  field_second_text_column:
+    disabled: false
+    fieldName: field_second_text_column
+    publicName: field_second_text_column
+    enhancer:
+      id: ''
+  field_site_copyrights:
+    disabled: false
+    fieldName: field_site_copyrights
+    publicName: field_site_copyrights
+    enhancer:
+      id: ''
+  field_site_statement_links:
+    disabled: false
+    fieldName: field_site_statement_links
+    publicName: field_site_statement_links
+    enhancer:
+      id: ''
+  field_social_media_links:
+    disabled: false
+    fieldName: field_social_media_links
+    publicName: field_social_media_links
+    enhancer:
+      id: ''

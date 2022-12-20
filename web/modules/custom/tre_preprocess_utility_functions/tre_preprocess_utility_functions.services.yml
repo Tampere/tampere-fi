@@ -1,0 +1,10 @@
+services:
+  tre_preprocess_utility_functions.helper_functions:
+    class: Drupal\tre_preprocess_utility_functions\Utils\HelperFunctions
+    arguments:
+      - '@entity.repository'
+      - '@entity_type.manager'
+      - '@current_route_match'
+      - '@language_manager'
+      - '@router.route_provider'
+      - '@easy_breadcrumb.breadcrumb'

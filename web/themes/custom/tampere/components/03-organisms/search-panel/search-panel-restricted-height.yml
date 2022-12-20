@@ -1,0 +1,6 @@
+search_panel__extra_classes:
+  - "js-search-panel-map"
+search_panel__heading: "Search by address"
+search_panel__text: "Class aptent taciti sociosqu ad litora torquent per conubia"
+search_panel__modifiers:
+  - restricted-height

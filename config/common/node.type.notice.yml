@@ -1,0 +1,17 @@
+uuid: d96bebb2-7f38-427b-b5dd-0f6144a32c60
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Ilmoitus
+type: notice
+description: "Ilmoitukset ovat Tampereen\r\nkaupungin virallisia kuulutuksia, esim. kaavakuulutuksia\r\nja meluilmoituksia."
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

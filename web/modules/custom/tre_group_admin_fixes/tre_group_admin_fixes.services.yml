@@ -1,0 +1,5 @@
+services:
+  tre_group_admin_fixes.route_subscriber:
+    class: Drupal\tre_group_admin_fixes\Routing\TreGroupAdminFixesRouteSubscriber
+    tags:
+      - { name: event_subscriber }

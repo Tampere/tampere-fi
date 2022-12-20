@@ -1,0 +1,9 @@
+uuid: 0f226dce-0fa4-4b6b-b8d2-ca640650a9f3
+langcode: fi
+status: true
+dependencies: {  }
+id: node__collection_page
+label: 'Sisältö: Koontisivu'
+tags:
+  description: '[node:field_metadata_description:value]'
+  og_description: '[node:field_metadata_description:value]'

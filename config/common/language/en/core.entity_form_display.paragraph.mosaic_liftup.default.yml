@@ -1,0 +1,21 @@
+content:
+  field_content_link:
+    settings:
+      title: Link
+      title_plural: Links
+  field_summary:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_liftup_title:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+third_party_settings:
+  field_group:
+    group_conditional_fields:
+      label: 'Body text to display in the first row of the picture mosaic only (over 3 liftups)'
+    group_image_and_title:
+      format_settings:
+        description: 'A mosaic liftup requires either an image or a title in order for it to be displayed in the picture mosaic.'
+      label: 'Image and title'

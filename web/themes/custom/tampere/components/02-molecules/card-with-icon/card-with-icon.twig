@@ -1,0 +1,109 @@
+{#
+ # Available variables:
+ # - card__base_class - base classname of the wrapper.
+ # - card__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - card__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - card__extra_classes - array of extra classes to add to the wrapper.
+ #
+ # - card__image__src - the actual image file location.
+ # - card__image__alt - (optional) the alt text for screen readers and when the image cannot load.
+ #
+ # - card__content__modifiers - array of modifiers to add to the base classname of the copy wrapper.
+ #
+ # - card__title_container__modifiers - array of modifiers to add to the base classname of the title container.
+ #
+ # - card__icon__base_class - base classname of the icon component. Defaults to "icon".
+ # - card__icon__modifiers - array of modifiers to add to the base classname of the icon.
+ # - card__icon__name - the name of the icon to use on the card. Defaults to "info".
+ # - card__icon__filename - the filename for the sprite sheet. Defaults to "icons" if icon name
+ #     has been specified.
+ #
+ # - card__heading - the content of the title component.
+ # - card__heading__base_class - base classname of the title component. Defaults to "heading".
+ # - card__heading__modifiers - array of modifiers to add to the base classname of the title.
+ #
+ # - card__body - the content of the body component.
+ # - card__body__base_class - base classname of the body component. Defaults to "body".
+ # - card__body__modifiers - array of modifiers to add to the base classname of the body.
+ #
+ # - card__link__modifiers - array of modifiers to add to the base classname of the link.
+ # - card__link_item_modifiers - arrary of modifiers to add to the base classname of the link item.
+ # - card__link_item__url - the URL the link should point to.
+ # - card__link_item__text - the link text for the card link.
+ # - card__link_item__icon - the name of the icon to use on the card. Defaults to "arrow".
+ #}
+{% set card__base_class = "card-with-icon" %}
+
+{% if card__icon__name %}
+  {% set card__icon__filename = "icons" %}
+  {% set card__icon__modifiers = [ "topic" ] %}
+{% endif %}
+
+{% if "with-image" not in card__modifiers %}
+  {% set card__link_item_modifiers = [ "transparent" ] %}
+{% else %}
+  {% set has_image = TRUE %}
+{% endif %}
+
+<div {{ bem(card__base_class, card__modifiers|default([]), card__blockname, card__extra_classes) }}>
+  {# Image #}
+  {% if card__image__src or has_image %}
+    <div {{ bem("image-container", card__image_container__modifiers|default([]), card__base_class) }} aria-hidden="true">
+      {% block card__img %}
+        {% include "@atoms/04-images/00-image/_image.twig" with {
+          "image_base_class": "image",
+          "image_blockname": card__base_class,
+          "img_src": card__image__src,
+          "img_alt": card__image__alt,
+        } %}
+      {% endblock %}
+    </div>
+  {% endif %}
+  {# Content #}
+  <div {{ bem("content", card__content__modifiers|default([]), card__base_class) }}>
+    <div {{ bem("title-container", card__title_container__modifiers|default([]), card__base_class) }}>
+      {# Icon #}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        "icon_base_class": card__icon__base_class|default("icon"),
+        "icon_modifiers": card__icon__modifiers,
+        "icon_blockname": card__base_class,
+        "icon_name": card__icon__name|default("info"),
+        "icon_decorative": true,
+        "icon_filename": card__icon__filename,
+      } %}
+      {# Heading #}
+      {% if card__heading %}
+        {{ title_prefix }}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_base_class": card__heading__base_class|default("heading"),
+          "heading_modifiers": card__heading__modifiers,
+          "heading_blockname": card__base_class,
+          "heading_level": 2,
+          "heading": card__heading,
+        } %}
+        {{ title_suffix }}
+      {% endif %}
+    </div>
+    {# Body #}
+    {% if card__body %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        "paragraph_base_class": card__body__base_class|default("body"),
+        "paragraph_modifiers": card__body__modifiers,
+        "paragraph_blockname": card__base_class,
+        "paragraph_content": card__body,
+      } %}
+    {% endif %}
+  </div>
+  {# Link #}
+  {% if card__link_item__url %}
+    <div {{ bem("link", card__link__modifiers|default([]), card__base_class) }} {% if is_example %}style="background-image:url('images/waves-transparent-new.svg');"{% endif %}>
+      {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+        "link_with_icon__aria_label": card__link_item__aria_label,
+        "link_with_icon__modifiers": card__link_item_modifiers,
+        "link_with_icon__url": card__link_item__url,
+        "link_with_icon__link_text": card__link_item__text,
+        "link_with_icon__link_icon": card__link_item__icon|default("arrow"),
+      } %}
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,163 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_preprocess module.
+ */
+
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_build().
+ */
+function tre_preprocess_views_pre_build(ViewExecutable $view) {
+  $view_name = $view->id();
+  if ($view_name !== 'current_content_archive') {
+    // If we're not dealing with the correct view or any of the displays, no
+    // modification in the view is desired.
+    return;
+  }
+
+  if (!isset($view->args[0])) {
+    return _tre_preprocess_reset_views_args($view);
+  }
+
+  $paragraph_revision_id = $view->args[0];
+  if (empty($paragraph_revision_id)) {
+    return _tre_preprocess_reset_views_args($view);
+  }
+
+  $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph_revision_id);
+  if (!($paragraph instanceof ParagraphInterface)) {
+    return _tre_preprocess_reset_views_args($view);
+  }
+
+  if ($paragraph->bundle() !== 'current_listing') {
+    return _tre_preprocess_reset_views_args($view);
+  }
+
+  $translated_paragraph = \Drupal::service('entity.repository')->getTranslationFromContext($paragraph);
+
+  $current_language_id = \Drupal::service('language_manager')->getCurrentLanguage()->getId();
+  [$node_ids] = \Drupal::service('preprocess.plugin.manager')->createInstance('tre_preprocess.preprocess.paragraph__current_listing')->getNodeIdsForCurrentListingParagraph($translated_paragraph, $current_language_id, FALSE);
+
+  if (empty($node_ids)) {
+    return _tre_preprocess_reset_views_args($view);
+  }
+
+  $view->setArguments([implode('+', $node_ids)]);
+}
+
+/**
+ * Helper function to reduce repetition.
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ *   The view whose arguments must be reset.
+ *
+ * @return null
+ *   Nothing returned.
+ */
+function _tre_preprocess_reset_views_args(ViewExecutable $view) {
+  $view->setArguments([]);
+  return NULL;
+}
+
+/**
+ * Implements hook_language_switch_links_alter().
+ */
+function tre_preprocess_language_switch_links_alter(array &$links, $type, Url $url) {
+  // Nifty trick to prevent altering links for other than current page.
+  if ($url->getRouteName() !== '<current>' && $url->getRouteName() !== '<front>') {
+    return;
+  }
+
+  /** @var \Drupal\Core\Routing\RouteMatchInterface $routematch */
+  $routematch = \Drupal::routeMatch();
+  $current_route = $routematch->getRouteName();
+  $route_params = $routematch->getParameters()->all();
+
+  $archive_routes = _tre_preprocess_get_current_archive_routes();
+
+  if (!in_array($current_route, $archive_routes, TRUE)) {
+    return;
+  }
+
+  foreach ($links as $langcode => $link) {
+    // Remove query parameters from link altogether. In this case this makes us
+    // get rid of the page parameter which may be off by dozens of pages
+    // depending on language.
+    $link['query'] = [];
+    // The route parameters contain the view argument.
+    $link['url'] = Url::fromRoute($archive_routes[$langcode], $route_params);
+    $links[$langcode] = $link;
+  }
+}
+
+/**
+ * Helper to list the current content archive routes.
+ *
+ * @return string[]
+ *   The routes for the archive view, keyed by language.
+ */
+function _tre_preprocess_get_current_archive_routes(): array {
+  $archive_routes = [
+    'fi' => 'view.current_content_archive.current_content_archive_fi',
+    'en' => 'view.current_content_archive.current_content_archive_en',
+  ];
+  return $archive_routes;
+}
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ *
+ * @see \Drupal\tre_preprocess\Plugin\Preprocess\CurrentListing::preprocess()
+ */
+function tre_preprocess_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+  $text = NULL;
+  $url = NULL;
+  // Because the original breadcrumb's links cannot be switched, we need to
+  // build a new one from scratch.
+  $new_breadcrumb = new Breadcrumb();
+  $breadcrumb_altered = FALSE;
+
+  if (in_array($route_match->getRouteName(), _tre_preprocess_get_current_archive_routes(), TRUE)) {
+    // The arg_0 exists for the view when the view has been accessed through its
+    // page URL with a paragraph ID set.
+    $paragraph_revision_id = $route_match->getParameter('arg_0');
+    if (!empty($paragraph_revision_id)) {
+      $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph_revision_id);
+      if ($paragraph instanceof ParagraphInterface) {
+        $host_entity = $paragraph->getParentEntity();
+        if ($host_entity instanceof NodeInterface) {
+          $translated_host_entity = \Drupal::service('entity.repository')->getTranslationFromContext($host_entity);
+          $text = $translated_host_entity->label();
+          $url = $translated_host_entity->toUrl();
+          $new_breadcrumb->addCacheableDependency($translated_host_entity);
+          $new_breadcrumb->addCacheableDependency($paragraph);
+        }
+      }
+    }
+  }
+
+  if (!is_null($text) && !is_null($url)) {
+    $breadcrumb_altered = TRUE;
+    foreach ($breadcrumb->getLinks() as $link) {
+      if (in_array($link->getUrl()->getRouteName(), _tre_preprocess_get_current_archive_routes(), TRUE)) {
+        $link = Link::fromTextAndUrl($text, $url);
+      }
+      $new_breadcrumb->addLink($link);
+    }
+    $new_breadcrumb->addCacheTags($breadcrumb->getCacheTags());
+    $new_breadcrumb->addCacheContexts($breadcrumb->getCacheContexts());
+  }
+
+  if ($breadcrumb_altered) {
+    $breadcrumb = $new_breadcrumb;
+  }
+}

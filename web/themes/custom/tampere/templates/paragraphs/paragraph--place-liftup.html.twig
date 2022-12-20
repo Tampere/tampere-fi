@@ -1,0 +1,94 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - place_title: The title of the referenced Place node.
+ * - place_address: Optional. The value of the address field in the referenced Place node as a render array.
+ * - place_description: Optional. The value of the description field in the referenced Place node as a string.
+ * - place_additional_information: Optional. The additional information field in the referenced
+ *     Place node as a render array.
+ * - place_url: Optional. The URL for the referenced Place node.
+ * - place_map: Optional. The map for the Place node as a render array.
+ * - inside_accordion: Boolean if place of business is inside accordion.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set place_address_markup = place_address|render %}
+{% set place_map_markup = place_map|render %}
+
+{% if (view_mode == 'accordion_content_view_mode') or inside_accordion %}
+  {% set heading_level = 4 %}
+{% endif %}
+
+{% if place_map_markup|trim %}
+  {% set accordion_tabs = [
+    {
+      "title": "Location on map"|t,
+      "content": place_map_markup,
+      "accordion_content_modifiers": [ "no-margin" ],
+    },
+  ] %}
+{% endif %}
+
+{% if
+  place_title or
+  place_address_markup|trim or
+  place_description or
+  place_additional_information|render|trim or
+  place_url or
+  place_map_markup|trim
+%}
+  {% embed "@organisms/_paragraph.twig" %}
+    {% block paragraph_content %}
+      {% embed "@molecules/place-contact/place-contact.twig" with {
+        "place_contact__modifiers": [ view_mode|clean_class ],
+        "place_contact__name": place_title,
+        "place_contact__url": place_url,
+        "place_contact__main_content": place_description,
+        "place_contact__additional_content": place_additional_information,
+        "place_contact__heading_level": heading_level,
+        "place_contact__map": accordion_tabs,
+        "place_contact__paragraph_id": paragraph.id.value,
+        "attributes": [],
+      } %}
+        {% block left_column %}
+          {{ place_address_markup }}
+        {% endblock %}
+      {% endembed %}
+
+      {{ content['#cache'] }}
+    {% endblock %}
+  {% endembed %}
+{% endif %}

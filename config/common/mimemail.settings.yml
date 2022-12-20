@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: rpfRQVoEn2ZWd_lw-iULKPiuina5CqcmzXWlz1OjTwM
+langcode: fi
+name: Tampere.fi
+mail: no-reply@tampere.fi
+simple_address: true
+sitestyle: true
+textonly: false
+linkonly: true
+user_plaintext_field: ''
+format: outgoing_mail_html
+preserve_class: false
+advanced:
+  incoming: false
+  key: NGgUu59V8QhjAXnpg_Ptb-S9K0BEenrS-iyLkgiMogs

@@ -1,0 +1,12 @@
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Välilehdet
+    group_general:
+      label: Yleinen
+    group_categorization:
+      label: Luokittelut
+    group_upload_image:
+      format_settings:
+        description: 'Valitse kuvaa klikkaamalla kohdistuspiste, joka osoittaa kuvan tärkeintä sisältöä. Tämä varmistaa, että keskeinen sisältö näkyy skaalatessa kuvaa eri kokoihin eri käyttötilanteissa.'
+      label: 'Kuvan lataaminen'

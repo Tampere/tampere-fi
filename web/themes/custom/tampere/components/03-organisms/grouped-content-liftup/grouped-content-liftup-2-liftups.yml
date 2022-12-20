@@ -1,0 +1,10 @@
+liftup__heading: 'Donec at malesuada ligula'
+liftups:
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Felis sed felis bibendum tristique'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'

@@ -1,0 +1,17 @@
+uuid: 89c08af6-aa2c-4394-aeb4-f07e9488991c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Toimipiste
+type: place_of_business
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

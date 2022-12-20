@@ -1,0 +1,10 @@
+uuid: d7e2a0ae-0a56-469c-98c5-d0752ccd7d57
+langcode: fi
+status: true
+dependencies: {  }
+id: picture_mosaic
+label: Kuvamosaiikki
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää koostamaan kuvia tai sivuston tärkeimpiä sisältöjä yhdeksi visuaaliseksi kokonaisuudeksi.'
+behavior_plugins: {  }

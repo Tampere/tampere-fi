@@ -1,0 +1,48 @@
+uuid: a6425b5d-d6e0-4a2e-9784-16b033f26864
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.involvement_opportunity
+    - workflows.workflow.chance_for_participation_moderation
+  module:
+    - content_moderation
+    - node
+    - paragraphs_type_permissions
+    - quick_node_clone
+    - scheduled_transitions
+    - system
+id: participation_section_editor
+label: 'Osallistumisen osiovastaava'
+weight: 7
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access content overview'
+  - 'add scheduled transitions node involvement_opportunity'
+  - 'clone involvement_opportunity content'
+  - 'create involvement_opportunity content'
+  - 'create paragraph content person_liftup'
+  - 'create paragraph content person_liftups'
+  - 'delete any involvement_opportunity content'
+  - 'delete involvement_opportunity revisions'
+  - 'delete paragraph content person_liftup'
+  - 'delete paragraph content person_liftups'
+  - 'edit any involvement_opportunity content'
+  - 'reschedule scheduled transitions node involvement_opportunity'
+  - 'revert involvement_opportunity revisions'
+  - 'update paragraph content person_liftup'
+  - 'update paragraph content person_liftups'
+  - 'use chance_for_participation_moderation transition archive'
+  - 'use chance_for_participation_moderation transition create_new_draft'
+  - 'use chance_for_participation_moderation transition julkaise'
+  - 'use chance_for_participation_moderation transition restore_to_draft'
+  - 'use chance_for_participation_moderation transition send_for_review'
+  - 'view any unpublished content'
+  - 'view involvement_opportunity revisions'
+  - 'view latest version'
+  - 'view own unpublished content'
+  - 'view paragraph content person_liftup'
+  - 'view paragraph content person_liftups'
+  - 'view scheduled transitions node involvement_opportunity'
+  - 'view the administration theme'

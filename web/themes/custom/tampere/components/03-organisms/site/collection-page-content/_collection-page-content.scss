@@ -1,0 +1,27 @@
+.collection-page-content {
+  $base_class: &;
+
+  @include large {
+    .main-content--with-sidebar & {
+      margin-left: $gutter-sidebar-content * (-1);
+
+      #{$base_class}__main-content {
+        padding-left: $gutter-sidebar-content;
+        padding-right: $gutter-sidebar-content;
+      }
+
+      #{$base_class}__header {
+        padding: 0;
+      }
+    }
+  }
+
+  &__header,
+  &__main-content {
+    padding: 0 $gutter-mobile;
+
+    @include large {
+      padding: 0 $gutter-large;
+    }
+  }
+}

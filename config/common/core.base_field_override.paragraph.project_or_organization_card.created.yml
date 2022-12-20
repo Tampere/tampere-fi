@@ -1,0 +1,18 @@
+uuid: cd8e447c-2b7f-40d8-8abe-3809e193583c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.project_or_organization_card
+id: paragraph.project_or_organization_card.created
+field_name: created
+entity_type: paragraph
+bundle: project_or_organization_card
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

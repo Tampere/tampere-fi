@@ -1,0 +1,12 @@
+diff --git a/src/OfficeHoursFormatterTrait.php b/src/OfficeHoursFormatterTrait.php
+index 45929c2..221e4f2 100644
+--- a/src/OfficeHoursFormatterTrait.php
++++ b/src/OfficeHoursFormatterTrait.php
+@@ -445,6 +445,7 @@ trait OfficeHoursFormatterTrait {
+       if ($field_settings['comment'] == 2) {
+         $day_data['comments'] = array_map('t', $day_data['comments']);
+       }
++      $day_data['comments'] = array_filter(array_map('trim', $day_data['comments']));
+       $day_data['comments'] = ($field_settings['comment'])
+           ? implode($slot_separator, $day_data['comments'])
+           : '';

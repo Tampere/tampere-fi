@@ -1,0 +1,15 @@
+{% set image_gallery__base_class = "image-gallery" %}
+
+{{ attach_library("tampere/image-gallery") }}
+
+<div {{ bem(image_gallery__base_class, (image_gallery__modifiers|default([])), image_gallery__blockname) }} id="{{ image_gallery_id }}">
+  {% block image_gallery_content %}
+    {% for image in images %}
+      {% embed "@organisms/image-gallery/image-gallery-item.twig" %}
+        {% block image_gallery_item_content %}
+          {{ image }}
+        {% endblock %}
+      {% endembed %}
+    {% endfor %}
+  {% endblock %}
+</div>

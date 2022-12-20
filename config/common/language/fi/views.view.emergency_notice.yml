@@ -1,0 +1,14 @@
+label: Häiriöilmoitus
+display:
+  default:
+    display_title: Oletus
+    display_options:
+      title: Häiriöilmoitus
+  front_page_emergency_notice:
+    display_title: 'Etusivun häiriöilmoitus'
+    display_options:
+      title: 'Etusivun häiriöilmoitus'
+  sitewide_emergency_notice:
+    display_title: 'Koko sivuston häiriöilmoitus'
+    display_options:
+      title: 'Koko sivuston häiriöilmoitus'

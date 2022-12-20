@@ -1,0 +1,18 @@
+uuid: 3e47f779-0928-41c9-a84b-da15c393e19c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.mosaic_liftup
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.mosaic_liftup
+target_entity_type_id: paragraph
+target_bundle: mosaic_liftup
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,25 @@
+uuid: df929878-8171-4755-b04a-8fbb759dbc84
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_color
+    - paragraphs.paragraphs_type.single_colorful_content_liftup
+  module:
+    - color_field
+id: paragraph.single_colorful_content_liftup.field_color
+field_name: field_color
+entity_type: paragraph
+bundle: single_colorful_content_liftup
+label: Väri
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    color: '#22437b'
+    opacity: null
+default_value_callback: ''
+settings:
+  opacity: 0
+field_type: color_field_type

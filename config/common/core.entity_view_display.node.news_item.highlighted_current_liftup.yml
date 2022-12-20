@@ -1,0 +1,144 @@
+uuid: 8393d984-c40b-4056-b864-2ba1c7135d41
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.highlighted_current_liftup
+    - field.field.node.news_item.field_archive_search_content
+    - field.field.node.news_item.field_author
+    - field.field.node.news_item.field_body
+    - field.field.node.news_item.field_contact_info_paragraph
+    - field.field.node.news_item.field_cross_site_publications
+    - field.field.node.news_item.field_date_of_publication
+    - field.field.node.news_item.field_geographical_areas
+    - field.field.node.news_item.field_help_text
+    - field.field.node.news_item.field_keywords
+    - field.field.node.news_item.field_lead
+    - field.field.node.news_item.field_life_situations
+    - field.field.node.news_item.field_link_list
+    - field.field.node.news_item.field_mailing_list_information
+    - field.field.node.news_item.field_main_image
+    - field.field.node.news_item.field_markup
+    - field.field.node.news_item.field_media_caption
+    - field.field.node.news_item.field_minisites
+    - field.field.node.news_item.field_paragraphs
+    - field.field.node.news_item.field_photographer
+    - field.field.node.news_item.field_search_keywords
+    - field.field.node.news_item.field_send_to_media
+    - field.field.node.news_item.field_social_media_share
+    - field.field.node.news_item.field_topic
+    - field.field.node.news_item.field_topics
+    - node.type.news_item
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_topical_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: big
+    regions:
+      topical_card__link__url:
+        - 'dynamic_twig_field:node-content_path'
+      topical_card__image:
+        - field_main_image
+      topical_card__date:
+        - published_at
+      topical_card__tag:
+        - 'bundle_field:node'
+      topical_card__heading:
+        - node_title
+      topical_card__summary:
+        - field_lead
+    fields:
+      'dynamic_twig_field:node-content_path':
+        plugin_id: 'dynamic_twig_field:node-content_path'
+        weight: 0
+        label: hidden
+        formatter: default
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 3
+        label: hidden
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 4
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+id: node.news_item.highlighted_current_liftup
+targetEntityType: node
+bundle: news_item
+mode: highlighted_current_liftup
+content:
+  field_lead:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: topical_card__summary
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: large_listing_liftup_view_mode
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: topical_card__image
+  published_at:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: custom
+      custom_date_format: j.n.Y
+      timezone: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: topical_card__date
+hidden:
+  content_moderation_control: true
+  field_archive_search_content: true
+  field_author: true
+  field_body: true
+  field_contact_info_paragraph: true
+  field_cross_site_publications: true
+  field_date_of_publication: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_link_list: true
+  field_mailing_list_information: true
+  field_markup: true
+  field_media_caption: true
+  field_minisites: true
+  field_paragraphs: true
+  field_photographer: true
+  field_search_keywords: true
+  field_send_to_media: true
+  field_social_media_share: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

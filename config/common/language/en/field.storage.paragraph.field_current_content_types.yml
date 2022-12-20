@@ -1,0 +1,12 @@
+settings:
+  allowed_values:
+    -
+      label: 'Blog article'
+    -
+      label: Notice
+    -
+      label: 'Small news item'
+    -
+      label: 'Rich article'
+    -
+      label: 'News item'

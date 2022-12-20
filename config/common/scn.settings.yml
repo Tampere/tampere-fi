@@ -1,0 +1,17 @@
+scn_admin: 0
+scn_roles:
+  editor: editor
+  super_user: super_user
+  authenticated: 0
+  content_author: 0
+  author: 0
+  section_editor: 0
+  administrator: 0
+scn_maillist: ''
+scn_telegram: 0
+scn_telegram_bottoken: ''
+scn_telegram_chatids: ''
+scn_telegram_proxy: 0
+scn_telegram_proxy_server: ''
+scn_telegram_proxy_login: ''
+scn_telegram_proxy_password: ''

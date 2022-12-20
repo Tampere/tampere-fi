@@ -1,0 +1,23 @@
+uuid: 68aa1e2d-faac-4f35-99ac-505efbb636d2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_location_on_map
+    - node.type.zoning_information
+id: node.zoning_information.field_display_location_on_map
+field_name: field_display_location_on_map
+entity_type: node
+bundle: zoning_information
+label: 'Näytä sijainti kartalla'
+description: 'Valitse tämä, jos haluat näyttää kaavan omalla sivulla sen sijainnin kartalla.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -1,0 +1,11 @@
+uuid: a34ccdec-96ab-43c5-bbb1-7aa2c84eefa0
+langcode: fi
+status: true
+dependencies: {  }
+id: minisite
+label: Minikotisivusto
+description: ''
+new_revision: true
+creator_membership: false
+creator_wizard: true
+creator_roles: {  }

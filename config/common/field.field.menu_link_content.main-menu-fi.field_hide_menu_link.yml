@@ -1,0 +1,23 @@
+uuid: e99c08ab-b173-4756-99c7-790b6f2a46c6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.menu_link_content.field_hide_menu_link
+    - system.menu.main-menu-fi
+id: menu_link_content.main-menu-fi.field_hide_menu_link
+field_name: field_hide_menu_link
+entity_type: menu_link_content
+bundle: main-menu-fi
+label: 'Piilota valikkolinkki'
+description: 'Estää valikkolinkin näkymisen sivustolla. Piilotettua valikkolinkkiä voidaan käyttää muiden valikkolinkkien järjestämiseen käyttöliittymässä.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

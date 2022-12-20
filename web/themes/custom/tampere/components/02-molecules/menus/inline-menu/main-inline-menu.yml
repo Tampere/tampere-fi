@@ -1,0 +1,15 @@
+inline_menu_label_id: "main-inline-menu-label"
+inline_menu_aria_label: "Main inline menu"
+inline_menu_items:
+  - title: 'Ajankohtaista'
+    url: '#'
+  - title: 'Asiointi'
+    url: '#'
+  - title: 'Kartta'
+    url: '#'
+  - title: 'Palaute'
+    url: '#'
+  - title: 'Yhteystiedot'
+    url: '#'
+menu_modifiers:
+  - 'main'

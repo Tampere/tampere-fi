@@ -1,0 +1,15 @@
+uuid: d344d2bc-198c-4b1f-8675-fbea349b5820
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: accordion_item
+label: Haitari
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

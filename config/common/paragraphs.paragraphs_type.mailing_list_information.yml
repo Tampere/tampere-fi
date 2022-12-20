@@ -1,0 +1,15 @@
+uuid: 23a45910-77f4-4ac1-96ca-2c8f6d654bf9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: mailing_list_information
+label: Postituslistatiedot
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

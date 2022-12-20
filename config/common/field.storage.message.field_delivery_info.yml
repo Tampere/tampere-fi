@@ -1,0 +1,21 @@
+uuid: caa000d4-eb24-4987-a17c-2f9d8df5f377
+langcode: fi
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - message
+    - paragraphs
+id: message.field_delivery_info
+field_name: field_delivery_info
+entity_type: message
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

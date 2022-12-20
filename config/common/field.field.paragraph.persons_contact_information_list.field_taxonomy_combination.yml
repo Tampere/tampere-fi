@@ -1,0 +1,23 @@
+uuid: af6fc3cf-ddbc-425f-abf1-fe7cb4e13cf1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_taxonomy_combination
+    - paragraphs.paragraphs_type.persons_contact_information_list
+  module:
+    - options
+id: paragraph.persons_contact_information_list.field_taxonomy_combination
+field_name: field_taxonomy_combination
+entity_type: paragraph
+bundle: persons_contact_information_list
+label: 'Luokittelujen yhdistäminen toisiinsa'
+description: 'Valitse miten luokitteluja käytetään yhteystietojen näyttämiseen sivulla.'
+required: true
+translatable: true
+default_value:
+  -
+    value: or
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+uuid: 05999c3a-2dfa-4116-bdff-6ec7584075d4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.service_author
+  module:
+    - user
+id: user_add_role_action.service_author
+label: 'Add the Palvelutoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: service_author

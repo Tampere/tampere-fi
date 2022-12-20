@@ -1,0 +1,7 @@
+name: 'TRE Course Listing'
+type: module
+description: 'Custom module for the Course listing paragraph that loads React libraries and a React application.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - paragraphs

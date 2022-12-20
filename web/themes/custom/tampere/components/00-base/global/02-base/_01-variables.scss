@@ -1,0 +1,199 @@
+/**
+ * General Variables
+ * Note: colors should go into
+ * components/_patterns/00-base/global/01-colors/_color-vars.scss
+ * and breakpoint related vars into
+ * components/_patterns/00-base/_breakpoints.scss
+ */
+
+/**
+ * Typography
+ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+/* fonts */
+$font-body: 'Open Sans', 'Arial', sans-serif;
+$font-heading: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+
+/* font sizes */
+$font-9: 0.5625rem;
+$font-12: 0.75rem;
+$font-14: 0.875rem;
+$font-15: 0.9375rem;
+$font-16: 1rem;
+$font-17: 1.0625rem;
+$font-18: 1.125rem;
+$font-20: 1.25rem;
+$font-21: 1.3125rem;
+$font-22: 1.375rem;
+$font-24: 1.5rem;
+$font-27: 1.6875rem;
+$font-28: 1.75rem;
+$font-32: 2rem;
+$font-36: 2.25rem;
+$font-40: 2.5rem;
+$font-42: 2.625rem;
+$font-48: 3rem;
+$font-56: 3.5rem;
+$font-60: 3.75rem;
+$font-80: 5rem;
+
+$body-font-size: $font-20;
+$body-font-size-mobile: $font-16;
+
+/* Font weight */
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+
+/* Line heights */
+$line-height-base: 1.5;
+
+$h1-line-height: 1.13;
+$h1-line-height--mobile: 1.25;
+$h2-line-height: 1.28;
+$h2-line-height--mobile: 1.33;
+$h3-line-height: 1.5;
+$h3-line-height--mobile: 1.33;
+$h4-line-height: $line-height-base;
+
+$contact-card-line-height: 1.33;
+$contact-card-line-height--mobile: 1.6;
+
+/* headings */
+$h1-font-size: $font-28;
+$h1-font-size-desktop: $font-42;
+$h2-font-size: $font-22;
+$h2-font-size-desktop: $font-28;
+$h3-font-size: $font-18;
+$h3-font-size-desktop: $font-22;
+$h4-font-size: $font-16;
+$h4-font-size-desktop: $font-20;
+$h5-font-size: $font-14;
+$h5-font-size-desktop: $font-18;
+
+/**
+ * Spacings
+ */
+$space-xxs: 4px;
+$space-xs: 8px;
+$space-xs-plus: 12px;
+$space-s: 16px;
+$space-m: 20px;
+$space-m-plus: 24px;
+$space-l: 32px;
+$space-l-plus: 40px;
+$space-xl: 48px;
+$space-xxl: 72px;
+$space-xxxl: 100px;
+
+$larger-link-surface-icon-spacing-desktop: $space-xl;
+
+/* gutters */
+$gutter-large: 60px;
+$gutter-medium-plus: $space-xl;
+$gutter-medium: $space-l;
+$gutter-small: $space-m;
+$gutter-xs: $space-xs;
+
+$gutter-mobile: $space-s;
+$gutter-default: $gutter-large;
+$gutter-sidebar-content: $gutter-medium-plus;
+
+/* icons */
+$icon-xxs: 12px;
+$icon-xs: 16px;
+$icon-xs-plus: 20px;
+$icon-small: 24px;
+$icon-medium: 32px;
+$icon-medium-plus: 40px;
+$icon-large-minus: 56px;
+$icon-large: 72px;
+$icon-xl: 83px;
+
+$icon-default: $icon-small;
+$sidebar-menu-icon-size: $icon-xs;
+$sidebar-menu-icon-size--desktop: $icon-small;
+$listing-link-icon-size--desktop: $icon-small;
+
+/**
+ * Base
+ */
+
+/* shadows */
+$box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.07);
+
+/* borders */
+$short-border-width: 75px;
+$thick-border-width: 2px;
+$border-default: 1px solid $color-border;
+$border-2-black: 2px solid $color-black;
+$border-contact: 2px solid clr(accent-tertiary);
+$border-form: 2px solid clr(form-border);
+$border-form-accent: 2px solid clr(form-accent);
+$border-notice: 2px solid clr(notice);
+$border-thin-secondary: 1px solid clr(secondary);
+$border-thin-inverse: 1px solid clr(background);
+$border-thick-default: $thick-border-width solid clr(border);
+$border-thick-primary: $thick-border-width solid clr(primary);
+$border-thick-secondary: $thick-border-width solid clr(secondary);
+$border-thick-light-blue: $thick-border-width solid clr(accent-tertiary);
+$border-thick-inverse: $thick-border-width solid clr(background);
+$border-thick-transparent: $thick-border-width solid transparent;
+$border-thick-involvement: $thick-border-width solid clr(involvement-secondary);
+$border-thick-general-contact: $thick-border-width solid clr(accent-secondary);
+
+/* buttons */
+$small-button-padding: 12px;
+$small-button-size: 40px;
+
+/* text */
+$h1-margin: $gutter-large 0 $gutter-medium 0;
+$h1-margin--mobile: $gutter-medium 0 $gutter-small 0;
+$h2-margin: 0 0 $space-m-plus;
+$h2-margin--mobile: 0 0 $space-m;
+$heading-margin-bottom-default: 0 0 $space-m-plus;
+$text-paragraph-margin-bottom: $space-m-plus;
+$text-paragraph-margin-bottom--small: $space-m;
+
+/* images */
+$figure-caption-font-style: italic;
+$site-logo-max-width: 130px;
+$site-logo-max-width--desktop: 187px;
+
+/* sidebar */
+$sidebar-width: 28%;
+$sidebar-min-width: 285px;
+$main-width-with-sidebar: calc(100% - (#{$sidebar-width} + #{$gutter-sidebar-content}));
+
+/* content */
+$article-max-width: 858px;
+$article-content-max-width: calc(#{$article-max-width} + (#{$gutter-default} * 2));
+$article-content-max-width--with-sidebar: calc(#{$article-max-width} + #{$gutter-default});
+$basic-content-page-max-width: 825px;
+$basic-content-max-width: calc(#{$basic-content-page-max-width} + (#{$gutter-default} * 2));
+$basic-content-page-max-width--with-sidebar: 875px;
+$basic-content-max-width--with-sidebar: calc(#{$basic-content-page-max-width--with-sidebar} + #{$gutter-default});
+
+/*
+ * Forms
+ *
+**/
+
+$form-list-item-spacing: $space-m;
+$form-item-spacing: $space-m;
+$form-item-spacing--large: $space-l-plus;
+$form-item-description-margin-top: $space-xs;
+$form-item-max-width: 32rem;
+
+:root {
+  --basic-component-max-width: 1440px;
+  --text-content-max-width: 748px;
+  --article-content-max-width: #{$article-content-max-width};
+  --basic-content-max-width: #{$basic-content-max-width};
+  --field-label-font-weight: #{$font-weight-bold};
+  --focus-outline-offset: 3px;
+}

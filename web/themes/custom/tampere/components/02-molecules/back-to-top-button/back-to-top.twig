@@ -1,0 +1,9 @@
+{{ attach_library("tampere/back-to-top") }}
+
+{% set btt__base_class = "back-to-top" %}
+  
+{% include "@atoms/06-buttons/01-button.twig" with {
+  button_base_class: btt__base_class|default("button"),
+  button_content: "Return to top"|t,
+  button_icon_name: "up",
+} %}

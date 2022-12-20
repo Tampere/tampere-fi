@@ -1,0 +1,46 @@
+uuid: ecd03c07-1435-405b-96ec-fa217d67c0b4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group.life_situation.field_front_page
+    - field.field.group.life_situation.field_life_situation_icon
+    - group.type.life_situation
+  module:
+    - ex_icons
+id: group.life_situation.default
+targetEntityType: group
+bundle: life_situation
+mode: default
+content:
+  field_front_page:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  field_life_situation_icon:
+    type: ex_icon_default
+    label: above
+    settings:
+      width: ''
+      height: ''
+    third_party_settings: {  }
+    weight: -3
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden:
+  changed: true
+  created: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

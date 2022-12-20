@@ -1,0 +1,12 @@
+column_field_group:
+  label: Column field group
+  fields:
+    pre_columns_content:
+      label: Content to display before columns
+    left_column:
+      label: Left column content
+    right_column:
+      label: Right column content
+    post_columns_content:
+      label: Content to display after columns
+  use: "@atoms/05-forms/column-field-group/column-field-group.twig"

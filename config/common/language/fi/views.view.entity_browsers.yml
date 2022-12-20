@@ -1,0 +1,75 @@
+label: Entiteettiselaimet
+display:
+  default:
+    display_title: Päänäyttö
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Käytä
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+          sort_asc_label: Nouseva
+          sort_desc_label: Laskeva
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Tulosta sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+          tags:
+            previous: '‹ Edellinen'
+            next: 'Seuraava ›'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
+      fields:
+        title:
+          label: Otsikko
+        type:
+          label: Tyyppi
+        created:
+          label: Luotu
+        status:
+          label: Julkaisutila
+          settings:
+            format_custom_true: Julkaistu
+            format_custom_false: Julkaisematon
+      filters:
+        title:
+          expose:
+            label: Otsikko
+        status:
+          expose:
+            label: Tila
+      sorts:
+        created:
+          expose:
+            label: Luotu
+      title: 'Kaikki sisältö'
+      header:
+        area:
+          content:
+            value: "<p>Voit etsiä linkitettävän sivun kirjoittamalla sen otsikon tai osan siitä hakukenttään ja klikkaamalla Käytä. Tee uusi haku poistamalla vanha(t) hakusana(t).</p>\r\n\r\n<p>Valitse linkitettävä sivu valintaruudulla ja klikkaa ikkunan alaosan Valitse sisältö -painiketta.</p>\r\n"
+            format: basic_html
+  entity_browser_all_content:
+    display_title: 'Selain: kaikki sisältö'
+  entity_browser_all_places:
+    display_title: 'Selain: kaikki paikat'
+    display_options:
+      title: 'Kaikki paikat'
+      filters:
+        title:
+          expose:
+            label: Otsikko
+        status:
+          expose:
+            label: Tila
+  entity_browser_person:
+    display_title: 'Selain: henkilöt'
+    display_options:
+      title: Henkilöt
+      filters:
+        title:
+          expose:
+            label: Nimi
+        status:
+          expose:
+            label: Tila

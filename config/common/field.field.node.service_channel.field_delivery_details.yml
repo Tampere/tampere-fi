@@ -1,0 +1,19 @@
+uuid: 7e04fa0f-3e0d-4f54-8ceb-dacdd6b31b57
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_delivery_details
+    - node.type.service_channel
+id: node.service_channel.field_delivery_details
+field_name: field_delivery_details
+entity_type: node
+bundle: service_channel
+label: Toimitustiedot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

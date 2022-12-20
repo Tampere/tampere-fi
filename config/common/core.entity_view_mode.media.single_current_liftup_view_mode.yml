@@ -1,0 +1,10 @@
+uuid: 5025753d-cc63-4a14-a5fc-cf2de891fbad
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.single_current_liftup_view_mode
+label: 'Yksittäinen ajankohtaisnosto'
+targetEntityType: media
+cache: true

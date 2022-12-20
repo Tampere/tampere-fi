@@ -1,0 +1,31 @@
+uuid: cd3d1092-85c2-44d0-bb18-ca7f03ad6221
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.entity_browsers
+  module:
+    - views
+name: persons_entity_browser
+label: 'Persons entity browser'
+display: modal
+display_configuration:
+  width: '650'
+  height: '500'
+  link_text: 'Select persons'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  561f5887-2ab8-4268-8aea-48d050c7708e:
+    id: view
+    uuid: 561f5887-2ab8-4268-8aea-48d050c7708e
+    label: Persons
+    weight: 1
+    settings:
+      submit_text: 'Select persons'
+      auto_select: false
+      view: entity_browsers
+      view_display: entity_browser_person

@@ -1,0 +1,1954 @@
+uuid: d8d7c4f6-e3db-4f0a-a46c-f12b2753fec4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - node.type.blog_article
+    - node.type.news_item
+    - node.type.rich_article
+    - taxonomy.vocabulary.geographical_areas
+    - taxonomy.vocabulary.life_situations
+    - taxonomy.vocabulary.topics
+  module:
+    - better_exposed_filters
+    - node
+    - taxonomy
+    - user
+    - views_custom_cache_tag
+id: news_and_article_archive
+label: 'Uutis- ja artikkeliarkisto'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Uutis- ja artikkeliarkisto'
+      fields:
+        rendered_entity:
+          id: rendered_entity
+          table: node
+          field: rendered_entity
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: rendered_entity
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          view_mode: search_result
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Seuraava ›'
+            previous: '‹ Edellinen'
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- Kaikki -'
+            offset: false
+            offset_label: Offset
+          quantity: 3
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Suodata
+          reset_button: true
+          reset_button_label: 'Poista suodatukset'
+          exposed_sorts_label: Lajittele
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Valitse mikä tahansa suodatin ja klikkaa Suorita nähdäksesi tulokset'
+          text_input_required_format: footer_text
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: Lisävaihtoehdot
+              secondary_open: false
+            filter:
+              type:
+                plugin_id: default
+                advanced:
+                  sort_options: true
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_topics_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: true
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_geographical_areas_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: true
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              field_life_situations_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: true
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: false
+                  is_secondary: false
+              published_at:
+                plugin_id: bef_datepicker
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+                  datepicker_options:
+                    altField: ''
+                    altFormat: ''
+                    appendText: ''
+                    autoSize: 0
+                    buttonImage: ''
+                    buttonImageOnly: 0
+                    changeMonth: 0
+                    changeYear: 0
+                    closeText: ''
+                    constrainInput: 0
+                    currentText: ''
+                    dateFormat: dd.mm.yy
+                    defaultDate: ''
+                    duration: ''
+                    firstDay: ''
+                    gotoCurrent: 0
+                    hideIfNoPrevNext: 0
+                    isRTL: 0
+                    maxDate: ''
+                    minDate: ''
+                    navigationAsDateFormat: 0
+                    nextText: ''
+                    prevText: ''
+                    selectOtherMonths: 0
+                    shortYearCutoff: ''
+                    showAnim: ''
+                    showButtonPanel: 0
+                    showCurrentAtPos: ''
+                    showMonthAfterYear: 0
+                    showOn: ''
+                    showOtherMonths: 0
+                    showWeek: 0
+                    stepMonths: ''
+                    weekHeader: ''
+                    yearRange: ''
+                    yearSuffix: ''
+              published_at_1:
+                plugin_id: bef_datepicker
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+                  datepicker_options:
+                    altField: ''
+                    altFormat: ''
+                    appendText: ''
+                    autoSize: 0
+                    buttonImage: ''
+                    buttonImageOnly: 0
+                    changeMonth: 0
+                    changeYear: 0
+                    closeText: ''
+                    constrainInput: 0
+                    currentText: ''
+                    dateFormat: dd.mm.yy
+                    defaultDate: ''
+                    duration: ''
+                    firstDay: ''
+                    gotoCurrent: 0
+                    hideIfNoPrevNext: 0
+                    isRTL: 0
+                    maxDate: ''
+                    minDate: ''
+                    navigationAsDateFormat: 0
+                    nextText: ''
+                    prevText: ''
+                    selectOtherMonths: 0
+                    shortYearCutoff: ''
+                    showAnim: ''
+                    showButtonPanel: 0
+                    showCurrentAtPos: ''
+                    showMonthAfterYear: 0
+                    showOn: ''
+                    showOtherMonths: 0
+                    showWeek: 0
+                    stepMonths: ''
+                    weekHeader: ''
+                    yearRange: ''
+                    yearSuffix: ''
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: custom_tag
+        options:
+          custom_tag: "node_list:blog_article\r\nnode_list:news_item\r\nnode_list:rich_article"
+      empty: {  }
+      sorts:
+        published_at:
+          id: published_at
+          table: node_field_data
+          field: published_at
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: published_at
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        langcode_1:
+          id: langcode_1
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type_1:
+          id: type_1
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            blog_article: blog_article
+            rich_article: rich_article
+            news_item: news_item
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            blog_article: blog_article
+            rich_article: rich_article
+            news_item: news_item
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Sisältötyyppi
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: true
+          is_grouped: true
+          group_info:
+            label: 'Sisällön tyyppi'
+            description: ''
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Blogiartikkeli
+                operator: in
+                value:
+                  blog_article: blog_article
+                  all: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  zoning_information: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+              2:
+                title: Artikkeli
+                operator: in
+                value:
+                  rich_article: rich_article
+                  all: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  zoning_information: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  project: '0'
+                  rss_item: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+              3:
+                title: Uutinen
+                operator: in
+                value:
+                  news_item: news_item
+                  all: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  zoning_information: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+        field_topics_target_id:
+          id: field_topics_target_id
+          table: node__field_topics
+          field: field_topics_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_topics_target_id_op
+            label: Aihealue
+            description: ''
+            use_operator: false
+            operator: field_topics_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: topics
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: topics
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: false
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: Sijainti
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_life_situations_target_id:
+          id: field_life_situations_target_id
+          table: node__field_life_situations
+          field: field_life_situations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_life_situations_target_id_op
+            label: Elämäntilanne
+            description: ''
+            use_operator: false
+            operator: field_life_situations_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: life_situations
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: life_situations
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: false
+        published_at:
+          id: published_at
+          table: node_field_data
+          field: published_at
+          relationship: none
+          group_type: group
+          admin_label: 'Julkaisupäivämäärä (suurempi tai yhtäsuuri kuin)'
+          entity_type: node
+          entity_field: published_at
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: published_at_op
+            label: Julkaisuajankohta
+            description: ''
+            use_operator: false
+            operator: published_at_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: date_of_publication_min
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: pp.kk.vvvv
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        published_at_1:
+          id: published_at_1
+          table: node_field_data
+          field: published_at
+          relationship: none
+          group_type: group
+          admin_label: 'Julkaisupäivämäärä (pienempi tai yhtäsuuri kuin)'
+          entity_type: node
+          entity_field: published_at
+          plugin_id: date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: published_at_1_op
+            label: Julkaisuajankohta
+            description: ''
+            use_operator: false
+            operator: published_at_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: date_of_publication_max
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: pp.kk.vvvv
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_archive_search_content_value:
+          id: field_archive_search_content_value
+          table: node__field_archive_search_content
+          field: field_archive_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_archive_search_content_value_op
+            label: 'Suodata sanahaulla'
+            description: ''
+            use_operator: false
+            operator: field_archive_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_archive_search_content_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+      relationships: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: true
+          content: 'Yhteensä @total tulosta'
+      footer: {  }
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:core.entity_view_display.node.basic_content_page.default'
+        - 'config:core.entity_view_display.node.basic_content_page.search_index'
+        - 'config:core.entity_view_display.node.basic_content_page.search_result'
+        - 'config:core.entity_view_display.node.blog_article.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.blog_article.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.blog_article.default'
+        - 'config:core.entity_view_display.node.blog_article.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.blog_article.liftup'
+        - 'config:core.entity_view_display.node.blog_article.search_index'
+        - 'config:core.entity_view_display.node.blog_article.search_result'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.default'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_index'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_result'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.collection_page.default'
+        - 'config:core.entity_view_display.node.collection_page.search_index'
+        - 'config:core.entity_view_display.node.collection_page.search_result'
+        - 'config:core.entity_view_display.node.content_in_other_language.default'
+        - 'config:core.entity_view_display.node.content_in_other_language.search_index'
+        - 'config:core.entity_view_display.node.content_in_other_language.search_result'
+        - 'config:core.entity_view_display.node.emergency_notice.default'
+        - 'config:core.entity_view_display.node.front_page.default'
+        - 'config:core.entity_view_display.node.front_page.search_index'
+        - 'config:core.entity_view_display.node.front_page.search_result'
+        - 'config:core.entity_view_display.node.involvement_opportunity.default'
+        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opp_sign_up_information_view_mode'
+        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opportunity_card_view_mode'
+        - 'config:core.entity_view_display.node.involvement_opportunity.search_index'
+        - 'config:core.entity_view_display.node.involvement_opportunity.search_result'
+        - 'config:core.entity_view_display.node.map_point.address_only'
+        - 'config:core.entity_view_display.node.map_point.default'
+        - 'config:core.entity_view_display.node.moderated_page.default'
+        - 'config:core.entity_view_display.node.moderated_page.search_index'
+        - 'config:core.entity_view_display.node.moderated_page.search_result'
+        - 'config:core.entity_view_display.node.news_item.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.news_item.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.news_item.default'
+        - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.news_item.jsonapi'
+        - 'config:core.entity_view_display.node.news_item.news_media_delivery'
+        - 'config:core.entity_view_display.node.news_item.search_index'
+        - 'config:core.entity_view_display.node.news_item.search_result'
+        - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.notice.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.notice.default'
+        - 'config:core.entity_view_display.node.notice.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.notice.search_index'
+        - 'config:core.entity_view_display.node.notice.search_result'
+        - 'config:core.entity_view_display.node.organization.default'
+        - 'config:core.entity_view_display.node.organization.search_index'
+        - 'config:core.entity_view_display.node.organization.search_result'
+        - 'config:core.entity_view_display.node.organization.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.person.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.person.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.person.default'
+        - 'config:core.entity_view_display.node.person.full'
+        - 'config:core.entity_view_display.node.person.liftup'
+        - 'config:core.entity_view_display.node.person.liftup_without_image'
+        - 'config:core.entity_view_display.node.person.news_media_delivery'
+        - 'config:core.entity_view_display.node.person.person_contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.person.phone_number_and_email_view_mode'
+        - 'config:core.entity_view_display.node.person.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.place.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.place.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.place.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place.default'
+        - 'config:core.entity_view_display.node.place.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place.news_media_delivery'
+        - 'config:core.entity_view_display.node.place.search_index'
+        - 'config:core.entity_view_display.node.place.search_result'
+        - 'config:core.entity_view_display.node.place_of_business.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.default'
+        - 'config:core.entity_view_display.node.place_of_business.liftup'
+        - 'config:core.entity_view_display.node.place_of_business.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.news_media_delivery'
+        - 'config:core.entity_view_display.node.project.default'
+        - 'config:core.entity_view_display.node.project.search_index'
+        - 'config:core.entity_view_display.node.project.search_result'
+        - 'config:core.entity_view_display.node.project.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.ptv_service.default'
+        - 'config:core.entity_view_display.node.ptv_service.liftup'
+        - 'config:core.entity_view_display.node.rich_article.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.rich_article.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.rich_article.default'
+        - 'config:core.entity_view_display.node.rich_article.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.rich_article.search_index'
+        - 'config:core.entity_view_display.node.rich_article.search_result'
+        - 'config:core.entity_view_display.node.rss_item.default'
+        - 'config:core.entity_view_display.node.service_channel.default'
+        - 'config:core.entity_view_display.node.service_channel.eservice_channel_liftup_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.default'
+        - 'config:core.entity_view_display.node.small_news_item.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.small_news_item.search_index'
+        - 'config:core.entity_view_display.node.small_news_item.search_result'
+        - 'config:core.entity_view_display.node.zoning_information.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.zoning_information.default'
+        - 'config:core.entity_view_display.node.zoning_information.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.zoning_information.search_index'
+        - 'config:core.entity_view_display.node.zoning_information.search_result'
+        - 'config:core.entity_view_display.node.zoning_information.zoning_city_planning_construction_project_card_view_mode'
+  archive_en:
+    id: archive_en
+    display_title: Arkisto_en
+    display_plugin: page
+    position: 1
+    display_options:
+      title: 'News item and article archive'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        langcode_1:
+          id: langcode_1
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type_1:
+          id: type_1
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            blog_article: blog_article
+            rich_article: rich_article
+            news_item: news_item
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            blog_article: blog_article
+            rich_article: rich_article
+            news_item: news_item
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Sisältötyyppi
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: true
+          is_grouped: true
+          group_info:
+            label: 'Content type'
+            description: ''
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Blogiartikkeli
+                operator: in
+                value:
+                  blog_article: blog_article
+                  all: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  zoning_information: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+              2:
+                title: Artikkeli
+                operator: in
+                value:
+                  rich_article: rich_article
+                  all: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  zoning_information: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  project: '0'
+                  rss_item: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+              3:
+                title: Uutinen
+                operator: in
+                value:
+                  news_item: news_item
+                  all: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  zoning_information: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+        field_topics_target_id:
+          id: field_topics_target_id
+          table: node__field_topics
+          field: field_topics_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_topics_target_id_op
+            label: Topic
+            description: ''
+            use_operator: false
+            operator: field_topics_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: topics
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: topics
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: false
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: Location
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_life_situations_target_id:
+          id: field_life_situations_target_id
+          table: node__field_life_situations
+          field: field_life_situations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_life_situations_target_id_op
+            label: 'Life situation'
+            description: ''
+            use_operator: false
+            operator: field_life_situations_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: life_situations
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: life_situations
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: false
+        published_at:
+          id: published_at
+          table: node_field_data
+          field: published_at
+          relationship: none
+          group_type: group
+          admin_label: 'Julkaisupäivämäärä (suurempi tai yhtäsuuri kuin)'
+          entity_type: node
+          entity_field: published_at
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: published_at_op
+            label: 'Date of publication'
+            description: ''
+            use_operator: false
+            operator: published_at_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: date_of_publication_min
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: dd.mm.yyyy
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        published_at_1:
+          id: published_at_1
+          table: node_field_data
+          field: published_at
+          relationship: none
+          group_type: group
+          admin_label: 'Julkaisupäivämäärä (pienempi tai yhtäsuuri kuin)'
+          entity_type: node
+          entity_field: published_at
+          plugin_id: date
+          operator: '<='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: published_at_1_op
+            label: 'Date of publication'
+            description: ''
+            use_operator: false
+            operator: published_at_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: date_of_publication_max
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: dd.mm.yyyy
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_archive_search_content_value:
+          id: field_archive_search_content_value
+          table: node__field_archive_search_content
+          field: field_archive_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_archive_search_content_value_op
+            label: 'Suodata sanahaulla'
+            description: ''
+            use_operator: false
+            operator: field_archive_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_archive_search_content_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+              participation_section_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+        header: false
+      display_description: ''
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: true
+          content: 'Total @total result(s)'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: news-and-article-archive
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:core.entity_view_display.node.basic_content_page.default'
+        - 'config:core.entity_view_display.node.basic_content_page.search_index'
+        - 'config:core.entity_view_display.node.basic_content_page.search_result'
+        - 'config:core.entity_view_display.node.blog_article.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.blog_article.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.blog_article.default'
+        - 'config:core.entity_view_display.node.blog_article.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.blog_article.liftup'
+        - 'config:core.entity_view_display.node.blog_article.search_index'
+        - 'config:core.entity_view_display.node.blog_article.search_result'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.default'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_index'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_result'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.collection_page.default'
+        - 'config:core.entity_view_display.node.collection_page.search_index'
+        - 'config:core.entity_view_display.node.collection_page.search_result'
+        - 'config:core.entity_view_display.node.content_in_other_language.default'
+        - 'config:core.entity_view_display.node.content_in_other_language.search_index'
+        - 'config:core.entity_view_display.node.content_in_other_language.search_result'
+        - 'config:core.entity_view_display.node.emergency_notice.default'
+        - 'config:core.entity_view_display.node.front_page.default'
+        - 'config:core.entity_view_display.node.front_page.search_index'
+        - 'config:core.entity_view_display.node.front_page.search_result'
+        - 'config:core.entity_view_display.node.involvement_opportunity.default'
+        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opp_sign_up_information_view_mode'
+        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opportunity_card_view_mode'
+        - 'config:core.entity_view_display.node.involvement_opportunity.search_index'
+        - 'config:core.entity_view_display.node.involvement_opportunity.search_result'
+        - 'config:core.entity_view_display.node.map_point.address_only'
+        - 'config:core.entity_view_display.node.map_point.default'
+        - 'config:core.entity_view_display.node.moderated_page.default'
+        - 'config:core.entity_view_display.node.moderated_page.search_index'
+        - 'config:core.entity_view_display.node.moderated_page.search_result'
+        - 'config:core.entity_view_display.node.news_item.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.news_item.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.news_item.default'
+        - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.news_item.jsonapi'
+        - 'config:core.entity_view_display.node.news_item.news_media_delivery'
+        - 'config:core.entity_view_display.node.news_item.search_index'
+        - 'config:core.entity_view_display.node.news_item.search_result'
+        - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.notice.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.notice.default'
+        - 'config:core.entity_view_display.node.notice.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.notice.search_index'
+        - 'config:core.entity_view_display.node.notice.search_result'
+        - 'config:core.entity_view_display.node.organization.default'
+        - 'config:core.entity_view_display.node.organization.search_index'
+        - 'config:core.entity_view_display.node.organization.search_result'
+        - 'config:core.entity_view_display.node.organization.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.person.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.person.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.person.default'
+        - 'config:core.entity_view_display.node.person.full'
+        - 'config:core.entity_view_display.node.person.liftup'
+        - 'config:core.entity_view_display.node.person.liftup_without_image'
+        - 'config:core.entity_view_display.node.person.news_media_delivery'
+        - 'config:core.entity_view_display.node.person.person_contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.person.phone_number_and_email_view_mode'
+        - 'config:core.entity_view_display.node.person.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.place.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.place.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.place.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place.default'
+        - 'config:core.entity_view_display.node.place.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place.news_media_delivery'
+        - 'config:core.entity_view_display.node.place.search_index'
+        - 'config:core.entity_view_display.node.place.search_result'
+        - 'config:core.entity_view_display.node.place_of_business.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.default'
+        - 'config:core.entity_view_display.node.place_of_business.liftup'
+        - 'config:core.entity_view_display.node.place_of_business.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.news_media_delivery'
+        - 'config:core.entity_view_display.node.project.default'
+        - 'config:core.entity_view_display.node.project.search_index'
+        - 'config:core.entity_view_display.node.project.search_result'
+        - 'config:core.entity_view_display.node.project.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.ptv_service.default'
+        - 'config:core.entity_view_display.node.ptv_service.liftup'
+        - 'config:core.entity_view_display.node.rich_article.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.rich_article.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.rich_article.default'
+        - 'config:core.entity_view_display.node.rich_article.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.rich_article.search_index'
+        - 'config:core.entity_view_display.node.rich_article.search_result'
+        - 'config:core.entity_view_display.node.rss_item.default'
+        - 'config:core.entity_view_display.node.service_channel.default'
+        - 'config:core.entity_view_display.node.service_channel.eservice_channel_liftup_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.default'
+        - 'config:core.entity_view_display.node.small_news_item.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.small_news_item.search_index'
+        - 'config:core.entity_view_display.node.small_news_item.search_result'
+        - 'config:core.entity_view_display.node.zoning_information.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.zoning_information.default'
+        - 'config:core.entity_view_display.node.zoning_information.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.zoning_information.search_index'
+        - 'config:core.entity_view_display.node.zoning_information.search_result'
+        - 'config:core.entity_view_display.node.zoning_information.zoning_city_planning_construction_project_card_view_mode'
+  archive_fi:
+    id: archive_fi
+    display_title: Arkisto_fi
+    display_plugin: page
+    position: 1
+    display_options:
+      defaults:
+        filters: true
+        filter_groups: true
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: uutis-ja-artikkeliarkisto
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:core.entity_view_display.node.basic_content_page.default'
+        - 'config:core.entity_view_display.node.basic_content_page.search_index'
+        - 'config:core.entity_view_display.node.basic_content_page.search_result'
+        - 'config:core.entity_view_display.node.blog_article.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.blog_article.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.blog_article.default'
+        - 'config:core.entity_view_display.node.blog_article.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.blog_article.liftup'
+        - 'config:core.entity_view_display.node.blog_article.search_index'
+        - 'config:core.entity_view_display.node.blog_article.search_result'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.default'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_index'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_result'
+        - 'config:core.entity_view_display.node.city_planning_and_constructions.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.collection_page.default'
+        - 'config:core.entity_view_display.node.collection_page.search_index'
+        - 'config:core.entity_view_display.node.collection_page.search_result'
+        - 'config:core.entity_view_display.node.content_in_other_language.default'
+        - 'config:core.entity_view_display.node.content_in_other_language.search_index'
+        - 'config:core.entity_view_display.node.content_in_other_language.search_result'
+        - 'config:core.entity_view_display.node.emergency_notice.default'
+        - 'config:core.entity_view_display.node.front_page.default'
+        - 'config:core.entity_view_display.node.front_page.search_index'
+        - 'config:core.entity_view_display.node.front_page.search_result'
+        - 'config:core.entity_view_display.node.involvement_opportunity.default'
+        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opp_sign_up_information_view_mode'
+        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opportunity_card_view_mode'
+        - 'config:core.entity_view_display.node.involvement_opportunity.search_index'
+        - 'config:core.entity_view_display.node.involvement_opportunity.search_result'
+        - 'config:core.entity_view_display.node.map_point.address_only'
+        - 'config:core.entity_view_display.node.map_point.default'
+        - 'config:core.entity_view_display.node.moderated_page.default'
+        - 'config:core.entity_view_display.node.moderated_page.search_index'
+        - 'config:core.entity_view_display.node.moderated_page.search_result'
+        - 'config:core.entity_view_display.node.news_item.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.news_item.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.news_item.default'
+        - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.news_item.jsonapi'
+        - 'config:core.entity_view_display.node.news_item.news_media_delivery'
+        - 'config:core.entity_view_display.node.news_item.search_index'
+        - 'config:core.entity_view_display.node.news_item.search_result'
+        - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.notice.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.notice.default'
+        - 'config:core.entity_view_display.node.notice.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.notice.search_index'
+        - 'config:core.entity_view_display.node.notice.search_result'
+        - 'config:core.entity_view_display.node.organization.default'
+        - 'config:core.entity_view_display.node.organization.search_index'
+        - 'config:core.entity_view_display.node.organization.search_result'
+        - 'config:core.entity_view_display.node.organization.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.person.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.person.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.person.default'
+        - 'config:core.entity_view_display.node.person.full'
+        - 'config:core.entity_view_display.node.person.liftup'
+        - 'config:core.entity_view_display.node.person.liftup_without_image'
+        - 'config:core.entity_view_display.node.person.news_media_delivery'
+        - 'config:core.entity_view_display.node.person.person_contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.person.phone_number_and_email_view_mode'
+        - 'config:core.entity_view_display.node.person.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.place.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.place.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.place.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place.default'
+        - 'config:core.entity_view_display.node.place.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place.news_media_delivery'
+        - 'config:core.entity_view_display.node.place.search_index'
+        - 'config:core.entity_view_display.node.place.search_result'
+        - 'config:core.entity_view_display.node.place_of_business.contact_information_liftup_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.contact_information_list_content_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.default'
+        - 'config:core.entity_view_display.node.place_of_business.liftup'
+        - 'config:core.entity_view_display.node.place_of_business.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.place_of_business.news_media_delivery'
+        - 'config:core.entity_view_display.node.project.default'
+        - 'config:core.entity_view_display.node.project.search_index'
+        - 'config:core.entity_view_display.node.project.search_result'
+        - 'config:core.entity_view_display.node.project.zoning_city_planning_construction_project_card_view_mode'
+        - 'config:core.entity_view_display.node.ptv_service.default'
+        - 'config:core.entity_view_display.node.ptv_service.liftup'
+        - 'config:core.entity_view_display.node.rich_article.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.rich_article.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.rich_article.default'
+        - 'config:core.entity_view_display.node.rich_article.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.rich_article.search_index'
+        - 'config:core.entity_view_display.node.rich_article.search_result'
+        - 'config:core.entity_view_display.node.rss_item.default'
+        - 'config:core.entity_view_display.node.service_channel.default'
+        - 'config:core.entity_view_display.node.service_channel.eservice_channel_liftup_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.current_liftup_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.current_liftup_wo_image_view_mode'
+        - 'config:core.entity_view_display.node.small_news_item.default'
+        - 'config:core.entity_view_display.node.small_news_item.highlighted_current_liftup'
+        - 'config:core.entity_view_display.node.small_news_item.search_index'
+        - 'config:core.entity_view_display.node.small_news_item.search_result'
+        - 'config:core.entity_view_display.node.zoning_information.content_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.zoning_information.default'
+        - 'config:core.entity_view_display.node.zoning_information.map_tab_card_view_mode'
+        - 'config:core.entity_view_display.node.zoning_information.search_index'
+        - 'config:core.entity_view_display.node.zoning_information.search_result'
+        - 'config:core.entity_view_display.node.zoning_information.zoning_city_planning_construction_project_card_view_mode'

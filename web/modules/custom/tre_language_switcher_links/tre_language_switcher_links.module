@@ -1,0 +1,35 @@
+<?php
+
+use Drupal\Component\Render\FormattableMarkup;
+
+/**
+ * @file
+ * Contains tre_language_switcher_links.module.
+ */
+
+/**
+ * Implements hook_language_switch_links_alter().
+ */
+function tre_language_switcher_links_language_switch_links_alter(array &$links, $type, $path) {
+  $active_theme_name = \Drupal::service('theme.manager')->getActiveTheme()->getName();
+  $default_theme_name = \Drupal::config('system.theme')->get('default');
+
+  if ($active_theme_name == $default_theme_name) {
+    $span_string = '<span class="mobile" aria-hidden="true">@mobile_title</span><span class="mobile visually-hidden">@desktop_title</span><span class="desktop">@desktop_title</span>';
+
+    foreach ($links as $lang_id => $link) {
+      if ($lang_id == 'fi') {
+        $links[$lang_id]['title'] = new FormattableMarkup($span_string, [
+          '@mobile_title' => 'FI',
+          '@desktop_title' => 'Suomi (FI)',
+        ]);
+      }
+      elseif ($lang_id == 'en') {
+        $links[$lang_id]['title'] = new FormattableMarkup($span_string, [
+          '@mobile_title' => 'EN',
+          '@desktop_title' => 'English (EN)',
+        ]);
+      }
+    }
+  }
+}

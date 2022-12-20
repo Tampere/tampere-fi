@@ -1,0 +1,54 @@
+uuid: 4f05e244-3023-49ab-a732-8cb6c87976b3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: minisite-author
+label: Toimittaja
+weight: -9
+internal: false
+audience: member
+group_type: minisite
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:basic_content_page entity'
+  - 'create group_node:city_planning_and_constructions entity'
+  - 'create group_node:content_in_other_language entity'
+  - 'create group_node:moderated_page entity'
+  - 'create group_node:organization entity'
+  - 'create group_node:place entity'
+  - 'create group_node:project entity'
+  - 'delete any group_node:basic_content_page entity'
+  - 'delete any group_node:city_planning_and_constructions entity'
+  - 'delete any group_node:content_in_other_language entity'
+  - 'delete any group_node:moderated_page entity'
+  - 'delete any group_node:organization entity'
+  - 'delete any group_node:place entity'
+  - 'delete any group_node:project entity'
+  - 'update any group_node:basic_content_page entity'
+  - 'update any group_node:city_planning_and_constructions entity'
+  - 'update any group_node:content_in_other_language entity'
+  - 'update any group_node:moderated_page entity'
+  - 'update any group_node:organization entity'
+  - 'update any group_node:place entity'
+  - 'update any group_node:project entity'
+  - 'update own group_node:city_planning_and_constructions entity'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:city_planning_and_constructions entity'
+  - 'view group_node:collection_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view group_node:front_page entity'
+  - 'view group_node:moderated_page entity'
+  - 'view group_node:organization entity'
+  - 'view group_node:project entity'
+  - 'view unpublished group_node:basic_content_page entity'
+  - 'view unpublished group_node:city_planning_and_constructions entity'
+  - 'view unpublished group_node:collection_page entity'
+  - 'view unpublished group_node:content_in_other_language entity'
+  - 'view unpublished group_node:front_page entity'
+  - 'view unpublished group_node:moderated_page entity'
+  - 'view unpublished group_node:organization entity'
+  - 'view unpublished group_node:place entity'
+  - 'view unpublished group_node:project entity'

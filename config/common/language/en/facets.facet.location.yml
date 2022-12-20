@@ -1,0 +1,4 @@
+name: Location
+widget:
+  config:
+    reset_text: 'Show all'

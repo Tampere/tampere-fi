@@ -1,0 +1,18 @@
+uuid: 2d9744eb-4406-4a6a-8314-4232d39360a3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.subject
+field_name: subject
+entity_type: comment
+bundle: blog_article_comment
+label: Aihe
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

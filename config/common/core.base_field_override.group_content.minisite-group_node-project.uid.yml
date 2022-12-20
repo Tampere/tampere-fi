@@ -1,0 +1,20 @@
+uuid: 626c99c9-3058-453b-a55b-266c10ed6c37
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-project
+id: group_content.minisite-group_node-project.uid
+field_name: uid
+entity_type: group_content
+bundle: minisite-group_node-project
+label: 'Group content creator'
+description: 'The username of the group content creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

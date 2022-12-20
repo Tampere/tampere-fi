@@ -1,0 +1,8 @@
+processor_configs:
+  facets_custom_label:
+    settings:
+      replacement_values: "r|blog_article|Blog article\r\nr|front_page|Front page\r\nr|news_item|News\r\nr|notice|Notice\r\nr|rich_article|Article\r\nr|page|Page"
+name: 'Content type'
+widget:
+  config:
+    reset_text: Reset

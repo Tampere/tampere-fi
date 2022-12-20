@@ -1,0 +1,9 @@
+.wide-content {
+  &__main-content {
+    padding: 0 $gutter-mobile;
+
+    @include large {
+      padding: 0 $gutter-default;
+    }
+  }
+}

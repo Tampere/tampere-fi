@@ -1,0 +1,54 @@
+{% set involvement_header__base_class = involvement_header__base_class|default("involvement-header") %}
+
+<div {{ bem(involvement_header__base_class, involvement_header__modifiers, involvement_header__blockname)}}>
+  <div {{ bem("first-column", involvement_header__first_column__modifiers, involvement_header__base_class)}}>
+    <div {{ bem("first-column-inner", involvement_header__first_column_inner__modifiers, involvement_header__base_class)}}>
+      {% if involvement_header__way %}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: involvement_header__way__base_class|default("way"),
+          paragraph_modifiers: involvement_header__way__modifiers,
+          paragraph_blockname: involvement_header__base_class,
+          paragraph_content: involvement_header__way,
+        } %}
+      {% endif %}
+
+      {% if involvement_header__date_time %}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: involvement_header__date_time__base_class|default("date-time"),
+          paragraph_blockname: involvement_header__base_class,
+          paragraph_content: involvement_header__date_time,
+        } %}
+      {% endif %}
+    </div>
+  
+    {% if involvement_header__sign_up %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        paragraph_base_class: involvement_header__sig_up__base_class|default("sign-up"),
+        paragraph_modifiers: involvement_header__sign_up__modifiers,
+        paragraph_blockname: involvement_header__base_class,
+        paragraph_content: involvement_header__sign_up,
+      } %}
+    {% endif %}
+    
+  </div>
+  
+
+  <div {{ bem("second-column", involvement_header__second_column__modifiers, involvement_header__base_class)}}>
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      icon_base_class: involvement_header__icon__base_class|default("icon"),
+      icon_modifiers: involvement_header__icon__modifiers,
+      icon_blockname: involvement_header__base_class,
+      icon_filename: "icons",
+      icon_name: involvement_header__icon__name|default("idea"),
+      icon_decorative: true,
+    } %}
+
+    {% include "@atoms/02-text/text/01-paragraph.twig" with {
+      paragraph_base_class: involvement_header__phase__base_class|default("phase"),
+      paragraph_modifiers: involvement_header__phase__modifiers,
+      paragraph_blockname: involvement_header__base_class,
+      paragraph_content: involvement_header__phase,
+    } %}
+  </div>
+  
+</div>

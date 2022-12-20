@@ -1,0 +1,23 @@
+uuid: a761c763-fd98-451c-ab0a-d65406ec08f4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_location_on_map
+    - node.type.place
+id: node.place.field_display_location_on_map
+field_name: field_display_location_on_map
+entity_type: node
+bundle: place
+label: 'Näytä sijainti kartalla'
+description: 'Valitse tämä, jos haluat näyttää paikan omalla sivulla sen sijainnin kartalla.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

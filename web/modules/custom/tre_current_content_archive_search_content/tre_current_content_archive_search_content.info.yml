@@ -1,0 +1,5 @@
+name: 'TRE Current Content Archive Search Content'
+type: module
+description: 'Prepares text content field in current content for use in archive text search.'
+core_version_requirement: '>=9.3'
+package: 'TRE'

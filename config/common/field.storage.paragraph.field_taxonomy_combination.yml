@@ -1,0 +1,27 @@
+uuid: d47001e4-8afa-4074-8679-71b604f692dc
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_taxonomy_combination
+field_name: field_taxonomy_combination
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: or
+      label: 'Listaa sisältö, jos <b>jokin</b> luokittelutermeistä täyttyy'
+    -
+      value: and
+      label: 'Listaa sisältö, jos <b>kaikki</b> luokittelutermit täyttyvät'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

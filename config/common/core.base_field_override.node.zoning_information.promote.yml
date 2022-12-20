@@ -1,0 +1,22 @@
+uuid: 98cf5ba9-c382-44d8-aa4d-6be6a46ffd69
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.zoning_information
+id: node.zoning_information.promote
+field_name: promote
+entity_type: node
+bundle: zoning_information
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

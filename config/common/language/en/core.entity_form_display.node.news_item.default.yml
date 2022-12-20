@@ -1,0 +1,21 @@
+third_party_settings:
+  field_group:
+    group_main_image:
+      label: 'Main image and caption'
+      format_settings:
+        description: 'Main image and its caption'
+    group_tabs:
+      label: Tabs
+    group_general:
+      label: General
+    group_categorization:
+      label: Categorization
+    group_search_keywords:
+      label: 'Search keywords'
+    group_cross_site_publication:
+      label: 'WordPress publication'
+content:
+  field_lead:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'

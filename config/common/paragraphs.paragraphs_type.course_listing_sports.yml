@@ -1,0 +1,15 @@
+uuid: 4b8f63de-4b3e-4c9c-9381-a3c461c95ae2
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: course_listing_sports
+label: 'Kurssilistaus (liikuntapalvelut)'
+icon_uuid: null
+icon_default: null
+description: '<i>Tampereen kaupungin liikuntapalveluiden</i> kurssit Hellewi-järjestelmän rajapinnasta.'
+behavior_plugins: {  }

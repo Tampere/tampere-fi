@@ -1,0 +1,242 @@
+@mixin heading-xl(
+  $font-family: $font-heading,
+  $font-size: $h1-font-size,
+  $font-size-large: $h1-font-size-desktop,
+  $line-height: $h1-line-height,
+  $mobile-line-height: $h1-line-height--mobile,
+  $color: $color-heading-h1,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: $font-weight-extra-bold,
+  $margin: $h1-margin--mobile,
+  $margin-large: $h1-margin
+) {
+  @include word-wrap;
+
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $mobile-line-height;
+  margin: $margin;
+  width: auto;
+
+  @include large {
+    font-size: $font-size-large;
+    line-height: $line-height;
+    margin: $margin-large;
+  }
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-large(
+  $font-family: $font-heading,
+  $font-size: $h2-font-size,
+  $font-size-large: $h2-font-size-desktop,
+  $line-height: $h2-line-height,
+  $mobile-line-height: $h2-line-height--mobile,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: $font-weight-extra-bold,
+  $margin: $h2-margin--mobile,
+  $margin-large: $h2-margin
+) {
+  @include word-wrap;
+
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $mobile-line-height;
+  margin: $margin;
+  width: auto;
+
+  @include large {
+    font-size: $font-size-large;
+    line-height: $line-height;
+    margin: $margin-large;
+  }
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-medium(
+  $font-family: $font-heading,
+  $font-size: $h3-font-size,
+  $font-size-large: $h3-font-size-desktop,
+  $line-height: $h3-line-height,
+  $mobile-line-height: $h3-line-height--mobile,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: $font-weight-bold,
+  $margin: $heading-margin-bottom-default,
+) {
+  @include word-wrap;
+
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $mobile-line-height;
+  margin: $margin;
+  width: auto;
+
+  @include large {
+    font-size: $font-size-large;
+    line-height: $line-height;
+  }
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-small(
+  $font-family: $font-heading,
+  $font-size: $h4-font-size,
+  $font-size-large: $h4-font-size-desktop,
+  $line-height: $h4-line-height,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: $font-weight-bold,
+  $margin: $heading-margin-bottom-default,
+) {
+  @include word-wrap;
+
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+  width: auto;
+
+  @include large {
+    font-size: $font-size-large;
+  }
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin heading-xs(
+  $font-family: $font-heading,
+  $font-size: $h5-font-size,
+  $font-size-large: $h5-font-size-desktop,
+  $line-height: $h4-line-height,
+  $color: $color-heading,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: $font-weight-bold,
+  $margin: $heading-margin-bottom-default,
+) {
+  @include word-wrap;
+
+  color: $color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+  width: auto;
+
+  @include large {
+    font-size: $font-size-large;
+  }
+
+  &__link {
+    color: $color-link;
+
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+}
+
+@mixin section-heading {
+  font-size: $font-24;
+  font-weight: $font-weight-black;
+
+  @include large {
+    font-size: $font-32;
+  }
+}
+
+.h1 {
+  @include heading-xl;
+}
+
+.h2 {
+  @include heading-large;
+}
+
+.h3 {
+  @include heading-medium;
+}
+
+.h4 {
+  @include heading-small;
+}
+
+.h5 {
+  @include heading-xs;
+}
+
+.text-long,
+.form-item {
+  h2, h3, h4, h5, h6 {
+    @include word-wrap;
+
+    position: relative;
+  }
+
+  h1 {
+    @include heading-xl;
+  }
+
+  h2 {
+    @include heading-large;
+  }
+
+  h3 {
+    @include heading-medium;
+  }
+
+  h4 {
+    @include heading-small;
+  }
+
+  h5, h6 {
+    @include heading-xs;
+  }
+}

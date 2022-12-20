@@ -1,0 +1,10 @@
+uuid: e6f6718f-64b2-4fef-8c7f-77d1b2f04f8d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.balanced_content_liftup_view_mode
+label: 'Tasapainoinen sisältönosto'
+targetEntityType: paragraph
+cache: true

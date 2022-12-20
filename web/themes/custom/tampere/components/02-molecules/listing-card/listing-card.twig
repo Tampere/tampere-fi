@@ -1,0 +1,88 @@
+{% set listing_card__base_class = listing_card__base_class|default("listing-card") %}
+
+{% if listing_card__url %}
+  {% set listing_card__attributes = {
+    "href": listing_card__url,
+  } %}
+{% endif %}
+
+<a {{ bem(listing_card__base_class, listing_card__modifiers|default([]), listing_card__blockname, listing_card__extra_classes) }} 
+  {% for attribute,value in listing_card__attributes %}
+    {{ attribute }}="{{ value }}"
+  {% endfor %}
+>
+  <div {{ bem("content-wrapper", listing_card__content_wrapper__modifiers|default([]), listing_card__base_class) }}>
+
+    {# Location #}
+    {% if listing_card__location %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        paragraph_base_class: listing_card__location__base_class|default("location"),
+        paragraph_modifiers: listing_card__location__modifiers,
+        paragraph_blockname: listing_card__base_class,
+        paragraph_content: listing_card__location,
+      } %}
+    {% endif %}
+
+    {# Title #}
+    {% include "@atoms/02-text/text/01-paragraph.twig" with {
+      paragraph_base_class: listing_card__title__base_class|default("title"),
+      paragraph_modifiers: listing_card__title__modifiers,
+      paragraph_blockname: listing_card__base_class,
+      paragraph_content: listing_card__title,
+    } %}
+
+    {% if listing_card__date %}
+      <div {{ bem("date-wrapper", [], listing_card__base_class)}}>
+        {# Date Icon #}
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: listing_card__date_icon__base_class|default("date-icon"),
+          icon_modifiers: listing_card__date_icon__modifiers,
+          icon_blockname: listing_card__base_class,
+          icon_name: listing_card__date_icon__name|default("calendar-blue"),
+          icon_decorative: true,
+        } %}
+        {# Date #}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: listing_card__date__base_class|default("date"),
+          paragraph_modifiers: listing_card__date__modifiers,
+          paragraph_blockname: listing_card__base_class,
+          paragraph_content: listing_card__date,
+        } %}
+      </div>
+    {% endif %}
+
+    {% if listing_card__status %}
+      <div {{ bem("status-wrapper", [], listing_card__base_class)}}>
+        {# Colored circle #}
+        <span {{ bem("circle", [], listing_card__base_class)}}></span>
+        {# Status #}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: listing_card__status__base_class|default("status"),
+          paragraph_modifiers: listing_card__status__modifiers,
+          paragraph_blockname: listing_card__base_class,
+          paragraph_content: listing_card__status,
+        } %}
+      </div>
+    {% endif %}
+
+    {% if listing_card__info_link %}
+      <div {{ bem("info-link-wrapper", [], listing_card__base_class)}}>
+        {# Info link text #}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: listing_card__info_link__base_class|default("info-link"),
+          paragraph_modifiers: listing_card__info_link__modifiers,
+          paragraph_blockname: listing_card__base_class,
+          paragraph_content: listing_card__info_link,
+        } %}
+        {# Info link Icon #}
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: listing_card__link_icon__base_class|default("link-icon"),
+          icon_modifiers: listing_card__link_icon__modifiers,
+          icon_blockname: listing_card__base_class,
+          icon_name: listing_card__link_icon__name|default("external"),
+          icon_decorative: true,
+        } %}
+      </div>
+    {% endif %}
+  </div>
+</a>

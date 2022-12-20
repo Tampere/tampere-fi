@@ -1,0 +1,45 @@
+uuid: b1b2035a-7fef-4cc3-9131-f1bd1931c3f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.grouped_content_liftup.field_grouped_content_liftups
+    - field.field.paragraph.grouped_content_liftup.field_summary
+    - field.field.paragraph.grouped_content_liftup.field_title
+    - paragraphs.paragraphs_type.grouped_content_liftup
+  module:
+    - ds
+    - entity_reference_revisions
+id: paragraph.grouped_content_liftup.default
+targetEntityType: paragraph
+bundle: grouped_content_liftup
+mode: default
+content:
+  field_grouped_content_liftups:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: grouped_content_liftup_view_mode
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    weight: 3
+    region: content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

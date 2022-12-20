@@ -1,0 +1,17 @@
+uuid: 0f5aff6d-2540-4194-ba5d-04e9b04fd0ec
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  enforced:
+    config:
+      - user.role.basic_content_page_author
+id: minisite-3b6f12127
+label: Perussisältösivutoimittaja
+weight: 7
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: false
+permissions: {  }

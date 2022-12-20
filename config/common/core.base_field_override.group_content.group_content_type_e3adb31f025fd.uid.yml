@@ -1,0 +1,20 @@
+uuid: d88f9077-0aca-4a5e-bb52-330a80ea3ab7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_e3adb31f025fd
+id: group_content.group_content_type_e3adb31f025fd.uid
+field_name: uid
+entity_type: group_content
+bundle: group_content_type_e3adb31f025fd
+label: 'Ryhmän luoja'
+description: 'Ryhmän luoneen käyttäjän käyttäjätunnus.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

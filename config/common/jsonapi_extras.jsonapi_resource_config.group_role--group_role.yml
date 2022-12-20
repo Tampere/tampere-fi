@@ -1,0 +1,95 @@
+uuid: 12730ab9-8673-46a6-9218-34b52da9d9e3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+id: group_role--group_role
+disabled: true
+path: group_role/group_role
+resourceType: group_role--group_role
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  weight:
+    disabled: false
+    fieldName: weight
+    publicName: weight
+    enhancer:
+      id: ''
+  internal:
+    disabled: false
+    fieldName: internal
+    publicName: internal
+    enhancer:
+      id: ''
+  audience:
+    disabled: false
+    fieldName: audience
+    publicName: audience
+    enhancer:
+      id: ''
+  group_type:
+    disabled: false
+    fieldName: group_type
+    publicName: group_type
+    enhancer:
+      id: ''
+  permissions_ui:
+    disabled: false
+    fieldName: permissions_ui
+    publicName: permissions_ui
+    enhancer:
+      id: ''
+  permissions:
+    disabled: false
+    fieldName: permissions
+    publicName: permissions
+    enhancer:
+      id: ''

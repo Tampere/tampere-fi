@@ -1,0 +1,59 @@
+.anchor-link {
+  @include link;
+
+  $base_class: &;
+
+  display: none;
+  height: auto;
+  left: (-1) * $space-l;
+  padding-top: $space-xs;
+  padding-right: $space-s;
+  padding-bottom: $space-xs;
+  position: absolute;
+  z-index: 1;
+
+  @include large {
+    display: block;
+  }
+
+  &__icon {
+    display: block;
+    height: $icon-small;
+    width: $icon-small;
+    visibility: hidden;
+  }
+
+  &:focus,
+  &:hover,
+  h2:hover > &,
+  h3:hover > &,
+  h4:hover > &,
+  h5:hover > &,
+  .paragraph:hover > & {
+    .logged-in & {
+      #{$base_class}__icon {
+        visibility: visible;
+      }
+    }
+  }
+
+  .logged-out & {
+    display: none;
+  }
+
+  &--inverse {
+    @include link(clr(text-inverse), clr(text-inverse));
+  }
+
+  .main-content:not(.main-content--with-sidebar) .basic-content &,
+  .main-content:not(.main-content--with-sidebar) .topical-content & {
+    &--extra-wide-parent {
+      left: $space-s;
+      margin-left: calc(-50vw + 50%);
+
+      @include xl {
+        margin-left: calc((100% - #{var(--basic-component-max-width)}) / 2 + #{$space-xs});
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{% set checkbox__base_class = "checkbox" %}
+
+{% set checkbox__wrapper__element = checkbox__wrapper__element|default("li") %}
+
+{% set checkbox__input__class = checkbox__base_class ~ "__input" %}
+
+{% if checkbox__input__attributes %}
+  {% set checkbox__input__attributes = checkbox__input__attributes.addClass(checkbox__input__class) %}
+{% endif %}
+
+<{{ checkbox__wrapper__element }} class="{{ checkbox__base_class ~ "__wrapper"}}">
+  <label class="{{ checkbox__base_class }}" for="checkbox-{{ key }}">
+    <input
+      {% if checkbox__input__attributes %}
+        {{ checkbox__input__attributes }}
+      {% else %}
+        class="{{ checkbox__input__class }}"
+      {% endif %}
+      id="checkbox-{{ key }}"
+      name="checkbox"
+      type="checkbox"
+      {% if checkbox_item_checked %}
+        checked="{{ checkbox_item_checked }}"
+      {% endif %}
+    >
+
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      "icon_base_class": "icon",
+      "icon_blockname": checkbox__base_class,
+      "icon_name": "square",
+      "icon_decorative": TRUE,
+    } %}
+
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      "icon_base_class": "icon",
+      "icon_blockname": checkbox__base_class,
+      "icon_modifiers": [ "checked" ],
+      "icon_name": "strong-checkmark",
+      "icon_decorative": TRUE,
+    } %}
+
+    <span class="{{ checkbox__base_class ~ "__content" }}">
+      {{ checkbox_item }}
+    </span>
+  </label>
+</{{ checkbox__wrapper__element }}>

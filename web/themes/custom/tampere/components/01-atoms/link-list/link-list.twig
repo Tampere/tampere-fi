@@ -1,0 +1,31 @@
+{#
+/**
+ * Available variables:
+ * - link_list__base_class - the base classname
+ * - link_list__modifiers - array of modifiers to add to the base classname
+ * - link_list__blockname - blockname prepended to the base classname
+ * - link_list__items - array of links to display
+ *
+ * - link_list__list_item__modifiers - array of modifiers to add to the list items
+ *
+ * - link_list__link__modifiers - array of modifiers to add to the list item links
+ */
+#}
+{% set link_list__base_class = "link-list" %}
+
+{% if "large-icons" in link_list__modifiers %}
+  {% set link_list__icon_filename = "icons" %}
+{% endif %}
+
+<ul {{ bem(link_list__base_class, (link_list__modifiers|default([])), link_list__blockname) }}>
+  {% block list_content %}
+    {% for link_list__item in link_list__items %}
+      {% include "@atoms/link-list/link-list-item.twig" with {
+        "link_list__item_url": link_list__item.url,
+        "link_list__item_text": link_list__item.text,
+        "link_list__item_icon": link_list__item.icon,
+        "link_list__icon_filename": link_list__icon_filename,
+      } %}
+    {% endfor %}
+  {% endblock %}
+</ul>

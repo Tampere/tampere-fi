@@ -1,0 +1,11 @@
+uuid: 152b4152-8dc1-4cb1-8177-24d54b4117d5
+langcode: fi
+status: true
+dependencies: {  }
+id: life_situation
+label: Elämäntilanne
+description: ''
+new_revision: true
+creator_membership: false
+creator_wizard: true
+creator_roles: {  }

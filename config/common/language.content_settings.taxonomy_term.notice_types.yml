@@ -1,0 +1,18 @@
+uuid: aa791d38-1341-491e-899e-935f3dca227b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.notice_types
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.notice_types
+target_entity_type_id: taxonomy_term
+target_bundle: notice_types
+default_langcode: current_interface
+language_alterable: true

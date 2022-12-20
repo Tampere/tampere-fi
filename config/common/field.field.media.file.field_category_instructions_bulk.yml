@@ -1,0 +1,25 @@
+uuid: 121075c7-61d7-48c7-80de-a21536a4c5e3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_category_instructions_bulk
+    - media.type.file
+  module:
+    - markup
+id: media.file.field_category_instructions_bulk
+field_name: field_category_instructions_bulk
+entity_type: media
+bundle: file
+label: 'Ohjeteksti luokitteluille bulk upload -lomakkeelle'
+description: ''
+required: false
+translatable: false
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: "<p>Haluatko valita kenttään useamman kuin yhden luokittelutermin? Jokaisen tehdyn luokitteluvalinnan jälkeen lisää kenttään pilkku, niin pääset valitsemaan lisää termejä.</p>\r\n"
+    format: basic_html
+field_type: markup

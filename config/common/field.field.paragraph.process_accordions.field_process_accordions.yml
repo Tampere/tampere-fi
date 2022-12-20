@@ -1,0 +1,208 @@
+uuid: 52619dce-8e81-44a2-8b37-8854f80af40d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_process_accordions
+    - paragraphs.paragraphs_type.process_accordion_item
+    - paragraphs.paragraphs_type.process_accordions
+  module:
+    - entity_reference_revisions
+id: paragraph.process_accordions.field_process_accordions
+field_name: field_process_accordions
+entity_type: paragraph
+bundle: process_accordions
+label: Vaiheistushaitarit
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      process_accordion_item: process_accordion_item
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 66
+        enabled: false
+      accordion_item:
+        weight: 68
+        enabled: false
+      accordions:
+        weight: 67
+        enabled: false
+      attachment:
+        weight: 69
+        enabled: false
+      balanced_content_liftup:
+        weight: 70
+        enabled: false
+      city_construction_project_card:
+        weight: 71
+        enabled: false
+      city_construction_project_cards:
+        weight: 72
+        enabled: false
+      colorful_content_liftup:
+        weight: 73
+        enabled: false
+      contact_information_liftups:
+        weight: 74
+        enabled: false
+      contact_information_list:
+        weight: 75
+        enabled: false
+      content_liftup:
+        weight: 76
+        enabled: false
+      current_liftup:
+        weight: 77
+        enabled: false
+      current_listing:
+        weight: 78
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 79
+        enabled: false
+      event_and_hobby_listing:
+        weight: 80
+        enabled: false
+      external_link:
+        weight: 81
+        enabled: false
+      external_link_with_link_text:
+        weight: 82
+        enabled: false
+      feedback_section:
+        weight: 83
+        enabled: false
+      grouped_content_liftup:
+        weight: 89
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 90
+        enabled: false
+      highlighted_link_list:
+        weight: 92
+        enabled: false
+      highlighted_links_with_feedback:
+        weight: 91
+        enabled: false
+      icon_and_text_link:
+        weight: 93
+        enabled: false
+      image:
+        weight: 94
+        enabled: false
+      image_gallery:
+        weight: 95
+        enabled: false
+      image_gallery_item:
+        weight: 96
+        enabled: false
+      infograph:
+        weight: 97
+        enabled: false
+      infographs:
+        weight: 98
+        enabled: false
+      internal_link:
+        weight: 99
+        enabled: false
+      internal_link_with_link_text:
+        weight: 100
+        enabled: false
+      link_list:
+        weight: 101
+        enabled: false
+      list_of_attachments:
+        weight: 102
+        enabled: false
+      login_link_with_text:
+        weight: 103
+        enabled: false
+      mailing_list_information:
+        weight: 104
+        enabled: false
+      map_embed:
+        weight: 105
+        enabled: false
+      metadata_attachment_list:
+        weight: 106
+        enabled: false
+      mosaic_liftup:
+        weight: 107
+        enabled: false
+      notice:
+        weight: 108
+        enabled: false
+      person_liftup:
+        weight: 109
+        enabled: false
+      person_liftups:
+        weight: 110
+        enabled: false
+      picture_mosaic:
+        weight: 111
+        enabled: false
+      place_liftup:
+        weight: 112
+        enabled: false
+      place_of_business_liftup:
+        weight: 113
+        enabled: false
+      process_accordion_item:
+        weight: 115
+        enabled: true
+      process_accordions:
+        weight: 114
+        enabled: false
+      project_and_organization_cards:
+        weight: 116
+        enabled: false
+      project_or_organization_card:
+        weight: 117
+        enabled: false
+      rss_feed:
+        weight: 118
+        enabled: false
+      separator:
+        weight: 119
+        enabled: false
+      service_highlight:
+        weight: 120
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 121
+        enabled: false
+      social_media_feed_embed:
+        weight: 122
+        enabled: false
+      social_media_link:
+        weight: 123
+        enabled: false
+      table:
+        weight: 124
+        enabled: false
+      text:
+        weight: 125
+        enabled: false
+      two_column_liftup:
+        weight: 126
+        enabled: false
+      video_embed:
+        weight: 127
+        enabled: false
+      webform:
+        weight: 128
+        enabled: false
+      zoning_project_card:
+        weight: 129
+        enabled: false
+      zoning_project_cards:
+        weight: 130
+        enabled: false
+field_type: entity_reference_revisions

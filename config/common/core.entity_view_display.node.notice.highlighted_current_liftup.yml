@@ -1,0 +1,136 @@
+uuid: 589ebbd2-25cc-48bc-a38f-125700e63ba4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.highlighted_current_liftup
+    - field.field.node.notice.field_author
+    - field.field.node.notice.field_body
+    - field.field.node.notice.field_date_of_publication
+    - field.field.node.notice.field_display_period
+    - field.field.node.notice.field_event_time
+    - field.field.node.notice.field_geographical_areas
+    - field.field.node.notice.field_help_text
+    - field.field.node.notice.field_keywords
+    - field.field.node.notice.field_life_situations
+    - field.field.node.notice.field_main_image
+    - field.field.node.notice.field_media_caption
+    - field.field.node.notice.field_minisites
+    - field.field.node.notice.field_notice_type
+    - field.field.node.notice.field_paragraphs
+    - field.field.node.notice.field_search_keywords
+    - field.field.node.notice.field_social_media_share
+    - field.field.node.notice.field_time_limit
+    - field.field.node.notice.field_topic
+    - field.field.node.notice.field_topics
+    - node.type.notice
+  module:
+    - ds
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_topical_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+          variant: big
+    regions:
+      topical_card__link__url:
+        - 'dynamic_twig_field:node-content_path'
+      topical_card__image:
+        - field_main_image
+      topical_card__date:
+        - published_at
+      topical_card__tag:
+        - 'bundle_field:node'
+      topical_card__heading:
+        - node_title
+      topical_card__summary:
+        - field_body
+    fields:
+      'dynamic_twig_field:node-content_path':
+        plugin_id: 'dynamic_twig_field:node-content_path'
+        weight: 0
+        label: hidden
+        formatter: default
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 3
+        label: hidden
+        formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 4
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+id: node.notice.highlighted_current_liftup
+targetEntityType: node
+bundle: notice
+mode: highlighted_current_liftup
+content:
+  field_body:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 100
+    third_party_settings: {  }
+    weight: 5
+    region: topical_card__summary
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: large_listing_liftup_view_mode
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: topical_card__image
+  published_at:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: custom
+      custom_date_format: j.n.Y
+      timezone: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: topical_card__date
+hidden:
+  content_moderation_control: true
+  field_author: true
+  field_date_of_publication: true
+  field_display_period: true
+  field_event_time: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_media_caption: true
+  field_minisites: true
+  field_notice_type: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_social_media_share: true
+  field_time_limit: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

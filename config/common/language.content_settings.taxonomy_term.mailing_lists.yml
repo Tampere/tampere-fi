@@ -1,0 +1,18 @@
+uuid: 452a1f0b-e5f4-4f98-bf2c-0fe17e8e32b9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mailing_lists
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.mailing_lists
+target_entity_type_id: taxonomy_term
+target_bundle: mailing_lists
+default_langcode: site_default
+language_alterable: false

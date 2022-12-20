@@ -1,0 +1,67 @@
+{% set material__base_class = "downloadable-material" %}
+
+{% if not material__modifiers %}
+  {% set material__modifiers = [] %}
+{% endif %}
+
+{% if not material__image__src and not has_image %}
+  {% set material__modifiers = material__modifiers|merge([ "no-image" ]) %}
+{% endif %}
+
+<li {{ bem(material__base_class, material__modifiers, material__blockname)}}>
+  {% if material__image__src or has_image %}
+    <div {{ bem("image-wrapper", material__image_wrapper__modifiers, material__base_class)}}>
+      {% block material__image %}
+        {% include "@atoms/04-images/00-image/_image.twig" with {
+          "image_base_class": "image",
+          "image_blockname": material__base_class,
+          "img_src": material__image__src,
+          "img_alt": material__image__alt,
+        } %}
+      {% endblock %}
+
+      {% if material__heading %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_base_class": material__heading__base_class|default("heading"),
+          "heading_modifiers": [ "shown-on-mobile" ],
+          "heading_blockname": material__base_class,
+          "heading_level": 3,
+          "heading": material__heading,
+        } %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if material__heading or material__summary %}
+    <div {{ bem("content-wrapper", material__content_wrapper__modifiers, material__base_class)}}>
+      {% if material__heading %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_base_class": material__heading__base_class|default("heading"),
+          "heading_modifiers": material__heading__modifiers,
+          "heading_blockname": material__base_class,
+          "heading_level": 3,
+          "heading": material__heading,
+        } %}
+      {% endif %}
+
+      {% if material__summary %}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          "paragraph_base_class": material__summary__base_class|default("summary"),
+          "paragraph_modifiers": material__summary__modifiers,
+          "paragraph_blockname": material__base_class,
+          "paragraph_content": material__summary,
+        } %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div {{ bem("link-wrapper", material__link_wrapper__modifiers, material__base_class)}}>
+    {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+      "link_with_icon__modifiers": [ "small-icon", "smaller-text", "no-wrap" ],
+      "link_with_icon__url": material__download_url,
+      "link_extra_attributes": { download: "" },
+      "link_with_icon__link_text": material__download_text|default("Download file"|t([], {}, { context: "Download material list" })),
+      "link_with_icon__link_icon": "download",
+    } %}
+  </div>
+</li>

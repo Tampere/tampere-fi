@@ -1,0 +1,17 @@
+uuid: be541e76-1e65-4568-a3a9-4827e87a70d3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: picture_mosaic_large_view_mode
+label: 'Kuvamosaiikki - large (2491×1448)'
+effects:
+  32e0dd94-4385-40b1-abc1-7d36fd76228a:
+    uuid: 32e0dd94-4385-40b1-abc1-7d36fd76228a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 2491
+      height: 1448
+      crop_type: focal_point

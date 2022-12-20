@@ -1,0 +1,18 @@
+uuid: 9af8b1a2-fc3a-40bc-bc23-11f1fadeb26e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-news_item
+id: group_content.minisite-group_node-news_item.label
+field_name: label
+entity_type: group_content
+bundle: minisite-group_node-news_item
+label: Otsikko
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

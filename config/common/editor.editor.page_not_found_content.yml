@@ -1,0 +1,54 @@
+uuid: 7e034c84-acd0-4e34-958f-ec2196953ba2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - filter.format.page_not_found_content
+  module:
+    - ckeditor
+format: page_not_found_content
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Muotoilu
+          items:
+            - Bold
+            - Italic
+            - Strike
+            - Superscript
+            - Subscript
+            - RemoveFormat
+        -
+          name: Linkit
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Listat
+          items:
+            - BulletedList
+            - NumberedList
+            - Outdent
+            - Indent
+        -
+          name: Muoto
+          items:
+            - Format
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+  plugins:
+    drupallink:
+      linkit_enabled: false
+      linkit_profile: ''
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

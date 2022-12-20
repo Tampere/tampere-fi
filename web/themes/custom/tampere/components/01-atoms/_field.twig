@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+
+{# when Display Suite is used, a view_mode comes from element["#ds_view_mode"] #}
+{% set view_mode = element["#ds_view_mode"] ? element["#ds_view_mode"] : element["#view_mode"] %}
+
+{# Classes for links #}
+{% set link_options = { "#options": { "attributes": { "class": [ "link" ] } } } %}
+
+{%
+    set classes = [
+        field_name|replace({":": "-"})|clean_class,
+        "field--type-" ~ field_type|clean_class,
+        "field--view-mode-" ~ view_mode|clean_class,
+        custom_classes ? custom_classes
+    ]
+%}
+
+{% if label_display not in ["hidden"] %}
+    {% set label_id = "label-" ~ field_name|replace({":": "-"})|clean_class ~ random(1000000) %}
+{% endif %}
+
+<div{{ attributes.addClass(classes) }}{% if label_id %} aria-labelledby="{{ label_id }}"{% endif %}>
+    {# render label if not hidden #}
+    {% if label_id %}
+        <div{{ title_attributes.addClass(["field__label", label_display|replace({":": "-"})]) }} id="{{ label_id }}">
+            {{ title_prefix }}
+            {% if heading_level %}
+                {% include "@atoms/02-text/00-headings/_heading.twig" with {
+                    "heading_level": heading_level,
+                    "heading": label,
+                    attributes: []
+                } %}
+            {% else %}
+                {{ label }}
+            {% endif %}
+            {{ title_suffix }}
+        </div>
+    {% endif %}
+
+    {% if multiple %}
+    <div class="field__items">
+    {% endif %}
+        {% for item in items %}
+            {% if multiple %}
+                <div class="field__item">
+            {% endif %}
+            {% block field_content %}
+              {% if item.content['#url']|render|trim %}
+                {{ item.content|merge(link_options) }}
+              {% else %}
+                {{ item.content }}
+              {% endif %}
+            {% endblock %}
+            {% if multiple %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% if multiple %}
+    </div>
+    {% endif %}
+</div>

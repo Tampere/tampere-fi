@@ -1,0 +1,10 @@
+uuid: 4c2bae88-921f-4e4d-bafc-dac21ae4ea51
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.without_content_language
+label: 'Ilman kielivalintaa'
+targetEntityType: paragraph
+cache: true

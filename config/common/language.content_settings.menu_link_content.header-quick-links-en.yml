@@ -1,0 +1,18 @@
+uuid: ab3b2f24-c6e4-4bfd-8a0e-3ad1c0abbe6e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.header-quick-links-en
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.header-quick-links-en
+target_entity_type_id: menu_link_content
+target_bundle: header-quick-links-en
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,17 @@
+uuid: 49be6783-33ff-41bc-b2fc-3623c3bb3af5
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: positioned_image_medium_small_image_style
+label: 'Asemoitu kuva (keskikokoinen) - small (672×896)'
+effects:
+  4a4fbe18-e0e0-449d-a3f7-2b00cc780769:
+    uuid: 4a4fbe18-e0e0-449d-a3f7-2b00cc780769
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 672
+      height: 896
+      crop_type: focal_point

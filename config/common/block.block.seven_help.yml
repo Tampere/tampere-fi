@@ -1,0 +1,20 @@
+uuid: 6d338c7b-d392-4f3d-a154-7078fe45421c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - seven
+id: seven_help
+theme: seven
+region: content
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Ohje
+  label_display: '0'
+  provider: help
+visibility: {  }

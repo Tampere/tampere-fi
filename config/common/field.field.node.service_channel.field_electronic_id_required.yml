@@ -1,0 +1,23 @@
+uuid: 7f8f534d-020b-4dc9-becf-fefe1ee6f1dc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_electronic_id_required
+    - node.type.service_channel
+id: node.service_channel.field_electronic_id_required
+field_name: field_electronic_id_required
+entity_type: node
+bundle: service_channel
+label: 'Vaatiiko verkkoasiointi sähköisen tunnistautumisen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Verkkoasiointi vaatii sähköisen tunnistautumisen.'
+  off_label: 'Verkkoasiointi ei vaadi sähköistä tunnistautumista.'
+field_type: boolean

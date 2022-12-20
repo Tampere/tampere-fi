@@ -1,0 +1,10 @@
+uuid: cdf733b6-7adb-4f63-9e8a-fadedc41ae6d
+langcode: fi
+status: true
+dependencies: {  }
+id: place_liftup
+label: Paikkanosto
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää paikan yhteystietojen esittämiseen.'
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+label: 'Current content archive'
+display:
+  default:
+    display_options:
+      title: 'Current content archive'
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Entries per page'
+            items_per_page_options_all_label: '- Any -'
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: 'Remove filters'
+          exposed_sorts_label: Sort
+      header:
+        result:
+          content: 'Total @total result(s)'

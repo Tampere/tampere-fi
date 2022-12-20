@@ -1,0 +1,17 @@
+uuid: 35bac8b4-9832-4f37-b3cb-cb414e667d0d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Kaupunkisuunnittelu- ja rakentamishanke'
+type: city_planning_and_constructions
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

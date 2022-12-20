@@ -1,0 +1,82 @@
+$comment-icon-size: 27px;
+$comment-icon-padding: 7px;
+
+.comment {
+  border-bottom: $border-thick-light-blue;
+  padding: $space-m;
+
+  @include large {
+    padding: $space-l $space-xl;
+  }
+
+  &:first-of-type {
+    border-top: $border-thick-light-blue;
+  }
+
+  &:last-of-type {
+    margin-bottom: $space-l;
+
+    @include large {
+      margin-bottom: $space-xxl;
+    }
+  }
+
+  &__date {
+    font-size: $font-12;
+    margin-bottom: $space-xs;
+
+    @include large {
+      font-size: $font-16;
+      margin-bottom: $space-s;
+    }
+  }
+
+  &__content,
+  &__author {
+    font-size: $font-16;
+
+    @include large {
+      font-size: $font-20;
+    }
+  }
+
+  &__content {
+    margin-bottom: $space-xs;
+
+    @include large {
+      margin-bottom: $space-l;
+    }
+
+    // Drupal
+    p {
+      margin: 0;
+    }
+  }
+
+  &__author-container {
+    display: flex;
+  }
+
+  &__icon {
+    width: $comment-icon-size;
+    height: $comment-icon-size;
+    background-color: clr(verified-user);
+    color: clr(text-inverse);
+    border-radius: 100%;
+    margin-top: -1px;
+    margin-right: $space-s;
+    padding: $comment-icon-padding;
+
+    @include large {
+      margin-top: 1px;
+    }
+  }
+
+  &__author {
+    @include word-wrap;
+
+    font-family: $font-body;
+    font-weight: $font-weight-bold;
+    margin: 0;
+  }
+}

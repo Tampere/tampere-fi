@@ -1,0 +1,29 @@
+uuid: 36c4bc12-2cb4-4750-b45f-17adaab044f0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_geographical_areas
+    - node.type.zoning_information
+    - taxonomy.vocabulary.geographical_areas
+id: node.zoning_information.field_geographical_areas
+field_name: field_geographical_areas
+entity_type: node
+bundle: zoning_information
+label: 'Maantieteelliset alueet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      geographical_areas: geographical_areas
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

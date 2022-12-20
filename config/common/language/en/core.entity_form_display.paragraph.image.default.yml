@@ -1,0 +1,27 @@
+third_party_settings:
+  field_group:
+    group_image_link:
+      label: 'Image link'
+      format_settings:
+        description: 'The image can be displayed either as a link to content or a larger version of the image. If both options are selected, the image is displayed as a link to the larger image.'
+    group_display_as_link_to_content:
+      label: 'Display as link to content'
+content:
+  field_content_link:
+    settings:
+      title: Link
+      title_plural: Links
+  field_link_aria_label:
+    third_party_settings:
+      field_states_ui:
+        form:
+          list:
+            3d00be23-8775-4bd0-8482-0d7dbf833370:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
+        field_states:
+          3d00be23-8775-4bd0-8482-0d7dbf833370:
+            data:
+              submit: Submit

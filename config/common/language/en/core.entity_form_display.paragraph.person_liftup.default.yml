@@ -1,0 +1,4 @@
+content:
+  field_person_liftup:
+    settings:
+      placeholder: 'Name of the person'

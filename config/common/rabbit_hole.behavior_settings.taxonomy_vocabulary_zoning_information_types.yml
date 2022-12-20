@@ -1,0 +1,14 @@
+uuid: 33ff5fa8-1e55-4ecf-9f53-c01c1b14c88c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.zoning_information_types
+id: taxonomy_vocabulary_zoning_information_types
+entity_type_id: taxonomy_vocabulary
+entity_id: zoning_information_types
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

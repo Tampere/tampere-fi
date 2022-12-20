@@ -1,0 +1,30 @@
+.search-page {
+  margin-bottom: $space-xl;
+  padding: 0 $gutter-mobile;
+
+  @include large {
+    margin-bottom: $space-xxl;
+    padding: 0 $gutter-default;
+  }
+
+  &__header {
+    margin-top: $space-m;
+    margin-bottom: $space-m;
+  }
+
+  &__filter-title {
+    @include heading-small;
+  }
+
+  &__search-results {
+    margin-bottom: $space-xl;
+
+    @include large-down {
+      @include breakout($gutter-mobile);
+    }
+
+    @include large {
+      margin-bottom: $space-xxl;
+    }
+  }
+}

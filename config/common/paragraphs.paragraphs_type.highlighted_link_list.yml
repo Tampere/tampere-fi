@@ -1,0 +1,10 @@
+uuid: b215de6d-5486-41d0-a6b8-f64ce3a61575
+langcode: fi
+status: true
+dependencies: {  }
+id: highlighted_link_list
+label: 'Korostettu linkkilista'
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää ohjaamaan käyttäjiä sivuston eri palveluihin. Jokaiselle linkille voi valita oman kuvakkeen.'
+behavior_plugins: {  }

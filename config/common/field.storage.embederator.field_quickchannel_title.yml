@@ -1,0 +1,19 @@
+uuid: 1213a6cb-1a72-4ecf-8a01-0010d8fdbc7a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - embederator
+id: embederator.field_quickchannel_title
+field_name: field_quickchannel_title
+entity_type: embederator
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

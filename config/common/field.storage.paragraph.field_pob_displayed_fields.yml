@@ -1,0 +1,75 @@
+uuid: f95bde0d-2ff0-4796-9cf1-79c56f1011a7
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_pob_displayed_fields
+field_name: field_pob_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: alternative_name
+      label: 'Vaihtoehtoinen nimi'
+    -
+      value: organisation
+      label: Organisaatio
+    -
+      value: summary
+      label: Tiivistelmä
+    -
+      value: description
+      label: Kuvaus
+    -
+      value: address
+      label: Katuosoite
+    -
+      value: postaddress
+      label: Postiosoite
+    -
+      value: region
+      label: 'Alue jolla palvelupaikka palvelee'
+    -
+      value: links
+      label: Linkit
+    -
+      value: phone
+      label: Puhelin
+    -
+      value: email
+      label: Sähköposti
+    -
+      value: opening_hours
+      label: 'Aukioloajat 1'
+    -
+      value: opening_hours_2
+      label: 'Aukioloajat 2'
+    -
+      value: opening_hours_3
+      label: 'Aukioloajat 3'
+    -
+      value: additional_information
+      label: Lisätietoja
+    -
+      value: accessibility_information
+      label: Esteettömyys
+    -
+      value: map
+      label: Kartta
+    -
+      value: exception_hours
+      label: Poikkeusaukioloajat
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

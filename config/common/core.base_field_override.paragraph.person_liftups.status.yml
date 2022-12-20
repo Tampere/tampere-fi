@@ -1,0 +1,22 @@
+uuid: 83b2da9e-1fdb-40d9-a593-ae728ad2474c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.person_liftups
+id: paragraph.person_liftups.status
+field_name: status
+entity_type: paragraph
+bundle: person_liftups
+label: Julkaistu
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

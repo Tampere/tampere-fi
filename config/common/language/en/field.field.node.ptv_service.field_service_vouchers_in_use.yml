@@ -1,0 +1,4 @@
+label: 'Service vouchers available'
+settings:
+  on_label: 'The service is available with a service voucher.'
+  off_label: 'The service is not available with a service voucher.'

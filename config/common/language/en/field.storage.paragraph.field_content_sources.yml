@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Display minisite content'
+    -
+      label: 'Display main site content'

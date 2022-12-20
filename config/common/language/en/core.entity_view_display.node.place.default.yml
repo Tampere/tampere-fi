@@ -1,0 +1,7 @@
+content:
+  field_location:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: 'Location on map'

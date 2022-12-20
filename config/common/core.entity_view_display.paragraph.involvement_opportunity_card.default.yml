@@ -1,0 +1,32 @@
+uuid: 5502f1e0-4570-46c8-944a-8cddfbdecbc1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.involvement_opportunity_card.field_displayed_opp_fields
+    - field.field.paragraph.involvement_opportunity_card.field_involvement_opportunity
+    - paragraphs.paragraphs_type.involvement_opportunity_card
+  module:
+    - options
+id: paragraph.involvement_opportunity_card.default
+targetEntityType: paragraph
+bundle: involvement_opportunity_card
+mode: default
+content:
+  field_displayed_opp_fields:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_involvement_opportunity:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

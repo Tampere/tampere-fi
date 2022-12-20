@@ -1,0 +1,6 @@
+name: 'Language Switcher Links'
+type: module
+description: 'Modifies the Language Switcher block link texts.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'TRE'

@@ -1,0 +1,92 @@
+$form-item-textarea-max-height: 249px;
+
+.form-item {
+  @include clearfix;
+
+  color: clr(text);
+  width: 100%;
+
+  // Doubling up specifity to override Webform styles
+  // when labels are in non-default positions.
+  &#{&} {
+    @include form-item-spacing;
+  }
+
+  p {
+    @include paragraph;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $space-xs;
+
+    @include large {
+      margin-bottom: $space-xxs;
+    }
+  }
+
+  &__textfield,
+  &__textarea {
+    background-color: clr(background);
+  }
+
+  &__textfield,
+  &__select {
+    line-height: 1.4;
+  }
+
+  &__textfield {
+    border: $border-form;
+    border-radius: 0;
+    padding: $space-s;
+    width: 100%;
+
+    &:focus {
+      border-color: clr(primary-light);
+    }
+  }
+
+  &__textarea {
+    height: $form-item-textarea-max-height;
+    resize: none;
+  }
+
+  &__select {
+    color: clr(txt);
+  }
+}
+
+textarea,
+input {
+  &::-webkit-input-placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:-moz-placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  &:-ms-input-placeholder {
+    color: $input-placeholder-color;
+  }
+}
+
+.form-item__description {
+  margin-top: $form-item-description-margin-top;
+}
+
+.text-format-wrapper {
+  margin-bottom: $space-l;
+
+  @include large {
+    margin-bottom: $space-xl;
+  }
+}

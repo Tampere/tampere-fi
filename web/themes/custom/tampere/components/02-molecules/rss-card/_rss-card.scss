@@ -1,0 +1,116 @@
+.rss-card {
+  $base_class: &;
+
+  background-color: clr(accent-secondary);
+  color: clr(text);
+  display: block;
+  position: relative;
+  text-decoration: none;
+
+  & + #{$base_class} {
+    margin-top: $space-xs;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: clr(accent-secondary-transparent);
+
+    #{$base_class}__heading {
+      border-bottom-color: clr(text);
+    }
+  }
+
+  &::before {
+    content: "";
+    background-color: clr(primary);
+    display: block;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 2px;
+  }
+
+  &__content {
+    display: flex;
+    padding: $space-xs $space-s;
+
+    @include large {
+      align-items: center;
+      flex-wrap: nowrap;
+      padding-top: $space-xxs;
+      padding-right: $space-l;
+      padding-bottom: $space-xxs;
+      padding-left: 0;
+    }
+  }
+
+  &__text-content {
+    @include large {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__date {
+    margin-top: $space-xxs;
+    margin-bottom: $space-s;
+    font-size: $font-12;
+
+    @include large {
+      font-size: $font-16;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: $space-m;
+      min-width: 82px;
+    }
+  }
+
+  &__heading {
+    @include word-wrap;
+
+    border-bottom: $border-thick-transparent;
+    font-size: $font-16;
+    font-weight: $font-weight-regular;
+    line-height: 1.75;
+    margin-bottom: 0;
+    overflow-wrap: initial;
+    word-break: initial;
+    width: fit-content;
+
+    @include large {
+      font-size: $font-20;
+      line-height: 1.4;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: $space-l;
+    }
+  }
+
+  &__icon-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  &__icon {
+    margin-left: $space-m;
+    height: $icon-default;
+    width: $icon-default;
+  }
+
+  // Variations
+  &--colorful {
+    background-color: clr(muted);
+
+    &:hover,
+    &:focus {
+      background-color: clr(muted-transparent);
+    }
+
+    #{$base_class}__icon {
+      color: clr(primary);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Remove Configuration of settings form.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function tre_openid_connect_windows_aad_tampere_uninstall() {
+  // Remove configuration.
+  Drupal::configFactory()->getEditable('openid_connect.settings.tampere_fi')->delete();
+}

@@ -1,0 +1,29 @@
+uuid: c18b33ff-2383-4327-be2f-8696d31ac254
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hr_organizational_unit
+    - paragraphs.paragraphs_type.persons_contact_information_list
+    - taxonomy.vocabulary.personnel_organization_units
+id: paragraph.persons_contact_information_list.field_hr_organizational_unit
+field_name: field_hr_organizational_unit
+entity_type: paragraph
+bundle: persons_contact_information_list
+label: Organisaatioyksiköt
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      personnel_organization_units: personnel_organization_units
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

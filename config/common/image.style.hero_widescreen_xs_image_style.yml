@@ -1,0 +1,17 @@
+uuid: 5caced2a-4c0d-42c5-8c2d-5c47ca455a38
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_widescreen_xs_image_style
+label: 'Hero (laajakuva) - xs (480×105)'
+effects:
+  6efe55ed-cfbd-43ee-aa5c-992a9d635001:
+    uuid: 6efe55ed-cfbd-43ee-aa5c-992a9d635001
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 105
+      crop_type: focal_point

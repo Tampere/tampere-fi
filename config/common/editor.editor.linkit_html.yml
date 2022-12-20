@@ -1,0 +1,43 @@
+uuid: fcc6ebef-cc0e-453c-867e-70b7101f641d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - filter.format.linkit_html
+  module:
+    - ckeditor
+format: linkit_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Linkit
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Työkalut
+          items:
+            - Source
+        -
+          name: 'Copy and paste'
+          items:
+            - Copy
+            - Cut
+            - Paste
+            - PasteText
+            - PasteFromWord
+  plugins:
+    drupallink:
+      linkit_enabled: true
+      linkit_profile: linkit_wysiwyg
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

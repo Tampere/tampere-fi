@@ -1,0 +1,23 @@
+uuid: 2d88cc01-2261-4f87-b3f8-f4d1f1d3ad7a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_epsg_3067_easting
+    - node.type.zoning_information
+id: node.zoning_information.field_epsg_3067_easting
+field_name: field_epsg_3067_easting
+entity_type: node
+bundle: zoning_information
+label: Itäisyys
+description: 'ETRS-TM35FIN-järjestelmän (EPSG:3067) mukainen itäisyys metreinä.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: E
+field_type: decimal

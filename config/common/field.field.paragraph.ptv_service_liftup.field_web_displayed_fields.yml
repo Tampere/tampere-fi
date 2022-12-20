@@ -1,0 +1,21 @@
+uuid: ece05935-889e-42b4-a5f4-226233a6f4b8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_web_displayed_fields
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - options
+id: paragraph.ptv_service_liftup.field_web_displayed_fields
+field_name: field_web_displayed_fields
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Verkkosivuasiointikanavien näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

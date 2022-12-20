@@ -1,0 +1,19 @@
+uuid: 5c48d08e-0c76-4129-b701-235beac56b30
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+id: paragraph.event_and_hobby_listing.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: Lyhennelmä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

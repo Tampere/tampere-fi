@@ -1,0 +1,14 @@
+uuid: cb26fb6c-b1bc-4ce8-95b9-ba53ea3fa640
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.service_classes
+id: taxonomy_vocabulary_service_classes
+entity_type_id: taxonomy_vocabulary
+entity_id: service_classes
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

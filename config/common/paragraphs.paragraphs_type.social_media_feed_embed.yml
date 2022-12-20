@@ -1,0 +1,15 @@
+uuid: aa2549cf-af66-4054-9a58-64b3842fb3fd
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: social_media_feed_embed
+label: Someseinä
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää upottamaan sivulle someseinä Juicer-palvelusta uniikin tunnuksen perusteella.'
+behavior_plugins: {  }

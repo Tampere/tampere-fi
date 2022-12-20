@@ -1,0 +1,20 @@
+uuid: 48b0bb1b-5208-421a-8f21-8d0ceb78c5b9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_mailing_list
+field_name: field_mailing_list
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

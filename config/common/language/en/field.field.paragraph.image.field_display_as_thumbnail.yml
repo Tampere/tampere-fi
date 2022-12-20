@@ -1,0 +1,5 @@
+label: 'Display as thumbnail'
+description: 'Select this option if you want the image to be displayed as a thumbnail on the page. Images are displayed full-width by default.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

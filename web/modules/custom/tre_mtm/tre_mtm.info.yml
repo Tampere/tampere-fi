@@ -1,0 +1,6 @@
+name: MTM
+description: 'Matomo Tag Manager'
+type: module
+core_version_requirement: ^8 || ^9
+package: Statistics
+configure: tre_mtm.settings

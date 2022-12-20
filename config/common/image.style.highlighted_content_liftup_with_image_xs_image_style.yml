@@ -1,0 +1,17 @@
+uuid: c0969113-c4f1-4ba8-afd6-a41c576b7f51
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: highlighted_content_liftup_with_image_xs_image_style
+label: 'Korostettu kuvallinen sisältönosto - xs (480×375)'
+effects:
+  d528e0c6-577c-4142-b52c-0bd1635a7559:
+    uuid: d528e0c6-577c-4142-b52c-0bd1635a7559
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 375
+      crop_type: focal_point

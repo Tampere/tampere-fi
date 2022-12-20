@@ -1,0 +1,55 @@
+{#
+ # Available variables:
+ # - rss_feed__base_class - base classname of the wrapper.
+ # - rss_feed__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - rss_feed__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - rss_feed__wrapper__modifiers - array of modifiers to add to the base classname of the content wrapper.
+ #
+ # - rss_feed__header__modifiers - array of modifiers to add to the base classname of the header wrapper.
+ # - rss_feed__heading - content for the component heading.
+ #
+ # - rss_feed__feed__modifiers - array of modifiers to add to the base classname of the feed wrapper.
+ # - rss_feed__items - items to display in the component.
+ #
+ # - rss_feed__icon__base_class - base classname of the icon component. Defaults to "icon".
+ # - rss_feed__icon__modifiers - array of modifiers to add to the base classname of the icon.
+ # - rss_feed__icon__name - the name of the icon to use on the component. Defaults to "rss".
+ #}
+{% set rss_feed__base_class = "rss-feed" %}
+
+<div {{ bem(rss_feed__base_class, rss_feed__modifiers|default([]), rss_feed__blockname) }}>
+  <div {{ bem("wrapper", rss_feed__wrapper__modifiers|default([]), rss_feed__base_class) }}>
+    <div {{ bem("header", rss_feed__header__modifiers|default([]), rss_feed__base_class) }}>
+      {% if rss_feed__heading %}
+        {{ title_prefix }}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_base_class": rss_feed__heading__base_class|default("heading"),
+          "heading_modifiers": rss_feed__heading__modifiers,
+          "heading_blockname": rss_feed__base_class,
+          "heading_level": 2,
+          "heading": rss_feed__heading,
+        } %}
+        {{ title_suffix }}
+      {% endif %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: rss_feed__icon__base_class|default("icon"),
+        icon_modifiers: rss_feed__icon__modifiers,
+        icon_blockname: rss_feed__base_class,
+        icon_name: rss_feed__icon__name|default("rss"),
+        icon_decorative: true,
+      } %}
+    </div>
+    <div {{ bem("feed", rss_feed__feed__modifiers|default([]), rss_feed__base_class) }}>
+      {% block rss_feed_content %}
+        {% for item in rss_feed__items %}
+          {% include "@molecules/rss-card/rss-card.twig" with {
+            "rss_card__link__url": item.url,
+            "rss_card__date": item.date,
+            "rss_card__heading": item.heading,
+          } %}
+        {% endfor %}
+      {% endblock %}
+    </div>
+  </div>
+</div>

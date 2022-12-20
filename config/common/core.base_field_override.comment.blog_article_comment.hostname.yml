@@ -1,0 +1,18 @@
+uuid: a496c5b3-d03a-472e-b570-507aa3e5b4cc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.hostname
+field_name: hostname
+entity_type: comment
+bundle: blog_article_comment
+label: Verkkotunnus
+description: 'Kommentin kirjoittajan konenimi.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultHostname'
+settings: {  }
+field_type: string

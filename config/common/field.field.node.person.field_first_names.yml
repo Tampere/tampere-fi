@@ -1,0 +1,19 @@
+uuid: 9405449a-a601-45fd-b87c-b48c483ccc5a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_first_names
+    - node.type.person
+id: node.person.field_first_names
+field_name: field_first_names
+entity_type: node
+bundle: person
+label: Etunimi
+description: 'SAP HR:stä tuotu ensimmäinen etunimi.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

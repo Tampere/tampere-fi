@@ -1,0 +1,15 @@
+main_menu_modifiers:
+  - minisite
+menu_items:
+  - title: "Kurssit"
+    url: "#"
+  - title: "Ilmoittautuminen"
+    url: "#"
+  - title: "Opistoinfo"
+    url: "#"
+  - title: "Tilavuokraus"
+    url: "#"
+  - title: "Palaute"
+    url: "#"
+  - title: "Erityisopetus"
+    url: "#"

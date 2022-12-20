@@ -1,0 +1,5 @@
+name: 'tre_external_publish_permissions'
+type: module
+description: 'Validate publishing of news to Wordpress sites.'
+core_version_requirement: '>=9.3'
+package: 'TRE'

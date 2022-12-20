@@ -1,0 +1,19 @@
+uuid: 50608968-57bd-4e23-bcd3-a29cb53b07f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - node.type.city_planning_and_constructions
+  module:
+    - gnode
+    - node
+id: group_content_type_399819f395a9e
+label: 'Alasivusto: Group node (Kaupunkisuunnittelu- ja rakentamishanke)'
+description: 'Adds <em class="placeholder">Kaupunkisuunnittelu- ja rakentamishanke</em> content to groups both publicly and privately.'
+group_type: subsite
+content_plugin: 'group_node:city_planning_and_constructions'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

@@ -1,0 +1,22 @@
+uuid: 1ca0e6cc-9790-4088-9018-980a14b647ed
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.service_channel
+id: node.service_channel.promote
+field_name: promote
+entity_type: node
+bundle: service_channel
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

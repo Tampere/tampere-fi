@@ -1,0 +1,14 @@
+{% set item_base_class = "item" %}
+
+<li {{ bem(item_base_class, (item_modifiers), item_blockname)}}>
+  <a {{ bem("link", (item_link_modifiers), some_row_class) }} aria-label="{{ aria_label }}" href="{{ link_url }}">
+    {% block link_content %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: "icon",
+        icon_blockname: some_row_class,
+        icon_modifiers: [ icon_name ],
+        icon_name: icon_name,
+      } %}
+    {% endblock %}
+  </a>
+</li>

@@ -1,0 +1,21 @@
+uuid: 58b2199b-4a15-4e0d-9ae8-112e2d188c29
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_displayed_content_types
+    - paragraphs.paragraphs_type.contact_information_list
+  module:
+    - options
+id: paragraph.contact_information_list.field_displayed_content_types
+field_name: field_displayed_content_types
+entity_type: paragraph
+bundle: contact_information_list
+label: 'Näytettävät sisältötyypit (poistettu)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

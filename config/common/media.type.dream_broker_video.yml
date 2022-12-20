@@ -1,0 +1,15 @@
+uuid: b65b45cf-8c4b-4bc5-bc46-78f419645fa8
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media_entity_dreambroker
+id: dream_broker_video
+label: 'Dream Broker -video'
+description: ''
+source: dreambroker
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_dreambroker
+field_map: {  }

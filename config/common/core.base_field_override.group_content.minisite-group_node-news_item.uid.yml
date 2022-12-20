@@ -1,0 +1,20 @@
+uuid: d93c2516-6013-4a9d-8fec-f8e9b17d533c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-news_item
+id: group_content.minisite-group_node-news_item.uid
+field_name: uid
+entity_type: group_content
+bundle: minisite-group_node-news_item
+label: 'Ryhmän luoja'
+description: 'Ryhmän luoneen käyttäjän käyttäjätunnus.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

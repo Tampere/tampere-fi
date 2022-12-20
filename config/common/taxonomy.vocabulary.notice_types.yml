@@ -1,0 +1,8 @@
+uuid: a0648b45-db9b-4514-bf53-14ab172630f4
+langcode: fi
+status: true
+dependencies: {  }
+name: Ilmoitustyypit
+vid: notice_types
+description: ''
+weight: 0

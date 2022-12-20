@@ -1,0 +1,166 @@
+<?php
+
+use Drupal\Component\Utility\Crypt;
+use Drupal\block\BlockInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+/**
+ * Implements hook_form_alter().
+ */
+function tampere_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'comment_blog_article_comment_form') {
+    $form['actions']['submit']['#value'] = new TranslatableMarkup('Send');
+
+    $name_field_label = new TranslatableMarkup('Name');
+    if (isset($form['author']['name']['#title'])) {
+      $form['author']['name']['#title'] = $name_field_label;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_preprocess_HOOK().
+ */
+function tampere_preprocess_html(&$variables) {
+  // Logged in class.
+  $variables['attributes']['class'][] = $variables['logged_in'] ? 'logged-in' : 'logged-out';
+  // An exception might be thrown.
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  } catch (Exception $e) {
+    // If the database is not yet available, set the default value.
+    $variables['is_front'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_preprocess_container().
+ */
+function tampere_preprocess_container(&$variables) {
+  // when multiple exposed forms are added to a page there is an accessibility issue with
+  // non-unique ids, because drupal always adds `#edit-actions` id to a submit button container.
+  // This is a workaround for making id unique, found in https://www.drupal.org/project/drupal/issues/1852090#comment-13115760
+  if (isset($variables['element']['#id'])) {
+    $id = $variables['element']['#id'];
+
+    if ($id === 'edit-actions') {
+      $id = tampere_build_unique_id($id);
+      $variables['element']['#id'] = $id;
+      $variables['attributes']['id'] = $id;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tampere_preprocess_form(&$variables) {
+  // The search form appears twice on every page
+  // and Drupal gives them the same ID by default.
+  if (isset($variables['element']['#id'])) {
+    $id = $variables['element']['#id'];
+
+    // str_pos() may return Boolean false, but may also return a
+    // non-Boolean value which evaluates to false.
+    if (strpos($id, 'views-exposed-form-search') !== false) {
+      $id = tampere_build_unique_id($id);
+      $variables['element']['#id'] = $id;
+      $variables['attributes']['id'] = $id;
+    }
+  }
+}
+
+/**
+ * Returns a new identifier as extended by a random number.
+ *
+ * @param $id
+ *  Initial identifier
+ *
+ * @return string $id
+ *
+ */
+function tampere_build_unique_id($id) {
+  $id .= '--' . Crypt::randomBytesBase64(8);
+
+  return $id;
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Pass block id and region value to content so they can be used in
+ * tampere_theme_suggestions_menu_alter.
+ */
+function tampere_preprocess_block(&$variables) {
+  if (isset($variables['elements']['#id'])) {
+    $block_id = $variables['elements']['#id'];
+    $block = \Drupal::entityTypeManager()->getStorage('block')->load($block_id);
+
+    if ($block instanceof BlockInterface) {
+      $region = $block->getRegion();
+      $variables['content']['#attributes']['region'] = $region;
+    }
+
+    $variables['content']['#attributes']['block'] = $block_id;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function tampere_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['element']['#theme'])) {
+    $theme = $variables['element']['#theme'];
+    $suggestions[] = 'form_element__' . $theme;
+  }
+
+  $type = $variables['element']['#type'];
+  $suggestions[] = 'form_element__' . $type;
+
+  if (!empty($variables['element']['#context']['#view_id'])) {
+    $view_id = $variables['element']['#context']['#view_id'];
+    $suggestions[] = 'form_element__' . $type . '__' . $view_id;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Provide region based menu suggestions.
+ */
+function tampere_theme_suggestions_menu_alter(&$suggestions, array $variables) {
+  if (isset($variables['theme_hook_original'])) {
+    if (isset($variables['attributes']['region'])) {
+      $region = $variables['attributes']['region'];
+
+      $suggestion = $variables['theme_hook_original'] . '__' . $variables['attributes']['region'];
+      $suggestion = str_replace('-', '_', $suggestion);
+      $suggestions[] = $suggestion;
+
+      if (isset($variables['attributes']['block'])) {
+        $block = str_replace(['block-', '-'], ['', '_'], $variables['attributes']['block']);
+        $suggestions[] = $variables['theme_hook_original'] . '__' . $region . '__' . $block;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ *
+ * Provide block name based links suggestions.
+ */
+function tampere_theme_suggestions_links_alter(&$suggestions, array $variables) {
+  if (isset($variables['theme_hook_original'])) {
+    if (isset($variables['attributes']['block'])) {
+      $block = str_replace(['block-', '-'], ['', '_'], $variables['attributes']['block']);
+      $suggestions[] = $variables['theme_hook_original'] . '__' . $block;
+    }
+  }
+}

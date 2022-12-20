@@ -1,0 +1,10 @@
+uuid: aefdf9c9-0a26-46f8-bdd6-b204085f5a62
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.downloadable_material_view_mode
+label: 'Ladattava materiaali'
+targetEntityType: media
+cache: true

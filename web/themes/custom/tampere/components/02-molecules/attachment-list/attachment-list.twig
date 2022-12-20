@@ -1,0 +1,40 @@
+{% set attachment_list__base_class = "attachment-list" %}
+
+<div {{ bem(attachment_list__base_class, attachment_list__modifiers|default([]), attachment_list__blockname)}}>
+  {# Heading #}
+  {% if attachment_list__heading %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      heading_base_class: attachment_list__heading__base_class|default("heading"),
+      heading_modifiers: attachment_list__heading__modifiers,
+      heading_blockname: attachment_list__base_class,
+      heading_level: attachment_list__heading_level|default(2),
+      heading: attachment_list__heading,
+    } %}
+  {% endif %}
+
+  {# Body #}
+  {% if attachment_list__body %}
+    {% include "@atoms/02-text/text/01-paragraph.twig" with {
+      paragraph_base_class: attachment_list__body__base_class|default("body"),
+      paragraph_modifiers: attachment_list__body__modifiers,
+      paragraph_blockname: attachment_list__base_class,
+      paragraph_content: attachment_list__body,
+    } %}
+  {% endif %}
+
+  <ul {{ bem("list", attachment_list__list__modifiers|default([]), attachment_list__base_class)}}>
+    {% block attachment_list__content %}
+      {% for item in attachment_list %}
+        {% include "@molecules/attachment-list/_attachment.twig" with {
+          attachment__link_url: item.link_url,
+          attachment__icon_name: item.icon_name,
+          attachment__name: item.name,
+          attachment__file_info: item.file_info,
+          attachment__summary: item.summary,
+          attachment__site_lang: attachment_list__site_lang,
+          attachment__content_lang: attachment_list__content_lang,
+        } %}
+      {% endfor %}
+    {% endblock %}
+  </ul>
+</div>

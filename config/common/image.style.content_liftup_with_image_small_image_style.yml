@@ -1,0 +1,17 @@
+uuid: 9f8edeb5-4b38-40e0-9799-f1bcee3b5710
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: content_liftup_with_image_small_image_style
+label: 'Kuvallinen sisältönosto - small (720×480)'
+effects:
+  5fae3f89-5fad-452b-af8d-e9f2257988bb:
+    uuid: 5fae3f89-5fad-452b-af8d-e9f2257988bb
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 480
+      crop_type: focal_point

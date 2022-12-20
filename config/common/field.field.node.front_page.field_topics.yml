@@ -1,0 +1,29 @@
+uuid: 5d07c6c5-ffd3-426e-b34c-e5ccd9fe981c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topics
+    - node.type.front_page
+    - taxonomy.vocabulary.topics
+id: node.front_page.field_topics
+field_name: field_topics
+entity_type: node
+bundle: front_page
+label: Aihealueet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,14 @@
+uuid: f76a5a36-9e4e-401a-9b37-0ab5d1647c9a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.blog_article_author
+  module:
+    - user
+id: user_add_role_action.blog_article_author
+label: 'Add the Blogitoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: blog_article_author

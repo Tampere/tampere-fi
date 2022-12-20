@@ -1,0 +1,122 @@
+uuid: b4e89eb4-43b7-44e4-9b20-f5a1670c51ea
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.address_only
+    - field.field.node.map_point.field_address_hash
+    - field.field.node.map_point.field_address_street
+    - field.field.node.map_point.field_description
+    - field.field.node.map_point.field_epsg_3067_easting
+    - field.field.node.map_point.field_epsg_3067_northing
+    - field.field.node.map_point.field_location
+    - node.type.map_point
+  module:
+    - address_display
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+          ds_content: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - field_address_street
+        - field_description
+id: node.map_point.address_only
+targetEntityType: node
+bundle: map_point
+mode: address_only
+content:
+  field_address_street:
+    type: address_display_formatter
+    label: hidden
+    settings:
+      address_display:
+        organization:
+          glue: ''
+          weight: '-10'
+          display: 0
+        address_line1:
+          display: '1'
+          glue: ''
+          weight: '-9'
+        address_line2:
+          glue: ','
+          weight: '-8'
+          display: 0
+        postal_code:
+          display: '1'
+          glue: ''
+          weight: '-7'
+        locality:
+          display: '1'
+          glue: ','
+          weight: '-6'
+        country_code:
+          glue: ''
+          weight: '-5'
+          display: 0
+        langcode:
+          glue: ','
+          weight: '-4'
+          display: 0
+        administrative_area:
+          glue: ','
+          weight: '-3'
+          display: 0
+        dependent_locality:
+          glue: ','
+          weight: '-2'
+          display: 0
+        sorting_code:
+          glue: ','
+          weight: '-1'
+          display: 0
+        given_name:
+          glue: ''
+          weight: '0'
+          display: 0
+        family_name:
+          glue: ','
+          weight: '1'
+          display: 0
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: ds_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: ds_content
+hidden:
+  field_address_hash: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_location: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

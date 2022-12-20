@@ -1,0 +1,13 @@
+uuid: b26c28b4-e053-436d-93e6-0cf87b0f1857
+langcode: fi
+status: true
+dependencies:
+  module:
+    - message
+_core:
+  default_config_hash: jkka_O-z8_wLFEAEhghApPr_sq1o__PEZX0vh99TS3U
+id: message_delete_action
+label: 'Poista valitut viestit'
+type: message
+plugin: message_delete_action
+configuration: {  }

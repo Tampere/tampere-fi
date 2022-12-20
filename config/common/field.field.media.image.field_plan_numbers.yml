@@ -1,0 +1,29 @@
+uuid: 4e6839ab-44f8-4ef7-8b07-d5d53297f1f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_plan_numbers
+    - media.type.image
+    - taxonomy.vocabulary.plan_numbers
+id: media.image.field_plan_numbers
+field_name: field_plan_numbers
+entity_type: media
+bundle: image
+label: 'Plan numbers'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      plan_numbers: plan_numbers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

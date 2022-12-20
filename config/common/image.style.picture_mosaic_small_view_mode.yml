@@ -1,0 +1,17 @@
+uuid: adbc4680-5b3c-4d7f-9dc9-dc489d783199
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: picture_mosaic_small_view_mode
+label: 'Kuvamosaiikki - small (720×218)'
+effects:
+  ee89dc8a-4ad5-4774-bcab-8a78ac5c5c3c:
+    uuid: ee89dc8a-4ad5-4774-bcab-8a78ac5c5c3c
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 218
+      crop_type: focal_point

@@ -1,0 +1,146 @@
+uuid: e1fad061-20cb-453d-9e2b-8d12eec38dd3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mosaic_liftup.field_content_link
+    - field.field.paragraph.mosaic_liftup.field_liftup_title
+    - field.field.paragraph.mosaic_liftup.field_media
+    - field.field.paragraph.mosaic_liftup.field_summary
+    - paragraphs.paragraphs_type.mosaic_liftup
+  module:
+    - field_group
+    - field_states_ui
+    - maxlength
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+third_party_settings:
+  field_group:
+    group_conditional_fields:
+      children:
+        - field_summary
+      label: 'Vain kuvamosaiikin ylärivissä näytettävä leipäteksti (yli 3 nostoa)'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+        direction: vertical
+        width_breakpoint: 640
+    group_image_and_title:
+      children:
+        - field_media
+        - field_liftup_title
+      label: 'Kuva ja otsikko'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Mosaiikkinostolle tulee joko valita kuva tai syöttää otsikkoteksti, jotta se näytetään kuvamosaiikissa.'
+        required_fields: true
+id: paragraph.mosaic_liftup.default
+targetEntityType: paragraph
+bundle: mosaic_liftup
+mode: default
+content:
+  field_content_link:
+    type: paragraphs_classic_asymmetric
+    weight: 4
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+  field_liftup_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            0f04ba02-4109-4ad5-8057-0dd536f25d4c:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
+        field_states:
+          0f04ba02-4109-4ad5-8057-0dd536f25d4c:
+            uuid: 0f04ba02-4109-4ad5-8057-0dd536f25d4c
+            id: required
+            data:
+              target: field_media
+              comparison: empty
+              value: ''
+              submit: 'Lisää Peruuta'
+      maxlength:
+        maxlength_js: 140
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+  field_media:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            0824155f-9be4-4526-8234-7783e43f5cdc:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
+        field_states:
+          0824155f-9be4-4526-8234-7783e43f5cdc:
+            uuid: 0824155f-9be4-4526-8234-7783e43f5cdc
+            id: required
+            data:
+              target: field_liftup_title
+              comparison: empty
+              value: ''
+              submit: 'Lisää Peruuta'
+  field_summary:
+    type: string_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: 320
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: true
+        maxlength_js_truncate_html: false
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

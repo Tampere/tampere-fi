@@ -1,0 +1,20 @@
+uuid: 45176311-6652-4462-b1fe-2e693bea0fea
+langcode: fi
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_time_limit
+field_name: field_time_limit
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

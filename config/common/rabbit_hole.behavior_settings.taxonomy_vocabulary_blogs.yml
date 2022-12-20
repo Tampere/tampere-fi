@@ -1,0 +1,14 @@
+uuid: cec97660-9c6e-4e27-aa21-9b13c5fb0428
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.blogs
+id: taxonomy_vocabulary_blogs
+entity_type_id: taxonomy_vocabulary
+entity_id: blogs
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

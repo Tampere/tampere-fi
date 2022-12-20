@@ -1,0 +1,17 @@
+uuid: 384e0dcf-d9dd-409b-bad8-9464b54a2338
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Paikka
+type: place
+description: 'Käytä tätä sisältötyyppiä luodaksesi paikan, joka ei ole varsinainen kaupungin toimipiste.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

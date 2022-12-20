@@ -1,0 +1,4 @@
+label: 'Electronic identification required'
+settings:
+  on_label: 'E-service requires electronic identification.'
+  off_label: 'E-service does not require electronic identification.'

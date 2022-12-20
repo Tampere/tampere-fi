@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Enforces constraints for the field_cross_site_publications in news items.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tre_external_publish_permissions_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the tre_external_publish_permissions module.
+    case 'help.page.tre_external_publish_permissions':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module enforces special permissions regarding news items that need to be published to external wordpress sites. A user has to be referenced from the taxonomy term representing the wordpress site to enable the user to publish news items to the site.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function tre_external_publish_permissions_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($bundle === 'news_item') {
+    if (isset($fields['field_cross_site_publications'])) {
+      // Use the ID as defined in the annotation of the constraint definition.
+      $fields['field_cross_site_publications']->addConstraint('cross_site_publication_constraint', []);
+    }
+  }
+}

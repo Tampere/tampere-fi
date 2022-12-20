@@ -1,0 +1,19 @@
+uuid: 9a25285f-0171-4e9e-a6cf-36f253863f0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_author
+    - media.type.image_in_other_language
+id: media.image_in_other_language.field_author
+field_name: field_author
+entity_type: media
+bundle: image_in_other_language
+label: Author
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

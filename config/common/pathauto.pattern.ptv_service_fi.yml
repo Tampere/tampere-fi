@@ -1,0 +1,33 @@
+uuid: 2feeee00-6722-4047-8f85-cc3a8791fa94
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: ptv_service_fi
+label: 'PTV-palvelu FI'
+type: 'canonical_entities:node'
+pattern: 'ptv/palvelu/[node:title]'
+selection_criteria:
+  3dd06214-744d-48ec-bac3-d0d24e8d1092:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 3dd06214-744d-48ec-bac3-d0d24e8d1092
+    context_mapping:
+      node: node
+    bundles:
+      ptv_service: ptv_service
+  fefe3f3a-cebf-4bdd-a0df-22edf8da0ba9:
+    id: language
+    negate: false
+    uuid: fefe3f3a-cebf-4bdd-a0df-22edf8da0ba9
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fi: fi
+selection_logic: and
+weight: -5
+relationships:
+  'node:langcode:language':
+    label: Kieli

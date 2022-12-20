@@ -1,0 +1,157 @@
+uuid: 111a211c-3bef-4f76-8ebe-495b7189642f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_liftups
+    - paragraphs.paragraphs_type.balanced_content_liftup
+    - paragraphs.paragraphs_type.content_liftup
+  module:
+    - entity_reference_revisions
+id: paragraph.balanced_content_liftup.field_content_liftups
+field_name: field_content_liftups
+entity_type: paragraph
+bundle: balanced_content_liftup
+label: Sisältönostot
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      content_liftup: content_liftup
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 26
+        enabled: false
+      accordion_item:
+        weight: 28
+        enabled: false
+      accordions:
+        weight: 27
+        enabled: false
+      attachment:
+        weight: 29
+        enabled: false
+      balanced_content_liftup:
+        weight: 30
+        enabled: false
+      city_construction_project_card:
+        weight: 54
+        enabled: false
+      city_construction_project_cards:
+        weight: 55
+        enabled: false
+      colorful_content_liftup:
+        weight: 56
+        enabled: false
+      content_liftup:
+        weight: 32
+        enabled: true
+      content_liftup_with_image:
+        weight: 58
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 59
+        enabled: false
+      event_and_hobby_listing:
+        weight: 60
+        enabled: false
+      external_link:
+        weight: 33
+        enabled: false
+      external_link_with_link_text:
+        weight: 62
+        enabled: false
+      grouped_content_liftup:
+        weight: 68
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 69
+        enabled: false
+      highlighted_link_list:
+        weight: 70
+        enabled: false
+      icon_and_text_link:
+        weight: 71
+        enabled: false
+      infograph:
+        weight: 72
+        enabled: false
+      infographs:
+        weight: 73
+        enabled: false
+      internal_link:
+        weight: 35
+        enabled: false
+      internal_link_with_link_text:
+        weight: 75
+        enabled: false
+      link_list:
+        weight: 76
+        enabled: false
+      list_of_attachments:
+        weight: 37
+        enabled: false
+      metadata_attachment_list:
+        weight: 78
+        enabled: false
+      mosaic_liftup:
+        weight: 79
+        enabled: false
+      notice:
+        weight: 41
+        enabled: false
+      person_liftup:
+        weight: 81
+        enabled: false
+      person_liftups:
+        weight: 82
+        enabled: false
+      picture_mosaic:
+        weight: 83
+        enabled: false
+      place_liftup:
+        weight: 84
+        enabled: false
+      place_of_business_liftup:
+        weight: 85
+        enabled: false
+      project_and_organization_cards:
+        weight: 42
+        enabled: false
+      project_or_organization_card:
+        weight: 43
+        enabled: false
+      rss_feed:
+        weight: 45
+        enabled: false
+      service_highlight:
+        weight: 46
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 90
+        enabled: false
+      social_media_feed_embed:
+        weight: 47
+        enabled: false
+      social_media_link:
+        weight: 48
+        enabled: false
+      table:
+        weight: 93
+        enabled: false
+      text:
+        weight: 49
+        enabled: false
+      two_column_liftup:
+        weight: 95
+        enabled: false
+      webform:
+        weight: 50
+        enabled: false
+field_type: entity_reference_revisions

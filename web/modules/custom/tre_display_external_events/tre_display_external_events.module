@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Contains tre_display_external_events.module.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\tre_display_external_events\Plugin\Preprocess\ExternalEvents;
+
+/**
+ * Implements hook_help().
+ */
+function tre_display_external_events_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the tre_display_external_events module.
+    case 'help.page.tre_display_external_events':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Display external events from Pirkanmaa region') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function tre_display_external_events_cron() {
+  $last_invalidation_timestamp = \Drupal::state()->get('tre_display_external_events_cache_flush_timestamp', 0);
+  $tag = ExternalEvents::EVENT_LIST_CACHE_TAG;
+  $current_timestamp = (new DrupalDateTime())->getTimestamp();
+
+  $half_hour_in_seconds = 1800;
+  if ($current_timestamp >= ($last_invalidation_timestamp + $half_hour_in_seconds)) {
+    \Drupal::state()->set('tre_display_external_events_cache_flush_timestamp', $current_timestamp);
+    \Drupal::service('cache_tags.invalidator')->invalidateTags([$tag]);
+  }
+}

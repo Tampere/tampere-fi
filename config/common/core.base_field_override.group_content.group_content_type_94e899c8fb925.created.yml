@@ -1,0 +1,18 @@
+uuid: 52b849f5-e40d-449d-b756-594e48bf2eed
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_94e899c8fb925
+id: group_content.group_content_type_94e899c8fb925.created
+field_name: created
+entity_type: group_content
+bundle: group_content_type_94e899c8fb925
+label: Luotu
+description: 'Ryhmäsisällön luontiajankohta.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

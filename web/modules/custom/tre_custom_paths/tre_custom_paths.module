@@ -1,0 +1,526 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_custom_paths module.
+ */
+
+use Drupal\Core\Entity\FieldableEntityInterface;
+use Drupal\Core\Field\EntityReferenceFieldItemListInterface;
+use Drupal\group\Entity\GroupContent;
+use Drupal\group\Entity\GroupContentInterface;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\group_content_menu\GroupContentMenuInterface;
+use Drupal\node\NodeInterface;
+use Drupal\pathauto\PathautoPatternInterface;
+
+/**
+ * Implements hook_pathauto_pattern_alter().
+ *
+ * The pattern is altered for certain types of nodes that exist in groups.
+ * The logic is as follows:
+ * - if the node is in a 'subsite' group with a theme, which has a
+ *   life_situation, the node's breadcrumb is:
+ *   [life_situation group front page of theme] >
+ *   [theme group front page of subsite] >
+ *   [subsite group frontpage] >
+ *   [node title]
+ * - if the node is in a 'subsite' group with a theme, which has a topic,
+ *   the node's breadcrumb is:
+ *   [topic group frontpage of theme] >
+ *   [theme group frontpage of subsite] >
+ *   [subsite group frontpage] >
+ *   [node title]
+ * - if the node is in a 'subsite' group with a theme, which in turn is without
+ *   either a topic or a life_situation, the node's breadcrumb is:
+ *   [theme group frontpage of subsite] >
+ *   [subsite group frontpage] >
+ *   [node title]
+ * - if the node is in a 'subsite' group with just a topic, the node's
+ *   breadcrumb is:
+ *   [topic group frontpage of subsite] >
+ *   [subsite group frontpage] >
+ *   [node title]
+ * - if the node is in a 'subsite' group with just a life_situation, the node's
+ *   breadcrumb is:
+ *   [life_situation group frontpage of subsite] >
+ *   [subsite group frontpage] >
+ *   [node title]
+ * - if the node is in a 'subsite' group without a topic or a theme, the node's
+ *   breadcrumb is:
+ *   [subsite group frontpage] >
+ *   [node title]
+ * - if the node is in a 'theme' group with a life_situation, the node's
+ *   breadcrumb is:
+ *   [life_situation group frontpage of theme] >
+ *   [theme group frontpage] >
+ *   [node title]
+ * - if the node is in a 'theme' group with a topic, the node's breadcrumb is:
+ *   [topic group frontpage of theme] >
+ *   [theme group frontpage] >
+ *   [node title]
+ * - if the node is in a 'theme' group without a topic or a life_situation,
+ *   the node's breadcrumb is:
+ *   [theme group frontpage] >
+ *   [node title]
+ * - if the node is in a 'topic' group, the node's breadcrumb is:
+ *   [topic group frontpage] >
+ *   [node title]
+ * - if the node is in a 'life_situation' group, the node's breadcrumb is:
+ *   [life_situation group frontpage] >
+ *   [node title]
+ * - if the node is in a 'minisite' group, the node's breadcrumb is:
+ *   [minisite group frontpage] >
+ *   [node title]
+ *
+ * Additionally:
+ * - if the node is in a menu on level 2+ in a subsite or a minisite, its
+ *   breadcrumb is amended with the menu parent node titles.
+ */
+function tre_custom_paths_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context) {
+  // Only operate on node aliases.
+  if ($context['module'] !== 'node') {
+    return;
+  }
+
+  if (!isset($context['data']['node']) || !($context['data']['node'] instanceof NodeInterface)) {
+    return;
+  }
+
+  $node = $context['data']['node'];
+
+  $node_bundles_with_default_patterns = [
+    'blog_article',
+    'news_item',
+    'notice',
+    'rich_article',
+    'small_news_item',
+  ];
+
+  if (in_array($node->bundle(), $node_bundles_with_default_patterns, TRUE)) {
+    return;
+  }
+
+  // If not in a group, let configuration be: no need to change the pattern.
+  $group_contents = GroupContent::loadByEntity($node);
+  if (count($group_contents) < 1) {
+    return;
+  }
+
+  $sub_group_contents = array_filter($group_contents, function ($group_content) {
+    $sub_group_types = ['theme', 'subsite'];
+    return in_array($group_content->getGroup()->bundle(), $sub_group_types, TRUE);
+  });
+
+  // Only change the pattern to be hierarchical if the node is in exactly one of
+  // the 'subgroup' type groups: theme or subsite.
+  if (count($sub_group_contents) === 1) {
+    $new_pattern = _tre_custom_paths_get_pathauto_pattern_for_subgroup_node($sub_group_contents, $node);
+    if (!empty($new_pattern)) {
+      $pattern->setPattern($new_pattern);
+      return;
+    }
+  }
+
+  $main_group_contents = array_filter($group_contents, function ($group_content) {
+    $main_group_types = ['topic', 'life_situation', 'minisite'];
+    return in_array($group_content->getGroup()->bundle(), $main_group_types, TRUE);
+  });
+
+  // Only add the group frontpage prefix in a node's pattern if the node exists
+  // in exactly one group which is of a 'main' group type: topic, life_situation
+  // or minisite.
+  if (count($main_group_contents) === 1) {
+    $new_pattern = _tre_custom_paths_get_pathauto_pattern_for_main_group_node($main_group_contents, $node);
+    if (!empty($new_pattern)) {
+      $pattern->setPattern($new_pattern);
+    }
+  }
+}
+
+/**
+ * Helper function to generate a pathauto pattern for 'main' group types.
+ *
+ * In practice, the pattern is only given if a node has been attached to a group
+ * which has a front page set.
+ *
+ * @param \Drupal\group\Entity\GroupContentInterface[] $group_contents
+ *   The GroupContent entities tied to the node.
+ * @param \Drupal\node\NodeInterface $node
+ *   The node.
+ *
+ * @return string
+ *   The new pattern.
+ */
+function _tre_custom_paths_get_pathauto_pattern_for_main_group_node(array $group_contents, NodeInterface $node): string {
+  $group = reset($group_contents)->getGroup();
+  $pattern_parts = [];
+
+  if (!$group->get('field_front_page')->isEmpty()) {
+    $pattern_parts[] = '[tre:node_group_frontpage_title]';
+
+    $front_page_node = current($group->get('field_front_page')->referencedEntities());
+
+    if ($group->bundle() == 'minisite') {
+      $group_menu_token = _tre_custom_paths_get_pathauto_pattern_part_for_group_content_menu($node, $group);
+      if (!empty($group_menu_token)) {
+        $pattern_parts[] = $group_menu_token;
+      }
+    }
+
+    // Prevent duplicate path components in case the node we're aliasing is the
+    // front page node itself.
+    if (!($front_page_node instanceof NodeInterface) || $front_page_node->id() != $node->id()) {
+      $pattern_parts[] = '[node:title]';
+    }
+  }
+
+  return implode('/', $pattern_parts);
+}
+
+/**
+ * Helper function to generate a pathauto pattern for 'sub' group types.
+ *
+ * Gets pattern based on the type of group(s) given.
+ *
+ * In practice, the pattern is only given if a node has been attached to a group
+ * which has a front page set.
+ *
+ * @param \Drupal\group\Entity\GroupContentInterface[] $group_contents
+ *   The GroupContent entities tied to the node.
+ * @param \Drupal\node\NodeInterface $node
+ *   The node.
+ *
+ * @return string
+ *   The new pattern.
+ */
+function _tre_custom_paths_get_pathauto_pattern_for_subgroup_node(array $group_contents, NodeInterface $node): string {
+  $sub_group = reset($group_contents)->getGroup();
+
+  $pattern = '';
+
+  // - subsite may be in a theme which may be in a topic
+  // - theme may be in a topic
+  switch ($sub_group->bundle()) {
+    case 'theme':
+      $pattern = _tre_custom_paths_get_pathauto_pattern_for_theme_node($sub_group, $node);
+      break;
+
+    case 'subsite':
+      $pattern = _tre_custom_paths_get_pathauto_pattern_for_subsite_node($sub_group, $node);
+      break;
+  }
+
+  return $pattern;
+}
+
+/**
+ * Generates a pathauto pattern for a node in a 'theme' group.
+ *
+ * @param \Drupal\group\Entity\GroupInterface $theme_group
+ *   The group in which the node exists. The type of the group is 'theme'.
+ * @param \Drupal\node\NodeInterface $node
+ *   The node.
+ *
+ * @return string
+ *   The new pattern.
+ */
+function _tre_custom_paths_get_pathauto_pattern_for_theme_node(GroupInterface $theme_group, NodeInterface $node) {
+  $topic_field = $theme_group->get('field_theme_topic');
+  $life_situation_field = $theme_group->get('field_theme_life_situation');
+  $theme_frontpage_exists = !$theme_group->get('field_front_page')->isEmpty();
+
+  $topic_frontpage_exists = FALSE;
+  $life_situation_frontpage_exists = FALSE;
+
+  $pattern = '';
+
+  // If there is no frontpage in the 'main group' of the node, there's no sense
+  // in altering the pattern.
+  if (empty($theme_frontpage_exists)) {
+    return $pattern;
+  }
+
+  $theme_frontpage_node = current($theme_group->get('field_front_page')->referencedEntities());
+
+  if ($topic_field instanceof EntityReferenceFieldItemListInterface && !$topic_field->isEmpty()) {
+    $topic_entity = current($topic_field->referencedEntities());
+    $topic_frontpage_exists = $topic_entity instanceof FieldableEntityInterface && !$topic_entity->get('field_front_page')->isEmpty();
+  }
+
+  if ($life_situation_field instanceof EntityReferenceFieldItemListInterface && !$life_situation_field->isEmpty()) {
+    $life_situation_entity = current($life_situation_field->referencedEntities());
+    $life_situation_frontpage_exists = $life_situation_entity instanceof FieldableEntityInterface && !$life_situation_entity->get('field_front_page')->isEmpty();
+  }
+
+  // Error situation: both 'topic' and 'life_situation' have been set for the
+  // theme. Bail out.
+  if ($topic_frontpage_exists && $life_situation_frontpage_exists) {
+    return $pattern;
+  }
+
+  // Since $theme_frontpage_exists has been asserted above, no need to check it
+  // again here.
+  if ($topic_frontpage_exists) {
+    $pattern = '[tre:node_theme_topic_frontpage_title]/[tre:node_group_frontpage_title]';
+  }
+  elseif ($life_situation_frontpage_exists) {
+    $pattern = '[tre:node_theme_life_situation_frontpage_title]/[tre:node_group_frontpage_title]';
+  }
+  else {
+    $pattern = '[tre:node_group_frontpage_title]';
+  }
+
+  // Only add node:title when not aliasing the theme frontpage node itself.
+  if ($theme_frontpage_node->id() != $node->id()) {
+    $pattern .= '/[node:title]';
+  }
+
+  return $pattern;
+}
+
+/**
+ * Generates a pathauto pattern for a node in a 'subsite' group.
+ *
+ * @param \Drupal\group\Entity\GroupInterface $subsite_group
+ *   The group in which the node exists. The type of the group is 'subsite'.
+ * @param \Drupal\node\NodeInterface $node
+ *   The node.
+ *
+ * @return string
+ *   The new pattern.
+ */
+function _tre_custom_paths_get_pathauto_pattern_for_subsite_node(GroupInterface $subsite_group, NodeInterface $node) {
+  $topic_field = $subsite_group->get('field_subsite_topic');
+  $theme_field = $subsite_group->get('field_subsite_theme');
+  $life_situation_field = $subsite_group->get('field_subsite_life_situation');
+
+  $hierarchy_field_count = 0;
+  foreach ([$topic_field, $theme_field, $life_situation_field] as $hierarchy_field) {
+    if ($hierarchy_field instanceof EntityReferenceFieldItemListInterface && !$hierarchy_field->isEmpty()) {
+      $hierarchy_field_count++;
+    }
+  }
+
+  $pattern_parts = [];
+
+  $subsite_frontpage_exists = !$subsite_group->get('field_front_page')->isEmpty();
+
+  // If there is no frontpage in the 'main group' of the node, there's no sense
+  // in altering the pattern.
+  if (!$subsite_frontpage_exists) {
+    return '';
+  }
+
+  $subsite_frontpage_node = current($subsite_group->get('field_front_page')->referencedEntities());
+
+  if ($hierarchy_field_count === 1) {
+    if ($theme_field instanceof EntityReferenceFieldItemListInterface && !$theme_field->isEmpty()) {
+      // The node is in a subsite group which has a theme (so the topic and
+      // life_situation fields in the subsite will be left unhandled).
+      $theme_entity = current($theme_field->referencedEntities());
+
+      $theme_frontpage_exists = FALSE;
+      $theme_has_topic = FALSE;
+      $theme_has_life_situation = FALSE;
+
+      if ($theme_entity instanceof FieldableEntityInterface) {
+        $theme_frontpage_exists = !$theme_entity->get('field_front_page')
+          ->isEmpty();
+        $topic_field = $theme_entity->get('field_theme_topic');
+        $life_situation_field = $theme_entity->get('field_theme_life_situation');
+        $theme_has_topic = !$topic_field->isEmpty();
+        $theme_has_life_situation = !$life_situation_field->isEmpty();
+      }
+
+      // We refuse to handle the situation where the subsite's assigned theme
+      // has both a life_situation and a topic selected. In that case, the
+      // fallback alias is used. Hence the negative conditions for
+      // 'life_situation' in the first and 'topic' in the second block.
+      if ($theme_has_topic && !$theme_has_life_situation) {
+        $theme_topic_group = current($topic_field->referencedEntities());
+        $theme_topic_frontpage_exists = !$theme_topic_group->get('field_front_page')
+          ->isEmpty();
+
+        if ($theme_frontpage_exists && $theme_topic_frontpage_exists) {
+          // The node is in a subsite group which has a theme, which in turn has
+          // a topic.
+          $pattern_parts[] = '[tre:node_subsite_theme_topic_frontpage]';
+          $pattern_parts[] = '[tre:node_subsite_theme_frontpage]';
+          $pattern_parts[] = '[tre:node_group_frontpage_title]';
+        }
+      }
+      elseif ($theme_has_life_situation && !$theme_has_topic) {
+        $theme_life_situation_group = current($life_situation_field->referencedEntities());
+        $theme_life_situation_frontpage_exists = !$theme_life_situation_group->get('field_front_page')
+          ->isEmpty();
+
+        if ($theme_frontpage_exists && $theme_life_situation_frontpage_exists) {
+          // The node is in a subsite group which has a theme, which in turn has
+          // a life_situation.
+          $pattern_parts[] = '[tre:node_subsite_theme_life_situation_frontpage]';
+          $pattern_parts[] = '[tre:node_subsite_theme_frontpage]';
+          $pattern_parts[] = '[tre:node_group_frontpage_title]';
+        }
+      }
+      elseif ($theme_frontpage_exists) {
+        // The node is in a subsite group which has a theme but that theme has
+        // no topic nor a life_situation assigned.
+        $pattern_parts[] = '[tre:node_subsite_theme_frontpage]';
+        $pattern_parts[] = '[tre:node_group_frontpage_title]';
+      }
+    }
+    elseif ($topic_field instanceof EntityReferenceFieldItemListInterface && !$topic_field->isEmpty()) {
+      // The node is in a subsite group which has a topic but not a theme or a
+      // life_situation.
+      $subsite_topic_group = current($topic_field->referencedEntities());
+      $subsite_topic_frontpage_exists = $subsite_topic_group instanceof FieldableEntityInterface &&
+        !$subsite_topic_group->get('field_front_page')->isEmpty();
+
+      if ($subsite_topic_frontpage_exists) {
+        $pattern_parts[] = '[tre:node_subsite_topic_frontpage]';
+        $pattern_parts[] = '[tre:node_group_frontpage_title]';
+      }
+    }
+    elseif ($life_situation_field instanceof EntityReferenceFieldItemListInterface && !$life_situation_field->isEmpty()) {
+      // The node is in a subsite group which has a life_situation but not a
+      // theme or a topic.
+      $subsite_life_situation_group = current($life_situation_field->referencedEntities());
+      $subsite_life_situation_frontpage_exists = $subsite_life_situation_group instanceof FieldableEntityInterface &&
+        !$subsite_life_situation_group->get('field_front_page')->isEmpty();
+
+      if ($subsite_life_situation_frontpage_exists) {
+        $pattern_parts[] = '[tre:node_subsite_life_situation_frontpage]';
+        $pattern_parts[] = '[tre:node_group_frontpage_title]';
+      }
+    }
+  }
+
+  if (empty($pattern_parts)) {
+    $pattern_parts[] = '[tre:node_group_frontpage_title]';
+  }
+
+  $group_menu_token = _tre_custom_paths_get_pathauto_pattern_part_for_group_content_menu($node, $subsite_group);
+  if (!empty($group_menu_token)) {
+    $pattern_parts[] = $group_menu_token;
+  }
+
+  // Only add node:title when not aliasing the subsite frontpage node itself.
+  if (!($subsite_frontpage_node instanceof NodeInterface) || $subsite_frontpage_node->id() != $node->id()) {
+    $pattern_parts[] = '[node:title]';
+  }
+
+  return implode('/', $pattern_parts);
+}
+
+/**
+ * Finds a token for menu parents of a node in a group.
+ *
+ * The token is only returned if the menu level of the node in the menu is at
+ * least 2, since that is the menu parents only exist for levels above 1.
+ *
+ * Note that the token [tre:group_content_menu_parents] must be declared as
+ * 'safe' in the pathauto configuration to accommodate for the fact that it may
+ * contain slashes.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node to find the token for.
+ * @param \Drupal\group\Entity\GroupInterface $group
+ *   The group to find the token for.
+ *
+ * @return string
+ *   The token for menu parents if the node is in the menu and the level of the
+ *   item for it is >= 2.
+ */
+function _tre_custom_paths_get_pathauto_pattern_part_for_group_content_menu(NodeInterface $node, GroupInterface $group) {
+  $token = '';
+
+  $current_group_content_menu = _tre_custom_paths_get_current_group_content_menu($group, $node);
+
+  if (!empty($current_group_content_menu)) {
+    $path_to_root = _tre_custom_paths_get_group_menu_parents_for_node($current_group_content_menu, $node);
+    if (count($path_to_root) > 1) {
+      $token = '[tre:group_content_menu_parents]';
+    }
+  }
+
+  return $token;
+}
+
+/**
+ * Finds menu parents for a node in a Group Content Menu.
+ *
+ * @param \Drupal\group_content_menu\GroupContentMenuInterface $menu
+ *   The menu. The $node is supposed to be in this menu for this function to
+ *   work sensibly.
+ * @param \Drupal\node\NodeInterface $node
+ *   The node whose place is being sought.
+ *
+ * @return array
+ *   Array of menu link plugin IDs corresponding to the placement of the node in
+ *   the menu hierarchy.
+ *
+ * @see \Drupal\Core\Menu\MenuTreeStorageInterface::getRootPathIds()
+ */
+function _tre_custom_paths_get_group_menu_parents_for_node(GroupContentMenuInterface $menu, NodeInterface $node): array {
+  $path_to_root = [];
+  $menu_name = GroupContentMenuInterface::MENU_PREFIX . $menu->id();
+
+  /** @var \Drupal\Core\Menu\MenuTreeStorageInterface $menu_tree_storage */
+  $menu_tree_storage = \Drupal::service('menu.tree_storage');
+
+  $node_route_name = $node->toUrl()->getRouteName();
+  $node_route_params = $node->toUrl()->getRouteParameters();
+
+  $links = $menu_tree_storage->loadByRoute($node_route_name, $node_route_params, $menu_name);
+  if (!empty($links)) {
+    $link_ids = array_keys($links);
+    // This assumes that each link only exists once in each
+    // group_content_menu. It would be difficult to build a working breadcrumb
+    // without this assumption.
+    $link_id = reset($link_ids);
+    $path_to_root = $menu_tree_storage->getRootPathIds($link_id);
+  }
+
+  return $path_to_root;
+}
+
+/**
+ * Finds the menu in which the given node is located in the given group.
+ *
+ * @param \Drupal\group\Entity\GroupInterface $group
+ *   The group where the node resides.
+ * @param \Drupal\node\NodeInterface $node
+ *   The node for which the menu is needed.
+ *
+ * @return \Drupal\group_content_menu\GroupContentMenuInterface|null
+ *   The Group Content Menu where the node exists in the group, or null if the
+ *   node does not exist in any menu in the group.
+ */
+function _tre_custom_paths_get_current_group_content_menu(GroupInterface $group, NodeInterface $node): ?GroupContentMenuInterface {
+  $group_content_menu_types_by_bundle_and_language = [
+    'subsite.fi' => 'subsite_main_menu_fi',
+    'subsite.en' => 'subsite_main_menu_en',
+    'minisite.fi' => 'minisite_main_menu_fi',
+    'minisite.en' => 'minisite_main_menu_en',
+  ];
+
+  /** @var \Drupal\group_content_menu\GroupContentMenuInterface[] $all_group_content_menus_for_group */
+  $all_group_content_menus_for_group = array_map(static function (GroupContentInterface $group_content) {
+    return $group_content->getEntity();
+  }, group_content_menu_get_menus_per_group($group));
+
+  $node_language_id = $node->get('langcode')->getString();
+  $bundle_and_language_key = $group->bundle() . '.' . $node_language_id;
+  $correct_menu_type_for_language = $group_content_menu_types_by_bundle_and_language[$bundle_and_language_key] ?? NULL;
+
+  $current_group_content_menu = NULL;
+  foreach ($all_group_content_menus_for_group as $group_content_menu) {
+    $group_content_menu_type = $group_content_menu->bundle();
+    if ($group_content_menu_type === $correct_menu_type_for_language) {
+      $current_group_content_menu = $group_content_menu;
+    }
+  }
+
+  return $current_group_content_menu;
+}

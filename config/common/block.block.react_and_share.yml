@@ -1,0 +1,35 @@
+uuid: 36d33fa8-8dba-4ccd-b641-ae669c447802
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - system
+    - tre_react_and_share
+  theme:
+    - tampere
+id: react_and_share
+theme: tampere
+region: content_footer
+weight: -25
+provider: null
+plugin: react_and_share
+settings:
+  id: react_and_share
+  label: 'React & Share (FI)'
+  label_display: '0'
+  provider: tre_react_and_share
+  context_mapping:
+    node: '@node.node_route_context:node'
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/ajankohtaista\r\n/ajankohtaista/*\r\n/blogit\r\n/blogit/*\r\n/ilmoitustaulu\r\n/ilmoitustaulu/*\r\n<front>"
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      fi: fi

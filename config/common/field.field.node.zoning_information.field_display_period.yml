@@ -1,0 +1,21 @@
+uuid: e17a374f-07c2-47c0-89d0-c5b7bf10b403
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_period
+    - node.type.zoning_information
+  module:
+    - datetime_range
+id: node.zoning_information.field_display_period
+field_name: field_display_period
+entity_type: node
+bundle: zoning_information
+label: Nähtävilläoloaika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

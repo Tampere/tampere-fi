@@ -1,0 +1,21 @@
+uuid: 71ecbcad-d8ac-44ec-a6a1-0afc1444f46c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_participate_end_time
+    - node.type.involvement_opportunity
+  module:
+    - datetime
+id: node.involvement_opportunity.field_participate_end_time
+field_name: field_participate_end_time
+entity_type: node
+bundle: involvement_opportunity
+label: 'Ilmoittautumisaika päättyy'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

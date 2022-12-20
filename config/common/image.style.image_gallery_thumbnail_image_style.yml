@@ -1,0 +1,15 @@
+uuid: 56c94522-946e-4de2-a109-2c1e882e6cc5
+langcode: fi
+status: true
+dependencies: {  }
+name: image_gallery_thumbnail_image_style
+label: 'Kuvagallerian pikkukuva (420×240)'
+effects:
+  c6ef43f0-c6a5-48a8-b575-5196c19a9426:
+    uuid: c6ef43f0-c6a5-48a8-b575-5196c19a9426
+    id: image_scale_and_crop
+    weight: 2
+    data:
+      width: 420
+      height: 240
+      anchor: center-center

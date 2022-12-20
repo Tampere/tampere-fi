@@ -1,0 +1,7 @@
+listing_item__type: 'Page'
+listing_item__main_content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum luctus accumsan tempus.'
+listing_item__additional_information:
+listing_item__email_address:
+listing_item__url: "#"
+listing_item__modifiers:
+  - "link-wrapper"

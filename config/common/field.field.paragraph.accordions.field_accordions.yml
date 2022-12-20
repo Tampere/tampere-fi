@@ -1,0 +1,157 @@
+uuid: 9095174d-12f3-4291-b659-56158b807a51
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordions
+    - paragraphs.paragraphs_type.accordion_item
+    - paragraphs.paragraphs_type.accordions
+  module:
+    - entity_reference_revisions
+id: paragraph.accordions.field_accordions
+field_name: field_accordions
+entity_type: paragraph
+bundle: accordions
+label: Haitarit
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accordion_item: accordion_item
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 49
+        enabled: false
+      accordion_item:
+        weight: 18
+        enabled: true
+      accordions:
+        weight: 17
+        enabled: false
+      attachment:
+        weight: 19
+        enabled: false
+      balanced_content_liftup:
+        weight: 53
+        enabled: false
+      city_construction_project_card:
+        weight: 54
+        enabled: false
+      city_construction_project_cards:
+        weight: 55
+        enabled: false
+      colorful_content_liftup:
+        weight: 56
+        enabled: false
+      content_liftup:
+        weight: 57
+        enabled: false
+      content_liftup_with_image:
+        weight: 58
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 59
+        enabled: false
+      event_and_hobby_listing:
+        weight: 60
+        enabled: false
+      external_link:
+        weight: 61
+        enabled: false
+      external_link_with_link_text:
+        weight: 62
+        enabled: false
+      grouped_content_liftup:
+        weight: 68
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 69
+        enabled: false
+      highlighted_link_list:
+        weight: 70
+        enabled: false
+      icon_and_text_link:
+        weight: 71
+        enabled: false
+      infograph:
+        weight: 72
+        enabled: false
+      infographs:
+        weight: 73
+        enabled: false
+      internal_link:
+        weight: 74
+        enabled: false
+      internal_link_with_link_text:
+        weight: 75
+        enabled: false
+      link_list:
+        weight: 76
+        enabled: false
+      list_of_attachments:
+        weight: 22
+        enabled: false
+      metadata_attachment_list:
+        weight: 78
+        enabled: false
+      mosaic_liftup:
+        weight: 79
+        enabled: false
+      notice:
+        weight: 80
+        enabled: false
+      person_liftup:
+        weight: 81
+        enabled: false
+      person_liftups:
+        weight: 82
+        enabled: false
+      picture_mosaic:
+        weight: 83
+        enabled: false
+      place_liftup:
+        weight: 84
+        enabled: false
+      place_of_business_liftup:
+        weight: 85
+        enabled: false
+      project_and_organization_cards:
+        weight: 86
+        enabled: false
+      project_or_organization_card:
+        weight: 87
+        enabled: false
+      rss_feed:
+        weight: 28
+        enabled: false
+      service_highlight:
+        weight: 29
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 90
+        enabled: false
+      social_media_feed_embed:
+        weight: 30
+        enabled: false
+      social_media_link:
+        weight: 92
+        enabled: false
+      table:
+        weight: 93
+        enabled: false
+      text:
+        weight: 31
+        enabled: false
+      two_column_liftup:
+        weight: 95
+        enabled: false
+      webform:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

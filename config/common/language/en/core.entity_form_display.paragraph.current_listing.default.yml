@@ -1,0 +1,10 @@
+third_party_settings:
+  field_group:
+    group_taxonomy:
+      label: 'General taxonomy fields'
+    group_content_type_taxonomy:
+      label: 'Content type specific taxonomy fields'
+    group_display_archive_link:
+      label: 'Display archive link'
+      format_settings:
+        description: 'You can add a link to the news and article archive to the paragraph here.'

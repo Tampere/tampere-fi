@@ -1,0 +1,29 @@
+uuid: 28840668-ab1e-4970-917b-7b6c1b54a82e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_image
+    - media.type.image
+    - node.type.zoning_information
+id: node.zoning_information.field_main_image
+field_name: field_main_image
+entity_type: node
+bundle: zoning_information
+label: Pääkuva
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

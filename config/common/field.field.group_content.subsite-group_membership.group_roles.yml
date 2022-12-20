@@ -1,0 +1,22 @@
+uuid: 28694914-c9f1-4406-81ac-55f9a24e18ca
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.group_roles
+    - group.content_type.subsite-group_membership
+id: group_content.subsite-group_membership.group_roles
+field_name: group_roles
+entity_type: group_content
+bundle: subsite-group_membership
+label: Käyttäjäroolit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'group_type:group_role'
+  handler_settings:
+    group_type_id: subsite
+field_type: entity_reference

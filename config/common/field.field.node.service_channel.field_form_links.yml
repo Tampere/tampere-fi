@@ -1,0 +1,23 @@
+uuid: 00628ce6-7146-4fa6-b4e1-6a9b0d745455
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_form_links
+    - node.type.service_channel
+  module:
+    - link
+id: node.service_channel.field_form_links
+field_name: field_form_links
+entity_type: node
+bundle: service_channel
+label: Lomake
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link

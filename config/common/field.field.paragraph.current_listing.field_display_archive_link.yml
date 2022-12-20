@@ -1,0 +1,23 @@
+uuid: 3f7204f9-b03f-47f5-8abe-8a52ee076efa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_archive_link
+    - paragraphs.paragraphs_type.current_listing
+id: paragraph.current_listing.field_display_archive_link
+field_name: field_display_archive_link
+entity_type: paragraph
+bundle: current_listing
+label: 'Näytä arkisto-linkki'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Näytä
+  off_label: 'Älä näytä'
+field_type: boolean

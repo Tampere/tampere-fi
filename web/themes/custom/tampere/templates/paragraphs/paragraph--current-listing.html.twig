@@ -1,0 +1,74 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - paragraph_modifiers: An array of generic modifiers for paragraphs.
+ * - current_listing_liftups: Available liftups as an array.
+ * - archive_link_url: Path to current content archive.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if content|render|trim %}
+  {% set has_highlighted_liftup = TRUE %}
+{% endif %}
+
+{% set topical_listing__heading = paragraph.field_listing_title.value %}
+
+{% set card_grid_modifiers = [ "3-col" ] %}
+
+{% embed "@organisms/_paragraph.twig" %}
+  {% block paragraph_content %}
+    {% embed "@organisms/topical-listing/topical-listing.twig" with {
+      "attributes": [],
+      "link_list__items": link_list__items,
+    } %}
+      {% block highlighed_liftup %}
+        {{ content }}
+      {% endblock %}
+
+      {% block topical_listing_liftups %}
+        {% embed "@organisms/card-grid/card-grid.twig" with {
+          "card_grid__modifiers": card_grid_modifiers,
+        } %}
+          {% block card_grid__content %}
+            {% for liftup in current_listing_liftups %}
+              {{ liftup }}
+            {% endfor %}
+          {% endblock %}
+        {% endembed %}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+{% endembed %}

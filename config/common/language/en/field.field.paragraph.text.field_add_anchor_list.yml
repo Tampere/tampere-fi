@@ -1,0 +1,5 @@
+label: 'Add anchor list'
+description: 'Generates an automatic anchor list for this text paragraph based on its subheadings.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

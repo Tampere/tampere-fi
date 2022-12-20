@@ -1,0 +1,28 @@
+uuid: 75d074cb-2cf9-424f-9e6b-f273a4dcf060
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body
+    - node.type.blog_article
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: node.blog_article.field_body
+field_name: field_body
+entity_type: node
+bundle: blog_article
+label: Päätekstikenttä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

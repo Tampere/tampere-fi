@@ -1,0 +1,29 @@
+uuid: 8eed6314-fd67-4de9-bb7b-aaf7c862b18c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_project
+    - node.type.city_planning_and_constructions
+    - paragraphs.paragraphs_type.city_construction_project_card
+id: paragraph.city_construction_project_card.field_project
+field_name: field_project
+entity_type: paragraph
+bundle: city_construction_project_card
+label: 'Kaupunkisuunnittelu- tai rakentamishanke'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      city_planning_and_constructions: city_planning_and_constructions
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

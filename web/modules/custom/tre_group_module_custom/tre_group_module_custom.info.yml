@@ -1,0 +1,5 @@
+name: 'TRE Group Module Customisations'
+type: module
+description: 'Customises Group Module'
+core_version_requirement: ^8 || ^9
+package: 'TRE'

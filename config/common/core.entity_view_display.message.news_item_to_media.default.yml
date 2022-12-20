@@ -1,0 +1,57 @@
+uuid: 0394000d-fe4a-4a3a-a6f9-6418322bd988
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.message.news_item_to_media.field_delivery_info
+    - field.field.message.news_item_to_media.field_link_to_content
+    - field.field.message.news_item_to_media.field_news_item_title
+    - field.field.message.news_item_to_media.field_news_markup
+    - message.template.news_item_to_media
+  module:
+    - entity_reference_revisions
+    - link
+    - markup_field
+id: message.news_item_to_media.default
+targetEntityType: message
+bundle: news_item_to_media
+mode: default
+content:
+  field_delivery_info:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_link_to_content:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_news_item_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_news_markup:
+    type: markup_field_rendered_markup
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  search_api_excerpt: true

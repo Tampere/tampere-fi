@@ -1,0 +1,18 @@
+uuid: a9de7712-76ff-41e6-942d-6007ad09cb86
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.ptv_service_liftup
+target_entity_type_id: paragraph
+target_bundle: ptv_service_liftup
+default_langcode: current_interface
+language_alterable: true

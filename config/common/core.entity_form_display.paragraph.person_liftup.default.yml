@@ -1,0 +1,58 @@
+uuid: ec1b2fa6-4244-45c0-9bdd-3a3dcca93bec
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.person_liftup.field_description_text
+    - field.field.paragraph.person_liftup.field_person_liftup
+    - field.field.paragraph.person_liftup.field_pl_displayed_fields
+    - paragraphs.paragraphs_type.person_liftup
+  module:
+    - field_states_ui
+    - maxlength
+id: paragraph.person_liftup.default
+targetEntityType: paragraph
+bundle: person_liftup
+mode: default
+content:
+  field_description_text:
+    type: string_textarea
+    weight: 0
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_person_liftup:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: 'Henkilön nimi'
+    third_party_settings: {  }
+  field_pl_displayed_fields:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

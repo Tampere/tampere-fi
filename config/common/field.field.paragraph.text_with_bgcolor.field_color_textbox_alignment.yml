@@ -1,0 +1,23 @@
+uuid: e1971adb-f0df-4bfc-9e9a-7b23b8c7e6bc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_color_textbox_alignment
+    - paragraphs.paragraphs_type.text_with_bgcolor
+  module:
+    - options
+id: paragraph.text_with_bgcolor.field_color_textbox_alignment
+field_name: field_color_textbox_alignment
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: 'Taustavärillisen tekstilaatikon tasaus'
+description: 'Tällä asetuksella voi valita tuleeko taustavärillinen tekstilaatikko vasempaan vai oikeaan reunaan palstassa'
+required: true
+translatable: true
+default_value:
+  -
+    value: left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

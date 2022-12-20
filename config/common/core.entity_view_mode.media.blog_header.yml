@@ -1,0 +1,10 @@
+uuid: 692f787a-26a1-4dbb-908d-a51d4227d48d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.blog_header
+label: 'Blogin ylätunniste'
+targetEntityType: media
+cache: true

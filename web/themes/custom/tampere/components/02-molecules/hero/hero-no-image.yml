@@ -1,0 +1,4 @@
+hero__image__src:
+hero__heading: 'Lorem ipsum dolor sit amet'
+hero__modifiers:
+  - 'no-image'

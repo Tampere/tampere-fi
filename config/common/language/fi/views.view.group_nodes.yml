@@ -1,0 +1,74 @@
+label: 'Group nodes'
+display:
+  default:
+    display_title: Isäntä
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Käytä
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Ensimmäinen'
+            last: 'Viimeinen »'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
+      fields:
+        title:
+          label: Otsikko
+          separator: ', '
+        type:
+          label: Sisältötyyppi
+          separator: ', '
+        status:
+          label: Tila
+          settings:
+            format_custom_true: Julkaistu
+            format_custom_false: Julkaisematon
+          separator: ', '
+        changed:
+          label: Päivitetty
+          separator: ', '
+        delete_group_content:
+          text: 'Delete relation'
+        edit_node:
+          text: 'Edit node'
+        delete_node:
+          text: 'Delete node'
+        dropbutton:
+          label: Toimenpiteet
+      filters:
+        status:
+          expose:
+            label: Julkaisutila
+          group_info:
+            label: Julkaisutila
+            group_items:
+              1:
+                title: Julkaistu
+              2:
+                title: Julkaisematon
+        type:
+          expose:
+            label: Tyyppi
+      empty:
+        area_text_custom:
+          content: 'Ei sisältöä.'
+      arguments:
+        gid:
+          exception:
+            title: Kaikki
+      title: Solmut
+  page_1:
+    display_title: Sivu
+    display_options:
+      menu:
+        title: Solmut

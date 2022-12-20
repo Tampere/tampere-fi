@@ -1,0 +1,59 @@
+uuid: c0975c20-202b-4678-bda0-d28a4cfa6ecb
+langcode: fi
+status: true
+dependencies:
+  module:
+    - feeds
+id: feeds_subscription--feeds_subscription
+disabled: true
+path: feeds_subscription/feeds_subscription
+resourceType: feeds_subscription--feeds_subscription
+resourceFields:
+  fid:
+    disabled: false
+    fieldName: fid
+    publicName: fid
+    enhancer:
+      id: ''
+  topic:
+    disabled: false
+    fieldName: topic
+    publicName: topic
+    enhancer:
+      id: ''
+  hub:
+    disabled: false
+    fieldName: hub
+    publicName: hub
+    enhancer:
+      id: ''
+  lease:
+    disabled: false
+    fieldName: lease
+    publicName: lease
+    enhancer:
+      id: ''
+  expires:
+    disabled: false
+    fieldName: expires
+    publicName: expires
+    enhancer:
+      id: ''
+  secret:
+    disabled: false
+    fieldName: secret
+    publicName: secret
+    enhancer:
+      id: ''
+  token:
+    disabled: false
+    fieldName: token
+    publicName: token
+    enhancer:
+      id: ''
+  state:
+    disabled: false
+    fieldName: state
+    publicName: state
+    enhancer:
+      id: ''

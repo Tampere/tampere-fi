@@ -1,0 +1,19 @@
+uuid: 5f4605f7-2f15-49fc-baa9-d56a241e7075
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_list.field_links
+    - field.field.paragraph.link_list.field_summary
+    - field.field.paragraph.link_list.field_title
+    - paragraphs.paragraphs_type.link_list
+id: paragraph.link_list.default
+targetEntityType: paragraph
+bundle: link_list
+mode: default
+content: {  }
+hidden:
+  field_links: true
+  field_summary: true
+  field_title: true
+  search_api_excerpt: true

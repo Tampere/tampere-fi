@@ -1,0 +1,29 @@
+uuid: a3f0a826-e2e8-4fa7-92be-b0b62a2d37c5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.emergency_notice
+  module:
+    - system
+    - views
+  theme:
+    - tampere
+id: front_page_emergency_notice
+theme: tampere
+region: pre_header
+weight: 0
+provider: null
+plugin: 'views_block:emergency_notice-front_page_emergency_notice'
+settings:
+  id: 'views_block:emergency_notice-front_page_emergency_notice'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

@@ -1,0 +1,21 @@
+uuid: 94a19bcb-baf9-4273-a5ae-47ea35a03997
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - group_content_menu.group_content_menu_type.subsite_main_menu_fi
+  module:
+    - group_content_menu
+id: group_content_type_e3adb31f025fd
+label: 'Alasivusto: Group menu (Alasivuston päävalikko)'
+description: 'Adds <em class="placeholder">Alasivuston päävalikko</em> menu items to groups.'
+group_type: subsite
+content_plugin: 'group_content_menu:subsite_main_menu_fi'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false
+  auto_create_group_menu: true
+  auto_create_home_link: false
+  auto_create_home_link_title: Home

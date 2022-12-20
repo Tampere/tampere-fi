@@ -1,0 +1,38 @@
+$column-field-group-gap: $space-m;
+$column-field-group-gap--large: $space-xxl;
+
+.column-field-group {
+  $base_class: &;
+
+  @include word-wrap;
+
+  &__pre-columns-content,
+  &__post-columns-content,
+  &__column {
+    > * + * {
+      margin-top: $space-l;
+    }
+  }
+
+  &__columns {
+    display: grid;
+    gap: $space-m;
+
+    @include large {
+      gap: $space-xxl;
+      grid-template-columns: repeat(auto-fit, minmax(calc((100% - #{$column-field-group-gap--large}) / 2), 1fr));
+    }
+
+    &:not(:first-child) {
+      margin-top: $gutter-small;
+
+      @include large {
+        margin-top: $gutter-medium;
+      }
+    }
+  }
+
+  &__post-columns-content {
+    margin-top: $space-l;
+  }
+}

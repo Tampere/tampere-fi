@@ -1,0 +1,84 @@
+uuid: 5f6acf5f-de2f-4816-888d-c832b7ce1cf4
+langcode: fi
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.liftup
+    - field.field.node.blog_article.field_archive_search_content
+    - field.field.node.blog_article.field_blog
+    - field.field.node.blog_article.field_blog_post_author
+    - field.field.node.blog_article.field_blog_post_photographer
+    - field.field.node.blog_article.field_body
+    - field.field.node.blog_article.field_comment
+    - field.field.node.blog_article.field_date_of_publication
+    - field.field.node.blog_article.field_geographical_areas
+    - field.field.node.blog_article.field_help_text
+    - field.field.node.blog_article.field_keywords
+    - field.field.node.blog_article.field_life_situations
+    - field.field.node.blog_article.field_link_list
+    - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_media_caption
+    - field.field.node.blog_article.field_minisites
+    - field.field.node.blog_article.field_paragraphs
+    - field.field.node.blog_article.field_search_keywords
+    - field.field.node.blog_article.field_social_media_share
+    - field.field.node.blog_article.field_topic
+    - field.field.node.blog_article.field_topics
+    - node.type.blog_article
+  module:
+    - datetime
+    - user
+id: node.blog_article.liftup
+targetEntityType: node
+bundle: blog_article
+mode: liftup
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_date_of_publication:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_archive_search_content: true
+  field_blog: true
+  field_blog_post_author: true
+  field_blog_post_photographer: true
+  field_body: true
+  field_comment: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_link_list: true
+  field_media_caption: true
+  field_minisites: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_social_media_share: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  search_api_excerpt: true

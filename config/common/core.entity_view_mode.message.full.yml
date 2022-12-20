@@ -1,0 +1,12 @@
+uuid: 0a4bf9c2-83b1-4a82-815a-da50741e6afd
+langcode: fi
+status: false
+dependencies:
+  module:
+    - message
+_core:
+  default_config_hash: Pl6xok1fBCKaPlLC4iDJVaucp2W72csXt7M3Jwa95nU
+id: message.full
+label: 'Koko sisältö'
+targetEntityType: message
+cache: true

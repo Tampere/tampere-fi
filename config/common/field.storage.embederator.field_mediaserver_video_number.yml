@@ -1,0 +1,21 @@
+uuid: 3f54d68d-a516-4b3c-abe2-548b68391cf3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - embederator
+id: embederator.field_mediaserver_video_number
+field_name: field_mediaserver_video_number
+entity_type: embederator
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,29 @@
+uuid: 90be2b95-5074-4227-b5e3-602689ab9bae
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notice_type
+    - node.type.notice
+    - taxonomy.vocabulary.notice_types
+id: node.notice.field_notice_type
+field_name: field_notice_type
+entity_type: node
+bundle: notice
+label: Ilmoitustyyppi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      notice_types: notice_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

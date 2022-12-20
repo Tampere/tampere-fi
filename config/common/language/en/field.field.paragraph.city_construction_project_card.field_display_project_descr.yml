@@ -1,0 +1,4 @@
+label: 'Display project description'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

@@ -1,0 +1,14 @@
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Tabs
+    group_integrated_data:
+      label: 'Integrated data'
+    group_additional_information:
+      label: 'Additional information'
+    group_categorization:
+      label: Categorization
+    group_common:
+      label: Common
+    group_search_keywords:
+      label: 'Search keywords'

@@ -1,0 +1,17 @@
+uuid: 436061ec-b6c5-4254-8a69-9b48e082b8ab
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: positioned_image_small_desktop_image_style
+label: 'Asemoitu kuva (pieni) - desktop (400×267)'
+effects:
+  fa29754a-b454-46a1-b609-d12c43914a04:
+    uuid: fa29754a-b454-46a1-b609-d12c43914a04
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 267
+      crop_type: focal_point

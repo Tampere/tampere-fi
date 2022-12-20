@@ -1,0 +1,5 @@
+name: 'TRE News Archive'
+type: module
+description: 'Handles for creating a document to archive news items content type for a specific year.'
+core_version_requirement: '>=9.3'
+package: 'TRE'

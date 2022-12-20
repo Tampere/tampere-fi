@@ -1,0 +1,11 @@
+facets:
+  - label: 'Lorem ipsum dolor'
+    content: 
+      - 'Lorem'
+      - 'ipsum'
+      - 'dolor'
+    id: 0
+  - label: 'Pellentesque'
+    content: 
+      - 'Nunc laoreet metus ut facilisis laoreet. Pellentesque pharetra finibus nisl, vel dictum ante auctor vel. Fusce fermentum, nibh ac rhoncus malesuada, arcu lorem gravida lorem, ut sagittis arcu odio ut mi. Praesent laoreet massa erat, ac facilisis est interdum quis. Suspendisse volutpat, mauris non dignissim porttitor, erat elit aliquam orci, vitae finibus nisi dolor vitae est. Nullam suscipit auctor magna, eu accumsan dolor. Pellentesque luctus felis vel nulla venenatis, ut consectetur justo tristique.'
+    id: 1

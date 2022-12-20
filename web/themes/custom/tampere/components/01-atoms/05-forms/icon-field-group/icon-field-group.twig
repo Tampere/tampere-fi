@@ -1,0 +1,41 @@
+{% set icon_field_group__base_class = "icon-field-group" %}
+
+{% if field_type %}
+  {% set icon_field_group__field__modifiers = [ "type-" ~ field_type|clean_class ] %}
+{% endif %}
+
+{% if field_name %}
+  {% set icon_field_group__field__extra_classes = "field-name-" ~ field_name|replace({":": "-"})|clean_class %}
+{% endif %}
+
+<div {{ bem(icon_field_group__base_class, icon_field_group__modifiers|default([]), icon_field_group__blockname) }}>
+  {% if field_label and label_highlight %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      "heading_base_class": "highlighted-label",
+      "heading_modifiers": icon_field_group__highlighted_label__modifiers,
+      "heading_blockname": icon_field_group__base_class,
+      "heading_level": 2,
+      "heading": field_label,
+    } %}
+  {% endif %}
+
+  <div {{ bem("wrapper", icon_field_group__wrapper__modifiers|default([]), icon_field_group__base_class, [ "hyphenate" ]) }}>
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      "icon_base_class": "icon",
+      "icon_blockname": icon_field_group__base_class,
+      "icon_modifiers": [ variant ],
+      "icon_name": variant,
+      "icon_decorative": TRUE,
+    } %}
+    <div {{ bem("content", "", icon_field_group__base_class) }}>
+      <div {{ bem("field", icon_field_group__field__modifiers|default([]), "", icon_field_group__field__extra_classes) }}>
+        {% if field_label and not label_highlight %}
+          <div class="field-label-above">{{ field_label }}:</div>
+        {% endif %}
+        {% block field_content %}
+          {{ icon_field_group_content }}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>

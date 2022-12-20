@@ -1,0 +1,18 @@
+uuid: 937c8f30-cb25-432b-be19-f0c929c93a87
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.main-menu-en
+id: menu_link_content.main-menu-en.description
+field_name: description
+entity_type: menu_link_content
+bundle: main-menu-en
+label: Kuvaus
+description: 'Näytetään vietäessä hiirtä linkin yli.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

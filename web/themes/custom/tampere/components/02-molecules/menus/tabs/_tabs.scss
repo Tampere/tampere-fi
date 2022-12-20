@@ -1,0 +1,22 @@
+$tabs-content-padding: 1.5 * $space-s;
+$tabs-link-padding: $space-xxs $space-s;
+
+/* Tab Navigation */
+.tabs__nav {
+  @include list-reset;
+
+  margin-bottom: $gutter-mobile;
+
+  @include medium {
+    display: flex;
+  }
+}
+
+/* Drupal Local Tasks variant */
+.tabs__nav--local-tasks {
+  padding: 0;
+}
+
+.tabs__link--local-tasks {
+  padding: $tabs-link-padding;
+}

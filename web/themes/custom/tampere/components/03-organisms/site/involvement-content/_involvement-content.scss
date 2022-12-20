@@ -1,0 +1,39 @@
+.involvement-content {
+
+  &__main-image {
+    @include large {
+      margin-right: $gutter-default;
+      margin-left: $gutter-default;
+    }
+  }
+
+  &__main-content {
+    margin-top: $space-s;
+    margin-right: $space-s;
+    margin-left: $space-s;
+
+    @include large {
+      @include centered-content;
+
+      margin-top: $space-xl;
+    }
+  }
+
+  &__main-content-wrapper {
+    margin-bottom: $space-m-plus;
+
+    @include large {
+      margin-bottom: $space-xl;
+    }
+
+    > * + * {
+      margin-top: $space-m-plus;
+      margin-bottom: $space-m-plus;
+
+      @include large {
+        margin-top: $space-l;
+        margin-bottom: $space-l;
+      }
+    }
+  }
+}

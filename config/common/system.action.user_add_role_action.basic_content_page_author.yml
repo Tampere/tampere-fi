@@ -1,0 +1,14 @@
+uuid: 7797ced3-ee35-4b21-ace6-63be78ac2840
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.basic_content_page_author
+  module:
+    - user
+id: user_add_role_action.basic_content_page_author
+label: 'Add the Perussisältösivutoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: basic_content_page_author

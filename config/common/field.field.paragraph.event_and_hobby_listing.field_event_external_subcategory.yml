@@ -1,0 +1,21 @@
+uuid: 364c80f8-b58c-4050-a84c-21d3735f8af1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_event_external_subcategory
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+  module:
+    - external_data_source
+id: paragraph.event_and_hobby_listing.field_event_external_subcategory
+field_name: field_event_external_subcategory
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: 'Pirkanmaan tapahtumien alaluokat'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: external_data_source

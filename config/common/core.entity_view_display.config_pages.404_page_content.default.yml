@@ -1,0 +1,31 @@
+uuid: 81e4f5b7-bdc9-44c8-8f04-81b62c01fb62
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.404_page_content
+    - field.field.config_pages.404_page_content.field_page_content
+  module:
+    - ds
+    - text
+id: config_pages.404_page_content.default
+targetEntityType: config_pages
+bundle: 404_page_content
+mode: default
+content:
+  field_page_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

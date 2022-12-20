@@ -1,0 +1,20 @@
+uuid: 51ff9b1d-8f38-4a07-9660-b3a3da1c4c78
+langcode: en
+status: true
+dependencies:
+  theme:
+    - tampere
+_core:
+  default_config_hash: PffmQ-ABSz5tFjWmVsR7NesunDnEivvopnJnBjl8KNE
+id: tampere_local_actions
+theme: tampere
+region: admin_tasks
+weight: -16
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

@@ -1,0 +1,14 @@
+uuid: a3cd910c-d0ab-4f99-a215-1d107ba1d64f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.ptv_service
+id: node_type_ptv_service
+entity_type_id: node_type
+entity_id: ptv_service
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

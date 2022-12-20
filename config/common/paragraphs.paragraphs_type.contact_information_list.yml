@@ -1,0 +1,15 @@
+uuid: 06629d39-315b-4cb3-9ba5-0a2fba61b2f0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: contact_information_list
+label: 'Toimipiste- ja paikkayhteystietolista'
+icon_uuid: null
+icon_default: null
+description: 'Toimipisteiden sekä paikkojen yhteystiedot valikoituvat listalle automaattisesti valittujen metatietojen perusteella.'
+behavior_plugins: {  }

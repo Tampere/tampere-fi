@@ -1,0 +1,8 @@
+uuid: 230b6492-2895-46d1-9257-c75abfcc3691
+langcode: fi
+status: true
+dependencies: {  }
+id: secondary-menu-fi
+label: 'Toissijainen valikko'
+description: ''
+locked: false

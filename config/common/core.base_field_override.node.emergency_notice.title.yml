@@ -1,0 +1,18 @@
+uuid: 04cd7bc0-5fbc-4c0c-a80d-388f65f66fb5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.emergency_notice
+id: node.emergency_notice.title
+field_name: title
+entity_type: node
+bundle: emergency_notice
+label: 'Hallinnollinen otsikko'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

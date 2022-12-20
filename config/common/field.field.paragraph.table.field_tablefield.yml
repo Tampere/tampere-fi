@@ -1,0 +1,29 @@
+uuid: 93416a7f-4ac6-417b-9a80-30bbd4bc87c3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tablefield
+    - paragraphs.paragraphs_type.table
+  module:
+    - tablefield
+id: paragraph.table.field_tablefield
+field_name: field_tablefield
+entity_type: paragraph
+bundle: table
+label: Taulukkokenttä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  export: false
+  restrict_rebuild: true
+  restrict_import: true
+  lock_values: false
+  cell_processing: 0
+  empty_rules:
+    ignore_table_structure: false
+    ignore_table_header: false
+field_type: tablefield

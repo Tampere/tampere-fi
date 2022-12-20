@@ -1,0 +1,18 @@
+uuid: 3d3a7393-5fd6-4c57-9f3e-e96784921ab1
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_show_events_by_tre_only
+field_name: field_show_events_by_tre_only
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

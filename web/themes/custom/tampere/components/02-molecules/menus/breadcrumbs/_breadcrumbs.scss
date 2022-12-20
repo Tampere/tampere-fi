@@ -1,0 +1,94 @@
+$breadcrumb-font-size: $font-18;
+$breadcrumb-item-margin-h: $space-xxs;
+$breadcrumb-separator-icon-extra-small-size: 10px;
+
+.breadcrumb {
+  @include list-reset;
+
+  font-size: $breadcrumb-font-size;
+  font-family: $font-heading;
+}
+
+.breadcrumb__item,
+.breadcrumb__link,
+.breadcrumb__link:link,
+.breadcrumb__link:visited,
+.breadcrumb__link:focus {
+  color: $breadcrumb-color;
+  text-decoration: none;
+}
+
+.breadcrumb__link {
+  @include word-wrap;
+
+  display: flex;
+  align-items: center;
+
+  @include medium {
+    display: inline;
+  }
+
+  &:hover,
+  &:active,
+  &.active {
+    text-decoration: underline;
+  }
+}
+
+.breadcrumb__item {
+  &:nth-last-of-type(2) {
+    display: inline-block;
+  }
+}
+
+.breadcrumb__item,
+.breadcrumb__separator-icon {
+  display: none;
+
+  @include medium {
+    display: inline-block;
+  }
+}
+
+.breadcrumb__separator-icon {
+  height: $icon-xxs;
+  width: $icon-xxs;
+  margin-right: $breadcrumb-item-margin-h;
+  margin-left: $breadcrumb-item-margin-h;
+}
+
+.breadcrumb__back-arrow {
+  display: inline;
+  height: $icon-xs;
+  width: $icon-xs;
+  margin-right: $space-s;
+
+  @include medium {
+    display: none;
+  }
+}
+
+.breadcrumb--single-item .breadcrumb__item { 
+  display: inline-block;
+}
+
+// Variations
+.breadcrumb--all-items-visible {
+  .breadcrumb__item,
+  .breadcrumb__separator-icon {
+    display: inline-block;
+  }
+
+  .breadcrumb__item {
+    @include large-down {
+      font-size: $font-14;
+    }
+  }
+
+  .breadcrumb__separator-icon {
+    @include large-down {
+      height: $breadcrumb-separator-icon-extra-small-size;
+      width: $breadcrumb-separator-icon-extra-small-size;
+    }
+  }
+}

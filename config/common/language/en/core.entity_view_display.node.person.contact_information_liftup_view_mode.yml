@@ -1,0 +1,13 @@
+content:
+  field_additional_phones:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: Phone
+  field_phone:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: Phone

@@ -1,0 +1,23 @@
+uuid: 4d359780-1900-4ba0-98cd-809267219dce
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_location_on_map
+    - node.type.involvement_opportunity
+id: node.involvement_opportunity.field_display_location_on_map
+field_name: field_display_location_on_map
+entity_type: node
+bundle: involvement_opportunity
+label: 'Näytä sijainti kartalla'
+description: 'Valitse tämä, jos haluat näyttää osallistumismahdollisuuden omalla sivulla sen sijainnin kartalla.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

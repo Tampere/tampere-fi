@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: Finnish
+    -
+      label: English
+    -
+      label: Swedish
+    -
+      label: French
+    -
+      label: German
+    -
+      label: Turkish

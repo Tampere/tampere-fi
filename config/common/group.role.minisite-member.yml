@@ -1,0 +1,35 @@
+uuid: 1df7f30b-c39a-4fba-964c-0f8a2c968a5d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: minisite-member
+label: Member
+weight: -100
+internal: true
+audience: member
+group_type: minisite
+permissions_ui: true
+permissions:
+  - 'access content overview'
+  - 'access group_node overview'
+  - 'add scheduled transitions'
+  - 'leave group'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:city_planning_and_constructions entity'
+  - 'view group_node:collection_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view group_node:front_page entity'
+  - 'view group_node:moderated_page entity'
+  - 'view group_node:news_item entity'
+  - 'view group_node:organization entity'
+  - 'view group_node:place entity'
+  - 'view group_node:project entity'
+  - 'view group_node:small_news_item entity'
+  - 'view group_node:zoning_information entity'
+  - 'view latest group version'
+  - 'view own unpublished group'
+  - 'view scheduled transitions'

@@ -1,0 +1,10 @@
+uuid: 48e795e9-6632-4be7-8abc-cc7a1b4f244a
+langcode: en
+status: true
+dependencies: {  }
+machine: production
+description: null
+name: Production
+url: 'https://tampere.exove.eu'
+fg_color: '#abacab'
+bg_color: '#d71c11'

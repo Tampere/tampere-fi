@@ -1,0 +1,57 @@
+{% set content_img__base_class = "content-img" %}
+
+{% if content_img__tag|render|trim %}
+  {% set has_image_tag = TRUE %}
+{% endif %}
+
+{% if content_img__optional_tag|render|trim %}
+  {% set has_optional_image_tag = TRUE %}
+{% endif %}
+
+{% if content_img__img__caption|render|trim %}
+  {% set has_caption = TRUE %}
+{% endif %}
+
+{% if content_img__date|render|trim %}
+  {% set has_date = TRUE %}
+{% endif %}
+
+<figure {{ bem(content_img__base_class, content_img__modifiers, content_img__blockname)}}>
+  {# Heading #}
+  <div {{ bem("heading", content_img__heading__modifiers, content_img__base_class)}}>
+    {% if has_image_tag %}
+      <div {{ bem("heading-item", content_img__heading_item__modifiers, content_img__base_class)}}>
+        {{ content_img__tag }}
+      </div>
+    {% endif %}
+    {% if has_optional_image_tag %}
+      <div {{ bem("heading-item", content_img__heading_item__modifiers, content_img__base_class)}}>
+        {{ content_img__optional_tag }}
+      </div>
+    {% endif %}
+     {% if has_date %}
+        <div {{ bem("heading-item", content_img__heading_item__modifiers, content_img__base_class)}}>
+          {{ content_img__date }}
+        </div>  
+      {% endif %}
+  </div>
+
+  {# Image #}
+  {% block content_image %}
+    {% if content_img__img__src %}
+      {% include "@atoms/04-images/00-image/_image.twig" with {
+        image_base_class: "figure",
+        image_blockname: content_img__base_class,
+        img_src: content_img__img__src,
+        img_alt: content_img__img__alt,
+      } %}
+    {% endif %}
+  {% endblock %}
+
+  {# Caption #}
+  {% if has_caption %}
+    <figcaption {{ bem("caption", content_img__cation__modifiers, content_img__base_class)}}>
+      {{ content_img__img__caption}}
+    </figcaption>
+  {% endif %}
+</figure>

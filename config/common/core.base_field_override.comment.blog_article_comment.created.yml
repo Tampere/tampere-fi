@@ -1,0 +1,18 @@
+uuid: 4b1ecff0-dcf9-4dad-a60e-f1e9f731c658
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.created
+field_name: created
+entity_type: comment
+bundle: blog_article_comment
+label: Luotu
+description: 'Kommentin luontiajankohta.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

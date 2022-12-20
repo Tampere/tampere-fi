@@ -1,0 +1,67 @@
+uuid: a3fce5dd-21b4-4139-bc46-dd602643cdca
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group.life_situation.field_front_page
+    - field.field.group.life_situation.field_life_situation_icon
+    - group.type.life_situation
+  module:
+    - ex_icons
+    - path
+id: group.life_situation.default
+targetEntityType: group
+bundle: life_situation
+mode: default
+content:
+  field_front_page:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situation_icon:
+    type: ex_icon_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

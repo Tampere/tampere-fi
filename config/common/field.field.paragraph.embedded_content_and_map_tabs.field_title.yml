@@ -1,0 +1,19 @@
+uuid: 5aedbae4-dd97-4b58-a49e-24104b24cdab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+id: paragraph.embedded_content_and_map_tabs.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: Otsikko
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

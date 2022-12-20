@@ -1,0 +1,15 @@
+uuid: 5a77fc0d-726f-4695-93a6-48c0f43c9c78
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: automatic_anchor_list
+label: 'Automaattinen ankkurilista'
+icon_uuid: null
+icon_default: null
+description: 'Paragraafin avulla luodaan automaattinen lista ankkurilinkkejä, jotka osoittavat sivun h2 elementteihin.'
+behavior_plugins: {  }

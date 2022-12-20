@@ -1,0 +1,10 @@
+uuid: ff73c9d5-f269-4800-9690-e316224881d2
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.contact_information_liftup_view_mode
+label: Yhteystietonosto
+targetEntityType: node
+cache: true

@@ -1,0 +1,8 @@
+label: 'Sisältöselain: kaikki sisältö'
+display_configuration:
+  link_text: 'Valitse sisältö'
+widgets:
+  777b2d4e-b7a8-4170-9151-55d013fff712:
+    settings:
+      submit_text: 'Valitse sisältö'
+    label: Sisältö

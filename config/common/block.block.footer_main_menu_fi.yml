@@ -1,0 +1,33 @@
+uuid: c440a563-08e8-4304-bf53-e15a8e304ee3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.footer-main-menu-fi
+  module:
+    - language
+    - system
+  theme:
+    - tampere
+id: footer_main_menu_fi
+theme: tampere
+region: footer
+weight: -4
+provider: null
+plugin: 'system_menu_block:footer-main-menu-fi'
+settings:
+  id: 'system_menu_block:footer-main-menu-fi'
+  label: 'Alatunnisteen päävalikko (FI)'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      fi: fi

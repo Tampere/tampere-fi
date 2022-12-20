@@ -1,0 +1,52 @@
+uuid: 0dbca7bf-b2ff-4465-b480-b3f2617f8a8e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - media.type.dream_broker_video
+    - media.type.file
+    - media.type.image
+    - media.type.remote_video
+  module:
+    - content_translation
+    - dropzonejs
+    - embederator
+    - file
+    - file_delete
+    - media
+    - media_bulk_upload
+    - node
+    - paragraphs_type_permissions
+    - system
+id: media_editor
+label: Mediatoimittaja
+weight: 3
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'add embederator entity'
+  - 'create dream_broker_video media'
+  - 'create file media'
+  - 'create image media'
+  - 'create media'
+  - 'create paragraph content embederator_embed'
+  - 'create remote_video media'
+  - 'delete any media'
+  - 'delete embederator entity'
+  - 'delete files'
+  - 'delete media'
+  - 'delete own file media'
+  - 'delete own image media'
+  - 'delete paragraph content embederator_embed'
+  - 'dropzone upload files'
+  - 'edit embederator entity'
+  - 'translate editable entities'
+  - 'update any media'
+  - 'update paragraph content embederator_embed'
+  - 'use download_files bulk upload form'
+  - 'use download_images bulk upload form'
+  - 'view all media revisions'
+  - 'view own unpublished media'
+  - 'view the administration theme'

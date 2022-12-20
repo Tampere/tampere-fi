@@ -1,0 +1,23 @@
+uuid: 519d5be2-6059-4e18-9c65-a0918d6cac7b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_epsg_3067_northing
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_epsg_3067_northing
+field_name: field_epsg_3067_northing
+entity_type: node
+bundle: city_planning_and_constructions
+label: Pohjoisuus
+description: 'ETRS-TM35FIN-järjestelmän (EPSG:3067) mukainen pohjoisuus metreinä.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: 'N'
+field_type: decimal

@@ -1,0 +1,19 @@
+uuid: cf199fcb-5ecb-4fc2-af0c-b03fca67deb5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+    - node.type.zoning_information
+  module:
+    - gnode
+    - node
+id: group_content_type_94e899c8fb925
+label: 'Elämäntilanne: Group node (Zoning information)'
+description: 'Adds <em class="placeholder">Zoning information</em> content to groups both publicly and privately.'
+group_type: life_situation
+content_plugin: 'group_node:zoning_information'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

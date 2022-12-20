@@ -1,0 +1,15 @@
+/*
+ * If you have blazy module configured to serve a lazy-loading of images
+ * these styles will help with
+ *
+**/
+
+/* uncomment to hide b-lazy blue square loading placeholder */
+//.media--loading::before {
+//  display: none !important;
+//}
+
+/* a hack to display image nonetheless it has not been proceed by the blazy (for any reason) but is still loaded */
+.b-error {
+  opacity: 1;
+}

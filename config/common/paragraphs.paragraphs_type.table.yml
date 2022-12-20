@@ -1,0 +1,10 @@
+uuid: 8e785795-df99-49ab-982b-25ea60f16a48
+langcode: fi
+status: true
+dependencies: {  }
+id: table
+label: Taulukko
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

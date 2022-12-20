@@ -1,0 +1,25 @@
+uuid: 93f1c4cf-dd98-4ea9-9dad-70e731c5f153
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_media_share
+    - node.type.news_item
+  module:
+    - social_media
+id: node.news_item.field_social_media_share
+field_name: field_social_media_share
+entity_type: node
+bundle: news_item
+label: 'Jaa sosiaalisessa mediassa'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: social_media

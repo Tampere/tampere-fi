@@ -1,0 +1,18 @@
+uuid: d1ebed0f-99c1-4500-8fb4-ce111d6a750d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.person_liftup
+id: paragraph.person_liftup.created
+field_name: created
+entity_type: paragraph
+bundle: person_liftup
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

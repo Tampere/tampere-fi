@@ -1,0 +1,8 @@
+uuid: 9eb7df36-165a-4dd4-96f5-7f3866cb4eda
+langcode: fi
+status: true
+dependencies: {  }
+name: Kaavatasot
+vid: zoning_information_types
+description: ''
+weight: 0

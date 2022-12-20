@@ -1,0 +1,29 @@
+uuid: 95f635ce-4d40-4ba0-b7bb-1a24d3444341
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_theme_topic
+    - group.type.theme
+    - group.type.topic
+id: group.theme.field_theme_topic
+field_name: field_theme_topic
+entity_type: group
+bundle: theme
+label: 'Teeman aihepiiri'
+description: 'Tällä kentällä merkitset teeman <em>alisteiseksi</em> tietylle aihepiirille. Valinta vaikuttaa teeman sisällön URL-polkuihin ja murupolkuun.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      topic: topic
+    sort:
+      field: label
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

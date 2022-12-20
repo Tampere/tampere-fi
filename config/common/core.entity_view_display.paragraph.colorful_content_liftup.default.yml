@@ -1,0 +1,28 @@
+uuid: 627bb5f2-c6fc-4012-aade-f7b267aca45e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.colorful_content_liftup.field_content_liftups
+    - paragraphs.paragraphs_type.colorful_content_liftup
+  module:
+    - ds
+    - entity_reference_revisions
+id: paragraph.colorful_content_liftup.default
+targetEntityType: paragraph
+bundle: colorful_content_liftup
+mode: default
+content:
+  field_content_liftups:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

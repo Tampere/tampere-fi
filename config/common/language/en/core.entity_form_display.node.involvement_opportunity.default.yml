@@ -1,0 +1,19 @@
+third_party_settings:
+  field_group:
+    group_categorization:
+      label: Taxonomies
+    group_signup_info:
+      label: 'Sign up information'
+    group_yleinen:
+      label: Common
+    group_valilehdet:
+      label: Tabs
+content:
+  field_additional_information:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Maximum length is @limit characters, there is remaining  <strong>@remaining</strong>'
+  field_opportunity_description:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Maximum length is @limit characters, there is remaining  <strong>@remaining</strong>'

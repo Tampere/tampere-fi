@@ -1,0 +1,17 @@
+uuid: f5d69480-32d7-46ee-b79e-dd70c8620cb1
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: positioned_image_medium_desktop_image_style
+label: 'Asemoitu kuva (keskikokoinen) - desktop (400×533)'
+effects:
+  7cfe8e3d-0bc7-4889-8e3a-77c0030f1074:
+    uuid: 7cfe8e3d-0bc7-4889-8e3a-77c0030f1074
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 400
+      height: 533
+      crop_type: focal_point

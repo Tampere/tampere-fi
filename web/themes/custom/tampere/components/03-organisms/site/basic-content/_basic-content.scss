@@ -1,0 +1,64 @@
+.basic-content {
+  $base_class: &;
+
+  --text-content-max-width: 100%;
+
+  @include large {
+    .main-content--with-sidebar & {
+      margin-left: $gutter-sidebar-content * (-1);
+
+      #{$base_class}__main-content {
+        padding-left: $gutter-sidebar-content;
+        padding-right: $gutter-sidebar-content;
+      }
+    }
+  }
+
+  &__main-image {
+    margin-bottom: $gutter-medium;
+
+    @include large {
+      margin-bottom: $gutter-default;
+      margin-right: $gutter-default;
+      margin-left: $gutter-default;
+    }
+
+    .main-content--with-sidebar & {
+      @include large {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__heading {
+    margin-bottom: $space-m;
+
+    @include large {
+      margin-bottom: $space-l;
+    }
+
+    .main-content--with-sidebar & {
+      @include large {
+        margin-top: (-1) * $space-s;
+      }
+    }
+  }
+
+  &__main-content {
+    @include centered-content;
+    @extend %undo-content-centering-with-sidebar;
+  }
+
+  &__last-updated {
+    @include page-element-spacer;
+
+    font-size: $font-12;
+    text-align: right;
+    max-width: var(--basic-component-max-width);
+
+    @include large {
+      font-size: $font-16;
+    }
+  }
+}

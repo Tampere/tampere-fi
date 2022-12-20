@@ -1,0 +1,12 @@
+{% if not attributes %}
+  <ul class="form-item--radio">
+{% endif %}
+  {% for key, radio in radios %}
+    {% include "@atoms/05-forms/radio/_radio-item.twig" with {
+      radio_item: radio.title,
+      radio_item_checked: radio.checked
+    } %}
+  {% endfor %}
+{% if not attributes %}
+  </ul>
+{% endif %}

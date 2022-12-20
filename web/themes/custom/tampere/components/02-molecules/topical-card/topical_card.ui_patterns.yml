@@ -1,0 +1,23 @@
+topical_card:
+  label: Topical card
+  variants:
+    default:
+      label: Default
+    big:
+      label: Big
+    alt:
+      label: Alt
+  fields:
+    topical_card__link__url:
+      label: Content URL
+    topical_card__image:
+      label: Image
+    topical_card__date:
+      label: Date
+    topical_card__tag:
+      label: Tag
+    topical_card__heading:
+      label: Heading
+    topical_card__summary:
+      label: Summary
+  use: "@molecules/topical-card/topical-card.twig"

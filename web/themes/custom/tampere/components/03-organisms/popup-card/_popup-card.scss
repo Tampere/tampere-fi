@@ -1,0 +1,81 @@
+.popup-card {
+  $base_class: &;
+
+  background-color: clr(background);
+  border: $border-thick-light-blue;
+  display: flex;
+  flex-direction: column;
+  padding: $space-s;
+
+  &__button {
+    @include button-reset;
+
+    align-items: center;
+    color: clr(primary);
+    cursor: pointer;
+    display: flex;
+    font-family: $font-heading;
+    font-size: $font-18;
+    margin-bottom: $space-xs;
+    margin-left: auto;
+
+    @include large {
+      font-size: $font-20;
+    }
+  }
+
+  &__icon {
+    margin-left: $space-s;
+    height: $icon-xs;
+    width: $icon-xs;
+  }
+
+  &__heading-link {
+    @include contact-card-heading-link;
+  }
+
+  &__columns {
+    @include large {
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: calc(100% / 3) repeat(auto-fit, minmax(calc(100% / 3), 1fr));
+      margin-bottom: $space-s;
+      margin-left: $space-s;
+    }
+  }
+
+  &__column {
+    // There shouldn't be extra space between the title and the element following it
+    // so adding spacing between everywhere else.
+    > *:not(.popup-card__heading) + * {
+      margin-top: $space-l;
+    }
+  }
+
+  &__column + #{$base_class}__column {
+    @include large-down {
+      margin-top: $space-m;
+    }
+
+    @include large {
+      margin-left: $space-xxl;
+    }
+  }
+
+  // Variations
+  &--background {
+    background-color: clr(accent-secondary);
+    border: 0;
+
+    #{$base_class}__heading-link {
+      @include contact-card-heading-link($underline-color: clr(primary));
+    }
+
+    #{$base_class}__columns {
+      @include large {
+        margin-right: $space-l;
+        margin-left: $space-l;
+      }
+    }
+  }
+}

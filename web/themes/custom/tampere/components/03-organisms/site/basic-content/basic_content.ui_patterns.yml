@@ -1,0 +1,14 @@
+basic_content:
+  label: Basic content
+  fields:
+    main_image:
+      label: Main image
+    pre_title_content:
+      label: Content preceding title
+    main_title:
+      label: Main title
+    main_content:
+      label: Main content
+    last_updated:
+      label: Last updated
+  use: "@organisms/site/basic-content/basic-content.twig"

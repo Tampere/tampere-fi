@@ -1,0 +1,33 @@
+uuid: 8bcddf5f-ec6c-45a8-b63b-94d4842c936f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: blogs_fi
+label: 'Blogit FI'
+type: 'canonical_entities:node'
+pattern: 'blogit/[node:title]'
+selection_criteria:
+  ed47a727-7baf-45ec-b483-f795b6fa48d1:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ed47a727-7baf-45ec-b483-f795b6fa48d1
+    context_mapping:
+      node: node
+    bundles:
+      blog_article: blog_article
+  49f2d6a1-afeb-4fd7-a4b7-f79d1bb0cd6b:
+    id: language
+    negate: false
+    uuid: 49f2d6a1-afeb-4fd7-a4b7-f79d1bb0cd6b
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fi: fi
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Kieli

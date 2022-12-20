@@ -1,0 +1,17 @@
+uuid: c7a0c842-c4e2-43e4-a78b-6e9f670ff546
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+  enforced:
+    config:
+      - user.role.emergency_notice_author
+id: subsite-c36d2ea4d
+label: Häiriöilmoitustoimittaja
+weight: -8
+internal: true
+audience: outsider
+group_type: subsite
+permissions_ui: false
+permissions: {  }

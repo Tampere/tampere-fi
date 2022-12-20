@@ -1,0 +1,14 @@
+uuid: de4d8173-2cf0-43bc-a45c-39621fa7b72b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cross_site_publications
+id: taxonomy_vocabulary_cross_site_publications
+entity_type_id: taxonomy_vocabulary
+entity_id: cross_site_publications
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

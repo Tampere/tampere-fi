@@ -1,0 +1,85 @@
+uuid: d4b484fc-f528-4472-83af-b190da378706
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.small_news_item.field_author
+    - field.field.node.small_news_item.field_body
+    - field.field.node.small_news_item.field_date_of_publication
+    - field.field.node.small_news_item.field_geographical_areas
+    - field.field.node.small_news_item.field_help_text
+    - field.field.node.small_news_item.field_keywords
+    - field.field.node.small_news_item.field_life_situations
+    - field.field.node.small_news_item.field_link_list
+    - field.field.node.small_news_item.field_main_image
+    - field.field.node.small_news_item.field_media_caption
+    - field.field.node.small_news_item.field_minisites
+    - field.field.node.small_news_item.field_paragraphs
+    - field.field.node.small_news_item.field_photographer
+    - field.field.node.small_news_item.field_search_keywords
+    - field.field.node.small_news_item.field_social_media_share
+    - field.field.node.small_news_item.field_topic
+    - field.field.node.small_news_item.field_topics
+    - node.type.small_news_item
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default-search
+    regions:
+      listing_item__main_content:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.small_news_item.search_result
+targetEntityType: node
+bundle: small_news_item
+mode: search_result
+content: {  }
+hidden:
+  content_moderation_control: true
+  field_author: true
+  field_body: true
+  field_date_of_publication: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_link_list: true
+  field_main_image: true
+  field_media_caption: true
+  field_minisites: true
+  field_paragraphs: true
+  field_photographer: true
+  field_search_keywords: true
+  field_social_media_share: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

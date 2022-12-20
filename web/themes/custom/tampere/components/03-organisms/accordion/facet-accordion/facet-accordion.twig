@@ -1,0 +1,27 @@
+{{ attach_library("tampere/facet-accordion") }}
+
+{% set facet_accordion__base_class = "facet-accordion" %}
+
+<div {{ bem(facet_accordion__base_class, facet_accordion__modifiers, facet_accordion__blockname)}}>
+  <div {{ bem("headings", facet_accordion__headings__modifiers, "facet-accordion")}}>
+  </div>
+  {% block accordion_content %}
+    
+    {% for facet in facets %}
+      {% embed "@organisms/accordion/facet-accordion/facet-accordion-item.twig" with {
+        "facet_accordion_item__title": facet.label,
+        "id": facet.id,
+      } %}
+        {% block facet_accordion_item_content %}
+          {% for item in facet.content %}
+            <div {{ bem("content-item", facet_accordion_item__content_item__modifiers, "facet-accordion-item", [(loop.index == 2 ? "is-active")])}}>
+              <a class="{{ loop.index == 2 ? "is-active" }}">
+                {{ item }}
+              </a>
+            </div>
+          {% endfor %}
+        {% endblock %}
+      {% endembed %}
+    {% endfor %}
+  {% endblock %}
+</div>

@@ -1,0 +1,18 @@
+uuid: 1a352db8-813b-4bce-a322-f87e6ecb0ccb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.infograph
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.infograph
+target_entity_type_id: paragraph
+target_bundle: infograph
+default_langcode: current_interface
+language_alterable: true

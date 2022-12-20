@@ -1,0 +1,17 @@
+uuid: 5e914e9c-a29e-4416-a83d-7202b1f8bd64
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_widescreen_small_image_style
+label: 'Hero (laajakuva) - small (720×158)'
+effects:
+  90c20d6e-6c80-48cf-b116-24720fc8314a:
+    uuid: 90c20d6e-6c80-48cf-b116-24720fc8314a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 158
+      crop_type: focal_point

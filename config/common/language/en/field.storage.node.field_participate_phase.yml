@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Get to know'
+    -
+      label: 'Answer and give your opinion'
+    -
+      label: 'Develop and work together'
+    -
+      label: Vote
+    -
+      label: 'Hear results'
+    -
+      label: 'Take part'

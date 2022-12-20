@@ -1,0 +1,51 @@
+uuid: d6c200fe-517b-45dd-a20b-48a384930a85
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.two_column_liftup.field_left_column
+    - field.field.paragraph.two_column_liftup.field_right_column
+    - paragraphs.paragraphs_type.two_column_liftup
+  module:
+    - ds
+    - entity_reference_revisions
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_two_column_container
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      left_column:
+        - field_left_column
+      right_column:
+        - field_right_column
+id: paragraph.two_column_liftup.default
+targetEntityType: paragraph
+bundle: two_column_liftup
+mode: default
+content:
+  field_left_column:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: left_column
+  field_right_column:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: right_column
+hidden:
+  search_api_excerpt: true

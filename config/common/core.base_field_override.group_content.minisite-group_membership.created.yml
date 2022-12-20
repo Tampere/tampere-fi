@@ -1,0 +1,18 @@
+uuid: 8beba2d6-6e74-4d44-b2d7-715cb475b5ad
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_membership
+id: group_content.minisite-group_membership.created
+field_name: created
+entity_type: group_content
+bundle: minisite-group_membership
+label: Luotu
+description: 'Ryhmäsisällön luontiajankohta.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

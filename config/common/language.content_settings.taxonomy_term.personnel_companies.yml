@@ -1,0 +1,18 @@
+uuid: 53f8c495-d241-4b14-a187-95b04b6c78b9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.personnel_companies
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.personnel_companies
+target_entity_type_id: taxonomy_term
+target_bundle: personnel_companies
+default_langcode: current_interface
+language_alterable: true

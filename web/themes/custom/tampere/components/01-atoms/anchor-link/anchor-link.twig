@@ -1,0 +1,28 @@
+{#
+/**
+ * Available variables:
+ * - anchor_link__content - the content of the link (typically text)
+ * - anchor_link__url - the url this link should poing to
+ * - anchor_link__attributes - array of attribute,value pairs
+ * - anchor_link__base_class - the base class name
+ * - anchor_link__modifiers - array of modifiers to add to the base classname
+ * - anchor_link__blockname - blockname prepended to the base classname
+ */
+#}
+{% set anchor_link__base_class = "anchor-link" %}
+
+<a
+  {{ bem(anchor_link__base_class, (anchor_link__modifiers|default([])), anchor_link__blockname) }}
+  {% for attribute, value in anchor_link__attributes %}
+    {{ attribute }}="{{ value }}"
+  {% endfor %}
+  href="{{ anchor_link__url }}"
+  aria-hidden="true"
+>
+  {% include "@atoms/04-images/icons/_icon.twig" with {
+    "icon_name": "link",
+    "icon_base_class": "icon",
+    "icon_blockname": "anchor-link",
+    "icon_decorative": TRUE,
+  } %}
+</a>

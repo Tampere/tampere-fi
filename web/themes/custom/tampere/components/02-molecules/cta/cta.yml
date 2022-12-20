@@ -1,0 +1,9 @@
+cta__heading: 'Kaikki aineistot Piki-verkkokirjastossa'
+cta__content: 'Otathan kiireellisissä asiakaspalveluasioissa (esimerkiksi kirjastokortin katoaminen) yhteyttä lähikirjatoosi tai pääkirjasto Metson lainauspalveluihin lainaustoimisto.metso@tampere.fi'
+cta__links__items:
+  1:
+    text: 'Kirjaudu'
+    url: '#'
+  2:
+    text: 'Rekisteröidy'
+    url: '#'

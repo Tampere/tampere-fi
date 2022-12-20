@@ -1,0 +1,25 @@
+/* Styles related to Drupal media types */
+
+iframe {
+  border: none;
+}
+
+.media {
+  &-oembed-content {
+    width: 100%;
+  }
+
+  &--ratio--fluid.is-b-loaded {
+    height: 100%;
+  }
+}
+
+// On some browsers, the padding calculation lasts forever and causes
+// everything to jitter when the image container has a specific height.
+.blazy {
+  &:not(.blazy--field-media-image--hero-widescreen-view-mode) {
+    .media--ratio--fluid.is-b-loaded {
+      padding-bottom: 0 !important;
+    }
+  }
+}

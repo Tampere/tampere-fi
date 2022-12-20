@@ -1,0 +1,10 @@
+uuid: b276dc73-e194-4930-9fbf-07ad497e68b9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.liftup_without_image
+label: 'Liftup without image'
+targetEntityType: node
+cache: true

@@ -1,0 +1,49 @@
+uuid: a671dc0d-3376-4b5c-bce7-70b8484f79af
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.process_accordions.field_accordion_main_title
+    - field.field.paragraph.process_accordions.field_description_text
+    - field.field.paragraph.process_accordions.field_process_accordions
+    - paragraphs.paragraphs_type.process_accordions
+  module:
+    - ds
+    - entity_reference_revisions
+id: paragraph.process_accordions.default
+targetEntityType: paragraph
+bundle: process_accordions
+mode: default
+content:
+  field_accordion_main_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_description_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_process_accordions:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 2
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,50 @@
+uuid: 892b24e2-8a13-4b7f-b777-2e058bfc19fc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - filter.format.notice_html
+  module:
+    - ckeditor
+format: notice_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Muotoilu
+          items:
+            - Bold
+            - Italic
+            - Underline
+            - RemoveFormat
+        -
+          name: Linkit
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Työkalut
+          items:
+            - Source
+        -
+          name: 'copy and paste'
+          items:
+            - Copy
+            - Cut
+            - Paste
+            - PasteText
+            - PasteFromWord
+  plugins:
+    drupallink:
+      linkit_enabled: true
+      linkit_profile: linkit_wysiwyg
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

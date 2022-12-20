@@ -1,0 +1,19 @@
+uuid: 4d235dbc-381d-493f-8b1f-e4cfee696f9d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.mosaic_liftup
+id: paragraph.mosaic_liftup.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: mosaic_liftup
+label: Leipäteksti
+description: 'Jos nostoja on yhteensä yli kolme, leipäteksti-kentän sisältö voidaan näyttää kahdessa ensimmäisessä kuvattomassa nostossa. Muutoin leipäteksti ei ole näkyvissä.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

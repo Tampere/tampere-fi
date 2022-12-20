@@ -1,0 +1,13 @@
+uuid: 5a90f2ac-6836-47b5-90bd-78619163a5fb
+langcode: fi
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: tWOIjSMobEWOFZddMkNqb9JySbOVwE1diC6NRqcfLTk
+id: comment_unpublish_action
+label: 'Peru kommentin julkaisu'
+type: comment
+plugin: 'entity:unpublish_action:comment'
+configuration: {  }

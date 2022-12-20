@@ -1,0 +1,25 @@
+uuid: 1857a568-9aff-4f39-84f3-1a14203b53a4
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tampere
+_core:
+  default_config_hash: fRKXNB91UxDvEMkzCR8ZBsawfC6Fqbme2gtobei3gu4
+id: tampere_branding
+theme: tampere
+region: header
+weight: -24
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

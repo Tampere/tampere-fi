@@ -1,0 +1,8 @@
+name: 'TRE Custom Paths'
+type: module
+description: 'Customises the paths for content (nodes) according to business rules given in the project.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+requirements:
+  - group_content_menu:group_content_menu
+  - pathauto:pathauto

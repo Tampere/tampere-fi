@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for tre_news_email_release module.
+ */
+
+use Drupal\Core\Site\Settings;
+use Drupal\node\NodeInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Header\MailboxHeader;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function tre_news_email_release_node_insert(NodeInterface $node) {
+  tre_news_email_release_node_update($node);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function tre_news_email_release_node_update(NodeInterface $node) {
+  \Drupal::service('tre_news_email_release.node_hooks')->update($node);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function tre_news_email_release_node_presave(NodeInterface $node) {
+  \Drupal::service('tre_news_email_release.node_hooks')->preSave($node);
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function tre_news_email_release_mail_alter(&$message) {
+  // It turns out that the mimemail module does not modify anything else than
+  // the reply-to address, so altering the sender per requirement is necessary
+  // here.
+  if ($message['module'] === 'message_notify' && $message['key'] === 'news_item_to_media') {
+    $sender_address = Settings::get('tre_news_email_release_sender', 'no-reply@tampere.fi');
+    $mailbox = new MailboxHeader('From', new Address($sender_address));
+    $new_from = $mailbox->getBodyAsString();
+    $message['from'] = $new_from;
+    $message['headers']['From'] = $message['headers']['Sender'] = $message['headers']['Return-Path'] = $new_from;
+
+    // Hide the message recipient from 'human view'. Depending on how the
+    // message is processed further however, the mail source may reveal the
+    // bcc value.
+    $original_to = $message['to'];
+    $message['to'] = 'undisclosed-recipients:;';
+    $message['headers']['Bcc'] = $original_to;
+  }
+}

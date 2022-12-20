@@ -1,0 +1,61 @@
+$video-padding-top: $space-l;
+$video-mediaserver-video-wide-content-two-column-breakpoint: 1112px;
+
+/* Responsive Video using CSS only */
+.video, 
+.embederator--quickchannel-embed,
+.embederator--mediaserver-live,
+.embederator--mediaserver-video {
+  @include text-element-spacer;
+
+  height: 0;
+  overflow: hidden;
+  padding-top: $video-padding-top;
+  padding-bottom: 56.25%; // 56.25% = 16x9
+  position: relative;
+
+  &--full {
+    padding-bottom: 75%; // 75% = 4x3
+  }
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.embederator--mediaserver-video {
+  padding-bottom: 170%;
+
+  @include xs {
+    padding-bottom: 160%;
+  }
+
+  @include small {
+    padding-bottom: 110%;
+  }
+
+  @include medium {
+    padding-bottom: 85%;
+  }
+
+  @include large {
+    padding-bottom: 80%;
+  }
+}
+
+/**
+ * Stored mediaserver videos have also text content and
+ * on wider columns embedded element uses two column layout.
+ */
+.wide-content,
+.collection-page-content {
+  .embederator--mediaserver-video {
+    @include breakpoint($video-mediaserver-video-wide-content-two-column-breakpoint) {
+      padding-bottom: 63%;
+    }
+  }
+}

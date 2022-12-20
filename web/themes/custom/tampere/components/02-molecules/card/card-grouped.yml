@@ -1,0 +1,4 @@
+card__modifiers:
+  - grouped
+card__heading: 'Vivamus at quam at felis'
+card__link__url: '#'

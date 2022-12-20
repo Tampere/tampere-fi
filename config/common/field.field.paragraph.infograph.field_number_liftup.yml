@@ -1,0 +1,19 @@
+uuid: fb24e1e2-fe24-41dc-b8d2-5786c514f6d5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_number_liftup
+    - paragraphs.paragraphs_type.infograph
+id: paragraph.infograph.field_number_liftup
+field_name: field_number_liftup
+entity_type: paragraph
+bundle: infograph
+label: Numeronosto
+description: 'Max. 7 merkkiä'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

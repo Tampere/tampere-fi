@@ -1,0 +1,136 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the tre_ptv_import module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function tre_ptv_import_schema() {
+  $tables = [];
+
+  $tables['tre_ptv_import_service'] = [
+    'description' => 'Stores intermediate, importable Service data from PTV API.',
+    'fields' => [
+      'uuid' => [
+        'description' => 'The UUID of the Service.',
+        'type' => 'varchar_ascii',
+        'length' => 50,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'data' => [
+        'description' => 'Serialized data in the format of Tampere\PtvV11\PtvModel\V11VmOpenApiService.',
+        'type' => 'blob',
+        'serialize' => TRUE,
+        'not null' => TRUE,
+        'size' => 'big',
+      ],
+    ],
+    'primary key' => [
+      'uuid',
+    ],
+    'foreign keys' => [],
+    'unique keys' => [],
+    'indexes' => [],
+  ];
+
+  // There are only 5 distinct 'types' of service channel, so adding an index
+  // for the column would not do much good.
+  $tables['tre_ptv_import_channel'] = [
+    'description' => 'Stores intermediate, importable Service data from PTV API.',
+    'fields' => [
+      'uuid' => [
+        'description' => 'The UUID of the ServiceChannel.',
+        'type' => 'varchar_ascii',
+        'length' => 50,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'type' => [
+        'description' => 'The class name of the service channel under the Tampere\PtvV11\PtvModel namespace.',
+        'type' => 'varchar_ascii',
+        'length' => 200,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'data' => [
+        'description' => 'Serialized data in the format of Tampere\PtvV11\PtvModel\{type}.',
+        'type' => 'blob',
+        'serialize' => TRUE,
+        'not null' => TRUE,
+        'size' => 'big',
+      ],
+    ],
+    'primary key' => [
+      'uuid',
+    ],
+    'foreign keys' => [
+      'channel_service' => [
+        'table' => 'tre_ptv_import_service',
+        'columns' => [
+          'service_uuid' => 'uuid',
+        ],
+      ],
+    ],
+  ];
+
+  $taxonomy_term_table_fields_definition = [
+    'id' => [
+      'type' => 'varchar_ascii',
+      'length' => 1024,
+      'not null' => TRUE,
+      'default' => '',
+    ],
+    'type' => [
+      'description' => 'The class name of the classification term under the Tampere\PtvV11\PtvModel namespace.',
+      'type' => 'varchar_ascii',
+      'length' => 200,
+      'not null' => TRUE,
+      'default' => '',
+    ],
+    'name_fi' => [
+      'type' => 'varchar',
+      'length' => 1024,
+    ],
+    'name_en' => [
+      'type' => 'varchar',
+      'length' => 1024,
+    ],
+    'data' => [
+      'description' => 'Serialized data in the format of Tampere\PtvV11\PtvModel\{type}.',
+      'type' => 'blob',
+      'serialize' => TRUE,
+      'not null' => TRUE,
+      'size' => 'big',
+    ],
+  ];
+
+  $tables['tre_ptv_import_ontology_term'] = [
+    'description' => 'PTV ontology terms from services, meant for the Drupal keywords vocabulary',
+    'fields' => $taxonomy_term_table_fields_definition,
+    'primary key' => [
+      'id',
+    ],
+  ];
+
+  $tables['tre_ptv_import_service_class'] = [
+    'description' => 'PTV service classes, meant for the Drupal topics vocabulary',
+    'fields' => $taxonomy_term_table_fields_definition,
+    'primary key' => [
+      'id',
+    ],
+  ];
+
+    $tables['tre_ptv_import_target_groups_and_life_event'] = [
+    'description' => 'PTV target groups and life events, meant for the Drupal life situations vocabulary',
+    'fields' => $taxonomy_term_table_fields_definition,
+    'primary key' => [
+      'id',
+    ],
+  ];
+
+  return $tables;
+}

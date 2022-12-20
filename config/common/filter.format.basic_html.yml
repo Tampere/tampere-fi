@@ -1,0 +1,111 @@
+uuid: b0b8d975-87e9-416f-afa8-a090263362f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.full
+    - core.entity_view_mode.media.media_library
+  module:
+    - blazy
+    - editor
+    - linkit
+    - media
+    - slick
+_core:
+  default_config_hash: s_AlcPC0kKlMNpQ-7e2yKI-EIp7zl5AR-EP23xWtQFE
+name: 'Basic HTML'
+format: basic_html
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<em> <strong> <ul type> <li> <h2 id> <h3 id> <h4 id> <h5 id> <p> <br> <a href hreflang !href accesskey id rel target title data-entity-type data-entity-uuid data-entity-substitution> <drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title> <s> <sup> <sub> <ol> <span lang dir class="sr-only rs_skip">'
+      filter_html_help: false
+      filter_html_nofollow: false
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: false
+    weight: 7
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: false
+    weight: 8
+    settings: {  }
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 11
+    settings: {  }
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: -11
+    settings:
+      title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: false
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes:
+        full: full
+        media_library: media_library
+      allowed_media_types:
+        file: file
+  blazy_filter:
+    id: blazy_filter
+    provider: blazy
+    status: false
+    weight: 3
+    settings:
+      media_switch: ''
+      hybrid_style: ''
+      box_style: ''
+      box_caption: ''
+      filter_tags:
+        img: img
+        iframe: iframe
+      use_data_uri: '0'
+  slick_filter:
+    id: slick_filter
+    provider: slick
+    status: false
+    weight: 4
+    settings:
+      optionset: default
+      layout: ''
+      skin: ''
+      loading: ''
+      preload: false
+      background: false
+      responsive_image_style: ''
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      thumbnail_style: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      optionset_thumbnail: ''
+      skin_thumbnail: ''
+      thumbnail_caption: ''
+      thumbnail_effect: ''
+      thumbnail_position: ''
+      override: false

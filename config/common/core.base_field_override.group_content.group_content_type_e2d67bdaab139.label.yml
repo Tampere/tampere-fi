@@ -1,0 +1,18 @@
+uuid: 243a5237-ec32-4573-9fec-d564f74068a0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_e2d67bdaab139
+id: group_content.group_content_type_e2d67bdaab139.label
+field_name: label
+entity_type: group_content
+bundle: group_content_type_e2d67bdaab139
+label: Otsikko
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 3edec18c-93d4-4cf3-8c48-233db86e487d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author
+    - node.type.rich_article
+id: node.rich_article.field_author
+field_name: field_author
+entity_type: node
+bundle: rich_article
+label: Teksti
+description: 'Syötä kirjoittajan tiedot.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,43 @@
+uuid: ca84435e-75e2-43fa-9719-ca19f1f1d15b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.news_media_delivery
+    - field.field.paragraph.person_liftup.field_description_text
+    - field.field.paragraph.person_liftup.field_person_liftup
+    - field.field.paragraph.person_liftup.field_pl_displayed_fields
+    - paragraphs.paragraphs_type.person_liftup
+  module:
+    - ds
+id: paragraph.person_liftup.news_media_delivery
+targetEntityType: paragraph
+bundle: person_liftup
+mode: news_media_delivery
+content:
+  field_description_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_person_liftup:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: news_media_delivery
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: content
+hidden:
+  field_pl_displayed_fields: true
+  search_api_excerpt: true

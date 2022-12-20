@@ -1,0 +1,19 @@
+{% set dates_field_group__base_class = "dates-field-group" %}
+
+{% if not dates_field_group__modifiers %}
+  {% set dates_field_group__modifiers = [] %}
+{% endif %}
+
+{% if use_smaller_font_size %}
+  {% set dates_field_group__modifiers = dates_field_group__modifiers|merge([ "smaller-font-size" ]) %}
+{% endif %}
+
+{% if dates_content|render|trim %}
+  {% set has_dates_content = TRUE %}
+{% endif %}
+
+{% if has_dates_content %}
+  <div {{ bem(dates_field_group__base_class, dates_field_group__modifiers, dates_field_group__blockname, [ "hyphenate" ]) }}>
+    {{ dates_content }}
+  </div>
+{% endif %}

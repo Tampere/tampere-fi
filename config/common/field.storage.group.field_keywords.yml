@@ -1,0 +1,20 @@
+uuid: df011f45-c10a-4a22-81b9-050787e8f8df
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+    - taxonomy
+id: group.field_keywords
+field_name: field_keywords
+entity_type: group
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

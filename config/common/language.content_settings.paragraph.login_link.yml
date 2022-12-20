@@ -1,0 +1,18 @@
+uuid: b318b207-dae2-45b1-b7e2-2cf7b6118dc1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.login_link
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.login_link
+target_entity_type_id: paragraph
+target_bundle: login_link
+default_langcode: current_interface
+language_alterable: true

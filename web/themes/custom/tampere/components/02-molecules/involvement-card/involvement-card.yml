@@ -1,0 +1,22 @@
+involvement_card__heading: Tampereen keskustan kaavoitussuunnitelmat ja kaupunkilaisten osallisuus vuosina 2022–2025
+involvement_card__heading__url: '#'
+involvement_card__way: Kysely
+involvement_card__time: 15.5.-28.12.2021
+involvement_card__sign_up: Ilmoittaudu 15.1.2022–31.1.2022
+involvement_card__phase: Vastaa ja kerro kantasi
+involvement_card__summary: Lyhyt selite/ingressiteksti lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis hendrerit dolor at malesuada auctor. Curabitur pharetra cursus porttitor. Nunc in sem ultricies, consequat risus vel, sollicitudin velit.
+involvement_card__location_label: 'Paikka:'
+involvement_card__location: Kalevan kirjasto
+involvement_card__address_label: 'Käyntitiedot:'
+involvement_card__address: Lorem ipsum 2, 12345 Tampere
+involvement_card__web_location__text: Verkkosivu
+involvement_card__web_location__label: 'Muut yhteystiedot:'
+involvement_card__web_location__url: '#'
+involvement_card__links__items:
+  - text: 'Vastaa kyselyyn'
+    url: '#'
+  - text: 'Lorem ipsum'
+    url: '#'
+involvement_card__accordion_tabs:
+  - title: 'Sijainti kartalla'
+    content: 'Sijainti contenttia'

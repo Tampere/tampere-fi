@@ -1,0 +1,20 @@
+uuid: f29c229c-d453-43c9-9949-2ed560653692
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_membership
+  module:
+    - path
+id: group_content.life_situation-group_membership.path
+field_name: path
+entity_type: group_content
+bundle: life_situation-group_membership
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

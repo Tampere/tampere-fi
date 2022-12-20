@@ -1,0 +1,8 @@
+uuid: 8d9643b4-12a5-4820-918d-4c2b17bc5e9a
+langcode: fi
+status: true
+dependencies: {  }
+id: date_only
+label: 'Pelkkä päivämäärä'
+locked: false
+pattern: j.n.Y

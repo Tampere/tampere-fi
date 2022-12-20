@@ -1,0 +1,83 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - liftups: Event liftups provided by tre_display_external_events and selections made on
+ *   the node edit page.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if not topical_listing__heading %}
+  {% set topical_listing__heading = paragraph.field_listing_title.value %}
+{% endif %}
+
+{% if content|render|trim %}
+  {% set content_not_empty = TRUE %}
+{% endif %}
+
+{% set event_card_modifier = "event" %}
+
+{% set card_grid_modifiers = [ "3-col" ] %}
+
+{% embed "@organisms/_paragraph.twig" %}
+  {% block paragraph_content %}
+    {% embed "@organisms/topical-listing/topical-listing.twig" with {
+      "liftups": liftups,
+      "link_list__items": link_list__items,
+      "topical_listing__modifiers": [ "events" ],
+      "topical_listing__summary": paragraph.field_summary.value,
+      "has_highlighted_liftup": featured_liftup_exists or content_not_empty,
+      "topical_listing__liftup__modifiers": [ event_card_modifier ],
+    } %}
+      {% block highlighed_liftup %}
+        {{ content|without("field_summary") }}
+        {% if featured_liftup_exists %}
+          {% include "@molecules/topical-card/topical-card.twig" with {
+            "topical_card__image__src": featured_liftup.image_src,
+            "topical_card__date": featured_liftup.date,
+            "topical_card__tag": featured_liftup.location,
+            "topical_card__heading": featured_liftup.name,
+            "topical_card__image": featured_liftup.image,
+            "topical_card__summary": featured_liftup.summary,
+            "topical_card__link__url": featured_liftup.url,
+            "topical_card__icon__name": "external",
+            "topical_card__modifiers": [ event_card_modifier, "big" ],
+          } %}
+        {% endif %}
+      {% endblock %}
+
+    {% endembed %}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,79 @@
+.text-with-bgcolor {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  display: grid;
+  column-gap: 0;
+  row-gap: 0;
+  overflow: hidden;
+
+  @include medium {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+
+  &--third {
+    @include medium {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    &#{$base_class}--reverse {
+      @include medium {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+  }
+
+  &__text-box {
+    background: clr(accent-secondary);
+    padding: $space-m;
+
+    @include large {
+      padding: $space-l;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &:nth-child(2) {
+      background: none;
+      padding-right: 0;
+      padding-left: 0;
+
+      @include medium {
+        padding-left: $space-m;
+      }
+
+      @include large {
+        padding-left: $space-l;
+      }
+    }
+  }
+
+  &--reverse {
+    #{$base_class}__text-box {
+      background: none;
+      padding-right: 0;
+      padding-left: 0;
+
+      @include medium {
+        padding-right: $space-m;
+        padding-left: 0;
+      }
+
+      @include large {
+        padding-right: $space-l;
+      }
+
+      &:nth-child(2) {
+        background: clr(accent-secondary);
+        padding: $space-m;
+
+        @include large {
+          padding: $space-l;
+        }
+      }
+    }
+  }
+}

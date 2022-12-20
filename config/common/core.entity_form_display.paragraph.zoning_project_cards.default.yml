@@ -1,0 +1,34 @@
+uuid: 4ead89e1-d8f7-4063-947f-4012c494c3d7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.zoning_project_cards.field_zoning_project_cards
+    - paragraphs.paragraphs_type.zoning_project_cards
+  module:
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.zoning_project_cards.default
+targetEntityType: paragraph
+bundle: zoning_project_cards
+mode: default
+content:
+  field_zoning_project_cards:
+    type: paragraphs_classic_asymmetric
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

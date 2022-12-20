@@ -1,0 +1,27 @@
+uuid: 4caadb78-bdec-4455-b77d-d720a96398f3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_pirkanmaa_events_sort
+field_name: field_pirkanmaa_events_sort
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Oletus
+    -
+      value: end_asc
+      label: 'Päättymisaika (nouseva)'
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

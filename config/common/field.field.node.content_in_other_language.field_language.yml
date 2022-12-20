@@ -1,0 +1,21 @@
+uuid: 92332257-2725-4f07-8531-2919378d4e2f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_language
+    - node.type.content_in_other_language
+  module:
+    - options
+id: node.content_in_other_language.field_language
+field_name: field_language
+entity_type: node
+bundle: content_in_other_language
+label: Kielivalinta
+description: 'Valitse kieli, jolla sisältö on kirjoitettu. Seuraava valinta kohdistuu ylä- ja alatunnisteeseen.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

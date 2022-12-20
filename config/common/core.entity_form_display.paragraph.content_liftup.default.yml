@@ -1,0 +1,52 @@
+uuid: b721158a-3357-4d9c-9ac7-85d5c8a0b317
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_liftup.field_content_link
+    - field.field.paragraph.content_liftup.field_liftup_title
+    - field.field.paragraph.content_liftup.field_summary
+    - paragraphs.paragraphs_type.content_liftup
+  module:
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.content_liftup.default
+targetEntityType: paragraph
+bundle: content_liftup
+mode: default
+content:
+  field_content_link:
+    type: paragraphs_classic_asymmetric
+    weight: 4
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+  field_liftup_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_summary:
+    type: string_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

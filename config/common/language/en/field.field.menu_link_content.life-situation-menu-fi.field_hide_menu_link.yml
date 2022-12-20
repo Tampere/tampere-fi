@@ -1,0 +1,5 @@
+label: 'Hide menu link'
+description: 'Prevents the menu link from being displayed on the site. Hidden menu links can be used for organizing other menu links in the user interface.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

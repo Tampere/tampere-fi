@@ -1,0 +1,19 @@
+uuid: c8b76d96-d014-415b-9a8a-a7082b07d8f6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+    - text
+id: group.field_footer_content
+field_name: field_footer_content
+entity_type: group
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

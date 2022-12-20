@@ -1,0 +1,16 @@
+uuid: f2afa76d-a445-4fce-9111-faa2dffb3528
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.service_channel
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.service_channel
+target_entity_type_id: node
+target_bundle: service_channel
+default_langcode: current_interface
+language_alterable: true

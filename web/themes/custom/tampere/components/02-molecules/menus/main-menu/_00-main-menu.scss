@@ -1,0 +1,213 @@
+.main-menu-container {
+  background-color: clr(background);
+}
+
+.secondary-main-menu-container {
+  background-color: clr(primary-light);
+}
+
+.main-menu {
+  $base_class: &;
+
+  @include list-reset;
+
+  --main-menu-border-color: #{clr(secondary)};
+
+  &__title {
+    color: clr(text-inverse);
+    display: block;
+    font-family: $font-heading;
+    font-size: $font-20;
+    font-weight: $font-weight-medium;
+    margin: 0;
+    padding: $space-l $space-m $space-s $space-m;
+    text-transform: uppercase;
+
+    @include large {
+      margin: 0 $gutter-mobile $space-l $gutter-mobile;
+      padding: $space-l 0 0 0;
+    }
+
+    @include large-plus {
+      margin-right: $space-xl;
+      margin-left: $space-xl;
+    }
+  }
+
+  &:not(#{$base_class}--sub):not(#{$base_class}--minisite) {
+    @include large {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: $space-l $gutter-mobile;
+
+      > #{$base_class}__item {
+        border-left: 1px solid var(--main-menu-border-color);
+      }
+    }
+
+    @include large-plus {
+      margin-right: $space-xl;
+      margin-left: $space-xl;
+    }
+  }
+
+  &__item-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &__link {
+    @include link(clr(text), clr(text));
+    @include word-wrap;
+
+    border-bottom: 2px solid clr(secondary);
+    display: block;
+    font-family: $font-heading;
+    font-size: $font-18;
+    margin-right: ($icon-medium + $space-s) * (-1);
+    padding: $space-s ($icon-medium + $space-l) $space-s $space-l;
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+
+    @include large {
+      border-bottom: 0;
+      font-size: $font-20;
+      padding: $space-s $space-l;
+      margin-right: 0;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+
+      @include large {
+        @include left-border-accent($color: var(--main-menu-border-color));
+
+        text-decoration: none;
+      }
+    }
+
+    &--active {
+      @include large {
+        @include left-border-accent($color: var(--main-menu-border-color));
+
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  &__icon {
+    color: clr(primary);
+    height: $icon-small;
+    width: $icon-small;
+    margin-right: $space-s;
+
+    @include large {
+      display: none;
+    }
+  }
+
+  &--secondary {
+    --c-focus: #{clr(text-inverse)};
+    --main-menu-border-color: #{clr(background)};
+
+    &:not(#{$base_class}--sub):not(#{$base_class}--minisite) {
+      padding-bottom: $space-l;
+
+      @include large {
+        margin: $space-l $gutter-mobile 0 $gutter-mobile;
+        padding-bottom: $space-xl;
+      }
+
+      @include large-plus {
+        margin-right: $space-xl;
+        margin-left: $space-xl;
+      }
+    }
+
+    #{$base_class}__link {
+      @include link(clr(text-inverse), clr(text-inverse));
+
+      border-bottom: 0;
+      margin-right: 0;
+      padding: $space-s $space-l;
+    }
+
+    #{$base_class}__icon {
+      display: none;
+    }
+  }
+
+  &--minisite {
+    --main-menu-border-color: #{clr(accent)};
+
+    #{$base_class}__item {
+      @include main-menu-breakpoint {
+        display: inline-block;
+
+        &:first-child {
+          margin-right: $space-s;
+          margin-bottom: $space-s;
+        }
+
+        + #{$base_class}__item {
+          margin-right: $space-s;
+        }
+      }
+    }
+
+    #{$base-class}__link {
+      border-bottom: 2px solid clr(secondary);
+      font-size: $font-18;
+      margin-right: ($icon-medium + $space-s) * (-1);
+      padding: $space-s ($icon-medium + $space-l) $space-s $space-l;
+
+      &::before {
+        content: none;
+      }
+
+      @include main-menu-breakpoint {
+        @include link(clr(text));
+
+        border-bottom: 0;
+        font-size: $font-20;
+        font-weight: $font-weight-medium;
+        display: inline-block;
+        margin-right: 0;
+        padding: 0;
+
+        &:hover,
+        &:focus,
+        &.is-active,
+        &--active {
+          text-decoration: none;
+
+          &::after {
+            background-color: clr(primary-light);
+            bottom: 3px;
+            content: "";
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+          }
+        }
+      }
+
+      &.is-active,
+      &--active {
+        @include main-menu-breakpoint {
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+
+    #{$base_class}__icon {
+      @include main-menu-breakpoint-down {
+        display: block;
+      }
+    }
+  }
+}

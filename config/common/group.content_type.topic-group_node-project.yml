@@ -1,0 +1,19 @@
+uuid: f8f530bb-6fa1-4d9f-82da-ae7d0f12d540
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - node.type.project
+  module:
+    - gnode
+    - node
+id: topic-group_node-project
+label: 'Aihepiiri: Group node (Projekti)'
+description: 'Adds <em class="placeholder">Projekti</em> content to groups both publicly and privately.'
+group_type: topic
+content_plugin: 'group_node:project'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

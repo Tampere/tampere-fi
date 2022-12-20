@@ -1,0 +1,254 @@
+<?php
+
+/**
+ * @file
+ * Cron function to save news yearly and archive old news.
+ */
+
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\Entity\RevisionLogInterface;
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Site\Settings;
+use Drupal\node\NodeInterface;
+use Mpdf\Mpdf;
+
+/**
+ * Implements hook_cron().
+ */
+function tre_news_archive_cron() {
+  $now = new DrupalDateTime('now', new \DateTimeZone('UTC'));
+  $current_year = $now->format('Y');
+
+  $state_service = \Drupal::service('state');
+  $news_to_pdf_next_execution = $state_service->get('news_to_pdf_next_execution', 0);
+
+  // We usually don't want to act every time cron runs (which could be every
+  // minute) so keep a time for the next run in a variable.
+  if ($news_to_pdf_next_execution <= time()) {
+    _tre_news_archive_news_to_pdf($now);
+    _tre_news_archive_archive_news($now);
+    $state_service->set('news_to_pdf_next_execution', strtotime('01.01.' . (intval($current_year) + 1)));
+  }
+}
+
+/**
+ * Function to handle the news archiving.
+ *
+ * @param \Drupal\Core\Datetime\DrupalDateTime $now
+ *   Current time that the news are archived from.
+ */
+function _tre_news_archive_archive_news(DrupalDateTime $now) {
+  $current_year = $now->format('Y');
+  $last_year = intval($current_year) - 1;
+  $the_year_before_last = intval($current_year) - 2;
+
+  $archive_date_range_end_string = sprintf('%s-01-01T00:00:00', (string) $last_year);
+  $archive_date_range_end = new DrupalDateTime($archive_date_range_end_string, 'UTC');
+  $archive_date_range_start_string = sprintf('%s-01-01T00:00:00', (string) $the_year_before_last);
+  $archive_date_range_start = new DrupalDateTime($archive_date_range_start_string, 'UTC');
+
+  $nids_to_archive_fi = _tre_news_archive_get_news_nids_by_date_range('fi' ,$archive_date_range_start, $archive_date_range_end);
+
+  if ($nids_to_archive_fi) {
+    foreach ($nids_to_archive_fi as $nid) {
+      $news_item = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+      _tre_news_archive_set_archived($news_item);
+    }
+  }
+
+  $nids_to_archive_en = _tre_news_archive_get_news_nids_by_date_range('en' ,$archive_date_range_start, $archive_date_range_end);
+
+  if ($nids_to_archive_en) {
+    foreach ($nids_to_archive_en as $nid) {
+      $news_item = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+      _tre_news_archive_set_archived($news_item);
+    }
+  }
+}
+
+/**
+ * Function to archive single node.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   Node that is going to be archived.
+ */
+function _tre_news_archive_set_archived(NodeInterface $node) {
+  if ($node->hasField('moderation_state') && $node->get('moderation_state')->value !== 'archived') {
+    $node->set('moderation_state', 'archived');
+    $node->set('status', NodeInterface::NOT_PUBLISHED);
+    if ($node instanceof RevisionLogInterface) {
+      $node->setRevisionLogMessage('Changed moderation state to Archived by tre_news_archive module.');
+      $node->setRevisionUserId(1);
+    }
+    $node->save();
+  };
+}
+
+/**
+ * Function to handle the news saving to pdf file to Drupal.
+ *
+ * @param \Drupal\Core\Datetime\DrupalDateTime $now
+ *   Current time that the news pdf is based on.
+ * @param bool $save_last_year
+ *   Save last year's news as a default.
+ */
+function _tre_news_archive_news_to_pdf(DrupalDateTime $now, bool $save_last_year = TRUE) {
+  $nids_to_save_fi = [];
+  $nids_to_save_en = [];
+  $current_year = $now->format('Y');
+  $last_year = intval($current_year) - 1;
+  $filename = '';
+  $filename_en = '';
+  $directory = 'public://news_archive/';
+
+  if ($save_last_year) {
+    $date_range_end_string = sprintf('%s-01-01T00:00:00', $current_year);
+    $date_range_end = new DrupalDateTime($date_range_end_string, 'UTC');
+    $date_range_start_string = sprintf('%s-01-01T00:00:00', (string) $last_year);
+    $date_range_start = new DrupalDateTime($date_range_start_string, 'UTC');
+
+    $nids_to_save_fi = _tre_news_archive_get_news_nids_by_date_range('fi', $date_range_start, $date_range_end);
+    $nids_to_save_en = _tre_news_archive_get_news_nids_by_date_range('en', $date_range_start, $date_range_end);
+    $filename = 'tre_uutisarkisto_' . $last_year . '.pdf';
+    $filename_en = 'tre_news_archive_' . $last_year . '.pdf';
+  }
+  else {
+    $date_range_end_string = sprintf('%s-12-31T23:59:59', $current_year);
+    $date_range_end = new DrupalDateTime($date_range_end_string, 'UTC');
+    $date_range_start_string = sprintf('%s-01-01T00:00:00', $current_year);
+    $date_range_start = new DrupalDateTime($date_range_start_string, 'UTC');
+
+    $nids_to_save_fi = _tre_news_archive_get_news_nids_by_date_range('fi' ,$date_range_start, $date_range_end);
+    $nids_to_save_en = _tre_news_archive_get_news_nids_by_date_range('en', $date_range_start, $date_range_end);
+    $filename = '';
+    $new_date = new DrupalDateTime('now');
+    if ($new_date->format('Y') == $current_year) {
+      $filename = 'tre_uutisarkisto_' . $current_year . '0101_' . $now->format('Ymd') . '.pdf';
+      $filename_en = 'tre_news_archive_' . $current_year . '0101_' . $now->format('Ymd') . '.pdf';
+    }
+    else {
+      $filename = 'tre_uutisarkisto_' . $current_year . '.pdf';
+      $filename_en = 'tre_news_archive_' . $current_year . '.pdf';
+    }
+  }
+
+  if ($nids_to_save_fi) {
+    _tre_news_archive_nids_to_mpdf($filename, $directory, $nids_to_save_fi, 'fi');
+    _tre_news_archive_save_file_to_drupal_as_pdf($filename, $directory);
+  }
+
+  if ($nids_to_save_en) {
+    _tre_news_archive_nids_to_mpdf($filename_en, $directory, $nids_to_save_en, 'en');
+    _tre_news_archive_save_file_to_drupal_as_pdf($filename_en, $directory);
+  }
+}
+
+/**
+ * Function to handle the node conversions to pdf.
+ *
+ * @param string $filename
+ *   Name of the file.
+ * @param string $directory
+ *   Name of the directory.
+ * @param bool $nids_to_save
+ *   Node id's that are wanted to save.
+ * @param string $lang_code
+ *   Language code which node language version is supposed to be saved.
+ */
+function _tre_news_archive_nids_to_mpdf(string $filename, string $directory, array $nids_to_save, string $lang_code) {
+  $config = [
+    'format' => 'A4',
+  ];
+
+  $temp_directory = Settings::get('tre_news_archive_temp_dir', '/tmp/mpdf');
+
+  if (\Drupal::service('file_system')->prepareDirectory($temp_directory, FileSystemInterface::CREATE_DIRECTORY)) {
+    $config = [
+      'format' => 'A4',
+      'tempDir' => $temp_directory,
+    ];
+  }
+
+  $mpdf = new Mpdf($config);
+  // Create and add styles as external css.
+  $stylesheet = file_get_contents('modules/custom/tre_news_archive/css/pdf.css');
+  $mpdf->WriteHTML($stylesheet, 1);
+
+  if ($nids_to_save) {
+    foreach ($nids_to_save as $key => $nid) {
+      $news_item = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+
+      if ($news_item->hasTranslation($lang_code)) {
+        $translation = $news_item->getTranslation($lang_code);
+
+        if ($translation->isPublished()) {
+          // Change page before new news item is written.
+          if ($key !== 0) {
+            $mpdf->AddPage();
+          }
+
+          // Add actual html.
+          $markup = \Drupal::service('tre_jsonapi_custom.entity_renderer')->renderEntity($translation, 'pdf', $lang_code);
+          $html_string = str_replace("<svg", "<img", $markup);
+          $mpdf->WriteHtml($html_string , 2);
+        }
+      }
+    }
+
+    if (\Drupal::service('file_system')->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY)) {
+      // Output the file to public folder.
+      $mpdf->Output($directory . $filename, 'F');
+    }
+  }
+}
+
+/**
+ * Get the nids of news in array between given date range.
+ *
+ * @param string $lang_code
+ *   The language code query is targetting.
+ * @param \Drupal\Core\Datetime\DrupalDateTime $date_range_start
+ *   The start date of the date range.
+ * @param \Drupal\Core\Datetime\DrupalDateTime $date_range_end
+ *   The end date of the date range.
+ *
+ * @return array
+ *   Array of news item nids.
+ */
+function _tre_news_archive_get_news_nids_by_date_range(string $lang_code, DrupalDateTime $date_range_start, DrupalDateTime $date_range_end): array {
+  $content_type = 'news_item';
+
+  $query = \Drupal::entityQuery('node');
+  $query->condition('type', $content_type, '=');
+  $query->condition('langcode', $lang_code);
+  $query->condition('published_at', $date_range_end->format('U'), '<', $lang_code);
+  $query->condition('published_at', $date_range_start->format('U'), '>=', $lang_code);
+  $query->condition('status', NodeInterface::PUBLISHED, '=', $lang_code);
+  $query->sort('published_at', 'DESC', $lang_code);
+  $query->accessCheck(FALSE);
+  return $query->execute();
+}
+
+/**
+ * Saves the given file to given directory to drupal as pdf file.
+ *
+ * @param string $filename
+ *   Filename of the pdf.
+ * @param string $directory
+ *   The name of the directory file is saved.
+ */
+function _tre_news_archive_save_file_to_drupal_as_pdf(string $filename, string $directory) {
+  // Create file entity data.
+  $data = [
+    'filename' => $filename,
+    'uri' => $directory . $filename,
+    'status' => TRUE,
+    'filemime' => 'application/pdf',
+  ];
+  // Create file entity.
+  $newEntity = \Drupal::entityTypeManager()
+    ->getStorage('file')
+    ->create($data);
+  // Save file entity.
+  $newEntity->save();
+}

@@ -1,0 +1,25 @@
+uuid: 6dc32297-7d89-4b52-97c3-1fb41aeafa04
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.person_liftups.field_person_liftups
+    - paragraphs.paragraphs_type.person_liftups
+  module:
+    - entity_reference_revisions
+id: paragraph.person_liftups.default
+targetEntityType: paragraph
+bundle: person_liftups
+mode: default
+content:
+  field_person_liftups:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

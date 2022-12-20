@@ -1,0 +1,19 @@
+uuid: bb897366-0773-4880-b006-ff31e30d1e37
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_keywords
+    - node.type.small_news_item
+id: node.small_news_item.field_search_keywords
+field_name: field_search_keywords
+entity_type: node
+bundle: small_news_item
+label: Avainsanat
+description: 'Käytetään sisällön nostamiseen esiin sivuston hakutoiminnallisuudessa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

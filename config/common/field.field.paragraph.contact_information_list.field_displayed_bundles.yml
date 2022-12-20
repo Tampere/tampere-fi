@@ -1,0 +1,21 @@
+uuid: 1bc47d15-f206-4505-8269-ba272dc732e7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_displayed_bundles
+    - paragraphs.paragraphs_type.contact_information_list
+  module:
+    - options
+id: paragraph.contact_information_list.field_displayed_bundles
+field_name: field_displayed_bundles
+entity_type: paragraph
+bundle: contact_information_list
+label: 'Näytettävät sisältötyypit'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

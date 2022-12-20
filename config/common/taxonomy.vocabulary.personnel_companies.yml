@@ -1,0 +1,8 @@
+uuid: 7e54f7e6-8b2a-4f64-b69d-05bc3b2eb225
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Henkilöstön yhtiöt'
+vid: personnel_companies
+description: ''
+weight: 0

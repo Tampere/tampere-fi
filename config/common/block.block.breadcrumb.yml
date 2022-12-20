@@ -1,0 +1,24 @@
+uuid: 66a866a1-cbfe-49cc-9bc3-1bb87303e3d3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tampere
+id: breadcrumb
+theme: tampere
+region: pre_content
+weight: -18
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Murupolku
+  label_display: '0'
+  provider: system
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '<front>'

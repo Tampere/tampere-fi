@@ -1,0 +1,4 @@
+settings:
+  plugins:
+    stylescombo:
+      styles: 'p.phone-icon-prefix|Phone number'

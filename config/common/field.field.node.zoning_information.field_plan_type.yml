@@ -1,0 +1,29 @@
+uuid: f3193104-0b15-4eb0-9695-63791beaa560
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plan_type
+    - node.type.zoning_information
+    - taxonomy.vocabulary.zoning_information_types
+id: node.zoning_information.field_plan_type
+field_name: field_plan_type
+entity_type: node
+bundle: zoning_information
+label: Kaavataso
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      zoning_information_types: zoning_information_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

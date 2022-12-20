@@ -1,0 +1,120 @@
+uuid: f509df12-1aba-4ed2-9e4c-5ba6a90ad7f5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.generic_listing.field_geographical_areas
+    - field.field.paragraph.generic_listing.field_gl_displayed_content_types
+    - field.field.paragraph.generic_listing.field_keywords
+    - field.field.paragraph.generic_listing.field_life_situations
+    - field.field.paragraph.generic_listing.field_other_identifiers
+    - field.field.paragraph.generic_listing.field_plan_numbers
+    - field.field.paragraph.generic_listing.field_record_numbers
+    - field.field.paragraph.generic_listing.field_sort_order
+    - field.field.paragraph.generic_listing.field_taxonomy_combination
+    - field.field.paragraph.generic_listing.field_title
+    - field.field.paragraph.generic_listing.field_topics
+    - field.field.paragraph.generic_listing.field_zoning_information_types
+    - paragraphs.paragraphs_type.generic_listing
+  module:
+    - options
+id: paragraph.generic_listing.default
+targetEntityType: paragraph
+bundle: generic_listing
+mode: default
+content:
+  field_geographical_areas:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_gl_displayed_content_types:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_life_situations:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_other_identifiers:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_plan_numbers:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_record_numbers:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_sort_order:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_taxonomy_combination:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_zoning_information_types:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+hidden:
+  search_api_excerpt: true

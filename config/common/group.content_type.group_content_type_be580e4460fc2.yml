@@ -1,0 +1,19 @@
+uuid: 31f8dba2-9c4c-4ae2-a71b-16e3eb95c029
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.small_news_item
+  module:
+    - gnode
+    - node
+id: group_content_type_be580e4460fc2
+label: 'Minikotisivusto: Group node (Small news item)'
+description: 'Adds <em class="placeholder">Small news item</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:small_news_item'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

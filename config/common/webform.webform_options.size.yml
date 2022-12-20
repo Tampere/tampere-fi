@@ -1,0 +1,19 @@
+uuid: 7b45feb9-8d14-4315-97e4-34e46eeaa764
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: RKkc6tf1VudvYiOtwPCf3Tp_EoA6fov6BFC34D7gMoQ
+id: size
+label: Koko
+category: 'Yleiset asetukset'
+likert: false
+options: |
+  Extra Small: Extra Small
+  Small: Small
+  Medium: Medium
+  Large: Large
+  Extra Large: Extra Large

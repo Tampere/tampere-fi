@@ -1,0 +1,19 @@
+uuid: 5b7d1feb-ccce-4109-a469-6f553279e723
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.news_item
+  module:
+    - gnode
+    - node
+id: minisite-group_node-news_item
+label: 'Minikotisivusto: Group node (Uutinen)'
+description: 'Adds <em class="placeholder">Uutinen</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:news_item'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

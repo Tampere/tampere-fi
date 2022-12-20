@@ -1,0 +1,52 @@
+uuid: 0261c035-e79b-4299-8b38-66ead2f357a3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.anchor_list.field_anchor_links
+    - field.field.paragraph.anchor_list.field_title
+    - paragraphs.paragraphs_type.anchor_list
+  module:
+    - field_states_ui
+    - limited_field_widgets
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.anchor_list.default
+targetEntityType: paragraph
+bundle: anchor_list
+mode: default
+content:
+  field_anchor_links:
+    type: paragraphs_classic_asymmetric
+    weight: 2
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: preview
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

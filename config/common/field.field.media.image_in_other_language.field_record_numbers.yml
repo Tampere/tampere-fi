@@ -1,0 +1,29 @@
+uuid: c8565ac1-6462-4c32-9082-4113437e39ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_record_numbers
+    - media.type.image_in_other_language
+    - taxonomy.vocabulary.record_numbers
+id: media.image_in_other_language.field_record_numbers
+field_name: field_record_numbers
+entity_type: media
+bundle: image_in_other_language
+label: 'Record numbers'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      record_numbers: record_numbers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

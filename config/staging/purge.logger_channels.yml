@@ -1,0 +1,19 @@
+channels:
+  -
+    id: purgers
+    grants:
+      - 0
+      - 2
+      - 3
+  -
+    id: queue
+    grants:
+      - 0
+      - 2
+      - 3
+  -
+    id: purger_varnish_zeroconfig_purger_9b59071696
+    grants:
+      - 0
+      - 2
+      - 3

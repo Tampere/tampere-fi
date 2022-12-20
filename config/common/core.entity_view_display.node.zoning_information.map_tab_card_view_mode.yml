@@ -1,0 +1,143 @@
+uuid: 6ce82f7c-f330-4856-8418-054122471e53
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.map_tab_card_view_mode
+    - field.field.node.zoning_information.field_address
+    - field.field.node.zoning_information.field_description
+    - field.field.node.zoning_information.field_display_location_on_map
+    - field.field.node.zoning_information.field_display_period
+    - field.field.node.zoning_information.field_epsg_3067_easting
+    - field.field.node.zoning_information.field_epsg_3067_northing
+    - field.field.node.zoning_information.field_feedback_form
+    - field.field.node.zoning_information.field_geographical_areas
+    - field.field.node.zoning_information.field_help_text
+    - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_location
+    - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_other_identifiers
+    - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_plan_number
+    - field.field.node.zoning_information.field_plan_type
+    - field.field.node.zoning_information.field_processing_time
+    - field.field.node.zoning_information.field_record_number
+    - field.field.node.zoning_information.field_search_keywords
+    - field.field.node.zoning_information.field_topics
+    - field.field.node.zoning_information.field_zoning_information_type
+    - node.type.zoning_information
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_popup_card
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: background
+    regions:
+      heading:
+        - node_title
+      first_column_content:
+        - field_description
+      second_column_content:
+        - field_address
+        - node_link
+    fields:
+      node_link:
+        plugin_id: node_link
+        weight: 3
+        label: above
+        formatter: default
+        settings:
+          'link text': 'Lue lisää'
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: Verkkosivu
+            lb-col: true
+            classes: {  }
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.zoning_information.map_tab_card_view_mode
+targetEntityType: node
+bundle: zoning_information
+mode: map_tab_card_view_mode
+content:
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: icon_field_group
+            pattern_mapping:
+              'ds_field_template:field_address':
+                destination: icon_field_group_content
+                weight: 0
+                plugin: ds_field_template
+                source: field_address
+            pattern_settings:
+              icon_field_group:
+                field_label: Osoite
+                field_label_token: ''
+              regular_field:
+                display_colon_after_label: 0
+            pattern_variant: location
+    weight: 2
+    region: second_column_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: first_column_content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_display_period: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_feedback_form: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_location: true
+  field_main_image: true
+  field_other_identifiers: true
+  field_paragraphs: true
+  field_plan_number: true
+  field_plan_type: true
+  field_processing_time: true
+  field_record_number: true
+  field_search_keywords: true
+  field_topics: true
+  field_zoning_information_type: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

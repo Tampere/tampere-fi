@@ -1,0 +1,37 @@
+uuid: 56f49cd6-e744-4b4d-85fe-28ab2ab03e6d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_gallery.field_images
+    - paragraphs.paragraphs_type.image_gallery
+  module:
+    - limited_field_widgets
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.image_gallery.default
+targetEntityType: paragraph
+bundle: image_gallery
+mode: default
+content:
+  field_images:
+    type: paragraphs_classic_asymmetric
+    weight: 0
+    region: content
+    settings:
+      title: Kuva
+      title_plural: Kuvat
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: image_gallery_item
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

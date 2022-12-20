@@ -1,0 +1,26 @@
+uuid: 7a750f9d-8712-4eba-b600-274f4e2141c4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+    - field.storage.comment.comment_body
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - plain_text
+id: comment.blog_article_comment.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: blog_article_comment
+label: Kommentti
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

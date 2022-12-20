@@ -1,0 +1,17 @@
+uuid: b6c3fd87-7c17-4d85-8d7f-600678250add
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Uutinen
+type: news_item
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

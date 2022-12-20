@@ -1,0 +1,17 @@
+uuid: cdba50a3-242b-4b91-b127-146d6c311017
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: fullwidth_image_embed_xs_image_style
+label: 'Kokoleveä kuvaupotus - xs (480×213)'
+effects:
+  6eed1045-2aa7-4723-be7a-08bbdde9bd84:
+    uuid: 6eed1045-2aa7-4723-be7a-08bbdde9bd84
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 213
+      crop_type: focal_point

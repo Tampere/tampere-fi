@@ -1,0 +1,8 @@
+uuid: 45b917d4-340b-4f8c-ad55-b28412e5f131
+langcode: fi
+status: true
+dependencies: {  }
+id: date_and_time_w_at_separator
+label: 'Päivämäärä ja aika klo-ilmaisulla'
+locked: false
+pattern: 'j.n.Y \k\l\o H.i'

@@ -1,0 +1,19 @@
+uuid: bd9f6cd3-b252-47d3-a236-713dc169abed
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_summary
+    - paragraphs.paragraphs_type.list_of_attachments
+id: paragraph.list_of_attachments.field_summary
+field_name: field_summary
+entity_type: paragraph
+bundle: list_of_attachments
+label: 'Listan leipäteksti'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

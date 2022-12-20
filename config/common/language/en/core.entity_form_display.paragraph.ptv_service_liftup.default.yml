@@ -1,0 +1,6 @@
+third_party_settings:
+  field_group:
+    group_override_headings:
+      format_settings:
+        description: 'To change any of the default headings or their heading levels, edit these values.'
+      label: 'Override headings'

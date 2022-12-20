@@ -1,0 +1,29 @@
+uuid: 1d06acba-f628-43db-965e-4131d2dad021
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_life_situations
+    - node.type.content_in_other_language
+    - taxonomy.vocabulary.life_situations
+id: node.content_in_other_language.field_life_situations
+field_name: field_life_situations
+entity_type: node
+bundle: content_in_other_language
+label: Elämäntilanteet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      life_situations: life_situations
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

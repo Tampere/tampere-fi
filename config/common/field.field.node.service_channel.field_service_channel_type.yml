@@ -1,0 +1,21 @@
+uuid: 9f725702-9529-4c74-b51a-33db98a4bbd6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_channel_type
+    - node.type.service_channel
+  module:
+    - options
+id: node.service_channel.field_service_channel_type
+field_name: field_service_channel_type
+entity_type: node
+bundle: service_channel
+label: 'Asiointikanavan tyyppi'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

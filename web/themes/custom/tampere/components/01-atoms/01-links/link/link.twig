@@ -1,0 +1,43 @@
+{#
+/**
+ * Available variables:
+ * - link_content - the content of the link (typically text)
+ * - link_url - the url this link should poing to
+ * - link_attributes - array of attribute,value pairs
+ * - link_base_class - the base class name
+ * - link_modifiers - array of modifiers to add to the base classname
+ * - link_blockname - blockname prepended to the base classname
+ *
+ * Available blocks:
+ * - link_content - used to replace the content of the link
+ *     Example: to insert the image component
+ *
+ * Notes:
+ *    when link_url is not provided, element is rendered as a <button> to avoid accessibility issues
+ */
+#}
+{% set link_base_class = link_base_class|default("link") %}
+{% set external = FALSE %}
+{% set custom_classes = custom_classes|default([]) %}
+
+{% if link_url|render|length > 0 %}
+  <a
+  {{ bem(link_base_class, (link_modifiers|default([])), link_blockname, custom_classes) }}
+  {% for attribute,value in link_attributes %}
+    {{ attribute }}="{{ value }}"
+    {% if attribute == "target" and value == "_blank" %}{% set external = TRUE %}{% endif %}
+  {% endfor %}
+  href="{{ link_url }}"
+  >
+  {% block link_content %}
+    {{ link_content }}{% if external %}<span class="visually-hidden">{{ "Opens in new window"|t }}</span>{% endif %}
+  {% endblock %}
+  </a>
+{% else %}
+  {% include "@atoms/06-buttons/01-button.twig" with {
+    "button_content": link_content,
+    "button_attributes": link_attributes|default([]),
+    "button_modifiers": link_modifiers,
+    "custom_classes": custom_classes
+  } %}
+{% endif %}

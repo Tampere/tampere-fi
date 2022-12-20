@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_node_location_coordinate_conversion.
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * Converts location field coordinates in the targeted content types and stores
+ * the resulting values in separate fields. If the node has a location field
+ * value, the latitude and longitude fields should not be empty.
+ */
+function tre_node_location_coordinate_conversion_node_presave(NodeInterface $node) {
+  if (!$node->hasField('field_location') || !$node->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME) || !$node->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)) {
+    return;
+  }
+
+  if ($node->get('field_location')->isEmpty()) {
+    // 'Map point' content type is the only content type where the longitude and
+    // latitude fields are visible on the node edit form. Content of this type
+    // is created both by automation and by content editors. Content created
+    // by automation have empty 'Location' fields, but their coordinates should
+    // never be emptied here.
+    if ($node->bundle() !== 'map_point') {
+      $node->set(HelperFunctionsInterface::LONGITUDE_FIELD_NAME, NULL);
+      $node->set(HelperFunctionsInterface::LATITUDE_FIELD_NAME, NULL);
+    }
+
+    return;
+  }
+
+  // @phpstan-ignore-next-line
+  $longitude = $node->get('field_location')->lon;
+  // @phpstan-ignore-next-line
+  $latitude = $node->get('field_location')->lat;
+
+  $longitude_field_is_not_empty = !$node->get(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)->isEmpty();
+  $latitude_field_is_not_empty = !$node->get(HelperFunctionsInterface::LATITUDE_FIELD_NAME)->isEmpty();
+
+  if ($longitude_field_is_not_empty && $latitude_field_is_not_empty) {
+    $original_node = $node->original;
+    if (!$original_node->get('field_location')->isEmpty()) {
+      // @phpstan-ignore-next-line
+      $original_longitude = $original_node->get('field_location')->lon;
+      // @phpstan-ignore-next-line
+      $original_latitude = $original_node->get('field_location')->lat;
+
+      if ($longitude === $original_longitude && $latitude === $original_latitude) {
+        return;
+      }
+    }
+  }
+
+  try {
+    $coordinates = \Drupal::service('tre_preprocess_utility_functions.helper_functions')->convertCoordinates(
+      // @phpstan-ignore-next-line
+      $node->get('field_location')->lon,
+      // @phpstan-ignore-next-line
+      $node->get('field_location')->lat
+    );
+  }
+  catch (Exception $e) {
+    \Drupal::messenger()->addWarning(t('Coordinate conversion unsuccesful. Try resaving the node. If the issue persists, contact the administrator.'));
+    \Drupal::logger('tre_node_location_coordinate_conversion')->warning($e->getMessage());
+    return;
+  }
+
+  $longitude = $coordinates[0];
+  $latitude = $coordinates[1];
+
+  $node->set(HelperFunctionsInterface::LONGITUDE_FIELD_NAME, $longitude);
+  $node->set(HelperFunctionsInterface::LATITUDE_FIELD_NAME, $latitude);
+}

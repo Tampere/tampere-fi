@@ -1,0 +1,19 @@
+uuid: dbe1c0e1-9dc1-4268-b013-8117d4fc0d42
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_anchor
+    - paragraphs.paragraphs_type.anchor_link
+id: paragraph.anchor_link.field_anchor
+field_name: field_anchor
+entity_type: paragraph
+bundle: anchor_link
+label: Ankkuri
+description: 'Syötä tähän ankkurilinkin kohde (esim. <code>#ajankohtaista</code> tai <code>#paragraph-3</code>).'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,10 @@
+uuid: 946b7a64-095a-4e2d-a6dc-b6ac9bc8e5aa
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.person_contact_information_list_content_view_mode
+label: 'Henkilöyhteystietolistan sisältö'
+targetEntityType: node
+cache: true

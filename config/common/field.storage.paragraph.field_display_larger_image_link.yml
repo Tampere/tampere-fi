@@ -1,0 +1,18 @@
+uuid: 0fa1e1b7-6636-44d3-95cb-1843bffde537
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_display_larger_image_link
+field_name: field_display_larger_image_link
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

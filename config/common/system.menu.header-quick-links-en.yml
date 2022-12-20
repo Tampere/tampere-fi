@@ -1,0 +1,8 @@
+uuid: 17c4a1c0-a035-42a5-9a05-a08a1ed5a371
+langcode: en
+status: true
+dependencies: {  }
+id: header-quick-links-en
+label: 'Header quick links'
+description: 'Links to information about the city''s attraction services.'
+locked: false

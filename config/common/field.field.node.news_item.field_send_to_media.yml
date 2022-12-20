@@ -1,0 +1,23 @@
+uuid: e7710fcd-80d2-44c6-9132-4fc94169cdd5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_send_to_media
+    - node.type.news_item
+id: node.news_item.field_send_to_media
+field_name: field_send_to_media
+entity_type: node
+bundle: news_item
+label: 'Lähetä medialle'
+description: 'Valitse tämä, jos haluat lähettää julkaistavan uutisen mediajakelulistoille, jotka olet määritellyt alapuolella.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

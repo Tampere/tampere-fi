@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+
+{% set breadcrumb__base_class = "breadcrumb" %}
+{% set use_right_to_left = lang_code == "arb" or lang_code == "fa" %}
+
+ {% if breadcrumb|length == 1 %}
+    {% set breadcrumb__modifiers = [ "single-item" ] %}
+ {% endif %}
+
+{% if breadcrumb %}
+  <nav aria-label="{{ 'Breadcrumb'|t }}">
+    <ol {{ bem(breadcrumb__base_class, (breadcrumb__modifiers|default([])), breadcrumb__blockname) }}>
+    {% spaceless %}
+    {% for item in breadcrumb %}
+      <li
+        {{ bem("item", (breadcrumb__item__modifiers|default([])), breadcrumb__base_class, [ "hyphenate" ]) }}
+        {% if loop.index == breadcrumb|length %}
+          {% if lang_code %}lang="{{ lang_code }}"{% endif %}
+          {% if use_right_to_left %} dir="rtl"{% endif %}
+        {% endif %}
+      >
+        {% if item.url %}
+          <a {{ bem("link", (breadcrumb__link__modifiers|default([])), breadcrumb__base_class) }} href="{{ item.url }}">
+            {% if (loop.index == (breadcrumb|length) - 1) or (breadcrumb|length == 1) %}
+              {% include "@atoms/04-images/icons/_icon.twig" with {
+                icon_base_class: "back-arrow",
+                icon_blockname: "breadcrumb",
+                icon_name: "breadcrumb-arrow-mobile",
+                icon_decorative: TRUE,
+              } %}
+            {% endif %}
+            {{ item.text }}
+          </a>
+        {% else %}
+          {{ item.text }}
+        {% endif %}
+      </li>
+      {% if loop.index != breadcrumb|length %}
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: "separator-icon",
+          icon_blockname: breadcrumb__base_class,
+          icon_name: "chevron-right",
+          icon_decorative: TRUE,
+        } %}
+      {% endif %}
+    {% endfor %}
+    {% endspaceless %}
+    </ol>
+  </nav>
+{% endif %}

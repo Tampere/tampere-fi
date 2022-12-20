@@ -1,0 +1,17 @@
+popup_card:
+  label: Popup card
+  variants:
+    default:
+      label: Default
+    background:
+      label: With background
+  fields:
+    heading:
+      label: Heading
+    first_column_content:
+      label: First column content
+    second_column_content:
+      label: Second column content
+    third_column_content:
+      label: Third column content
+  use: "@organisms/popup-card/popup-card.twig"

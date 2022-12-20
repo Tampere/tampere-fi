@@ -1,0 +1,19 @@
+uuid: 04391700-4df7-4f13-bf69-6252d9d47649
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_caption
+    - node.type.rich_article
+id: node.rich_article.field_media_caption
+field_name: field_media_caption
+entity_type: node
+bundle: rich_article
+label: Pääkuvateksti
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

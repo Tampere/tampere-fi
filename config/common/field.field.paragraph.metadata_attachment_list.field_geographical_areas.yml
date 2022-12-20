@@ -1,0 +1,29 @@
+uuid: eac19a5f-aaf8-4292-b283-1aba6798cd89
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_geographical_areas
+    - paragraphs.paragraphs_type.metadata_attachment_list
+    - taxonomy.vocabulary.geographical_areas
+id: paragraph.metadata_attachment_list.field_geographical_areas
+field_name: field_geographical_areas
+entity_type: paragraph
+bundle: metadata_attachment_list
+label: 'Maantieteelliset alueet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      geographical_areas: geographical_areas
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,101 @@
+uuid: dd40b60e-5697-4324-ac67-3039108fcd48
+langcode: fi
+status: true
+dependencies:
+  module:
+    - entity_browser
+id: entity_browser--entity_browser
+disabled: true
+path: entity_browser/entity_browser
+resourceType: entity_browser--entity_browser
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  name:
+    disabled: false
+    fieldName: name
+    publicName: name
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  display:
+    disabled: false
+    fieldName: display
+    publicName: display
+    enhancer:
+      id: ''
+  display_configuration:
+    disabled: false
+    fieldName: display_configuration
+    publicName: display_configuration
+    enhancer:
+      id: ''
+  selection_display:
+    disabled: false
+    fieldName: selection_display
+    publicName: selection_display
+    enhancer:
+      id: ''
+  selection_display_configuration:
+    disabled: false
+    fieldName: selection_display_configuration
+    publicName: selection_display_configuration
+    enhancer:
+      id: ''
+  widget_selector:
+    disabled: false
+    fieldName: widget_selector
+    publicName: widget_selector
+    enhancer:
+      id: ''
+  widget_selector_configuration:
+    disabled: false
+    fieldName: widget_selector_configuration
+    publicName: widget_selector_configuration
+    enhancer:
+      id: ''
+  widgets:
+    disabled: false
+    fieldName: widgets
+    publicName: widgets
+    enhancer:
+      id: ''

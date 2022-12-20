@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Theme override for a branding block.
+ *
+ * Each branding element variable (logo, name, slogan) is only available if
+ * enabled in the block configuration.
+ *
+ * Available variables:
+ * - site_logo: Logo for site as defined in Appearance or theme settings.
+ * - site_name: Name for site as defined in Site information settings.
+ * - site_slogan: Slogan for site as defined in Site information settings.
+ */
+#}
+
+{% if not site_logo %}
+  {% set site_logo_extra_classes = [ "visually-hidden" ] %}
+{% endif %}
+
+{% extends "@molecules/_block.twig" %}
+{% block content %}
+  {% set attributes = [] %}
+	{% if site_logo or site_name %}
+    <a {{ bem("logo", [], "", site_logo_extra_classes) }} href="{{ path('<front>') }}" title="{{ 'Home page'|t }}" rel="home">
+		{% endif %}
+		{% if site_logo %}
+			{% include "@atoms/04-images/00-image/_image.twig" with {
+          img_src: site_logo,
+          img_alt: "Home page"|t,
+          image_blockname: "logo",
+        } %}
+		{% endif %}
+		{% if site_name %}
+			<span class="site-name visually-hidden">
+				{{ site_name }}
+			</span>
+		{% endif %}
+		{% if site_logo or site_name %}
+		</a>
+	{% endif %}
+	{% if site_slogan %}
+		<span class="site-slogan visually-hidden">
+			{{ site_slogan }}
+		</span>
+	{% endif %}
+{% endblock %}

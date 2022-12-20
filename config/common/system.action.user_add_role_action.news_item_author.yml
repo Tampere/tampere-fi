@@ -1,0 +1,14 @@
+uuid: 9772726f-ae2f-4065-87d8-9dc363f05829
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.news_item_author
+  module:
+    - user
+id: user_add_role_action.news_item_author
+label: 'Add the Uutistoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: news_item_author

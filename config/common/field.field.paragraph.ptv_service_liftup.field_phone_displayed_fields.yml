@@ -1,0 +1,21 @@
+uuid: c5779dc5-c6f7-409a-be3e-df613cce078a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_phone_displayed_fields
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - options
+id: paragraph.ptv_service_liftup.field_phone_displayed_fields
+field_name: field_phone_displayed_fields
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Puhelinasiointikanavien näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

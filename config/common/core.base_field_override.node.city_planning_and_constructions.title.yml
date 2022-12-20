@@ -1,0 +1,18 @@
+uuid: 4c66d152-abe5-481c-a032-bfefed1ec255
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.title
+field_name: title
+entity_type: node
+bundle: city_planning_and_constructions
+label: Nimi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

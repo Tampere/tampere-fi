@@ -1,0 +1,10 @@
+uuid: 102b9678-42ac-475c-9561-3fe4f0351dd6
+langcode: fi
+status: true
+dependencies: {  }
+id: downloadable_material
+label: 'Ladattava materiaali'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+uuid: fe597439-df40-4de0-adf7-23c3e11842b5
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_hr_id
+field_name: field_hr_id
+entity_type: node
+type: string
+settings:
+  max_length: 1000
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

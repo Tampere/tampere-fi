@@ -1,0 +1,27 @@
+cta:
+  label: CTA
+  settings:
+    skip_paragraph_id:
+      type: boolean
+      label: Do not use ID in paragraph wrapper
+    heading_level:
+      type: select
+      label: Main heading level override (H2 by default)
+      allow_expose: true
+      options:
+        3: H3
+        4: H4
+        5: H5
+  variants:
+    default:
+      label: Default
+    halfwidth:
+      label: Halfwidth
+  fields:
+    cta__heading:
+      label: Heading
+    cta__content:
+      label: Content
+    cta__links:
+      label: Links
+  use: "@molecules/cta/cta.twig"

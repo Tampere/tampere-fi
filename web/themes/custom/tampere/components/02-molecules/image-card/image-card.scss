@@ -1,0 +1,77 @@
+$image-card-min-height--large: 480px;
+$image-card-image-height--mobile: 218px;
+
+.image-card {
+  $base_class: &;
+
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+
+  @include large {
+    min-height: $image-card-min-height--large;
+  }
+
+  &:hover,
+  &:focus {
+    #{$base_class}__heading {
+      @include dynamic-color(accent, border-bottom-color);
+    }
+  }
+
+  &__tag {
+    background-color: clr(accent);
+    padding: $space-xs $space-s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    max-width: 80%;
+
+    @include large {
+      padding: $space-s $space-l $space-s $space-l-plus;
+    }
+  }
+
+  &__heading {
+    @include dynamic-color(accent);
+    @include fluid-type($large, $xl, $font-22, $font-24);
+    @include word-wrap;
+
+    border-bottom: $border-thick-transparent;
+    font-size: $font-22;
+    font-weight: $font-weight-medium;
+    margin: 0;
+    width: fit-content;
+
+    @include large {
+      font-weight: $font-weight-semi-bold;
+    }
+  }
+
+  &__image-container {
+    height: $image-card-image-height--mobile;
+
+    @include large {
+      height: 100%;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  // Variations
+  &--top-corner-tag {
+    @include large {
+      min-height: auto;
+    }
+
+    #{$base_class}__tag {
+      top: 0;
+      bottom: auto;
+    }
+  }
+}

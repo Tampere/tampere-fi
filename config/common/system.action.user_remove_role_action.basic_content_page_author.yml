@@ -1,0 +1,14 @@
+uuid: f4dd0d14-7b73-4b3f-92f5-ee90601926de
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.basic_content_page_author
+  module:
+    - user
+id: user_remove_role_action.basic_content_page_author
+label: 'Remove the Perussisältösivutoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: basic_content_page_author

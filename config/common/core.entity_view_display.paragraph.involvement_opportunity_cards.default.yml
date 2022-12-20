@@ -1,0 +1,25 @@
+uuid: afe1002a-68f0-4487-94b6-d19ddbeb4624
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.involvement_opportunity_cards.field_involvement_opp_cards
+    - paragraphs.paragraphs_type.involvement_opportunity_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.involvement_opportunity_cards.default
+targetEntityType: paragraph
+bundle: involvement_opportunity_cards
+mode: default
+content:
+  field_involvement_opp_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

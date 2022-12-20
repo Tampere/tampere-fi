@@ -1,0 +1,11 @@
+uuid: 99b314a1-50f4-4a60-855d-84dcad690feb
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 35CefWbnzaiytcg3acexxz_GTvuwIjYd_ZTcmmR-tXA
+id: zxx
+label: 'Ei käytössä'
+direction: ltr
+weight: 3
+locked: true

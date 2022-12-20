@@ -1,0 +1,10 @@
+uuid: 5a2c6746-27d2-48d2-b208-64d28a7df493
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.current_liftup_wo_image_view_mode
+label: 'Ajankohtaisnosto ilman kuvaa'
+targetEntityType: node
+cache: true

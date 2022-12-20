@@ -1,0 +1,2 @@
+label: 'Displayed posts amount'
+description: 'Determines how many posts are shown initially as well as the number of new posts to reveal after loading (e.g. 6).'

@@ -1,0 +1,18 @@
+uuid: 82905d44-936e-40a9-a9de-026013ee7d0d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.person
+id: node.person.title
+field_name: title
+entity_type: node
+bundle: person
+label: Nimi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

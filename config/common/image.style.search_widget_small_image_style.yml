@@ -1,0 +1,17 @@
+uuid: 3b798420-1752-4fa5-a589-62d7c7b1b353
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: search_widget_small_image_style
+label: 'Hakuwidgetti - small (720×457)'
+effects:
+  f2cd128c-b923-43fd-923c-adabfccb1437:
+    uuid: f2cd128c-b923-43fd-923c-adabfccb1437
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 457
+      crop_type: focal_point

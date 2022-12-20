@@ -1,0 +1,19 @@
+uuid: d5f1a154-f001-40b3-86a7-fdb781d5962f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opening_hours_info
+    - node.type.place_of_business
+id: node.place_of_business.field_opening_hours_info
+field_name: field_opening_hours_info
+entity_type: node
+bundle: place_of_business
+label: 'Aukioloaikojen otsikko 1'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

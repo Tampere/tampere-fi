@@ -1,0 +1,65 @@
+uuid: 32a72eaa-8367-4e54-be5e-c187b72c3ce0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - filter.format.accordion_text
+  module:
+    - ckeditor
+format: accordion_text
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Muotoilu
+          items:
+            - Bold
+            - Italic
+            - Strike
+            - Superscript
+            - Subscript
+            - RemoveFormat
+        -
+          name: Linkit
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Listat
+          items:
+            - BulletedList
+            - NumberedList
+            - Outdent
+            - Indent
+        -
+          name: Formatointi
+          items:
+            - Format
+            - JustifyCenter
+            - JustifyBlock
+        -
+          name: Työkalut
+          items:
+            - Source
+        -
+          name: 'Kopioi ja liitä'
+          items:
+            - Copy
+            - Cut
+            - Paste
+            - PasteText
+            - PasteFromWord
+  plugins:
+    drupallink:
+      linkit_enabled: true
+      linkit_profile: linkit_wysiwyg
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

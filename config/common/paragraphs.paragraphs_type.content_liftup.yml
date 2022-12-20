@@ -1,0 +1,10 @@
+uuid: 80eb089c-8bb1-43d4-bbf9-499f34a5ba38
+langcode: fi
+status: true
+dependencies: {  }
+id: content_liftup
+label: Sisältönosto
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

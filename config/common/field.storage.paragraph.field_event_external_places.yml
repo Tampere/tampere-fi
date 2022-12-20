@@ -1,0 +1,24 @@
+uuid: 8f931ad0-85d3-41ef-aad4-821504cd4f44
+langcode: fi
+status: true
+dependencies:
+  module:
+    - external_data_source
+    - paragraphs
+id: paragraph.field_event_external_places
+field_name: field_event_external_places
+entity_type: paragraph
+type: external_data_source
+settings:
+  ws: pirkanmaa_external_data_source_place
+  count: '30'
+  max_length: '255'
+  is_ascii: false
+  case_sensitive: false
+module: external_data_source
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

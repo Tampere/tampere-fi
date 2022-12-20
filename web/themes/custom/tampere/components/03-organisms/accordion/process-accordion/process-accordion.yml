@@ -1,0 +1,34 @@
+process_accordion_heading: Lorem iposum dolor sit
+accordion_list:
+  - dl_heading:
+      Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    dl_content:
+      Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    id: 1
+    status:
+      - 'ready'
+  - dl_heading:
+      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    dl_content:
+      Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    id: 2
+    status:
+      - 'current'
+  - dl_heading:
+      Lorem ipsum dolor sit amet.
+    dl_content:
+      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+    dl_heading_base_class:
+      accordion-heading
+    dl_content_base_class:
+      accordion-content
+    id: 3
+    status:
+      - 'future'
+  - dl_heading:
+      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget
+    dl_content:
+      Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    id: 4
+    status:
+      - 'future'

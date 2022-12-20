@@ -1,0 +1,10 @@
+name: 'TRE News Releases By Email'
+type: module
+description: 'Handles sending of emails to media outlets about news releases.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - tre_jsonapi_custom:tre_jsonapi_custom
+  - tre_preprocess:tre_preprocess
+  - message_notify:message_notify
+  - tre_node_logger:tre_node_logger

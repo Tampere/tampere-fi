@@ -1,0 +1,10 @@
+uuid: c9fc8393-e3ed-48f9-b87a-1a513515353c
+langcode: fi
+status: true
+dependencies: {  }
+id: social_media_link
+label: Some-linkki
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

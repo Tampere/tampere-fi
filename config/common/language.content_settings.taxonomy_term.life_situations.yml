@@ -1,0 +1,18 @@
+uuid: 318c547d-7ee3-46ad-8e12-4337092965d8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.life_situations
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.life_situations
+target_entity_type_id: taxonomy_term
+target_bundle: life_situations
+default_langcode: current_interface
+language_alterable: true

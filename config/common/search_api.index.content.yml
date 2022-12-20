@@ -1,0 +1,280 @@
+uuid: 8a9c471c-3139-4907-b2eb-73f1653eaa67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_geographical_areas
+    - field.storage.node.field_life_situations
+    - field.storage.node.field_search_keywords
+    - field.storage.node.field_topics
+    - search_api.server.solr
+    - core.entity_view_mode.node.search_index
+  module:
+    - search_api_solr
+    - node
+    - search_api
+    - search_api_mapping
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    debug_finalize: false
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 1
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+      specific_languages: {  }
+_core:
+  default_config_hash: x4bqq-3Xet2UC1P9-WmhdiD5hPb2cs2Jioxv7hcqxaM
+id: content
+name: Content
+description: 'Default index, which index all content of the site.'
+read_only: false
+field_settings:
+  changed:
+    label: Muuttunut
+    datasource_id: 'entity:node'
+    property_path: changed
+    type: date
+    dependencies:
+      module:
+        - node
+  field_geographical_areas:
+    label: 'Maantieteelliset alueet'
+    datasource_id: 'entity:node'
+    property_path: field_geographical_areas
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_geographical_areas
+  field_life_situations:
+    label: Elämäntilanteet
+    datasource_id: 'entity:node'
+    property_path: field_life_situations
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_life_situations
+  field_search_keywords:
+    label: Avainsanat
+    datasource_id: 'entity:node'
+    property_path: field_search_keywords
+    type: solr_text_unstemmed
+    boost: !!float 8
+    dependencies:
+      config:
+        - field.storage.node.field_search_keywords
+  field_topics:
+    label: Aihealueet
+    datasource_id: 'entity:node'
+    property_path: field_topics
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_topics
+  gid:
+    label: 'Reverse reference: Ryhmän sisältö using Sisältö » Parent group'
+    datasource_id: 'entity:node'
+    property_path: 'search_api_reverse_entity_references_group_content__entity_id:gid'
+    type: integer
+  mapped_content_type:
+    label: 'Mapped content type'
+    property_path: mapped_field
+    type: string
+    configuration:
+      field: 'entity:node/type'
+      mapping: "basic_content_page|page\r\ncollection_page|page\r\nmoderated_page|page\r\nproject|page\r\norganization|page\r\nzoning_information|page\r\nplace|page\r\ncity_planning_and_constructions|page\r\ninvolvement_opportunity|page"
+      with_value: ''
+      without_value: ''
+  nid:
+    label: ID
+    datasource_id: 'entity:node'
+    property_path: nid
+    type: integer
+    dependencies:
+      module:
+        - node
+  rendered_item:
+    label: 'Rendered HTML output'
+    property_path: rendered_item
+    type: text
+    configuration:
+      roles:
+        - anonymous
+      view_mode:
+        'entity:node':
+          basic_content_page: search_index
+          blog_article: search_index
+          city_planning_and_constructions: search_index
+          collection_page: search_index
+          front_page: search_index
+          involvement_opportunity: search_index
+          moderated_page: search_index
+          news_item: search_index
+          notice: search_index
+          organization: search_index
+          place: search_index
+          project: search_index
+          rich_article: search_index
+          small_news_item: search_index
+          zoning_information: search_index
+  status:
+    label: status
+    datasource_id: 'entity:node'
+    property_path: status
+    type: boolean
+    dependencies:
+      module:
+        - node
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    boost: !!float 5
+    dependencies:
+      module:
+        - node
+  type:
+    label: Sisältötyyppi
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: uid
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: true
+      selected:
+        - content_in_other_language
+        - emergency_notice
+        - map_point
+        - person
+        - place_of_business
+        - ptv_service
+        - rss_item
+        - service_channel
+        - small_news_item
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  double_quote_workaround:
+    weights:
+      postprocess_query: 0
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - field_search_keywords
+      - rendered_item
+      - title
+    replacement: '|9999999998|'
+  entity_status: {  }
+  entity_type: {  }
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - rendered_item
+    title: true
+    alt: true
+    tags:
+      b: 2
+      h1: 5
+      h2: 3
+      h3: 2
+      strong: 2
+  language_with_fallback: {  }
+  mapped_field: {  }
+  rendered_item: {  }
+  reverse_entity_references: {  }
+  solr_boost_more_recent:
+    weights:
+      preprocess_query: 0
+    boosts:
+      changed:
+        boost: !!float 3
+        resolution: NOW/MINUTE
+        m: '3.16e-11'
+        a: 0.1
+        b: 0.05
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+  type_boost:
+    weights:
+      preprocess_index: 0
+    boosts:
+      'entity:node':
+        datasource_boost: !!float 1
+        bundle_boosts:
+          basic_content_page: !!float 2
+          blog_article: !!float 1
+          city_planning_and_constructions: !!float 2
+          collection_page: !!float 2
+          front_page: !!float 1
+          involvement_opportunity: !!float 0
+          moderated_page: !!float 2
+          news_item: !!float 1
+          notice: !!float 1
+          organization: !!float 2
+          place: !!float 2
+          project: !!float 2
+          rich_article: !!float 1
+          zoning_information: !!float 2
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 100
+  index_directly: true
+  track_changes_in_references: true
+server: solr

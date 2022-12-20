@@ -1,0 +1,10 @@
+uuid: 836f60c2-8716-4c85-8db3-608eb7ebbc40
+langcode: fi
+status: true
+dependencies: {  }
+id: mosaic_liftup
+label: Mosaiikkinosto
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

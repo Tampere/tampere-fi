@@ -1,0 +1,18 @@
+uuid: 28d19d00-1931-4033-9269-cae8d80ffff9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_node-place
+id: group_content.life_situation-group_node-place.created
+field_name: created
+entity_type: group_content
+bundle: life_situation-group_node-place
+label: Luotu
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

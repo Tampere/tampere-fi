@@ -1,0 +1,31 @@
+{#
+ # Available variables:
+ # - hero_icon_name: Optional. If the page belongs to a group with an icon,
+ #   the group's icon name will be available here.
+ #}
+
+{% set collection_page_content_base_class = collection_page_content_base_class|default("collection-page-content") %}
+
+{% if main_image|render|trim %}
+  {% set has_image = TRUE %}
+{% endif %}
+
+<article {{ bem(collection_page_content_base_class, collection_page_content_modifiers|default([]), collection_page_content_blockname) }}>
+  <div {{ bem("header", collection_page_content__header__modifiers|default([]), collection_page_content_base_class) }}>
+    {% embed "@molecules/hero/hero.twig" with {
+      "hero__heading": main_title,
+      "has_image": has_image,
+      "hero__item_icon": hero_icon_name,
+    } %}
+      {% block hero__img %}
+        {{ main_image }}
+      {% endblock %}
+    {% endembed %}
+  </div>
+
+  <div {{ bem("main-content", collection_page_content__main_content__modifiers|default([]), collection_page_content_base_class) }}>
+    {% block collection_page_content_main_content %}
+      {{ main_content }}
+    {% endblock %}
+  </div>
+</article>

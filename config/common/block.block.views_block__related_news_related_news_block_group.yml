@@ -1,0 +1,33 @@
+uuid: be2ac6a7-8348-44bb-b350-b7314802498d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.related_news
+  module:
+    - node
+    - views
+  theme:
+    - tampere
+id: views_block__related_news_related_news_block_group
+theme: tampere
+region: post_content
+weight: -23
+provider: null
+plugin: 'views_block:related_news-related_news_block_group'
+settings:
+  id: 'views_block:related_news-related_news_block_group'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      news_item: news_item

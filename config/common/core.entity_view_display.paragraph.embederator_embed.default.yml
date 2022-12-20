@@ -1,0 +1,23 @@
+uuid: eae4db2c-3d7c-4f21-92b3-b60b3a8bd3aa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embederator_embed.field_embederator_embed
+    - paragraphs.paragraphs_type.embederator_embed
+id: paragraph.embederator_embed.default
+targetEntityType: paragraph
+bundle: embederator_embed
+mode: default
+content:
+  field_embederator_embed:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

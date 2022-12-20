@@ -1,0 +1,11 @@
+general_contact_card__name: 'Lorem ipsum dolor sit'
+general_contact_card__pre_main_content:
+  - 'Nähtävilläoloaika 02.05.2022 - 09.05.2022'
+  - 'Käsittelyaika 09.05.2022 - 16.05.2022'
+general_contact_card__main_content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis ipsum felis. Fusce malesuada neque ac venenatis egestas. Etiam maximus bibendum fringilla. Etiam molestie elit felis, in varius odio rhoncus nec. Vestibulum non nibh in risus placerat aliquet. Etiam quam nisi, egestas sit amet egestas vitae, dictum id quam. Pellentesque vitae bibendum mauris. Suspendisse leo lorem, luctus at neque in, egestas pulvinar nunc. Phasellus tincidunt eu nisi ac luctus. Sed tortor dolor, faucibus eu neque eget, tincidunt lobortis lectus. Maecenas vulputate id mauris vel molestie. Fusce a fermentum est. Donec tellus leo, varius nec nunc eget, fringilla faucibus magna.'
+general_contact_card__email_address: 'lorem@example.com'
+general_contact_card__map: 
+  - title: "Location on map"
+    content: zoning_project_map
+    accordion_content_modifiers: 
+      - no-margin

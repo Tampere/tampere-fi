@@ -1,0 +1,84 @@
+uuid: e3ceeb2a-81e9-4ee2-b792-c25676ccadf9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.news_media_delivery
+    - field.field.paragraph.service_highlight.field_service_heading
+    - field.field.paragraph.service_highlight.field_service_links
+    - field.field.paragraph.service_highlight.field_service_text
+    - paragraphs.paragraphs_type.service_highlight
+  module:
+    - ds
+    - entity_reference_revisions
+    - field_delimiter
+    - text
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: true
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - field_service_heading
+        - field_service_text
+        - field_service_links
+id: paragraph.service_highlight.news_media_delivery
+targetEntityType: paragraph
+bundle: service_highlight
+mode: news_media_delivery
+content:
+  field_service_heading:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 0
+    region: content
+  field_service_links:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: news_media_delivery
+      link: ''
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 3
+    region: content
+  field_service_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

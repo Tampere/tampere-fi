@@ -1,0 +1,6 @@
+uuid: f0080a94-a3b5-47b4-9c1e-d2bc06aba400
+langcode: fi
+status: true
+dependencies: {  }
+id: minisite_main_menu_fi
+label: 'Minikotisivuston päävalikko'

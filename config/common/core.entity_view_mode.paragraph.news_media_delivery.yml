@@ -1,0 +1,10 @@
+uuid: 53eb3eb6-3917-447f-8733-3c4b25b2dfac
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.news_media_delivery
+label: 'Uutisen mediajakelu'
+targetEntityType: paragraph
+cache: true

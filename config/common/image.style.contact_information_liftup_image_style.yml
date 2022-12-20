@@ -1,0 +1,17 @@
+uuid: 3b4f66b8-30f9-42ef-ae34-ed2b4456d67c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: contact_information_liftup_image_style
+label: 'Yhteystietonosto (150×150)'
+effects:
+  2b334628-7bc5-4710-89b2-2517b6f90783:
+    uuid: 2b334628-7bc5-4710-89b2-2517b6f90783
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 150
+      height: 150
+      crop_type: focal_point

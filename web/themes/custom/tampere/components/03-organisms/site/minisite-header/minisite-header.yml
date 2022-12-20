@@ -1,0 +1,25 @@
+front_page_url: "http://google.com"
+header__current_language__name: English
+header__current_language__code: EN
+header__language__links:
+  en:
+    text: English (EN)
+  fi:
+    text: Suomi (FI)
+display_header_tagline: TRUE
+header__tagline: "Työväenopisto"
+header__heading: "Tampereen seudun työväenopisto"
+menu_items:
+  - title: "Kurssit"
+    url: "#"
+  - title: "Ilmoittautuminen"
+    url: "#"
+  - title: "Opistoinfo"
+    url: "#"
+  - title: "Tilavuokraus"
+    url: "#"
+  - title: "Palaute"
+    url: "#"
+  - title: "Erityisopetus"
+    url: "#"
+header__readspeaker__content: 'Kuuntele'

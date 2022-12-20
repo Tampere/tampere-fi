@@ -1,0 +1,19 @@
+uuid: ffbcc6cf-224b-4214-989d-ca8ea9446817
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - node.type.zoning_information
+  module:
+    - gnode
+    - node
+id: group_content_type_636b622e9c5af
+label: 'Alasivusto: Group node (Zoning information)'
+description: 'Adds <em class="placeholder">Zoning information</em> content to groups both publicly and privately.'
+group_type: subsite
+content_plugin: 'group_node:zoning_information'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

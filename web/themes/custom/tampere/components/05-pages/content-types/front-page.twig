@@ -1,0 +1,304 @@
+{% set pre_content = true %}
+
+{% extends "@templates/_default.twig" %}
+
+  {% block page_pre_content %}
+    {% include "@organisms/site/site-precontent/site-precontent.twig" %}
+  {% endblock %}
+
+  {% block page_content %}
+    {% embed "@organisms/site/wide-content/wide-content.twig" with {
+      has_image: true,
+      main_image: "<img src='https://placeimg.com/1280/400/arch' alt=''>",
+      hero_title: "Lorem jipsum dolor sit ipsum dolipisque",
+      cta_link_url: "#",
+      cta_link_text: "Lorem",
+    } %}
+      {% block wide_content_main_content %}
+
+        {% include "@organisms/picture-mosaic/picture-mosaic.twig" with {
+          picture_mosaic__items: {
+            1: {
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__link__url: "#",
+              card__image__src: "https://placeimg.com/1280/820/nature",
+            },
+            2: {
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+              card__body: "Cras lacinia sagittis maur lorem ipsum dolor sit amet",
+              card__link__url: "#",
+            },
+            3: {
+              card__heading: "Cras lacinia",
+              card__link__url: "#",
+              card__image__src: "https://placeimg.com/1280/820/nature",
+            },
+            4: {
+              card__image__src: "https://placeimg.com/1280/820/nature",
+              card__image__alt: "",
+            },
+            5: {
+              card__heading: "Cras lacinia sagittis",
+              card__link__url: "#",
+            },
+          },
+        } %}
+
+        {% include "@molecules/notice/notice.twig" with {
+          notice__heading: "Lorem ipsum dolor",
+          notice__content: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a",
+        } %}
+
+        {% include "@organisms/grouped-content-liftup/grouped-content-liftup.twig" %}
+
+        {% include "@organisms/topics-and-life-situations/topics-and-life-situations.twig" with {
+          topics_and_life_situations__modifiers: [],
+          link_list__modifiers: [],
+        } %}
+
+        {% embed "@organisms/two-column-container/two-column-container.twig" %}
+          {% block two_column_container_left_column %}
+            {% include "@molecules/card-with-icon/card-with-icon.twig" with {
+              card__image__src: "",
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__body: "Cras vestibulum, est ac rhoncus aliquet, nunc enim viverra lorem, eget auctor tellus ligula non quam. Nunc sodales scelerisque risus, in feugiat massa egestas eu. Nullam fringilla sodales nunc in blandit. Sed dolor ex, laoreet sit amet ligula in, accumsan pretium elit.",
+              card__link_item__url: "#",
+              card__link_item__text: "Lorem ipsum",
+              is_example: true,
+              has_image: false,
+            } %}
+          {% endblock %}
+          {% block two_column_container_right_column %}
+            {% include "@molecules/card-with-icon/card-with-icon.twig" with {
+              card__image__src: "https://placeimg.com/1280/720/nature",
+              card__heading: "Vivamus at quam at felis",
+              card__body: "Vivamus at quam at felis ullamcorper rutrum sit amet id urna.",
+              card__link_item__url: "#",
+              card__link_item__text: "Lorem ipsum dolor sit amet",
+              card__modifiers: [ "with-image" ],
+              card__icon__name: "money",
+              is_example: true,
+            } %}
+          {% endblock %}
+        {% endembed %}
+
+        {% include "@molecules/separator/separator.twig" %}
+
+        {% include "@organisms/card-grid/card-grid.twig" with {
+          card_grid__modifiers: [ "4-col" ],
+          cards: {
+            1: {
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__link__url: "#",
+              card__image__src: "",
+              card__body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue.",
+              card__modifiers: [ "slim" ],
+            },
+            2: {
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+              card__link__url: "#",
+              card__body: "Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod.",
+              card__modifiers: [ "slim" ],
+            },
+            3: {
+              card__heading: 'Etiam scelerisque eros',
+              card__link__url: '#',
+              card__body: 'Nam non nunc vulputate ipsum viverra commodo quis nec velit. Praesent euismod porttitor leo, nec suscipit justo convallis at.',
+              card__modifiers: [ "slim" ],
+            },
+            4: {
+              card__heading: "Maecenas dictum sed velit ac euismod",
+              card__link__url: "#",
+              card__modifiers: [ "slim" ],
+            },
+            5: {
+              card__heading: "Praesent euismod porttitor leo",
+              card__link__url: "#",
+              card__body: "Nunc nec velit bibendum, pulvinar ante nec.",
+              card__modifiers: [ "slim" ],
+            }
+          }
+        } %}
+
+        {% include "@molecules/separator/separator.twig" %}
+
+        {% include "@organisms/card-grid/card-grid.twig" with {
+          card_grid__modifiers: [ "3-col-expand" ],
+          cards: {
+            1: {
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__link__url: "#",
+              card__body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.",
+              card__modifiers: [ "colorful", "colorful-1" ],
+            },
+          }
+        } %}
+
+        {% include "@organisms/card-grid/card-grid.twig" with {
+          card_grid__modifiers: [ "3-col-expand" ],
+          cards: {
+            1: {
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__link__url: "#",
+              card__body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.",
+              card__modifiers: [ "colorful", "colorful-1" ],
+            },
+            2: {
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+              card__link__url: "#",
+              card__body: "Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.",
+              card__modifiers: [ "colorful", "colorful-2" ],
+            },
+          }
+        } %}
+
+        {% include "@organisms/card-grid/card-grid.twig" with {
+          card_grid__modifiers: [ "3-col-expand" ],
+          cards: {
+            1: {
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__link__url: "#",
+              card__modifiers: [ "colorful", "colorful-1" ],
+            },
+            2: {
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+              card__link__url: "#",
+              card__body: "Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.",
+              card__modifiers: [ "colorful", "colorful-2" ],
+            },
+            3: {
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+              card__link__url: "#",
+              card__body: "Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.",
+              card__modifiers: [ "colorful", "colorful-3" ],
+            },
+            4: {
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__link__url: "#",
+              card__body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.",
+              card__modifiers: [ "colorful", "colorful-1" ],
+            },
+            5: {
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+              card__link__url: "#",
+              card__modifiers: [ "colorful", "colorful-2" ],
+            },
+          }
+        } %}
+
+        {% include "@molecules/cta/cta.twig" %}
+
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_content: "Tempus convallis quis ac lectus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.. Nulla quis lorem ut libero malesuada feugiat.",
+        } %}
+
+        {% include "@molecules/cta/cta.twig" with {
+          cta__heading: "",
+          cta__content: "",
+        } %}
+
+        {% include "@molecules/separator/separator.twig" %}
+
+        {% include "@organisms/feedback-section/feedback-section.twig" %}
+
+        {% include "@molecules/person-contact/person-contact.twig" %}
+        {% include "@molecules/person-contact/person-contact.twig" %}
+        {% include "@molecules/place-contact/place-contact.twig" %}
+        {% include "@molecules/place-of-business-contact/place-of-business-contact.twig" %}
+
+        {% include "@molecules/text-with-bgcolor/text-with-bgcolor.twig" with {
+          color_textbox__content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          plain_textbox__content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        } %}
+
+        {% include "@organisms/card-grid/card-grid.twig" with {
+          card_grid__modifiers: [ "3-col-expand" ],
+          cards: {
+            1: {
+              card__heading: "Lorem ipsum dolor sit amet",
+              card__link__url: "#",
+              card__modifiers: [ "colorful", "colorful-1" ],
+            },
+            2: {
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+              card__link__url: "#",
+              card__body: "Vivamus at quam at felis ullamcorper rutrum sit amet id urna. Maecenas dictum sed velit ac euismod. Nunc nec velit bibendum, pulvinar ante nec, consectetur tortor. Mauris ultrices mattis tellus nec hendrerit. Maecenas id venenatis tortor.",
+              card__modifiers: [ "colorful", "colorful-2" ],
+            },
+          }
+        } %}
+
+        {% include "@organisms/infographics/infographics.twig" %}
+
+        {% include "@organisms/topical-listing/topical-listing.twig" with {
+          topical_listing__heading: "Lorem ipsum dolor sit amet",
+          has_highlighted_liftup: true,
+          topical_listing__highlighted__image_src: "https://placeimg.com/980/500/nature",
+          topical_card__date: "21.2.2022",
+          topical_card__tag: "News item",
+          topical_card__heading: "Lorem ipsum dolor sit amet",
+          topical_card__summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt ac est quis fringilla.",
+          liftups: {
+            1: {
+              card__image__src: "https://placeimg.com/600/600/nature",
+              card__date: "5.2.2022",
+              card__tag: "News item",
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+            },
+            2: {
+              card__image__src: "https://placeimg.com/600/600/nature",
+              card__date: "4.2.2022",
+              card__tag: "News item",
+              card__heading: "Felis sed felis bibendum tristique",
+            },
+          },
+        } %}
+
+        {% include "@organisms/topical-listing/topical-listing.twig" with {
+          topical_listing__modifiers: [ "events" ],
+          topical_listing__heading: "Lorem ipsum dolor sit amet",
+          topical_listing__link__icon: "external",
+          topical_listing__link__url: "#",
+          topical_listing__link__text: "See all events",
+          liftups: {
+            1: {
+              card__image__src: "https://placeimg.com/600/600/nature",
+              card__date: "5.2.2022",
+              card__tag: "Event location",
+              card__heading: "Cras lacinia sagittis mauris a volutpat",
+            },
+            2: {
+              card__image__src: "https://placeimg.com/600/600/nature",
+              card__date: "4.2.2022",
+              card__tag: "Event location",
+              card__heading: "Felis sed felis bibendum tristique",
+            },
+            3: {
+              card__image__src: "https://placeimg.com/600/600/nature",
+              card__date: "3.2.2022",
+              card__tag: "Event location",
+              card__heading: "Sed ac ipsum quis massa",
+            },
+          },
+        } %}
+
+        {% include "@molecules/separator/separator.twig" %}
+
+        {% include "@molecules/card-with-links/card-with-links.twig" with {
+          card__image__src: "https://placeimg.com/1280/720/nature",
+          card__heading: "Lorem ipsum dolor sit amet",
+          card__body: "Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.",
+          card__links__items: {
+            1: {
+              text: "Lorem ipsum",
+            },
+            2: {
+              text: "Aliquet",
+            }
+          },
+          link_list__modifiers: [],
+        } %}
+
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}

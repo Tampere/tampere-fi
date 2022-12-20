@@ -1,0 +1,5 @@
+name: 'TRE JSON:API Customisations'
+type: module
+description: 'Customises JSON:API output.'
+core_version_requirement: ^8 || ^9
+package: 'TRE'

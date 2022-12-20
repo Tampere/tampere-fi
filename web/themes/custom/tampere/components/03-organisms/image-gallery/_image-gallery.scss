@@ -1,0 +1,22 @@
+.image-gallery {
+  @include page-element-spacer;
+
+  display: grid;
+  gap: $gutter-small;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  max-width: var(--basic-component-max-width);
+
+  .lightbox {
+    display: block;
+  }
+
+  .image__img--image-gallery-thumbnail-image-style {
+    width: 100%;
+  }
+
+  .main-content--with-sidebar & {
+    @include large {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

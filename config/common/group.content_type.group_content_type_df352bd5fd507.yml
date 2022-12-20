@@ -1,0 +1,19 @@
+uuid: 468de286-aa23-42bc-8db4-dbed2fd753be
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+    - node.type.basic_content_page
+  module:
+    - gnode
+    - node
+id: group_content_type_df352bd5fd507
+label: 'Elämäntilanne: Group node (Perussisältösivu)'
+description: 'Adds <em class="placeholder">Perussisältösivu</em> content to groups both publicly and privately.'
+group_type: life_situation
+content_plugin: 'group_node:basic_content_page'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

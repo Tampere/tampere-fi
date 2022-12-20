@@ -1,0 +1,18 @@
+uuid: 95117c1e-ac94-4a42-9a9e-1f149074b099
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.life-situation-menu-fi
+id: menu_link_content.life-situation-menu-fi.title
+field_name: title
+entity_type: menu_link_content
+bundle: life-situation-menu-fi
+label: 'Valikon linkin otsikko'
+description: 'Linkin teksti valikossa käytettäväksi.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

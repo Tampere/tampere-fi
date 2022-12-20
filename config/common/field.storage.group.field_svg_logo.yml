@@ -1,0 +1,28 @@
+uuid: 7140cac0-2a04-4257-94be-405bef79c262
+langcode: fi
+status: true
+dependencies:
+  module:
+    - file
+    - group
+    - svg_image_field
+id: group.field_svg_logo
+field_name: field_svg_logo
+entity_type: group
+type: svg_image_field
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+module: svg_image_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

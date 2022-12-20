@@ -1,0 +1,10 @@
+uuid: e3489404-a72a-4fde-9101-2337d3a35f0a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.phone_number_and_email_view_mode
+label: 'Puhelinnumero ja sähköposti'
+targetEntityType: node
+cache: true

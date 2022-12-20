@@ -1,0 +1,10 @@
+id: br_tag
+label: 'Br tag'
+ui_limit: ''
+type: twig
+type_label: 'Twig field'
+entities:
+  message: message
+  node: node
+properties:
+  content: '<br>'

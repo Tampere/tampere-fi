@@ -1,0 +1,23 @@
+uuid: 8880a6cc-d71f-42df-a1f5-a1063dd3ef78
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.map_embed.field_display_wider
+    - field.field.paragraph.map_embed.field_embed_description
+    - field.field.paragraph.map_embed.field_map_embed_code
+    - field.field.paragraph.map_embed.field_map_height
+    - field.field.paragraph.map_embed.field_title
+    - paragraphs.paragraphs_type.map_embed
+id: paragraph.map_embed.default
+targetEntityType: paragraph
+bundle: map_embed
+mode: default
+content: {  }
+hidden:
+  field_display_wider: true
+  field_embed_description: true
+  field_map_embed_code: true
+  field_map_height: true
+  field_title: true
+  search_api_excerpt: true

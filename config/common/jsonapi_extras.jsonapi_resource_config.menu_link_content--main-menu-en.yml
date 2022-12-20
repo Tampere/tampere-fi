@@ -1,0 +1,196 @@
+uuid: 7070a2d7-0c2f-4e83-81bd-464325a2d5e3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.main-menu-en
+  module:
+    - jsonapi_defaults
+third_party_settings:
+  jsonapi_defaults:
+    page_limit: 50
+id: menu_link_content--main-menu-en
+disabled: true
+path: menu_link_content/main-menu-en
+resourceType: menu_link_content--main-menu-en
+resourceFields:
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  revision_id:
+    disabled: false
+    fieldName: revision_id
+    publicName: revision_id
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  bundle:
+    disabled: false
+    fieldName: bundle
+    publicName: bundle
+    enhancer:
+      id: ''
+  revision_created:
+    disabled: false
+    fieldName: revision_created
+    publicName: revision_created
+    enhancer:
+      id: ''
+  revision_user:
+    disabled: false
+    fieldName: revision_user
+    publicName: revision_user
+    enhancer:
+      id: ''
+  revision_log_message:
+    disabled: false
+    fieldName: revision_log_message
+    publicName: revision_log_message
+    enhancer:
+      id: ''
+  enabled:
+    disabled: false
+    fieldName: enabled
+    publicName: enabled
+    enhancer:
+      id: ''
+  title:
+    disabled: false
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''
+  menu_name:
+    disabled: false
+    fieldName: menu_name
+    publicName: menu_name
+    enhancer:
+      id: ''
+  link:
+    disabled: false
+    fieldName: link
+    publicName: link
+    enhancer:
+      id: ''
+  external:
+    disabled: false
+    fieldName: external
+    publicName: external
+    enhancer:
+      id: ''
+  rediscover:
+    disabled: false
+    fieldName: rediscover
+    publicName: rediscover
+    enhancer:
+      id: ''
+  weight:
+    disabled: false
+    fieldName: weight
+    publicName: weight
+    enhancer:
+      id: ''
+  expanded:
+    disabled: false
+    fieldName: expanded
+    publicName: expanded
+    enhancer:
+      id: ''
+  parent:
+    disabled: false
+    fieldName: parent
+    publicName: parent
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: false
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: false
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: false
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''
+  view_mode:
+    disabled: false
+    fieldName: view_mode
+    publicName: view_mode
+    enhancer:
+      id: ''
+  metatag:
+    disabled: false
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  content_translation_source:
+    disabled: false
+    fieldName: content_translation_source
+    publicName: content_translation_source
+    enhancer:
+      id: ''
+  content_translation_outdated:
+    disabled: false
+    fieldName: content_translation_outdated
+    publicName: content_translation_outdated
+    enhancer:
+      id: ''
+  content_translation_uid:
+    disabled: false
+    fieldName: content_translation_uid
+    publicName: content_translation_uid
+    enhancer:
+      id: ''
+  content_translation_status:
+    disabled: false
+    fieldName: content_translation_status
+    publicName: content_translation_status
+    enhancer:
+      id: ''
+  content_translation_created:
+    disabled: false
+    fieldName: content_translation_created
+    publicName: content_translation_created
+    enhancer:
+      id: ''
+  field_hide_menu_link:
+    disabled: false
+    fieldName: field_hide_menu_link
+    publicName: field_hide_menu_link
+    enhancer:
+      id: ''

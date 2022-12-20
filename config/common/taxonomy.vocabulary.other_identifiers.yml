@@ -1,0 +1,8 @@
+uuid: 157eb473-03b3-4bcf-a3ff-0e2481022a5c
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Muut tunnisteet'
+vid: other_identifiers
+description: ''
+weight: 0

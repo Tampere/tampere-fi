@@ -1,0 +1,19 @@
+uuid: 238eada8-63fd-49ad-b0a3-8d4f5e9fa325
+langcode: fi
+status: true
+dependencies:
+  module:
+    - config_pages
+    - text
+id: config_pages.field_second_text_column
+field_name: field_second_text_column
+entity_type: config_pages
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,16 @@
+uuid: 19739977-ddbd-40fa-8afd-6d7e50d9f475
+langcode: fi
+status: true
+dependencies:
+  module:
+    - pathauto
+  enforced:
+    module:
+      - node
+_core:
+  default_config_hash: n8BEDjeRuQlZbjeAjN_c0HeCBEH1nb4NUjJJRqH78LM
+id: pathauto_update_alias_node
+label: 'Päivitä osoitealias'
+type: node
+plugin: pathauto_update_alias
+configuration: {  }

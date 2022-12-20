@@ -1,0 +1,31 @@
+uuid: 15c8db6d-589d-4beb-88d4-c3325d9561aa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place
+    - node.type.person
+    - node.type.place
+    - node.type.place_of_business
+id: node.person.field_place
+field_name: field_place
+entity_type: node
+bundle: person
+label: Toimipiste
+description: 'Henkilön toimipiste tai paikka.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      place: place
+      place_of_business: place_of_business
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: place
+field_type: entity_reference

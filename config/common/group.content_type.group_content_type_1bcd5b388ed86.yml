@@ -1,0 +1,19 @@
+uuid: 763df78b-cac4-4fba-80aa-c17b819f3d66
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+    - node.type.zoning_information
+  module:
+    - gnode
+    - node
+id: group_content_type_1bcd5b388ed86
+label: 'Teema: Group node (Kaava)'
+description: 'Adds <em class="placeholder">Kaava</em> content to groups both publicly and privately.'
+group_type: theme
+content_plugin: 'group_node:zoning_information'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

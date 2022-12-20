@@ -1,0 +1,18 @@
+uuid: 2cecfc62-bca6-42e4-969f-6a8935bfa8dd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.persons_contact_information_list
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.persons_contact_information_list
+target_entity_type_id: paragraph
+target_bundle: persons_contact_information_list
+default_langcode: site_default
+language_alterable: true

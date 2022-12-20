@@ -1,0 +1,84 @@
+{#
+ # Available variables:
+ # - tabbed_container__base_class - base classname of the wrapper.
+ # - tabbed_container__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - tabbed_container__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - tabbed_container__extra_classes - array of extra classes to add to the wrapper.
+ #
+ # - tabbed_container__content__modifiers - array of modifiers to add to the base classname of the content.
+ #
+ # - tabbed_container__tabs_wrapper__modifiers - array of modifiers to add to the base classname of the tabs wrapper.
+ #
+ # - tabbed_container__heading - heading for the component.
+ #
+ # - tabbed_container_tabs - array of tabs to display in the container. Eaach tab contains.
+ *   - title: The title to be displayed inside the tab.
+ *   - content: The full content to be displayed in the tab panel.
+ *
+ * - tabbed_container_identifier - a unique identifier for the entire tabbed container that will be appended to the tab and panel IDs.
+ #}
+{{ attach_library("tampere/tabbed-container") }}
+
+{% set tabbed_container__base_class = "tabbed-container" %}
+
+<div {{ bem(tabbed_container__base_class, tabbed_container__modifiers|default([]), tabbed_container__blockname, tabbed_container__extra_classes) }}>
+  <div {{ bem("content", tabbed_container__content__modifiers|default([]), tabbed_container__base_class) }}>
+    <div {{ bem("tabs-wrapper", tabbed_container__tabs_wrapper__modifiers|default([]), tabbed_container__base_class) }}>
+      {% if tabbed_container__heading %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_base_class": "heading",
+          "heading_modifiers": tabbed_container__heading__modifiers|default([]),
+          "heading_blockname": tabbed_container__base_class,
+          "heading_level": 2,
+          "heading": tabbed_container__heading,
+        } %}
+      {% endif %}
+      <ul {{ bem("tab-list", "", tabbed_container__base_class) }} role="tablist">
+        {%- for tab in tabbed_container_tabs -%}
+          {%- if loop.last -%}
+            {% set tabbed_container__tab__extra_classes = [ "is-selected" ] %}
+          {%- endif -%}
+          <li {{ bem("tab-list-item", "", tabbed_container__base_class) }} role="presentation">
+            <a
+              {{ bem("tab", "", tabbed_container__base_class, tabbed_container__tab__extra_classes) }}
+              role="tab"
+              href="#tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
+              id="tabbed-container-tab-{{ loop.index }}-{{ tabbed_container_identifier }}"
+              aria-controls="tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
+              {% if loop.last %} aria-selected="true" {% else %} tabindex="-1" {% endif %}
+            >
+              {{ tab.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    {% for tab in tabbed_container_tabs %}
+      <section
+        {{ bem("tab-panel", "", tabbed_container__base_class) }}
+        role="tabpanel"
+        id="tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
+        aria-labelledby="tabbed-container-tab-{{ loop.index }}-{{ tabbed_container_identifier }}"
+        {% if not loop.last %} hidden {% endif %}
+      >
+        {% embed "@organisms/search-panel/search-panel.twig" with {
+          "use_accordion": tab.use_accordion,
+          "search_panel_identifier": tab.panel_id,
+          "search_panel__heading": tab.search_heading,
+          "search_panel_accordion_list": tab.content,
+          "search_panel_popup_content": tab.popup_content,
+          "search_panel__description": tabbed_container__description,
+        } %}
+          {% block search_panel_results %}
+            {% if tab.use_accordion %}
+              {{ parent() }}
+            {% else %}
+              {{ tab.content }}
+            {% endif %}
+          {% endblock %}
+        {% endembed %}
+      </section>
+    {% endfor %}
+  </div>
+</div>

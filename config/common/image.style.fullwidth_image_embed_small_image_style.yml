@@ -1,0 +1,17 @@
+uuid: b513b02c-143e-4d69-afd6-8fc9be098a45
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: fullwidth_image_embed_small_image_style
+label: 'Kokoleveä kuvaupotus - small (720×320)'
+effects:
+  4d29a495-fae6-4a1a-a2d2-0dee2afcb92f:
+    uuid: 4d29a495-fae6-4a1a-a2d2-0dee2afcb92f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 320
+      crop_type: focal_point

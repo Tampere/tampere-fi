@@ -1,0 +1,42 @@
+$list-item-margin-bottom: $space-xxs;
+$list-item-padding-left: $space-s;
+$list-padding-left: $space-s;
+
+ul,
+ol {
+  padding-left: $list-padding-left;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+.list-item {
+  margin-bottom: $list-item-margin-bottom;
+  padding-left: $list-item-padding-left;
+}
+
+.ul {
+  &--with-new-lines {
+    list-style-type: none;
+    padding-left: 0;
+
+    .list-item {
+      margin-bottom: $space-m;
+      padding-left: 0;
+    }
+  }
+}
+
+.text-long {
+  ol,
+  ul {
+    li {
+      @extend .list-item;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+uuid: 288c2af6-e91a-4eb4-a715-10bc3cb32ac6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - node.type.moderated_page
+  module:
+    - gnode
+    - node
+id: group_content_type_07c6e9965f686
+label: 'Alasivusto: Group node (Moderoitu sivu)'
+description: 'Adds <em class="placeholder">Moderoitu sivu</em> content to groups both publicly and privately.'
+group_type: subsite
+content_plugin: 'group_node:moderated_page'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

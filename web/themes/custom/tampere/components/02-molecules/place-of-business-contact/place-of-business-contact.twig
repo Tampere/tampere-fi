@@ -1,0 +1,122 @@
+{#
+ # Available variables:
+ # - place_of_business_contact__base_class - base classname of the wrapper.
+ # - place_of_business_contact__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - place_of_business_contact__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - place_of_business_contact__heading_container__modifiers - array of modifiers to add to the base classname of the heading container.
+ # - place_of_business_contact__name - the name of the contact.
+ # - place_of_business_contact__url - the URL to the contact page.
+ #
+ # - place_of_business_contact__main_content__modifiers - array of modifiers to add to the base classname of the main content.
+ # - place_of_business_contact__main_content - the main content for the contact.
+ #
+ # - place_of_business_contact__two_column_container__modifiers - array of modifiers to add to the base classname of the two column container.
+ # - place_of_business_contact__column__modifiers - array of modifiers to add to the base classname of the column containers.
+ # - place_of_business_contact__right_column__modifiers - array of modifiers to add to the base classname of the column containers.
+ # - place_of_business_contact__right_column_content - the content for the right column.
+ #
+ # - place_of_business_contact__additional_content__modifiers - array of modifiers to add to the base classname of the additional content.
+ # - place_of_business_contact__additional_content - any additional content for the contact.
+ #}
+
+{% set place_of_business_contact__base_class = place_of_business_of_business__base_class|default('place-of-business-contact') %}
+
+ <div {{ bem(place_of_business_contact__base_class, place_of_business_contact__modifiers|default([]), place_of_business_contact__blockname) }}>
+   <div {{ bem("content-container", place_of_business_contact__content_container__modifiers|default([]), place_of_business_contact__base_class) }}>
+    {% if place_of_business_contact__name %}
+      <div {{ bem("heading-container", place_of_business_contact__heading_container__modifiers|default([]), place_of_business_contact__base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_base_class: "name",
+          heading_blockname: place_of_business_contact__base_class,
+          heading_level: place_of_business_contact__heading_level|default(2),
+          heading: place_of_business_contact__name,
+          heading_url: place_of_business_contact__url,
+          heading_link_base_class: "name-link",
+          heading_link_blockname: place_of_business_contact__base_class,
+        } %}
+      </div>
+    {% endif %}
+
+    {% if place_of_business_contact__alt_name %}
+      <div {{ bem("alt-name", place_of_business_contact__alt_name__modifiers|default([]), place_of_business_contact__base_class) }}>
+        {{ place_of_business_contact__alt_name }}
+      </div>
+    {% endif %}
+
+    {% if place_of_business_contact__organisation %}
+      <div {{ bem("organisation", place_of_business_contact__organisation__modifiers|default([]), place_of_business_contact__base_class) }}>
+        {{ place_of_business_contact__organisation }}
+      </div>
+    {% endif %}
+
+    {% if place_of_business_contact__summary %}
+      <div {{ bem("summary", place_of_business_contact__summary__modifiers|default([]), place_of_business_contact__base_class) }}>
+        {{ place_of_business_contact__summary }}
+      </div>
+    {% endif %}
+
+    {% if place_of_business_contact__description %}
+      <div {{ bem("description", place_of_business_contact__description__modifiers|default([]), place_of_business_contact__base_class) }}>
+        {{ place_of_business_contact__description }}
+      </div>
+    {% endif %}
+
+    <div {{ bem("two-column-container", place_of_business_contact__two_column_container__modifiers|default([]), place_of_business_contact__base_class) }}>
+      <div {{ bem("column", place_of_business_contact__column__modifiers|default([]), place_of_business_contact__base_class) }}>
+
+        {% if place_of_business_location_content %}
+          <div {{ bem("address", place_of_business_contact__address__modifiers|default([]), place_of_business_contact__base_class) }}>
+            {% embed "@atoms/05-forms/icon-field-group/icon-field-group.twig" with {
+              "variant": "location",
+            } %}
+              {% block field_content %}
+                {{ place_of_business_location_content }}
+              {% endblock %}
+            {% endembed %}
+          </div>
+        {% endif %}
+        
+        {% if place_of_business_links %}
+          <div {{ bem("link", place_of_business_contact__link__modifiers|default([]), place_of_business_contact__base_class) }}>
+            {% block links_block %}{% endblock %}
+          </div>
+        {% endif %}
+
+        {% if place_of_business_phones %}
+          <div {{ bem("phone", place_of_business_contact__phone__modifiers|default([]), place_of_business_contact__base_class) }}>
+            {% block phone_block %}{% endblock %}
+          </div>
+        {% endif %}
+
+        {% if place_of_business_email %}
+          <div {{ bem("email", place_of_business_contact__email__modifiers|default([]), place_of_business_contact__base_class) }}>
+            {% block email_block %}{% endblock %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if right_column_content %}
+        <div {{ bem("column", place_of_business_contact__right_column__modifiers|default([]), place_of_business_contact__base_class) }}>
+          {% block right_column %}
+            {{ place_of_business_contact__right_column_content }}
+          {% endblock %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if place_of_business_contact__additional_information %}
+      <div {{ bem("additional-content", place_of_business_contact__additional_information__modifiers|default([]), place_of_business_contact__base_class) }}>
+        {{ place_of_business_contact__additional_information }}
+      </div>
+    {% endif %}
+   </div>
+
+  {% if place_of_business_contact__accordion_tabs %}
+    {% include "@organisms/accordion/horizontal-accordion/horizontal-accordion.twig" with {
+      "available_tabs": place_of_business_contact__accordion_tabs,
+      "horizontal_accordion__content__modifiers": ["two-columns"],
+      "horizontal_accordion__paragraph_id": place_of_business_contact__paragraph_id,
+    } %}
+  {% endif %}
+ </div>

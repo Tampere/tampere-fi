@@ -1,0 +1,25 @@
+uuid: c9a17527-46f4-4b61-bd6c-e5c0bbe5f628
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+id: life_situation-anonymous
+label: Anonyymi
+weight: -102
+internal: true
+audience: anonymous
+group_type: life_situation
+permissions_ui: true
+permissions:
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:city_planning_and_constructions entity'
+  - 'view group_node:collection_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view group_node:moderated_page entity'
+  - 'view group_node:news_item entity'
+  - 'view group_node:organization entity'
+  - 'view group_node:place entity'
+  - 'view group_node:project entity'
+  - 'view group_node:small_news_item entity'
+  - 'view group_node:zoning_information entity'

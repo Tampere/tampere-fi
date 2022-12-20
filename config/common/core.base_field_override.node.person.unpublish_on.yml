@@ -1,0 +1,18 @@
+uuid: 766bd7b6-d4d0-4ac5-a0bd-5d117aa5a319
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.person
+id: node.person.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: person
+label: 'Peruuta julkaisu'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

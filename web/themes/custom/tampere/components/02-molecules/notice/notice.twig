@@ -1,0 +1,28 @@
+{% set notice__base_class = "notice" %}
+{% set has_content = notice__content|render|trim %}
+
+<div {{ bem (notice__base_class, notice__modifiers, notice__blockname) }}>
+  
+  <div class={{ notice__base_class ~ "__exclamation" }}>
+    {{"!"}}
+  </div>
+
+  <div class={{ notice__base_class ~ "__content" }} >
+
+    {% if notice__heading %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        paragraph_base_class: notice__heading__base_class|default("heading"),
+        paragraph_blockname: notice__base_class,
+        paragraph_content: notice__heading,
+      } %}
+    {% endif %}
+
+    {% if has_content %}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        text_block_base_class: notice__content__base_class|default("body"),
+        text_block_blockname: notice__base_class,
+        text_block_content: notice__content,
+      } %}
+    {% endif %}
+  </div>
+</div>

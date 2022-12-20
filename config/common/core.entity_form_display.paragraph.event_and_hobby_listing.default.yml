@@ -1,0 +1,148 @@
+uuid: 8d505419-23fe-4793-92be-ea0c51b29e2c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.event_and_hobby_listing.field_event_display_amount
+    - field.field.paragraph.event_and_hobby_listing.field_event_external_audience
+    - field.field.paragraph.event_and_hobby_listing.field_event_external_org_class
+    - field.field.paragraph.event_and_hobby_listing.field_event_external_places
+    - field.field.paragraph.event_and_hobby_listing.field_event_external_subcategory
+    - field.field.paragraph.event_and_hobby_listing.field_excluded_events
+    - field.field.paragraph.event_and_hobby_listing.field_featured_event_id
+    - field.field.paragraph.event_and_hobby_listing.field_pirkanmaa_events_end
+    - field.field.paragraph.event_and_hobby_listing.field_pirkanmaa_events_sort
+    - field.field.paragraph.event_and_hobby_listing.field_pirkanmaa_events_start
+    - field.field.paragraph.event_and_hobby_listing.field_show_events_by_tre_only
+    - field.field.paragraph.event_and_hobby_listing.field_summary
+    - field.field.paragraph.event_and_hobby_listing.field_title
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+  module:
+    - datetime
+    - external_data_source
+    - field_group
+third_party_settings:
+  field_group:
+    group_dates:
+      children:
+        - field_pirkanmaa_events_start
+        - field_pirkanmaa_events_end
+      label: Ajankohdat
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Jos jätät ajankohtakentät tyhjiksi, päivämääräehtona listauksessa käytetään ehtoa "alkupäivämäärä tänään".'
+        required_fields: true
+id: paragraph.event_and_hobby_listing.default
+targetEntityType: paragraph
+bundle: event_and_hobby_listing
+mode: default
+content:
+  field_event_display_amount:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_external_audience:
+    type: external_data_source_checkboxes_widget
+    weight: 5
+    region: content
+    settings:
+      size: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_event_external_org_class:
+    type: external_data_source_checkboxes_widget
+    weight: 7
+    region: content
+    settings:
+      size: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_event_external_places:
+    type: external_data_source_checkboxes_widget
+    weight: 8
+    region: content
+    settings:
+      size: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_event_external_subcategory:
+    type: external_data_source_checkboxes_widget
+    weight: 6
+    region: content
+    settings:
+      size: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_excluded_events:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_featured_event_id:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pirkanmaa_events_end:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pirkanmaa_events_sort:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pirkanmaa_events_start:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_show_events_by_tre_only:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_summary:
+    type: string_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

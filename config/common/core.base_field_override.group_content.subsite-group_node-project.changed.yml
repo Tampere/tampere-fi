@@ -1,0 +1,18 @@
+uuid: c9e7d607-452a-46d6-8a8a-9a4e1a95b234
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.subsite-group_node-project
+id: group_content.subsite-group_node-project.changed
+field_name: changed
+entity_type: group_content
+bundle: subsite-group_node-project
+label: 'Changed on'
+description: 'The time that the group content was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

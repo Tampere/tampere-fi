@@ -1,0 +1,23 @@
+third_party_settings:
+  field_group:
+    group_address:
+      label: Address
+      format_settings:
+        pattern_settings:
+          icon_field_group:
+            field_label: Place
+    group_sign_up:
+      label: 'Sign up'
+content:
+  field_link_single:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: 'Participate online'
+  field_location:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            lb: 'Location on map'

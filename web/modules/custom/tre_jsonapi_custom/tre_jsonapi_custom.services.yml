@@ -1,0 +1,10 @@
+services:
+  tre_jsonapi_custom.entity_renderer:
+    class: Drupal\tre_jsonapi_custom\Service\EntityRenderer
+    arguments:
+      - '@renderer'
+      - '@account_switcher'
+      - '@theme.initialization'
+      - '@theme.manager'
+      - '@config.factory'
+      - '@entity_type.manager'

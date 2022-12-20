@@ -1,0 +1,9 @@
+id: involvement_opp_sign_up_info
+label: 'Osallistumismahdollisuuden ilmoittautumisen ajankohta'
+ui_limit: 'involvement_opportunity|*'
+type: twig
+type_label: 'Twig field'
+entities:
+  node: node
+properties:
+  content: "{% if node.field_participate_start_time.value %}\r\n  {% set start_time = node.field_participate_start_time.value|date('U')|format_date('date_only') %}\r\n{% endif %}\r\n\r\n{% if node.field_participate_end_time.value %}\r\n  {% set end_time = node.field_participate_end_time.value|date('U')|format_date('date_only') %}\r\n{% endif %}\r\n\r\n{% set sign_up_string = 'Sign up'|t({}, {'context': 'Involvement opportunity sign up'}) %}\r\n\r\n{% if (start_time and end_time) and (start_time != end_time) %}\r\n  {{ sign_up_string ~ ' ' ~ start_time ~ '–' ~ end_time }}\r\n{% elseif start_time  %}\r\n  {{ sign_up_string ~ ' ' ~ start_time }}\r\n{% endif %}\r\n"

@@ -1,0 +1,47 @@
+uuid: 2544a4a7-deb2-47f8-b70c-80bc5ecf4cd1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.emergency_notice.field_display_options
+    - field.field.node.emergency_notice.field_disruption_description
+    - field.field.node.emergency_notice.field_end_time
+    - field.field.node.emergency_notice.field_more_information_link
+    - field.field.node.emergency_notice.field_social_media_share
+    - field.field.node.emergency_notice.field_start_time
+    - node.type.emergency_notice
+  module:
+    - link
+    - user
+id: node.emergency_notice.default
+targetEntityType: node
+bundle: emergency_notice
+mode: default
+content:
+  field_disruption_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_more_information_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_display_options: true
+  field_end_time: true
+  field_social_media_share: true
+  field_start_time: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

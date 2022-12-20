@@ -1,0 +1,29 @@
+header__readspeaker__content: 'Kuuntele'
+header__secondary_inline__items:
+  - title: 'Matkailijalle'
+    url: '#'
+  - title: 'Investoijalle'
+    url: '#'
+header__secondary_menu__modifiers:
+  - 'main-secondary'
+header__inline__items:
+  - title: 'Ajankohtaista'
+    url: '#'
+  - title: 'Asiointi'
+    url: '#'
+  - title: 'Kartta'
+    url: '#'
+  - title: 'Palaute'
+    url: '#'
+  - title: 'Yhteystiedot'
+    url: '#'
+header__inline__modifiers:
+  - "main"
+header__current_language__name: English
+header__current_language__code: EN
+header__language__links:
+  en:
+    text: English (EN)
+  fi:
+    text: Suomi (FI)
+header__secondary_main_menu__title: "Services for different life situations"

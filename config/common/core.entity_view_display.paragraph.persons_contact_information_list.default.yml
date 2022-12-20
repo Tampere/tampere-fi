@@ -1,0 +1,40 @@
+uuid: 721669c7-80db-4a7c-afdf-60cb248b94fc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.persons_contact_information_list.field_description_text
+    - field.field.paragraph.persons_contact_information_list.field_hr_organizational_unit
+    - field.field.paragraph.persons_contact_information_list.field_keywords
+    - field.field.paragraph.persons_contact_information_list.field_organization_units_help
+    - field.field.paragraph.persons_contact_information_list.field_taxonomy_combination
+    - field.field.paragraph.persons_contact_information_list.field_title
+    - field.field.paragraph.persons_contact_information_list.field_topics
+    - paragraphs.paragraphs_type.persons_contact_information_list
+id: paragraph.persons_contact_information_list.default
+targetEntityType: paragraph
+bundle: persons_contact_information_list
+mode: default
+content:
+  field_description_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_hr_organizational_unit: true
+  field_keywords: true
+  field_organization_units_help: true
+  field_taxonomy_combination: true
+  field_topics: true
+  search_api_excerpt: true

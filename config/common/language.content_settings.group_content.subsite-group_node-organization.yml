@@ -1,0 +1,18 @@
+uuid: c5542268-e60e-4b2a-b6c9-362df07612fd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.subsite-group_node-organization
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_content.subsite-group_node-organization
+target_entity_type_id: group_content
+target_bundle: subsite-group_node-organization
+default_langcode: site_default
+language_alterable: false

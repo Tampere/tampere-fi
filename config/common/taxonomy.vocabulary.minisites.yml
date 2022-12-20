@@ -1,0 +1,8 @@
+uuid: 081fe8ca-573e-4542-800a-7819007cb3af
+langcode: fi
+status: true
+dependencies: {  }
+name: Minikotisivustot
+vid: minisites
+description: ''
+weight: 0

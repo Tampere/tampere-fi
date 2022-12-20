@@ -1,0 +1,29 @@
+uuid: e5b2b7d2-6e5f-4087-ad3d-4a6307c3e0e8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_identifiers
+    - node.type.zoning_information
+    - taxonomy.vocabulary.other_identifiers
+id: node.zoning_information.field_other_identifiers
+field_name: field_other_identifiers
+entity_type: node
+bundle: zoning_information
+label: 'Muut tunnisteet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      other_identifiers: other_identifiers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

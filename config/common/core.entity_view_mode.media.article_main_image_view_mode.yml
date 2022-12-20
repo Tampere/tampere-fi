@@ -1,0 +1,10 @@
+uuid: b7f94e05-a962-436f-a7e5-eef5bf705a60
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.article_main_image_view_mode
+label: 'Artikkelin pääkuva'
+targetEntityType: media
+cache: true

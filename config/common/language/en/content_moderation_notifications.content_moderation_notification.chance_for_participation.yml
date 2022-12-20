@@ -1,0 +1,5 @@
+label: 'Chance for participation'
+body:
+  value: "<p><strong>The status for node&nbsp;[node:nid]&nbsp;has been changed to 'In review'.</strong></p>\r\n\r\n<p>The details for the update are as follows:</p>\r\n\r\n<p>Node's title:&nbsp;<strong>[node:title]</strong><br />\r\nUpdate date:&nbsp;<strong>[node:changed:custom:j.n.Y - H:i]</strong><br />\r\nStart time:&nbsp;<strong>[node:field_start_time:date:custom:j.n.Y - H:i]</strong></p>\r\n\r\n<p>Go to the content's page: <a>[node:url:absolute] </a></p>\r\n"
+  format: basic_html
+subject: 'New notification for ''chance for participation'''

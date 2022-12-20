@@ -1,0 +1,41 @@
+{#
+ # Available variables:
+ # - iframe_wrapper__base_class - base classname for the iframe wrapper.
+ # - iframe_wrapper__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - iframe_wrapper__blockname - blockname prepended to the base classname of the wrapper.
+ #
+ # - iframe_wrapper__heading_wrapper__modifiers - array of modifiers to add to the base classname of the heading wrapper.
+ # - iframe__heading - (optional) heading content for the iframe.
+ # - iframe_wrapper__heading__modifiers - array of modifiers to add to the base classname of the heading.
+ #
+ # - iframe__src - the source URL for the iframe.
+ # - iframe__title - (optional) title attribute for the iframe.
+ #}
+
+{% set iframe_wrapper___base_class = iframe_wrapper___base_class|default("iframe-wrapper") %}
+
+<div {{ bem(iframe_wrapper___base_class, iframe_wrapper___modifiers|default([]), iframe_wrapper___blockname) }}>
+  {% if iframe__heading %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      "heading_base_class": "heading",
+      "heading_modifiers": iframe_wrapper__heading__modifiers,
+      "heading_blockname": iframe_wrapper___base_class,
+      "heading_level": 2,
+      "heading": iframe__heading,
+    } %}
+  {% endif %}
+  <div {{ bem("content", iframe_wrapper__content__modifiers|default([]), iframe_wrapper___base_class) }}>
+    <iframe
+      {{ bem("iframe", iframe__modifiers|default([]), iframe_wrapper___base_class, [ "lazyload" ]) }}
+      loading="lazy"
+      data-src={{ iframe__src }}
+      {% if iframe__title %}
+        title="{{ iframe__title }}"
+      {% endif %}
+      {% for attribute,value in iframe_attributes %}
+        {{ attribute }}="{{ value }}"
+      {% endfor %}
+    >
+    </iframe>
+  </div>
+</div>

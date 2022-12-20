@@ -1,0 +1,13 @@
+comments__heading: "Leave a comment"
+comments:
+  - date: 22.2.2022
+    content: "Sed varius tortor libero, nec bibendum nisi feugiat eget. Cras a elementum tellus, quis molestie nibh. Mauris luctus nec felis nec viverra. Ut eget auctor elit, pulvinar molestie augue. Aenean tristique in tellus vitae imperdiet. Quisque nec tortor justo. Integer gravida nulla eget velit tristique, vitae venenatis mauris consequat. Integer molestie hendrerit purus, vel luctus lectus euismod id. Etiam vehicula porttitor justo egestas tempor."
+    author: "Li'l Sebastian"
+  - date: 20.2.2022
+    content: "Vestibulum volutpat risus vel dolor dictum, quis consectetur mauris molestie. Nunc placerat leo dictum ultricies luctus. In aliquam neque erat, ac mattis felis luctus non. Vestibulum et lacinia mauris. In malesuada ex sed massa aliquam, at euismod ex semper. Pellentesque molestie massa quam, sit amet vestibulum nulla facilisis consectetur."
+    author: "Timothy Hay"
+    modifiers:
+      - "verified"
+  - date: 10.11.2021
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada quis nisl nec gravida. Ut dictum suscipit libero euismod fermentum. Sed quis laoreet leo. Praesent aliquet arcu magna, at lobortis mi pharetra vel. Aliquam vitae euismod sapien. Sed vulputate pretium sapien eget rhoncus. Aenean ultricies euismod tortor, at sollicitudin magna maximus id. Curabitur varius metus vestibulum urna congue convallis. Vivamus quis feugiat magna. Donec fringilla viverra faucibus. Curabitur congue odio eget mauris sollicitudin, id aliquet nunc malesuada. Nulla facilisi. Nam ac enim sapien. Nunc vel tortor risus."
+    author: "Anonymous"

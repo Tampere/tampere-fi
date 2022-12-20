@@ -1,0 +1,29 @@
+uuid: 835074c0-6b24-4b9a-8bc8-d19e303fea32
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topics
+    - node.type.zoning_information
+    - taxonomy.vocabulary.topics
+id: node.zoning_information.field_topics
+field_name: field_topics
+entity_type: node
+bundle: zoning_information
+label: Aihealueet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

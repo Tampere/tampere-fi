@@ -1,0 +1,29 @@
+uuid: 4fc7eace-bab1-4899-944e-54f12d48d3ef
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hr_cost_center
+    - node.type.person
+    - taxonomy.vocabulary.personnel_cost_centers
+id: node.person.field_hr_cost_center
+field_name: field_hr_cost_center
+entity_type: node
+bundle: person
+label: Kustannuspaikka
+description: 'Käännä kustannuspaikat englanniksi <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_cost_centers/overview">luokittelutermien hallinnan kautta</a>!'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      personnel_cost_centers: personnel_cost_centers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

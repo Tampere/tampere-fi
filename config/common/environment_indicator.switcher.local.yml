@@ -1,0 +1,10 @@
+uuid: b1540fa3-9e89-4192-b599-ad43f7c783c8
+langcode: en
+status: true
+dependencies: {  }
+machine: local
+description: null
+name: Local
+url: 'https://tampere.l'
+fg_color: '#abacab'
+bg_color: '#237d16'

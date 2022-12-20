@@ -1,0 +1,103 @@
+{#
+ # Available variables:
+ # - cta__base_class - base classname of the wrapper.
+ # - cta__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - cta__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - cta__extra_classes - array of extra classes to add to the wrapper.
+ #
+ # - paragraph_anchor_link__modifiers - array of modifiers to add to the base classname of the anchor link.
+ # - hide_anchor - flag for whether or not to display anchor link.
+ #
+ # - cta__content_wrapper__modifiers - array of modifiers to add to the base classname of the content wrapper.
+ #
+ # - cta__heading - the CTA component's heading content.
+ #
+ # - cta__content - the main text content of the CTA component.
+ #
+ # - cta__links__modifiers - array of modifiers to add to the base classname of the links.
+ # - cta__links__items - array of CTA link items to display.
+ # - cta__links - render array for CTA links.
+ #
+ # - entity_id - ID for the entity using the pattern.
+ #}
+
+{% set cta__base_class = "cta" %}
+
+{% set cta__modifiers = cta__modifiers|default([]) %}
+
+{% set has_heading = cta__heading|render|trim %}
+{% set has_content = cta__content|render|trim %}
+{% set has_links = cta__links__items|render|trim or cta__links|render|trim %}
+
+{% set link_with_icon__modifiers = [ "service" ] %}
+
+{% if not has_heading %}
+  {% set cta__modifiers = cta__modifiers|merge([ "no-heading" ]) %}
+{% endif %}
+
+{% if not has_heading and not has_content %}
+  {% set cta__modifiers = cta__modifiers|merge([ "only-links" ]) %}
+{% else %}
+  {% set link_with_icon__modifiers = link_with_icon__modifiers|merge([ "focus-on-primary-background" ]) %}
+  {% set paragraph_anchor_link__modifiers = [ "inverse" ] %}
+{% endif %}
+
+{% if "accordion-content-view-mode" in cta__modifiers %}
+  {% set hide_anchor = TRUE %}
+  {% set heading_level = 4 %}
+{% endif %}
+
+{% if variant %}
+  {% set cta__modifiers = cta__modifiers|merge([ variant ]) %}
+{% endif %}
+
+{% set attributes = [] %}
+
+{% embed "@organisms/_paragraph.twig" with {
+  "entity_id": entity_id,
+  "paragraph_anchor_link__modifiers": paragraph_anchor_link__modifiers,
+  "hide_anchor": hide_anchor,
+  "skip_paragraph_id": skip_paragraph_id,
+} %}
+  {% block paragraph_content %}
+    <div {{ bem(cta__base_class, cta__modifiers|default([]), cta__blockname, cta__extra_classes) }}>
+      <div {{ bem("content-wrapper", cta__content_wrapper__modifiers|default([]), cta__base_class) }}>
+        {% if has_heading %}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_blockname: cta__base_class,
+            heading_level: heading_level|default(2),
+            heading: cta__heading,
+          } %}
+        {% endif %}
+
+        {% if has_content %}
+          {% include "@atoms/02-text/text/07-text-block.twig" with {
+            text_block_base_class: "content",
+            text_block_blockname: cta__base_class,
+            text_block_extra_classes: [ "hyphenate" ],
+            text_block_content: cta__content,
+          } %}
+        {% endif %}
+
+        {% if has_links %}
+          <div {{ bem("links", cta__links__modifiers|default([]), cta__base_class) }}>
+            {% block cta_links_content %}
+              {% if cta__links__items %}
+                {% for cta__links__item in cta__links__items %}
+                  {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+                    "link_with_icon__modifiers": link_with_icon__modifiers,
+                    "link_with_icon__url": cta__links__item.url,
+                    "link_with_icon__link_text": cta__links__item.text,
+                    "link_with_icon__link_icon": "external",
+                  } %}
+                {% endfor %}
+              {% else %}
+                {{ cta__links }}
+              {% endif %}
+            {% endblock %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}

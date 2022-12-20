@@ -1,0 +1,16 @@
+# Breakpoints - change based on site need
+tampere.xs:
+  label: xsmall
+  mediaQuery: 'all and (min-width: 0)'
+tampere.sm:
+  label: small
+  mediaQuery: 'all and (min-width: 30rem)'
+tampere.md:
+  label: medium
+  mediaQuery: 'all and (min-width: 45rem)'
+tampere.lg:
+  label: large
+  mediaQuery: 'all and (min-width: 61.56rem)'
+tampere.xl:
+  label: xlarge
+  mediaQuery: 'all and (min-width: 90rem)'

@@ -1,0 +1,7 @@
+card__image__src: 'https://placeimg.com/1280/720/nature'
+card__heading: 'Vivamus at quam at felis'
+card__body: 'Vivamus at quam at felis ullamcorper rutrum sit amet id urna.'
+card__link_item__url: '#'
+card__link_item__text: 'Lorem ipsum dolor sit amet'
+card__modifiers:
+  - 'with-image'

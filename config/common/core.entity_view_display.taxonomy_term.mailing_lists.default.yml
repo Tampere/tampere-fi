@@ -1,0 +1,23 @@
+uuid: 27142c79-e9b4-4c7f-9d2b-3079e0f6cc4b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.mailing_lists.field_emails
+    - taxonomy.vocabulary.mailing_lists
+id: taxonomy_term.mailing_lists.default
+targetEntityType: taxonomy_term
+bundle: mailing_lists
+mode: default
+content:
+  field_emails:
+    type: email_mailto
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -3
+    region: content
+hidden:
+  description: true
+  langcode: true
+  search_api_excerpt: true

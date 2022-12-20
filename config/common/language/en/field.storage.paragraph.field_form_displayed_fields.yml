@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: Name
+    -
+      label: Organization
+    -
+      label: Summary
+    -
+      label: Description
+    -
+      label: Website
+    -
+      label: 'Language the form is available in'
+    -
+      label: Support
+    -
+      label: 'Attachments and additional information'
+    -
+      label: 'Area the form is available in'
+    -
+      label: Form
+    -
+      label: 'Form delivery details'

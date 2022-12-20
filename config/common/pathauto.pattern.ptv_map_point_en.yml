@@ -1,0 +1,33 @@
+uuid: 726efac9-7c5d-4ab2-b916-e00ae4286526
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: ptv_map_point_en
+label: 'PTV map point EN'
+type: 'canonical_entities:node'
+pattern: 'ptv/map_point/[node:title]'
+selection_criteria:
+  d5c637b9-b6d4-40d3-a97b-592b11a95441:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: d5c637b9-b6d4-40d3-a97b-592b11a95441
+    context_mapping:
+      node: node
+    bundles:
+      map_point: map_point
+  bd5b1dac-123a-4dfc-acc7-d291821ed0c1:
+    id: language
+    negate: false
+    uuid: bd5b1dac-123a-4dfc-acc7-d291821ed0c1
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -3
+relationships:
+  'node:langcode:language':
+    label: Kieli

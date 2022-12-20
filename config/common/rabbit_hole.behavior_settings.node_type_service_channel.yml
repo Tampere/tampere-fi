@@ -1,0 +1,14 @@
+uuid: b929954d-5e40-4e27-bb55-ac8d4216986f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.service_channel
+id: node_type_service_channel
+entity_type_id: node_type
+entity_id: service_channel
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

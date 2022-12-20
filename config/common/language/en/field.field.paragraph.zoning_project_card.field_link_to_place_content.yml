@@ -1,0 +1,5 @@
+label: 'Link to content'
+description: 'Select this option if you want the liftup to act as a link to the referenced Zoning information content.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

@@ -1,0 +1,19 @@
+uuid: 6bc9675f-0e0e-4e3b-a7c6-38b85a7c312f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - link
+    - paragraphs
+id: paragraph.field_social_media_profile_url
+field_name: field_social_media_profile_url
+entity_type: paragraph
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

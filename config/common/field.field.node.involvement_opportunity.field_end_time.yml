@@ -1,0 +1,21 @@
+uuid: c8d34e76-53fb-4da7-871c-1fab17aa2ea5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_end_time
+    - node.type.involvement_opportunity
+  module:
+    - datetime
+id: node.involvement_opportunity.field_end_time
+field_name: field_end_time
+entity_type: node
+bundle: involvement_opportunity
+label: Päättymisaika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

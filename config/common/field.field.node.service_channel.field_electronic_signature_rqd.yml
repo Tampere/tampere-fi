@@ -1,0 +1,23 @@
+uuid: cf043ceb-8cd4-4453-b3c6-e3ca5e3e85a6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_electronic_signature_rqd
+    - node.type.service_channel
+id: node.service_channel.field_electronic_signature_rqd
+field_name: field_electronic_signature_rqd
+entity_type: node
+bundle: service_channel
+label: 'Vaatiiko verkkoasiointi sähköisen allekirjoituksen'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Verkkoasiointi vaatii sähköisen allekirjoituksen.'
+  off_label: 'Verkkoasiointi ei vaadi sähköistä allekirjoitusta.'
+field_type: boolean

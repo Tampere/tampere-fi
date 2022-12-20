@@ -1,0 +1,18 @@
+uuid: cc21a71d-3ec9-4965-bf83-f820cbf770db
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+id: group.life_situation.label
+field_name: label
+entity_type: group
+bundle: life_situation
+label: Elämäntilanne
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

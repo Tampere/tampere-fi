@@ -1,0 +1,29 @@
+uuid: 3b260641-cff0-4531-8e48-fad20402c78e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topics
+    - paragraphs.paragraphs_type.generic_listing
+    - taxonomy.vocabulary.topics
+id: paragraph.generic_listing.field_topics
+field_name: field_topics
+entity_type: paragraph
+bundle: generic_listing
+label: Aihealueet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

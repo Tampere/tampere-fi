@@ -1,0 +1,19 @@
+uuid: 2880a5d8-0e18-4a69-97c9-6a04be312c1a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_feed_title
+    - paragraphs.paragraphs_type.rss_feed
+id: paragraph.rss_feed.field_feed_title
+field_name: field_feed_title
+entity_type: paragraph
+bundle: rss_feed
+label: 'RSS-virran otsikko'
+description: 'Voit halutessasi antaa virralle näkyvän nimen'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

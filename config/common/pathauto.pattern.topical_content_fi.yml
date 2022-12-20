@@ -1,0 +1,35 @@
+uuid: 6b74d497-dafb-4351-b34b-d8a219d83c68
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: topical_content_fi
+label: 'Ajankohtaissisältö FI'
+type: 'canonical_entities:node'
+pattern: 'ajankohtaista/[node:published:html_year]/[node:published:custom:m]/[node:published:custom:d]/[node:title]'
+selection_criteria:
+  c95a6326-88e4-48d0-bc98-1f6065614f9e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: c95a6326-88e4-48d0-bc98-1f6065614f9e
+    context_mapping:
+      node: node
+    bundles:
+      news_item: news_item
+      rich_article: rich_article
+      small_news_item: small_news_item
+  f2547e61-e06f-42e2-a901-959f45374c2b:
+    id: language
+    negate: false
+    uuid: f2547e61-e06f-42e2-a901-959f45374c2b
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fi: fi
+selection_logic: and
+weight: 1
+relationships:
+  'node:langcode:language':
+    label: Kieli

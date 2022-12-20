@@ -1,0 +1,19 @@
+uuid: c64a69f5-67aa-48c8-83a4-4577956219ec
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.zoning_information
+id: node.zoning_information.field_description
+field_name: field_description
+entity_type: node
+bundle: zoning_information
+label: Kuvaus
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

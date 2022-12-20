@@ -1,0 +1,51 @@
+uuid: 6cdd371f-95e1-448b-89a8-e7c0fecdfc66
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_phone_displayed_fields
+field_name: field_phone_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: organization
+      label: Organisaatio
+    -
+      value: summary
+      label: Tiivistelmä
+    -
+      value: description
+      label: Kuvaus
+    -
+      value: phone_numbers
+      label: Puhelinnumero(t)
+    -
+      value: languages
+      label: 'Kielet, joilla puhelinasiointi on saatavilla'
+    -
+      value: areas
+      label: 'Alue, jolla puhelinasiointi on käytettävissä'
+    -
+      value: service_hours_normal_daily
+      label: 'Palveluajat - Normaalit palveluajat viikonpäivät'
+    -
+      value: service_hours_normal_overnight
+      label: 'Palveluajat - Normaalit palveluajat vuorokauden yli'
+    -
+      value: service_hours_exceptions
+      label: 'Palveluajat - Poikkeavat'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,79 @@
+uuid: f6f9a09e-6b65-4aae-9c66-115778880d6d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.place.field_additional_information
+    - field.field.node.place.field_address
+    - field.field.node.place.field_description
+    - field.field.node.place.field_display_location_on_map
+    - field.field.node.place.field_epsg_3067_easting
+    - field.field.node.place.field_epsg_3067_northing
+    - field.field.node.place.field_geographical_areas
+    - field.field.node.place.field_help_text
+    - field.field.node.place.field_keywords
+    - field.field.node.place.field_location
+    - field.field.node.place.field_main_image
+    - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_search_keywords
+    - field.field.node.place.field_topics
+    - node.type.place
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: contact-search
+    regions:
+      listing_item__main_content:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': listing-item__title--link
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.place.search_result
+targetEntityType: node
+bundle: place
+mode: search_result
+content: {  }
+hidden:
+  content_moderation_control: true
+  field_additional_information: true
+  field_address: true
+  field_description: true
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_location: true
+  field_main_image: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,14 @@
+uuid: ec8687cd-33c1-4f3c-a348-cf3ed1d619d2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.media_editor
+  module:
+    - user
+id: user_remove_role_action.media_editor
+label: 'Remove the Mediatoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: media_editor

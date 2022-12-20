@@ -1,0 +1,48 @@
+uuid: e6d26d48-38cd-4989-80e5-151fefcc07ac
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.subsite_main_menu_fi
+  module:
+    - group
+    - group_content_menu
+    - language
+    - system
+  theme:
+    - tampere
+id: subsite_main_menu_fi
+theme: tampere
+region: sidebar
+weight: -19
+provider: null
+plugin: 'group_content_menu:subsite_main_menu_fi'
+settings:
+  id: 'group_content_menu:subsite_main_menu_fi'
+  label: 'Alasivuston päävalikko (FI)'
+  label_display: '0'
+  provider: group_content_menu
+  context_mapping:
+    group: '@group.group_route_context:group'
+  level: 1
+  depth: 2
+  expand_all_items: true
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      fi: fi
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      subsite: subsite
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/user/*'

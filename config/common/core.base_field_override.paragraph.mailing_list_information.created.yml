@@ -1,0 +1,18 @@
+uuid: eb53e8ab-c21b-4d7c-957e-bf7d9dd23ed3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.mailing_list_information
+id: paragraph.mailing_list_information.created
+field_name: created
+entity_type: paragraph
+bundle: mailing_list_information
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

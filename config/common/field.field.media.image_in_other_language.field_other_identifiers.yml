@@ -1,0 +1,29 @@
+uuid: 12b4eb8c-115b-4cc6-a858-e82cdaf7d9ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_other_identifiers
+    - media.type.image_in_other_language
+    - taxonomy.vocabulary.other_identifiers
+id: media.image_in_other_language.field_other_identifiers
+field_name: field_other_identifiers
+entity_type: media
+bundle: image_in_other_language
+label: 'Other identifiers'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      other_identifiers: other_identifiers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

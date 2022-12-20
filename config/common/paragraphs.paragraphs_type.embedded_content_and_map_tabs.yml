@@ -1,0 +1,10 @@
+uuid: e7cf5278-63b3-4d55-9561-783fc6492fe9
+langcode: fi
+status: true
+dependencies: {  }
+id: embedded_content_and_map_tabs
+label: 'Sisältö- ja karttaupotusvälilehdet'
+icon_uuid: null
+icon_default: null
+description: 'Esittelee paikkoihin liittyviä sisältöjä kahdessa välilehdessä. Ensimmäisessä välilehdessä näytetään listana paikkojen tiiviit yhteystietokortit ja toisessa välilehdessä samat paikat näytetään karttanäkymässä.'
+behavior_plugins: {  }

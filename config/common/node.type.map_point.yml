@@ -1,0 +1,17 @@
+uuid: 7c0275af-c8e7-43b8-b4f6-54ddb28471ab
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Karttapiste
+type: map_point
+description: 'Edustaa yksittäistä pistettä kartalla. Sisältää kentät sekä WGS84- että ETRS-TM35FIN-koordinaateille, kuin myös osoitteelle lisätietoineen.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

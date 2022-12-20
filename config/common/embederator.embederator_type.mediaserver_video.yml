@@ -1,0 +1,13 @@
+uuid: 35295013-e0e8-4b8b-b4da-0c8d8aad3a09
+langcode: fi
+status: true
+dependencies: {  }
+id: mediaserver_video
+label: Mediaserver-video
+use_ssi: false
+embed_markup:
+  value: '<iframe allowfullscreen="" class="lazyload" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" data-src="https://www.mediaserver.fi/video/tampere/[embederator:field_mediaserver_video_number]/[embederator:embed_id]" title="[embederator:field_mediaserver_video_title]" width="640" height="360" frameborder="0"></iframe>'
+  format: embederator_html
+embed_url: ''
+wrapper_class: ''
+description: 'Tällä elementillä voidaan upottaa Mediaserver-video.'

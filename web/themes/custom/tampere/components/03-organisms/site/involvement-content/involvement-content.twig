@@ -1,0 +1,47 @@
+{#
+ # Available variables:
+ # - involvement_content__way: involvement way of participation.
+ # - involvement_content__phase: involvement phase.
+ # - date_time: involvement time of the event.
+ #}
+
+{% set involvement_content__base_class = involvement_content__base_class|default("involvement-content") %}
+
+{% if main_image|render|trim %}
+  {% set content_has_image = TRUE %}
+{% endif %}
+
+<article {{ bem(involvement_content__base_class, involvement_content__modifiers|default([]), involvement_content__blockname) }}>
+  {% if content_has_image %}
+    <div {{ bem("main-image", involvement_content__main_image__modifiers|default([]), involvement_content__base_class) }}>
+      {{ main_image }}
+    </div>
+  {% endif %}
+
+  {% include "@molecules/involvement-header/involvement-header.twig" with {
+    involvement_header__way: involvement_content__way,
+    involvement_header__phase: involvement_content__phase,
+    involvement_header__date_time: date_time,
+    involvement_header__sign_up: sign_up_information,
+  } %}
+
+  <div {{ bem("main-content", involvement_content__main_content__modifiers|default([]), involvement_content__base_class) }}>
+    <div {{ bem("heading", involvement_content__heading__modifiers|default([]), involvement_content__base_class) }}>
+      {% include "@molecules/hero/hero.twig" with {
+        "hero__modifiers": [ "no-header-margin" ],
+        "hero__heading": main_title,
+        "has_image": FALSE,
+      } %}
+    </div>
+
+    <div {{ bem("main-content-wrapper", involvement_content__main_content_wrapper__modifiers|default([]), involvement_content__base_class) }}>
+      {% block involvement_content_main_content %}
+        {{ main_content }}
+      {% endblock %}
+    </div>
+
+    {% block involvement_content_paragraph_content %}
+      {{ paragraph_content }}
+    {% endblock %}
+  </div>
+</article>

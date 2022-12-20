@@ -1,0 +1,18 @@
+uuid: 04bb5341-52be-4859-89f9-4620d9940897
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.emergency_notice
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.emergency_notice
+target_entity_type_id: node
+target_bundle: emergency_notice
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,5 @@
+name: 'TRE Menu Link Alterations'
+type: module
+description: 'Customises the menu link edit/add forms.'
+core_version_requirement: ^9
+package: 'TRE'

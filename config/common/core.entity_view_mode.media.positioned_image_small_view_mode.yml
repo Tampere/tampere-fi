@@ -1,0 +1,10 @@
+uuid: b14d58c8-cbd8-47bc-a39f-ed580157e5b9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.positioned_image_small_view_mode
+label: 'Asemoitu kuva (pieni)'
+targetEntityType: media
+cache: true

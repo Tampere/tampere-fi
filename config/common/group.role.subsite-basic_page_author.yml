@@ -1,0 +1,25 @@
+uuid: af4496a1-1a53-4873-883a-0f868d9222d0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+id: subsite-basic_page_author
+label: Perussisältösivutoimittaja
+weight: 27
+internal: false
+audience: member
+group_type: subsite
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:basic_content_page entity'
+  - 'create group_node:content_in_other_language entity'
+  - 'delete any group_node:basic_content_page entity'
+  - 'delete any group_node:content_in_other_language entity'
+  - 'update any group_node:basic_content_page entity'
+  - 'update any group_node:content_in_other_language entity'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view unpublished group_node:basic_content_page entity'
+  - 'view unpublished group_node:content_in_other_language entity'

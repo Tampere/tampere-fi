@@ -1,0 +1,22 @@
+uuid: 53e43cd0-74b2-4a6c-a25b-dc375066ea58
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.emergency_notice
+id: node.emergency_notice.promote
+field_name: promote
+entity_type: node
+bundle: emergency_notice
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -1,0 +1,33 @@
+uuid: 598d742a-6e3c-48dd-9958-6a1224cb9264
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.anchor_link.field_anchor
+    - field.field.paragraph.anchor_link.field_anchor_link_text
+    - field.field.paragraph.anchor_link.field_language
+    - paragraphs.paragraphs_type.anchor_link
+id: paragraph.anchor_link.default
+targetEntityType: paragraph
+bundle: anchor_link
+mode: default
+content:
+  field_anchor:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_anchor_link_text:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_language: true
+  search_api_excerpt: true

@@ -1,0 +1,65 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - liftup_icon_name: The name for the topic icon if one has been selected.
+ * - liftup_link_icon_name: The name of the link icon.
+ * - liftup_url: The URL for the link.
+ * - liftup_link_text: The link text for the link.
+ * - liftup_modifiers: Array of modifiers for the current liftups, such as ["colorful-1"].
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if content.field_media|render|trim %}
+  {# If image is present other liftup modifiers need not to be processed. #}
+  {% set current_liftup_modifiers = [ "with-image" ] %}
+{% else %}
+  {% set current_liftup_modifiers = liftup_modifiers %}
+{% endif %}
+
+{% embed "@molecules/card-with-icon/card-with-icon.twig" with {
+  "card__link_item__aria_label": liftup_link_text ~ ': ' ~ paragraph.field_liftup_title.value,
+  "card__modifiers": current_liftup_modifiers,
+  "card__icon__name": liftup_icon_name,
+  "card__heading": paragraph.field_liftup_title.value,
+  "card__body": paragraph.field_summary.value,
+  "card__link_item__url": liftup_url,
+  "card__link_item__text": liftup_link_text,
+  "card__link_item__icon": liftup_link_icon_name,
+} %}
+  {% block card__img %}
+    {{ content.field_media }}
+  {% endblock %}
+{% endembed %}

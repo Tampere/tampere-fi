@@ -1,0 +1,117 @@
+uuid: ff82ebb6-0fa0-462b-b6bf-a7a0593137b4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.news_item.field_archive_search_content
+    - field.field.node.news_item.field_author
+    - field.field.node.news_item.field_body
+    - field.field.node.news_item.field_contact_info_paragraph
+    - field.field.node.news_item.field_cross_site_publications
+    - field.field.node.news_item.field_date_of_publication
+    - field.field.node.news_item.field_geographical_areas
+    - field.field.node.news_item.field_help_text
+    - field.field.node.news_item.field_keywords
+    - field.field.node.news_item.field_lead
+    - field.field.node.news_item.field_life_situations
+    - field.field.node.news_item.field_link_list
+    - field.field.node.news_item.field_mailing_list_information
+    - field.field.node.news_item.field_main_image
+    - field.field.node.news_item.field_markup
+    - field.field.node.news_item.field_media_caption
+    - field.field.node.news_item.field_minisites
+    - field.field.node.news_item.field_paragraphs
+    - field.field.node.news_item.field_photographer
+    - field.field.node.news_item.field_search_keywords
+    - field.field.node.news_item.field_send_to_media
+    - field.field.node.news_item.field_social_media_share
+    - field.field.node.news_item.field_topic
+    - field.field.node.news_item.field_topics
+    - node.type.news_item
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default-search
+    regions:
+      listing_item__main_content:
+        - node_title
+        - published_at
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': listing-item__title--link
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.news_item.search_result
+targetEntityType: node
+bundle: news_item
+mode: search_result
+content:
+  published_at:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: custom
+      custom_date_format: j.n.Y
+      timezone: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: listing_item__main_content
+hidden:
+  content_moderation_control: true
+  field_archive_search_content: true
+  field_author: true
+  field_body: true
+  field_contact_info_paragraph: true
+  field_cross_site_publications: true
+  field_date_of_publication: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_lead: true
+  field_life_situations: true
+  field_link_list: true
+  field_mailing_list_information: true
+  field_main_image: true
+  field_markup: true
+  field_media_caption: true
+  field_minisites: true
+  field_paragraphs: true
+  field_photographer: true
+  field_search_keywords: true
+  field_send_to_media: true
+  field_social_media_share: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

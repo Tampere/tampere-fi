@@ -1,0 +1,54 @@
+{{ attach_library("tampere/emergency-notice") }}
+
+{% set emergency_notice__base_class = "emergency-notice" %}
+{% set emergency_notice__extra_classes = ["hidden"] %}
+
+<div id={{node.id}} {{ bem(emergency_notice__base_class, emergency_notice__modifiers, emergency_notice__blockname, emergency_notice__extra_classes) }} >
+  
+  <div {{ bem("content", emergency_notice__max_width__modifiers, emergency_notice__base_class)}}>
+    
+    {# Close icon #}
+    <div {{ bem("button-container", emergency_notice__button_container__modifiers, emergency_notice__base_class)}}>
+      <button {{ bem("close-button", emergency_notice__close_button__modifiers, emergency_notice__base_class)}}>
+        {{"Close"|t}}
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: "close-icon",
+          icon_modifiers: emergency_notice__icon__modifiers,
+          icon_blockname: emergency_notice__base_class,
+          icon_name: "close",
+        } %}
+      </button>
+    </div>
+
+    <div {{ bem("text-content", emergency_notice__max_width__modifiers, emergency_notice__base_class)}} >
+      {# Heading #}
+      {% block heading_block %} 
+        {% if emergency_notice__heading %}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_base_class: emergency_notice__heading__base_class|default("heading"),
+            heading_modifiers: emergency_notice__heading__modifiers,
+            heading_blockname: emergency_notice__base_class,
+            heading_level: 3,
+            heading: emergency_notice__heading,
+          } %}
+        {% endif %}
+      {% endblock %}
+  
+      {% if emergency_notice__url %}
+        <a {{ bem("icon-container", emergency_notice__icon_container__modifiers, emergency_notice__base_class)}} href="{{emergency_notice__url}}">
+          {# Icon label #}
+          {{emergency_notice__icon__label}}
+  
+          {# Icon #}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_base_class: emergency_notice__icon__base_class|default("icon"),
+            icon_modifiers: emergency_notice__icon__modifiers,
+            icon_blockname: emergency_notice__base_class,
+            icon_name: emergency_notice__icon__name|default("arrow"),
+            icon_decorative: true,
+          } %}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

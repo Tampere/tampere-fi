@@ -1,0 +1,18 @@
+uuid: 916d4753-81d5-48a2-ae52-818eb21de615
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.embederator_embed
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.embederator_embed
+target_entity_type_id: paragraph
+target_bundle: embederator_embed
+default_langcode: site_default
+language_alterable: true

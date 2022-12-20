@@ -1,0 +1,17 @@
+uuid: 9d8981cb-8bce-42d7-b730-a3427862e1ea
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: listing_liftup_small_image_style
+label: 'Listausnosto - small (720×412)'
+effects:
+  0416fde4-fcaf-4b25-9dcf-26d199cea60b:
+    uuid: 0416fde4-fcaf-4b25-9dcf-26d199cea60b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 412
+      crop_type: focal_point

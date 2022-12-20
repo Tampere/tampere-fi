@@ -1,0 +1,18 @@
+uuid: 41ce6e1e-aa39-410f-82f3-86396eda9f34
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.changed
+field_name: changed
+entity_type: comment
+bundle: blog_article_comment
+label: Muuttunut
+description: 'Ajankohta jolloin kommenttia viimeksi muokattiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

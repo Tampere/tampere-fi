@@ -1,0 +1,23 @@
+uuid: c08c1f6b-65d2-479f-8a55-6797a4d193b2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_attachments
+    - node.type.service_channel
+  module:
+    - link
+id: node.service_channel.field_service_attachments
+field_name: field_service_attachments
+entity_type: node
+bundle: service_channel
+label: 'Liitteet ja lisätietolinkit'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link

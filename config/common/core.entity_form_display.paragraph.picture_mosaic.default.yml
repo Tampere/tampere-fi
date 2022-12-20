@@ -1,0 +1,34 @@
+uuid: c5d8e9af-2f2a-4b9d-b0bf-f1260a0d8a16
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.picture_mosaic.field_mosaic_liftups
+    - paragraphs.paragraphs_type.picture_mosaic
+  module:
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.picture_mosaic.default
+targetEntityType: paragraph
+bundle: picture_mosaic
+mode: default
+content:
+  field_mosaic_liftups:
+    type: paragraphs_classic_asymmetric
+    weight: 0
+    region: content
+    settings:
+      title: Mosaiikkinosto
+      title_plural: Mosaiikkinostot
+      edit_mode: preview
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: mosaic_liftup
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

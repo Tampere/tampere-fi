@@ -1,0 +1,7 @@
+name: 'TRE PTV Data Import'
+type: module
+description: 'Handles imports from PTV data in from api.palvelutietovaranto.suomi.fi.'
+core_version_requirement: '>=9.3'
+package: 'TRE Integrations'
+dependencies:
+  - migrate_plus:migrate_plus

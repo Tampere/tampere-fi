@@ -1,0 +1,136 @@
+uuid: b34e5647-a601-4312-84e6-6a9d98e1c2c7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.news_media_delivery
+    - field.field.node.person.field_additional_information
+    - field.field.node.person.field_additional_phones
+    - field.field.node.person.field_address_postal
+    - field.field.node.person.field_address_street
+    - field.field.node.person.field_contract_begins
+    - field.field.node.person.field_contract_ends
+    - field.field.node.person.field_email
+    - field.field.node.person.field_first_names
+    - field.field.node.person.field_hr_company
+    - field.field.node.person.field_hr_cost_center
+    - field.field.node.person.field_hr_id
+    - field.field.node.person.field_hr_organizational_unit
+    - field.field.node.person.field_hr_title
+    - field.field.node.person.field_image
+    - field.field.node.person.field_keywords
+    - field.field.node.person.field_last_name
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_phone_supplementary
+    - field.field.node.person.field_place
+    - field.field.node.person.field_search_keywords
+    - field.field.node.person.field_topics
+    - field.field.node.person.migrate_override_data
+    - node.type.person
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: true
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - 'dynamic_token_field:node-full_name_firstname_first'
+        - field_hr_title
+        - field_email
+        - field_phone
+    fields:
+      'dynamic_token_field:node-full_name_firstname_first':
+        plugin_id: 'dynamic_token_field:node-full_name_firstname_first'
+        weight: 0
+        label: hidden
+        formatter: default
+        ft:
+          id: minimal
+          settings:
+            lb: Nimi
+            lb-col: true
+            classes: {  }
+id: node.person.news_media_delivery
+targetEntityType: node
+bundle: person
+mode: news_media_delivery
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: ds_content
+  field_email:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 2
+    region: content
+  field_hr_title:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 1
+    region: content
+  field_phone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: Puhelin
+            lb-col: true
+            classes: {  }
+    weight: 3
+    region: content
+hidden:
+  field_additional_information: true
+  field_additional_phones: true
+  field_address_postal: true
+  field_address_street: true
+  field_contract_begins: true
+  field_contract_ends: true
+  field_first_names: true
+  field_hr_company: true
+  field_hr_cost_center: true
+  field_hr_id: true
+  field_hr_organizational_unit: true
+  field_image: true
+  field_keywords: true
+  field_last_name: true
+  field_phone_supplementary: true
+  field_place: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  migrate_override_data: true
+  search_api_excerpt: true

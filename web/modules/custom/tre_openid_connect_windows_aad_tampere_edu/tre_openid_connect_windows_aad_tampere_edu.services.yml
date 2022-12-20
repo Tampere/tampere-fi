@@ -1,0 +1,5 @@
+services:
+  tre_openid_connect_windows_aad_tampere_edu.route_subscriber:
+    class: \Drupal\tre_openid_connect_windows_aad_tampere_edu\Routing\WindowsAadSSORouteSubscriber
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,10 @@
+uuid: 888e459e-0c34-4195-b049-06a1ee60cc37
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.grouped_content_liftup_view_mode
+label: 'Ryhmitelty sisältönosto'
+targetEntityType: paragraph
+cache: true

@@ -1,0 +1,18 @@
+uuid: dbc794da-dc0a-4ad6-b525-28b590e72f7e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.social_media_link
+id: paragraph.social_media_link.created
+field_name: created
+entity_type: paragraph
+bundle: social_media_link
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

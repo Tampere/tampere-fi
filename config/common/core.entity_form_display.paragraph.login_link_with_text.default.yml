@@ -1,0 +1,30 @@
+uuid: 6b410929-b664-4da1-a109-cc702d9ca6be
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.login_link_with_text.field_external_link_w_link_text
+    - paragraphs.paragraphs_type.login_link_with_text
+  module:
+    - elb
+id: paragraph.login_link_with_text.default
+targetEntityType: paragraph
+bundle: login_link_with_text
+mode: default
+content:
+  field_external_link_w_link_text:
+    type: ext_link_blocklist_widget
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

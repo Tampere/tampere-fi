@@ -1,0 +1,10 @@
+uuid: 4b0bffc2-ee22-4690-bab8-fb6084c2b901
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.life_situation_links_view_mode
+label: 'Elämäntilanteet linkit'
+targetEntityType: paragraph
+cache: true

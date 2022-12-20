@@ -1,0 +1,35 @@
+label: 'News and article archive'
+display:
+  default:
+    display_options:
+      title: 'News and article archive'
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Entries per page'
+            items_per_page_options_all_label: '- Any -'
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: 'Remove filters'
+          exposed_sorts_label: Sort
+          text_input_required: 'Select any filter and click Filter to see the results'
+  archive_en:
+    display_options:
+      filters:
+        type:
+          expose:
+            label: 'Content type'
+          group_info:
+            group_items:
+              1:
+                title: 'Blog article'
+              2:
+                title: Article
+              3:
+                title: News

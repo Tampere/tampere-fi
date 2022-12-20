@@ -1,0 +1,38 @@
+uuid: 9180cd8c-689b-4c47-85c2-4781c04d6279
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading__instruction
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - content_translation
+    - heading
+third_party_settings:
+  content_translation:
+    translation_sync:
+      size: size
+      text: text
+id: paragraph.ptv_service_liftup.field_heading__instruction
+field_name: field_heading__instruction
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Yliajo-otsikko: Toimi näin'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    size: h2
+    text: 'Toimi näin'
+default_value_callback: ''
+settings:
+  label: 'Toimi näin -otsikko'
+  allowed_sizes:
+    h2: h2
+    h3: h3
+    h4: h4
+    h1: 0
+    h5: 0
+    h6: 0
+field_type: heading

@@ -1,0 +1,2 @@
+label: 'Date and time with at separator'
+pattern: 'j.n.Y \a\t H.i'

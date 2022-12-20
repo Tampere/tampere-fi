@@ -1,0 +1,19 @@
+uuid: 5c8ccbbf-a9f3-4f0e-8f09-d1049fc86797
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.link_list
+id: paragraph.link_list.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: link_list
+label: 'Listan otsikko'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

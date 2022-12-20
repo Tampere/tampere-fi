@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: PVw1CqINc8mdBO0v-gKzrhG9fd1pyKwx4wIXdks-k3w
+langcode: fi
+disabled: false
+field_template: true
+ft-default: default
+ft-show-colon: false
+ft-layout-builder: false
+classes:
+  region:
+    - 'text-with-bgcolor|Elementti tekstille taustavärillä'
+    - 'text-with-bgcolor__color-textbox|Tekstilaatikko taustavärillä'
+    - 'text-with-bgcolor__plain-textbox|Tekstilaatikko ilman taustaväriä'
+  field: {  }
+use_field_names: true

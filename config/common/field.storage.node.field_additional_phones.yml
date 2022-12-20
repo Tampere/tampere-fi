@@ -1,0 +1,21 @@
+uuid: 4621cf55-7215-4913-99fc-0fb69f22f4fa
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - telephone_plus
+id: node.field_additional_phones
+field_name: field_additional_phones
+entity_type: node
+type: telephone_plus_field
+settings:
+  title_enabled: 1
+  supplementary_enabled: 1
+module: telephone_plus
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

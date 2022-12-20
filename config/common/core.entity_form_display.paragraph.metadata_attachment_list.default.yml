@@ -1,0 +1,114 @@
+uuid: 8583b587-4254-4680-a225-46cef1784f82
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.metadata_attachment_list.field_geographical_areas
+    - field.field.paragraph.metadata_attachment_list.field_keywords
+    - field.field.paragraph.metadata_attachment_list.field_life_situations
+    - field.field.paragraph.metadata_attachment_list.field_other_identifiers
+    - field.field.paragraph.metadata_attachment_list.field_plan_numbers
+    - field.field.paragraph.metadata_attachment_list.field_record_numbers
+    - field.field.paragraph.metadata_attachment_list.field_summary
+    - field.field.paragraph.metadata_attachment_list.field_title
+    - field.field.paragraph.metadata_attachment_list.field_topics
+    - paragraphs.paragraphs_type.metadata_attachment_list
+id: paragraph.metadata_attachment_list.default
+targetEntityType: paragraph
+bundle: metadata_attachment_list
+mode: default
+content:
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_other_identifiers:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_plan_numbers:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_record_numbers:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_summary:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

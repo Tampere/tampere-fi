@@ -1,0 +1,6 @@
+elb: null
+_core:
+  default_config_hash: A1WAzup5mg--JO0KdaQfgPmwTveYO925sN7J9u73x_g
+langcode: fi
+blocklist: 'tampere.exove.eu,staging.tampere.fi,web-dev.tampere.fi,uusi.tampere.fi,beta.tampere.fi,www.tampere.fi'
+blocklist_exceptions: www.tampere.fi/cgi-bin

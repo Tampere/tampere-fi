@@ -1,0 +1,23 @@
+uuid: b4db02f2-6694-4f29-b390-1720251a53f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_events_by_tre_only
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+id: paragraph.event_and_hobby_listing.field_show_events_by_tre_only
+field_name: field_show_events_by_tre_only
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: 'Näytä vain Tampereen kaupungin järjestämät tapahtumat'
+description: "Valitse tämä, jos haluat näyttää vain Tampereen kaupungin järjestämiä tapahtumia.<br>\r\nJos jätät ruudun tyhjäksi, näytetään kaikkien tahojen järjestämiä tapahtumia."
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -1,0 +1,44 @@
+$feedback-card-image-height: 215px;
+$feedback-card-image-height-large: 290px;
+
+.feedback-card {
+  background-color: clr(background);
+
+  &__image-container {
+    height: $feedback-card-image-height;
+    overflow: hidden;
+
+    @include large {
+      height: $feedback-card-image-height-large;
+    }
+
+    // Drupal image containers.
+    div {
+      height: 100%;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__heading {
+    @include section-heading;
+
+    margin-bottom: $space-m;
+
+    @include large {
+      margin-bottom: $space-xl;
+    }
+  }
+
+  &__content {
+    padding: $space-l $space-s;
+
+    @include large {
+      padding: $space-l  $space-l  0;
+    }
+  }
+}

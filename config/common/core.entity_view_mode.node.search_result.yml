@@ -1,0 +1,12 @@
+uuid: 09101041-59b5-4b05-870d-d470fae40987
+langcode: fi
+status: false
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: 6GCOQ-jP2RbdbHA5YWQ6bT8CfGbqrBYKOSC_XY4E3ZM
+id: node.search_result
+label: 'Valittu hakutulos'
+targetEntityType: node
+cache: true

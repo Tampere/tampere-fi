@@ -1,0 +1,39 @@
+{% set link_with_icon__base_class = "link-with-icon" %}
+
+{% if not link_with_icon__modifiers %}
+  {% set link_with_icon__modifiers = [] %}
+{% endif %}
+
+{% if not link_with_icon__custom_classes %}
+  {% set link_with_icon__custom_classes = [] %}
+{% endif %}
+
+{% set link_with_icon__custom_classes = link_with_icon__custom_classes|merge([ "hyphenate" ]) %}
+
+{% if variant == "service" %}
+  {% set link_with_icon__modifiers = link_with_icon__modifiers|merge([ "secondary" ]) %}
+  {% set link_with_icon__link_icon = "service-arrow" %}
+{% endif %}
+
+<a
+  {{ bem(link_with_icon__base_class, link_with_icon__modifiers|default([]), link_with_icon__blockname, link_with_icon__custom_classes) }}
+  href="{{ link_with_icon__url }}"
+  {% if link_with_icon__aria_label %} aria-label="{{ link_with_icon__aria_label }}"{% endif %}
+  {% for attribute, value in link_extra_attributes %}
+    {{ attribute }}="{{ value }}"
+  {% endfor %}
+>
+  <span {{ bem("link-text", link_with_icon__link_text__modifiers|default([]), link_with_icon__base_class) }}>
+    {% if link_with_icon__link_text %}
+      {{ link_with_icon__link_text }}
+    {% else %}
+      {{ link_text }}
+    {% endif %}
+  </span>
+  {% include "@atoms/04-images/icons/_icon.twig" with {
+    icon_decorative: true,
+    icon_base_class: "icon",
+    icon_blockname: link_with_icon__base_class,
+    icon_name: link_with_icon__link_icon|default("arrow"),
+  } %}
+</a>

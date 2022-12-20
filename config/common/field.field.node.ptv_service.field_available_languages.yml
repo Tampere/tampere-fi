@@ -1,0 +1,23 @@
+uuid: 04259d5c-9762-42cd-88ac-95430e343b09
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_available_languages
+    - node.type.ptv_service
+  module:
+    - options
+id: node.ptv_service.field_available_languages
+field_name: field_available_languages
+entity_type: node
+bundle: ptv_service
+label: 'Palvelun kieli'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: fi
+default_value_callback: ''
+settings: {  }
+field_type: list_string

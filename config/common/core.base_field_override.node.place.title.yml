@@ -1,0 +1,18 @@
+uuid: 02082c16-a0b1-4f43-953c-e832d3fb114a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.place
+id: node.place.title
+field_name: title
+entity_type: node
+bundle: place
+label: Nimi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

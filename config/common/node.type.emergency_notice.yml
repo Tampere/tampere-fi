@@ -1,0 +1,17 @@
+uuid: 0c94f5a3-b339-440e-a122-5a935b9d5f77
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Häiriöilmoitus
+type: emergency_notice
+description: 'Hetkellisten, erityisen akuuttien häiriötilanteiden esittämiseen tarkoitettu sisältötyyppi.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

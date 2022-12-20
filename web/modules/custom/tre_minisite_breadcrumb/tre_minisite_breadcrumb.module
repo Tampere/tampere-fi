@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_breadcrumbs_alterations.
+ */
+
+use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Cache\CacheableMetadata;
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ */
+function tre_minisite_breadcrumb_system_breadcrumb_alter(Breadcrumb &$breadcrumb) {
+  $belongs_to_minisite = FALSE;
+  $links = NULL;
+
+  /** @var \Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface $utility_functions */
+  $utility_functions = \Drupal::service('tre_preprocess_utility_functions.helper_functions');
+
+  /** @var \Drupal\Core\Path\CurrentPathStack $current_path_stack */
+  $current_path_stack = \Drupal::service('path.current');
+
+  // Get current Node.
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof NodeInterface) {
+    // Check if node belongs to a minisite group.
+    $belongs_to_minisite = $utility_functions->isMinisite();
+  }
+
+  $current_path = $current_path_stack->getPath();
+  // Get group_id from current path for search view page.
+  // Returns group_id as null, if not found.
+  $group_id = $utility_functions->getGroupIdFromSearchViewPath($current_path);
+
+  // If group_id is found, the path is search view path.
+  // Alter breadcrumb in this case.
+  if (isset($group_id)) {
+    // Check if group_id belongs to minisite type.
+    $belongs_to_minisite = $utility_functions->isMinisite($group_id);
+  }
+
+  // If node is part of minisite, remove first breadcrumb element.
+  if ($belongs_to_minisite) {
+    $links = $breadcrumb->getLinks();
+    unset($links[0]);
+
+    // To play it safe, break the reference to the previous breadcrumb instance.
+    $old_breadcrumb = clone $breadcrumb;
+    $new_breadcrumb = new Breadcrumb();
+    $new_breadcrumb->setLinks($links);
+    $new_breadcrumb->addCacheableDependency($old_breadcrumb);
+    // Replace the old breadcrumb with the new one.
+    $breadcrumb = $new_breadcrumb;
+  }
+}

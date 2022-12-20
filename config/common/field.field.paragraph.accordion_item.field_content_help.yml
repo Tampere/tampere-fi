@@ -1,0 +1,26 @@
+uuid: 2aea2434-1c72-4d49-8160-73276c4545ef
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_help
+    - paragraphs.paragraphs_type.accordion_item
+  module:
+    - markup
+id: paragraph.accordion_item.field_content_help
+field_name: field_content_help
+entity_type: paragraph
+bundle: accordion_item
+label: 'Sisällön aputeksti'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    markup: null
+default_value_callback: ''
+settings:
+  markup:
+    value: "<h3>Teksti-paragraafi ollaan poistamassa, joten käytä Haitarin tekstisisältö -paragraafia. Vanhoista haitareista on hyvä siirtää tekstin sisältö Haitarin tekstisisältöön.</h3>\r\n"
+    format: basic_html
+field_type: markup

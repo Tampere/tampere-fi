@@ -1,0 +1,29 @@
+uuid: 5d6543b1-a696-4649-9138-55f5f3517490
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_image
+    - media.type.image
+    - node.type.front_page
+id: node.front_page.field_main_image
+field_name: field_main_image
+entity_type: node
+bundle: front_page
+label: Pääkuva
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 61406158-8b8d-4697-ba37-ba6a8aa23cc4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_displayed_opp_fields
+    - paragraphs.paragraphs_type.involvement_opportunity_card
+  module:
+    - options
+id: paragraph.involvement_opportunity_card.field_displayed_opp_fields
+field_name: field_displayed_opp_fields
+entity_type: paragraph
+bundle: involvement_opportunity_card
+label: 'Näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

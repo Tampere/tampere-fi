@@ -1,0 +1,17 @@
+uuid: 2b66069d-3fa8-4d4b-8917-050cacb38092
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.participation_section_editor
+id: topic-daa7f2c13
+label: 'Osallistumisen osiovastaava'
+weight: 9
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

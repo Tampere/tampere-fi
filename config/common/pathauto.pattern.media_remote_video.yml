@@ -1,0 +1,24 @@
+uuid: 40b62dba-6c43-47f2-88ec-8a804c40c7b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: lgmWiI6hPHuItCeO4AiYt3vbXcM4Sku16P9G0T0nE-U
+id: media_remote_video
+label: 'Media Remote Video'
+type: 'canonical_entities:media'
+pattern: 'remote_video/[media:name]'
+selection_criteria:
+  65709ac7-116f-4a63-aaa0-a68b55a23937:
+    id: 'entity_bundle:media'
+    negate: false
+    uuid: 65709ac7-116f-4a63-aaa0-a68b55a23937
+    context_mapping:
+      media: media
+    bundles:
+      remote_video: remote_video
+selection_logic: and
+weight: 5
+relationships: {  }

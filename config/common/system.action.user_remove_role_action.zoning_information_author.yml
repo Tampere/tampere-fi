@@ -1,0 +1,14 @@
+uuid: b2eae81a-584a-43d2-b105-db2c6c48bd16
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.zoning_information_author
+  module:
+    - user
+id: user_remove_role_action.zoning_information_author
+label: 'Remove the Kaavatoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: zoning_information_author

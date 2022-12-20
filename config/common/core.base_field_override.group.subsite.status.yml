@@ -1,0 +1,22 @@
+uuid: aad0a0dc-e41a-4d51-93c4-3dac5edff4d4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+id: group.subsite.status
+field_name: status
+entity_type: group
+bundle: subsite
+label: Julkaistu
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

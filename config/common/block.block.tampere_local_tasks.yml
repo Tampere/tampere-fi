@@ -1,0 +1,22 @@
+uuid: 418d06f4-eba1-41fb-ae32-6ba30b489e1d
+langcode: en
+status: true
+dependencies:
+  theme:
+    - tampere
+_core:
+  default_config_hash: c-06bbElRY5sKmglk74ppgTW93Et4-EJFyNiUZMb8JY
+id: tampere_local_tasks
+theme: tampere
+region: admin_tasks
+weight: -15
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

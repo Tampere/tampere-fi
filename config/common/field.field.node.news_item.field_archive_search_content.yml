@@ -1,0 +1,19 @@
+uuid: b533c2bf-f7df-434c-a6ec-889927dfd444
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_archive_search_content
+    - node.type.news_item
+id: node.news_item.field_archive_search_content
+field_name: field_archive_search_content
+entity_type: node
+bundle: news_item
+label: 'Tekstisisältö arkistohakuun'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,21 @@
+uuid: 2d1ff40d-8f76-4c5e-b46d-a3fa7532506d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - group_content_menu.group_content_menu_type.minisite_main_menu_en
+  module:
+    - group_content_menu
+id: group_content_type_9e556b10a3693
+label: 'Minikotisivusto: Group menu (Minisite main menu)'
+description: 'Adds <em class="placeholder">Minisite main menu</em> menu items to groups.'
+group_type: minisite
+content_plugin: 'group_content_menu:minisite_main_menu_en'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false
+  auto_create_group_menu: true
+  auto_create_home_link: false
+  auto_create_home_link_title: Home

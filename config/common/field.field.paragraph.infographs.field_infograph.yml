@@ -1,0 +1,157 @@
+uuid: 72f1b193-3459-4d55-b224-270837f87670
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_infograph
+    - paragraphs.paragraphs_type.infograph
+    - paragraphs.paragraphs_type.infographs
+  module:
+    - entity_reference_revisions
+id: paragraph.infographs.field_infograph
+field_name: field_infograph
+entity_type: paragraph
+bundle: infographs
+label: Infograafi
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      infograph: infograph
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 33
+        enabled: false
+      accordion_item:
+        weight: 35
+        enabled: false
+      accordions:
+        weight: 34
+        enabled: false
+      attachment:
+        weight: 36
+        enabled: false
+      balanced_content_liftup:
+        weight: 37
+        enabled: false
+      city_construction_project_card:
+        weight: 54
+        enabled: false
+      city_construction_project_cards:
+        weight: 55
+        enabled: false
+      colorful_content_liftup:
+        weight: 38
+        enabled: false
+      content_liftup:
+        weight: 39
+        enabled: false
+      content_liftup_with_image:
+        weight: 40
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 59
+        enabled: false
+      event_and_hobby_listing:
+        weight: 41
+        enabled: false
+      external_link:
+        weight: 42
+        enabled: false
+      external_link_with_link_text:
+        weight: 62
+        enabled: false
+      grouped_content_liftup:
+        weight: 43
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 44
+        enabled: false
+      highlighted_link_list:
+        weight: 70
+        enabled: false
+      icon_and_text_link:
+        weight: 71
+        enabled: false
+      infograph:
+        weight: 45
+        enabled: true
+      infographs:
+        weight: 46
+        enabled: false
+      internal_link:
+        weight: 47
+        enabled: false
+      internal_link_with_link_text:
+        weight: 75
+        enabled: false
+      link_list:
+        weight: 76
+        enabled: false
+      list_of_attachments:
+        weight: 48
+        enabled: false
+      metadata_attachment_list:
+        weight: 78
+        enabled: false
+      mosaic_liftup:
+        weight: 79
+        enabled: false
+      notice:
+        weight: 49
+        enabled: false
+      person_liftup:
+        weight: 50
+        enabled: false
+      person_liftups:
+        weight: 51
+        enabled: false
+      picture_mosaic:
+        weight: 83
+        enabled: false
+      place_liftup:
+        weight: 84
+        enabled: false
+      place_of_business_liftup:
+        weight: 54
+        enabled: false
+      project_and_organization_cards:
+        weight: 55
+        enabled: false
+      project_or_organization_card:
+        weight: 56
+        enabled: false
+      rss_feed:
+        weight: 57
+        enabled: false
+      service_highlight:
+        weight: 58
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 59
+        enabled: false
+      social_media_feed_embed:
+        weight: 60
+        enabled: false
+      social_media_link:
+        weight: 61
+        enabled: false
+      table:
+        weight: 62
+        enabled: false
+      text:
+        weight: 94
+        enabled: false
+      two_column_liftup:
+        weight: 63
+        enabled: false
+      webform:
+        weight: 64
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,20 @@
+uuid: 8f09307d-3d6f-41f5-a097-dae687d86d57
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_node-place
+id: group_content.life_situation-group_node-place.uid
+field_name: uid
+entity_type: group_content
+bundle: life_situation-group_node-place
+label: 'Group content creator'
+description: 'The username of the group content creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,18 @@
+uuid: c9f667d6-55db-45fb-b9b4-9e50dd11de2b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.life-situation-menu-en
+id: menu_link_content.life-situation-menu-en.description
+field_name: description
+entity_type: menu_link_content
+bundle: life-situation-menu-en
+label: Kuvaus
+description: 'Näytetään vietäessä hiirtä linkin yli.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

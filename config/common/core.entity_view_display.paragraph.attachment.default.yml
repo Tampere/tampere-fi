@@ -1,0 +1,32 @@
+uuid: d1f832df-3063-41e2-b92a-f2d7c152ce8d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.attachment.field_description_text
+    - field.field.paragraph.attachment.field_generic_boolean_value
+    - field.field.paragraph.attachment.field_media
+    - paragraphs.paragraphs_type.attachment
+id: paragraph.attachment.default
+targetEntityType: paragraph
+bundle: attachment
+mode: default
+content:
+  field_description_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_generic_boolean_value: true
+  search_api_excerpt: true

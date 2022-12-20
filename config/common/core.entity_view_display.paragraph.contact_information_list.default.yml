@@ -1,0 +1,36 @@
+uuid: 0909778f-0af8-4eed-8028-35c06559309a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_information_list.field_displayed_bundles
+    - field.field.paragraph.contact_information_list.field_displayed_content_types
+    - field.field.paragraph.contact_information_list.field_geographical_areas
+    - field.field.paragraph.contact_information_list.field_keywords
+    - field.field.paragraph.contact_information_list.field_life_situations
+    - field.field.paragraph.contact_information_list.field_taxonomy_combination
+    - field.field.paragraph.contact_information_list.field_title
+    - field.field.paragraph.contact_information_list.field_topics
+    - paragraphs.paragraphs_type.contact_information_list
+id: paragraph.contact_information_list.default
+targetEntityType: paragraph
+bundle: contact_information_list
+mode: default
+content:
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_displayed_bundles: true
+  field_displayed_content_types: true
+  field_geographical_areas: true
+  field_keywords: true
+  field_life_situations: true
+  field_taxonomy_combination: true
+  field_topics: true
+  search_api_excerpt: true

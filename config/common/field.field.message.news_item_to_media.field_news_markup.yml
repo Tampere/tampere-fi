@@ -1,0 +1,21 @@
+uuid: f723dcc1-7328-4fac-a82e-857e011c6ea8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_news_markup
+    - message.template.news_item_to_media
+  module:
+    - markup_field
+id: message.news_item_to_media.field_news_markup
+field_name: field_news_markup
+entity_type: message
+bundle: news_item_to_media
+label: 'Uutisen HTML'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: markup_field

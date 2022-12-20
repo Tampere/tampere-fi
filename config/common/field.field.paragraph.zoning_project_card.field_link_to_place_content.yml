@@ -1,0 +1,23 @@
+uuid: 0039e758-fcef-4825-a759-3514b9f449a2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_to_place_content
+    - paragraphs.paragraphs_type.zoning_project_card
+id: paragraph.zoning_project_card.field_link_to_place_content
+field_name: field_link_to_place_content
+entity_type: paragraph
+bundle: zoning_project_card
+label: 'Linkitä sisältöön'
+description: 'Valitse tämä, kun haluat, että nosto toimii linkkinä viitattuun Kaava-sisältöön.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

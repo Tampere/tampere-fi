@@ -1,0 +1,18 @@
+uuid: 25ebea45-dc3c-482e-9796-c53690959517
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mailing_lists
+id: taxonomy_term.mailing_lists.name
+field_name: name
+entity_type: taxonomy_term
+bundle: mailing_lists
+label: Nimi
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

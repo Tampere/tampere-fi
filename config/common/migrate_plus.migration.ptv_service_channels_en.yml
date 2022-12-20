@@ -1,0 +1,147 @@
+uuid: eee21781-e459-457e-8f8b-e4dda7039ec8
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - tre_ptv_import
+id: ptv_service_channels_en
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: tre_ptv
+label: 'PTV Service Channels in English'
+source:
+  plugin: ptv_service_channels
+  language: en
+  key: default
+  target: default
+  batch_size: 100
+  track_changes: true
+  constants:
+    LANGUAGE: en
+process:
+  status:
+    plugin: default_value
+    default_value: 1
+  langcode:
+    plugin: default_value
+    default_value: en
+  title:
+    plugin: get
+    source: name
+    language: constants/LANGUAGE
+  field_summary:
+    plugin: get
+    source: summary
+    language: constants/LANGUAGE
+  field_body_md/value:
+    plugin: get
+    source: description
+    language: constants/LANGUAGE
+  field_body_md/format:
+    plugin: default_value
+    default_value: ptv_markdown
+  field_electronic_signature_rqd:
+    plugin: get
+    source: electronic_signature_required
+    language: constants/LANGUAGE
+  field_electronic_id_required:
+    plugin: get
+    source: electronic_id_required
+    language: constants/LANGUAGE
+  field_available_languages:
+    plugin: get
+    source: languages
+    language: constants/LANGUAGE
+  field_area_text/value:
+    plugin: get
+    source: areas_text
+    language: constants/LANGUAGE
+  field_area_text/format:
+    plugin: default_value
+    default_value: basic_html
+  field_links: web_pages
+  field_additional_phones:
+    plugin: sub_process
+    source: phones
+    process:
+      telephone_number: number
+      telephone_title: title
+      telephone_supplementary: label
+      display_international_number:
+        plugin: default_value
+        default_value: 0
+      country_code:
+        source: country_code
+        plugin: static_map
+        map:
+          '+358': FI
+        default_value: FI
+  field_support_phones:
+    plugin: sub_process
+    source: support_phones
+    process:
+      telephone_number: number
+      telephone_supplementary: label
+      display_international_number:
+        plugin: default_value
+        default_value: 0
+      country_code:
+        source: country_code
+        plugin: static_map
+        map:
+          '+358': FI
+        default_value: FI
+  field_support_emails:
+    plugin: get
+    source: support_emails
+    language: constants/LANGUAGE
+  field_service_attachments:
+    plugin: get
+    source: attachments
+    language: constants/LANGUAGE
+  field_accessibility_links:
+    plugin: get
+    source: accessibility
+    language: constants/LANGUAGE
+  field_services:
+    plugin: migration_lookup
+    source: services
+    no_stub: true
+    migration: ptv_services
+  field_organization:
+    plugin: get
+    source: organization
+    language: constants/LANGUAGE
+  field_service_hours_daily:
+    -
+      plugin: extract
+      source: regular_daily_hours_hours
+      default: {  }
+      index:
+        - 0
+    -
+      plugin: get
+  field_service_hours_overnight:
+    -
+      plugin: extract
+      source: regular_overnight_hours_hours
+      default: {  }
+      index:
+        - 0
+    -
+      plugin: get
+  field_exception_hours:
+    plugin: get
+    source: exception_hours_info
+    language: constants/LANGUAGE
+  field_service_channel_type:
+    plugin: get
+    source: service_channel_type
+    language: constants/LANGUAGE
+destination:
+  plugin: 'entity:node'
+  default_bundle: service_channel
+migration_dependencies: null

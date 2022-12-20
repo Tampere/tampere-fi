@@ -1,0 +1,16 @@
+uuid: 438db0e4-2e82-4b1d-9c54-a91f164dd81b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.accessibility_and_service_infos
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.accessibility_and_service_infos
+target_entity_type_id: taxonomy_term
+target_bundle: accessibility_and_service_infos
+default_langcode: current_interface
+language_alterable: true

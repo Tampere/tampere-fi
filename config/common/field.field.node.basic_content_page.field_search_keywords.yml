@@ -1,0 +1,19 @@
+uuid: 8b812ff1-64ef-4baf-94c9-5f75ebb349dc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_keywords
+    - node.type.basic_content_page
+id: node.basic_content_page.field_search_keywords
+field_name: field_search_keywords
+entity_type: node
+bundle: basic_content_page
+label: Avainsanat
+description: 'Käytetään sisällön nostamiseen esiin sivuston hakutoiminnallisuudessa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

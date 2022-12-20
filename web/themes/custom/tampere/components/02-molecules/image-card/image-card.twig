@@ -1,0 +1,55 @@
+{#
+ # Available variables:
+ # - card__base_class - base classname of the wrapper.
+ # - card__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - card__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - card__extra_classes - array of extra classes to add to the wrapper.
+ # - card__link__url - the URL the link should point to.
+ #
+ # - card__image - the image as a render array.
+ # - card__image__src - the image file source.
+ #
+ # - card__image_container__modifiers - array of modifiers to add to the base classname of the image container.
+ #
+ # - card__tag__modifiers - array of modifiers to add to the base classname of the tag.
+ #
+ # - card__heading - the content of the title component.
+ # - card__heading__base_class - base classname of the title component. Defaults to "heading".
+ # - card__heading__modifiers - array of modifiers to add to the base classname of the title.
+ #}
+{% set card__base_class = "image-card" %}
+
+<a {{ bem(card__base_class, card__modifiers|default([]), card__blockname, card__extra_classes) }} href="{{ card__link__url }}">
+  {# Image #}
+  {% if card__image__src or card__image %}
+    <div {{ bem("image-container", card__image_container__modifiers|default([]), card__base_class)}} aria-hidden="true">
+      {% block card_image %}
+        {% if card__image %}
+          {{ card__image }}
+        {% else %}
+          {% include "@atoms/04-images/00-image/_image.twig" with {
+            "image_base_class": "image",
+            "image_blockname": card__base_class,
+            "img_src": card__image__src,
+          } %}
+        {% endif %}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {# Heading #}
+  {% if card__heading %}
+    <div {{ bem("tag", card__tag__modifiers|default([]), card__base_class)}}>
+      {{ title_prefix }}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        "text_block_element": "span",
+        "text_block_base_class": "heading",
+        "text_block_modifiers": card__heading__modifiers,
+        "text_block_blockname": card__base_class,
+        "text_block_extra_classes": [ "h2", "hyphenate" ],
+        "text_block_content": card__heading,
+      } %}
+      {{ title_suffix }}
+    </div>
+  {% endif %}
+</a>

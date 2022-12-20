@@ -1,0 +1,19 @@
+uuid: c09c807a-4143-4537-9477-f718571df1ac
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_delivery_details
+field_name: field_delivery_details
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

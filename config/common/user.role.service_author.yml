@@ -1,0 +1,35 @@
+uuid: 8eac33d2-641a-442d-a5a5-8c7c8553b8ee
+langcode: fi
+status: true
+dependencies:
+  config:
+    - filter.format.ptv_markdown
+    - node.type.ptv_service
+    - node.type.service_channel
+  module:
+    - content_translation
+    - entity_browser
+    - filter
+    - node
+    - override_node_options
+    - system
+id: service_author
+label: Palvelutoimittaja
+weight: -6
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access all_content_entity_browser entity browser pages'
+  - 'access all_places_entity_browser entity browser pages'
+  - 'access content overview'
+  - 'access persons_entity_browser entity browser pages'
+  - 'edit any ptv_service content'
+  - 'edit any service_channel content'
+  - 'override all published option'
+  - 'revert ptv_service revisions'
+  - 'revert service_channel revisions'
+  - 'translate editable entities'
+  - 'use text format ptv_markdown'
+  - 'view ptv_service revisions'
+  - 'view service_channel revisions'
+  - 'view the administration theme'

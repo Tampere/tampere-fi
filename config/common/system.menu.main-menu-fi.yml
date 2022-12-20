@@ -1,0 +1,8 @@
+uuid: e9987a1e-0257-4cc8-bbb3-006bb8a4d1af
+langcode: fi
+status: true
+dependencies: {  }
+id: main-menu-fi
+label: Päävalikko
+description: 'Sivuston osioiden linkit'
+locked: false

@@ -1,0 +1,14 @@
+uuid: 6b1335e6-43d0-47f5-a149-8c30d854c14d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.contact_info_author
+  module:
+    - user
+id: user_remove_role_action.contact_info_author
+label: 'Remove the Yhteystietotoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: contact_info_author

@@ -1,0 +1,36 @@
+label: 'Generic listing'
+description: 'List content based on the selections in the Generic Listing paragraph.'
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Submit
+          reset_button_label: Reset
+          exposed_sorts_label: Sort
+  generic_listing_block_title:
+    display_title: 'Sorted by title'
+    display_options:
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: 'First page'
+            last: 'Last page'
+          expose:
+            items_per_page_label: 'Results by page'
+            items_per_page_options_all_label: '- All -'
+  generic_listing_block_date:
+    display_title: 'Sorted by date'
+    display_options:
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: 'First page'
+            last: 'Last page'
+          expose:
+            items_per_page_label: 'Results by page'
+            items_per_page_options_all_label: '- All -'

@@ -1,0 +1,13 @@
+uuid: 4bc2c52c-98b3-487c-92f9-254ede903412
+langcode: fi
+status: true
+dependencies: {  }
+id: default_sitemap
+label: 'Default sitemap'
+description: ''
+sitemap_generator: default
+url_generators:
+  custom: custom
+  entity: entity
+  arbitrary: arbitrary
+  entity_menu_link_content: entity_menu_link_content

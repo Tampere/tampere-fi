@@ -1,0 +1,43 @@
+// These styles only affect the colors "Usage" page in the component library
+.cl-colors {
+  padding: 16px;
+}
+
+.cl-colors__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 32px;
+  padding: 0;
+}
+
+.cl-colors__item {
+  list-style: none;
+  padding: 16px 32px;
+  transition: all 0.4s;
+  flex: 1 1 20%;
+  min-width: 150px;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+// Style default color swatches
+@each $name, $color in $defaultColors {
+  .cl-colors__item--default {
+    &-#{$name} {
+    background-color: clr($name);
+    color: set-color($color);
+    }
+  }
+}
+
+// Style project palette color swatches
+@each $name, $color in $projectColors {
+  .cl-colors__item--project {
+    &-#{$name} {
+    background-color: $color;
+    color: set-color($color);
+    }
+  }
+}

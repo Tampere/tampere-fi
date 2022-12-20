@@ -1,0 +1,18 @@
+uuid: 2537eae1-ad5b-4028-9654-fdc00aa9a566
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_domain_all_affiliates
+field_name: field_domain_all_affiliates
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

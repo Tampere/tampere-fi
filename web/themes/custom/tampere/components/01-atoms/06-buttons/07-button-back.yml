@@ -1,0 +1,10 @@
+button_url:
+  "#"
+button_content:
+  "Back"
+button_modifiers:
+  - "back"
+button_icon_name:
+  "arrow"
+button_icon_modifiers:
+  [ "icon-first", "reverse", "small" ] 

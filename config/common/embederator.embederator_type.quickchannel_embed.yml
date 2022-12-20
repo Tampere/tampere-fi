@@ -1,0 +1,13 @@
+uuid: c40a0c49-1bd0-496f-a8c9-c5bab2848759
+langcode: fi
+status: true
+dependencies: {  }
+id: quickchannel_embed
+label: 'Quickchannel upotus'
+use_ssi: false
+embed_markup:
+  value: "<iframe allowfullscreen=\"\" class=\"lazyload\" loading=\"lazy\" frameborder=\"0\" height=\"360\" scrolling=\"no\" data-src=\"https://play.quickchannel.com/play/[embederator:embed_id]\" title=\"[embederator:field_quickchannel_title]\" width=\"640\"></iframe>\r\n"
+  format: embederator_html
+embed_url: ''
+wrapper_class: ''
+description: 'Tällä elementillä voidaan upottaa Quickchannel striimi.'

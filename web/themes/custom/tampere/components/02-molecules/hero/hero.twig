@@ -1,0 +1,103 @@
+{% set hero__base_class = "hero" %}
+
+{% if not hero__modifiers %}
+  {% set hero__modifiers = [] %}
+{% endif %}
+
+{% set title_without_icon = 'title-without-icon' in hero__modifiers %}
+
+{% if hero__cta__url %}
+  {% set hero__modifiers = hero__modifiers|merge([ "with-cta" ]) %}
+{% elseif title_without_icon %}
+  {% set hero__modifiers = hero__modifiers|merge([ "title-centered" ]) %}
+{% endif %}
+
+{% if not hero__item_icon and has_image %}
+  {% set use_hidden_title = TRUE %}
+{% endif %}
+
+{% if hero__item_icon %}
+  {% set hero__modifiers = hero__modifiers|merge([ "with-icon" ]) %}
+{% endif %}
+
+{% if cta_link_requires_login %}
+  {% set hero__cta__modifiers = [ "reversed", "service" ] %}
+  {% set hero__cta__icon = "service-arrow-large" %}
+{% endif %}
+
+{% if cta_link_is_internal %}
+  {% set hero__cta__icon = "arrow" %}
+{% endif %}
+
+{% if not has_image %}
+  {% set hero__modifiers = hero__modifiers|merge([ "no-image" ]) %}
+{% endif %}
+
+<div {{ bem(hero__base_class, hero__modifiers|default([]), hero__blockname)}}>
+  {# Image #}
+  {% if hero__image__src or has_image %}
+    <div {{ bem("image-container", hero__image_container__modifiers|default([]), hero__base_class)}} aria-hidden="true">
+      {% block hero__img %}
+        {% if hero__image__src %}
+          {% include "@atoms/04-images/00-image/_image.twig" with {
+            "image_base_class": "image",
+            "image_blockname": hero__base_class,
+            "img_src": hero__image__src,
+            "img_alt": hero__image__alt,
+          } %}
+        {% endif %}
+      {% endblock %}
+    </div>
+  {% endif %}
+
+  {# Heading #}
+  {% block hero__title %}
+    {% if hero__heading %}
+      <div {{ bem("header", hero__image_container__modifiers|default([]), hero__base_class)}}>
+        {% if hero__item_icon %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            "icon_decorative": true,
+            "icon_base_class": "icon",
+            "icon_blockname": hero__base_class,
+            "icon_filename": "icons",
+            "icon_name": hero__item_icon,
+          } %}
+        {% endif %}
+
+        <div {{ bem("title-container", hero__image_container__modifiers|default([]), hero__base_class)}}>
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            "heading_base_class": hero__heading__base_class|default("heading"),
+            "heading_modifiers": hero__heading__modifiers,
+            "heading_blockname": hero__base_class,
+            "heading_level": hero__heading__level|default(1),
+            "heading": hero__heading,
+            "wrap_heading": TRUE,
+          } %}
+
+          {% if use_hidden_title %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              "aria_hidden": TRUE,
+              "text_block_base_class": hero__hidden_heading__base_class|default("heading"),
+              "text_block_modifiers": hero__hidden_heading__modifiers,
+              "text_block_blockname": hero__base_class,
+              "text_block_extra_classes": [ "hyphenate", "hidden-heading" ],
+              "text_block_content": hero__heading,
+              "wrap_content": TRUE,
+            } %}
+          {% endif %}
+        </div>
+
+        {% if hero__cta__url %}
+          <div {{ bem("link", hero__link__modifiers|default([]), hero__base_class)}}>
+            {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+              "link_with_icon__modifiers": hero__cta__modifiers|default([ "dark" ]),
+              "link_with_icon__url": hero__cta__url,
+              "link_with_icon__link_text": hero__cta__text,
+              "link_with_icon__link_icon": hero__cta__icon|default("external"),
+            } %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endblock %}
+</div>

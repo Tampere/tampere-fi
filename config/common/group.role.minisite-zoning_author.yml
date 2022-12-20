@@ -1,0 +1,21 @@
+uuid: ea292fc4-215b-47a9-a3ea-a73aea6aaee6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: minisite-zoning_author
+label: Kaavatoimittaja
+weight: 35
+internal: false
+audience: member
+group_type: minisite
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:zoning_information entity'
+  - 'delete any group_node:zoning_information entity'
+  - 'update any group_node:zoning_information entity'
+  - 'view group_node:front_page entity'
+  - 'view group_node:zoning_information entity'
+  - 'view unpublished group_node:zoning_information entity'

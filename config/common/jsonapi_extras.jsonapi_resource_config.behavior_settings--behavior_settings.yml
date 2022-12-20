@@ -1,0 +1,95 @@
+uuid: 5393a5c8-9559-455c-abe2-8a4976ed11a6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - rabbit_hole
+id: behavior_settings--behavior_settings
+disabled: true
+path: behavior_settings/behavior_settings
+resourceType: behavior_settings--behavior_settings
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  entity_type_id:
+    disabled: false
+    fieldName: entity_type_id
+    publicName: entity_type_id
+    enhancer:
+      id: ''
+  entity_id:
+    disabled: false
+    fieldName: entity_id
+    publicName: entity_id
+    enhancer:
+      id: ''
+  action:
+    disabled: false
+    fieldName: action
+    publicName: action
+    enhancer:
+      id: ''
+  allow_override:
+    disabled: false
+    fieldName: allow_override
+    publicName: allow_override
+    enhancer:
+      id: ''
+  redirect:
+    disabled: false
+    fieldName: redirect
+    publicName: redirect
+    enhancer:
+      id: ''
+  redirect_code:
+    disabled: false
+    fieldName: redirect_code
+    publicName: redirect_code
+    enhancer:
+      id: ''
+  redirect_fallback_action:
+    disabled: false
+    fieldName: redirect_fallback_action
+    publicName: redirect_fallback_action
+    enhancer:
+      id: ''

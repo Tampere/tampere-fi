@@ -1,0 +1,21 @@
+uuid: 30d6d633-9441-4bbb-8df9-6754314db978
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_period
+    - node.type.notice
+  module:
+    - datetime_range
+id: node.notice.field_display_period
+field_name: field_display_period
+entity_type: node
+bundle: notice
+label: Nähtävilläoloaika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

@@ -1,0 +1,32 @@
+uuid: fd6d73d1-7ea5-4fe0-828a-0e1e87e7af75
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.infograph.field_color
+    - field.field.paragraph.infograph.field_number_liftup
+    - field.field.paragraph.infograph.field_short_description
+    - paragraphs.paragraphs_type.infograph
+id: paragraph.infograph.default
+targetEntityType: paragraph
+bundle: infograph
+mode: default
+content:
+  field_number_liftup:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_short_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_color: true
+  search_api_excerpt: true

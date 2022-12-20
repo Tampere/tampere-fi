@@ -1,0 +1,23 @@
+uuid: 0250c067-a5dc-40bb-aabc-6830526e5df7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pl_displayed_fields
+    - paragraphs.paragraphs_type.person_liftup
+  module:
+    - options
+id: paragraph.person_liftup.field_pl_displayed_fields
+field_name: field_pl_displayed_fields
+entity_type: paragraph
+bundle: person_liftup
+label: 'Näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: name
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,6 @@
+langcode: fi
+hotlink: false
+origin: 'https://tampere:project2020@staging.tampere.fi'
+origin_dir: sites/default/files
+use_imagecache_root: false
+verify: false

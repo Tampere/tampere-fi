@@ -1,0 +1,19 @@
+uuid: 59bd4103-84d3-49f4-9b4b-8cc96fe54e15
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_liftup_title
+    - paragraphs.paragraphs_type.single_colorful_content_liftup
+id: paragraph.single_colorful_content_liftup.field_liftup_title
+field_name: field_liftup_title
+entity_type: paragraph
+bundle: single_colorful_content_liftup
+label: Otsikko
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

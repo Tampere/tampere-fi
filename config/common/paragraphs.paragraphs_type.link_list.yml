@@ -1,0 +1,10 @@
+uuid: a23f8121-59c4-461e-bec7-b786cc514d21
+langcode: fi
+status: true
+dependencies: {  }
+id: link_list
+label: Linkkilista
+icon_uuid: null
+icon_default: null
+description: 'Voidaan käyttää esittämään useita linkkejä tiiviillä, yhdenmukaisella tavalla.'
+behavior_plugins: {  }

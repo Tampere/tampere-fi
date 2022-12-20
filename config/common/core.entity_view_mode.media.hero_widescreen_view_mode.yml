@@ -1,0 +1,10 @@
+uuid: 14f8a7b0-a880-4f51-a039-970f0c91006d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.hero_widescreen_view_mode
+label: 'Hero (laajakuva)'
+targetEntityType: media
+cache: true

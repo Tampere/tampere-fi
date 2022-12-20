@@ -1,0 +1,30 @@
+uuid: 9bafe449-11f5-4f0a-b2f4-a4cdb87a568d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.external_link.field_external_link
+    - paragraphs.paragraphs_type.external_link
+  module:
+    - elb
+id: paragraph.external_link.default
+targetEntityType: paragraph
+bundle: external_link
+mode: default
+content:
+  field_external_link:
+    type: ext_link_blocklist_widget
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

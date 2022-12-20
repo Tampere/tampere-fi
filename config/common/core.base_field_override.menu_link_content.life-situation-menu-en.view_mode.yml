@@ -1,0 +1,20 @@
+uuid: 0d9b463d-c423-4069-955a-7d1d857655db
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.life-situation-menu-en
+  module:
+    - menu_item_extras
+id: menu_link_content.life-situation-menu-en.view_mode
+field_name: view_mode
+entity_type: menu_link_content
+bundle: life-situation-menu-en
+label: Näyttötila
+description: 'Per item view mode selector.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

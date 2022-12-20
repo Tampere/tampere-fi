@@ -1,0 +1,29 @@
+uuid: 811d92fa-c55b-4c45-8e12-aae8af3ac865
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hr_title
+    - node.type.person
+    - taxonomy.vocabulary.personnel_titles
+id: node.person.field_hr_title
+field_name: field_hr_title
+entity_type: node
+bundle: person
+label: Tehtävänimike
+description: 'Käännä nimikkeet englanniksi <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_titles/overview">luokittelutermien hallinnan kautta</a>!'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      personnel_titles: personnel_titles
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 59c35d63-ce07-4b1b-9d93-62edd166ed2f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hr_organizational_unit
+    - node.type.person
+    - taxonomy.vocabulary.personnel_organization_units
+id: node.person.field_hr_organizational_unit
+field_name: field_hr_organizational_unit
+entity_type: node
+bundle: person
+label: Organisaatioyksikkö
+description: 'Käännä yksiköt englanniksi <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_organization_units/overview">luokittelutermien hallinnan kautta</a>!'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      personnel_organization_units: personnel_organization_units
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

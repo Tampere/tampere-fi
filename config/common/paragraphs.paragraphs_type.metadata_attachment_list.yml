@@ -1,0 +1,10 @@
+uuid: 1bbe62d0-b2a8-44a4-b2a1-475cd9ba2aac
+langcode: fi
+status: true
+dependencies: {  }
+id: metadata_attachment_list
+label: Metatieto-liitelistaus
+icon_uuid: null
+icon_default: null
+description: 'Liitetiedostot valikoituvat listalle automaattisesti valittujen metatietojen perusteella.'
+behavior_plugins: {  }

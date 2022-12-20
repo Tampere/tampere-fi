@@ -1,0 +1,14 @@
+uuid: a357fce7-af85-447d-ba9e-2aa37c4a7877
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.contact_info_author
+  module:
+    - user
+id: user_add_role_action.contact_info_author
+label: 'Add the Yhteystietotoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: contact_info_author

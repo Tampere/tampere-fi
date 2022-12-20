@@ -1,0 +1,58 @@
+{% set attachment__base_class = attachment__base_class|default("attachment-list") %}
+{% set use_left_to_right = attachment__content_lang == "arb" or attachment__content_lang == "fa" %}
+
+<li {{ bem("attachment", attachment__modifiers|default([]), attachment__base_class)}}>
+
+  <a {{ bem("link", attachment__link__modifiers|default([]), attachment__base_class)}} href="{{ attachment__link_url }}">
+    {% block list_item_content %}
+      <div {{ bem("file", [], attachment__base_class)}}>
+        {# Name #}
+        {% if attachment__name %}
+          {% block list_item_name %}
+            <div {{ bem("file-heading", [], attachment__base_class)}}>
+              {% include "@atoms/02-text/text/01-paragraph.twig" with {
+                paragraph_base_class: attachment__name__base_class|default("name"),
+                paragraph_modifiers: attachment__name__modifiers,
+                paragraph_blockname: attachment__base_class,
+                paragraph_custom_classes: [ "hyphenate" ],
+                paragraph_content: attachment__name,
+              } %}
+              {# File info: extension + size #}
+              {% if attachment__file_info %}
+                <span
+                  {{ bem("file-info", [], attachment__base_class)}}
+                  lang={{attachment__site_lang}}
+                  {% if use_left_to_right %} dir="ltr" {% endif %}
+                >
+                  {{ attachment__file_info }}
+                </span>
+              {% endif %}
+            </div>
+          {% endblock  %}
+        {% endif %}
+
+        {# Icon #}
+        {% if attachment__icon_name %}
+          {% block list_item_icon %}
+            {% include "@atoms/04-images/icons/_icon.twig" with {
+              icon_base_class: "icon",
+              icon_blockname: attachment__base_class,
+              icon_name: attachment__icon_name,
+            } %}
+          {% endblock %}
+        {% endif %}
+      </div>
+
+      {# Summary #}
+      {% if attachment__summary %}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: attachment__summary__base_class|default("summary"),
+          paragraph_modifiers: attachment__summary__modifiers,
+          paragraph_blockname: attachment__base_class,
+          paragraph_content: attachment__summary,
+        } %}
+      {% endif %}
+    {% endblock %}
+  </a>
+  
+</li>

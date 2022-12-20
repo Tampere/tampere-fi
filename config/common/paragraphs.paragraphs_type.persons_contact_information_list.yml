@@ -1,0 +1,10 @@
+uuid: 2489f01c-e557-4ac4-b61e-d73f30d5fd2e
+langcode: fi
+status: true
+dependencies: {  }
+id: persons_contact_information_list
+label: Henkilöyhteystietolista
+icon_uuid: null
+icon_default: null
+description: 'Henkilöiden yhteystiedot valikoituvat listalle automaattisesti valittujen metatietojen perusteella.'
+behavior_plugins: {  }

@@ -1,0 +1,21 @@
+uuid: df4c5719-6504-4400-a53c-a90230db3122
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_time
+    - node.type.notice
+  module:
+    - datetime
+id: node.notice.field_event_time
+field_name: field_event_time
+entity_type: node
+bundle: notice
+label: Tapahtuma-aika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

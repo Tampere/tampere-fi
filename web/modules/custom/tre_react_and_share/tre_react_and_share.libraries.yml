@@ -1,0 +1,4 @@
+react-and-share:
+  version: 2.3
+  js:
+    js/react-and-share.js: { attributes: { type: text/javascript } }

@@ -1,0 +1,12 @@
+uuid: ea9807d6-c617-4c01-a840-4c34b5b4000d
+langcode: fi
+status: false
+dependencies:
+  module:
+    - block_content
+_core:
+  default_config_hash: 4tedlMuvQjDOdvHdw86_e-2Rt78aR7TGFMfOK8Ejppg
+id: block_content.full
+label: Kokonainen
+targetEntityType: block_content
+cache: true

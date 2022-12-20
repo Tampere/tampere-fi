@@ -1,0 +1,14 @@
+uuid: 502b4f51-3248-4232-a889-9445805e6eb6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.record_numbers
+id: taxonomy_vocabulary_record_numbers
+entity_type_id: taxonomy_vocabulary
+entity_id: record_numbers
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

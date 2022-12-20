@@ -1,0 +1,18 @@
+uuid: a794bcb9-8155-40f3-81b6-c889306d72fb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.subsite-group_membership
+id: group_content.subsite-group_membership.created
+field_name: created
+entity_type: group_content
+bundle: subsite-group_membership
+label: Luotu
+description: 'Ryhmäsisällön luontiajankohta.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

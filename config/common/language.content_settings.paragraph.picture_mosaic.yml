@@ -1,0 +1,18 @@
+uuid: 08e49849-13cc-4795-bc62-4ad0f0300881
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.picture_mosaic
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.picture_mosaic
+target_entity_type_id: paragraph
+target_bundle: picture_mosaic
+default_langcode: current_interface
+language_alterable: true

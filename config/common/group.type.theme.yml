@@ -1,0 +1,11 @@
+uuid: 6841c6f7-9de1-4667-a813-46373dd1cc7f
+langcode: fi
+status: true
+dependencies: {  }
+id: theme
+label: Teema
+description: ''
+new_revision: true
+creator_membership: false
+creator_wizard: true
+creator_roles: {  }

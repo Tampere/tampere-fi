@@ -1,0 +1,8 @@
+uuid: acc9f2ba-ca4e-4fca-8e96-797ffb6a50ee
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Esteettömyys- ja palvelutiedot'
+vid: accessibility_and_service_infos
+description: ''
+weight: 0

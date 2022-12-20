@@ -1,0 +1,10 @@
+uuid: 31f00475-61ef-44d2-9b33-c3faf8f17c42
+langcode: fi
+status: true
+dependencies: {  }
+id: positioned_image
+label: 'Asemoitu kuva'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

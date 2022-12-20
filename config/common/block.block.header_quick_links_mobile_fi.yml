@@ -1,0 +1,33 @@
+uuid: 3e386fe8-3c69-4381-aa84-c16d46175472
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.header-quick-links-fi
+  module:
+    - language
+    - system
+  theme:
+    - tampere
+id: header_quick_links_mobile_fi
+theme: tampere
+region: header
+weight: -9
+provider: null
+plugin: 'system_menu_block:header-quick-links-fi'
+settings:
+  id: 'system_menu_block:header-quick-links-fi'
+  label: 'Ylätunnisteen pikalinkit: mobiili (FI)'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      fi: fi

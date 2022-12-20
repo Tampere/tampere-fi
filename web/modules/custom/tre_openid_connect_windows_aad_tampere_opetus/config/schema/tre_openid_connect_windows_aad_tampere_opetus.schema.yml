@@ -1,0 +1,26 @@
+# Schema for the configuration files of the TRE OpenID Connect module (opetus.tampere.fi).
+tre_openid_connect_windows_aad_tampere_opetus.settings.tampere_opetus:
+  type: config_object
+  label: 'OpenID Connect Window Aad settings (opetus.tampere.fi)'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable client'
+    settings:
+      type: mapping
+      mapping:
+        client_id:
+          type: string
+          label: 'Client ID'
+        client_secret:
+          type: string
+          label: 'Client secret'
+        authorization_endpoint_wa:
+          type: string
+          label: 'Authorization endpoint'
+        token_endpoint_wa:
+          type: string
+          label: 'Token endpoint'
+        userinfo_endpoint_wa:
+          type: string
+          label: 'Userinfo endpoint'

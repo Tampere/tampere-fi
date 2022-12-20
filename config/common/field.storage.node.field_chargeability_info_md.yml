@@ -1,0 +1,19 @@
+uuid: c7c8453a-e2d5-49b8-9f0a-814b394357ba
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_chargeability_info_md
+field_name: field_chargeability_info_md
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

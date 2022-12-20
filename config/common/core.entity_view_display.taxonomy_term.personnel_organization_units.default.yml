@@ -1,0 +1,17 @@
+uuid: ec457c12-7e53-4aa8-a189-540f2edbc2ae
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.personnel_organization_units.field_hr_id
+    - taxonomy.vocabulary.personnel_organization_units
+id: taxonomy_term.personnel_organization_units.default
+targetEntityType: taxonomy_term
+bundle: personnel_organization_units
+mode: default
+content: {  }
+hidden:
+  description: true
+  field_hr_id: true
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,17 @@
+uuid: ec7461cb-b0ae-493c-906a-8b75d95a300f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_liftup_small_view_mode
+label: 'Ajankohtaisnosto - small (720×227)'
+effects:
+  ef07dd18-b3bb-4bd7-a3f2-26624141c5dd:
+    uuid: ef07dd18-b3bb-4bd7-a3f2-26624141c5dd
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 720
+      height: 227
+      crop_type: focal_point

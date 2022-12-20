@@ -1,0 +1,11 @@
+uuid: 98896c44-1c67-4653-b0ee-1ad736d186bd
+langcode: fi
+status: true
+dependencies: {  }
+id: subsite
+label: Alasivusto
+description: ''
+new_revision: true
+creator_membership: false
+creator_wizard: true
+creator_roles: {  }

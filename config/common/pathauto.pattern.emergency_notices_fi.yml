@@ -1,0 +1,33 @@
+uuid: 927c0bc8-4db5-401a-9061-116a9b3fdcbc
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: emergency_notices_fi
+label: 'Häiriöilmoitukset FI'
+type: 'canonical_entities:node'
+pattern: 'hairioilmoitus/[node:title]'
+selection_criteria:
+  ef762c03-0497-4b43-95f1-b902c54ae19e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ef762c03-0497-4b43-95f1-b902c54ae19e
+    context_mapping:
+      node: node
+    bundles:
+      emergency_notice: emergency_notice
+  84eb174f-e82d-47c1-a72f-10fa08b75b48:
+    id: language
+    negate: false
+    uuid: 84eb174f-e82d-47c1-a72f-10fa08b75b48
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fi: fi
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Kieli

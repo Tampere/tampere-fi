@@ -1,0 +1,199 @@
+uuid: 32026413-abfb-4036-9ab4-2640723020f5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_left_column
+    - paragraphs.paragraphs_type.highlighted_link_list
+    - paragraphs.paragraphs_type.highlighted_links_with_feedback
+  module:
+    - entity_reference_revisions
+id: paragraph.highlighted_links_with_feedback.field_left_column
+field_name: field_left_column
+entity_type: paragraph
+bundle: highlighted_links_with_feedback
+label: 'Vasen palsta'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      highlighted_link_list: highlighted_link_list
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 63
+        enabled: false
+      accordion_item:
+        weight: 65
+        enabled: false
+      accordions:
+        weight: 64
+        enabled: false
+      attachment:
+        weight: 66
+        enabled: false
+      balanced_content_liftup:
+        weight: 67
+        enabled: false
+      city_construction_project_card:
+        weight: 68
+        enabled: false
+      city_construction_project_cards:
+        weight: 69
+        enabled: false
+      colorful_content_liftup:
+        weight: 70
+        enabled: false
+      contact_information_liftups:
+        weight: 71
+        enabled: false
+      contact_information_list:
+        weight: 72
+        enabled: false
+      content_liftup:
+        weight: 73
+        enabled: false
+      current_liftup:
+        weight: 74
+        enabled: false
+      current_listing:
+        weight: 75
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 76
+        enabled: false
+      event_and_hobby_listing:
+        weight: 77
+        enabled: false
+      external_link:
+        weight: 78
+        enabled: false
+      external_link_with_link_text:
+        weight: 79
+        enabled: false
+      feedback_section:
+        weight: 80
+        enabled: false
+      grouped_content_liftup:
+        weight: 86
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 87
+        enabled: false
+      highlighted_link_list:
+        weight: 89
+        enabled: true
+      highlighted_links_with_feedback:
+        weight: 88
+        enabled: false
+      icon_and_text_link:
+        weight: 90
+        enabled: false
+      image:
+        weight: 91
+        enabled: false
+      image_gallery:
+        weight: 92
+        enabled: false
+      image_gallery_item:
+        weight: 93
+        enabled: false
+      infograph:
+        weight: 94
+        enabled: false
+      infographs:
+        weight: 95
+        enabled: false
+      internal_link:
+        weight: 96
+        enabled: false
+      internal_link_with_link_text:
+        weight: 97
+        enabled: false
+      link_list:
+        weight: 98
+        enabled: false
+      list_of_attachments:
+        weight: 99
+        enabled: false
+      login_link_with_text:
+        weight: 100
+        enabled: false
+      map_embed:
+        weight: 101
+        enabled: false
+      metadata_attachment_list:
+        weight: 102
+        enabled: false
+      mosaic_liftup:
+        weight: 103
+        enabled: false
+      notice:
+        weight: 104
+        enabled: false
+      person_liftup:
+        weight: 105
+        enabled: false
+      person_liftups:
+        weight: 106
+        enabled: false
+      picture_mosaic:
+        weight: 107
+        enabled: false
+      place_liftup:
+        weight: 108
+        enabled: false
+      place_of_business_liftup:
+        weight: 109
+        enabled: false
+      project_and_organization_cards:
+        weight: 110
+        enabled: false
+      project_or_organization_card:
+        weight: 111
+        enabled: false
+      rss_feed:
+        weight: 112
+        enabled: false
+      separator:
+        weight: 113
+        enabled: false
+      service_highlight:
+        weight: 114
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 115
+        enabled: false
+      social_media_feed_embed:
+        weight: 116
+        enabled: false
+      social_media_link:
+        weight: 117
+        enabled: false
+      table:
+        weight: 118
+        enabled: false
+      text:
+        weight: 119
+        enabled: false
+      two_column_liftup:
+        weight: 120
+        enabled: false
+      video_embed:
+        weight: 121
+        enabled: false
+      webform:
+        weight: 122
+        enabled: false
+      zoning_project_card:
+        weight: 123
+        enabled: false
+      zoning_project_cards:
+        weight: 124
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,18 @@
+uuid: 1efa74ad-5b4d-42af-803d-e384b53cc9d5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.place
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.place
+target_entity_type_id: node
+target_bundle: place
+default_langcode: current_interface
+language_alterable: true

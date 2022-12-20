@@ -1,0 +1,19 @@
+uuid: 1104b8ea-5554-46dc-a1c0-80eb5e62f2f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.service_channel
+id: node.service_channel.field_summary
+field_name: field_summary
+entity_type: node
+bundle: service_channel
+label: Tiivistelmä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

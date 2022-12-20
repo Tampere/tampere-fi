@@ -1,0 +1,17 @@
+uuid: c91e0d3b-412a-47c7-b8ea-0dfa3a4ba764
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.small_news_item_author
+id: theme-3ec618eb1
+label: Pikku-uutistoimittaja
+weight: 0
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

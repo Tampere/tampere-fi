@@ -1,0 +1,78 @@
+uuid: 00c0546f-be50-47eb-ac81-a230a6540043
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_service_displayed_fields
+field_name: field_service_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: alternative_name
+      label: 'Vaihtoehtoinen nimi'
+    -
+      value: summary
+      label: Tiivistelmä
+    -
+      value: description
+      label: Kuvaus
+    -
+      value: heading__instruction
+      label: 'Toimi näin -otsikko'
+    -
+      value: user_instruction
+      label: Toimintaohjeet
+    -
+      value: heading__requirements
+      label: 'Kenelle ja millä ehdoin -otsikko'
+    -
+      value: requirements
+      label: 'Ehdot ja kriteerit'
+    -
+      value: heading__basic_info
+      label: Perustiedot-otsikko
+    -
+      value: charge_type
+      label: Maksullisuus
+    -
+      value: service_vouchers
+      label: Palvelusetelitiedot
+    -
+      value: languages
+      label: 'Kielet, jolla palvelu on saatavilla'
+    -
+      value: areas
+      label: 'Alue, jolla palvelu on käytettävissä'
+    -
+      value: production_info
+      label: 'Palvelun toteutustapa ja tuottaja'
+    -
+      value: places_of_business
+      label: Palvelupaikat
+    -
+      value: online_channels
+      label: Verkkoasiointikanavat
+    -
+      value: web_channels
+      label: Verkkosivuasiointikanavat
+    -
+      value: phone_channels
+      label: Puhelinasiointikanavat
+    -
+      value: form_channels
+      label: Lomakeasiointikanavat
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,54 @@
+{#
+ # Available variables:
+ # - cta_link_url: Optional. The URL for the CTA link.
+ # - cta_link_text: Optional. The link text for the CTA link.
+ # - cta_link_is_internal: Optional. Whether or not the CTA link is an internal link.
+ # - cta_link_requires_login: Optional. Whether or not the CTA link requires login.
+ #}
+
+{% set wide_content_base_class = wide_content_base_class|default("wide-content") %}
+
+{% if main_image|render|trim %}
+  {% set has_image = TRUE %}
+{% endif %}
+
+{% if main_image_caption|render|trim %}
+  {% set hero_title = main_image_caption %}
+{% endif %}
+
+{% if main_image_caption %}
+  {% set hero_heading_level = 2 %}
+{% endif %}
+
+<article {{ bem(wide_content_base_class, wide_content_modifiers|default([]), wide_content_blockname) }}>
+  {% include "@atoms/02-text/00-headings/_heading.twig" with {
+    "heading_base_class": wide_content_base_class,
+    "heading_blockname": "title",
+    "custom_classes": [ "visually-hidden" ],
+    "heading_level": 1,
+    "heading": main_title,
+  } %}
+
+  <div {{ bem("main-content", wide_content__main_content__modifiers|default([]), wide_content_base_class) }}>
+    <div {{ bem("header", wide_content__header__modifiers|default([]), wide_content_base_class) }}>
+      {% embed "@molecules/hero/hero.twig" with {
+        "hero__heading": hero_title,
+        "hero__modifiers": [ "title-without-icon" ],
+        "has_image": has_image,
+        "hero__heading__level": hero_heading_level,
+        "hero__cta__url": cta_link_url,
+        "hero__cta__text": cta_link_text,
+        "cta_link_requires_login": cta_link_requires_login,
+        "cta_link_is_internal": cta_link_is_internal,
+      } %}
+        {% block hero__img %}
+          {{ main_image }}
+        {% endblock %}
+      {% endembed %}
+    </div>
+
+    {% block wide_content_main_content %}
+      {{ main_content }}
+    {% endblock %}
+  </div>
+</article>

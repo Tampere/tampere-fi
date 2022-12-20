@@ -1,0 +1,13 @@
+uuid: dc7c5aa0-f509-487e-8eb2-67f00a7e2ce6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: lfyE_snmvfg_EQ3VDyhUtGAXgmqtEiqa46I3bTMg8DU
+id: comment_save_action
+label: 'Tallenna kommentti'
+type: comment
+plugin: 'entity:save_action:comment'
+configuration: {  }

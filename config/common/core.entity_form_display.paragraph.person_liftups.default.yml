@@ -1,0 +1,34 @@
+uuid: 9eee352e-f009-464b-816c-7a66d1dc1c28
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.person_liftups.field_person_liftups
+    - paragraphs.paragraphs_type.person_liftups
+  module:
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.person_liftups.default
+targetEntityType: paragraph
+bundle: person_liftups
+mode: default
+content:
+  field_person_liftups:
+    type: paragraphs_classic_asymmetric
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

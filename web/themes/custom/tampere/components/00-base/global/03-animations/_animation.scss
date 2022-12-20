@@ -1,0 +1,26 @@
+.animate-fade {
+  @include transition(opacity, 0.3s, ease-out);
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.animate-move {
+  > .demo-shape {
+    @include transition(all, 0.8s, ease-in-out);
+  }
+}
+
+.demo-animate {
+  background-color: $color-silver;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 16px;
+  text-align: center;
+
+  span {
+    display: block;
+    margin: 4px;
+  }
+}

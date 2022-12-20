@@ -1,0 +1,15 @@
+uuid: a5a47afa-cd4c-4a69-a8d8-91edeed2290f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: event_and_hobby_listing
+label: Tapahtumalistaus
+icon_uuid: null
+icon_default: null
+description: 'Listaus tapahtumista <i>tapahtumat.tampere.fi</i> -sivustolta.'
+behavior_plugins: {  }

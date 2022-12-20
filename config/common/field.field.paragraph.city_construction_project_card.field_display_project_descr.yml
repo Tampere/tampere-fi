@@ -1,0 +1,23 @@
+uuid: 5ecb820b-7243-449f-ba18-11b9391595e4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_project_descr
+    - paragraphs.paragraphs_type.city_construction_project_card
+id: paragraph.city_construction_project_card.field_display_project_descr
+field_name: field_display_project_descr
+entity_type: paragraph
+bundle: city_construction_project_card
+label: 'Näytä hankkeen kuvaus'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

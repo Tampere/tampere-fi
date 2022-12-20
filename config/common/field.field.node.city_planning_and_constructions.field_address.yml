@@ -1,0 +1,19 @@
+uuid: 9a38022f-5f99-4e7b-9ad3-44a63482536d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_address
+field_name: field_address
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Osoite tai sijainnin kuvaus'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

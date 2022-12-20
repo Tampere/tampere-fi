@@ -1,0 +1,11 @@
+.link {
+  @include link;
+}
+
+/* inline link styles for WYSIWYG links */
+.text-long,
+.form-item {
+  a {
+    @include link;
+  }
+}

@@ -1,0 +1,4 @@
+{# This is only used to get the caption for the image gallery item via JS. #}
+<div {{ bem("caption", (image_gallery_item__modifiers|default([])), image_gallery_item__blockname|default("image-gallery")) }} hidden>
+  {% block image_gallery_caption_content %}{% endblock %}
+</div>

@@ -1,0 +1,6 @@
+button_url:
+  "#"
+button_content:
+  "Remove filters"
+button_modifiers:
+  - "link"

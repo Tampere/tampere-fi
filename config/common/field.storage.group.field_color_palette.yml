@@ -1,0 +1,54 @@
+uuid: 03da999b-d158-40be-b277-da51613ace17
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+    - options
+id: group.field_color_palette
+field_name: field_color_palette
+entity_type: group
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: palette-1
+      label: 'Paletti 1'
+    -
+      value: palette-2
+      label: 'Paletti 2'
+    -
+      value: palette-3
+      label: 'Paletti 3'
+    -
+      value: palette-4
+      label: 'Paletti 4'
+    -
+      value: palette-5
+      label: 'Paletti 5'
+    -
+      value: palette-6
+      label: 'Paletti 6'
+    -
+      value: palette-7
+      label: 'Paletti 7'
+    -
+      value: palette-8
+      label: 'Paletti 8'
+    -
+      value: palette-9
+      label: 'Paletti 9'
+    -
+      value: palette-10
+      label: 'Paletti 10'
+    -
+      value: palette-11
+      label: 'Paletti 11'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

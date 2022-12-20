@@ -1,0 +1,19 @@
+uuid: dfd8688d-ad67-445c-bfe8-d8e4bfcedfa3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alternate_name
+    - node.type.ptv_service
+id: node.ptv_service.field_alternate_name
+field_name: field_alternate_name
+entity_type: node
+bundle: ptv_service
+label: 'Vaihtoehtoinen nimi'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

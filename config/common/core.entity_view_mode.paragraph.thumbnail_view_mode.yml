@@ -1,0 +1,10 @@
+uuid: 309d928b-af6d-49d1-a043-6dc3a3279b38
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.thumbnail_view_mode
+label: Pikkukuva
+targetEntityType: paragraph
+cache: true

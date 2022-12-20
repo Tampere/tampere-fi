@@ -1,0 +1,17 @@
+{% set inline_field_group__base_class = "inline-field-group" %}
+
+<div {{ bem(inline_field_group__base_class, inline_field_group__modifiers, inline_field_group__blockname, [ "hyphenate" ]) }}>
+  {% set inline_field_group_label_markup = inline_field_group_label|render %}
+  {%- if inline_field_group_label_markup|trim is not empty -%}
+    <div {{ bem("label", inline_field_group__inline_field_group_label__modifiers|default([]), inline_field_group__base_class) }}>
+      {{ inline_field_group_label_markup }}
+    </div>
+  {%- endif -%}
+
+  {% set inline_field_group_content_markup = inline_field_group_content|render %}
+  {%- if inline_field_group_content_markup|trim is not empty -%}
+    <div {{ bem("content", inline_field_group__inline_field_group_content__modifiers|default([]), inline_field_group__base_class) }}>
+      {{ inline_field_group_content_markup }}
+    </div>
+  {%- endif -%}
+</div>

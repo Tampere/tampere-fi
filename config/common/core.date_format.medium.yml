@@ -1,0 +1,10 @@
+uuid: bcf09258-026e-474f-aa75-c921c6f3c545
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: nzL5d024NjXIX_8TlT6uFAu973lmfkmHklJC-2i9rAE
+id: medium
+label: 'Päivämäärä keskipitkässä muodossa'
+locked: false
+pattern: 'D, d.m.Y - H:i'

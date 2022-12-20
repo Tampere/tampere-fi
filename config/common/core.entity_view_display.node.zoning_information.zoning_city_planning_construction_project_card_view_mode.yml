@@ -1,0 +1,144 @@
+uuid: b11192e9-ab3a-4c0d-bdc4-9ff0d8c15719
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.zoning_city_planning_construction_project_card_view_mode
+    - field.field.node.zoning_information.field_address
+    - field.field.node.zoning_information.field_description
+    - field.field.node.zoning_information.field_display_location_on_map
+    - field.field.node.zoning_information.field_display_period
+    - field.field.node.zoning_information.field_epsg_3067_easting
+    - field.field.node.zoning_information.field_epsg_3067_northing
+    - field.field.node.zoning_information.field_feedback_form
+    - field.field.node.zoning_information.field_geographical_areas
+    - field.field.node.zoning_information.field_help_text
+    - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_location
+    - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_other_identifiers
+    - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_plan_number
+    - field.field.node.zoning_information.field_plan_type
+    - field.field.node.zoning_information.field_processing_time
+    - field.field.node.zoning_information.field_record_number
+    - field.field.node.zoning_information.field_search_keywords
+    - field.field.node.zoning_information.field_topics
+    - field.field.node.zoning_information.field_zoning_information_type
+    - node.type.zoning_information
+  module:
+    - datetime_range
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+          ds_content: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - field_display_period
+        - field_processing_time
+        - field_description
+        - field_address
+id: node.zoning_information.zoning_city_planning_construction_project_card_view_mode
+targetEntityType: node
+bundle: zoning_information
+mode: zoning_city_planning_construction_project_card_view_mode
+content:
+  field_address:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: Osoite
+            lb-col: true
+            classes: {  }
+    weight: 3
+    region: ds_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 2
+    region: ds_content
+  field_display_period:
+    type: daterange_default
+    label: hidden
+    settings:
+      timezone_override: Europe/Helsinki
+      format_type: date_only
+      separator: '-'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: ds_content
+  field_processing_time:
+    type: daterange_default
+    label: hidden
+    settings:
+      timezone_override: Europe/Helsinki
+      format_type: date_only
+      separator: '-'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: ds_content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_feedback_form: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_location: true
+  field_main_image: true
+  field_other_identifiers: true
+  field_paragraphs: true
+  field_plan_number: true
+  field_plan_type: true
+  field_record_number: true
+  field_search_keywords: true
+  field_topics: true
+  field_zoning_information_type: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

@@ -1,0 +1,17 @@
+uuid: e8ad3e58-cd80-4309-950e-9751a4604e69
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_medium_image_style
+label: 'Hero - medium (985×400)'
+effects:
+  8dc82ce9-d823-40c2-8049-d7d297277f7c:
+    uuid: 8dc82ce9-d823-40c2-8049-d7d297277f7c
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 985
+      height: 400
+      crop_type: focal_point

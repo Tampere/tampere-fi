@@ -1,0 +1,30 @@
+uuid: 25ac8f17-81d8-498f-bc23-e49f47f50667
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.rss_item
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+      - full_html
+      - plain_text
+id: node.rss_item.body
+field_name: body
+entity_type: node
+bundle: rss_item
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

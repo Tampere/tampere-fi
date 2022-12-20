@@ -1,0 +1,44 @@
+uuid: 0622c95e-7e82-4762-bb3b-e424f929d798
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - tampere
+_core:
+  default_config_hash: 8yptDf6WrXxeyevUz4nP5vfr7BtxQqCBMninhV2IJ1g
+id: tampere_page_title
+theme: tampere
+region: content
+weight: -19
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: true
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      content_in_other_language: content_in_other_language
+      basic_content_page: basic_content_page
+      blog_article: blog_article
+      city_planning_and_constructions: city_planning_and_constructions
+      collection_page: collection_page
+      front_page: front_page
+      involvement_opportunity: involvement_opportunity
+      moderated_page: moderated_page
+      news_item: news_item
+      notice: notice
+      organization: organization
+      place: place
+      project: project
+      rich_article: rich_article
+      small_news_item: small_news_item
+      zoning_information: zoning_information

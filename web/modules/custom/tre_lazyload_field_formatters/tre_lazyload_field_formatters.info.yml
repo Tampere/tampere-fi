@@ -1,0 +1,7 @@
+name: 'TRE Lazyload Field Formatters'
+type: module
+description: 'Field formatters with lazyload functionality.'
+package: 'TRE'
+core_version_requirement: '>=9.3'
+dependencies:
+  - lazy:lazy

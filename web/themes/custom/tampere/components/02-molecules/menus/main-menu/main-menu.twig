@@ -1,0 +1,31 @@
+{% if "secondary" in main_menu_modifiers %}
+  {% set main_menu_container_class = "secondary-main-menu-container" %}
+
+  {% if main_menu_id %}
+    {% set main_menu_id = main_menu_id %}
+  {% else %}
+    {% set main_menu_id = "secondary-main-menu" %}
+  {% endif %}
+{% endif %}
+
+{% if main_menu_title %}
+  {% set main_menu_label_id = main_menu_title_id %}
+{% endif %}
+
+<nav class="main-navigation" aria-labelledby="{{ main_menu_label_id }}">
+  {% if main_menu_aria_label %}
+    <span id="{{ main_menu_label_id }}" class="visually-hidden">{{ main_menu_aria_label }}</span>
+  {% endif %}
+  <div id="{{ main_menu_id|default("main-nav") }}" class="{{ main_menu_container_class|default("main-menu-container") }}">
+    {% if main_menu_title %}
+      <span id="{{ main_menu_title_id }}" class="main-menu__title">{{ main_menu_title }}</span>
+    {% endif %}
+
+    {% include "@molecules/menus/_menu.twig" with {
+      menu_class: "main-menu",
+      menu_modifiers: main_menu_modifiers,
+      items: menu_items,
+      attributes: attributes
+    } %}
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+uuid: 54b2a878-bbcd-428b-ba21-9a740e18c5c2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_phones
+    - node.type.place_of_business
+  module:
+    - telephone_plus
+id: node.place_of_business.field_additional_phones
+field_name: field_additional_phones
+entity_type: node
+bundle: place_of_business
+label: Puhelinnumerot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  default_country_code: FI
+  country_code_enabled: 0
+field_type: telephone_plus_field

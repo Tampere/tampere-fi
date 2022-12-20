@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'Front page'
+    -
+      label: 'Zoning information'
+    -
+      label: 'City planning and construction project'
+    -
+      label: 'Collection page'
+    -
+      label: 'Moderated page'
+    -
+      label: Organization
+    -
+      label: 'Involvement opportunity'
+    -
+      label: Place
+    -
+      label: Service
+    -
+      label: 'Basic content page'
+    -
+      label: Project

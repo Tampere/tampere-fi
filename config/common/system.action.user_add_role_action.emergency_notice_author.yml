@@ -1,0 +1,14 @@
+uuid: f1fc4947-ba8d-4f25-bcaa-7467257f21e4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.emergency_notice_author
+  module:
+    - user
+id: user_add_role_action.emergency_notice_author
+label: 'Add the Häiriöilmoitustoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: emergency_notice_author

@@ -1,0 +1,20 @@
+uuid: 2609dc85-e41a-4008-ab49-2e2d28c10b70
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cross_site_publications
+  module:
+    - path
+id: taxonomy_term.cross_site_publications.path
+field_name: path
+entity_type: taxonomy_term
+bundle: cross_site_publications
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

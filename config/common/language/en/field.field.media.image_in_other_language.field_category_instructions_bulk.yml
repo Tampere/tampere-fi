@@ -1,0 +1,5 @@
+label: 'Category intructions to bulk upload -form'
+settings:
+  markup:
+    value: "<p>To pick more than one category term per field, separate the terms with a comma to add additional ones.</p>\r\n"
+    format: basic_html

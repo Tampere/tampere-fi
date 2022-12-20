@@ -1,0 +1,10 @@
+uuid: 61972fa9-3230-424a-b8ca-b7c4e836538a
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: M_Bh81osDyUQ4wV0GgU_NdBNqkzM87sLxjaCdFj9mnw
+id: account
+label: Käyttäjävalikko
+description: 'Aktiiviseen käyttäjätiliin liittyvät linkit'
+locked: true

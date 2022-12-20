@@ -1,0 +1,72 @@
+{#
+ # Available variables:
+ # - rss_card__base_class - base classname of the wrapper.
+ # - rss_card__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - rss_card__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - rss_card__extra_classes - array of extra classes to add to the wrapper.
+ # - rss_card__link__url - the URL the link should point to.
+ #
+ # - rss_card__content__modifiers - array of modifiers to add to the base classname of the copy wrapper.
+ #
+ # - rss_card__text_content__modifiers - array of modifiers to add to the base classname of the text content.
+ #
+ # - rss_card__date - the date for the RSS item.
+ # - rss_card__date__base_class - base classname of the date component. Defaults to "date".
+ # - rss_card__date__modifiers - array of modifiers to add to the base classname of the date.
+ #
+ # - rss_card__heading - the content of the title component.
+ # - rss_card__heading__base_class - base classname of the title component. Defaults to "heading".
+ # - rss_card__heading__modifiers - array of modifiers to add to the base classname of the title.
+ #
+ # - rss_card__icon_content__modifiers - array of modifiers to add to the base classname of the icon content.
+ #
+ # - rss_card__icon_name - the name for the icon that should be displayed next to the other content.
+ #}
+{% set rss_card__base_class = "rss-card" %}
+
+{% if 'colorful' in rss_card__modifiers or variant == 'colorful' %}
+  {% set rss_card__icon_name = 'arrow' %}
+{% endif %}
+
+<a {{ bem(rss_card__base_class, rss_card__modifiers|default([ variant ]), rss_card__blockname, rss_card__extra_classes) }} href="{{ rss_card__link__url|striptags|trim }}">
+  <div {{ bem("content", rss_card__content__modifiers|default([]), rss_card__base_class) }}>
+    {% if rss_card__date or rss_card__heading %}
+      <div {{ bem("text-content", rss_card__text_content__modifiers|default([]), rss_card__base_class) }}>
+        {# Details #}
+        {% if rss_card__date %}
+          {% include "@atoms/02-text/text/01-paragraph.twig" with {
+            paragraph_base_class: rss_card__date__base_class|default("date"),
+            paragraph_modifiers: rss_card__date__modifiers,
+            paragraph_blockname: rss_card__base_class,
+            paragraph_content: rss_card__date,
+          } %}
+        {% endif %}
+
+        {# Heading #}
+        {% if rss_card__heading %}
+          {{ title_prefix }}
+          {% include "@atoms/02-text/text/07-text-block.twig" with {
+            text_block_base_class:rss_card__heading__base_class|default("heading"),
+            text_block_modifiers: rss_card__heading__modifiers,
+            text_block_blockname: rss_card__base_class,
+            text_block_extra_classes: [ "h2", "hyphenate" ],
+            text_block_content: rss_card__heading,
+          } %}
+          {{ title_suffix }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {# Icon #}
+    {% if rss_card__icon_name %}
+      <div {{ bem("icon-content", rss_card__icon_content__modifiers|default([]), rss_card__base_class) }}>
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_name: rss_card__icon_name,
+          icon_base_class: "icon",
+          icon_blockname: rss_card__base_class,
+          icon_decorative: true,
+        } %}
+      </div>
+    {% endif %}
+  </div>
+</a>

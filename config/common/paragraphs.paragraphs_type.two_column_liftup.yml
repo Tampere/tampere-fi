@@ -1,0 +1,10 @@
+uuid: 13089307-310f-48b0-a99d-14a271a88972
+langcode: fi
+status: true
+dependencies: {  }
+id: two_column_liftup
+label: 'Kaksipalstainen nosto'
+icon_uuid: null
+icon_default: null
+description: 'Mahdollistaa kahden sisältönoston esittämisen vierekkäin tilan sen salliessa.'
+behavior_plugins: {  }

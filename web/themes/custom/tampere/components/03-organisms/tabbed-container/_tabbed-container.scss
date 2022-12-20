@@ -1,0 +1,136 @@
+.tabbed-container {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include large {
+      @include centered-content($max-width: $max-width);
+    }
+  }
+
+  &__tabs-wrapper {
+    display: flex;
+    align-items: flex-end;
+
+    @include large-down {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__heading {
+    @include section-heading;
+
+    margin-bottom: $space-s;
+
+    @include large-down {
+      flex-basis: 100%;
+    }
+
+    @include large {
+      align-self: flex-end;
+      margin-right: $space-xs-plus;
+      margin-bottom: $space-xs-plus;
+      max-width: 80%;
+    }
+  }
+
+  &__tab-list {
+    @include list-reset;
+
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+
+    @include large {
+      margin-left: auto;
+      margin-right: $space-l;
+      width: auto;
+    }
+  }
+
+  &__tab-list-item {
+    display: inline-block;
+    flex-grow: 1;
+  }
+
+  &__tab {
+    background-color: clr(primary);
+    color: clr(tabbed-container-background);
+    display: block;
+    font-family: $font-heading;
+    font-size: $font-16;
+    padding: $space-xs-plus;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include large {
+      align-items: center;
+      display: flex;
+      font-size: $font-20;
+      height: 100%;
+      padding-right: $space-xl;
+      padding-left: $space-xl;
+    }
+
+    &.is-selected {
+      background-color: clr(tabbed-container-background);
+      color: clr(primary);
+    }
+
+    &:not(.is-selected):hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      text-decoration: underline;
+    }
+
+    &:focus:not(:focus-visible) {
+      text-decoration: none;
+    }
+  }
+
+  &__tab-panel {
+    background-color: clr(tabbed-container-background);
+  }
+
+  .layout-container--with-sidebar & {
+    #{$base_class}__content {
+      @include large {
+        max-width: none;
+        padding: 0;
+      }
+    }
+
+    #{$base_class}__tabs-wrapper {
+      @include large-plus-down {
+        flex-wrap: wrap;
+      }
+    }
+
+    #{$base_class}__tab-list {
+      @include large-plus-down {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+
+    #{$base_class}__tab {
+      @include large-plus-down {
+        display: block;
+      }
+    }
+  }
+
+  .layout-container:not(.layout-container--with-sidebar) & {
+    @include large {
+      @include breakout(0);
+    }
+  }
+}

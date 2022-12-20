@@ -1,0 +1,25 @@
+uuid: f10168d1-5f58-4384-a45f-050bac666727
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_media_share
+    - node.type.rich_article
+  module:
+    - social_media
+id: node.rich_article.field_social_media_share
+field_name: field_social_media_share
+entity_type: node
+bundle: rich_article
+label: 'Jaa sosiaalisessa mediassa'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: social_media

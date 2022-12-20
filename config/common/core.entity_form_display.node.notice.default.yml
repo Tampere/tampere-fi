@@ -1,0 +1,377 @@
+uuid: a6e9eb34-f64c-4066-8b63-ed58be5bcf2d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.notice.field_author
+    - field.field.node.notice.field_body
+    - field.field.node.notice.field_date_of_publication
+    - field.field.node.notice.field_display_period
+    - field.field.node.notice.field_event_time
+    - field.field.node.notice.field_geographical_areas
+    - field.field.node.notice.field_help_text
+    - field.field.node.notice.field_keywords
+    - field.field.node.notice.field_life_situations
+    - field.field.node.notice.field_main_image
+    - field.field.node.notice.field_media_caption
+    - field.field.node.notice.field_minisites
+    - field.field.node.notice.field_notice_type
+    - field.field.node.notice.field_paragraphs
+    - field.field.node.notice.field_search_keywords
+    - field.field.node.notice.field_social_media_share
+    - field.field.node.notice.field_time_limit
+    - field.field.node.notice.field_topic
+    - field.field.node.notice.field_topics
+    - node.type.notice
+    - workflows.workflow.scheduled_transitions
+  module:
+    - allowed_formats
+    - content_moderation
+    - datetime
+    - datetime_range
+    - field_group
+    - field_states_ui
+    - limited_field_widgets
+    - markup
+    - maxlength
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+    - path
+    - publication_date
+    - text
+third_party_settings:
+  field_group:
+    group_main_image:
+      children:
+        - field_main_image
+        - field_media_caption
+      label: 'Pääkuva ja kuvateksti'
+      region: content
+      parent_name: group_common
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_categorization:
+      children:
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - group_search_keywords
+        - field_minisites
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_tabs:
+      children:
+        - group_common
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_common:
+      children:
+        - title
+        - group_main_image
+        - langcode
+        - translation
+        - field_body
+        - field_author
+        - field_time_limit
+        - field_display_period
+        - field_event_time
+        - field_notice_type
+        - field_paragraphs
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_search_keywords:
+      children:
+        - field_search_keywords
+      label: Avainsanat
+      region: content
+      parent_name: group_categorization
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: node.notice.default
+targetEntityType: node
+bundle: notice
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_author:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_body:
+    type: text_textarea_with_summary
+    weight: 4
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_summary: null
+        maxlength_js_label_summary: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_display_period:
+    type: daterange_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_time:
+    type: datetime_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_help_text:
+    type: markup
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_main_image:
+    type: media_library_widget
+    weight: 13
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_media_caption:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_minisites:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_notice_type:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_paragraphs:
+    type: paragraphs_classic_asymmetric
+    weight: 10
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_search_keywords:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_time_limit:
+    type: datetime_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_date_of_publication: true
+  field_social_media_share: true
+  field_topic: true
+  promote: true
+  sticky: true

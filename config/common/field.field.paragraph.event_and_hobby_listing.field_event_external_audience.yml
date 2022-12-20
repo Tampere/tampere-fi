@@ -1,0 +1,21 @@
+uuid: 35ec5b6d-0857-43f9-ad32-5925db35daae
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_event_external_audience
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+  module:
+    - external_data_source
+id: paragraph.event_and_hobby_listing.field_event_external_audience
+field_name: field_event_external_audience
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: 'Pirkanmaan tapahtumien kohderyhmä'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: external_data_source

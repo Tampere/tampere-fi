@@ -1,0 +1,19 @@
+uuid: 750c33c5-8eb0-44f4-9e7c-7da98329b9ef
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.mediaserver_live
+    - field.storage.embederator.field_mediaserver_live_title
+id: embederator.mediaserver_live.field_mediaserver_live_title
+field_name: field_mediaserver_live_title
+entity_type: embederator
+bundle: mediaserver_live
+label: 'Liveupotuksen otsikko'
+description: 'Lisää tähän upotuksen otsikko, joka kuvaa sisältöä.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

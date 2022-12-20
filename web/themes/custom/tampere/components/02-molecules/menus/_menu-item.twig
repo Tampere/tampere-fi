@@ -1,0 +1,93 @@
+{% if not item_modifiers %}
+  {% set item_modifiers = [] %}
+{% endif %}
+{# Pass original item modifiers down to children #}
+{% set original_item_modifiers = item_modifiers %}
+{% if item.in_active_trail == TRUE %}
+  {% set item_modifiers = item_modifiers|merge(["active"]) %}
+{% endif %}
+{% if menu_level > 0 %}
+  {% set item_modifiers = item_modifiers|merge(["sub", "sub-" ~ menu_level]) %}
+{% endif %}
+{% if item.below %}
+  {% set item_modifiers = item_modifiers|merge(["with-sub"]) %}
+{% endif %}
+{% if item.url|render == current_path %}
+    {% set item_modifiers = item_modifiers|merge(["is-active"]) %}
+{% endif %}
+{# below could maybe be done without a loop? #}
+{% for modifier in item.modifiers %}
+  {% set item_modifiers = item_modifiers|merge([modifier]) %}
+{% endfor %}
+
+{% set list_item_label = item_label %}
+{% set li_base_class = item_base_class|default(menu_class ~ "__item") %}
+{% set li_modifiers = item_modifiers %}
+{% set li_blockname = item_blockname %}
+
+{% if menu_class == "main-menu" %}
+  {% set is_main_menu = TRUE %}
+  {% set use_menu_item_container = TRUE %}
+{% endif %}
+
+{% if menu_class == "sidebar-menu" %}
+  {% set use_expand_button = TRUE %}
+  {% set expand_button_attributes = { "aria-expanded": "false", "aria-label": "Open submenu"|t } %}
+  {% set expand_button_custom_classes = [ "is-closed" ] %}
+{% endif %}
+
+{# Check for hidden navigation item #}
+{% if item.entity.field_hide_menu_link is defined and item.entity.field_hide_menu_link.value == 1 %}
+  {% set hide_menu_link = TRUE %}
+{% endif %}
+
+{% import "@molecules/menus/_menu.twig" as menus %}
+
+{% extends "@atoms/03-lists/_list-item.twig" %}
+  {% block list_item_content %}
+    {% if use_menu_item_container and not hide_menu_link %}
+      {# Menu item container starting tag #}
+      <div class={{ menu_class ~ "__item-container" }}>
+    {% endif %}
+
+    {# if drupal #}
+    {% if directory %}
+      {% if not hide_menu_link %}
+        {{ link(item.title, item.url, bem(item_base_class|default(menu_class ~ "__link"), item_modifiers, '', ['hyphenate'])) }}
+      {% endif %}
+    {% else %}
+      {% include "@atoms/01-links/link/link.twig" with {
+        link_content: item.title,
+        link_url: item.url,
+        link_base_class: item_base_class|default(menu_class ~ "__link"),
+        link_modifiers: item_modifiers,
+      } %}
+    {% endif %}
+
+    {% if is_main_menu and not hide_menu_link %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: item_base_class|default(menu_class ~ "__icon"),
+        icon_name: "arrow",
+        icon_decorative: true,
+      } %}
+    {% endif %}
+
+    {% if use_menu_item_container and not hide_menu_link %}
+      {# Menu item container ending tag #}
+      </div>
+    {% endif %}
+
+    {% if item.below %}
+      {% if use_expand_button %}
+        {% include "@atoms/06-buttons/01-button.twig" with {
+          button_icon_name: "arrow-plain-new",
+          button_base_class: "toggle",
+          button_blockname: item_base_class|default(menu_class),
+          button_icon_blockname: item_base_class|default(menu_class),
+          button_attributes: expand_button_attributes,
+          custom_classes: expand_button_custom_classes
+        } %}
+      {% endif %}
+      {{ menus.menu_links(item.below, attributes, menu_level + 1, menu_class, menu_modifiers, menu_blockname, item_base_class, original_item_modifiers, item_blockname, directory) }}
+    {% endif %}
+  {% endblock %}

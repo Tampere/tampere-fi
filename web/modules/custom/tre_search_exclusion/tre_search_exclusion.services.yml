@@ -1,0 +1,7 @@
+services:
+  tre_search_exclusion.front_page_search_results_exclusion:
+    class: Drupal\tre_search_exclusion\EventSubscriber\FrontPageSearchResultExclusion
+    arguments:
+     - '@config.factory'
+    tags:
+      - { name: event_subscriber }

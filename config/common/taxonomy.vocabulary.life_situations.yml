@@ -1,0 +1,8 @@
+uuid: 024c6de0-2ec0-4859-af63-7bb0789d1789
+langcode: fi
+status: true
+dependencies: {  }
+name: Elämäntilanteet
+vid: life_situations
+description: ''
+weight: 0

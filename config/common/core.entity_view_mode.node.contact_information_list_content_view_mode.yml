@@ -1,0 +1,10 @@
+uuid: b28d0f07-915a-45c8-bc3c-2f7bb3c63a98
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.contact_information_list_content_view_mode
+label: 'Yhteystietolistan sisältö'
+targetEntityType: node
+cache: true

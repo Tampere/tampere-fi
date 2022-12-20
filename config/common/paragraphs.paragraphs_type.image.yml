@@ -1,0 +1,10 @@
+uuid: daa0a2a4-c028-4c1b-89c5-d21fe65af991
+langcode: fi
+status: true
+dependencies: {  }
+id: image
+label: Kuva
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,33 @@
+.text-with-title {
+  &__title {
+    margin-bottom: $space-s;
+
+    @include large {
+      margin-bottom: $space-m-plus;
+    }
+  }
+
+  &__content {
+    margin-bottom: $space-m;
+
+    > * {
+      margin-bottom: $space-s;
+
+      @include large {
+        margin-bottom: $space-m-plus;
+      }
+    }
+
+    &--map-embed {
+      .content-map {
+        height: 270px !important;
+        width: 270px !important;
+
+        @include large {
+          height: 410px !important;
+          width: 60% !important;
+        }
+      }
+    }
+  }
+}

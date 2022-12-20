@@ -1,0 +1,29 @@
+uuid: 95662908-d3f7-406a-8b72-0367e6164527
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_record_number
+    - node.type.zoning_information
+    - taxonomy.vocabulary.record_numbers
+id: node.zoning_information.field_record_number
+field_name: field_record_number
+entity_type: node
+bundle: zoning_information
+label: Diaarinumero
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      record_numbers: record_numbers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

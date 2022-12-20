@@ -1,0 +1,5 @@
+name: 'TRE Node Logger'
+type: module
+description: 'Stores and shows custom logs'
+core_version_requirement: '>=9.3'
+package: 'TRE'

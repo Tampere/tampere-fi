@@ -1,0 +1,18 @@
+uuid: d5b8b0df-1fdf-4d9c-8ec9-a25bf56430c2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.content_in_other_language
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.content_in_other_language
+target_entity_type_id: node
+target_bundle: content_in_other_language
+default_langcode: authors_default
+language_alterable: true

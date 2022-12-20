@@ -1,0 +1,431 @@
+$card-heading-underline-distance: 5px;
+
+$colorful-card-body-max-width: 75%;
+$colorful-card-body-max-width--with-sidebar: 65%;
+
+$colorful-card-min-height: 395px;
+$colorful-card-min-height--desktop: 305px;
+$colorful-card-two-column-min-height--desktop: 670px;
+$colorful-card-two-column-min-height--with-sidebar: 600px;
+$colorful-card-multi-column-min-height--desktop: 495px;
+
+$colorful-card-two-column-icon-bottom-min-distance: 180px;
+$colorful-card-multi-column-icon-bottom-min-distance: 80px;
+
+$colorful-card-background-bottom-position: -300px;
+$colorful-card-background-bottom-position--desktop: -105px;
+$colorful-card-background-right-position: -10px;
+$colorful-card-background-right-position--desktop: -150px;
+$colorful-card-two-column-background-bottom-position: -168px;
+
+$grouped-card-background-position: bottom -305px right -10px;
+
+.card {
+  $base_class: &;
+
+  background-color: clr(primary);
+  color: clr(text-inverse);
+  display: block;
+  height: 100%;
+  text-decoration: none;
+
+  &[href]:hover,
+  &[href]:focus {
+    #{$base_class}__heading {
+      border-bottom-color: clr(text-inverse);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: $space-l $space-m;
+
+    @include large {
+      padding: $space-xl $space-l $space-l $space-l;
+    }
+  }
+
+  &__heading {
+    @include word-wrap;
+
+    border-bottom: $border-thick-transparent;
+    font-size: $font-20;
+    font-weight: $font-weight-bold;
+    margin: 0 0 $space-l;
+    width: fit-content;
+
+    @include large {
+      font-size: $font-24;
+    }
+  }
+
+  &__body {
+    margin-top: 0;
+    margin-bottom: $space-l;
+  }
+
+  &__icon {
+    width: $icon-small;
+    height: $icon-small;
+    margin-top: auto;
+
+    @include large {
+      width: $icon-medium;
+      height: $icon-medium;
+    }
+  }
+
+  // Variations
+  &--colorful {
+    background-color: transparent;
+    background-image: url('../images/waves-transparent-new.svg');
+    background-repeat: no-repeat;
+    position: relative;
+
+    &,
+    &::before {
+      background-position: bottom $colorful-card-background-bottom-position right $colorful-card-background-right-position;
+
+      @include large {
+        background-position: bottom $colorful-card-background-bottom-position--desktop right $colorful-card-background-right-position--desktop;
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    &::before {
+      @include transition(opacity, 0.2s, ease-in-out);
+
+      background-image: url('../images/waves-transparent-hover.svg');
+      background-repeat: no-repeat;
+      opacity: 0;
+    }
+
+    &::after {
+      z-index: -1;
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        opacity: 1;
+      }
+
+      #{$base_class}__heading {
+        border-bottom-color: clr(text-inverse);
+      }
+    }
+
+    #{$base_class}__content {
+      min-height: $colorful-card-min-height;
+      padding: $space-m $space-m;
+
+      @include large {
+        min-height: $colorful-card-min-height--desktop;
+        padding: $space-l $space-l;
+      }
+    }
+
+    #{$base_class}__heading {
+      padding-bottom: $space-xxs;
+      margin-bottom: $space-m;
+
+      @include large {
+        padding-bottom: $card-heading-underline-distance;
+      }
+    }
+
+    #{$base_class}__body {
+      margin-top: 0;
+      margin-bottom: $space-m;
+
+      @include large {
+        max-width: $colorful-card-body-max-width;
+
+        .layout-container--with-sidebar & {
+          max-width: $colorful-card-body-max-width--with-sidebar;
+        }
+      }
+    }
+
+    #{$base_class}__icon {
+      margin-top: 0;
+      margin-bottom: $space-xxl;
+  
+      @include large {
+        margin-bottom: $space-l;
+      }
+    }
+
+    // When there are at least 2 colorful cards, remove maximum width from the body.
+    &:nth-last-child(n+2),
+    &:nth-last-child(n+2) ~ & {
+      #{$base_class}__body {
+        @include large {
+          max-width: none;
+        }
+      }
+    }
+
+    // When there are exactly 2 colorful cards, the background image should be positioned lower
+    // and more towards the center of the card on larger screens.
+    &:nth-last-child(2):first-child,
+    &:nth-last-child(2):first-child ~ & {
+      &,
+      &::before {
+        @include large {
+          background-position: bottom $colorful-card-two-column-background-bottom-position right;
+        }
+      }
+
+      #{$base_class}__content {
+        @include large {
+          min-height: $colorful-card-two-column-min-height--desktop;
+          padding: $space-xl $space-l;
+
+          .layout-container--with-sidebar & {
+            min-height: $colorful-card-two-column-min-height--with-sidebar;
+          }
+        }
+      }
+
+      #{$base_class}__icon {
+        @include large {
+          margin-bottom: $colorful-card-two-column-icon-bottom-min-distance;
+        }
+      }
+    }
+
+    // When there are 3 or more colorful cards, the background image should be positioned even lower on larger screens.
+    &:nth-last-child(n+3),
+    &:nth-last-child(n+3) ~ & {
+      &,
+      &::before {
+        @include large {
+          background-position: bottom $colorful-card-background-bottom-position right $colorful-card-background-right-position;
+        }
+      }
+
+      #{$base_class}__content {
+        @include large {
+          min-height: $colorful-card-multi-column-min-height--desktop;
+        }
+      }
+
+      #{$base_class}__icon {
+        @include large {
+          margin-bottom: $colorful-card-multi-column-icon-bottom-min-distance;
+        }
+      }
+
+      // The background image on a card without a body text should be positioned higher only when there are 3 or more colorful cards.
+      &#{$base-class}--no-body {
+        &,
+        &::before {
+          @include large {
+            background-position: bottom $colorful-card-two-column-background-bottom-position right $colorful-card-background-right-position;
+          }
+        }
+      }
+    }
+
+    // Colorful cards without body text should be less tall on mobile than others,
+    // and they shouldn't display a background image (on mobile).
+    &#{$base-class}--no-body {
+      &,
+      &::before {
+        @include large-down {
+          background-image: none;
+        }
+      }
+
+      #{$base_class}__content {
+        @include large-down {
+          min-height: 0;
+        }
+      }
+
+      #{$base_class}__icon {
+        @include large-down {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &--colorful-1 {
+    &::after {
+      background-color: clr(#{$colorful-card-1-color-name});
+    }
+  }
+
+  &--colorful-2 {
+    @include dynamic-color(#{$colorful-card-2-color-name}, $set-focus-color: false);
+
+    &::after {
+      background-color: clr('alternative-#{$colorful-card-2-color-name}', #{clr(#{$colorful-card-2-color-name})});
+    }
+
+    &:hover,
+    &:focus {
+      #{$base_class}__heading {
+        @include dynamic-color(#{$colorful-card-2-color-name}, border-bottom-color, $set-focus-color: false);
+      }
+    }
+  }
+
+  &--colorful-3 {
+    @include dynamic-color(#{$colorful-card-3-color-name}, $set-focus-color: false);
+
+    &::after {
+      background-color: clr('alternative-#{$colorful-card-3-color-name}', #{clr(#{$colorful-card-3-color-name})});
+    }
+
+    &:hover,
+    &:focus {
+      #{$base_class}__heading {
+        @include dynamic-color(#{$colorful-card-3-color-name}, border-bottom-color, $set-focus-color: false);
+      }
+    }
+  }
+
+  &--slim {
+    background-color: transparent;
+    color: clr(text);
+
+    &:hover,
+    &:focus {
+      #{$base_class}__icon {
+        background-color: clr(primary);    
+        color: clr(text-inverse);
+      }
+    }
+
+    #{$base_class}__content {
+      padding: 0;
+
+      @include large {
+        padding: $space-m;
+      }
+    }
+
+    #{$base_class}__icon {
+      order: 1;
+      color: clr(primary);
+      margin-top: 0;
+      margin-bottom: $space-xs;
+      width: $icon-medium;
+      height: $icon-medium;
+
+      @include large {
+        margin-bottom: $space-m;
+        width: $icon-large-minus;
+        height: $icon-large-minus;
+      }
+
+      &.regular {
+        display: none;
+
+        @include large {
+          display: block;
+        }
+      }
+
+      &.mobile {
+        @include large {
+          display: none;
+        }
+      }
+    }
+
+    #{$base_class}__heading {
+      border: 0;
+      order: 2;
+      margin-bottom: 0;
+    }
+
+    #{$base_class}__body {
+      order: 3;
+      margin-top: $space-xs;
+      margin-bottom: 0;
+    }
+  }
+
+  &--grouped {
+    background-color: clr(#{$colorful-card-1-color-name});
+    position: relative;
+
+    &:focus,
+    &:hover {
+      #{$base_class}__heading {
+        border-bottom-color: clr(text-inverse);
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+      }
+    }
+
+    @include large {
+      &::before,
+      &::after {
+        @include transition(opacity, 0.15s, ease-in);
+
+        background-repeat: no-repeat;
+        background-position: $grouped-card-background-position;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      &::before {
+        background-image: url('../images/waves-transparent-new.svg');
+        opacity: 1;
+      }
+
+      &::after {
+        background-image: url('../images/waves-transparent-hover.svg');
+        opacity: 0;
+      }
+
+      &:focus,
+      &:hover {
+        &::before {
+          opacity: 0;
+        }
+
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    #{$base_class}__content {
+      padding: $space-m;
+
+      @include large {
+        padding: $space-l;
+      }
+    }
+
+    #{$base_class}__heading {
+      margin-bottom: $space-s;
+
+      @include large {
+        margin-bottom: $space-l;
+        padding-bottom: $card-heading-underline-distance;
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+uuid: adb85a60-73b5-4db4-b3f0-a183cda8b561
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_theme_life_situation
+field_name: field_theme_life_situation
+entity_type: group
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

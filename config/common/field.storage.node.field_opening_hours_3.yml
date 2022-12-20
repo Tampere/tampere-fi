@@ -1,0 +1,29 @@
+uuid: c243e3aa-506f-4dd8-bd2d-71b2d5e6a5c6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - office_hours
+id: node.field_opening_hours_3
+field_name: field_opening_hours_3
+entity_type: node
+type: office_hours
+settings:
+  time_format: G
+  element_type: office_hours_datelist
+  increment: 1
+  required_start: false
+  limit_start: ''
+  required_end: false
+  limit_end: ''
+  comment: 2
+  valhrs: false
+  cardinality_per_day: 2
+module: office_hours
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,62 @@
+uuid: 81642a18-a5ae-4856-b445-62d9f99a3d0d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.positioned_image_small_view_mode
+    - field.field.paragraph.positioned_image.field_align
+    - field.field.paragraph.positioned_image.field_image_caption
+    - field.field.paragraph.positioned_image.field_image_size
+    - field.field.paragraph.positioned_image.field_media
+    - paragraphs.paragraphs_type.positioned_image
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_figure
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: small
+    regions:
+      figure_image:
+        - field_media
+      img_caption:
+        - field_image_caption
+id: paragraph.positioned_image.positioned_image_small_view_mode
+targetEntityType: paragraph
+bundle: positioned_image
+mode: positioned_image_small_view_mode
+content:
+  field_image_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: img_caption
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: positioned_image_small_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: figure_image
+hidden:
+  field_align: true
+  field_image_size: true
+  search_api_excerpt: true

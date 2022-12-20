@@ -1,0 +1,8 @@
+picture_mosaic__items:
+  - card__heading: 'Lorem ipsum dolor'
+    card__link__url: '#'
+    card__image__src: 'https://placeimg.com/1280/820/nature'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'
+  - card__heading: 'Cras lacinia sagittis mauris a volutpat'
+    card__link__url: '#'

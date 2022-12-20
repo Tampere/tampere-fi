@@ -1,0 +1,65 @@
+{#
+ # Available variables:
+ # - some_feed__base_class - base classname of the wrapper.
+ # - some_feed__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - some_feed__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ # - some_feed__extra_classes - array of extra classes to add to the wrapper.
+ #
+ # - some_feed__content__modifiers - array of modifiers to add to the base classname of the content wrapper.
+ #
+ # - some_feed__heading - the content of the title component.
+ # - some_feed__heading__base_class - base classname of the title component. Defaults to "heading".
+ # - some_feed__heading__modifiers - array of modifiers to add to the base classname of the title.
+ #
+ # - some_feed__description - the content of the description component.
+ # - some_feed__description__base_class - base classname of the description component. Defaults to "description".
+ # - some_feed__description__modifiers - array of modifiers to add to the base classname of the description.
+ #
+ # - some_feed__feed__modifiers - array of modifiers to add to the base classname of the feed wrapper.
+ #
+ # - juicer_feed_id - an ID for the Juicer feed.
+ #
+ # - post_amount - the amount of posts to display.
+ # - truncate_amount - the amount of characters after which post content should be truncated.
+ #}
+{{ attach_library('tampere/juicer-feed-modifications') }}
+
+{% set some_feed__base_class = "some-feed" %}
+
+<div {{ bem(some_feed__base_class, some_feed__modifiers|default([]), some_feed__blockname, some_feed__extra_classes) }}>
+  <div {{ bem("content", some_feed__content__modifiers|default([]), some_feed__base_class) }}>
+    {% if some_feed__heading %}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        "heading_base_class": some_feed__heading__base_class|default("heading"),
+        "heading_modifiers": some_feed__heading__modifiers,
+        "heading_blockname": some_feed__base_class,
+        "heading_level": 2,
+        "heading": some_feed__heading,
+      } %}
+    {% endif %}
+
+    {% if some_feed__description %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        "paragraph_base_class": some_feed__description__base_class|default("description"),
+        "paragraph_modifiers": some_feed__description__modifiers,
+        "paragraph_blockname": some_feed__base_class,
+        "paragraph_content": some_feed__description,
+      } %}
+    {% endif %}
+
+    <div {{ bem("feed", some_feed__feed__modifiers|default([]), some_feed__base_class) }}>
+      <script src="https://assets.juicer.io/embed.js" type="text/javascript"></script>
+      <link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
+      <ul class="juicer-feed"
+        data-after="Drupal.tampere.formatSocialMediaFeed()"
+        data-feed-id="{{ juicer_feed_id }}"
+        data-style="modern"
+        data-overlay="false"
+        data-columns="3"
+        {% if post_amount %}data-per="{{ post_amount }}"{% endif %}
+        {% if truncate_amount %}data-truncate="{{ truncate_amount }}"{% endif %}
+      >
+      </ul>
+    </div>
+  </div>
+</div>

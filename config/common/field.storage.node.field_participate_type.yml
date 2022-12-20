@@ -1,0 +1,48 @@
+uuid: bc64b962-2c66-4cb8-b00b-80ee9438928f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_participate_type
+field_name: field_participate_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: survey
+      label: Kysely
+    -
+      value: vote
+      label: Äänestys
+    -
+      value: hearing
+      label: Kuulemistilaisuus
+    -
+      value: discussion
+      label: Keskustelutilaisuus
+    -
+      value: workshop
+      label: Työpaja
+    -
+      value: barn_raising
+      label: Talkoot
+    -
+      value: party
+      label: Juhlat
+    -
+      value: to_idea
+      label: Ideointi
+    -
+      value: other
+      label: 'Muu osallistuminen'
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

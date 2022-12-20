@@ -1,0 +1,18 @@
+uuid: af86366a-1cd7-4897-b39c-9372b3b496d1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_node-place
+id: group_content.life_situation-group_node-place.label
+field_name: label
+entity_type: group_content
+bundle: life_situation-group_node-place
+label: Otsikko
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

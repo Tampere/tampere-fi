@@ -1,0 +1,9 @@
+uuid: 30e4689e-f45e-4814-98d2-d1b0b976aa4d
+langcode: fi
+status: true
+dependencies: {  }
+id: node__involvement_opportunity
+label: 'Sisältö: Osallistumismahdollisuus'
+tags:
+  description: '[node:field_participate_summary:value]'
+  og_description: '[node:field_participate_summary:value]'

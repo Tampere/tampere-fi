@@ -1,0 +1,23 @@
+uuid: 36decc62-e12e-4f7e-b737-47461eb0da3f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_columns
+    - paragraphs.paragraphs_type.text_with_bgcolor
+  module:
+    - options
+id: paragraph.text_with_bgcolor.field_columns
+field_name: field_columns
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: Palstat
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: full
+default_value_callback: ''
+settings: {  }
+field_type: list_string

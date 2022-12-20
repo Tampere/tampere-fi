@@ -1,0 +1,18 @@
+uuid: 1612ab92-c4ea-4687-bc80-684f94da283b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.map_point
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.map_point
+target_entity_type_id: node
+target_bundle: map_point
+default_langcode: current_interface
+language_alterable: true

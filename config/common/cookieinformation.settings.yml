@@ -1,0 +1,7 @@
+enable_popup: true
+enable_iab: false
+exclude_paths: "/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/*"
+exclude_admin: true
+exclude_uid_1: false
+block_iframes: 1
+enable_google_consent_mode: 1

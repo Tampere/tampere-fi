@@ -1,0 +1,10 @@
+uuid: 9eef46bb-2dd5-4125-8c5e-771ee2e5b011
+langcode: fi
+status: true
+dependencies: {  }
+id: city_construction_project_card
+label: 'Kaupunkisuunnittelu- ja rakentamishankekortti'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

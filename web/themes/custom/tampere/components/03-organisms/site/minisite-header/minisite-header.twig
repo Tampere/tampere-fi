@@ -1,0 +1,151 @@
+{{ attach_library("tampere/site-header") }}
+
+{% set header__base_class = header__base_class|default("minisite-header") %}
+
+{% set header_navigation_container_id = "minisite-header-navigation-container" %}
+{% set main_site_front_page = path('<front>') %}
+
+<header id="site-header" {{ bem(header__base_class, (header__modifiers|default([])), header__blockname, [ "menu-closed" ]) }}>
+  <div {{ bem("main-wrapper", (header__main_wrapper__modifiers|default([])), header__base_class)}}>
+    <div {{ bem("main", (header__main__modifiers|default([])), header__base_class)}}>
+
+      {# Desktop elements start #}
+      <div {{ bem("top-section", (header__top_section__modifiers|default([ "desktop" ])), header__base_class)}}>
+        <div {{ bem("back-to-frontpage", (header__back_to_frontpage__modifiers|default([])), header__base_class)}}>
+          {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+            "link_with_icon__modifiers": [ "back-to-frontpage" ],
+            "link_with_icon__url": main_site_front_page,
+            "link_with_icon__link_text": "Tampere.fi",
+            "link_with_icon__link_icon": "breadcrumb-arrow-mobile",
+          } %}
+        </div>
+        <div {{ bem("language-dropdown", (header__language_dropdown__modifiers|default([])), header__base_class)}}>
+          {% block header_language_dropdown %}
+            {% include "@molecules/language-dropdown/language-dropdown.twig" with {
+              "language_dropdown__modifiers": [ "dynamic" ],
+              "links": header__language__links,
+              "current_language_code": header__current_language__code,
+              "current_language_name": header__current_language__name,
+            } %}
+          {% endblock %}
+        </div>
+        <div {{ bem("search", (header__search__modifiers|default([])), header__base_class)}}>
+          {% block header_search %}
+            {% include "@organisms/search-toggle/search-toggle.twig" %}
+          {% endblock %}
+        </div>
+      </div>
+      <div {{ bem("bottom-section", (header__bottom_section__modifiers|default([ "desktop" ])), header__base_class)}}>
+        {% block header_text_logo_with_tagline %}
+          {% include "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+            "text_logo_w_tagline__url": front_page_url,
+            "display_tagline": TRUE,
+            "text_logo_w_tagline__tagline": header__tagline,
+          } %}
+        {% endblock %}
+
+        {% if header__heading %}
+          <span {{ bem("heading", (header__heading__modifiers|default()), header__base_class)}}>
+            {{ header__heading }}
+          </span>
+        {% endif %}
+
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          "icon_filename": "logo-icons",
+          "icon_name": "text-logo",
+          "icon_base_class": "text-logo",
+          "icon_blockname": header__base_class,
+          "icon_decorative": true,
+        } %}
+      </div>
+      <div {{ bem("menu-button", [ "desktop" ], header__base_class)}}>
+        {% include "@molecules/menu-button/menu-button.twig" with {
+          "menu_button_controls": header_navigation_container_id,
+          "menu_button__modifiers": [ "minisite" ],
+        } %}
+      </div>
+      {# Desktop elements end #}
+
+      {# Mobile elements start #}
+      <div {{ bem("top-section", (header__top_section__modifiers|default([ "mobile" ])), header__base_class)}}>
+        {% block header_mobile_text_logo_with_tagline %}
+          {% include "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+            "text_logo_w_tagline__url": front_page_url,
+            "display_tagline": FALSE,
+          } %}
+        {% endblock %}
+
+        <div {{ bem("language-dropdown", [ "mobile" ], header__base_class)}}>
+          {% block header_mobile_language_dropdown %}
+            {% include "@molecules/language-dropdown/language-dropdown.twig" with {
+              "language_dropdown__modifiers": [ "dynamic" ],
+              "language_dropdown_id": "mobile-language-dropdown",
+              "language_dropdown_toggle_id": "mobile-language-dropdown-toggle",
+              "language_dropdown_list_role": "menubar",
+              "links": header__language__links,
+              "current_language_code": header__current_language__code,
+              "current_language_name": header__current_language__name,
+            } %}
+          {% endblock %}
+        </div>
+
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          "icon_filename": "logo-icons",
+          "icon_name": "text-logo",
+          "icon_base_class": "text-logo",
+          "icon_blockname": header__base_class,
+          "icon_decorative": true,
+        } %}
+
+        {% if header__heading %}
+          <span {{ bem("heading", (header__heading__modifiers|default()), header__base_class)}}>
+            {{ header__heading }}
+          </span>
+        {% endif %}
+      </div>
+      <div {{ bem("bottom-section", (header__bottom_section__modifiers|default([ "mobile" ])), header__base_class)}}>
+        <div {{ bem("back-to-frontpage", (header__back_to_frontpage__modifiers|default([])), header__base_class)}}>
+          {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+            "link_with_icon__modifiers": [ "back-to-frontpage" ],
+            "link_with_icon__url": main_site_front_page,
+            "link_with_icon__link_text": "Tampere.fi",
+            "link_with_icon__link_icon": "breadcrumb-arrow-mobile",
+          } %}
+        </div>
+        <div {{ bem("bottom-section-right-group", (header__bottom_section_right_group__modifiers|default([])), header__base_class)}}>
+          <div {{ bem("search", (header__search__modifiers|default([])), header__base_class)}}>
+            {% block header_mobile_search %}
+              {% include "@organisms/search-toggle/search-toggle.twig" with {
+                "search_toggle_controls": "search-toggle-search-bar-mobile",
+                "search_toggle_button_mode": "mobile",
+                "search_toggle__search_bar__aria_label": "Mobile site search"|t,
+              } %}
+            {% endblock %}
+          </div>
+          <div {{ bem("menu-button", [ "mobile" ], header__base_class)}}>
+            {% include "@molecules/menu-button/menu-button.twig" with {
+              "menu_button_controls": header_navigation_container_id,
+              "menu_button__modifiers": [ "mobile", "minisite" ],
+            } %}
+          </div>
+        </div>
+      </div>
+      {# Mobile elements end #}
+
+    </div>
+  </div>
+
+  <div {{ bem("navigation-wrapper", (header__main_wrapper__modifiers|default([])), header__base_class)}}>
+    <div id="{{ header_navigation_container_id }}" {{ bem("navigation", (header__bottom_section__modifiers|default([])), header__base_class, [ "is-closed" ])}}>
+      <div {{ bem("main-navigation", (header__main_navigation__modifiers|default([])), header__base_class)}}>
+        {% block header_main_navigation %}
+          {% include "@molecules/menus/main-menu/main-menu.twig" with {
+            "main_menu_label_id": "main-menu-label",
+            "main_menu_aria_label": "Main menu"|t,
+            "main_menu_modifiers": [ "minisite" ],
+          } %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</header>

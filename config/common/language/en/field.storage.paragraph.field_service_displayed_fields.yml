@@ -1,0 +1,40 @@
+settings:
+  allowed_values:
+    -
+      label: Name
+    -
+      label: 'Alternative name'
+    -
+      label: Summary
+    -
+      label: Description
+    -
+      label: 'Heading: Do the following'
+    -
+      label: Instructions
+    -
+      label: 'Heading: To whom and on what terms'
+    -
+      label: Conditions
+    -
+      label: 'Heading: Basic information'
+    -
+      label: 'Chargeability of the service'
+    -
+      label: 'Service voucher information'
+    -
+      label: 'Languages the service is available in'
+    -
+      label: 'Area the service is available in'
+    -
+      label: 'Service provision type and producer information'
+    -
+      label: 'Service locations'
+    -
+      label: 'Web self-service channels'
+    -
+      label: 'Web page service channels'
+    -
+      label: 'Phone service channels'
+    -
+      label: 'Form service channels'

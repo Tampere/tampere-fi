@@ -1,0 +1,52 @@
+_core:
+  default_config_hash: t5W6QbLZA8s7VAoHDDldhRB2Emm1blOGOOKHMV855Gk
+langcode: fi
+token: 7dac1e80a7f74a86977b77585f1fb95b
+domain_plugin_id: siteimprovedomain_simple
+prepublish_enabled: true
+api_username: ''
+api_key: ''
+enabled_content_types:
+  basic_content_page: basic_content_page
+  blog_article: blog_article
+  city_planning_and_constructions: city_planning_and_constructions
+  collection_page: collection_page
+  front_page: front_page
+  involvement_opportunity: involvement_opportunity
+  moderated_page: moderated_page
+  news_item: news_item
+  notice: notice
+  organization: organization
+  place: place
+  project: project
+  rich_article: rich_article
+  rss_item: rss_item
+  small_news_item: small_news_item
+  zoning_information: zoning_information
+  emergency_notice: '0'
+  map_point: '0'
+  person: '0'
+  place_of_business: '0'
+  ptv_service: '0'
+enabled_taxonomies:
+  blogs: '0'
+  cross_site_publications: '0'
+  geographical_areas: '0'
+  keywords: '0'
+  life_situations: '0'
+  mailing_lists: '0'
+  media_folders: '0'
+  minisites: '0'
+  notice_types: '0'
+  other_identifiers: '0'
+  personnel_companies: '0'
+  personnel_cost_centers: '0'
+  personnel_organization_units: '0'
+  personnel_titles: '0'
+  plan_numbers: '0'
+  record_numbers: '0'
+  service_classes: '0'
+  topics: '0'
+  service_vouchers: '0'
+  zoning_information_types: '0'
+overlay_default_collapse: 1

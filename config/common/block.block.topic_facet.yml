@@ -1,0 +1,23 @@
+uuid: b0ba48a0-2eba-4fa8-80a3-0cd1ba237a24
+langcode: fi
+status: false
+dependencies:
+  config:
+    - facets.facet.topic
+  module:
+    - facets
+  theme:
+    - tampere
+id: topic_facet
+theme: tampere
+region: content
+weight: 0
+provider: null
+plugin: 'facet_block:topic'
+settings:
+  id: 'facet_block:topic'
+  label: Aihepiiri
+  label_display: '0'
+  provider: facets
+  block_id: topic_facet
+visibility: {  }

@@ -1,0 +1,103 @@
+{#
+ # Available variables:
+ # - general_contact_card__base_class - base classname of the wrapper.
+ # - general_contact_card__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - general_contact_card__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - general_contact_card__heading_container__modifiers - array of modifiers to add to the base classname of the heading container.
+ # - general_contact_card__name - the name of the contact.
+ # - general_contact_card__url - the URL to the contact page.
+ #
+ # - general_contact_card__pre_main_content__modifiers - array of modifiers to add to the base classname of the preceding content.
+ # - general_contact_card__pre_main_content - the preceding content for the contact.
+ #
+ # - general_contact_card__main_content__modifiers - array of modifiers to add to the base classname of the main content.
+ # - general_contact_card__main_content - the main content for the contact.
+ #
+ # - general_contact_card__additional_content_wrapper__modifiers - array of modifiers to add to the base classname of the additional content wrapper.
+ # - general_contact_card__additional_content__modifiers - array of modifiers to add to the base classname of the additional content.
+ # - general_contact_card__additional_content - the additional content for the contact.
+ # - general_contact_card__post_additional_content__modifiers - array of modifiers to add to the base classname of the post additional content.
+ # - general_contact_card__post_additional_content - the content to follow the additional content.
+ #
+ # - general_contact_card__contact_us__modifiers - array of modifiers to add to the base classname of the contact us content.
+ # - general_contact_card__contact_us_text - the text for the contact us link. Defaults to "Contact us".
+ #}
+
+{% set general_contact_card__base_class = "general-contact-card" %}
+
+{% set general_contact_card__additional_information_label = "Additional information"|t %}
+
+<div {{ bem(general_contact_card__base_class, general_contact_card__modifiers, general_contact_card__blockname) }}>
+  <div {{ bem("content", general_contact_card__content__modifiers, general_contact_card__base_class) }}>
+    {% if general_contact_card__name %}
+      <div {{ bem("heading-container", general_contact_card__heading_container__modifiers, general_contact_card__base_class) }}>
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_base_class": "name",
+          "heading_blockname": general_contact_card__base_class,
+          "heading_level": 2,
+          "heading": general_contact_card__name,
+          "heading_url": general_contact_card__url,
+          "heading_link_base_class": "name-link",
+          "heading_link_blockname": general_contact_card__base_class,
+        } %}
+      </div>
+    {% endif %}
+
+    {% if general_contact_card__pre_main_content %}
+      <div {{ bem("pre-main-content", general_contact_card__pre_main_content__modifiers, general_contact_card__base_class) }}>
+        {% for row in general_contact_card__pre_main_content %}
+          <div>{{ row }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if general_contact_card__main_content %}
+      <div {{ bem("main-content", general_contact_card__main_content__modifiers, general_contact_card__base_class, [ "conditional-content" ]) }}>
+        {{ general_contact_card__main_content }}
+      </div>
+    {% endif %}
+
+    {% if general_contact_card__additional_content or general_contact_card__additional_information or general_contact_card__post_additional_content %}
+      <div {{ bem("additional-content-wrapper", general_contact_card__additional_content_wrapper__modifiers, general_contact_card__base_class, [ "conditional-content" ]) }}>
+        {% if general_contact_card__additional_information %}
+          <div {{ bem("additional-information", general_contact_card__additional_information__modifiers, general_contact_card__base_class, [ "conditional-content" ]) }}>
+            <div class="field-label-inline">{{ general_contact_card__additional_information_label }}:</div>{{ general_contact_card__additional_information }}
+          </div>
+        {% endif %}
+
+        {% if general_contact_card__additional_content %}
+          <div {{ bem("additional-content", general_contact_card__additional_content__modifiers, general_contact_card__base_class, [ "conditional-content" ]) }}>
+            {{ general_contact_card__additional_content }}
+          </div>
+        {% endif %}
+
+        {% if general_contact_card__post_additional_content %}
+          <div {{ bem("post-additional-content", general_contact_card__post_additional_content__modifiers, general_contact_card__base_class, [ "conditional-content" ]) }}>
+            {{ general_contact_card__post_additional_content }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if general_contact_card__email_address %}
+      <div {{ bem("contact-us", general_contact_card__contact_us__modifiers, general_contact_card__base_class, [ "conditional-content" ]) }}>
+        {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+          "link_with_icon__url": "mailto:" ~ general_contact_card__email_address,
+          "link_with_icon__modifiers": [ "ghost" ],
+          "link_with_icon__link_text": general_contact_card__contact_us_text|default("Contact us"|t),
+          "link_with_icon__link_icon": "contact",
+        } %}
+      </div>
+    {% endif %}
+  </div>
+  
+  {% if general_contact_card__map %}
+    {% include "@organisms/accordion/horizontal-accordion/horizontal-accordion.twig" with {
+      "available_tabs": general_contact_card__map,
+      "horizontal_accordion__modifiers": [ "general-contact" ],
+      "horizontal_accordion__paragraph_id": general_contact_card__paragraph_id,
+    } %}
+  {% endif %}
+
+</div>

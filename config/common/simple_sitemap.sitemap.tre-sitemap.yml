@@ -1,0 +1,11 @@
+uuid: 37bbd8cf-53a7-4801-b822-f95504ff2a1f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - simple_sitemap.type.default_sitemap
+id: tre-sitemap
+label: 'TRE sitemap'
+description: ''
+type: default_sitemap
+weight: 0

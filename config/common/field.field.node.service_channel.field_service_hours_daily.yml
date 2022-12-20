@@ -1,0 +1,21 @@
+uuid: ef9cf9d2-b242-4135-b9ed-1eed51001c0d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_hours_daily
+    - node.type.service_channel
+  module:
+    - office_hours
+id: node.service_channel.field_service_hours_daily
+field_name: field_service_hours_daily
+entity_type: node
+bundle: service_channel
+label: 'Normaalit palveluajat viikonpäivät'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: office_hours

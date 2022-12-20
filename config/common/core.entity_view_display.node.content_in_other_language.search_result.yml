@@ -1,0 +1,59 @@
+uuid: 4d083a91-bd92-4532-aced-ded292a21530
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.content_in_other_language.field_geographical_areas
+    - field.field.node.content_in_other_language.field_keywords
+    - field.field.node.content_in_other_language.field_language
+    - field.field.node.content_in_other_language.field_life_situations
+    - field.field.node.content_in_other_language.field_main_image
+    - field.field.node.content_in_other_language.field_metadata_description
+    - field.field.node.content_in_other_language.field_paragraphs
+    - field.field.node.content_in_other_language.field_search_keywords
+    - field.field.node.content_in_other_language.field_topic
+    - field.field.node.content_in_other_language.field_topics
+    - node.type.content_in_other_language
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      listing_item__main_content:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+id: node.content_in_other_language.search_result
+targetEntityType: node
+bundle: content_in_other_language
+mode: search_result
+content: {  }
+hidden:
+  field_geographical_areas: true
+  field_keywords: true
+  field_language: true
+  field_life_situations: true
+  field_main_image: true
+  field_metadata_description: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

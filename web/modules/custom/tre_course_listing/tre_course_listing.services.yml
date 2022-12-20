@@ -1,0 +1,11 @@
+services:
+  cache.tre_course_listing_courses:
+    class: Drupal\Core\Cache\CacheBackendInterface
+    tags:
+      - { name: cache.bin }
+    factory: cache_factory:get
+    arguments:
+      - tre_course_listing_courses
+  tre_course_listing.courses:
+    class: Drupal\tre_course_listing\Service\Courses
+    arguments: ['@language_manager', '@datetime.time', '@http_client', '@cache.tre_course_listing_courses']

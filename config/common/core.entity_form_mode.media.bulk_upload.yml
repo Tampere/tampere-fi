@@ -1,0 +1,10 @@
+uuid: 4adc6b32-7c4d-449b-8940-d526144da516
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.bulk_upload
+label: Massatuonti
+targetEntityType: media
+cache: true

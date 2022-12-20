@@ -1,0 +1,26 @@
+uuid: 60fdef01-8ed1-42a3-bc28-175bf6cb3afb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_service_text
+    - paragraphs.paragraphs_type.service_highlight
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.service_highlight.field_service_text
+field_name: field_service_text
+entity_type: paragraph
+bundle: service_highlight
+label: Asiointiteksti
+description: 'Yleinen kuvausteksti asiointipalvelusta'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

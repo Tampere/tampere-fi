@@ -1,0 +1,27 @@
+uuid: e503ce9a-205a-4c76-bc86-3a94d309260c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_liftup_amount
+field_name: field_liftup_amount
+entity_type: paragraph
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 3
+      label: '3'
+    -
+      value: 6
+      label: '6'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

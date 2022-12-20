@@ -1,0 +1,9 @@
+.text-and-images {
+  @include page-element-spacer;
+
+  max-width: var(--text-content-max-width);
+  
+  &__clear {
+    clear: both;
+  }
+}

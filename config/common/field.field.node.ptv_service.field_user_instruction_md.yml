@@ -1,0 +1,26 @@
+uuid: 69b4bddd-509f-46e1-934c-d9d61c57e937
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_user_instruction_md
+    - node.type.ptv_service
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - ptv_markdown
+id: node.ptv_service.field_user_instruction_md
+field_name: field_user_instruction_md
+entity_type: node
+bundle: ptv_service
+label: Toimintaohjeet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,14 @@
+uuid: 2ebf5e44-01ed-494a-8042-f8f0c78b0d58
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.plan_numbers
+id: taxonomy_vocabulary_plan_numbers
+entity_type_id: taxonomy_vocabulary
+entity_id: plan_numbers
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

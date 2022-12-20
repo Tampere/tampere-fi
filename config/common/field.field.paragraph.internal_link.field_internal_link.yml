@@ -1,0 +1,67 @@
+uuid: da396087-f69f-4ba5-80a4-ca81913c4b74
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_internal_link
+    - node.type.basic_content_page
+    - node.type.blog_article
+    - node.type.city_planning_and_constructions
+    - node.type.collection_page
+    - node.type.emergency_notice
+    - node.type.front_page
+    - node.type.involvement_opportunity
+    - node.type.moderated_page
+    - node.type.news_item
+    - node.type.notice
+    - node.type.organization
+    - node.type.person
+    - node.type.place
+    - node.type.place_of_business
+    - node.type.project
+    - node.type.ptv_service
+    - node.type.rich_article
+    - node.type.rss_item
+    - node.type.small_news_item
+    - node.type.zoning_information
+    - paragraphs.paragraphs_type.internal_link
+id: paragraph.internal_link.field_internal_link
+field_name: field_internal_link
+entity_type: paragraph
+bundle: internal_link
+label: 'Linkitettävä sisältö'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      blog_article: blog_article
+      front_page: front_page
+      person: person
+      emergency_notice: emergency_notice
+      notice: notice
+      zoning_information: zoning_information
+      city_planning_and_constructions: city_planning_and_constructions
+      collection_page: collection_page
+      moderated_page: moderated_page
+      organization: organization
+      involvement_opportunity: involvement_opportunity
+      place: place
+      ptv_service: ptv_service
+      basic_content_page: basic_content_page
+      small_news_item: small_news_item
+      project: project
+      rss_item: rss_item
+      rich_article: rich_article
+      place_of_business: place_of_business
+      news_item: news_item
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: blog_article
+field_type: entity_reference

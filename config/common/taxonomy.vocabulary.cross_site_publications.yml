@@ -1,0 +1,8 @@
+uuid: 64c0027c-7bcc-4554-b8e8-bd228a6509b3
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Sivustojen väliset julkaisut'
+vid: cross_site_publications
+description: ''
+weight: 0

@@ -1,0 +1,18 @@
+uuid: a73f9cd6-5765-46b4-a71f-7abb0ace4119
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.city_planning_and_constructions
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.city_planning_and_constructions
+target_entity_type_id: node
+target_bundle: city_planning_and_constructions
+default_langcode: current_interface
+language_alterable: true

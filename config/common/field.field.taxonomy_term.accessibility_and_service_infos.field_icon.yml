@@ -1,0 +1,21 @@
+uuid: fd68edde-892b-4d19-9064-7007192d5efc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_icon
+    - taxonomy.vocabulary.accessibility_and_service_infos
+  module:
+    - options
+id: taxonomy_term.accessibility_and_service_infos.field_icon
+field_name: field_icon
+entity_type: taxonomy_term
+bundle: accessibility_and_service_infos
+label: Ikoni
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

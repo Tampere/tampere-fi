@@ -1,0 +1,29 @@
+uuid: 9db15b0a-3773-48a9-8119-8a784695b60e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_geographical_areas
+    - media.type.image
+    - taxonomy.vocabulary.geographical_areas
+id: media.image.field_geographical_areas
+field_name: field_geographical_areas
+entity_type: media
+bundle: image
+label: 'Geographical areas'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      geographical_areas: geographical_areas
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,18 @@
+uuid: 53b8ea86-8d8a-471d-96fc-11a7330bd4d7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.main
+id: menu_link_content.main.changed
+field_name: changed
+entity_type: menu_link_content
+bundle: main
+label: Muuttunut
+description: 'The time that the menu link was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

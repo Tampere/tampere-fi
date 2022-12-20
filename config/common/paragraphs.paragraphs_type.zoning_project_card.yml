@@ -1,0 +1,10 @@
+uuid: 5249a5c4-e91c-46e4-a2d0-aa96c885f857
+langcode: fi
+status: true
+dependencies: {  }
+id: zoning_project_card
+label: Kaavakortti
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

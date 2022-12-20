@@ -1,0 +1,94 @@
+/* Styles related to Drupal forms */
+$dash-width: $space-m;
+$datepicker-margin: $space-s;
+$date-picker-field-width: 190px;
+$date-picker-calendar-icon-spacing-bottom: 10px;
+$date-picker-calendar-icon-spacing-right: 54px;
+
+.fieldset-wrapper {
+  .form-item:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.form-fieldset {
+  border: none;
+  margin-right: 0;
+  margin-bottom: $form-item-spacing;
+  margin-left: 0;
+  padding: 0;
+
+  @include large {
+    margin-bottom: $form-item-spacing--large;
+  }
+}
+
+.form-item--checkboxes,
+.form-item--radio {
+  @include list-reset;
+}
+
+.form-required::after {
+  @include required-marker;
+
+  .webform-required & {
+    margin-left: 0;
+    margin-right: $space-xs;
+  }
+}
+
+.form-submit {
+  margin-top: $form-item-spacing;
+  margin-bottom: $space-l;
+
+  @include large {
+    margin-top: $form-item-spacing--large;
+    margin-bottom: $space-xxl;
+  }
+}
+
+.openid-connect-login-form,
+.user-login-form {
+  @include centered-content($max-width: $max-width);
+}
+
+.openid-connect-login-form {
+  .form-submit {
+    @include form-item-spacing;
+  }
+}
+
+.webform-confirmation {
+  @include centered-content($max-width: $max-width);
+  @include page-element-spacer;
+
+  a {
+    @include link;
+  }
+
+  // Forms can be embedded on node pages.
+  .field--type-webform & {
+    padding: 0;
+  }
+}
+
+.webform-submission-form {
+  @include centered-content($max-width: 855px);
+  @include page-element-spacer;
+
+  // Forms can be embedded on node pages.
+  .field--type-webform & {
+    padding: 0;
+  }
+}
+
+.webform-horizontal-rule {
+  // Doubling up specifity to get past Webform styles.
+  &#{&} {
+    @include page-element-spacer;
+  }
+
+  background-color: clr(accent-tertiary);
+  height: 2px;
+  border: 0;
+}

@@ -1,0 +1,2 @@
+label: 'Body text'
+description: 'If there are more than three liftups in total, the body text can be displayed for the first two liftups without an image. Otherwise the body text will not be visible.'

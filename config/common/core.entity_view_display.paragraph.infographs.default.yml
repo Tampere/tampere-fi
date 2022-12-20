@@ -1,0 +1,25 @@
+uuid: 44ab55c6-08d2-412d-a012-60b8956505b4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.infographs.field_infograph
+    - paragraphs.paragraphs_type.infographs
+  module:
+    - entity_reference_revisions
+id: paragraph.infographs.default
+targetEntityType: paragraph
+bundle: infographs
+mode: default
+content:
+  field_infograph:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

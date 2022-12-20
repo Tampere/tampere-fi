@@ -1,0 +1,11 @@
+uuid: 6fa12cd3-b723-484b-abbc-310587254f17
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: eNX6lLCKDaY83nCMh20My---y03KbiFlv802DKCCpvg
+id: und
+label: 'Ei määritelty'
+direction: ltr
+weight: 2
+locked: true

@@ -1,0 +1,19 @@
+uuid: 3e962454-18ed-4c57-9581-de5f260df190
+langcode: fi
+status: true
+dependencies:
+  module:
+    - markup_field
+    - node
+id: node.field_markup
+field_name: field_markup
+entity_type: node
+type: markup_field
+settings: {  }
+module: markup_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,62 @@
+uuid: 1432f084-1602-4045-8742-ec9dc232a5ca
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.place_liftup.field_display_additional_info
+    - field.field.paragraph.place_liftup.field_display_map
+    - field.field.paragraph.place_liftup.field_display_place_description
+    - field.field.paragraph.place_liftup.field_link_to_place_content
+    - field.field.paragraph.place_liftup.field_place
+    - paragraphs.paragraphs_type.place_liftup
+id: paragraph.place_liftup.default
+targetEntityType: paragraph
+bundle: place_liftup
+mode: default
+content:
+  field_display_additional_info:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_map:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_place_description:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_link_to_place_content:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_place:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

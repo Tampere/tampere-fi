@@ -1,0 +1,53 @@
+uuid: 3a9843f9-30ad-4a4e-a28b-241b941038e4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.current_listing.field_blogs
+    - field.field.paragraph.current_listing.field_content_sources
+    - field.field.paragraph.current_listing.field_current_content_types
+    - field.field.paragraph.current_listing.field_display_archive_link
+    - field.field.paragraph.current_listing.field_geographical_areas
+    - field.field.paragraph.current_listing.field_hide_previous_content_link
+    - field.field.paragraph.current_listing.field_highlighted_content
+    - field.field.paragraph.current_listing.field_keywords
+    - field.field.paragraph.current_listing.field_life_situations
+    - field.field.paragraph.current_listing.field_liftup_amount
+    - field.field.paragraph.current_listing.field_liftup_display
+    - field.field.paragraph.current_listing.field_listing_title
+    - field.field.paragraph.current_listing.field_minisites
+    - field.field.paragraph.current_listing.field_notice_types
+    - field.field.paragraph.current_listing.field_omitted_nodes
+    - field.field.paragraph.current_listing.field_topics
+    - paragraphs.paragraphs_type.current_listing
+id: paragraph.current_listing.default
+targetEntityType: paragraph
+bundle: current_listing
+mode: default
+content:
+  field_highlighted_content:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: highlighted_current_liftup
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_blogs: true
+  field_content_sources: true
+  field_current_content_types: true
+  field_display_archive_link: true
+  field_geographical_areas: true
+  field_hide_previous_content_link: true
+  field_keywords: true
+  field_life_situations: true
+  field_liftup_amount: true
+  field_liftup_display: true
+  field_listing_title: true
+  field_minisites: true
+  field_notice_types: true
+  field_omitted_nodes: true
+  field_topics: true
+  search_api_excerpt: true

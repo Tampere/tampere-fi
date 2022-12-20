@@ -1,0 +1,33 @@
+uuid: 1f25d1a8-82e1-480e-8a30-86223a869d9a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.main-menu-fi
+  module:
+    - language
+    - system
+  theme:
+    - tampere
+id: main_menu_mobile_fi
+theme: tampere
+region: header
+weight: -6
+provider: null
+plugin: 'system_menu_block:main-menu-fi'
+settings:
+  id: 'system_menu_block:main-menu-fi'
+  label: 'Päävalikko: mobiili (FI)'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 2
+  expand_all_items: true
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      fi: fi

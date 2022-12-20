@@ -1,0 +1,39 @@
+uuid: 9c81647b-2559-4760-b44d-3dbea8d349e1
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_available_languages
+field_name: field_available_languages
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: fi
+      label: suomi
+    -
+      value: en
+      label: englanti
+    -
+      value: sv
+      label: ruotsi
+    -
+      value: fr
+      label: ranska
+    -
+      value: de
+      label: saksa
+    -
+      value: tr
+      label: turkki
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

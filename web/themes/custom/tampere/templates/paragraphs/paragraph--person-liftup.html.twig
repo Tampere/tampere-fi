@@ -1,0 +1,88 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - contact_image: Optional. The image for the person as a render array.
+ * - contact_title: Optional. The title for the person as a string.
+ * - contact_legend: Optional. The legend for the person liftup as a string.
+ * - contact_full_name: Optional. The full name of the person as a string.
+ * - contact_area_of_responsibility: Optional. The area of responsibility for the person as a string.
+ * - contact_phone_number: Optional. The phone number for the person as a render array.
+ * - contact_additional_phones: Optional. Additional phone numbers for the person as a render array.
+ * - contact_email_address: Optional. The email address for the person as a render array.
+ * - contact_description: Optional. The description for the person as a string.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set contact_phone_number_markup = contact_phone_number|render %}
+{% set contact_additional_phones_markup = contact_additional_phones|render %}
+{% set contact_email_address_markup = contact_email_address|render %}
+{% set contact_image_markup = contact_image|render %}
+
+{% if
+  contact_title or
+  contact_full_name or
+  contact_phone_number_markup|trim or
+  contact_additional_phones_markup|trim or
+  contact_email_address_markup|trim or
+  contact_image_markup|trim or
+  contact_description
+%}
+  {% embed "@organisms/_paragraph.twig" %}
+    {% block paragraph_content %}
+      {% embed "@molecules/person-contact/person-contact.twig" with {
+        "person_contact__preheading": contact_title,
+        "person_contact__legend": contact_legend,
+        "person_contact__name": contact_full_name,
+        "person_contact__subheading": contact_area_of_responsibility,
+        "person_contact__phone_number": contact_phone_number_markup,
+        "person_contact__additional_phones": contact_additional_phones_markup,
+        "person_contact__email_address": contact_email_address_markup,
+        "person_contact__description": contact_description,
+        "attributes": [],
+      } %}
+        {% block person_contact_image %}
+          {% if not contact_image_markup|trim %}
+            {{ parent() }}
+          {% else %}
+            {{ contact_image_markup }}
+          {% endif %}
+        {% endblock %}
+      {% endembed %}
+
+      {{ content['#cache'] }}
+    {% endblock %}
+  {% endembed %}
+{% endif %}

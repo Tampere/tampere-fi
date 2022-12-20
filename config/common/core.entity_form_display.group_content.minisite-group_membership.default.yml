@@ -1,0 +1,45 @@
+uuid: 93530cbe-3c78-47e5-aeba-e7a4a6e86f78
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group_content.minisite-group_membership.group_roles
+    - group.content_type.minisite-group_membership
+  module:
+    - path
+id: group_content.minisite-group_membership.default
+targetEntityType: group_content
+bundle: minisite-group_membership
+mode: default
+content:
+  entity_id:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  group_roles:
+    type: options_buttons
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  uid: true

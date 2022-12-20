@@ -1,0 +1,12 @@
+uuid: b4ffdb03-d8be-4e6a-be72-79628005faae
+langcode: fi
+status: false
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: K7eNlfU7NEUajz01wItywZklr2oaPgL6s1_97fmDXLA
+id: comment.full
+label: 'Koko kommentti'
+targetEntityType: comment
+cache: true

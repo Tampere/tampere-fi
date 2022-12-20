@@ -1,0 +1,170 @@
+{% set involvement_card__base_class = "involvement-card" %}
+
+{% if involvement_card__heading__url %}
+  {% set involvement_card__heading__modifiers = [ "link" ] %}
+{% endif %}
+
+<div {{ bem(involvement_card__base_class, involvement_card__modifiers, involvement_card__blockname)}}>
+  <div {{ bem("main-content", involvement_card__main_content__modifiers, involvement_card__base_class)}}>
+    <div {{ bem("header", involvement_card__heading_container__modifiers, involvement_card__base_class)}}>
+      <div {{ bem("heading-container", involvement_card__heading_container__modifiers, involvement_card__base_class)}}>
+        {% if involvement_card__heading %}
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_blockname: involvement_card__base_class,
+            heading_level: 2,
+            heading_modifiers: involvement_card__heading__modifiers,
+            heading: involvement_card__heading,
+            heading_url: involvement_card__heading__url,
+          } %}
+        {% endif %}
+
+        {% if involvement_card__way or involvement_card__time %}
+          <div {{ bem("type-container", involvement_card__type_container__modifiers, involvement_card__base_class)}}>
+            {% if involvement_card__way %}
+              {% include "@atoms/02-text/text/07-text-block.twig" with {
+                text_block_base_class: "way",
+                text_block_blockname: involvement_card__base_class,
+                text_block_content: involvement_card__way,
+              } %}
+            {% endif %}
+
+            {% if involvement_card__time %}
+              {% include "@atoms/02-text/text/07-text-block.twig" with {
+                text_block_base_class: "time",
+                text_block_blockname: involvement_card__base_class,
+                text_block_content: involvement_card__time,
+              } %}
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+      <div {{ bem("phase-container", involvement_card__phase_container__modifiers, involvement_card__base_class)}}>
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: involvement_card__phase__base_class|default("phase"),
+          paragraph_modifiers: involvement_card__phase__modifiers,
+          paragraph_blockname: involvement_card__base_class,
+          paragraph_content: involvement_card__phase,
+        } %}
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: involvement_card__icon__base_class|default("icon"),
+          icon_modifiers: involvement_card__icon__modifiers,
+          icon_blockname: involvement_card__base_class,
+          icon_filename: "icons",
+          icon_name: involvement_card__icon__name|default("idea"),
+          icon_decorative: true,
+        } %}
+      </div>
+    </div>
+
+    {% if involvement_card__sign_up %}
+      <div {{ bem("sign-up", involvement_card__sign_up__modifiers, involvement_card__base_class)}}>
+        {% block involvement_card_sign_up_information %}
+          {% include "@atoms/02-text/text/07-text-block.twig" with {
+            text_block_content: involvement_card__sign_up,
+          } %}
+        {% endblock %}
+      </div>
+    {% endif %}
+
+    {% if involvement_card__summary %}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        text_block_base_class: "summary",
+        text_block_blockname: involvement_card__base_class,
+        text_block_content: involvement_card__summary,
+      } %}
+    {% endif %}
+
+    {% if involvement_card__description %}
+      <div {{ bem("description", involvement_card__description__modifiers, involvement_card__base_class)}}>
+        {% block involvement_card_description %}
+          {% include "@atoms/02-text/text/07-text-block.twig" with {
+            text_block_content: involvement_card__description,
+          } %}
+        {% endblock %}
+      </div>
+    {% endif %}
+
+    {% if (involvement_card__location or involvement_card__address) %}
+      <div {{ bem("location-container", involvement_card__location_container__modifiers, involvement_card__base_class)}}>
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: involvement_card__icon__base_class|default("place-icon"),
+          icon_modifiers: involvement_card__icon__modifiers,
+          icon_blockname: involvement_card__base_class,
+          icon_filename: "icons",
+          icon_name: involvement_card__icon__name|default("place"),
+          icon_decorative: true,
+        } %}
+        <div {{ bem("location-wrapper", involvement_card__location_wrapper__modifiers, involvement_card__base_class)}}>
+          {% if involvement_card__location %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class: "location-heading",
+              text_block_blockname: involvement_card__base_class,
+              text_block_content: involvement_card__location_label,
+            } %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class: "location-content",
+              text_block_blockname: involvement_card__base_class,
+              text_block_content: involvement_card__location,
+            } %}
+          {% endif %}
+          {% if involvement_card__address %}
+            {% block involvement_card_address %}
+              {% include "@atoms/02-text/text/07-text-block.twig" with {
+                text_block_base_class: "location-heading",
+                text_block_blockname: involvement_card__base_class,
+                text_block_content: involvement_card__address_label,
+              } %}
+              {% include "@atoms/02-text/text/07-text-block.twig" with {
+                text_block_base_class: "location-content",
+                text_block_blockname: involvement_card__base_class,
+                text_block_content: involvement_card__address,
+              } %}
+            {% endblock %}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% block involvement_card_web_location %}
+      {% if involvement_card__web_location__text %}
+        {% include "@atoms/02-text/text/07-text-block.twig" with {
+          text_block_base_class: "web-heading",
+          text_block_blockname: involvement_card__base_class,
+          text_block_content: involvement_card__web_location__label,
+        } %}
+        {% include "@atoms/01-links/link/link.twig" with {
+          link_content: involvement_card__web_location__text,
+          link_url: involvement_card__web_location__url,
+          link_base_class: "web-content",
+          link_blockname: involvement_card__base_class,
+        } %}
+      {% endif %}
+    {% endblock %}
+
+    {% if involvement_card__links or involvement_card__links__items %}
+      <div {{ bem("links", involvement_card__links__modifiers, involvement_card__base_class)}}>
+        {% if involvement_card__links__items %}
+          {% include "@atoms/link-list/link-list.twig" with {
+            link_list__items: involvement_card__links__items,
+          } %}
+        {% else %}
+          {% embed "@atoms/link-list/link-list.twig" %}
+            {% block list_content %}
+              {{ involvement_card__links }}
+            {% endblock %}
+          {% endembed %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if involvement_card__accordion_tabs %}
+    <div {{ bem("accordion", involvement_card__accordion__modifiers, involvement_card__base_class)}}>
+      {% include "@organisms/accordion/horizontal-accordion/horizontal-accordion.twig" with {
+        "horizontal_accordion__modifiers": [ "involvement" ],
+        "available_tabs": involvement_card__accordion_tabs,
+        "horizontal_accordion__paragraph_id": involvement_card__paragraph_id,
+      } %}
+    </div>
+  {% endif %}
+</div>

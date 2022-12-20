@@ -1,0 +1,17 @@
+uuid: c6f6a02f-3d26-43ef-98f7-38e1b1849ce5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+  enforced:
+    config:
+      - user.role.contact_info_author
+id: minisite-497bd0061
+label: Yhteystietotoimittaja
+weight: 8
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: false
+permissions: {  }

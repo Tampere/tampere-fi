@@ -1,0 +1,13 @@
+uuid: d092aad4-c8f1-4f65-83fb-11fb0825526e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.back_to_top_link
+id: paragraph.back_to_top_link.default
+targetEntityType: paragraph
+bundle: back_to_top_link
+mode: default
+content: {  }
+hidden:
+  search_api_excerpt: true

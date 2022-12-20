@@ -1,0 +1,57 @@
+uuid: 80b09a78-9f92-48bb-bc10-10918c65982b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_online_displayed_fields
+field_name: field_online_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: summary
+      label: Tiivistelmä
+    -
+      value: description
+      label: Kuvaus
+    -
+      value: link
+      label: Verkko-osoite
+    -
+      value: electronic_id_required
+      label: 'Vaatiiko verkkoasiointi sähköisen tunnistautumisen'
+    -
+      value: electronic_signature_required
+      label: 'Vaatiiko verkkoasiointi sähköisen allekirjoituksen'
+    -
+      value: languages
+      label: 'Kielet, joilla verkkoasiointi käytettävissä'
+    -
+      value: support
+      label: 'Käytön tuki'
+    -
+      value: attachments
+      label: 'Liitteet ja lisätietolinkit'
+    -
+      value: areas
+      label: 'Alue, jolla verkkoasiointi on käytettävissä'
+    -
+      value: accessibility
+      label: Saavutettavuustiedot
+    -
+      value: service_hours
+      label: Palveluajat
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

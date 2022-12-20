@@ -1,0 +1,26 @@
+uuid: a2bf7bea-eaa4-48e2-a72e-922567f7e4eb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embederator_embed.field_embederator_embed
+    - paragraphs.paragraphs_type.embederator_embed
+id: paragraph.embederator_embed.default
+targetEntityType: paragraph
+bundle: embederator_embed
+mode: default
+content:
+  field_embederator_embed:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  translation: true

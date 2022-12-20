@@ -1,0 +1,22 @@
+uuid: 6f02b0c0-0ed6-455f-9988-aa62af9046c1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.involvement_opportunity
+id: node.involvement_opportunity.promote
+field_name: promote
+entity_type: node
+bundle: involvement_opportunity
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

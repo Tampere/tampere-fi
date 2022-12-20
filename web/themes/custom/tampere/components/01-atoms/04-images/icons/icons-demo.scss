@@ -1,0 +1,21 @@
+// These are meant only for Storybook.
+.icons-demo {
+  --icon-primary-color: lightgray;
+  --icon-secondary-color: black;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 32px;
+  padding: 0;
+  
+  & > div {
+    padding: 16px 32px;
+    transition: all 0.4s;
+    flex: 1 1 20%;
+    min-width: 150px;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}

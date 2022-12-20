@@ -1,0 +1,20 @@
+uuid: 1bf7bc6a-3af2-420c-bbda-695f54f39cb1
+langcode: fi
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_downloadable_material
+field_name: field_downloadable_material
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

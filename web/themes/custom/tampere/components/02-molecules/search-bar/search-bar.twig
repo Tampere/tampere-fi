@@ -1,0 +1,40 @@
+{% set search_bar__base_class = search_bar_base_class|default("search-bar") %}
+
+{% set search_bar__search_form_aria_label = search_bar_form_aria_label|default("Site search"|t) %}
+
+{% set search_bar_input_attributes = {
+    "aria-label": "Search by keyword"|t,
+    "name": "s",
+    "placeholder": "Search"|t ({}, { "context" : "Search bar placeholder" }),
+    "value": search_bar_value,
+    "type": "text",
+  }
+%}
+
+{% set search_form_attributes = {
+  "method": "GET",
+  "role": "search",
+  "action": search_bar__form_action,
+  "aria-label": search_bar__search_form_aria_label,
+} %}
+
+<div {{ bem(search_bar__base_class, search_bar__modifiers|default([]), search_bar__blockname) }}>
+  {% block search_bar_form %}
+    <form
+      {% for attribute, value in search_form_attributes %}
+        {{ attribute }}="{{ value }}"
+      {% endfor %}
+      {{ bem("search-form", search_bar__search_form__modifiers|default([]), search_bar__base_class) }}
+    >
+      {% include "@atoms/05-forms/_input.twig" with {
+        "custom_classes": search_bar__base_class ~ "__input",
+        "input_attributes": search_bar_input_attributes,
+      } %}
+      {% include "@molecules/search-bar/_search-bar-button.twig" with {
+        "search_bar__base_class": search_bar__base_class,
+        "search_button_attributes": search_button_attributes,
+        "search_bar__base_class": search_bar__base_class,
+      } %}
+    </form>
+  {% endblock %}
+</div>

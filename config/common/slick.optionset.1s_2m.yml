@@ -1,0 +1,41 @@
+uuid: 3c659f7b-c525-407e-bf14-dc7a7b7ae8ad
+langcode: en
+status: false
+dependencies:
+  enforced:
+    module:
+      - slick
+_core:
+  default_config_hash: WpWUAD3X2RwYxsRGzJeh2Imqi592ZcXwEkvcT4tgzQU
+id: 1s_2m
+name: 1s_2m
+weight: -10
+label: '1 on mobile, 2 on medium'
+group: ''
+skin: default
+breakpoints: 1
+optimized: true
+options:
+  options__active_tab: edit-options-settings
+  settings:
+    mobileFirst: true
+    dots: true
+    appendDots: .slick__arrow
+    focusOnSelect: true
+    infinite: false
+    lazyLoad: blazy
+    slidesToShow: 1
+  responsives:
+    responsive:
+      -
+        breakpoint: 321
+        unslick: false
+        settings:
+          draggable: false
+          infinite: false
+          slidesPerRow: 2
+          slidesToShow: 2
+          slidesToScroll: 2
+          swipe: false
+          touchMove: false
+          waitForAnimate: false

@@ -1,0 +1,17 @@
+uuid: 290d432d-2de7-457c-b077-2579b4d78e74
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: blog_header_small_view_mode
+label: 'Blogin ylätunniste - small (57x57)'
+effects:
+  3811cf91-8288-495d-afeb-a6cce3750629:
+    uuid: 3811cf91-8288-495d-afeb-a6cce3750629
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 57
+      height: 57
+      crop_type: focal_point

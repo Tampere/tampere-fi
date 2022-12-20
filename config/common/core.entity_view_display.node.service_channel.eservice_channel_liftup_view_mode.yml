@@ -1,0 +1,355 @@
+uuid: db01bd3c-0efd-488d-9420-113d7aad8b8f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.eservice_channel_liftup_view_mode
+    - field.field.node.service_channel.field_accessibility_and_services
+    - field.field.node.service_channel.field_accessibility_links
+    - field.field.node.service_channel.field_additional_phones
+    - field.field.node.service_channel.field_address_postal
+    - field.field.node.service_channel.field_area_text
+    - field.field.node.service_channel.field_available_languages
+    - field.field.node.service_channel.field_body_md
+    - field.field.node.service_channel.field_channel_display_name
+    - field.field.node.service_channel.field_delivery_details
+    - field.field.node.service_channel.field_electronic_id_required
+    - field.field.node.service_channel.field_electronic_signature_rqd
+    - field.field.node.service_channel.field_exception_hours
+    - field.field.node.service_channel.field_form_links
+    - field.field.node.service_channel.field_form_receiver
+    - field.field.node.service_channel.field_links
+    - field.field.node.service_channel.field_organization
+    - field.field.node.service_channel.field_service_attachments
+    - field.field.node.service_channel.field_service_channel_type
+    - field.field.node.service_channel.field_service_hours_daily
+    - field.field.node.service_channel.field_service_hours_overnight
+    - field.field.node.service_channel.field_summary
+    - field.field.node.service_channel.field_support_emails
+    - field.field.node.service_channel.field_support_phones
+    - node.type.service_channel
+  module:
+    - ds
+    - field_delimiter
+    - link
+    - office_hours
+    - options
+    - text
+    - tre_phone_field_formatter
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_cta
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: halfwidth
+          settings:
+            skip_paragraph_id: 1
+            heading_level: '3'
+    regions:
+      cta__heading:
+        - field_channel_display_name
+      cta__content:
+        - field_summary
+        - field_body_md
+        - field_area_text
+        - field_available_languages
+        - field_accessibility_and_services
+        - field_services
+        - field_support_phones
+        - field_support_emails
+        - field_service_attachments
+        - field_accessibility_links
+        - field_electronic_signature_rqd
+        - field_electronic_id_required
+        - field_service_hours_daily
+        - field_exception_hours
+      cta__links:
+        - field_links
+id: node.service_channel.eservice_channel_liftup_view_mode
+targetEntityType: node
+bundle: service_channel
+mode: eservice_channel_liftup_view_mode
+content:
+  field_accessibility_and_services:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ', '
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 6
+    region: cta__content
+  field_accessibility_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 11
+    region: cta__content
+  field_area_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 4
+    region: cta__content
+  field_available_languages:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings:
+      field_delimiter:
+        delimiter: ', '
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 5
+    region: cta__content
+  field_body_md:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: cta__content
+  field_channel_display_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: cta__heading
+  field_electronic_id_required:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 13
+    region: cta__content
+  field_electronic_signature_rqd:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
+    region: cta__content
+  field_exception_hours:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      field_delimiter:
+        delimiter: '</br>'
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 15
+    region: cta__content
+  field_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: '1'
+        ft:
+          id: pattern
+          settings:
+            pattern: link_with_icon
+            pattern_mapping:
+              'ds_field_template:field_links__uri':
+                destination: link_with_icon__url
+                weight: 0
+                plugin: ds_field_template
+                source: field_links__uri
+              'ds_field_template:field_links__title':
+                destination: link_with_icon__link_text
+                weight: 1
+                plugin: ds_field_template
+                source: field_links__title
+            pattern_settings:
+              icon_field_group:
+                field_label: ''
+                field_label_token: ''
+                label_highlight: 0
+              link_with_icon:
+                link_text: 'Siirry verkkoasiointiin'
+              regular_field:
+                display_colon_after_label: 0
+            pattern_variant: service
+    weight: 16
+    region: cta__links
+  field_service_attachments:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      field_delimiter:
+        delimiter: '</br>'
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 10
+    region: cta__content
+  field_service_hours_daily:
+    type: office_hours
+    label: above
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_closed: all
+      closed_format: Suljettu
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      timezone_field: ''
+      office_hours_first_day: ''
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: Palveluajat
+            lb-col: true
+            classes: {  }
+    weight: 14
+    region: cta__content
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: cta__content
+  field_support_emails:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      field_delimiter:
+        delimiter: '</br>'
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 9
+    region: cta__content
+  field_support_phones:
+    type: tre_phone_field_plain
+    label: above
+    settings:
+      force_format: default
+    third_party_settings:
+      field_delimiter:
+        delimiter: '</br>'
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 8
+    region: cta__content
+hidden:
+  field_additional_phones: true
+  field_address_postal: true
+  field_delivery_details: true
+  field_form_links: true
+  field_form_receiver: true
+  field_organization: true
+  field_service_channel_type: true
+  field_service_hours_overnight: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

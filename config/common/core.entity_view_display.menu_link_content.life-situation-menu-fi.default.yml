@@ -1,0 +1,21 @@
+uuid: 4ade2e3b-827e-4128-a4e5-dd92ef2afaa3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.life-situation-menu-fi.field_hide_menu_link
+    - system.menu.life-situation-menu-fi
+id: menu_link_content.life-situation-menu-fi.default
+targetEntityType: menu_link_content
+bundle: life-situation-menu-fi
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_hide_menu_link: true
+  langcode: true
+  search_api_excerpt: true

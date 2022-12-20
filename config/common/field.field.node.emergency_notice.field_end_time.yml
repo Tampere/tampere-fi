@@ -1,0 +1,24 @@
+uuid: 63355d33-8769-4134-af60-7b62153e2f63
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_end_time
+    - node.type.emergency_notice
+  module:
+    - datetime
+id: node.emergency_notice.field_end_time
+field_name: field_end_time
+entity_type: node
+bundle: emergency_notice
+label: Lopetusaika
+description: 'Päivämäärä ja kellonaika, jonka jälkeen häiriöilmoituksen ei pitäisi enää olla näkyvissä sivustolla.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: relative
+    default_date: '+1 week'
+default_value_callback: ''
+settings: {  }
+field_type: datetime

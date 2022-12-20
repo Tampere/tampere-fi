@@ -1,0 +1,17 @@
+uuid: 23d46c2e-ad45-4724-a0e6-68238acf9a93
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.service_author
+id: topic-5a3543202
+label: Palvelutoimittaja
+weight: 9
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

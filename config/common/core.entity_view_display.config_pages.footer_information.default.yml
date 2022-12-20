@@ -1,0 +1,65 @@
+uuid: 1457d2b3-b4e9-40a0-8b81-1f9e33f942c2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.footer_information
+    - field.field.config_pages.footer_information.field_first_text_column
+    - field.field.config_pages.footer_information.field_second_text_column
+    - field.field.config_pages.footer_information.field_site_copyrights
+    - field.field.config_pages.footer_information.field_site_statement_links
+    - field.field.config_pages.footer_information.field_social_media_links
+  module:
+    - entity_reference_revisions
+    - link
+    - text
+id: config_pages.footer_information.default
+targetEntityType: config_pages
+bundle: footer_information
+mode: default
+content:
+  field_first_text_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_second_text_column:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_site_copyrights:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_site_statement_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_social_media_links:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

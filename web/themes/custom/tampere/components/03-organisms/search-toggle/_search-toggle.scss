@@ -1,0 +1,130 @@
+.search-toggle {
+  @include dynamic-color(minisite-identifier-background, $set-focus-color: false);
+
+  $base_class: &;
+
+  &__button {
+    @include dynamic-color(minisite-identifier-background, border-color);
+
+    align-items: center;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 1px;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: $space-xs;
+    height: $small-button-size;
+    width: $small-button-size;
+
+    @include large {
+      border: 0;
+      margin-top: $space-xs * (-1);
+      height: auto;
+      width: auto;
+    }
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    &:focus,
+    &:hover,
+    &.is-expanded {
+      @include dynamic-color(
+        minisite-identifier-background,
+        $color-primary: minisite-identifier-background,
+        $color-secondary: text,
+        $inversed: true,
+        $set-focus-color: false
+      );
+
+      background-color: clr(background);
+      border-color: clr(background);
+
+      @include large {
+        @include dynamic-color(minisite-identifier-background);
+
+        background-color: transparent;
+      }
+    }
+
+    &.is-expanded {
+      + #{$base_class}__search-bar {
+        display: block;
+      }
+
+      #{$base_class}__icon--closed {
+        display: none;
+      }
+
+      #{$base_class}__icon--open {
+        &.shown-on-mobile {
+          display: block;
+
+          @include large {
+            display: none;
+          }
+        }
+
+        &.shown-on-desktop {
+          display: none;
+          padding: $space-xxs;
+
+          @include large {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &__text {
+    display: none;
+    font-family: $font-heading;
+    font-size: $font-16;
+    font-weight: $font-weight-semi-bold;
+
+    @include large {
+      display: block;
+      margin-right: $space-xs;
+    }
+  }
+
+  &__icon {
+    width: $icon-xs;
+    height: $icon-xs;
+
+    @include large {
+      width: $icon-small;
+      height: $icon-small;
+    }
+
+    &--open {
+      display: none;
+    }
+  }
+
+  &__search-bar {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(150%);
+    right: $gutter-mobile;
+    left: $gutter-mobile;
+    width: auto;
+
+    @include large {
+      left: auto;
+      right: $gutter-large;
+    }
+
+    @include max-width {
+      right: calc((100% - #{$max-width}) / 2 + #{$gutter-large});
+    }
+  }
+}

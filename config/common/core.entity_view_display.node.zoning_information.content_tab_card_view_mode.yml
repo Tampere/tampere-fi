@@ -1,0 +1,180 @@
+uuid: ad00ae95-ab36-43ac-8e13-cbfb3b16cfff
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.content_tab_card_view_mode
+    - field.field.node.zoning_information.field_address
+    - field.field.node.zoning_information.field_description
+    - field.field.node.zoning_information.field_display_location_on_map
+    - field.field.node.zoning_information.field_display_period
+    - field.field.node.zoning_information.field_epsg_3067_easting
+    - field.field.node.zoning_information.field_epsg_3067_northing
+    - field.field.node.zoning_information.field_feedback_form
+    - field.field.node.zoning_information.field_geographical_areas
+    - field.field.node.zoning_information.field_help_text
+    - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_location
+    - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_other_identifiers
+    - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_plan_number
+    - field.field.node.zoning_information.field_plan_type
+    - field.field.node.zoning_information.field_processing_time
+    - field.field.node.zoning_information.field_record_number
+    - field.field.node.zoning_information.field_search_keywords
+    - field.field.node.zoning_information.field_topics
+    - field.field.node.zoning_information.field_zoning_information_type
+    - node.type.zoning_information
+  module:
+    - ds
+    - field_group
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+          ds_content: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - group_columns
+        - field_description
+        - field_address
+        - node_link
+    fields:
+      node_link:
+        plugin_id: node_link
+        weight: 3
+        label: above
+        formatter: default
+        settings:
+          'link text': 'Lue lisää'
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: Verkkosivu
+            lb-col: true
+            classes: {  }
+  field_group:
+    group_columns:
+      children:
+        - field_description
+        - field_address
+        - node_link
+      label: Sarakkeet
+      parent_name: ''
+      region: ds_content
+      weight: 0
+      format_type: pattern_formatter
+      format_settings:
+        pattern: column_field_group
+        variants:
+          figure: large
+          icon_field_group: location
+          link_field: default
+          regular_field: above
+          listing_item: default
+          in_page_menu: default
+          topical_card: default
+          popup_card: default
+          topical_content: default
+          topics_and_life_situations: default
+        pattern_mapping:
+          'fields:field_description':
+            destination: pre_columns_content
+            weight: 0
+            plugin: fields
+            source: field_description
+          'fields:field_address':
+            destination: left_column
+            weight: 1
+            plugin: fields
+            source: field_address
+          'ds_field:node_link':
+            destination: left_column
+            weight: 2
+            plugin: ds_field
+            source: node_link
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+id: node.zoning_information.content_tab_card_view_mode
+targetEntityType: node
+bundle: zoning_information
+mode: content_tab_card_view_mode
+content:
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: icon_field_group
+            pattern_mapping:
+              'ds_field_template:field_address__value':
+                destination: icon_field_group_content
+                weight: 0
+                plugin: ds_field_template
+                source: field_address__value
+            pattern_settings:
+              icon_field_group:
+                field_label: Osoite
+                field_label_token: ''
+            pattern_variant: location
+    weight: 2
+    region: ds_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: ds_content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_display_period: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_feedback_form: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_location: true
+  field_main_image: true
+  field_other_identifiers: true
+  field_paragraphs: true
+  field_plan_number: true
+  field_plan_type: true
+  field_processing_time: true
+  field_record_number: true
+  field_search_keywords: true
+  field_topics: true
+  field_zoning_information_type: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

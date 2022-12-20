@@ -1,0 +1,65 @@
+.involvement-header {
+  margin-top: $space-s;
+  margin-right: $space-s;
+  margin-left: $space-s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: clr(primary);
+  font-size: $font-16;
+  font-weight: $font-weight-bold;
+  text-align: center;
+
+  @include large {
+    @include centered-content;
+
+    margin-top: $space-xl;
+    font-size: $font-18;
+  }
+
+  &__first-column-inner {
+    width: max-content;
+  }
+
+  &__way {
+    color: clr(primary);
+  }
+  
+  &__way,
+  &__date-time {
+    background-color: clr(involvement);
+    padding: $space-xs $space-s;
+    margin-top: 0;
+    margin-bottom: $space-xs;
+  }
+
+  &__date-time {
+    background-color: clr(involvement-secondary);
+  }
+
+  &__sign-up {
+    color: clr(text);
+    font-weight: $font-weight-regular;
+  }
+
+  &__icon {
+    color: clr(involvement);
+    width: $icon-medium;
+    height: $icon-medium;
+
+    @include large {
+      width: $icon-large-minus;
+      height: $icon-large-minus;
+    }
+  }
+
+  &__phase {
+    max-width: 100px;
+    margin: 0;
+
+    @include large {
+      max-width: 145px;
+    }
+  }
+
+}

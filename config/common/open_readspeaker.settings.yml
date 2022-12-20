@@ -1,0 +1,7 @@
+_core:
+  default_config_hash: NWpL551DTojvfvKJOZjBTPGfC9rGIQN7CGgI51a-Cao
+langcode: fi
+open_readspeaker_i18n: fi_fi
+open_readspeaker_accountid: '8380'
+open_readspeaker_post_mode: true
+open_readspeaker_url: 'https://cdn-eu.readspeaker.com/script/8380/webReader/webReader.js?pids=wr&skin=rsbtn-tampere'

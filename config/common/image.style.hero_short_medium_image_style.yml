@@ -1,0 +1,17 @@
+uuid: 65a352d5-589f-44ce-b611-fd327ddfb8b6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_short_medium_image_style
+label: 'Hero (matala) - medium (985×290)'
+effects:
+  1c6c8164-a8fb-4179-932d-14ad2af2f2fe:
+    uuid: 1c6c8164-a8fb-4179-932d-14ad2af2f2fe
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 985
+      height: 290
+      crop_type: focal_point

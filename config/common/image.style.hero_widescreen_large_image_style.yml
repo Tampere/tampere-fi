@@ -1,0 +1,17 @@
+uuid: 2317d1ef-02a6-4161-9063-8a4484c56341
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: hero_widescreen_large_image_style
+label: 'Hero (laajakuva) - large (1320×290)'
+effects:
+  f07ca212-2123-478f-b03c-30969d9e0da1:
+    uuid: f07ca212-2123-478f-b03c-30969d9e0da1
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1320
+      height: 290
+      crop_type: focal_point

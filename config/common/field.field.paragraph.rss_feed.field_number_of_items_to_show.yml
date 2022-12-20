@@ -1,0 +1,23 @@
+uuid: fcac34e8-7cde-43d3-ab1f-9c3cc97c2153
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_number_of_items_to_show
+    - paragraphs.paragraphs_type.rss_feed
+  module:
+    - options
+id: paragraph.rss_feed.field_number_of_items_to_show
+field_name: field_number_of_items_to_show
+entity_type: paragraph
+bundle: rss_feed
+label: 'Näytettävien RSS-otsikoiden määrä'
+description: 'Näyttää maksimissaan 100 otsikkoa.'
+required: true
+translatable: true
+default_value:
+  -
+    value: 5
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

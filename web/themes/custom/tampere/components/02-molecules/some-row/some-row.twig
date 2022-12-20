@@ -1,0 +1,14 @@
+{% set some_row_class = "some-row" %}
+
+<ul {{ bem(some_row_class, (some_row_modifiers), some_row_blockname) }}>
+ {% block list_content %}
+    {% for item in some_row_items %}
+      {% include "@molecules/some-row/_some-row-item.twig" with {
+        item_blockname: some_row_class,
+        link_url: item.url,
+        icon_name: item.icon,
+        aria_label: item.aria_label,
+      } %}
+    {% endfor %}
+  {% endblock %}
+</ul>

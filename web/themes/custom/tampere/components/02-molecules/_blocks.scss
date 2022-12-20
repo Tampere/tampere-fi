@@ -1,0 +1,52 @@
+/* Styles related to Drupal blocks */
+
+.block {
+  &--breadcrumb {
+    .mobile-breadcrumb {
+      display: block;
+
+      @include medium {
+        display: none;
+      }
+    }
+    .desktop-breadcrumb {
+      display: none;
+
+      @include medium {
+        display: block;
+      }
+    }
+  }
+
+  &--react-and-share {
+    @include centered-content($max-width: $max-width);
+    @include page-element-spacer;
+
+    @include large {
+      .layout-container--with-sidebar & {
+        padding-left: 0;
+        padding-right: $gutter-sidebar-content;
+      }
+    }
+  }
+
+  &.search-bar {
+    .form-item {
+      margin: 0;
+    }
+
+    .form-submit {
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-item__label {
+      @include visually-hidden;
+    }
+
+    .form-item__textfield {
+      background-image: none !important; // Overriding autocomplete input styles from module
+    }
+  }
+}
+

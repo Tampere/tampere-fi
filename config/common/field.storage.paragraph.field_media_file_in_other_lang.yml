@@ -1,0 +1,20 @@
+uuid: 24dad521-bd6b-42ea-9a55-a2e32038c202
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+    - paragraphs
+id: paragraph.field_media_file_in_other_lang
+field_name: field_media_file_in_other_lang
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

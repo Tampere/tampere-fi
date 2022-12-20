@@ -1,0 +1,10 @@
+uuid: c71b3bf6-8600-4e15-853b-225008f9b2dd
+langcode: fi
+status: true
+dependencies: {  }
+id: single_colorful_content_liftup
+label: 'Yksittäinen värikäs sisältönosto'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -1,0 +1,23 @@
+uuid: 3d8b40f7-407a-46e4-83cd-c89c01204970
+langcode: fi
+status: false
+dependencies:
+  config:
+    - facets.facet.mapped_content_type
+  module:
+    - facets
+  theme:
+    - tampere
+id: content_type_facet
+theme: tampere
+region: content
+weight: 0
+provider: null
+plugin: 'facet_block:mapped_content_type'
+settings:
+  id: 'facet_block:mapped_content_type'
+  label: Sisältötyyppi
+  label_display: '0'
+  provider: facets
+  block_id: content_type_facet
+visibility: {  }

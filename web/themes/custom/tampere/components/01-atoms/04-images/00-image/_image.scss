@@ -1,0 +1,134 @@
+$figure-medium-height: 363px;
+$figure-medium-height--xs: 576px;
+$figure-medium-height--small: 896px;
+$figure-medium-height--desktop: 533px;
+$figure-small-height: 170px;
+$figure-small-height--desktop: 267px;
+$figure-width--desktop: 400px;
+
+img,
+picture {
+  @include img;
+
+}
+
+.image,
+.image__img,
+.field-media,
+.field-media > div,
+.field-media-image,
+.media__image {
+  height: 100%;
+}
+
+.media__image,
+.image__img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.figure {
+  @include page-element-spacer;
+
+  margin: 0; //override normalize
+
+  &__link {
+    display: block;
+  }
+
+  &__caption {
+    @include caption;
+    @include word-wrap;
+  }
+
+  &--align-none,
+  &--align-left,
+  &--align-right {
+    margin-top: 0;
+    margin-bottom: $space-m;
+  }
+
+  &--align-none {
+    clear: both;
+  }
+
+  &--align-left:not(.figure--large) {
+    @include medium {
+      float: left;
+      margin-right: $space-xl;
+    }
+  }
+
+  &--align-right:not(.figure--large) {
+    @include medium {
+      float: right;
+      margin-left: $space-xl;
+    }
+  }
+
+  &--small,
+  &--medium {
+    width: 100%;
+
+    @include medium {
+      width: $figure-width--desktop;
+    }
+  }
+
+  &--small {
+    .field-media {
+      height: $figure-small-height;
+
+      @include small {
+        height: $figure-small-height--desktop;
+      }
+    }
+  }
+
+  &--medium {
+    .field-media {
+      height: $figure-medium-height;
+
+      @include xs {
+        height: $figure-medium-height--xs;
+      }
+
+      @include small {
+        height: $figure-medium-height--small;
+      }
+
+      @include medium {
+        height: $figure-medium-height--desktop;
+      }
+    }
+  }
+
+  &--accordion-content-view-mode {
+    @include accordion-content-spacer;
+  }
+
+  &--thumbnail {
+    display: table;
+
+    .figure__caption {
+      display: table-caption;
+      caption-side: bottom;
+    }
+  }
+}
+
+.logo {
+  display: block;
+
+  &__img {
+    height: auto;
+    margin-left: -7px;
+    max-height: 100%;
+    width: $site-logo-max-width;
+
+    @include large {
+      margin-left: -10px;
+      width: $site-logo-max-width--desktop;
+    }
+  }
+}

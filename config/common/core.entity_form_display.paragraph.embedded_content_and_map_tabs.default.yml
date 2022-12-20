@@ -1,0 +1,153 @@
+uuid: a5d252c7-65fb-47d8-b127-33ac5e2dd5f9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embedded_content_and_map_tabs.field_description_text
+    - field.field.paragraph.embedded_content_and_map_tabs.field_geographical_areas
+    - field.field.paragraph.embedded_content_and_map_tabs.field_keywords
+    - field.field.paragraph.embedded_content_and_map_tabs.field_life_situations
+    - field.field.paragraph.embedded_content_and_map_tabs.field_tabs_displayed_content_tps
+    - field.field.paragraph.embedded_content_and_map_tabs.field_taxonomy_combination
+    - field.field.paragraph.embedded_content_and_map_tabs.field_title
+    - field.field.paragraph.embedded_content_and_map_tabs.field_topics
+    - field.field.paragraph.embedded_content_and_map_tabs.field_zoning_information_types
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_taxonomies:
+      children:
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+      label: Luokittelut
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_content_type_taxonomies:
+      children:
+        - group_zoning_information
+      label: 'Sisältötyyppikohtaiset luokittelut'
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_zoning_information:
+      children:
+        - field_zoning_information_types
+      label: Kaava
+      region: content
+      parent_name: group_content_type_taxonomies
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: paragraph.embedded_content_and_map_tabs.default
+targetEntityType: paragraph
+bundle: embedded_content_and_map_tabs
+mode: default
+content:
+  field_description_text:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tabs_displayed_content_tps:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_taxonomy_combination:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_zoning_information_types:
+    type: options_buttons
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

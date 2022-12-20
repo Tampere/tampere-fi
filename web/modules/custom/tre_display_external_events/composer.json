@@ -1,0 +1,10 @@
+{
+    "name": "tampere/tre_display_external_events",
+    "type": "drupal-module",
+    "description": "Display external events from Pirkanmaa region",
+    "keywords": [
+    ],
+    "require": {
+        "devgeniem/linkedevents-client": "^1.2"
+    }
+}

@@ -1,0 +1,166 @@
+uuid: 8bc69256-5089-47c8-ac7f-cbfe0957b369
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.content_tab_card_view_mode
+    - field.field.node.place.field_additional_information
+    - field.field.node.place.field_address
+    - field.field.node.place.field_description
+    - field.field.node.place.field_display_location_on_map
+    - field.field.node.place.field_epsg_3067_easting
+    - field.field.node.place.field_epsg_3067_northing
+    - field.field.node.place.field_geographical_areas
+    - field.field.node.place.field_help_text
+    - field.field.node.place.field_keywords
+    - field.field.node.place.field_location
+    - field.field.node.place.field_main_image
+    - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_search_keywords
+    - field.field.node.place.field_topics
+    - node.type.place
+  module:
+    - ds
+    - field_group
+    - user
+third_party_settings:
+  field_group:
+    group_columns:
+      children:
+        - field_description
+        - field_address
+        - node_link
+      label: Sarakkeet
+      parent_name: ''
+      region: ds_content
+      weight: 0
+      format_type: pattern_formatter
+      format_settings:
+        pattern: column_field_group
+        variants:
+          figure: large
+          icon_field_group: location
+          link_field: default
+          regular_field: above
+          listing_item: default
+          in_page_menu: default
+          topical_card: default
+          popup_card: default
+          topical_content: default
+          topics_and_life_situations: default
+        pattern_mapping:
+          'fields:field_description':
+            destination: pre_columns_content
+            weight: 0
+            plugin: fields
+            source: field_description
+          'fields:field_address':
+            destination: left_column
+            weight: 1
+            plugin: fields
+            source: field_address
+          'ds_field:node_link':
+            destination: left_column
+            weight: 2
+            plugin: ds_field
+            source: node_link
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+          ds_content: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - group_columns
+        - field_description
+        - field_address
+        - node_link
+    fields:
+      node_link:
+        plugin_id: node_link
+        weight: 3
+        label: above
+        formatter: default
+        settings:
+          'link text': 'Lue lisää'
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: Verkkosivu
+            lb-col: true
+            classes: {  }
+id: node.place.content_tab_card_view_mode
+targetEntityType: node
+bundle: place
+mode: content_tab_card_view_mode
+content:
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: icon_field_group
+            pattern_mapping:
+              'ds_field_template:field_address__value':
+                destination: icon_field_group_content
+                weight: 0
+                plugin: ds_field_template
+                source: field_address__value
+            pattern_settings:
+              icon_field_group:
+                field_label: Osoite
+                field_label_token: ''
+            pattern_variant: location
+    weight: 2
+    region: ds_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: ds_content
+hidden:
+  content_moderation_control: true
+  field_additional_information: true
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_location: true
+  field_main_image: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

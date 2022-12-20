@@ -1,0 +1,18 @@
+uuid: 23343a16-f27d-499a-823e-e7d9c9d0a223
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: group.minisite.label
+field_name: label
+entity_type: group
+bundle: minisite
+label: Otsikko
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

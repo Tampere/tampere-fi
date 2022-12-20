@@ -1,0 +1,11 @@
+uuid: 7cb1872d-6144-4e19-8ddf-5baaeb37efe7
+langcode: fi
+status: true
+dependencies: {  }
+id: topic
+label: Aihepiiri
+description: ''
+new_revision: true
+creator_membership: false
+creator_wizard: true
+creator_roles: {  }

@@ -1,0 +1,28 @@
+.topics-and-life-situations {
+  @include page-element-spacer;
+
+  &__heading {
+    @include section-heading;
+
+    margin-bottom: $space-xs;
+
+    @include large {
+      margin-bottom: $space-l;
+    }
+  }
+
+  &--primary {
+    @include page-element-spacer('padding');
+
+    background-color: clr(accent-secondary);
+    padding-left: $space-s;
+    padding-right: $space-s;
+    height: 100%;
+    margin: 0;
+
+    @include large {
+      padding-left: $gutter-default;
+      padding-right: clamp($space-m, 5%, $gutter-default);
+    }
+  }
+}

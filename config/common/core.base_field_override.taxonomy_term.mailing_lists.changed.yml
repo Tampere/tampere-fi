@@ -1,0 +1,18 @@
+uuid: 6f1c7992-ec76-4a0f-8bad-059d1d3f3904
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mailing_lists
+id: taxonomy_term.mailing_lists.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: mailing_lists
+label: Muuttunut
+description: 'Kellonaika jolloin termiä viimeksi päivitettiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

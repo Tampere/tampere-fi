@@ -1,0 +1,19 @@
+uuid: f08c2be7-1ef3-4b34-8211-d9d7d10b6f91
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+id: group.field_theme_topic
+field_name: field_theme_topic
+entity_type: group
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

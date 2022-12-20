@@ -1,0 +1,14 @@
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Tabs
+    group_header:
+      label: 'Name and picture'
+    group_main_content:
+      label: 'Enriched content'
+    group_integrated_data:
+      label: 'Integrated data'
+    group_categorization:
+      label: Categorization
+    group_search_keywords:
+      label: 'Search keywords'

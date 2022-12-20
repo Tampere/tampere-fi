@@ -1,0 +1,52 @@
+uuid: 1dff42da-feda-494b-bc8c-ac3c0c6e7364
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.feedback_section.field_feedback_links
+    - field.field.paragraph.feedback_section.field_feedback_title
+    - field.field.paragraph.feedback_section.field_media
+    - paragraphs.paragraphs_type.feedback_section
+  module:
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.feedback_section.default
+targetEntityType: paragraph
+bundle: feedback_section
+mode: default
+content:
+  field_feedback_links:
+    type: paragraphs_classic_asymmetric
+    weight: 2
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+  field_feedback_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,13 @@
+uuid: 2427e662-f820-43e7-ab18-20ebf833b90e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: SPsUXsR3Rc8d1y3gewzaAKWa1ncea_ywXX3f7LTn7k0
+id: user_unblock_user_action
+label: 'Poista esto valituilta käyttäjiltä'
+type: user
+plugin: user_unblock_user_action
+configuration: {  }

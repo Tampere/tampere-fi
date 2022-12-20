@@ -1,0 +1,25 @@
+uuid: d3a92061-91b9-4f40-829e-df88169fba3a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.zoning_project_cards.field_zoning_project_cards
+    - paragraphs.paragraphs_type.zoning_project_cards
+  module:
+    - entity_reference_revisions
+id: paragraph.zoning_project_cards.default
+targetEntityType: paragraph
+bundle: zoning_project_cards
+mode: default
+content:
+  field_zoning_project_cards:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

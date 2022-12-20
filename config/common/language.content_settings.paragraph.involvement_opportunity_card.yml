@@ -1,0 +1,18 @@
+uuid: 9e306276-45f4-4af0-8ed4-bbf8d6f21ae7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.involvement_opportunity_card
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.involvement_opportunity_card
+target_entity_type_id: paragraph
+target_bundle: involvement_opportunity_card
+default_langcode: current_interface
+language_alterable: true

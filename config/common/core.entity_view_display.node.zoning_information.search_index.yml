@@ -1,0 +1,164 @@
+uuid: efec29c1-0fc1-4251-b028-b076c51f5b82
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.zoning_information.field_address
+    - field.field.node.zoning_information.field_description
+    - field.field.node.zoning_information.field_display_location_on_map
+    - field.field.node.zoning_information.field_display_period
+    - field.field.node.zoning_information.field_epsg_3067_easting
+    - field.field.node.zoning_information.field_epsg_3067_northing
+    - field.field.node.zoning_information.field_feedback_form
+    - field.field.node.zoning_information.field_geographical_areas
+    - field.field.node.zoning_information.field_help_text
+    - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_location
+    - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_other_identifiers
+    - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_plan_number
+    - field.field.node.zoning_information.field_plan_type
+    - field.field.node.zoning_information.field_processing_time
+    - field.field.node.zoning_information.field_record_number
+    - field.field.node.zoning_information.field_search_keywords
+    - field.field.node.zoning_information.field_topics
+    - field.field.node.zoning_information.field_zoning_information_type
+    - node.type.zoning_information
+  module:
+    - ds
+    - entity_reference_revisions
+    - user
+id: node.zoning_information.search_index
+targetEntityType: node
+bundle: zoning_information
+mode: search_index
+content:
+  field_address:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_geographical_areas:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 3
+    region: content
+  field_keywords:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_plan_number:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 5
+    region: content
+  field_record_number:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: content
+  field_search_keywords:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_topics:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 8
+    region: content
+hidden:
+  content_moderation_control: true
+  field_display_location_on_map: true
+  field_display_period: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_feedback_form: true
+  field_help_text: true
+  field_location: true
+  field_main_image: true
+  field_other_identifiers: true
+  field_plan_type: true
+  field_processing_time: true
+  field_zoning_information_type: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

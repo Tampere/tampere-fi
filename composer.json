@@ -1,0 +1,441 @@
+{
+    "name": "tampere/drupal-web",
+    "description": "Drupal solution powering the tampere.fi website, based on drupal/recommended-project.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.tampere.fi",
+    "support": {
+        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
+        "chat": "https://www.drupal.org/node/314178"
+    },
+    "repositories": {
+        "linkedevents-client": {
+            "type": "git",
+            "url": "https://github.com/Exove/linkedevents-client.git"
+        },
+        "ptv-php-client": {
+            "type": "git",
+            "url": "https://github.com/Tampere/ptv-php-client-v11.git"
+        },
+        "0": {
+            "type": "package",
+            "package": {
+                "name": "drupal/webform_paragraphs",
+                "type": "drupal-module",
+                "version": "1.0",
+                "source": {
+                    "type": "git",
+                    "url": "https://git.drupalcode.org/issue/webform_paragraphs-3228326.git",
+                    "reference": "1c24d05e7782f46608ea078bad853fc1fc7178b4"
+                }
+            }
+        },
+        "1": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        "2": {
+            "type": "package",
+            "package": {
+                "name": "dinbror/blazy",
+                "version": "1.8.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/dinbror/blazy/archive/master.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "3": {
+            "type": "package",
+            "package": {
+                "name": "gaambo/slick",
+                "version": "1.8.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/gaambo/slick/archive/v1.8.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "4": {
+            "type": "package",
+            "package": {
+                "name": "dropzone/dropzone",
+                "version": "5.9.3",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "dropzone/dist"
+                },
+                "dist": {
+                    "url": "https://github.com/dropzone/dropzone/releases/download/v5.9.3/dist.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "5": {
+            "type": "package",
+            "package": {
+                "name": "midzer/tobii",
+                "version": "2.3.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/midzer/tobii/archive/refs/tags/v2.3.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        "6": {
+            "type": "package",
+            "package": {
+                "name": "oskariorg/rpc-client",
+                "version": "2.1.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/oskariorg/rpc-client/v2.1.0/dist/rpc-client.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        "7": {
+            "type": "package",
+            "package": {
+                "name": "afarkas/lazysizes",
+                "version": "5.3.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/aFarkas/lazysizes/5.3.1/lazysizes.min.js",
+                    "type": "file"
+                }
+            }
+        }
+    },
+    "require": {
+        "afarkas/lazysizes": "^5.3",
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.7",
+        "devgeniem/linkedevents-client": "dev-update_rmccue_requests#a82aabc",
+        "dinbror/blazy": "^1.8",
+        "dropzone/dropzone": "5.9.3",
+        "drupal/address": "^1.8",
+        "drupal/address_display": "^1.0@beta",
+        "drupal/admin_toolbar": "^3.0",
+        "drupal/allowed_formats": "^1.3",
+        "drupal/antibot": "^1.4",
+        "drupal/auto_entitylabel": "^3.0@beta",
+        "drupal/backward_compatibility": "^1.0",
+        "drupal/better_exposed_filters": "^5.0",
+        "drupal/blazy": "^2.0",
+        "drupal/cache_tags": "^1.0",
+        "drupal/ckwordcount": "^1.2",
+        "drupal/color_field": "^2.4",
+        "drupal/components": "^2.0",
+        "drupal/config_filter": "^2.2",
+        "drupal/config_ignore": "^2.3",
+        "drupal/config_pages": "^2.9",
+        "drupal/config_split": "^2.0",
+        "drupal/console": "^1.0.2",
+        "drupal/content_moderation_notifications": "^3.4",
+        "drupal/cookieinformation": "^1.1",
+        "drupal/core-composer-scaffold": "~9.4.8",
+        "drupal/core-project-message": "~9.4.8",
+        "drupal/core-recommended": "~9.4.8",
+        "drupal/decorative_image_widget": "^1.0.0-alpha4",
+        "drupal/diff": "^1.0",
+        "drupal/ds": "^3.9",
+        "drupal/easy_breadcrumb": "^2.0",
+        "drupal/elb": "^2.0",
+        "drupal/embederator": "^3.2",
+        "drupal/entity_browser": "^2.5",
+        "drupal/entity_reference_unpublished": "^1.3",
+        "drupal/entity_type_clone": "^1.7",
+        "drupal/entity_usage": "^2.0@beta",
+        "drupal/environment_indicator": "^4.0",
+        "drupal/ex_icons": "^1.3",
+        "drupal/external_data_source": "^3.0",
+        "drupal/facets": "^2.0",
+        "drupal/facets_custom_label": "^1.1",
+        "drupal/feeds": "^3.0@beta",
+        "drupal/field_delimiter": "^1.1",
+        "drupal/field_group": "^3.1",
+        "drupal/field_states_ui": "^2.0",
+        "drupal/file_delete": "^2.0",
+        "drupal/focal_point": "^1.5",
+        "drupal/form_display_field_machine_name": "^1.3",
+        "drupal/formdazzle": "^2.1",
+        "drupal/geofield": "^1.34",
+        "drupal/google_tag": "^1.4",
+        "drupal/group": "^1.4",
+        "drupal/group_content_menu": "^1.1",
+        "drupal/group_scheduled_transitions": "^1.0",
+        "drupal/heading": "^1.6",
+        "drupal/image_style_warmer": "^1.1",
+        "drupal/imagecache_external": "^3.0",
+        "drupal/jsonapi_boost": "^2.0",
+        "drupal/jsonapi_extras": "^3.21",
+        "drupal/jsonapi_image_styles": "^3.0",
+        "drupal/jsonapi_include": "^1.5",
+        "drupal/language_switcher_extended": "^1.0@beta",
+        "drupal/lazy": "^3.11",
+        "drupal/limited_field_widgets": "^2.0",
+        "drupal/linkit": "^6.0",
+        "drupal/markdown": "^3.0@RC",
+        "drupal/markup": "^1.0@beta",
+        "drupal/markup_field": "^1.1@beta",
+        "drupal/maxlength": "^1.0@RC",
+        "drupal/media_bulk_upload": "^3.0",
+        "drupal/media_entity_dreambroker": "1.x-dev#83563d31",
+        "drupal/media_entity_file_replace": "^1.1",
+        "drupal/memcache": "^2.3",
+        "drupal/menu_item_extras": "^2.16",
+        "drupal/message_notify": "^1.2",
+        "drupal/metatag": "^1.13",
+        "drupal/migrate_override": "^1.1",
+        "drupal/migrate_plus": "^6.0.0",
+        "drupal/migrate_source_csv": "^3.4",
+        "drupal/mimemail": "^1.0@alpha",
+        "drupal/office_hours": "^1.5",
+        "drupal/open_readspeaker": "^1.9",
+        "drupal/openid_connect": "^1.1",
+        "drupal/options_table": "^2.0",
+        "drupal/override_node_options": "^2.6",
+        "drupal/paragraph_view_mode": "^3.0.0",
+        "drupal/paragraphs": "^1.11",
+        "drupal/paragraphs_admin": "^1.1",
+        "drupal/paragraphs_asymmetric_translation_widgets": "^1.0@beta",
+        "drupal/path_guard": "^1.0@alpha",
+        "drupal/pathauto": "^1.6",
+        "drupal/preprocess": "^2.0",
+        "drupal/publication_date": "^2.0@beta",
+        "drupal/purge": "^3.2",
+        "drupal/purge_file": "^1.0",
+        "drupal/quick_node_clone": "^1.15",
+        "drupal/quicklink": "^1.2",
+        "drupal/rabbit_hole": "^1.0@beta",
+        "drupal/redirect": "^1.5",
+        "drupal/robotstxt": "^1.4",
+        "drupal/role_delegation": "^1.1",
+        "drupal/scheduled_transitions": "^2.1",
+        "drupal/scn": "^2.0",
+        "drupal/search_api": "^1.16",
+        "drupal/search_api_autocomplete": "^1.6",
+        "drupal/search_api_mapping": "^2.0",
+        "drupal/search_api_solr": "^4.2",
+        "drupal/simple_responsive_table": "^2.3",
+        "drupal/simple_sitemap": "^4.1",
+        "drupal/siteimprove": "^1.12",
+        "drupal/slick": "^2.2",
+        "drupal/social_media": "^1.9",
+        "drupal/social_media_links": "^2.8",
+        "drupal/svg_image_field": "^2.1",
+        "drupal/system_status": "^2.9",
+        "drupal/tablefield": "^2.2",
+        "drupal/telephone_plus": "^9.1",
+        "drupal/term_reference_tree": "^1.0",
+        "drupal/timesup": "^1.0",
+        "drupal/twig_tweak": "^3.1",
+        "drupal/ui_patterns": "^1.2",
+        "drupal/ui_patterns_settings": "^2.0@beta",
+        "drupal/username_enumeration_prevention": "^1.1",
+        "drupal/varnish_purge": "^2.1",
+        "drupal/views_custom_cache_tag": "^1.2",
+        "drupal/webform": "^6.1",
+        "drupal/webform_paragraphs": "^1.0",
+        "drupal/webform_translation_permissions": "^1.1",
+        "drush/drush": "^11.0",
+        "emulsify-ds/emulsify-drupal": "^2.0",
+        "gaambo/slick": "^1.8",
+        "league/commonmark": "^1",
+        "midzer/tobii": "^2.3",
+        "mpdf/mpdf": "^8.1",
+        "oskariorg/rpc-client": "^2.1",
+        "proj4php/proj4php": "^2.0",
+        "tampere/ptv-php-client-v11": "dev-improve_php8_compatibility#319fb46"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "drupal/console-extend-plugin": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            },
+            "file-mapping": {
+                "[web-root]/robots.txt": {
+                    "mode": "skip"
+                },
+                "[web-root]/web.config": {
+                    "mode": "skip"
+                },
+                "[web-root]/sites/default/default.settings.php": {
+                    "append": "composer-scaffold-assets/database-settings.txt"
+                },
+                "[web-root]/sites/default/settings.php": {
+                    "mode": "replace",
+                    "path": "composer-scaffold-assets/settings.php"
+                },
+                "[web-root]/sites/development.services.yml": {
+                    "mode": "replace",
+                    "path": "composer-scaffold-assets/development.services.yml"
+                }
+            }
+        },
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        },
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: https://www.drupal.org/docs/8/install",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://www.drupal.org/support",
+                "  * Get involved with the Drupal community:",
+                "      https://www.drupal.org/getting-involved",
+                "  * Remove the plugin that prints this message:",
+                "      composer remove drupal/core-project-message"
+            ]
+        },
+        "patches": {
+            "drupal/better_exposed_filters": {
+                "3164774 - Add support for adding datepicker options": "https://www.drupal.org/files/issues/2022-04-20/3164774-bef_respect_datepicker_opts_date_format.patch"
+            },
+            "drupal/components": {
+                "3107993 - Template is not defined error on node edit / admin pages": "https://www.drupal.org/files/issues/2021-06-24/DRUP86-template_not_defined.patch"
+            },
+            "drupal/cookieinformation": {
+                "3194493 & 3194494 - Add support for Google consent mode and blocking iframes - support for Embederator lazyload": "patches/add_support_for_blocking_iframes_3194493_3194494.diff"
+            },
+            "drupal/core": {
+                "#2546212: Entity view/form mode formatter/widget settings have no translation UI": "https://www.drupal.org/files/issues/2020-10-02/2546212-155.patch",
+                "2775651 - No active language in language switcher": "https://www.drupal.org/files/issues/2020-11-02/fixed-language-code-for-switcher-v1_0.patch",
+                "2700667 - Notice: Undefined index: #type in drupal_process_states()": "https://www.drupal.org/files/issues/2021-05-12/2700667-133a.patch",
+                "2230909 - Simple decimals fail to pass validation": "https://www.drupal.org/files/issues/2021-10-07/drupal-simple-decimal-validation-ver_9.2.7-2230909-234.patch",
+                "2868014 - Views Date Filter Datetime Granularity Option": "https://www.drupal.org/files/issues/2021-04-26/2868014-110.patch",
+                "2993688 - Views relationships with multi-valued entity reference fields invalidate Distinct query option - 99": "https://www.drupal.org/files/issues/2022-06-16/2993688-99.patch"
+            },
+            "drupal/elb": {
+                "3327333 - PHP 8 compatibility issue": "https://www.drupal.org/files/issues/2022-12-15/3327333-filter-empty-values-from-config-2.patch"
+            },
+            "drupal/external_data_source": {
+                "3194516 - Replace EntityManagerInterface with EntityTypeManagerInterface": "https://www.drupal.org/files/issues/2021-01-25/replace-entityManagerInaterface-3194516-1.patch",
+                "3259684 - ExternalDataSource widgets break Dependency Injection": "https://www.drupal.org/files/issues/2022-05-02/3259684_dependency_injection_fix-4.patch"
+            },
+            "drupal/feeds": {
+                "3080098 - Delete Empty Files Created If Empty/Error Exception is Returned": "https://www.drupal.org/files/issues/2021-08-31/delete-empty-error-file_3080098_5.patch"
+            },
+            "drupal/field_group": {
+                "2787179 - Ensure visibility of invalid fields (JS)": "https://www.drupal.org/files/issues/2021-09-03/2787179-highlight-html5-validation-74.patch"
+            },
+            "drupal/field_states_ui": {
+                "3166929 - Ajax error for trying to access array offset on value of type null": "https://www.drupal.org/files/issues/2022-02-07/3166929-7.patch"
+            },
+            "drupal/group": {
+                "2815971 - More contexts": "https://www.drupal.org/files/issues/2021-02-19/2815971-28.patch",
+                "2881769 - group/<id>/node/create uses the permissions of group/<id>/node/add": "https://www.drupal.org/files/issues/2020-10-01/2881769-22.patch",
+                "GroupContentStorage exceptions": "patches/groupcontentstorage_exceptions.patch"
+            },
+            "drupal/group_content_menu": {
+                "3209011 - Active trail is cached incorrectly": "https://www.drupal.org/files/issues/2021-04-21/group_content_menu-active_trail_cache_problem-3209011-10.patch",
+                "3224816 - Starting level deeper than 1 ignores active trail, when 'Expand all items' is enabled": "https://www.drupal.org/files/issues/2021-07-21/group_content_menu-3224816-2-expand-all-items-bugfix.patch"
+            },
+            "drupal/group_scheduled_transitions": {
+                "Access return fix for group scheduled transitions": "patches/make_group_scheduled_transitions_allow_drupal-wide_transitions_for_non_group_members.patch"
+            },
+            "drupal/linkit": {
+                "#2886455: Add support for multilanguage": "https://git.drupalcode.org/project/linkit/-/merge_requests/2.diff"
+            },
+            "drupal/markdown": {
+                "#3265416: Error when using markdown module with PHP 8.1 on Drupal 9.3": "https://www.drupal.org/files/issues/2022-11-08/3265416-markdown-php-81-14.patch"
+            },
+            "drupal/memcache": {
+                "#2996615: Transaction support for cache (tags) invalidation": "https://www.drupal.org/files/issues/2022-10-25/2996615-revised-woth-hooks--rerolled-against-2.5.patch"
+            },
+            "drupal/metatag": {
+                "#3312950: Warning: Undefined array key 'href' in": "https://www.drupal.org/files/issues/2022-10-01/metatag-n3312950-2.patch"
+            },
+            "drupal/office_hours": {
+                "Remove useless commas from office hours": "patches/remove_useless_commas_from_office_hours.diff"
+            },
+            "drupal/path_guard": {
+                "#3192503 Invalid translation language (en) specified": "https://www.drupal.org/files/issues/2021-01-13/3192503-2.patch"
+            },
+            "drupal/publication_date": {
+                "3074373 - Publication date is required for completing the form": "https://www.drupal.org/files/issues/2022-12-20/publication_date_is_required_for_completing_the_form-3074373-11.patch"
+            },
+            "drupal/simple_responsive_table": {
+                "3269622 - Add core/jquery.once as a dependency": "https://www.drupal.org/files/issues/2022-03-15/add-jquery-once-dependency-3269622.patch",
+                "Add custom selectors for css in simple responsive table - Use this module only in table paragraph": "patches/custom_css_in_simple_responsive_table.patch"
+            },
+            "drupal/tablefield": {
+                "3040358 - Add support for dragging table rows": "https://www.drupal.org/files/issues/2022-04-05/3040358-tabledrag-support-36.patch"
+            },
+            "drupal/timesup": {
+                "3318856 - The 'core_version_requirement' constraint (^9) requires the 'core' key not be set": "https://www.drupal.org/files/issues/2022-11-03/timesup-info-yml-core-key-removal-3318856.patch"
+            }
+        }
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "drupal/coder": "^8.3",
+        "drupal/coffee": "^1.2",
+        "drupal/stage_file_proxy": "^1.1",
+        "mglaman/phpstan-drupal": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan-deprecation-rules": "^1.0"
+    }
+}

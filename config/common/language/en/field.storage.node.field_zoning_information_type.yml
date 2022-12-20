@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Local detailed plan'
+    -
+      label: 'Local master plan'

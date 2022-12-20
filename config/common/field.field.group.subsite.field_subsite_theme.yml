@@ -1,0 +1,29 @@
+uuid: cd622317-7194-4c6c-bb9d-e00a761f3ad0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_subsite_theme
+    - group.type.subsite
+    - group.type.theme
+id: group.subsite.field_subsite_theme
+field_name: field_subsite_theme
+entity_type: group
+bundle: subsite
+label: 'Alasivuston teema'
+description: 'Tällä kentällä merkitset alasivuston <em>alisteiseksi</em> tietylle teemalle. Valinta vaikuttaa alasivuston sisällön URL-polkuihin ja murupolkuun. Voit merkitä alasivuston alisteiseksi <em>joko</em> teemalle, elämäntilanteelle <em>tai</em> aihepiirille.  Jos merkitset useamman alistussuhteen, ei murupolkua tai sisällön polkua käsitellä näiden suhteen mitenkään.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      theme: theme
+    sort:
+      field: label
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

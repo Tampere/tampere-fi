@@ -1,0 +1,23 @@
+uuid: f7c217f3-43a8-4790-926d-989a6f541986
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_map
+    - paragraphs.paragraphs_type.place_liftup
+id: paragraph.place_liftup.field_display_map
+field_name: field_display_map
+entity_type: paragraph
+bundle: place_liftup
+label: 'Näytä sijainti kartalla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Näytä
+  off_label: Piilota
+field_type: boolean

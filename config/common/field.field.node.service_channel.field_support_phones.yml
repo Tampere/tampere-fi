@@ -1,0 +1,23 @@
+uuid: 764955c6-45cd-45e6-bdb9-66f4b383bb95
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_support_phones
+    - node.type.service_channel
+  module:
+    - telephone_plus
+id: node.service_channel.field_support_phones
+field_name: field_support_phones
+entity_type: node
+bundle: service_channel
+label: Tukipuhelinnumerot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  default_country_code: FI
+  country_code_enabled: 0
+field_type: telephone_plus_field

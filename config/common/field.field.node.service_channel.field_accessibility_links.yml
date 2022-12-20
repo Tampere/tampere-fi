@@ -1,0 +1,23 @@
+uuid: 117e9167-6ab8-44e1-842b-7a914d34df0b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accessibility_links
+    - node.type.service_channel
+  module:
+    - link
+id: node.service_channel.field_accessibility_links
+field_name: field_accessibility_links
+entity_type: node
+bundle: service_channel
+label: Saavutettavuusselosteet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link

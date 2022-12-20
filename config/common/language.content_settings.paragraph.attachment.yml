@@ -1,0 +1,18 @@
+uuid: 6f4d1b4f-eb74-47ca-bea0-ab99953851d6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.attachment
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.attachment
+target_entity_type_id: paragraph
+target_bundle: attachment
+default_langcode: current_interface
+language_alterable: true

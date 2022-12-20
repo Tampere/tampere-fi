@@ -1,0 +1,31 @@
+uuid: c11593fa-72a8-41f5-9fc2-b0b55eba9f07
+langcode: en
+status: false
+dependencies: {  }
+id: staging_split
+label: 'Staging split'
+description: "Set of configurations that should run in a staging environment.\r\nIt is disabled by default and you can activate it in settings.php by adding this:\r\n$config['config_split.config_split.staging_split']['status'] = TRUE;"
+weight: 0
+stackable: false
+storage: folder
+folder: ../config/staging
+module:
+  dblog: 0
+  purge: 0
+  purge_drush: 0
+  purge_file: 0
+  purge_queuer_coretags: 0
+  purge_tokens: 0
+  purge_ui: 0
+  varnish_focal_point_purge: 0
+  varnish_image_purge: 0
+  varnish_purge_tags: 0
+  varnish_purger: 0
+theme: {  }
+complete_list:
+  - purge.logger_channels
+  - purge.plugins
+  - purge_queuer_coretags.settings
+partial_list:
+  - environment_indicator.indicator
+  - system.performance

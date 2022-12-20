@@ -1,0 +1,93 @@
+$listen-icon-color: clr(text-secondary);
+
+.rsbtn-tampere.rsbtn {
+  // ReadSpeaker's own styles cause the container element
+  // to not know its actual size when expanded. Since the element
+  // is placed after the breadcrumbs inside a flex container,
+  // some of the buttons are forced to move onto another row even when
+  // there would be space available for them. This makes sure
+  // the ReadSpeaker element takes up the space it requires.
+  &.rsexpanded {
+    z-index: 5;
+
+    @include small {
+      margin-left: $space-s;
+      min-width: 395px;
+    }
+  }
+
+  // Only apply custom styles when ReadSpeaker isn't expanded.
+  // This will ensure all functionalities remain accessible.
+  &:not(.rsexpanded) {
+    .rsbtn_tooltoggle {
+      display: none !important;
+    }
+
+    .rsbtn_play {
+      background-color: clr(background-color);
+      border: none;
+
+      &:focus,
+      &:hover {
+        background-color: clr(background-color);
+
+        .rsbtn_left {
+          .rsbtn_text {
+            span {
+              color: $listen-icon-color;
+              text-decoration: underline;
+              text-underline-offset: 3px;
+            }
+          }
+        }
+      }
+
+      .rsbtn_left {
+        margin: 0;
+
+        .rsbtn_text {
+          &::before,
+          &::after {
+            content: "";
+          }
+
+          span {
+            font-family: $font-heading !important;
+            font-weight: $font-weight-regular;
+            padding: 0;
+            margin-right: $space-xs;
+            font-size: $font-18;
+          }
+        }
+      }
+
+      .rsbtn_right {
+        border: none;
+
+        &::before {
+          content: "";
+        }
+
+        &.rsimg {
+          width: $icon-medium;
+          height: $icon-medium;
+          padding: 0;
+          margin-right: 0;
+          -webkit-mask: url('../images/icon-sets/main-site-icons/readspeaker.svg') no-repeat;
+          mask: url('../images/icon-sets/main-site-icons/readspeaker.svg') no-repeat;
+          -webkit-mask-size: contain;
+          mask-size: contain;
+          background-color: $listen-icon-color;
+        }
+      }
+    }
+  }
+}
+
+.rsbtn {
+  .site-precontent__readspeaker &,
+  .site-header__readspeaker &,
+  .minisite-header__readspeaker & {
+    margin-bottom: 0;
+  }
+}

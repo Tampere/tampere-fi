@@ -1,0 +1,6 @@
+uuid: 934b04f2-ec39-4fc9-ba74-2d4875a7cffc
+langcode: fi
+status: true
+dependencies: {  }
+id: subsite_main_menu_fi
+label: 'Alasivuston päävalikko'

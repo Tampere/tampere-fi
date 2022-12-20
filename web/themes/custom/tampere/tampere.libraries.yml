@@ -1,0 +1,143 @@
+global:
+  version: 2.0
+  css:
+    theme:
+      dist/style.css: {}
+
+sprite:
+  js:
+    components/01-atoms/04-images/icons/svgxuse.min.js: { attributes: { defer: true } }
+
+accordion:
+  js:
+    dist/js/03-organisms/accordion/accordion.js: {}
+  dependencies:
+    - core/drupal
+
+horizontal-accordion:
+  js:
+    dist/js/03-organisms/accordion/horizontal-accordion/horizontal-accordion.js: {}
+  dependencies:
+    - core/drupal
+
+facet-accordion:
+  js:
+    dist/js/03-organisms/accordion/facet-accordion/facet-accordion.js: {}
+  dependencies:
+    - core/drupal
+
+emergency-notice:
+  js:
+    dist/js/02-molecules/emergency-notice/emergency-notice.js: {}
+  dependencies:
+    - core/drupal
+
+hyphenation:
+  js:
+    js/hyphenation.js: {}
+    node_modules/hyphenopoly/Hyphenopoly_Loader.js: {}
+
+language-dropdown:
+  js:
+    dist/js/02-molecules/language-dropdown/language-dropdown.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+back-to-top:
+  js:
+    dist/js/02-molecules/back-to-top-button/back-to-top.js: {}
+  dependencies:
+    - core/drupal
+
+lightbox:
+  css:
+    component:
+      /libraries/tobii/dist/tobii.min.css: {}
+  js:
+    /libraries/tobii/dist/tobii.min.js: {}
+
+image-gallery:
+  js:
+    dist/js/03-organisms/image-gallery/image-gallery.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - tampere/lightbox
+
+sidebar-menu:
+  js:
+    dist/js/02-molecules/menus/sidebar-menu/sidebar-menu.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+sidebar-menu-container:
+  js:
+    dist/js/03-organisms/sidebar-menu-container/sidebar-menu-container.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+site-header:
+  js:
+    dist/js/03-organisms/site/site-header/site-header.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+external-link:
+  js:
+    dist/js/02-molecules/external-link/external-link.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+search-toggle:
+  js:
+    dist/js/03-organisms/search-toggle/search-toggle.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+anchor-link:
+  js:
+    dist/js/01-atoms/anchor-link/anchor-link.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+in-page-menu:
+  js:
+    dist/js/02-molecules/menus/in-page-menu/in-page-menu.js:
+  dependencies:
+    - core/drupal
+    - core/once
+    - tampere/anchor-link
+
+juicer-feed-modifications:
+  js:
+    dist/js/02-molecules/some-feed/juicer-feed-modifications.js: {}
+  dependencies:
+    - core/drupal
+
+tabbed-container:
+  js:
+    dist/js/03-organisms/tabbed-container/tabbed-container.js: {}
+  dependencies:
+    - core/drupal
+
+search-panel:
+  js:
+    dist/js/03-organisms/search-panel/search-panel.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+text-paragraph-in-page-menu:
+  js:
+    dist/js/02-molecules/menus/in-page-menu/text-paragraph-in-page-menu.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - tampere/anchor-link

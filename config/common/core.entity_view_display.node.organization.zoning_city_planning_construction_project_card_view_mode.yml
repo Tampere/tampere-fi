@@ -1,0 +1,70 @@
+uuid: e12b8899-c9ca-48fb-8d38-2078bb357156
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.zoning_city_planning_construction_project_card_view_mode
+    - field.field.node.organization.field_contact_info_paragraph
+    - field.field.node.organization.field_description
+    - field.field.node.organization.field_geographical_areas
+    - field.field.node.organization.field_help_text
+    - field.field.node.organization.field_keywords
+    - field.field.node.organization.field_main_image
+    - field.field.node.organization.field_paragraphs
+    - field.field.node.organization.field_search_keywords
+    - field.field.node.organization.field_topics
+    - node.type.organization
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - field_description
+        - field_contact_information
+id: node.organization.zoning_city_planning_construction_project_card_view_mode
+targetEntityType: node
+bundle: organization
+mode: zoning_city_planning_construction_project_card_view_mode
+content:
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 0
+    region: ds_content
+hidden:
+  content_moderation_control: true
+  field_contact_info_paragraph: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_main_image: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

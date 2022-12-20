@@ -1,0 +1,21 @@
+uuid: c38a37a6-6313-4340-8465-9d7895d0fae3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_language
+    - paragraphs.paragraphs_type.video_embed
+  module:
+    - options
+id: paragraph.video_embed.field_language
+field_name: field_language
+entity_type: paragraph
+bundle: video_embed
+label: Kielivalinta
+description: 'Valitse kieli, jos kyseessä on arabian-, venäjän- tai persian-/farsinkielinen sisältö.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

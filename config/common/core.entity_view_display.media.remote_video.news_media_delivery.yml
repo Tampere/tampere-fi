@@ -1,0 +1,68 @@
+uuid: c3ad2c08-e386-4486-b56d-0df33e62ee27
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.news_media_delivery
+    - field.field.media.remote_video.field_description
+    - field.field.media.remote_video.field_media_oembed_video
+    - media.type.remote_video
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: layout_onecol
+      library: layout_discovery/onecol
+      disable_css: true
+      entity_classes: all_classes
+      settings:
+        label: ''
+    regions:
+      content:
+        - name
+        - field_media_oembed_video
+_core:
+  default_config_hash: WNE7ZhyHdpd8jGMxu2LTtzSRD_63nnINvKGwdQxAsec
+id: media.remote_video.news_media_delivery
+targetEntityType: media
+bundle: remote_video
+mode: news_media_delivery
+content:
+  field_media_oembed_video:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: 'Katso video'
+            lb-col: true
+            classes: {  }
+    weight: 1
+    region: content
+  name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: 'Videon nimi'
+            lb-col: true
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_description: true
+  langcode: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

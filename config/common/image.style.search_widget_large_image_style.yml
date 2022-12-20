@@ -1,0 +1,17 @@
+uuid: b883bf8d-9c14-43c6-9cef-a4a7403d27a8
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: search_widget_large_image_style
+label: 'Hakuwidgetti - large (770×746)'
+effects:
+  9f582c01-86bf-47fc-b093-47265c7effe0:
+    uuid: 9f582c01-86bf-47fc-b093-47265c7effe0
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 770
+      height: 746
+      crop_type: focal_point

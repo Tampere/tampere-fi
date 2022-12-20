@@ -1,0 +1,20 @@
+uuid: 0c4ecf02-81d7-45db-9984-fd1345f6a156
+langcode: fi
+status: true
+dependencies:
+  module:
+    - ex_icons
+    - paragraphs
+id: paragraph.field_icon
+field_name: field_icon
+entity_type: paragraph
+type: ex_icon
+settings:
+  case_sensitive: false
+module: ex_icons
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

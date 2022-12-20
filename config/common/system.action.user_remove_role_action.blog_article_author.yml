@@ -1,0 +1,14 @@
+uuid: c8a035aa-ee16-4833-9fbf-4b0f815d5126
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.blog_article_author
+  module:
+    - user
+id: user_remove_role_action.blog_article_author
+label: 'Remove the Blogitoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: blog_article_author

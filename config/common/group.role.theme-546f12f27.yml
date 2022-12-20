@@ -1,0 +1,17 @@
+uuid: 3d7536bf-34bd-45de-ad39-06b29280cf16
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.section_editor
+id: theme-546f12f27
+label: Osiovastaava
+weight: 5
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,25 @@
+uuid: c3222695-fb54-4be2-8e45-b273fde3ad7d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group_content.life_situation-group_membership.group_roles
+    - group.content_type.life_situation-group_membership
+id: group_content.life_situation-group_membership.default
+targetEntityType: group_content
+bundle: life_situation-group_membership
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

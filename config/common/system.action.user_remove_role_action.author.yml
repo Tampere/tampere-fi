@@ -1,0 +1,14 @@
+uuid: 9b5f173f-6a9a-4df0-8937-669b7897d22b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.author
+  module:
+    - user
+id: user_remove_role_action.author
+label: 'Remove the Toimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: author

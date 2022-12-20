@@ -1,0 +1,21 @@
+uuid: 20073ded-e8d1-4c9a-9dae-0b381a02a7c2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_gl_displayed_content_types
+    - paragraphs.paragraphs_type.generic_listing
+  module:
+    - options
+id: paragraph.generic_listing.field_gl_displayed_content_types
+field_name: field_gl_displayed_content_types
+entity_type: paragraph
+bundle: generic_listing
+label: 'Näytettävät sisältötyypit'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

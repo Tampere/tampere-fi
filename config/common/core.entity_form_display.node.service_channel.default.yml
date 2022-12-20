@@ -1,0 +1,380 @@
+uuid: 241256ee-7127-4e99-a8aa-0004ee5f4797
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.service_channel.field_accessibility_and_services
+    - field.field.node.service_channel.field_accessibility_links
+    - field.field.node.service_channel.field_additional_phones
+    - field.field.node.service_channel.field_address_postal
+    - field.field.node.service_channel.field_area_text
+    - field.field.node.service_channel.field_available_languages
+    - field.field.node.service_channel.field_body_md
+    - field.field.node.service_channel.field_channel_display_name
+    - field.field.node.service_channel.field_delivery_details
+    - field.field.node.service_channel.field_electronic_id_required
+    - field.field.node.service_channel.field_electronic_signature_rqd
+    - field.field.node.service_channel.field_exception_hours
+    - field.field.node.service_channel.field_form_links
+    - field.field.node.service_channel.field_form_receiver
+    - field.field.node.service_channel.field_links
+    - field.field.node.service_channel.field_organization
+    - field.field.node.service_channel.field_service_attachments
+    - field.field.node.service_channel.field_service_channel_type
+    - field.field.node.service_channel.field_service_hours_daily
+    - field.field.node.service_channel.field_service_hours_overnight
+    - field.field.node.service_channel.field_summary
+    - field.field.node.service_channel.field_support_emails
+    - field.field.node.service_channel.field_support_phones
+    - node.type.service_channel
+  module:
+    - address
+    - content_moderation
+    - field_group
+    - field_states_ui
+    - limited_field_widgets
+    - link
+    - office_hours
+    - telephone_plus
+    - text
+    - tre_phone_field_formatter
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_general
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_general:
+      children:
+        - langcode
+        - translation
+        - field_service_channel_type
+        - title
+        - field_summary
+        - field_body_md
+        - field_links
+        - field_organization
+        - field_area_text
+        - field_available_languages
+        - field_accessibility_and_services
+        - field_accessibility_links
+        - field_service_attachments
+        - field_support_phones
+        - field_support_emails
+        - field_service_hours_daily
+        - field_service_hours_overnight
+        - field_exception_hours
+        - group_eservices
+        - group_phone_channels
+        - group_forms
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 1
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_eservices:
+      children:
+        - field_electronic_signature_rqd
+        - field_electronic_id_required
+      label: Verkkoasiointikanavat
+      region: content
+      parent_name: group_general
+      weight: 46
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_phone_channels:
+      children:
+        - field_additional_phones
+      label: Puhelinasiointikanavat
+      region: content
+      parent_name: group_general
+      weight: 47
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_forms:
+      children:
+        - field_form_links
+        - field_form_receiver
+        - field_address_postal
+        - field_delivery_details
+      label: Lomakkeet
+      region: content
+      parent_name: group_general
+      weight: 48
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: node.service_channel.default
+targetEntityType: node
+bundle: service_channel
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_accessibility_and_services:
+    type: entity_reference_autocomplete
+    weight: 37
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_accessibility_links:
+    type: link_default
+    weight: 38
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_additional_phones:
+    type: tre_telephone_plus_widget
+    weight: 9
+    region: content
+    settings:
+      hide_subelements:
+        telephone_extension: telephone_extension
+        display_international_number: display_international_number
+        telephone_title: 0
+        telephone_supplementary: 0
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_address_postal:
+    type: address_default
+    weight: 57
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_area_text:
+    type: text_textarea
+    weight: 35
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_available_languages:
+    type: options_buttons
+    weight: 36
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_body_md:
+    type: text_textarea
+    weight: 32
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_delivery_details:
+    type: string_textarea
+    weight: 58
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_electronic_id_required:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_electronic_signature_rqd:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_exception_hours:
+    type: string_textarea
+    weight: 45
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_form_links:
+    type: link_default
+    weight: 55
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_form_receiver:
+    type: string_textfield
+    weight: 56
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_links:
+    type: link_default
+    weight: 33
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_organization:
+    type: string_textfield
+    weight: 34
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_service_attachments:
+    type: link_default
+    weight: 39
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_service_channel_type:
+    type: options_select
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_service_hours_daily:
+    type: office_hours_list
+    weight: 43
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_service_hours_overnight:
+    type: office_hours_list
+    weight: 44
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_summary:
+    type: string_textarea
+    weight: 31
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_support_emails:
+    type: email_default
+    weight: 42
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_support_phones:
+    type: telephone_plus_widget
+    weight: 41
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 27
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 30
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_channel_display_name: true
+  path: true
+  promote: true
+  published_at: true
+  sticky: true
+  url_redirects: true

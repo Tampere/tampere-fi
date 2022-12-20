@@ -1,0 +1,23 @@
+uuid: 57c6aedb-6685-4079-aead-506127e9f041
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_larger_image_link
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.field_display_larger_image_link
+field_name: field_display_larger_image_link
+entity_type: paragraph
+bundle: image
+label: 'Näytä linkkinä isompaan kuvaan'
+description: 'Valitse tämä, kun haluat, että kuvan voi avata uuteen välilehteen isommassa koossa.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

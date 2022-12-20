@@ -1,0 +1,18 @@
+uuid: 53c66695-bf49-440e-8bed-4df31934e1fd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.two_column_liftup
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.two_column_liftup
+target_entity_type_id: paragraph
+target_bundle: two_column_liftup
+default_langcode: current_interface
+language_alterable: true

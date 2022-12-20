@@ -1,0 +1,33 @@
+uuid: 6be84a8f-d224-4caf-ac92-ec7c88c9e42a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: persons_en
+label: 'Persons EN'
+type: 'canonical_entities:node'
+pattern: 'person/[node:title]'
+selection_criteria:
+  0959b5ba-420b-4185-abb0-eda60aa22fb9:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 0959b5ba-420b-4185-abb0-eda60aa22fb9
+    context_mapping:
+      node: node
+    bundles:
+      person: person
+  b6abe1e5-1058-4c2e-806f-010748c6c93c:
+    id: language
+    negate: false
+    uuid: b6abe1e5-1058-4c2e-806f-010748c6c93c
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Kieli

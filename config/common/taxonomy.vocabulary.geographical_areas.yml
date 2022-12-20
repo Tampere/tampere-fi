@@ -1,0 +1,8 @@
+uuid: 95f61d7e-b9f1-4303-8470-0923275ee07d
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Maantieteelliset alueet'
+vid: geographical_areas
+description: 'Kaupunginosia yhdistelevät suuralueet'
+weight: 0

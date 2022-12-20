@@ -1,0 +1,30 @@
+uuid: b55bfc9c-3896-409b-be07-f20c93bfbd09
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_language
+field_name: field_language
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: arb
+      label: Arabia
+    -
+      value: ru
+      label: Venäjä
+    -
+      value: fa
+      label: 'Persia (Farsi)'
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

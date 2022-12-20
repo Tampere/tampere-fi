@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Theme override to display primary and secondary local tasks.
+ *
+ * Available variables:
+ * - primary: HTML list items representing primary tasks.
+ * - secondary: HTML list items representing primary tasks.
+ *
+ * Each item in these variables (primary and secondary) can be individually
+ * themed in menu-local-task.html.twig.
+ */
+#}
+
+{# Drupal Specific #}
+{% if primary %}
+  <h2 class="visually-hidden">{{ "Primary tabs"|t }}</h2>
+  <ul class="tabs__nav tabs__nav--local-tasks" role="tablist">{{ primary }}</ul>
+{% endif %}
+{% if secondary %}
+  <h2 class="visually-hidden">{{ "Secondary tabs"|t }}</h2>
+  <ul role="tablist">{{ secondary }}</ul>
+{% endif %}
+
+{# Storybook Specific #}
+{% if not primary %}
+  <div id="tabs" class="tabs no-js">
+    <ul class="tabs__nav" role="tablist">
+      {% for key, tab in tabs %}
+        {% set tab_id = "tab-" ~ random(10000) %}
+
+        {% include "@atoms/09-menu/tab/tab.twig" with {
+          tab_link: "#tab-" ~ key,
+          tab_text: tab.tab_text,
+          tab_id: tab_id
+        } %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

@@ -1,0 +1,17 @@
+uuid: e3f5511f-ca35-46d9-8ded-4430c356c1fa
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_listing_liftup_xs_view_mode
+label: 'Ajankohtaislistaus nosto - xs (300×300)'
+effects:
+  ce7da548-907b-4b46-97f6-f13378cfeb09:
+    uuid: ce7da548-907b-4b46-97f6-f13378cfeb09
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 300
+      height: 300
+      crop_type: focal_point

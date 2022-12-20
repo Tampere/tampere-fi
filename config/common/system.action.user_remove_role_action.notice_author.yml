@@ -1,0 +1,14 @@
+uuid: ee050900-c452-4e48-a46b-98d2d139c849
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.notice_author
+  module:
+    - user
+id: user_remove_role_action.notice_author
+label: 'Remove the Ilmoitustoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: notice_author

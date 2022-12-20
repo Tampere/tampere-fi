@@ -1,0 +1,19 @@
+uuid: f792dd04-9098-4a0f-9886-9bda1bb80722
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description_text
+    - paragraphs.paragraphs_type.material_download_list
+id: paragraph.material_download_list.field_description_text
+field_name: field_description_text
+entity_type: paragraph
+bundle: material_download_list
+label: Kuvaus
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

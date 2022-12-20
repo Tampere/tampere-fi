@@ -1,0 +1,17 @@
+uuid: 96dc1754-db2b-4772-9033-ee5ab6bca890
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Blogiartikkeli
+type: blog_article
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

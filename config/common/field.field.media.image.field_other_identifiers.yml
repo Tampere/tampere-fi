@@ -1,0 +1,29 @@
+uuid: 0b67d985-fb89-4e27-931c-ab2f875a2920
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_other_identifiers
+    - media.type.image
+    - taxonomy.vocabulary.other_identifiers
+id: media.image.field_other_identifiers
+field_name: field_other_identifiers
+entity_type: media
+bundle: image
+label: 'Other identifiers'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      other_identifiers: other_identifiers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

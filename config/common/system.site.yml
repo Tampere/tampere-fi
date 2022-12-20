@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: umi0x3ZQTzPgVZsGAirRW7Vrm2HBDIpSbQfZxy_uZTY
+langcode: fi
+uuid: bd6f74ed-7682-46f9-b5dc-b9e59313cdff
+name: Tampere.fi
+mail: superadmin@exove.com
+slogan: ''
+page:
+  403: ''
+  404: ''
+  front: /user/login
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: fi
+mail_notification: ''

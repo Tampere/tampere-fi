@@ -1,0 +1,631 @@
+uuid: 97dff284-a5f5-4301-a859-64e8db96ec74
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.contact_information_liftup_view_mode
+    - field.field.node.place_of_business.field_accessibility_and_services
+    - field.field.node.place_of_business.field_accessibility_info_title
+    - field.field.node.place_of_business.field_additional_information
+    - field.field.node.place_of_business.field_additional_phones
+    - field.field.node.place_of_business.field_address_postal
+    - field.field.node.place_of_business.field_addresses
+    - field.field.node.place_of_business.field_alternative_name
+    - field.field.node.place_of_business.field_body_md
+    - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_exception_hours
+    - field.field.node.place_of_business.field_geographical_areas
+    - field.field.node.place_of_business.field_hr_organizational_unit
+    - field.field.node.place_of_business.field_keywords
+    - field.field.node.place_of_business.field_life_situations
+    - field.field.node.place_of_business.field_links
+    - field.field.node.place_of_business.field_opening_hours
+    - field.field.node.place_of_business.field_opening_hours_2
+    - field.field.node.place_of_business.field_opening_hours_3
+    - field.field.node.place_of_business.field_opening_hours_info
+    - field.field.node.place_of_business.field_opening_hours_info_2
+    - field.field.node.place_of_business.field_opening_hours_info_3
+    - field.field.node.place_of_business.field_search_keywords
+    - field.field.node.place_of_business.field_summary
+    - field.field.node.place_of_business.field_topics
+    - field.field.node.place_of_business.migrate_override_data
+    - node.type.place_of_business
+  module:
+    - address_display
+    - ds
+    - field_delimiter
+    - field_group
+    - office_hours
+    - text
+    - tre_link_field_formatter
+    - tre_phone_field_formatter
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_column_field_group
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      pre_columns_content:
+        - field_alternative_name
+        - field_hr_organizational_unit
+        - field_summary
+        - field_body_md
+      left_column:
+        - group_addresses
+        - field_addresses
+        - field_address_postal
+        - field_geographical_areas
+        - field_links
+        - field_additional_phones
+        - field_email
+      right_column:
+        - group_opening_hours_1
+        - field_opening_hours_info
+        - field_opening_hours
+        - group_opening_hours_2
+        - field_opening_hours_info_2
+        - field_opening_hours_2
+        - group_opening_hours_3
+        - field_opening_hours_info_3
+        - field_opening_hours_3
+        - field_exception_hours
+      post_columns_content:
+        - field_additional_information
+  field_group:
+    group_addresses:
+      children:
+        - field_addresses
+        - field_address_postal
+        - field_geographical_areas
+      label: Osoitteet
+      parent_name: ''
+      region: left_column
+      weight: 4
+      format_type: pattern_formatter
+      format_settings:
+        pattern: icon_field_group
+        pattern_mapping:
+          'fields:field_address_postal':
+            destination: icon_field_group_content
+            weight: 0
+            plugin: fields
+            source: field_address_postal
+          'fields:field_addresses':
+            destination: icon_field_group_content
+            weight: 1
+            plugin: fields
+            source: field_addresses
+          'fields:field_geographical_areas':
+            destination: icon_field_group_content
+            weight: 2
+            plugin: fields
+            source: field_geographical_areas
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+        pattern_variant: location
+    group_opening_hours_1:
+      children:
+        - field_opening_hours_info
+        - field_opening_hours
+      label: 'Aukioloajat 1'
+      parent_name: ''
+      region: right_column
+      weight: 11
+      format_type: pattern_formatter
+      format_settings:
+        pattern: regular_field
+        pattern_mapping:
+          'fields:field_opening_hours':
+            destination: field_content
+            weight: 0
+            plugin: fields
+            source: field_opening_hours
+          'fields:field_opening_hours_info':
+            destination: field_label
+            weight: 1
+            plugin: fields
+            source: field_opening_hours_info
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+          regular_field:
+            display_colon_after_label: '1'
+        show_empty_fields: 0
+        pattern_variant: above
+    group_opening_hours_2:
+      children:
+        - field_opening_hours_info_2
+        - field_opening_hours_2
+      label: 'Aukioloajat 2'
+      parent_name: ''
+      region: right_column
+      weight: 14
+      format_type: pattern_formatter
+      format_settings:
+        pattern: regular_field
+        pattern_mapping:
+          'fields:field_opening_hours_2':
+            destination: field_content
+            weight: 0
+            plugin: fields
+            source: field_opening_hours_2
+          'fields:field_opening_hours_info_2':
+            destination: field_label
+            weight: 1
+            plugin: fields
+            source: field_opening_hours_info_2
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+          regular_field:
+            display_colon_after_label: '1'
+        show_empty_fields: 0
+        pattern_variant: above
+    group_opening_hours_3:
+      children:
+        - field_opening_hours_info_3
+        - field_opening_hours_3
+      label: 'Aukioloajat 3'
+      parent_name: ''
+      region: right_column
+      weight: 17
+      format_type: pattern_formatter
+      format_settings:
+        pattern: regular_field
+        pattern_mapping:
+          'fields:field_opening_hours_3':
+            destination: field_content
+            weight: 0
+            plugin: fields
+            source: field_opening_hours_3
+          'fields:field_opening_hours_info_3':
+            destination: field_label
+            weight: 1
+            plugin: fields
+            source: field_opening_hours_info_3
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+          regular_field:
+            display_colon_after_label: '1'
+        show_empty_fields: 0
+        pattern_variant: above
+id: node.place_of_business.contact_information_liftup_view_mode
+targetEntityType: node
+bundle: place_of_business
+mode: contact_information_liftup_view_mode
+content:
+  field_additional_information:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 21
+    region: post_columns_content
+  field_additional_phones:
+    type: tre_phone_field_plain
+    label: above
+    settings:
+      force_format: default
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: Puhelin
+            lb-col: true
+            classes: {  }
+    weight: 9
+    region: left_column
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: Osoite
+            lb-col: true
+            classes: {  }
+    weight: 2
+    region: left_column
+  field_address_postal:
+    type: address_display_formatter
+    label: above
+    settings:
+      address_display:
+        organization:
+          glue: ''
+          weight: -1
+          display: true
+        address_line1:
+          glue: ''
+          weight: 0
+          display: true
+        address_line2:
+          glue: ','
+          weight: 1
+          display: true
+        locality:
+          glue: ','
+          weight: 2
+          display: true
+        postal_code:
+          glue: ''
+          weight: 3
+          display: true
+        country_code:
+          glue: ''
+          weight: 4
+          display: false
+        langcode:
+          glue: ','
+          weight: 100
+          display: false
+        administrative_area:
+          glue: ','
+          weight: 100
+          display: false
+        dependent_locality:
+          glue: ','
+          weight: 100
+          display: false
+        sorting_code:
+          glue: ','
+          weight: 100
+          display: false
+        given_name:
+          glue: ''
+          weight: 100
+          display: true
+        family_name:
+          glue: ','
+          weight: 100
+          display: true
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 6
+    region: left_column
+  field_addresses:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: address_only
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: Osoite
+            lb-col: true
+            classes: {  }
+    weight: 5
+    region: left_column
+  field_alternative_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 0
+    region: pre_columns_content
+  field_body_md:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: pre_columns_content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: icon_field_group
+            pattern_mapping:
+              'ds_field_template:field_email':
+                destination: icon_field_group_content
+                weight: 0
+                plugin: ds_field_template
+                source: field_email
+            pattern_settings:
+              icon_field_group:
+                field_label: Sähköposti
+                field_label_token: ''
+              regular_field:
+                display_colon_after_label: 0
+            pattern_variant: contact
+    weight: 10
+    region: left_column
+  field_exception_hours:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 20
+    region: right_column
+  field_geographical_areas:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 7
+    region: left_column
+  field_hr_organizational_unit:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 1
+    region: pre_columns_content
+  field_links:
+    type: tre_absolute_url_text
+    label: above
+    settings:
+      trim_length: ''
+      url_only: false
+      url_plain: false
+      rel: 0
+      target: 0
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 8
+    region: left_column
+  field_opening_hours:
+    type: office_hours
+    label: above
+    settings:
+      day_format: long
+      time_format: H
+      compress: false
+      grouped: false
+      show_closed: open
+      closed_format: kiinni
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ' '
+        hours_hours: –
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      timezone_field: ''
+      office_hours_first_day: '1'
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 13
+    region: right_column
+  field_opening_hours_2:
+    type: office_hours
+    label: above
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_closed: open
+      closed_format: kiinni
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ' '
+        hours_hours: –
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      timezone_field: ''
+      office_hours_first_day: '1'
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 16
+    region: right_column
+  field_opening_hours_3:
+    type: office_hours
+    label: above
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_closed: open
+      closed_format: kiinni
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ' '
+        hours_hours: –
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      timezone_field: ''
+      office_hours_first_day: '1'
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 19
+    region: right_column
+  field_opening_hours_info:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 12
+    region: right_column
+  field_opening_hours_info_2:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 15
+    region: right_column
+  field_opening_hours_info_3:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 18
+    region: right_column
+  field_phone:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 3
+    region: footer
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: pre_columns_content
+hidden:
+  field_accessibility_and_services: true
+  field_accessibility_info_title: true
+  field_keywords: true
+  field_life_situations: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  migrate_override_data: true
+  search_api_excerpt: true

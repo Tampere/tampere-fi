@@ -1,0 +1,19 @@
+uuid: 4eecda2c-1140-4c74-b90e-7a5aefa80ce4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.collection_page
+  module:
+    - gnode
+    - node
+id: group_content_type_3e00eae0ddb57
+label: 'Minikotisivusto: Group node (Collection page)'
+description: 'Adds <em class="placeholder">Collection page</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:collection_page'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

@@ -1,0 +1,8 @@
+uuid: 235160e8-ba67-4e82-b0ef-7f6fa94f9e98
+langcode: en
+status: true
+dependencies: {  }
+id: life-situation-menu-en
+label: 'Life situation menu'
+description: ''
+locked: false

@@ -1,0 +1,8 @@
+langcode: fi
+cache:
+  page:
+    max_age: 31536000
+css:
+  preprocess: true
+js:
+  preprocess: true

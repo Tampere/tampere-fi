@@ -1,0 +1,18 @@
+uuid: 82b79a12-0037-4cb2-8fc2-6e187aebaa5e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.footer-main-menu-fi
+id: menu_link_content.footer-main-menu-fi.changed
+field_name: changed
+entity_type: menu_link_content
+bundle: footer-main-menu-fi
+label: Muuttunut
+description: 'The time that the menu link was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

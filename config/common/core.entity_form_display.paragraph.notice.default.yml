@@ -1,0 +1,49 @@
+uuid: c411b813-6258-4fff-bcd3-f4fa0c641dab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.notice.field_notice_title
+    - field.field.paragraph.notice.field_text_content
+    - paragraphs.paragraphs_type.notice
+  module:
+    - allowed_formats
+    - maxlength
+    - text
+id: paragraph.notice.default
+targetEntityType: paragraph
+bundle: notice
+mode: default
+content:
+  field_notice_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text_content:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,23 @@
+{% set feedback_section__base_class = "feedback-section" %}
+
+<div {{ bem(feedback_section__base_class, feedback_section__modifiers|default([]), feedback_section__blockname) }}>
+  <div {{ bem("content", feedback_section__content__modifiers|default([]), feedback_section__base_class) }}>
+    <div {{ bem("topics-and-life-situations", feedback_section__tls__modifiers|default([]), feedback_section__base_class) }}>
+      {% if feedback_section__tls_content %}
+        {{ feedback_section__tls_content }}
+      {% else %}
+        {% include "@organisms/topics-and-life-situations/topics-and-life-situations.twig" with {
+          "topics_and_life_situations__modifiers": [ "primary" ],
+          "topics_and_life_situations__heading": feedback_section__title,
+        } %}
+      {% endif %}
+    </div>
+    <div {{ bem("feedback-card", feedback_section__feedback_card__modifiers|default([]), feedback_section__base_class) }}>
+      {% if feedback_section__card_content %}
+        {{ feedback_section__card_content }}
+      {% else %}
+        {% include "@molecules/feedback-card/feedback-card.twig" %}
+      {% endif %}
+    </div>
+    </div>
+</div>

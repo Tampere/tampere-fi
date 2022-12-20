@@ -1,0 +1,19 @@
+uuid: 69a71c1c-dfaf-4d15-a005-65567d56eb59
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.generic_listing
+id: paragraph.generic_listing.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: generic_listing
+label: Otsikko
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,23 @@
+uuid: abdd4338-83ae-4588-8d99-0a0fca7a205a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_sort_order
+    - paragraphs.paragraphs_type.rss_feed
+  module:
+    - options
+id: paragraph.rss_feed.field_sort_order
+field_name: field_sort_order
+entity_type: paragraph
+bundle: rss_feed
+label: Lajittelujärjestys
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: date
+default_value_callback: ''
+settings: {  }
+field_type: list_string

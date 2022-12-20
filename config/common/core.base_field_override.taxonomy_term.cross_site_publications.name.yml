@@ -1,0 +1,18 @@
+uuid: f20a935b-97b4-49c8-bb11-16400a264d56
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cross_site_publications
+id: taxonomy_term.cross_site_publications.name
+field_name: name
+entity_type: taxonomy_term
+bundle: cross_site_publications
+label: Nimi
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

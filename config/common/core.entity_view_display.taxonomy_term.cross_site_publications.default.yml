@@ -1,0 +1,18 @@
+uuid: 9a750ae2-3e84-460b-8807-a2d08a6ec8e7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.cross_site_publications.field_site_id
+    - taxonomy.vocabulary.cross_site_publications
+id: taxonomy_term.cross_site_publications.default
+targetEntityType: taxonomy_term
+bundle: cross_site_publications
+mode: default
+content: {  }
+hidden:
+  description: true
+  field_site_id: true
+  field_user_reference: true
+  langcode: true
+  search_api_excerpt: true

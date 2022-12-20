@@ -1,0 +1,19 @@
+uuid: 90ced5f1-28f4-4436-a04a-411358ac4187
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.project
+  module:
+    - gnode
+    - node
+id: minisite-group_node-project
+label: 'Minikotisivusto: Group node (Projekti)'
+description: 'Adds <em class="placeholder">Projekti</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:project'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

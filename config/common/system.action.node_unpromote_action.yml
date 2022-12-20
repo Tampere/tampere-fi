@@ -1,0 +1,13 @@
+uuid: 04b6406a-3a9c-447b-ba5b-c64f920e125e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: JBptjnfuOMtsdKygklXxoOgeOCTMtQxlkymjnnj-cC0
+id: node_unpromote_action
+label: 'Poista sisältö etusivulta'
+type: node
+plugin: node_unpromote_action
+configuration: {  }

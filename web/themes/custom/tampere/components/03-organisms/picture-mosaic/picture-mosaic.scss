@@ -1,0 +1,64 @@
+$picture-mosaic-item-min-height: 218px;
+$picture-mosaic-item-min-height--large: 238px;
+
+.picture-mosaic {
+  $base_class: &;
+
+  @include page-element-spacer;
+
+  &__wrapper {
+    display: grid;
+    gap: $gutter-xs;
+
+    @include large {
+      @include centered-content($max-width: $max-width);
+
+      grid-template-columns: repeat(auto-fill, minmax(calc(100% / 3), 1fr));
+    }
+
+    @include picture-mosaic-breakpoint {
+      grid-template-columns: repeat(auto-fill, minmax(calc(100% / 4), 1fr));
+    }
+  }
+
+  &__item {
+    height: 100%;
+    min-height: $picture-mosaic-item-min-height;
+
+    @include large {
+      min-height: $picture-mosaic-item-min-height--large;
+    }
+  }
+
+  // When there are 4 or more mosaic items, the first item should occupy the first and second column.
+  &__item:nth-last-child(n+4):first-child {
+    @include large {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  &__image {
+    height: $picture-mosaic-item-min-height;
+    object-fit: cover;
+    width: 100%;
+
+    @include large {
+      height: 100%;
+    }
+  }
+
+  .layout-container--with-sidebar & {
+    #{$base_class}__wrapper {
+      @include large {
+        max-width: none;
+        padding: 0;
+      }
+    }
+  }
+
+  .layout-container:not(.layout-container--with-sidebar) & {
+    @include large {
+      @include breakout(0);
+    }
+  }
+}

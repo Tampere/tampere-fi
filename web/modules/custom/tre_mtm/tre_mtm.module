@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Module mtm.module.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ */
+function tre_mtm_page_attachments(array &$page) {
+  $config = \Drupal::config('tre_mtm.settings');
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+
+  $admin_pages = ($config->get('admin-pages') || !$is_admin);
+  if ($config->get('enable') && $config->get('matomo-tag') && $admin_pages) {
+    $matomo_tag = $config->get('matomo-tag');
+    $script = <<<END
+function mtm_cacheParam() {
+  var now = new Date();
+  return (
+    now.getUTCFullYear() +
+    '-' +
+    (now.getUTCMonth() + 1).toString().padStart(2, 0) +
+    '-' +
+    now.getUTCDate().toString().padStart(2, 0) +
+    '-' +
+    (now.getUTCHours() + 1).toString().padStart(2, 0)
+    );
+}
+var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='{$matomo_tag}?c='+mtm_cacheParam(); s.parentNode.insertBefore(g,s);
+END;
+
+    $page['#attached']['html_head'][] = [
+      ['#tag' => 'script', '#value' => $script],
+      'tre_mtm',
+    ];
+  }
+}
+

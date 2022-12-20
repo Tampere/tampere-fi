@@ -1,0 +1,69 @@
+uuid: 15ef3640-0af2-4332-8983-31e8c055517d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.organization.field_contact_info_paragraph
+    - field.field.node.organization.field_description
+    - field.field.node.organization.field_geographical_areas
+    - field.field.node.organization.field_help_text
+    - field.field.node.organization.field_keywords
+    - field.field.node.organization.field_main_image
+    - field.field.node.organization.field_paragraphs
+    - field.field.node.organization.field_search_keywords
+    - field.field.node.organization.field_topics
+    - node.type.organization
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default-search
+    regions:
+      listing_item__main_content:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': listing-item__title--link
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.organization.search_result
+targetEntityType: node
+bundle: organization
+mode: search_result
+content: {  }
+hidden:
+  content_moderation_control: true
+  field_contact_info_paragraph: true
+  field_description: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_main_image: true
+  field_paragraphs: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

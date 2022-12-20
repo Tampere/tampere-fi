@@ -1,0 +1,101 @@
+uuid: 7338f1a9-4114-4cb6-b4f4-5fb3fe37e347
+langcode: fi
+status: true
+dependencies:
+  config:
+    - feeds.feed_type.rss_feed
+id: feeds_feed--rss_feed
+disabled: true
+path: feeds_feed/rss_feed
+resourceType: feeds_feed--rss_feed
+resourceFields:
+  fid:
+    disabled: false
+    fieldName: fid
+    publicName: fid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  type:
+    disabled: false
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  title:
+    disabled: false
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+  uid:
+    disabled: false
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  created:
+    disabled: false
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  imported:
+    disabled: false
+    fieldName: imported
+    publicName: imported
+    enhancer:
+      id: ''
+  next:
+    disabled: false
+    fieldName: next
+    publicName: next
+    enhancer:
+      id: ''
+  queued:
+    disabled: false
+    fieldName: queued
+    publicName: queued
+    enhancer:
+      id: ''
+  source:
+    disabled: false
+    fieldName: source
+    publicName: source
+    enhancer:
+      id: ''
+  config:
+    disabled: false
+    fieldName: config
+    publicName: config
+    enhancer:
+      id: ''
+  item_count:
+    disabled: false
+    fieldName: item_count
+    publicName: item_count
+    enhancer:
+      id: ''
+  metatag:
+    disabled: false
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''

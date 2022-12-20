@@ -1,0 +1,14 @@
+uuid: 4f447182-f42b-46ff-a07c-8f2ca3b28177
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.media_editor
+  module:
+    - user
+id: user_add_role_action.media_editor
+label: 'Add the Mediatoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: media_editor

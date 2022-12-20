@@ -1,0 +1,56 @@
+uuid: 567ef61e-d303-43b9-a459-d23c97175a74
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.plan_numbers
+  module:
+    - path
+    - text
+id: taxonomy_term.plan_numbers.default
+targetEntityType: taxonomy_term
+bundle: plan_numbers
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

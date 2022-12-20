@@ -1,0 +1,19 @@
+uuid: a2940717-ca4b-41f9-8339-5da45f649c77
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.material_download_list
+id: paragraph.material_download_list.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: material_download_list
+label: Otsikko
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,14 @@
+uuid: e011532d-6d03-4143-a1e7-46de24d9a6ca
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.author
+  module:
+    - user
+id: user_add_role_action.author
+label: 'Add the Toimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: author

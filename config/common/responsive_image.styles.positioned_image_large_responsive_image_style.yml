@@ -1,0 +1,24 @@
+uuid: eedecee2-038f-4c13-8ce5-e20cf9a23450
+langcode: fi
+status: true
+dependencies:
+  config:
+    - image.style.positioned_image_large_small_image_style
+    - image.style.positioned_image_large_xs_image_style
+  theme:
+    - tampere
+id: positioned_image_large_responsive_image_style
+label: 'Responsiivinen asemoitu kuva (iso)'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: positioned_image_large_small_image_style
+    breakpoint_id: tampere.sm
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: positioned_image_large_xs_image_style
+    breakpoint_id: tampere.xs
+    multiplier: 1x
+breakpoint_group: tampere
+fallback_image_style: positioned_image_large_xs_image_style

@@ -1,0 +1,21 @@
+uuid: a8baba0a-7dc6-4d1d-99c2-03bf88110907
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pob_displayed_fields
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - options
+id: paragraph.ptv_service_liftup.field_pob_displayed_fields
+field_name: field_pob_displayed_fields
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Palvelupaikkojen näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

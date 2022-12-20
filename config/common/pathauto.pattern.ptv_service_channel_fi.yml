@@ -1,0 +1,33 @@
+uuid: c4847fd8-a7c5-4090-aef7-607604aabf20
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: ptv_service_channel_fi
+label: 'PTV-asiointikanava FI'
+type: 'canonical_entities:node'
+pattern: 'ptv/asiointikanava/[node:title]'
+selection_criteria:
+  e0ecc7c1-f1a1-4992-878f-f9f0cada6f7c:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e0ecc7c1-f1a1-4992-878f-f9f0cada6f7c
+    context_mapping:
+      node: node
+    bundles:
+      service_channel: service_channel
+  a9680ec9-9a48-44f2-a5f1-08a118d4b950:
+    id: language
+    negate: false
+    uuid: a9680ec9-9a48-44f2-a5f1-08a118d4b950
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fi: fi
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Kieli

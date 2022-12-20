@@ -1,0 +1,5 @@
+label: 'Link to content'
+description: 'Select this option if you want the name of the place of business to act as a link to the web site containing information about the place of business provided in the PTV.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

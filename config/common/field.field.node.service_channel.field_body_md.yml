@@ -1,0 +1,26 @@
+uuid: 668e0a01-912e-4f85-8539-990ac7a02e6a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body_md
+    - node.type.service_channel
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - ptv_markdown
+id: node.service_channel.field_body_md
+field_name: field_body_md
+entity_type: node
+bundle: service_channel
+label: Kuvaus
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

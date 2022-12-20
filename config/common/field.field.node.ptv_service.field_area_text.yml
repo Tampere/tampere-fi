@@ -1,0 +1,26 @@
+uuid: f86de265-4517-43fe-bd27-9f1c8945ffdc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_area_text
+    - node.type.ptv_service
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: node.ptv_service.field_area_text
+field_name: field_area_text
+entity_type: node
+bundle: ptv_service
+label: 'Alue, jossa tarjolla'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

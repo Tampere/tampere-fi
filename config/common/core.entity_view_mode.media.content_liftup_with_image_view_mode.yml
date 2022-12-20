@@ -1,0 +1,10 @@
+uuid: 7d04e503-d276-45ae-8486-5067163a28c2
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.content_liftup_with_image_view_mode
+label: 'Kuvallinen sisältönosto'
+targetEntityType: media
+cache: true

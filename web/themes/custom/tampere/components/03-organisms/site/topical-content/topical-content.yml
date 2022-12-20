@@ -1,0 +1,9 @@
+main_image_tag: 'News item'
+publication_date: '00.00.2021 klo 12.50'
+main_image:
+  <img src="https://placeimg.com/1280/720/nature" alt="" />
+main_image_caption: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur dictum auctor.'
+title:
+  <h1 class="h1">Aliquam fringilla purus sit amet urna tempor fringilla</h1>
+summary: 'Donec tincidunt odio eget enim tempor finibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat orci est, vel consequat lacus malesuada eget. Nam hendrerit odio ac arcu hendrerit, ut maximus tortor mattis.'
+main_content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque enim turpis, eu hendrerit augue sagittis non. Maecenas at pretium leo. Aenean nisi massa, tincidunt in pellentesque ultricies, vestibulum et est. Nulla pharetra nisi eu elit aliquam, nec sodales metus condimentum. Nullam fringilla ante eget sagittis hendrerit. Nunc pretium dapibus tellus. Donec tincidunt odio eget enim tempor finibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat orci est, vel consequat lacus malesuada eget. Nam hendrerit odio ac arcu hendrerit, ut maximus tortor mattis.'

@@ -1,0 +1,52 @@
+uuid: 3167bae0-be81-4414-87b1-887eec94c1f8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - filter.format.footer_text
+  module:
+    - ckeditor
+format: footer_text
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Muotoilu
+          items:
+            - Bold
+            - Italic
+            - RemoveFormat
+            - Styles
+        -
+          name: Linkit
+          items:
+            - DrupalLink
+            - DrupalUnlink
+        -
+          name: Työkalut
+          items:
+            - Source
+        -
+          name: 'Kopioi ja liitä'
+          items:
+            - Copy
+            - Cut
+            - Paste
+            - PasteText
+            - PasteFromWord
+  plugins:
+    stylescombo:
+      styles: p.phone-icon-prefix|Puhelinnumero
+    drupallink:
+      linkit_enabled: true
+      linkit_profile: linkit_wysiwyg
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

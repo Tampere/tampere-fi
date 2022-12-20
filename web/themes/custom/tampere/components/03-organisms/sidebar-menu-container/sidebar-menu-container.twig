@@ -1,0 +1,48 @@
+{{ attach_library("tampere/sidebar-menu-container") }}
+
+{% set sidebar_menu_container__base_class = "sidebar-menu-container" %}
+{% set sidebar_menu_container_button_controls_id = "sidebar-menu-container" %}
+
+{% if "minisite" in sidebar_menu_container__modifiers %}
+  {% set sidebar_menu_modifiers = [ "minisite" ] %}
+{% endif %}
+
+<div {{ bem(sidebar_menu_container__base_class, (sidebar_menu_container__modifiers|default([])), sidebar_menu_container__blockname) }}>
+  <div {{ bem("heading-container", (sidebar_menu_container__heading__modifiers|default([])), sidebar_menu_container__base_class) }}>
+    {% if "is-heading" not in sidebar_menu_container__modifiers %}
+      {% if sidebar_menu_container_heading %}
+        {% include "@organisms/sidebar-menu-container/_sidebar-menu-container-title.twig" with {
+          "sidebar_menu_container_heading": group_front_page_title,
+          "sidebar_menu_container_heading_url": group_front_page_url,
+          "sidebar_menu_container__extra_classes": group_front_page_link_extra_classes,
+          "attributes": []
+        } %}
+      {% endif %}
+    
+      {% include "@atoms/06-buttons/01-button.twig" with {
+        "button_icon_name": "arrow-plain-new",
+        "button_base_class": "toggle",
+        "button_blockname": sidebar_menu_container__base_class,
+        "button_icon_blockname": sidebar_menu_container__base_class,
+        "button_attributes": {
+          "aria-expanded": "false",
+          "aria-label": "Show subsite navigation"|t,
+          "aria-controls": sidebar_menu_container_button_controls_id
+        },
+        "custom_classes": [ "is-closed-on-mobile" ],
+      } %}
+    {% endif %}
+  </div>
+
+  {% if "is-heading" not in sidebar_menu_container__modifiers %}
+    <div id="{{ sidebar_menu_container_button_controls_id }}" {{ bem("menu-container", (sidebar_menu_container__menu__modifiers|default([])), sidebar_menu_container__base_class, [ "is-closed-on-mobile" ]) }}>
+      {% block sidebar_menu_container_menu %}
+        {% include "@molecules/menus/sidebar-menu/sidebar-menu.twig" with {
+          "sidebar_menu_modifiers": sidebar_menu_modifiers,
+          "sidebar_menu_items": sidebar_menu_items,
+        } %}
+      {% endblock %}
+    </div>
+  {% endif %}
+ 
+</div>

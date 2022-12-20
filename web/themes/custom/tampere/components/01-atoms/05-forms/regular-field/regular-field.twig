@@ -1,0 +1,24 @@
+{% if not field__modifiers %}
+  {% set field__modifiers = [] %}
+{% endif %}
+
+{% if display_colon_after_label == ("1" or TRUE) %}
+  {% set field__modifiers = field__modifiers|merge([ "display-colon-after-label" ]) %}
+{% endif %}
+
+{% if field_label|render|trim %}
+  {% set has_label = TRUE %}
+{% endif %}
+
+{% if not has_label %}
+  {% set field__modifiers = field__modifiers|merge([ "no-visible-label" ]) %}
+{% endif %}
+
+<div {{ bem("field", field__modifiers, "") }}>
+  {% if has_label %}
+    <div class="field-label-above">{{ field_label }}</div>
+  {% endif %}
+  {% block content %}
+    {{ field_content }}
+  {% endblock %}
+</div>

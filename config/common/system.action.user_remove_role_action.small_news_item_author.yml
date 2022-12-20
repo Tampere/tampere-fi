@@ -1,0 +1,14 @@
+uuid: a28c3b4d-a2b4-477a-933c-c16b429a4750
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.small_news_item_author
+  module:
+    - user
+id: user_remove_role_action.small_news_item_author
+label: 'Remove the Pikku-uutistoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: small_news_item_author

@@ -1,0 +1,27 @@
+uuid: e0f4a95d-99ee-41fd-a4bb-c430dc42625f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: minisite-outsider
+label: Outsider
+weight: -101
+internal: true
+audience: outsider
+group_type: minisite
+permissions_ui: true
+permissions:
+  - 'view group'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:city_planning_and_constructions entity'
+  - 'view group_node:collection_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view group_node:front_page entity'
+  - 'view group_node:moderated_page entity'
+  - 'view group_node:news_item entity'
+  - 'view group_node:organization entity'
+  - 'view group_node:place entity'
+  - 'view group_node:project entity'
+  - 'view group_node:small_news_item entity'
+  - 'view group_node:zoning_information entity'

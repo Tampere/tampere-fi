@@ -1,0 +1,21 @@
+uuid: 8ad40031-a030-46f9-b397-2666d90b5ae6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pirkanmaa_events_end
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+  module:
+    - datetime
+id: paragraph.event_and_hobby_listing.field_pirkanmaa_events_end
+field_name: field_pirkanmaa_events_end
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: Loppupäivämäärä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

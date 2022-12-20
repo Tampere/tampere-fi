@@ -1,0 +1,21 @@
+uuid: 9365929e-4744-49a8-b234-b98bf59c73b6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email
+    - node.type.person
+_core:
+  default_config_hash: Rq3_HPJptYX55PzLccoFOHy9LCSCuRZ-sAg2lzdd5QA
+id: node.person.field_email
+field_name: field_email
+entity_type: node
+bundle: person
+label: Sähköposti
+description: 'Tämän henkilön sähköpostiosoite.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

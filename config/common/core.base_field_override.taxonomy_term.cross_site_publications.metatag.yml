@@ -1,0 +1,18 @@
+uuid: 70183d73-2e43-4a71-a3de-208a0fe637dc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.cross_site_publications
+id: taxonomy_term.cross_site_publications.metatag
+field_name: metatag
+entity_type: taxonomy_term
+bundle: cross_site_publications
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

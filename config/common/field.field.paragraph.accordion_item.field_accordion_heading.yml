@@ -1,0 +1,19 @@
+uuid: bd1a4c41-1d3d-42ba-95f8-40ce7e338dcd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordion_heading
+    - paragraphs.paragraphs_type.accordion_item
+id: paragraph.accordion_item.field_accordion_heading
+field_name: field_accordion_heading
+entity_type: paragraph
+bundle: accordion_item
+label: Haitariotsikko
+description: 'Otsikko, joka näkyy kokoajan käyttäjälle.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

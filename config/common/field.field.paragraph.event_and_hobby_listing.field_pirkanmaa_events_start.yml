@@ -1,0 +1,21 @@
+uuid: 36f48b6d-b4fb-4425-b954-77a039a700f9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pirkanmaa_events_start
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+  module:
+    - datetime
+id: paragraph.event_and_hobby_listing.field_pirkanmaa_events_start
+field_name: field_pirkanmaa_events_start
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: Alkupäivämäärä
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,33 @@
+uuid: c9fa2f9e-6c2e-48ab-93f8-ab6f71db6ce4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: ptv_service_en
+label: 'PTV service EN'
+type: 'canonical_entities:node'
+pattern: 'ptv/service/[node:title]'
+selection_criteria:
+  950b9414-cd61-455d-b4ef-bb1a94d043d8:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 950b9414-cd61-455d-b4ef-bb1a94d043d8
+    context_mapping:
+      node: node
+    bundles:
+      ptv_service: ptv_service
+  20cfc928-d1c3-45c7-a51a-9d4aa2d28437:
+    id: language
+    negate: false
+    uuid: 20cfc928-d1c3-45c7-a51a-9d4aa2d28437
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -2
+relationships:
+  'node:langcode:language':
+    label: Kieli

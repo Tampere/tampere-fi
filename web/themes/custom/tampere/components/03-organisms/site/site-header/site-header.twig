@@ -1,0 +1,169 @@
+{{ attach_library("tampere/site-header") }}
+
+{% set header__base_class = header__base_class|default("site-header") %}
+
+{% set header_navigation_container_id = "header-navigation-container" %}
+{% set header_navigation_container_mobile_id = "mobile-header-navigation-container" %}
+
+<header id="site-header" {{ bem(header__base_class, (header__modifiers|default([])), header__blockname, [ "menu-closed" ]) }}>
+  <div {{ bem("inner", (header__inner__modifiers|default([])), header__base_class)}}>
+    <div {{ bem("top-content", (header__top_content__modifiers|default([])), header__base_class)}}>
+      <div {{ bem("first-line", (header__first_line__modifiers|default([])), header__base_class)}}>
+        {% block header_main_logo %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_filename: "logo-icons",
+            icon_name: "logo-tampere-default",
+            icon_base_class: "tampere-logo",
+            icon_blockname: header__base_class,
+            icon_decorative: true,
+          } %}
+        {% endblock %}
+        <div {{ bem("first-line-wrapper", (header__first_line_wrapper__modifiers|default([])), header__base_class)}}>
+          <div {{ bem("quick-links", (header__quick_links__modifiers|default([])), header__base_class)}}>
+            {% block header_quick_links %}
+              {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+                inline_menu_label_id: "header-quick-links-label",
+                inline_menu_aria_label: "Header quick links"|t,
+                inline_menu_items: header__secondary_inline__items,
+                menu_modifiers: header__secondary_menu__modifiers,
+              } %}
+            {% endblock %}
+          </div>
+          <div {{ bem("language-dropdown", (header__language_dropdown__modifiers|default([])), header__base_class)}}>
+            {% block header_language_dropdown %}
+              {% include "@molecules/language-dropdown/language-dropdown.twig" with {
+                links: header__language__links,
+                current_language_code: header__current_language__code,
+                current_language_name: header__current_language__name,
+              } %}
+            {% endblock %}
+          </div>
+          <div {{ bem("language-dropdown", [ "mobile" ], header__base_class)}}>
+            {% block header_mobile_language_dropdown %}
+              {% include "@molecules/language-dropdown/language-dropdown.twig" with {
+                language_dropdown_id: "mobile-language-dropdown",
+                language_dropdown_toggle_id: "mobile-language-dropdown-toggle",
+                language_dropdown_list_role: "menubar",
+                links: header__language__links,
+                current_language_code: header__current_language__code,
+                current_language_name: header__current_language__name,
+              } %}
+            {% endblock %}
+          </div>
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_filename: "logo-icons",
+            icon_name: "logo-tampere-finland-default",
+            icon_base_class: "tampere-finland-logo",
+            icon_blockname: header__base_class,
+            icon_decorative: true,
+          } %}
+        </div>
+      </div>
+
+      <div {{ bem("second-line", (header__first_line__modifiers|default([])), header__base_class)}}>
+        <div {{ bem("menu", [ "desktop" ], header__base_class)}} tabindex="-1">
+          {% include "@molecules/menu-button/menu-button.twig" with {
+            menu_button_controls: header_navigation_container_id,
+            menu_button__modifiers: [ "desktop" ],
+          } %}
+          {# Desktop navigation container begins #}
+          <div id="{{ header_navigation_container_id }}" {{ bem("navigation-container", (header__navigation_container__modifiers|default([])), header__base_class, [ "is-closed" ])}}>
+            <div {{ bem("main-navigation", (header__main_navigation__modifiers|default([])), header__base_class)}}>
+              {% block header_main_navigation %}
+                {% include "@molecules/menus/main-menu/main-menu.twig" with {
+                  "main_menu_label_id": "main-menu-label",
+                  "main_menu_aria_label": "Main menu"|t,
+                } %}
+              {% endblock %}
+            </div>
+            <div {{ bem("secondary-navigation", [ "hamburger-menu" ], header__base_class)}}>
+              {% block header_hamburger_menu_secondary_navigation %}
+                {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+                  "inline_menu_label_id": "secondary-navigation-label",
+                  "inline_menu_items": header__inline__items,
+                  "menu_modifiers": header__inline__modifiers,
+                } %}
+              {% endblock %}
+            </div>
+            <div {{ bem("secondary-main-navigation", (header__secondary_main_navigation__modifiers|default([])), header__base_class)}}>
+              {% block header_secondary_main_navigation %}
+                {% include "@molecules/menus/main-menu/main-menu.twig" with {
+                  "main_menu_title_id": "life-situation-menu-title",
+                  "main_menu_title": "Services in different life situations"|t,
+                  "main_menu_title": header__secondary_main_menu__title,
+                  "main_menu_modifiers": [ "secondary" ],
+                } %}
+              {% endblock %}
+            </div>
+          </div>
+          {# Desktop navigation container ends #}
+        </div>
+        <div {{ bem("search", [ "desktop" ], header__base_class)}}>
+          {% block header_search %}{% endblock %}
+        </div>
+        <div {{ bem("menu", [ "mobile" ], header__base_class)}}>
+          {% include "@molecules/menu-button/menu-button.twig" with {
+            menu_button_controls: header_navigation_container_mobile_id,
+            menu_button__modifiers: [ "mobile" ],
+          } %}
+        </div>
+        <div {{ bem("search", [ "mobile" ], header__base_class)}}>
+          {% block header_search_mobile %}{% endblock %}
+        </div>
+        <div {{ bem("secondary-navigation", (header__secondary_navigation__modifiers|default([])), header__base_class)}}>
+          {% block header_secondary_navigation %}
+            {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+              inline_menu_label_id: "secondary-navigation-label",
+              inline_menu_aria_label: "Secondary menu"|t,
+              inline_menu_items: header__inline__items,
+              menu_modifiers: header__inline__modifiers,
+            } %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+
+    {# Mobile navigation container begins #}
+    <div id="{{ header_navigation_container_mobile_id }}" {{ bem("navigation-container", [ "mobile" ], header__base_class, [ "is-closed" ])}} tabindex="-1">
+      <div {{ bem("mobile-quick-links-and-language", (header__mobile_quick_links_and_language__modifiers|default([])), header__base_class)}}>
+        <div {{ bem("quick-links", [ "mobile" ], header__base_class)}}>
+          {% block header_mobile_quick_links %}
+            {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+              inline_menu_label_id: "header-quick-links-label",
+              inline_menu_items: header__secondary_inline__items,
+              menu_modifiers: header__secondary_menu__modifiers,
+            } %}
+          {% endblock %}
+        </div>
+      </div>
+      <div {{ bem("main-navigation", [ "mobile" ], header__base_class)}}>
+        {% block header_mobile_main_navigation %}
+          {% include "@molecules/menus/main-menu/main-menu.twig" with {
+            "main_menu_label_id": "main-menu-label",
+          } %}
+        {% endblock %}
+      </div>
+      <div {{ bem("secondary-navigation", [ "mobile" ], header__base_class)}}>
+        {% block header_mobile_secondary_navigation %}
+          {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+            inline_menu_label_id: "secondary-navigation-label",
+            inline_menu_items: header__inline__items,
+            menu_modifiers: header__inline__modifiers,
+          } %}
+        {% endblock %}
+      </div>
+      <div {{ bem("secondary-main-navigation", [ "mobile" ], header__base_class)}}>
+        {% block header_mobile_secondary_main_navigation %}
+          {% include "@molecules/menus/main-menu/main-menu.twig" with {
+            "main_menu_id": "mobile-secondary-main-menu",
+            "main_menu_title_id": "life-situation-menu-title",
+            "main_menu_title": header__secondary_main_menu__title,
+            "main_menu_modifiers": [ "secondary" ],
+          } %}
+        {% endblock %}
+      </div>
+    </div>
+    {# Mobile navigation container ends #}
+  </div>
+
+</header>

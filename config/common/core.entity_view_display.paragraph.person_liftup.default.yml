@@ -1,0 +1,42 @@
+uuid: ce260c7e-8f76-4feb-bb2f-0055e7c1a171
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.person_liftup.field_description_text
+    - field.field.paragraph.person_liftup.field_person_liftup
+    - field.field.paragraph.person_liftup.field_pl_displayed_fields
+    - paragraphs.paragraphs_type.person_liftup
+  module:
+    - ds
+id: paragraph.person_liftup.default
+targetEntityType: paragraph
+bundle: person_liftup
+mode: default
+content:
+  field_description_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_person_liftup:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: contact_information_liftup_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: content
+hidden:
+  field_pl_displayed_fields: true
+  search_api_excerpt: true

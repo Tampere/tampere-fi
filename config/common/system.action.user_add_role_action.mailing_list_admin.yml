@@ -1,0 +1,14 @@
+uuid: ed61769f-af08-48e6-8c8e-9de348df30a5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.mailing_list_admin
+  module:
+    - user
+id: user_add_role_action.mailing_list_admin
+label: 'Add the Mediajakelulistojen ylläpitäjä role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: mailing_list_admin

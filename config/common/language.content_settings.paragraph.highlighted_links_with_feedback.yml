@@ -1,0 +1,18 @@
+uuid: 79316f6d-9c7f-4b9c-9f79-713785682795
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.highlighted_links_with_feedback
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.highlighted_links_with_feedback
+target_entity_type_id: paragraph
+target_bundle: highlighted_links_with_feedback
+default_langcode: current_interface
+language_alterable: true

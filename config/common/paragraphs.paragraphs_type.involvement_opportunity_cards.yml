@@ -1,0 +1,10 @@
+uuid: 91bd9d8f-166e-491a-b52e-4bd41bd42ba9
+langcode: fi
+status: true
+dependencies: {  }
+id: involvement_opportunity_cards
+label: Osallistumismahdollisuuskortit
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

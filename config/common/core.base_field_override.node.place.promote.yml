@@ -1,0 +1,22 @@
+uuid: 1d99641d-df65-4141-985c-0b536ac7d778
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.place
+id: node.place.promote
+field_name: promote
+entity_type: node
+bundle: place
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

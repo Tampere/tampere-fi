@@ -1,0 +1,31 @@
+uuid: 8ed5b9e9-d1e1-408a-abff-77378fe20993
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image
+    - media.type.image
+    - node.type.person
+_core:
+  default_config_hash: n8B-5EZeFcY1BjxafAdmkXSh_zYjZjyaWavR2GqvzDg
+id: node.person.field_image
+field_name: field_image
+entity_type: node
+bundle: person
+label: Kuva
+description: 'Henkilön kuva mediakirjastosta'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: name
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

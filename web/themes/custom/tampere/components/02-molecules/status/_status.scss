@@ -1,0 +1,29 @@
+.status {
+  background-color: clr(status);
+  color: clr(text);
+  display: block;
+  margin-bottom: $space-m;
+  padding: $space-m;
+  text-align: center;
+
+  a {
+    @include link;
+  }
+
+  .placeholder {
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  &__list {
+    @include list-reset;
+  }
+
+  &--warning {
+    background-color: clr(warning);
+  }
+
+  &--error {
+    background-color: clr(error);
+  }
+}

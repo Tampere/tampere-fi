@@ -1,0 +1,22 @@
+uuid: 41796261-9d37-4f54-b9f9-1639c0ed5183
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.basic_content_page
+id: node.basic_content_page.promote
+field_name: promote
+entity_type: node
+bundle: basic_content_page
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

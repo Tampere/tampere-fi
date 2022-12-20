@@ -1,0 +1,5 @@
+card__modifiers:
+  - colorful
+  - colorful-3
+card__image__src:
+card__body: 'Nam non nunc vulputate ipsum viverra commodo quis nec velit. Praesent euismod porttitor leo, nec suscipit justo convallis at. '

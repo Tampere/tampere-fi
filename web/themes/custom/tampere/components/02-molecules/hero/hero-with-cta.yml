@@ -1,0 +1,7 @@
+hero__image__src: 'https://placeimg.com/1280/800/arch'
+hero__heading: 'Aliquam eleifend nibh at ornare condimentum'
+has_image: true
+hero__cta__url: '#'
+hero__cta__text: 'Lorem ipsum'
+hero__modifiers:
+  - 'title-without-icon'

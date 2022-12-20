@@ -1,0 +1,17 @@
+uuid: a607ae89-4e64-4005-97bd-a866187b7278
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.author
+id: theme-7185cccc6
+label: Toimittaja
+weight: 4
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

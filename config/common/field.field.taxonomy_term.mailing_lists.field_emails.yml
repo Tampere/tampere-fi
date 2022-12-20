@@ -1,0 +1,19 @@
+uuid: 279707bf-08b6-4253-b4c1-4ab5beffd3f1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_emails
+    - taxonomy.vocabulary.mailing_lists
+id: taxonomy_term.mailing_lists.field_emails
+field_name: field_emails
+entity_type: taxonomy_term
+bundle: mailing_lists
+label: Sähköpostiosoitteet
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

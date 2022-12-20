@@ -1,0 +1,54 @@
+settings:
+  allowed_values:
+    0:
+      label: Assistant
+    1:
+      label: Lift
+    2:
+      label: 'Induction loop'
+    6:
+      label: 'Coffee shop'
+    7:
+      label: Store
+    8:
+      label: 'Conference room'
+    9:
+      label: 'Lend items'
+    10:
+      label: 'Childcare room'
+    11:
+      label: 'Charging spot'
+    12:
+      label: 'Ticket sales'
+    13:
+      label: Ramp
+    14:
+      label: 'Services helping visually impared'
+    15:
+      label: 'Guide dogs allowed'
+    16:
+      label: Braille
+    17:
+      label: 'Stair lift'
+    18:
+      label: Stairs
+    19:
+      label: 'Wheelchair lift'
+    20:
+      label: Rollator
+    21:
+      label: 'Skooter park'
+    22:
+      label: Locker
+    23:
+      label: 'Large text'
+    24:
+      label: Cloakroom
+    25:
+      label: 'Signed services'
+    27:
+      label: 'Accessible WC, one-sidedly usable left'
+    28:
+      label: 'Esteetön wc, one-sidedly usable right'
+    29:
+      label: 'Sound guidance'

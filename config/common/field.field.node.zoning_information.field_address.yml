@@ -1,0 +1,19 @@
+uuid: 965fa37d-ed48-472c-a515-424f7169535c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.zoning_information
+id: node.zoning_information.field_address
+field_name: field_address
+entity_type: node
+bundle: zoning_information
+label: 'Osoite tai sijainnin kuvaus'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

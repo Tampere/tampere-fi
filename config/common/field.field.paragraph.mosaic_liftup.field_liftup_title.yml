@@ -1,0 +1,19 @@
+uuid: 4b9f0c32-d3a8-4849-98a8-4d66b80405a9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_liftup_title
+    - paragraphs.paragraphs_type.mosaic_liftup
+id: paragraph.mosaic_liftup.field_liftup_title
+field_name: field_liftup_title
+entity_type: paragraph
+bundle: mosaic_liftup
+label: Otsikko
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

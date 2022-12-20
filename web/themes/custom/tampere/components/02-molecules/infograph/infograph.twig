@@ -1,0 +1,23 @@
+{% set infograph__base_class = "infograph" %}
+
+<div {{ bem(infograph__base_class, infograph__modifiers|default([]), infograph__blockname)}}>
+  {# Heading #}
+  {% if infograph__heading %}
+    {% include "@atoms/02-text/text/01-paragraph.twig" with {
+      paragraph_base_class: infograph__heading__base_class|default("heading"),
+      paragraph_modifiers: infograph__heading__modifiers,
+      paragraph_blockname: infograph__base_class,
+      paragraph_content: infograph__heading,
+    } %}
+  {% endif %}
+
+  {# Content #}
+  {% if infograph__content %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        paragraph_base_class: infograph__content__base_class|default("content"),
+        paragraph_modifiers: infograph__content__modifiers,
+        paragraph_blockname: infograph__base_class,
+        paragraph_content: infograph__content,
+      } %}
+    {% endif %}
+</div>

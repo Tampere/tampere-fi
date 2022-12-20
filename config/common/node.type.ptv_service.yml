@@ -1,0 +1,17 @@
+uuid: 00370840-9dd3-4941-8bb7-57e4bd393882
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Palvelu
+type: ptv_service
+description: 'Palvelutietovarannosta (PTV) tuotu palvelukuvaus.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

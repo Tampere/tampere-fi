@@ -1,0 +1,5 @@
+card__heading: 'Lorem ipsum dolor sit amet'
+card__body: 'Cras vestibulum, est ac rhoncus aliquet, nunc enim viverra lorem, eget auctor tellus ligula non quam. Nunc sodales scelerisque risus, in feugiat massa egestas eu. Nullam fringilla sodales nunc in blandit. Sed dolor ex, laoreet sit amet ligula in, accumsan pretium elit.'
+card__link_item__url: '#'
+card__link_item__text: 'Lorem ipsum'
+is_example: TRUE

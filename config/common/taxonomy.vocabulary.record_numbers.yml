@@ -1,0 +1,8 @@
+uuid: 859da09f-32e3-43be-99d1-7ce9a761060f
+langcode: fi
+status: true
+dependencies: {  }
+name: Diaarinumerot
+vid: record_numbers
+description: ''
+weight: 0

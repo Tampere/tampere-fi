@@ -1,0 +1,9 @@
+id: title_h1
+label: 'Title as h1'
+ui_limit: news_item|news_media_delivery
+type: twig
+type_label: 'Twig field'
+entities:
+  node: node
+properties:
+  content: '<h1 class="h1">{{ node.label() }}</h1>'

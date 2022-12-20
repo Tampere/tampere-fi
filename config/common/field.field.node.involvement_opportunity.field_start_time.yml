@@ -1,0 +1,21 @@
+uuid: ecf77c77-baa3-4cfa-b46e-c651bd483038
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start_time
+    - node.type.involvement_opportunity
+  module:
+    - datetime
+id: node.involvement_opportunity.field_start_time
+field_name: field_start_time
+entity_type: node
+bundle: involvement_opportunity
+label: Alkamisaika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

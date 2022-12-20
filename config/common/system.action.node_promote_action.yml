@@ -1,0 +1,13 @@
+uuid: a6b7e232-4cff-40c5-91fd-19253ae70430
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: N0RDBTqiK4dKoN4p4oW2j0SGWycdHyALUe9M-Ofp89U
+id: node_promote_action
+label: 'Nosta sisältö etusivulla'
+type: node
+plugin: node_promote_action
+configuration: {  }

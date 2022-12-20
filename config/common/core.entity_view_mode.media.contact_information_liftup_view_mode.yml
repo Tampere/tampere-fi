@@ -1,0 +1,10 @@
+uuid: 3d416cf9-fa62-4d88-8b60-bb8913a05f1a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.contact_information_liftup_view_mode
+label: Yhteystietonosto
+targetEntityType: media
+cache: true

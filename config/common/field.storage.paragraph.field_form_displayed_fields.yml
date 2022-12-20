@@ -1,0 +1,54 @@
+uuid: 5750d4dc-68ff-4d51-9cea-16633cda5a23
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_form_displayed_fields
+field_name: field_form_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: organization
+      label: Organisaatio
+    -
+      value: summary
+      label: Tiivistelmä
+    -
+      value: description
+      label: Kuvaus
+    -
+      value: link
+      label: Verkko-osoite
+    -
+      value: languages
+      label: 'Kielet, joilla lomake käytettävissä'
+    -
+      value: support
+      label: 'Käytön tuki'
+    -
+      value: attachments
+      label: 'Liitteet ja lisätietolinkit'
+    -
+      value: areas
+      label: 'Alue, jolla lomake on käytettävissä'
+    -
+      value: forms
+      label: Lomake
+    -
+      value: form_delivery_details
+      label: 'Lomakkeen toimitustiedot'
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

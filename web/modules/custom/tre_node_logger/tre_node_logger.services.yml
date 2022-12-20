@@ -1,0 +1,5 @@
+services:
+  tre_node_logger.node_logger:
+    class: Drupal\tre_node_logger\Service\NodeLogger
+    arguments:
+      - '@database'

@@ -1,0 +1,10 @@
+uuid: cff66298-515b-42ce-9975-84bec8dc7927
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.positioned_image_medium_view_mode
+label: 'Asemoitu kuva (keskikokoinen)'
+targetEntityType: media
+cache: true

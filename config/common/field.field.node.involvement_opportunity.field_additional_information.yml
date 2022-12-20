@@ -1,0 +1,26 @@
+uuid: 41d58151-b749-4f98-a188-ad1b1261c11c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_information
+    - node.type.involvement_opportunity
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: node.involvement_opportunity.field_additional_information
+field_name: field_additional_information
+entity_type: node
+bundle: involvement_opportunity
+label: Lisätiedot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

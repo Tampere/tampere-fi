@@ -1,0 +1,8 @@
+uuid: a0031f5d-7b3b-4c1e-9004-06faf92d544b
+langcode: fi
+status: true
+dependencies: {  }
+name: Kaavanumerot
+vid: plan_numbers
+description: ''
+weight: 0

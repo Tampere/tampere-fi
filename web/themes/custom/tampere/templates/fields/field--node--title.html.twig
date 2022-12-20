@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme"s directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ * @see template_preprocess_field()
+ */
+#}
+
+{% embed "@atoms/_field.twig" %}
+  {% block field_content %}
+  {# h3 for the titles in teasers, otherwise h1 #}
+  {% set h = 3 %}
+  {% if view_mode|clean_class == "default" or view_mode|clean_class == "full" %}
+    {% set h = 1 %}
+  {% elseif view_mode|clean_class == "liftup" %}
+    {% set h = 2 %}
+  {% elseif view_mode|clean_class == "inside-accordion" %}
+    {% set h = 4 %}
+  {% endif %}
+    {{ title_prefix }}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      "heading_level": h,
+      "heading_base_class": "title",
+      "heading_blockname": entity_type|clean_class,
+      "heading_modifiers": [element["#view_mode"]|clean_class],
+      "heading": items.0.content,
+      attributes: []
+    }
+    %}
+    {{ title_suffix }}
+  {% endblock %}
+{% endembed %}

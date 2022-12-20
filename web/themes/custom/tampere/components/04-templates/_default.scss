@@ -1,0 +1,102 @@
+/**
+ * General Layout
+ */
+
+/**
+ * Layout Using Flexbox (IE11+).
+ * Remove this and uncomment Grid code below to use CSS Grid.
+ */
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main {
+  @include wrapper($h-padding: 0, $h-padding-large: 0);
+
+  display: block; // Fix for IE weirdness
+  flex: 1 0 auto;
+
+  @include large {
+    display: flex;
+  }
+}
+
+.main-sidebar {
+  min-width: $sidebar-min-width;
+
+  @include large {
+    width: $sidebar-width;
+  }
+
+  .region__sidebar {
+    height: 100%;
+  }
+}
+
+.main-content {
+  width: 100%;
+
+  @include large {
+    &--with-sidebar {
+      --article-content-max-width: #{$article-content-max-width--with-sidebar};
+      --basic-content-max-width: #{$basic-content-max-width--with-sidebar};
+      --basic-component-max-width: #{$basic-content-max-width--with-sidebar};
+
+      margin-left: $gutter-sidebar-content;
+      width: $basic-content-max-width--with-sidebar;
+    }
+  }
+}
+
+#pre-content {
+  @include wrapper($h-padding: 0, $h-padding-large: 0);
+}
+
+#post-content {
+  @include wrapper;
+}
+
+.region__admin-tasks {
+  margin: 0 auto;
+  max-width: $max-width;
+  padding: 0 $gutter-mobile;
+
+  @include large-plus {
+    padding: 0 $gutter-default;
+  }
+}
+
+.skip-to-content-link {
+  display: inline-block;
+  margin: $space-s;
+}
+
+/**
+ * Layout Using CSS Grid (NO IE11 support)
+ * Remove Flexbox code above and uncomment this section to use CSS Grid.
+ */
+
+// .main {
+//   &--with-sidebar {
+//     @include large {
+//       display: grid;
+//       grid-gap: $gutter;
+//       grid-template-areas: "content sidebar";
+//       grid-template-columns: $main-width #{$sidebar-width};
+//     }
+//   }
+// }
+//
+// .main-sidebar {
+//   grid-area: sidebar;
+//   margin-bottom: $space-double;
+// }
+//
+// .main-content {
+//   grid-area: content;
+//   width: 100%;
+// }

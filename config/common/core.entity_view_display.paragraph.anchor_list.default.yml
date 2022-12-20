@@ -1,0 +1,61 @@
+uuid: 0613a08c-75f5-468b-b6c6-a44f70811c5f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.anchor_list.field_anchor_links
+    - field.field.paragraph.anchor_list.field_title
+    - paragraphs.paragraphs_type.anchor_list
+  module:
+    - ds
+    - entity_reference_revisions
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_in_page_menu
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      in_page_menu__heading:
+        - field_title
+      in_page_menu__list_items:
+        - field_anchor_links
+id: paragraph.anchor_list.default
+targetEntityType: paragraph
+bundle: anchor_list
+mode: default
+content:
+  field_anchor_links:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 1
+    region: in_page_menu__list_items
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 0
+    region: in_page_menu__heading
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,52 @@
+uuid: 0507109b-4fe0-4bad-bf0e-ff78ddce617f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.process_accordions.field_accordion_main_title
+    - field.field.paragraph.process_accordions.field_description_text
+    - field.field.paragraph.process_accordions.field_process_accordions
+    - paragraphs.paragraphs_type.process_accordions
+  module:
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.process_accordions.default
+targetEntityType: paragraph
+bundle: process_accordions
+mode: default
+content:
+  field_accordion_main_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description_text:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_process_accordions:
+    type: paragraphs_classic_asymmetric
+    weight: 2
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

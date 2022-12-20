@@ -1,0 +1,38 @@
+uuid: e83739a7-1c7a-401a-ab66-f57df8a9f9e1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.emergency_notice
+    - workflows.workflow.scheduled_transitions
+  module:
+    - content_moderation
+    - content_translation
+    - entity_browser
+    - node
+    - quick_node_clone
+    - system
+id: emergency_notice_author
+label: Häiriöilmoitustoimittaja
+weight: -7
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access all_content_entity_browser entity browser pages'
+  - 'access all_places_entity_browser entity browser pages'
+  - 'access content overview'
+  - 'access persons_entity_browser entity browser pages'
+  - 'clone emergency_notice content'
+  - 'create emergency_notice content'
+  - 'delete any emergency_notice content'
+  - 'edit any emergency_notice content'
+  - 'revert emergency_notice revisions'
+  - 'translate editable entities'
+  - 'use scheduled_transitions transition archive'
+  - 'use scheduled_transitions transition create_new_draft'
+  - 'use scheduled_transitions transition publish'
+  - 'use scheduled_transitions transition restore_to_draft'
+  - 'view any unpublished content'
+  - 'view emergency_notice revisions'
+  - 'view latest version'
+  - 'view the administration theme'

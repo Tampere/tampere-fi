@@ -1,0 +1,417 @@
+// Color Usage variables - use these (via the `clr` function below)
+// rather than color variables directly.
+$defaultColors: (
+  text: $color-black,
+  text-secondary: $color-dark-gray,
+  text-inverse: $color-white,
+  background: $color-white,
+  background-transparent: rgba($color-white, 0.4),
+  background-secondary: $color-light-green-petrol,
+  primary: $color-darkest-blue,
+  primary-transparent: rgba($color-darkest-blue, 0.9),
+  primary-light: $color-dark-blue,
+  secondary: $color-warm-red,
+  accent: $color-blue-steel,
+  accent-transparent: rgba($color-blue-steel, 0.9),
+  accent-secondary: $color-light-gray,
+  accent-secondary-transparent: rgba($color-light-gray, 0.8),
+  accent-tertiary: $color-light-blue-water,
+  accent-tertiary-transparent: rgba($color-light-blue-water, 0.8),
+  muted: $color-light-blue-gray,
+  muted-transparent: rgba($color-light-blue-gray, 0.8),
+  contact-accent: $color-middle-gray,
+  events: $color-pale-light-green-petrol,
+  involvement: $color-light-green-petrol,
+  involvement-secondary: $color-pale-light-green-petrol,
+  inactive: $color-light-gray,
+  tabbed-container-background: $color-light-green-petrol,
+  notice: $color-dark-red,
+  notice-secondary: $color-middle-gray,
+  border: $color-silver,
+  border-transparent: rgba($color-black, 0.2),
+  process-accordion-inactive-circle: $color-middle-gray,
+  process-accordion-inactive-line: $color-light-middle-gray,
+  facet: $color-dark-red,
+  dark-button-background: $color-darkest-blue,
+  verified-user: $color-light-green,
+  form-accent: $color-light-gray,
+  form-border: $color-middle-gray,
+  form-icon: $color-dark-gray,
+  focus: $color-darkest-blue,
+  warning: $color-warning,
+  error: $color-error,
+  status: $color-status,
+  course-space: $color-dark-green,
+  course-full: $color-dark-red,
+  minisite-identifier-background: $color-warm-red,
+);
+
+// Minisite palettes
+// These can be used via the clr() function.
+$palette-1: (
+  secondary: $color-darkest-blue,
+  accent: $color-warm-red,
+  accent-tertiary: $color-light-green,
+  accent-tertiary-transparent: rgba($color-light-green, 0.8),
+  background-secondary: $color-light-red,
+  primary-text-on-background-secondary: $color-black,
+  accent-secondary: $color-lighter-light-green,
+  accent-secondary-transparent: rgba($color-lighter-light-green, 0.8),
+  muted: $color-lighter-light-green,
+  muted-transparent: rgba($color-lighter-light-green, 0.8),
+  alternative-secondary: $color-warm-red,
+  alternative-accent: $color-darkest-blue,
+  minisite-identifier-background: $color-darkest-blue,
+);
+
+$palette-2: (
+  secondary: $color-blue-steel,
+  accent: $color-red-berry,
+  accent-tertiary: $color-light-blue,
+  accent-tertiary-transparent: rgba($color-light-blue, 0.8),
+  primary-text-on-tertiary: $color-black,
+  background-secondary: $color-light-blue-water,
+  muted: $color-light-gray,
+  muted-transparent: rgba($color-light-gray, 0.8),
+  dark-button-background: $color-blue-steel,
+  minisite-identifier-background: $color-blue-steel,
+);
+
+$palette-3: (
+  secondary: $color-dark-green,
+  accent: $color-green,
+  accent-tertiary: $color-light-green-petrol,
+  accent-tertiary-transparent: rgba($color-light-green-petrol, 0.8),
+  background-secondary: $color-yellow-heat,
+  accent-secondary: $color-lighter-light-green,
+  accent-secondary-transparent: rgba($color-lighter-light-green, 0.8),
+  muted: $color-lighter-light-green,
+  muted-transparent: rgba($color-lighter-light-green, 0.8),
+  dark-button-background: $color-dark-green,
+  minisite-identifier-background: $color-dark-green,
+);
+
+$palette-4: (
+  secondary: $color-warm-red,
+  accent: $color-darkest-blue,
+  background-secondary: $color-yellow-heat,
+  accent-secondary: $color-light-blue-gray,
+  accent-secondary-transparent: rgba($color-light-blue-gray, 0.8),
+  muted: $color-yellow-heat-light,
+  muted-transparent: rgba($color-yellow-heat-light, 0.8),
+  dark-button-background: $color-warm-red,
+  minisite-identifier-background: $color-warm-red,
+);
+
+$palette-5: (
+  secondary: $color-yellow-heat,
+  accent: $color-dark-green,
+  accent-tertiary: $color-light-green-petrol,
+  accent-tertiary-transparent: rgba($color-light-green-petrol, 0.8),
+  accent-secondary: $color-yellow-heat-light,
+  accent-secondary-transparent: rgba($color-yellow-heat-light, 0.8),
+  muted: $color-yellow-heat-light,
+  muted-transparent: rgba($color-yellow-heat-light, 0.8),
+  dark-button-background: $color-yellow-heat,
+  minisite-identifier-background: $color-yellow-heat,
+);
+
+$palette-6: (
+  secondary: $color-yellow-heat,
+  accent: $color-light-red,
+  accent-tertiary: $color-yellow-heat,
+  accent-tertiary-transparent: rgba($color-yellow-heat, 0.8),
+  background-secondary: $color-light-blue-water,
+  dark-button-background: $color-yellow-heat,
+  minisite-identifier-background: $color-yellow-heat,
+);
+
+$palette-7: (
+  secondary: $color-light-green-petrol,
+  accent: $color-green,
+  accent-tertiary: $color-light-green,
+  accent-tertiary-transparent: rgba($color-light-green, 0.8),
+  background-secondary: $color-blue-steel,
+  primary-text-on-background-secondary: $color-white,
+  accent-secondary: $color-yellow-heat-light,
+  accent-secondary-transparent: rgba($color-yellow-heat-light, 0.8),
+  muted: $color-lighter-light-green,
+  muted-transparent: rgba($color-lighter-light-green, 0.8),
+  dark-button-background: $color-light-green-petrol,
+  minisite-identifier-background: $color-light-green-petrol,
+);
+
+$palette-8: (
+  secondary: $color-light-blue-water,
+  accent: $color-warm-red,
+  accent-tertiary: $color-pink,
+  accent-tertiary-transparent: rgba($color-pink, 0.8),
+  primary-text-on-tertiary: $color-black,
+  background-secondary: $color-dark-blue,
+  primary-text-on-background-secondary: $color-white,
+  accent-secondary: $color-pink-light,
+  accent-secondary-transparent: rgba($color-pink-light, 0.8),
+  muted: $color-pink-light,
+  muted-transparent: rgba($color-pink-light, 0.8),
+  dark-button-background: $color-light-blue-water,
+  minisite-identifier-background: $color-light-blue-water,
+);
+
+$palette-9: (
+  secondary: $color-light-green,
+  accent: $color-dark-blue,
+  background-secondary: $color-light-red,
+  primary-text-on-background-secondary: $color-black,
+  muted: $color-lighter-light-green,
+  muted-transparent: rgba($color-lighter-light-green, 0.8),
+  dark-button-background: $color-light-green,
+  minisite-identifier-background: $color-dark-blue,
+);
+
+$palette-10: (
+  secondary: $color-red-berry,
+  accent: $color-light-green-petrol,
+  accent-tertiary: $color-yellow,
+  accent-tertiary-transparent: rgba($color-yellow, 0.8),
+  background-secondary: $color-light-red,
+  primary-text-on-background-secondary: $color-black,
+  muted: $color-pink-light,
+  muted-transparent: rgba($color-pink-light, 0.8),
+  dark-button-background: $color-red-berry,
+  minisite-identifier-background: $color-red-berry,
+);
+
+$palette-11: (
+  secondary: $color-pink,
+  accent: $color-yellow,
+  accent-tertiary: $color-middle-gray,
+  accent-tertiary-transparent: rgba($color-middle-gray, 0.95),
+  primary-text-on-tertiary: $color-white,
+  background-secondary: $color-light-red,
+  primary-text-on-background-secondary: $color-black,
+  muted: $color-light-gray,
+  muted-transparent: rgba($color-light-gray, 0.8),
+  dark-button-background: $color-pink,
+  minisite-identifier-background: $color-darkest-blue,
+);
+
+$minisitePalettes: (
+  $palette-1,
+  $palette-2,
+  $palette-3,
+  $palette-4,
+  $palette-5,
+  $palette-6,
+  $palette-7,
+  $palette-8,
+  $palette-9,
+  $palette-10,
+  $palette-11
+);
+
+// Only meant for displaying all available project colors in Storybook.
+$projectColors: (
+  atmosphere: $color-warm-red,
+  change: $color-pink,
+  change-light: $color-pink-light,
+  work: $color-dark-blue,
+  home: $color-light-blue,
+  experience: $color-light-green,
+  experience-light: $color-lighter-light-green,
+  idea: $color-yellow,
+  dark-brick: $color-dark-red,
+  brick: $color-light-red,
+  violet: $color-lilac,
+  dark-water: $color-darkest-blue,
+  steel: $color-blue-steel,
+  dream: $color-light-blue-dream,
+  water: $color-light-blue-water,
+  spruce: $color-dark-green,
+  petrol: $color-light-green-petrol,
+  light-petrol: $color-pale-light-green-petrol,
+  light-sand: $color-light-gray,
+  heat: $color-yellow-heat,
+  heat-light: $color-yellow-heat-light,
+  fade: $color-light-yellow,
+  midgray: $color-middle-gray,
+  tuatara: $color-dark-gray,
+  link-water: $color-light-blue-gray,
+  pampas: $color-light-gray,
+  black: $color-black,
+  white: $color-white,
+  silver: $color-silver,
+  goblin: $color-green,
+  berry: $color-red-berry,
+);
+
+///////////
+// Usage //
+///////////
+// This color function makes it easy for you to call a color by it's functional
+// name anywhere you need.
+// E.g. to use the `text` color, you type: `color: clr(text);`
+//
+// How it works:
+// This function works in conjunction with the dynamic css custom properties
+// declarations below. The item called in the function is prefixed with
+// `var(--c-` to call the custom property for that color.
+// E.g. `color: clr(text);` will return `color: var(--c-text);`
+// Note: (The `--c-` is added via the `@each` loops below)
+@function clr($colorChoice, $fallback: null) {
+  @if $fallback {
+    @return var(--c-#{$colorChoice}, #{$fallback});
+  } @else {
+    @return var(--c-#{$colorChoice});
+  }
+}
+
+// Dynamically set swatch text color based on the lightness of the background color
+@function set-color(
+  $color,
+  $color-primary: text,
+  $color-secondary: text-inverse,
+  $inversed: false
+) {
+  $lightness_check: lightness($color) > 50;
+
+  @if ($inversed) {
+    $lightness_check: lightness($color) < 50;
+  }
+
+  @if ($lightness_check) {
+    @return clr($color-primary);
+  } @else {
+    @return clr($color-secondary);
+  }
+}
+
+// Dynamically check if color is light
+@function is-light($color) {
+  @return lightness($color) > 50;
+}
+
+// Create CSS custom properties
+// This is what powers the built-in OS light/dark mode switching.
+// For each color variable above (e.g. `text` and `background`) a css custom
+// property will be created. (e.g. `--c-text:` and `--c-background:`).
+//
+// The first `@each` below will create a custom property for each item in the
+// `$defaultColors` map. So put all of your default colors there.
+:root {
+  // Create custom properties for default colors
+  @each $name, $color in $defaultColors {
+    --c-#{$name}: #{$color};
+  }
+
+  // Create custom properties for minisite palette colors
+  @each $palette in $minisitePalettes {
+    $i: index($minisitePalettes, $palette);
+    .palette-#{$i} {
+      @each $name, $color in $palette {
+        --c-#{$name}: #{$color};
+      }
+    }
+  }
+}
+
+/* Body */
+$body-bg-color: $color-white;
+$body-color: $color-black;
+
+/* grid */
+$grid-background-color: $color-dove-gray;
+
+/* text */
+$color-body: $color-black;
+$color-heading: inherit;
+$color-heading-h1: clr(primary);
+$color-placeholder: $color-dove-gray;
+
+/* link */
+$color-link: $color-dark-blue;
+$color-link-hover: $color-black;
+$color-link-more: $color-black;
+
+/* buttons */
+$button-default-bg-color: $color-dark-blue;
+$button-default-bg-color-hover: $color-black;
+$button-default-color: $color-white;
+$button-default-color-hover: $color-white;
+$button-alt-bg-color: $color-dove-gray;
+$button-alt-bg-color-hover: $color-black;
+$button-alt-color: $color-white;
+$button-alt2-bg-color: $color-black;
+$button-alt2-color: $color-white;
+$button-alt2-bg-color-hover: $color-dove-gray;
+
+/* border */
+$color-border: $color-silver;
+
+/* table */
+$color-table-bg: $color-silver;
+$color-table-row-odd-bg: $color-white;
+$color-table-border: $color-dark-blue;
+$color-table-cell: $color-black;
+
+
+
+/* forms */
+$input-placeholder-color: clr(form-border);
+
+/* tabs */
+$tab-color-bg: $color-white;
+$tab-color: $color-dark-blue;
+$tab-color-hover: $color-white;
+$tab-color-bg-hover: $color-dark-blue;
+
+/* breadcrumbs */
+$breadcrumb-color: $color-black;
+$breadcrumb-hover-color: $color-dark-blue;
+
+/* menu */
+$main-menu-open-bg-color: $color-white;
+
+/* menu link */
+$main-menu-link-color: $color-mine-shaft;
+$main-menu-link-color-desktop: $color-black;
+$main-menu-link-color-desktop-active: $color-white;
+$main-menu-sublink-color: $color-mine-shaft;
+$main-menu-sublink-color-desktop: $color-silver;
+$social-menu-link-color: $color-mine-shaft;
+
+/* menu sublinks */
+$main-menu-sub-bg-color: $color-silver;
+$main-menu-sub-color-desktop: $color-white;
+$main-menu-sub-bg-color-desktop: $color-black;
+$main-menu-sub-expand-bg-color: $color-dove-gray;
+$main-menu-sub-expand-color: $color-white;
+$main-menu-sub-expand-opened-bg-color: $color-dove-gray;
+$main-menu-sub-expand-opened-color: $color-silver;
+$main-menu-sub-2-bg-color: $color-silver;
+
+/* accordion */
+$accordion-heading-bg-color: $color-white;
+$accordion-heading-color: $color-mine-shaft;
+$accordion-heading-color-active: $color-dove-gray;
+
+/* card */
+$colorful-card-1-color-name: primary;
+$colorful-card-2-color-name: secondary;
+$colorful-card-3-color-name: accent;
+
+/* pager */
+$pager-arrow-color: $color-silver;
+$pager-arrow-color-active: $color-dark-blue;
+$pager-color: $color-darkest-blue;
+$pager-color-active: $color-white;
+$pager-bg-color-active: $color-dark-blue;
+
+/* footer */
+$footer-background-color: $color-black;
+$footer-link-color: $color-white;
+
+/* templates */
+$place-holder-color: $color-dove-gray;
+
+/* drupal */
+$node-preview-container-bg-color: $color-white;

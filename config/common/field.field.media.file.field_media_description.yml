@@ -1,0 +1,19 @@
+uuid: ff2d41d9-ead3-41f8-ba2a-b94beccc920d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_description
+    - media.type.file
+id: media.file.field_media_description
+field_name: field_media_description
+entity_type: media
+bundle: file
+label: Kuvaus
+description: 'Syötä yleinen, julkiseen käyttöön tarkoitettu lyhyt kuvaus tälle tiedostolle. Jos tiedosto nostetaan näkyviin osana liitelistaa, tämä kuvaus voidaan näyttää liitteen alapuolella. Liitelista tarjoaa myös mahdollisuuden kirjoittaa liitteelle liitelistakohtaisesti muu kuvaus tämän yleisen kuvauksen sijaan.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

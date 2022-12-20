@@ -1,0 +1,22 @@
+uuid: cdee1745-9ca4-40c6-b8c8-68bf760222e4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.moderated_page
+id: node.moderated_page.promote
+field_name: promote
+entity_type: node
+bundle: moderated_page
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

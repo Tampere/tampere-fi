@@ -1,0 +1,8 @@
+button_url:
+  "#"
+button_content:
+  "Dark Button"
+button_modifiers:
+  - "dark"
+button_icon_name:
+  "arrow"

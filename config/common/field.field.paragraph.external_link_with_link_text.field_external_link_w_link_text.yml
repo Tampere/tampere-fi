@@ -1,0 +1,23 @@
+uuid: a9be9cf0-93f8-4391-9a94-25ee93a9160e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_external_link_w_link_text
+    - paragraphs.paragraphs_type.external_link_with_link_text
+  module:
+    - link
+id: paragraph.external_link_with_link_text.field_external_link_w_link_text
+field_name: field_external_link_w_link_text
+entity_type: paragraph
+bundle: external_link_with_link_text
+label: 'Ulkoinen linkki'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 16
+field_type: link

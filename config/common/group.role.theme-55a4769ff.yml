@@ -1,0 +1,17 @@
+uuid: a485ca3c-5284-4608-b4bf-0ef6bb109bec
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.blog_article_author
+id: theme-55a4769ff
+label: Blogitoimittaja
+weight: -3
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,19 @@
+uuid: 95635b11-e7ce-4192-9f12-9b2ecb192b37
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_link.field_link_alt_text
+    - field.field.paragraph.social_media_link.field_social_media
+    - field.field.paragraph.social_media_link.field_social_media_profile_url
+    - paragraphs.paragraphs_type.social_media_link
+id: paragraph.social_media_link.default
+targetEntityType: paragraph
+bundle: social_media_link
+mode: default
+content: {  }
+hidden:
+  field_link_alt_text: true
+  field_social_media: true
+  field_social_media_profile_url: true
+  search_api_excerpt: true

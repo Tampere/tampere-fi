@@ -1,0 +1,19 @@
+uuid: 90605049-afd2-4c41-84af-1674feecf023
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordion_heading
+    - paragraphs.paragraphs_type.process_accordion_item
+id: paragraph.process_accordion_item.field_accordion_heading
+field_name: field_accordion_heading
+entity_type: paragraph
+bundle: process_accordion_item
+label: Haitariotsikko
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,44 @@
+uuid: dbacbd15-f24f-43f9-adb2-ee9e635cfec0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.life-situation-menu-fi.field_hide_menu_link
+    - system.menu.life-situation-menu-fi
+  module:
+    - link
+    - menu_item_extras
+id: menu_link_content.life-situation-menu-fi.default
+targetEntityType: menu_link_content
+bundle: life-situation-menu-fi
+mode: default
+content:
+  field_hide_menu_link:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 3
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  view_mode:
+    type: menu_item_extras_view_mode_selector_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

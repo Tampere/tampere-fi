@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'List content with <b>any</b> of the selected taxonomy vocabulary terms'
+    -
+      label: 'List content with <b>all</b> of the selected taxonomy vocabulary terms'

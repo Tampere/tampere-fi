@@ -1,0 +1,19 @@
+uuid: a84b47c9-9e56-49ed-b82a-f54df5f1b7b3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_service_producer
+    - node.type.ptv_service
+id: node.ptv_service.field_service_producer
+field_name: field_service_producer
+entity_type: node
+bundle: ptv_service
+label: 'Palvelun toteuttaa'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

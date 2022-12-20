@@ -1,0 +1,18 @@
+uuid: ad755b9f-5f6f-4c09-8bcc-078e832bd6ab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_node-place
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_content.life_situation-group_node-place
+target_entity_type_id: group_content
+target_bundle: life_situation-group_node-place
+default_langcode: site_default
+language_alterable: false

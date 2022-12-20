@@ -1,0 +1,269 @@
+// Styles to override third party (Juicer.io) styles
+.juicer-feed.juicer-feed.juicer-feed.modern {
+  overflow: visible !important;
+
+  .j-display-filters {
+    display: none;
+  }
+
+  .j-stacker-wrapper {
+    margin: 0 !important;
+  }
+
+  .j-stacker {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include large {
+      flex-wrap: nowrap;
+    }
+
+    > * {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  }
+
+  .j-stack {
+    padding: 0 !important;
+    width: 100% !important;
+
+    & + .j-stack {
+      @include large {
+        padding-left: $space-s !important;
+      }
+    }
+  }
+
+  .feed-item {
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
+    margin-bottom: $space-m !important;
+    position: relative;
+
+    @include large {
+      margin-bottom: $space-l !important;
+    }
+
+    // Account details and post date
+    .j-poster {
+      background-color: clr(background);
+      height: 42px;
+      padding: 0;
+
+      @include large {
+        height: 52px;
+      }
+
+      a {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        padding: $space-xs;
+
+        @include large {
+          display: block;
+          padding: $space-s;
+        }
+      }
+
+      img {
+        height: $icon-small;
+        // Juicer only uses !important for the icon width.
+        width: $icon-small !important;
+      }
+
+      .j-twitter-screen-name,
+      h3,
+      .j-date {
+        color: clr(text);
+        font-family: $font-body;
+        font-size: $font-12;
+        margin: 0;
+
+        @include large {
+          font-size: $font-16;
+        }
+      }
+
+      h3 {
+        margin-right: auto;
+      }
+
+      .j-twitter-screen-name,
+      h3 {
+        font-weight: $font-weight-bold;
+      }
+
+      .j-date {
+        font-weight: $font-weight-regular;
+      }
+
+      .j-twitter-display-name {
+        display: none;
+      }
+
+      .j-twitter-post-icon {
+        height: $icon-medium;
+        padding: 0;
+        position: absolute;
+        right: $space-s;
+        bottom: $space-s;
+
+        @include large {
+          right: $space-l;
+          bottom: $space-l;
+        }
+
+        &::before {
+          background-color: clr(background);
+          color: clr(primary);
+          font-size: $icon-medium;
+        }
+
+        &:focus,
+        &:hover {
+          &::before {
+            color: clr(primary-light);
+          }
+        }
+      }
+    }
+
+    &.j-twitter {
+      .j-poster {
+        a {
+          justify-content: flex-start;
+        }
+      }
+
+      .j-text {
+        padding-top: 0;
+      }
+
+      .j-image {
+        margin-top: 0;
+        margin-left: $space-s * (-1);
+        margin-bottom: $space-s;
+        margin-right: $space-s * (-1);
+
+        @include large {
+          margin-left: $space-l * (-1);
+          margin-bottom: $space-l;
+          margin-right: $space-l * (-1);
+        }
+      }
+    }
+
+    // Post content and social media specific details
+    .j-text {
+      background-color: clr(background);
+      padding: $space-s;
+
+      @include large {
+        padding: $space-l;
+      }
+
+      .j-message {
+        color: clr(text) !important;
+        font-family: $font-body !important;
+        font-size: $font-16 !important;
+        font-weight: $font-weight-regular !important;
+        line-height: 1.38 !important;
+
+        @include large {
+          font-size: $font-20 !important;
+          line-height: 1.6 !important;
+        }
+
+        a {
+          @include link;
+
+          font-weight: $font-weight-regular;
+          text-decoration: underline !important;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+      .j-meta {
+        align-items: flex-end;
+        display: flex;
+        height: $icon-medium;
+        margin-top: $space-s;
+        justify-content: flex-end;
+
+        @include large {
+          margin-top: $space-l;
+        }
+
+        // Social media actions (i.e. likes, sharing, replies)
+        ul {
+          display: none;
+        }
+
+        .j-twitter-date {
+          color: clr(text);
+          font-family: $font-body;
+          font-size: $font-12;
+          font-weight: $font-weight-regular;
+          margin-top: 7px;
+          position: absolute;
+          top: $space-xs;
+          right: $space-xs;
+
+          @include large {
+            font-size: $font-16;
+            margin-top: 3px;
+            top: $space-s;
+            right: $space-s;
+          }
+        }
+      }
+
+      // Juicer uses a font for the social media icons
+      .j-social {
+        display: block;
+
+        &::before {
+          background-color: clr(background);
+          color: clr(primary);
+          display: block;
+          font-size: $icon-medium;
+          margin-right: 0;
+        }
+
+        &:focus,
+        &:hover {
+          &::before {
+            color: clr(primary-light);
+          }
+        }
+      }
+    }
+  }
+
+  // Load more button
+  .j-paginate {
+    @include button-default;
+    @include button;
+
+    border-radius: 0;
+    font-weight: $font-weight-regular;
+    margin-top: 0;
+    margin-bottom: 0;
+    transition: unset;
+
+    @include large {
+      min-width: max-content;
+    }
+
+    &:focus,
+    &:hover {
+      text-decoration: underline !important;
+      text-underline-position: under;
+    }
+  }
+}

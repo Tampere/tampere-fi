@@ -1,0 +1,19 @@
+uuid: 133ba97d-e2a2-44a5-9b68-d1b7d31e61f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_news_item_title
+    - message.template.news_item_to_media
+id: message.news_item_to_media.field_news_item_title
+field_name: field_news_item_title
+entity_type: message
+bundle: news_item_to_media
+label: 'Uutisen otsikko'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

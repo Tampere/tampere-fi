@@ -1,0 +1,110 @@
+$menu-button-height: 55px;
+
+.menu-button {
+  $base_class: &;
+  
+  cursor: pointer;
+  border: $border-thick-secondary;
+  background-color: clr(secondary);
+  color: clr(text-inverse);
+  font-family: $font-heading;
+  font-size: $font-14;
+  font-weight: $font-weight-bold;
+  padding: $small-button-padding;
+  display: none;
+  align-items: center;
+
+  @include large {
+    height: $menu-button-height;
+  }
+
+  &:focus,
+  &:hover {
+    background-color: clr(background);
+    color: clr(secondary);
+  }
+
+  &.is-open {
+    background-color: clr(text-inverse);
+    color: clr(secondary);
+    
+    #{$base_class}__icon--closed {
+      display: none;
+    }
+
+    #{$base_class}__icon--open {
+      &.shown-on-mobile {
+        display: block;
+
+        @include large {
+          display: none;
+        }
+      }
+
+      &.shown-on-desktop {
+        display: none;
+
+        @include large {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include large {
+    display: flex;
+    font-size: $font-22;
+    padding: $space-s $space-m;
+  }
+
+
+  &__icon {
+    width: $icon-xs;
+    height: $icon-xs;
+    margin-left: $space-s;
+
+    &--open {
+      display: none;
+    }
+
+    @include large {
+      width: $icon-small;
+      height: $icon-small;
+      margin-left: $space-m;
+    }
+  }
+
+  &--mobile {
+    display: flex;
+
+    @include large {
+      display: none;
+    }
+  }
+
+  &--minisite {
+    background-color: clr(background);
+    border: $border-thin-inverse;
+    color: clr(text);
+
+    @include large {
+      border: $border-thick-inverse;
+    }
+
+    @include large-down {
+      height: $small-button-size;
+    }
+
+    &:not(.is-open):hover {
+      @include dynamic-color(minisite-identifier-background);
+
+      background-color: clr(minisite-identifier-background);
+    }
+
+    &:focus,
+    &.is-open {
+      background-color: clr(background);
+      color: clr(text);
+    }
+  }
+}

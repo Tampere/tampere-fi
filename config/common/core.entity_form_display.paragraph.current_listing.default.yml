@@ -1,0 +1,226 @@
+uuid: f58219e1-0894-46e7-9096-3e10a1ee6380
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.current_listing.field_blogs
+    - field.field.paragraph.current_listing.field_content_sources
+    - field.field.paragraph.current_listing.field_current_content_types
+    - field.field.paragraph.current_listing.field_display_archive_link
+    - field.field.paragraph.current_listing.field_geographical_areas
+    - field.field.paragraph.current_listing.field_hide_previous_content_link
+    - field.field.paragraph.current_listing.field_highlighted_content
+    - field.field.paragraph.current_listing.field_keywords
+    - field.field.paragraph.current_listing.field_life_situations
+    - field.field.paragraph.current_listing.field_liftup_amount
+    - field.field.paragraph.current_listing.field_liftup_display
+    - field.field.paragraph.current_listing.field_listing_title
+    - field.field.paragraph.current_listing.field_minisites
+    - field.field.paragraph.current_listing.field_notice_types
+    - field.field.paragraph.current_listing.field_omitted_nodes
+    - field.field.paragraph.current_listing.field_topics
+    - paragraphs.paragraphs_type.current_listing
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_taxonomy:
+      children:
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - field_minisites
+      label: 'Yleiset luokittelut'
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_content_type_taxonomy:
+      children:
+        - field_blogs
+        - field_notice_types
+      label: 'Sisältötyyppikohtaiset luokittelut'
+      region: content
+      parent_name: ''
+      weight: 7
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_display_archive_link:
+      children:
+        - field_display_archive_link
+        - field_hide_previous_content_link
+      label: 'Näytä arkisto-linkki'
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Voit lisätä paragraafiin linkin uutis- ja artikkeliarkistoon tästä.'
+        required_fields: true
+id: paragraph.current_listing.default
+targetEntityType: paragraph
+bundle: current_listing
+mode: default
+content:
+  field_blogs:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_content_sources:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_current_content_types:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_display_archive_link:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_previous_content_link:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_highlighted_content:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_liftup_amount:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_liftup_display:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_listing_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_minisites:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_notice_types:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_omitted_nodes:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  translation: true

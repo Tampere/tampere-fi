@@ -1,0 +1,22 @@
+uuid: 4f721178-9df8-45eb-8b60-1fdcc83b6c16
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.project_and_organization_cards
+id: paragraph.project_and_organization_cards.status
+field_name: status
+entity_type: paragraph
+bundle: project_and_organization_cards
+label: Julkaistu
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

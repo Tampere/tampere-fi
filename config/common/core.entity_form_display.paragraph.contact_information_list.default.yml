@@ -1,0 +1,88 @@
+uuid: df550fe7-fceb-42f5-8718-46fdb599cbd1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contact_information_list.field_displayed_bundles
+    - field.field.paragraph.contact_information_list.field_displayed_content_types
+    - field.field.paragraph.contact_information_list.field_geographical_areas
+    - field.field.paragraph.contact_information_list.field_keywords
+    - field.field.paragraph.contact_information_list.field_life_situations
+    - field.field.paragraph.contact_information_list.field_taxonomy_combination
+    - field.field.paragraph.contact_information_list.field_title
+    - field.field.paragraph.contact_information_list.field_topics
+    - paragraphs.paragraphs_type.contact_information_list
+id: paragraph.contact_information_list.default
+targetEntityType: paragraph
+bundle: contact_information_list
+mode: default
+content:
+  field_displayed_bundles:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_taxonomy_combination:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_displayed_content_types: true
+  status: true

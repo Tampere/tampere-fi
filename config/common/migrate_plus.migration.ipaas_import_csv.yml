@@ -1,0 +1,196 @@
+uuid: 510b8e45-48cf-45a8-871d-522b40934878
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_plus
+id: ipaas_import_csv
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: default
+label: 'Persons imported from iPaaS'
+source:
+  plugin: csv
+  track_changes: true
+  path: /var/www/html/migration_sources/ipaas_data.csv
+  header_offset: null
+  ids:
+    - central_person_nbr
+    - contract_nbr
+  delimiter: '|'
+  enclosure: '"'
+  fields:
+    -
+      name: contract_nbr
+      label: 'Contract number'
+    -
+      name: contract_begin_date
+      label: 'Contract begin date'
+    -
+      name: contract_end_date
+      label: 'Contract end date'
+    -
+      name: central_person_nbr
+      label: 'Central person number (forms the id with contract number)'
+    -
+      name: last_name
+      label: 'Last name'
+    -
+      name: first_name
+      label: 'First name'
+    -
+      name: nimike_code
+      label: 'Title code'
+    -
+      name: nimike_desc
+      label: 'Title label'
+    -
+      name: company_code
+      label: 'Company code'
+    -
+      name: company_desc
+      label: 'Company label'
+    -
+      name: organization_code
+      label: 'Organization code'
+    -
+      name: organization_desc_long
+      label: 'Organization label'
+    -
+      name: cost_center_code
+      label: 'Cost center code'
+    -
+      name: cost_center_desc_long
+      label: 'Cost center label'
+    -
+      name: work_mobile_phone_nbr
+      label: 'Work phone (mobile)'
+    -
+      name: work_email_address
+      label: 'Work email'
+  constants:
+    id_hash_salt: to-be-overridden-by-environment
+process:
+  status:
+    plugin: default_value
+    default_value: 0
+  uid:
+    plugin: default_value
+    default_value: 1
+  langcode:
+    plugin: default_value
+    default_value: fi
+  field_first_names:
+    -
+      plugin: explode
+      source: first_name
+      delimiter: ' '
+    -
+      plugin: extract
+      index:
+        - 0
+  field_last_name:
+    plugin: get
+    source: last_name
+  field_email:
+    plugin: get
+    source: work_email_address
+  field_hr_title:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: nimike_desc
+    -
+      plugin: entity_generate
+      access_check: false
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: personnel_titles
+      value_key: field_hr_id
+      source: nimike_code
+      values:
+        name: nimike_desc
+      default_values:
+        langcode: fi
+  field_hr_cost_center:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: cost_center_desc_long
+    -
+      plugin: entity_generate
+      access_check: false
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: personnel_cost_centers
+      value_key: field_hr_id
+      source: cost_center_code
+      values:
+        name: cost_center_desc_long
+      default_values:
+        langcode: fi
+  field_hr_organizational_unit:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: organization_desc_long
+    -
+      plugin: entity_generate
+      access_check: false
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: personnel_organization_units
+      value_key: field_hr_id
+      source: organization_code
+      values:
+        name: organization_desc_long
+      default_values:
+        langcode: fi
+  field_hr_company:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: company_desc
+    -
+      plugin: entity_generate
+      access_check: false
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: personnel_companies
+      value_key: field_hr_id
+      source: company_code
+      values:
+        name: company_desc
+      default_values:
+        langcode: fi
+  field_hr_id:
+    -
+      plugin: concat
+      source:
+        - central_person_nbr
+        - constants/id_hash_salt
+        - contract_nbr
+      delimiter: ''
+    -
+      plugin: callback
+      callable: sha1
+  field_contract_begins:
+    plugin: format_date
+    from_format: Ymd
+    to_format: Y-m-d
+    source: contract_begin_date
+  field_contract_ends:
+    plugin: format_date
+    from_format: Ymd
+    to_format: Y-m-d
+    source: contract_end_date
+  field_phone:
+    plugin: get
+    source: work_mobile_phone_nbr
+destination:
+  plugin: 'entity:node'
+  default_bundle: person
+migration_dependencies: null

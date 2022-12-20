@@ -1,0 +1,14 @@
+uuid: 151f7d54-9433-4af2-a4e6-368841653c60
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.mailing_lists
+id: taxonomy_vocabulary_mailing_lists
+entity_type_id: taxonomy_vocabulary
+entity_id: mailing_lists
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

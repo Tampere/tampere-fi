@@ -1,0 +1,29 @@
+uuid: 59265a83-12b5-4e72-81f3-5b02ec7d46e0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hr_organizational_unit
+    - node.type.place_of_business
+    - taxonomy.vocabulary.personnel_organization_units
+id: node.place_of_business.field_hr_organizational_unit
+field_name: field_hr_organizational_unit
+entity_type: node
+bundle: place_of_business
+label: Organisaatioyksikkö
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      personnel_organization_units: personnel_organization_units
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

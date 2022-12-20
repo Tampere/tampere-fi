@@ -1,0 +1,32 @@
+.material-download-list {
+  @include page-element-spacer;
+
+  &__summary {
+    @include large {
+      margin-top: $space-m-plus;
+    }
+  }
+
+  &__list {
+    display: grid;
+    column-gap: $space-s;
+    row-gap: $space-s;
+    padding: 0;
+    max-width: var(--basic-component-max-width);
+
+    @include large {
+      column-gap: $space-xl;
+      grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 3)), 1fr));
+    }
+
+    .layout-container--with-sidebar & {
+      @include large {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  &__list > * {
+    margin-top: $space-l;
+  }
+}

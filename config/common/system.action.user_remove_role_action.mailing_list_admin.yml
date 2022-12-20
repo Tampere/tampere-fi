@@ -1,0 +1,14 @@
+uuid: e0970d61-a0d0-451f-8b45-b060919010f8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.mailing_list_admin
+  module:
+    - user
+id: user_remove_role_action.mailing_list_admin
+label: 'Remove the Mediajakelulistojen ylläpitäjä role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: mailing_list_admin

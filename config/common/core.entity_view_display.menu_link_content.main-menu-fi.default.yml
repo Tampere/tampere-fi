@@ -1,0 +1,21 @@
+uuid: 2e9c7fa1-57fa-4363-8453-995452ef4cbc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.menu_link_content.main-menu-fi.field_hide_menu_link
+    - system.menu.main-menu-fi
+id: menu_link_content.main-menu-fi.default
+targetEntityType: menu_link_content
+bundle: main-menu-fi
+mode: default
+content:
+  children:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_hide_menu_link: true
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,22 @@
+uuid: aca8fefa-21d6-4abf-93fb-e6c44af35f79
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.contact_information_liftups
+id: paragraph.contact_information_liftups.status
+field_name: status
+entity_type: paragraph
+bundle: contact_information_liftups
+label: Julkaistu
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -1,0 +1,31 @@
+uuid: 14d41967-2f80-45c2-8849-5be9f38c1e2c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_project_or_organization
+    - node.type.organization
+    - node.type.project
+    - paragraphs.paragraphs_type.project_or_organization_card
+id: paragraph.project_or_organization_card.field_project_or_organization
+field_name: field_project_or_organization
+entity_type: paragraph
+bundle: project_or_organization_card
+label: 'Projekti tai organisaatio'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      organization: organization
+      project: project
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: organization
+field_type: entity_reference

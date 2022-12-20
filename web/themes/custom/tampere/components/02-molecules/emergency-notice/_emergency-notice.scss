@@ -1,0 +1,114 @@
+$emergency-notice-desktop-side-gutter: $gutter-default;
+
+.emergency-notice {
+  $base_class: &;
+
+  background-color: clr(notice);
+  color: clr(text-inverse);
+  padding: $space-s;
+  width: 100%;
+
+  &.hidden {
+    display: none;
+  }
+  &.shown {
+    display: block;
+  }
+
+  &__content {
+    max-width: $max-width;
+    margin: 0 auto;
+
+    @include large {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__text-content {
+    @include large {
+      order: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__heading {
+    font-family: $font-body;
+    font-size: $font-16;
+    font-weight: $font-weight-extra-bold;
+    margin: 0;
+
+    @include large {
+      font-size: $font-20;
+      padding-left: $emergency-notice-desktop-side-gutter;
+    }
+  }
+
+  &__icon-container {
+    display: flex;
+    align-items: center;
+    font-family: $font-heading;
+    font-size: $font-16;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: clr(text-inverse);
+    margin-top: $space-xs;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+
+    @include large {
+      font-size: $font-20;
+      margin: 0 0 0 $space-l;
+      padding-right: $emergency-notice-desktop-side-gutter;
+
+    }
+  }
+
+  &__icon, &__close-icon {
+    width: $icon-small;
+    height: $icon-small;
+    margin-left: $space-s;
+  }
+
+  &__button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: $space-xs;
+
+    #{$base_class}__close-button {
+      @include button-reset();
+
+      color: clr(text-inverse);
+      margin-top: (-1) * $space-xs;
+      margin-right: (-1) * $space-xs;
+      font-family: $font-heading;
+      font-size: $font-16;
+      font-weight: $font-weight-medium;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @include large {
+        font-size: $font-20;
+      }
+    }
+
+    @include large {
+      order: 2;
+      margin: 0;
+      padding-top: $space-xs;
+      padding-right: $emergency-notice-desktop-side-gutter;
+    }
+  }
+}

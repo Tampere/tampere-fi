@@ -1,0 +1,25 @@
+uuid: cb44334e-daa9-4c1c-bc1b-488de57a4bdb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feedback_form
+    - node.type.zoning_information
+  module:
+    - webform
+id: node.zoning_information.field_feedback_form
+field_name: field_feedback_form
+entity_type: node
+bundle: zoning_information
+label: Palautekaavake
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

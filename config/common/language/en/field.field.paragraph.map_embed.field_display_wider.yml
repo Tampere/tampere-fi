@@ -1,0 +1,5 @@
+description: 'Select this option if you want the map to be displayed wider than other content on narrow content pages (e.g. Basic content page).'
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+label: 'Display wider on narrow content pages'

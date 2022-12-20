@@ -1,0 +1,10 @@
+uuid: 771ccb8a-70d9-4901-8a0e-719285595c3e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.picture_mosaic_view_mode
+label: Kuvamosaiikki
+targetEntityType: media
+cache: true

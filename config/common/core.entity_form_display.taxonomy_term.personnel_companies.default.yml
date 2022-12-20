@@ -1,0 +1,44 @@
+uuid: 749e4c8c-9d90-4f87-8949-bbfa22f108af
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.personnel_companies.field_hr_id
+    - taxonomy.vocabulary.personnel_companies
+id: taxonomy_term.personnel_companies.default
+targetEntityType: taxonomy_term
+bundle: personnel_companies
+mode: default
+content:
+  field_hr_id:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  status: true

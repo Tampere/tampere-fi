@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Display on front page only'
+    -
+      label: 'Display on all pages'

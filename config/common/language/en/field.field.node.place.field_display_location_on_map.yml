@@ -1,0 +1,5 @@
+label: 'Display location on map'
+description: 'Select this option if you want to display the location for this content on a map in the full page view.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

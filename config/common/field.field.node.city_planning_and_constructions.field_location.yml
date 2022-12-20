@@ -1,0 +1,21 @@
+uuid: 07f4a969-537f-4c71-a244-8cf855f3a304
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.city_planning_and_constructions
+  module:
+    - geofield
+id: node.city_planning_and_constructions.field_location
+field_name: field_location
+entity_type: node
+bundle: city_planning_and_constructions
+label: Sijainti
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

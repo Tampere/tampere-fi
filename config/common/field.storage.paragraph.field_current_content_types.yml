@@ -1,0 +1,36 @@
+uuid: dcc76124-0fd9-40a7-a084-15417a35e7b0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_current_content_types
+field_name: field_current_content_types
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: blog_article
+      label: Blogiartikkeli
+    -
+      value: notice
+      label: Ilmoitus
+    -
+      value: small_news_item
+      label: Pikku-uutinen
+    -
+      value: rich_article
+      label: 'Rikas artikkeli'
+    -
+      value: news_item
+      label: Uutinen
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

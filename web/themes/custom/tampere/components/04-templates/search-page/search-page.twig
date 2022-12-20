@@ -1,0 +1,56 @@
+{% set search_page__base_class = "search-page" %}
+
+<section {{ bem(search_page__base_class, search_page__modifiers|default([]), search_page__blockname) }}>
+  {% block search_page__heading %}
+    {% if search_page__title %}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        "heading_level": 1,
+        "heading_blockname": search_page__base_class,
+        "heading_base_class": "title",
+        "heading": search_page__title,
+      }%}
+    {% endif %}
+  {% endblock %}
+
+  <div {{ bem("content", search_page__content__modifiers|default([]), search_page__base_class) }}>
+    <div {{ bem("content-wrapper", search_page__content_wrapper__modifiers|default([]), search_page__base_class) }}>
+      {% if content_facets %}
+        <div {{ bem("facets", search_page__facets__modifiers|default([]), search_page__base_class) }}>
+          {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            "heading_level": 2,
+            "heading": "Filter results"|t,
+            "heading_blockname": search_page__base_class,
+            "heading_base_class": "filter-title",
+          } %}
+          {% embed "@organisms/accordion/facet-accordion/facet-accordion.twig" %}
+            {% block accordion_content %}
+              {% for facet in content_facets %}
+                {{ facet }}
+              {% endfor %}
+            {% endblock %}
+          {% endembed %}
+
+          {% if remove_facets__link %}
+            {% include "@molecules/remove-facets/remove-facets.twig" with {
+              search_link: remove_facets__link,
+            } %}
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div {{ bem("header", search_page__header__modifiers|default([]), search_page__base_class) }}>
+        {% block search_page_header %}{% endblock %}
+      </div>
+
+      <div {{ bem("search-results", search_page__search_results__modifiers|default([]), search_page__base_class) }}>
+        {% block search_page_content %}{% endblock %}
+      </div>
+    </div>
+  </div>
+
+  {% block search_page_pager %}
+    {% include "@molecules/pager/pager.twig" with {
+      items: pager,
+    } %}
+  {% endblock %}
+</section>

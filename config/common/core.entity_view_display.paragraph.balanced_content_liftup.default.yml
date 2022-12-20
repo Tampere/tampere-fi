@@ -1,0 +1,28 @@
+uuid: 4133a063-7c38-46c0-883a-cfef442cc81e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.balanced_content_liftup.field_content_liftups
+    - paragraphs.paragraphs_type.balanced_content_liftup
+  module:
+    - ds
+    - entity_reference_revisions
+id: paragraph.balanced_content_liftup.default
+targetEntityType: paragraph
+bundle: balanced_content_liftup
+mode: default
+content:
+  field_content_liftups:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: balanced_content_liftup_view_mode
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,13 @@
+{% set search_bar__base_class = search_bar_base_class|default("search-bar") %}
+
+{% set search_button_attributes = {
+  "type": "submit",
+  "aria-label": "Search"|t ({}, { "context" : "Search bar button" }),
+} %}
+
+{% include "@atoms/06-buttons/01-button.twig" with {
+  "button_blockname": search_bar__base_class,
+  "button_attributes": search_button_attributes,
+  "button_icon_name": "search",
+  "button_icon_blockname": search_bar__base_class,
+} %}

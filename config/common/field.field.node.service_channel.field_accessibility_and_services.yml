@@ -1,0 +1,29 @@
+uuid: 8d5e2eb4-e46b-4a52-a096-27ba040d9447
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accessibility_and_services
+    - node.type.service_channel
+    - taxonomy.vocabulary.accessibility_and_service_infos
+id: node.service_channel.field_accessibility_and_services
+field_name: field_accessibility_and_services
+entity_type: node
+bundle: service_channel
+label: 'Esteettömyys- ja palvelutiedot'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      accessibility_and_service_infos: accessibility_and_service_infos
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

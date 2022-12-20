@@ -1,0 +1,20 @@
+uuid: 912dbbba-1bf8-4dd3-9f11-f5c3b3966e61
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_hr_company
+field_name: field_hr_company
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

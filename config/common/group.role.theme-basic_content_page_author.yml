@@ -1,0 +1,25 @@
+uuid: 205e2751-8db4-476b-bc0b-36fc085251ee
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+id: theme-basic_content_page_author
+label: Perussisältösivutoimittaja
+weight: 37
+internal: false
+audience: member
+group_type: theme
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:basic_content_page entity'
+  - 'create group_node:content_in_other_language entity'
+  - 'delete any group_node:basic_content_page entity'
+  - 'delete any group_node:content_in_other_language entity'
+  - 'update any group_node:basic_content_page entity'
+  - 'update any group_node:content_in_other_language entity'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view unpublished group_node:basic_content_page entity'
+  - 'view unpublished group_node:content_in_other_language entity'

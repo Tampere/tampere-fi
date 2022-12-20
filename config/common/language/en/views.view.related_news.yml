@@ -1,0 +1,5 @@
+description: 'Lists news items based on shared taxonomy terms.'
+display:
+  default:
+    display_options:
+      title: 'Read more'

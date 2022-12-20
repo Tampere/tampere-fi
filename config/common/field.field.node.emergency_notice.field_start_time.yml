@@ -1,0 +1,24 @@
+uuid: a4af38d3-1edf-413f-956a-e0e6b0329c1b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_start_time
+    - node.type.emergency_notice
+  module:
+    - datetime
+id: node.emergency_notice.field_start_time
+field_name: field_start_time
+entity_type: node
+bundle: emergency_notice
+label: Aloitusaika
+description: 'Päivämäärä ja kellonaika, jolloin häiriöilmoituksen pitäisi tulla näkyviin sivustolla.'
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

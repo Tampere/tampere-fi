@@ -1,0 +1,18 @@
+services:
+  tre_news_email_release.message_sender:
+    class: Drupal\tre_news_email_release\Service\NewsSender
+    arguments:
+      - '@message_notify.sender'
+      - '@entity_type.manager'
+      - '@tre_jsonapi_custom.entity_renderer'
+  logger.channel.tre_news_email_release:
+    parent: logger.channel_base
+    arguments: [ 'tre_news_email_release' ]
+  tre_news_email_release.node_hooks:
+    class: Drupal\tre_news_email_release\Service\NodeHooks
+    arguments:
+      - '@tre_preprocess_utility_functions.helper_functions'
+      - '@state'
+      - '@tre_news_email_release.message_sender'
+      - '@logger.channel.tre_news_email_release'
+      - '@tre_node_logger.node_logger'

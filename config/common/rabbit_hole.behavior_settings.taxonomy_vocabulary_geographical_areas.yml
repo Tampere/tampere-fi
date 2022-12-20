@@ -1,0 +1,14 @@
+uuid: 037e1b24-152d-4e11-8931-0db0fe5f92da
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.geographical_areas
+id: taxonomy_vocabulary_geographical_areas
+entity_type_id: taxonomy_vocabulary
+entity_id: geographical_areas
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

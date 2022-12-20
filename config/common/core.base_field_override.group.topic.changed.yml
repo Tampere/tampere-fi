@@ -1,0 +1,18 @@
+uuid: 89cdb9e5-014f-4806-aa1f-cccafff4bfee
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+id: group.topic.changed
+field_name: changed
+entity_type: group
+bundle: topic
+label: Muuttunut
+description: 'Ajankohta jolloin ryhmää viimeksi muokattiin.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

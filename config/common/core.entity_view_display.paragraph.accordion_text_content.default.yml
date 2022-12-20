@@ -1,0 +1,25 @@
+uuid: 6af191ed-c458-48b4-ab3b-b30dab396051
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordion_text_content.field_accordion_text
+    - field.field.paragraph.accordion_text_content.field_add_anchor_list
+    - paragraphs.paragraphs_type.accordion_text_content
+  module:
+    - text
+id: paragraph.accordion_text_content.default
+targetEntityType: paragraph
+bundle: accordion_text_content
+mode: default
+content:
+  field_accordion_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_add_anchor_list: true
+  search_api_excerpt: true

@@ -1,0 +1,14 @@
+{% if not attributes %}
+<div class="form-item form-item--checkbox">
+  <ul class="form-item--checkboxes">
+{% endif %}
+      {% for key, checkbox in checkboxes %}
+        {% include "@atoms/05-forms/checkbox/_checkbox-item.twig" with {
+          checkbox_item: checkbox.title,
+          checkbox_item_checked: checkbox.checked,
+        } %}
+      {% endfor %}
+{% if not attributes %}
+  </ul>
+</div>
+{% endif %}

@@ -1,0 +1,184 @@
+uuid: 63f08d5c-53df-4499-9bce-beed5f5cbea0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.generic_listing.field_geographical_areas
+    - field.field.paragraph.generic_listing.field_gl_displayed_content_types
+    - field.field.paragraph.generic_listing.field_keywords
+    - field.field.paragraph.generic_listing.field_life_situations
+    - field.field.paragraph.generic_listing.field_other_identifiers
+    - field.field.paragraph.generic_listing.field_plan_numbers
+    - field.field.paragraph.generic_listing.field_record_numbers
+    - field.field.paragraph.generic_listing.field_sort_order
+    - field.field.paragraph.generic_listing.field_taxonomy_combination
+    - field.field.paragraph.generic_listing.field_title
+    - field.field.paragraph.generic_listing.field_topics
+    - field.field.paragraph.generic_listing.field_zoning_information_types
+    - paragraphs.paragraphs_type.generic_listing
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_shared_taxonomies:
+      children:
+        - field_geographical_areas
+        - field_keywords
+        - field_life_situations
+        - field_topics
+      label: 'Yleiset luokittelut'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_content_type_taxonomies:
+      children:
+        - group_zoning_information
+      label: 'Sisältötyyppikohtaiset luokittelut'
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_zoning_information:
+      children:
+        - field_plan_numbers
+        - field_record_numbers
+        - field_other_identifiers
+        - field_zoning_information_types
+      label: Kaavat
+      region: content
+      parent_name: group_content_type_taxonomies
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+        open: false
+id: paragraph.generic_listing.default
+targetEntityType: paragraph
+bundle: generic_listing
+mode: default
+content:
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_gl_displayed_content_types:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_other_identifiers:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_plan_numbers:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_record_numbers:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_sort_order:
+    type: options_buttons
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_taxonomy_combination:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_zoning_information_types:
+    type: options_buttons
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  translation: true

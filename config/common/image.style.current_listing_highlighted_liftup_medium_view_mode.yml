@@ -1,0 +1,17 @@
+uuid: d5d9cc05-b6a3-434d-805e-0aa30317fd30
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_listing_highlighted_liftup_medium_view_mode
+label: 'Ajankohtaislistaus korostettu nosto - medium (985×554)'
+effects:
+  f033988b-8ffb-48c3-909f-147dc8ab86f9:
+    uuid: f033988b-8ffb-48c3-909f-147dc8ab86f9
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 985
+      height: 554
+      crop_type: focal_point

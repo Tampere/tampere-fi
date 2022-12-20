@@ -1,0 +1,23 @@
+uuid: 8c3e4241-6e1c-440e-95ae-113d8006ec7e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_post_text_max_length
+    - paragraphs.paragraphs_type.social_media_feed_embed
+id: paragraph.social_media_feed_embed.field_post_text_max_length
+field_name: field_post_text_max_length
+entity_type: paragraph
+bundle: social_media_feed_embed
+label: 'Rajoita tekstin pituutta postauksissa'
+description: 'Katkaisee postauksen tekstin maksimipituuden jälkeen ja näyttää Lue lisää-linkin (esim. 150).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

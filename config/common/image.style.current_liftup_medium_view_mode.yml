@@ -1,0 +1,17 @@
+uuid: 18737217-7c53-45e5-a14e-bad586e7f11a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: current_liftup_medium_view_mode
+label: 'Ajankohtaisnosto - medium (985×365)'
+effects:
+  4de38849-ae3e-4565-a5fb-8e95599be8c4:
+    uuid: 4de38849-ae3e-4565-a5fb-8e95599be8c4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 985
+      height: 365
+      crop_type: focal_point

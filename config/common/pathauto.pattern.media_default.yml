@@ -1,0 +1,16 @@
+uuid: 3320e39b-a79e-4823-aff6-5043095d2c7a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+_core:
+  default_config_hash: TdLrtr1632X_BBOw89lZbMi9TaS-2BoFKqKaUwQcw-0
+id: media_default
+label: 'Media Default'
+type: 'canonical_entities:media'
+pattern: 'media/[media:name]'
+selection_criteria: {  }
+selection_logic: and
+weight: 8
+relationships: {  }

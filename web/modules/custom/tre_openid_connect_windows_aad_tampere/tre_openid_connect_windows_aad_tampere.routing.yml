@@ -1,0 +1,8 @@
+tre_openid_connect_windows_aad_tampere.sso:
+  path: '/openid-connect/tampere_fi/signout'
+  defaults:
+    _controller: '\Drupal\tre_openid_connect_windows_aad_tampere\Controller\WindowsAadSSOController::signout'
+  requirements:
+    _access: 'TRUE'
+  options:
+    _maintenance_access: TRUE

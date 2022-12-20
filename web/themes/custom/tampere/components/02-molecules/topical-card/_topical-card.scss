@@ -1,0 +1,205 @@
+$topical-card-image-height: 244px;
+$topical-card-mobile-image-height: 202px;
+$topical-card-image-mobile-size--alt: 172px;
+$topical-card-height--big: 491px;
+$topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
+
+.topical-card {
+  $base_class: &;
+
+  background-color: clr(background);
+  color: clr(text);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+
+  &:hover, 
+  &:focus {
+    #{$base_class}__heading {
+      text-decoration: underline;
+      text-underline-position: under;
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  &__image-container {
+    @include transition(opacity, 0.15s, ease-in);
+
+    background-image: url('../images/placeholder-blue-waves.svg');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: cover;
+    overflow: hidden;
+    height: $topical-card-mobile-image-height;
+
+    @include large {
+      height: $topical-card-image-height;
+    }
+
+    // Drupal image containers.
+    div {
+      height: 100%;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    min-height: $topical-card-mobile-image-height;
+  }
+
+  &__content {
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
+    padding: $space-s;
+
+    @include large {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: $space-m;
+    }  
+  }
+
+  &__details {
+    font-size: $font-12;
+    font-family: $font-body;
+
+    @include large {
+      font-size: $font-16;
+    }
+  }
+
+  &__heading {
+    @include word-wrap;
+
+    font-size: $font-20;
+    font-weight: $font-weight-bold;
+    margin-top: $space-s;
+    margin-bottom: $space-s;
+
+    @include large {
+      font-weight: $font-weight-semi-bold;
+      font-size: $font-24;
+    }
+  }
+
+  &__icon {
+    color: clr(primary);
+    width: $icon-default;
+    height: $icon-default;
+    margin-bottom: $space-s;
+
+    @include large-down {
+      display: none;
+    }
+
+    @include large {
+      margin-top: auto;
+      margin-bottom: 0;
+    }
+  }
+
+  // Variations
+  &--alt {
+    position: relative;
+
+    @include large-down {
+      box-shadow: $topical-card-box-shadow;
+      flex-direction: row;
+      min-height: $topical-card-image-mobile-size--alt;
+    }
+
+    #{$base_class}__image-container {
+      height: 100%;
+
+      @include large-down {
+        flex-shrink: 0;
+        min-height: $topical-card-image-mobile-size--alt;
+        width: $topical-card-image-mobile-size--alt;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      @include large {
+        height: $topical-card-image-height;
+      }
+    }
+
+    #{$base_class}__image {
+      min-height: $topical-card-image-mobile-size--alt;
+    }
+
+    #{$base_class}__content {
+      @include large-down {
+        box-shadow: none;
+        flex-grow: 1;
+        margin-left: $topical-card-image-mobile-size--alt;
+      }
+    }
+  }
+
+  &--big {
+    @include large {
+      display: grid;
+      grid-template-columns: 1.96fr 1fr;
+      min-height: $topical-card-height--big;
+    }
+
+    #{$base_class}__image-container {
+      height: $topical-card-mobile-image-height;
+
+      @include large {
+        height: 100%;
+      }
+    }
+
+    #{$base_class}__content {
+      padding: $space-m $space-s;
+
+      @include large {
+        justify-content: center;
+        padding: $space-xl;
+      }
+    }
+
+    #{$base_class}__heading {
+      margin-top: $space-s;
+      margin-bottom: $space-s;
+
+      @include large {
+        margin-top: $space-xs;
+      }
+    }
+
+    #{$base_class}__summary {
+      margin-top: 0;
+      margin-bottom: $space-s;
+    }
+
+    #{$base_class}__summary p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    #{$base_class}__icon {
+      margin-top: 0;
+    }
+  }
+
+  &--event {
+    #{$base_class}__image-container {
+      background-image: none;
+    }
+
+    // The event variation differs from the default variation on the Drupal side,
+    // since the external event images are handled by the 'imagecache_external' module.
+    // The image elements don't get the same classes and styles as the other images so
+    // they need to be set fullwidth separately.
+    .image__img {
+      width: 100%;
+    }
+  }
+}

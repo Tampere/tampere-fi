@@ -1,0 +1,478 @@
+uuid: a26511c3-3c91-493a-8a81-91c450d25baf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.place_of_business.field_accessibility_and_services
+    - field.field.node.place_of_business.field_accessibility_info_title
+    - field.field.node.place_of_business.field_additional_information
+    - field.field.node.place_of_business.field_additional_phones
+    - field.field.node.place_of_business.field_address_postal
+    - field.field.node.place_of_business.field_addresses
+    - field.field.node.place_of_business.field_alternative_name
+    - field.field.node.place_of_business.field_body_md
+    - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_exception_hours
+    - field.field.node.place_of_business.field_geographical_areas
+    - field.field.node.place_of_business.field_hr_organizational_unit
+    - field.field.node.place_of_business.field_keywords
+    - field.field.node.place_of_business.field_life_situations
+    - field.field.node.place_of_business.field_links
+    - field.field.node.place_of_business.field_opening_hours
+    - field.field.node.place_of_business.field_opening_hours_2
+    - field.field.node.place_of_business.field_opening_hours_3
+    - field.field.node.place_of_business.field_opening_hours_info
+    - field.field.node.place_of_business.field_opening_hours_info_2
+    - field.field.node.place_of_business.field_opening_hours_info_3
+    - field.field.node.place_of_business.field_search_keywords
+    - field.field.node.place_of_business.field_summary
+    - field.field.node.place_of_business.field_topics
+    - field.field.node.place_of_business.migrate_override_data
+    - node.type.place_of_business
+  module:
+    - address
+    - allowed_formats
+    - content_moderation
+    - field_group
+    - field_states_ui
+    - limited_field_widgets
+    - link
+    - maxlength
+    - migrate_override
+    - office_hours
+    - text
+    - tre_phone_field_formatter
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_common
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_integrated_data:
+      children:
+        - title
+        - field_alternative_name
+        - field_summary
+        - field_body_md
+        - field_addresses
+        - field_address_postal
+        - field_opening_hours_info
+        - field_opening_hours
+        - field_opening_hours_info_2
+        - field_opening_hours_2
+        - field_opening_hours_info_3
+        - field_opening_hours_3
+        - field_exception_hours
+        - field_additional_phones
+        - field_links
+        - field_email
+      label: 'Integroidut tiedot'
+      region: content
+      parent_name: group_common
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_additional_information:
+      children:
+        - field_additional_information
+        - field_hr_organizational_unit
+        - field_accessibility_info_title
+        - field_accessibility_and_services
+      label: Lisätietoja
+      region: content
+      parent_name: group_common
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_categorization:
+      children:
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - group_search_keywords
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_common:
+      children:
+        - langcode
+        - translation
+        - group_integrated_data
+        - group_additional_information
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_search_keywords:
+      children:
+        - field_search_keywords
+      label: Avainsanat
+      region: content
+      parent_name: group_categorization
+      weight: 107
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: node.place_of_business.default
+targetEntityType: node
+bundle: place_of_business
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_accessibility_and_services:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_accessibility_info_title:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_additional_information:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_additional_phones:
+    type: tre_telephone_plus_widget
+    weight: 16
+    region: content
+    settings:
+      hide_subelements:
+        telephone_extension: telephone_extension
+        display_international_number: display_international_number
+        telephone_title: 0
+        telephone_supplementary: 0
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_address_postal:
+    type: address_default
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_addresses:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_alternative_name:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_body_md:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_email:
+    type: email_default
+    weight: 18
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_exception_hours:
+    type: string_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 1
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+      limited_field_widgets:
+        limit_values: '0'
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 106
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hr_organizational_unit:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 103
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 104
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_links:
+    type: link_default
+    weight: 17
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_opening_hours:
+    type: office_hours_list
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_opening_hours_2:
+    type: office_hours_list
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_opening_hours_3:
+    type: office_hours_list
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_opening_hours_info:
+    type: string_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_opening_hours_info_2:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_opening_hours_info_3:
+    type: string_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_search_keywords:
+    type: string_textfield
+    weight: 30
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_summary:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 102
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  migrate_override_data:
+    type: override_widget_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  path: true
+  promote: true
+  published_at: true
+  sticky: true
+  url_redirects: true

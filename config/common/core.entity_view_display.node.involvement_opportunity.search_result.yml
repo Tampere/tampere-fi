@@ -1,0 +1,105 @@
+uuid: a1d6d32a-a32e-466a-9381-68ac9de6d481
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.involvement_opportunity.field_additional_information
+    - field.field.node.involvement_opportunity.field_address_street
+    - field.field.node.involvement_opportunity.field_contact_info_paragraph
+    - field.field.node.involvement_opportunity.field_display_location_on_map
+    - field.field.node.involvement_opportunity.field_end_time
+    - field.field.node.involvement_opportunity.field_epsg_3067_easting
+    - field.field.node.involvement_opportunity.field_epsg_3067_northing
+    - field.field.node.involvement_opportunity.field_geographical_areas
+    - field.field.node.involvement_opportunity.field_help_text
+    - field.field.node.involvement_opportunity.field_keywords
+    - field.field.node.involvement_opportunity.field_life_situations
+    - field.field.node.involvement_opportunity.field_link_single
+    - field.field.node.involvement_opportunity.field_location
+    - field.field.node.involvement_opportunity.field_main_image
+    - field.field.node.involvement_opportunity.field_opportunity_description
+    - field.field.node.involvement_opportunity.field_paragraphs
+    - field.field.node.involvement_opportunity.field_participate_end_time
+    - field.field.node.involvement_opportunity.field_participate_phase
+    - field.field.node.involvement_opportunity.field_participate_start_time
+    - field.field.node.involvement_opportunity.field_participate_summary
+    - field.field.node.involvement_opportunity.field_participate_type
+    - field.field.node.involvement_opportunity.field_sign_up_link
+    - field.field.node.involvement_opportunity.field_sign_up_summary
+    - field.field.node.involvement_opportunity.field_sign_up_title
+    - field.field.node.involvement_opportunity.field_single_additional_link
+    - field.field.node.involvement_opportunity.field_start_time
+    - field.field.node.involvement_opportunity.field_topics
+    - node.type.involvement_opportunity
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default-search
+    regions:
+      listing_item__main_content:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': listing-item__title--link
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.involvement_opportunity.search_result
+targetEntityType: node
+bundle: involvement_opportunity
+mode: search_result
+content: {  }
+hidden:
+  content_moderation_control: true
+  field_additional_information: true
+  field_address_street: true
+  field_contact_info_paragraph: true
+  field_display_location_on_map: true
+  field_end_time: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_link_single: true
+  field_location: true
+  field_main_image: true
+  field_opportunity_description: true
+  field_paragraphs: true
+  field_participate_end_time: true
+  field_participate_phase: true
+  field_participate_start_time: true
+  field_participate_summary: true
+  field_participate_type: true
+  field_sign_up_link: true
+  field_sign_up_summary: true
+  field_sign_up_title: true
+  field_single_additional_link: true
+  field_start_time: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

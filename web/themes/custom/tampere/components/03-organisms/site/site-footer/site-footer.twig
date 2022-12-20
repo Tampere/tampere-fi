@@ -1,0 +1,142 @@
+{% set footer_base_class = footer_base_class|default("footer") %}
+
+{% if is_storybook %}
+  {% set image_directory = "/images/" %}
+{% else %}
+  {% set image_directory = "/themes/custom/tampere/images/" %}
+{% endif %}
+
+{% set background_image = "waves-light-blue.svg" %}
+
+{% if "minisite" in footer_modifiers %}
+  {% set is_minisite = TRUE %}
+  {% set background_image = "waves-transparent-30.svg" %}
+{% endif %}
+
+{% set background_image_src = image_directory ~ background_image %}
+
+<footer {{ bem(footer_base_class, (footer_modifiers|default([])), footer_blockname) }}>
+  {% include "@atoms/04-images/00-image/_image.twig" with {
+    img_src: background_image_src,
+    image_base_class: "desktop-background-image",
+    image_blockname: footer_base_class,
+  } %}
+  <div class={{ footer_base_class ~ "__container"}} {% if is_storybook %}style="--footer-background-image-mobile:url({{ background_image_src }});"{% endif %}>
+
+    {% block footer_logo %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_filename: "logo-icons",
+        icon_name: "text-logo",
+        icon_base_class: "main-logo",
+        icon_blockname: footer_base_class,
+        icon_decorative: true,
+      } %}
+    {% endblock footer_logo %}
+
+    {% if footer_some_row_items and not is_minisite %}
+      <div {{ bem("some-row", (["desktop"]), footer_base_class)}}>
+        {% block some_row_desktop %}
+          {% include "@molecules/some-row/some-row.twig" with {
+            some_row_modifiers: footer_some_row_modifiers,
+            some_row_items: footer_some_row_items,
+          } %}
+        {% endblock %}
+      </div>
+    {% endif %}
+    
+    <div {{ bem("content", footer_content_modifiers, footer_base_class)}}>
+      {% block footer_content %}
+
+        {% if custom_footer_content %}
+          {% if is_example %}
+            {% for item in custom_footer_content %}
+              {% include "@organisms/site/site-footer/_site-footer-paragraph.twig" with {
+                "footer_paragraph_content": item,
+              } %}
+            {% endfor %}
+          {% else %}
+            {{ custom_footer_content }}
+          {% endif %}
+        {% else %}
+          {% if first_paragraph_content %}
+            {% include "@organisms/site/site-footer/_site-footer-paragraph.twig" with {
+              "footer_paragraph_content": first_paragraph_content,
+            } %}
+          {% endif %}
+
+          {% if second_paragraph_content %}
+            {% include "@organisms/site/site-footer/_site-footer-paragraph.twig" with {
+              "footer_paragraph_content": second_paragraph_content,
+            } %}
+          {% endif %}
+        {% endif %}
+
+        <div class={{ footer_base_class ~ "__links"}}>
+          {% if footer_some_row_items and not is_minisite %}
+            <div {{ bem("some-row", (["mobile"]), footer_base_class)}}>
+              {% block some_row_mobile %}
+                {% include "@molecules/some-row/some-row.twig" with {
+                  some_row_modifiers: footer_some_row_modifiers,
+                  some_row_items: footer_some_row_items,
+                } %}
+              {% endblock %}
+            </div>
+          {% endif %}
+
+          {% if not custom_footer_content %}
+            <div {{ bem("menu", (footer_menu_modifiers), footer_base_class) }}>
+              {% block footer_menu %}
+                {% include "@molecules/menus/footer/footer-menu.twig" with {
+                  items: footer_menu_items,
+                } %}
+              {% endblock %}
+            </div>
+          {% endif %}
+        </div>
+
+      {% endblock footer_content %}
+    </div>
+  </div>
+
+  <div class={{ footer_base_class ~ "__secondary-container"}}>
+    <div {{ bem("bottom-content", (footer_bottom_content_modifiers), footer_base_class) }}>
+      {% block footer_bottom_content %}
+
+        {% block footer_secondary_logo %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_filename: "logo-icons",
+            icon_name: "white-logo",
+            icon_base_class: "secondary-logo",
+            icon_blockname: footer_base_class,
+            icon_decorative: true,
+          } %}
+        {% endblock %}
+
+        {% if footer_inline_menu_items %}
+          <div {{ bem("site-links", (footer_inline_menu_modifiers), footer_base_class)}}>
+            {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+              inline_menu_label_id: "footer-site-links-label",
+              inline_menu_aria_label: footer_inline_menu_aria_label,
+              inline_menu_items: footer_inline_menu_items,
+              menu_modifiers: [ "footer" ],
+            } %}
+          </div>
+        {% endif %}
+
+        {% if footer_copyright_content %}
+          {% include "@atoms/02-text/text/01-paragraph.twig" with {
+            paragraph_blockname: footer_base_class,
+            paragraph_custom_classes: [ "hyphenate" ],
+            paragraph_base_class: "copyright",
+            paragraph_content: footer_copyright_content,
+          } %}
+        {% endif %}
+
+        <div {{ bem("back-to-top", (footer_btt_modifiers), footer_base_class)}}>
+          {% include "@molecules/back-to-top-button/back-to-top.twig" %}
+        </div>
+
+      {% endblock %}
+    </div>
+  </div>
+</footer>

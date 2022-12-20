@@ -1,0 +1,17 @@
+uuid: db7331a4-c4e9-472f-b557-986bcb6ee1b2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+  module:
+    - user
+id: life_situation-group_membership
+label: 'Life situation: Group membership'
+description: 'Adds users to groups as members.'
+group_type: life_situation
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

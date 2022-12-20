@@ -1,0 +1,19 @@
+uuid: 7f999e99-c836-44a4-a639-2bdd0bb2b50f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_channel_display_name
+    - node.type.service_channel
+id: node.service_channel.field_channel_display_name
+field_name: field_channel_display_name
+entity_type: node
+bundle: service_channel
+label: 'Asiointikanavan näyttönimi'
+description: 'Käytetään asiointikanavan nimen esittämiseen PTV-palvelunostoissa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

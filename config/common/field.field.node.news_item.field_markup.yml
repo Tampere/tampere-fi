@@ -1,0 +1,21 @@
+uuid: 8c8958d5-ce9b-4f9d-98b5-7a1e9a5ed170
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_markup
+    - node.type.news_item
+  module:
+    - markup_field
+id: node.news_item.field_markup
+field_name: field_markup
+entity_type: node
+bundle: news_item
+label: Markup
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: markup_field

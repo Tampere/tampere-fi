@@ -1,0 +1,2 @@
+label: 'Valitse ylikirjoitettavat kentät:'
+description: 'Tämän toimipisteen ylikirjoitettavat kentät. Jos merkitset tässä kentän ylikirjoitetuksi, sen tietoja ei enää päivitetä seuraavilla automaattisilla päivityskerroilla.'

@@ -1,0 +1,19 @@
+uuid: 2aa1eb6c-991a-4f4a-8902-f395b5a7f238
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hr_id
+    - taxonomy.vocabulary.personnel_organization_units
+id: taxonomy_term.personnel_organization_units.field_hr_id
+field_name: field_hr_id
+entity_type: taxonomy_term
+bundle: personnel_organization_units
+label: ID
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

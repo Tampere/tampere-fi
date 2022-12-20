@@ -1,0 +1,5 @@
+tre_news_archive.save_current_news:
+  route_name: tre_news_archive.save_current_news
+  title: 'Save current news'
+  appears_on:
+    - view.news_archive.page_1

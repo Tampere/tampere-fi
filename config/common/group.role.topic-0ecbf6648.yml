@@ -1,0 +1,17 @@
+uuid: b1a72314-714f-40f4-bd9c-e93a70be461c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.rich_article_author
+id: topic-0ecbf6648
+label: Artikkelitoimittaja
+weight: -7
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

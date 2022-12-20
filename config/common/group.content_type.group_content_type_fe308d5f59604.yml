@@ -1,0 +1,19 @@
+uuid: 6b4e4f51-d199-4d0c-b592-3b858400b6b4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+    - node.type.moderated_page
+  module:
+    - gnode
+    - node
+id: group_content_type_fe308d5f59604
+label: 'Elämäntilanne: Group node (Moderoitu sivu)'
+description: 'Adds <em class="placeholder">Moderoitu sivu</em> content to groups both publicly and privately.'
+group_type: life_situation
+content_plugin: 'group_node:moderated_page'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

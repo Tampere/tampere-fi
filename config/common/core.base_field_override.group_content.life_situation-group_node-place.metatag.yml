@@ -1,0 +1,18 @@
+uuid: a99daa58-0d33-4e24-a25c-b5dbb6ebce18
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_node-place
+id: group_content.life_situation-group_node-place.metatag
+field_name: metatag
+entity_type: group_content
+bundle: life_situation-group_node-place
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

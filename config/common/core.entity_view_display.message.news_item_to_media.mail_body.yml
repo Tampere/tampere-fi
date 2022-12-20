@@ -1,0 +1,106 @@
+uuid: c403ccf9-7c6d-49cd-8963-efd65cfc6e3d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.news_item_to_media.field_delivery_info
+    - field.field.message.news_item_to_media.field_link_to_content
+    - field.field.message.news_item_to_media.field_news_item_title
+    - field.field.message.news_item_to_media.field_news_markup
+    - message.template.news_item_to_media
+  module:
+    - ds
+    - entity_reference_revisions
+    - link
+    - markup_field
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+          ds_content: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - field_news_markup
+        - 'dynamic_twig_field:message-br_tag'
+        - field_delivery_info
+        - 'dynamic_copy_field:message-br_tag_2'
+        - field_link_to_content
+    fields:
+      'dynamic_copy_field:message-br_tag_2':
+        plugin_id: 'dynamic_copy_field:message-br_tag_2'
+        weight: 3
+        label: hidden
+        formatter: default
+      'dynamic_twig_field:message-br_tag':
+        plugin_id: 'dynamic_twig_field:message-br_tag'
+        weight: 1
+        label: hidden
+        formatter: default
+id: message.news_item_to_media.mail_body
+targetEntityType: message
+bundle: news_item_to_media
+mode: mail_body
+content:
+  field_delivery_info:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: news_media_delivery
+      link: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: ds_content
+  field_link_to_content:
+    type: link
+    label: hidden
+    settings:
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: ds_content
+  field_news_markup:
+    type: markup_field_rendered_markup
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: ds_content
+  partial_1:
+    weight: 0
+    region: content
+hidden:
+  field_news_item_title: true
+  partial_0: true
+  search_api_excerpt: true

@@ -1,0 +1,22 @@
+uuid: 40b86fdb-03cc-49dd-bb1c-7def29845dbf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.group_roles
+    - group.content_type.life_situation-group_membership
+id: group_content.life_situation-group_membership.group_roles
+field_name: group_roles
+entity_type: group_content
+bundle: life_situation-group_membership
+label: Käyttäjäroolit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'group_type:group_role'
+  handler_settings:
+    group_type_id: life_situation
+field_type: entity_reference

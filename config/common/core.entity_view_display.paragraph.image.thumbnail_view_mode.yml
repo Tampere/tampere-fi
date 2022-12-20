@@ -1,0 +1,46 @@
+uuid: 7ffd197a-014a-4813-8f04-db242ffe1c64
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.thumbnail_view_mode
+    - field.field.paragraph.image.field_content_link
+    - field.field.paragraph.image.field_display_as_thumbnail
+    - field.field.paragraph.image.field_display_larger_image_link
+    - field.field.paragraph.image.field_image_caption
+    - field.field.paragraph.image.field_language
+    - field.field.paragraph.image.field_link_aria_label
+    - field.field.paragraph.image.field_media
+    - field.field.paragraph.image.field_media_file_in_other_lang
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.thumbnail_view_mode
+targetEntityType: paragraph
+bundle: image
+mode: thumbnail_view_mode
+content:
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: small_image_embed_view_mode
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_media_file_in_other_lang:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_content_link: true
+  field_display_as_thumbnail: true
+  field_display_larger_image_link: true
+  field_image_caption: true
+  field_language: true
+  field_link_aria_label: true
+  search_api_excerpt: true

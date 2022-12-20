@@ -1,0 +1,19 @@
+uuid: 1a1bf0b1-bfa2-4399-9d5e-10f6665eb5d6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.city_planning_and_constructions
+  module:
+    - gnode
+    - node
+id: group_content_type_d579c14c7955a
+label: 'Minikotisivusto: Group node (Kaupunkisuunnittelu- ja rakentamishanke)'
+description: 'Adds <em class="placeholder">Kaupunkisuunnittelu- ja rakentamishanke</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:city_planning_and_constructions'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

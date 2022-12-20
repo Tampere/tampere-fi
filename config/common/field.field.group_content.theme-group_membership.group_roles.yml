@@ -1,0 +1,22 @@
+uuid: 3a93f7e7-a821-4bb3-bd35-9ada942ef83b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group_content.group_roles
+    - group.content_type.theme-group_membership
+id: group_content.theme-group_membership.group_roles
+field_name: group_roles
+entity_type: group_content
+bundle: theme-group_membership
+label: Käyttäjäroolit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'group_type:group_role'
+  handler_settings:
+    group_type_id: theme
+field_type: entity_reference

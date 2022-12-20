@@ -1,0 +1,19 @@
+_core:
+  default_config_hash: EoVwYI2Kaa9MRr_jXrb1xSuMbkORrsDJyIWkEfmRb3A
+langcode: fi
+max_links: 2000
+cron_generate: true
+cron_generate_interval: 3
+generate_duration: 10000
+remove_duplicates: true
+skip_untranslated: true
+disable_language_hreflang: false
+xsl: true
+base_url: 'https://www.tampere.fi'
+default_variant: tre-sitemap
+custom_links_include_images: false
+excluded_languages: {  }
+enabled_entity_types:
+  - node
+entities_per_queue_item: 50
+batch_process_limit: 1500

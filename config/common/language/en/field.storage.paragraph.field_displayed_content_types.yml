@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: Person
+    -
+      label: Place
+    -
+      label: 'Place of business'

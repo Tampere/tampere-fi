@@ -1,0 +1,28 @@
+place_contact:
+  label: Place contact
+  settings:
+    additional_content_label:
+      type: textfield
+      label: Label for the additional content
+    place_contact__heading_level:
+      type: select
+      label: Main heading level override (H2 by default)
+      allow_expose: true
+      options:
+        3: H3
+        4: H4
+        5: H5
+  fields:
+    place_contact__name:
+      label: Name
+    place_contact__url:
+      label: Link URL
+    place_contact__main_content:
+      label: Main content
+    place_contact__left_column_content:
+      label: Left column content
+    place_contact__right_column_content:
+      label: Right column content
+    place_contact__additional_content:
+      label: Additional content
+  use: "@molecules/place-contact/place-contact.twig"

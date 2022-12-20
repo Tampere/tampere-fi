@@ -1,0 +1,20 @@
+uuid: 97e8e8fa-f85b-4a98-a257-5138263ee7f5
+langcode: fi
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_contract_begins
+field_name: field_contract_begins
+entity_type: node
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

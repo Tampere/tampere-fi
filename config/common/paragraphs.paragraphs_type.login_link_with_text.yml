@@ -1,0 +1,10 @@
+uuid: 8b218c29-85c8-4621-9a74-d60884578441
+langcode: fi
+status: true
+dependencies: {  }
+id: login_link_with_text
+label: 'Kirjautumista vaativa linkki linkkitekstillä'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

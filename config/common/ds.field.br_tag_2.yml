@@ -1,0 +1,10 @@
+id: br_tag_2
+label: 'Br tag 2'
+ui_limit: ''
+type: copy
+type_label: 'Copy field'
+entities:
+  message: message
+  node: node
+properties:
+  ds_plugin: 'dynamic_twig_field:message-br_tag'

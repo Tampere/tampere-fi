@@ -1,0 +1,79 @@
+uuid: 6337be65-a732-48c9-a6a4-de2e5fcaa56a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.liftup
+    - field.field.node.place_of_business.field_accessibility_and_services
+    - field.field.node.place_of_business.field_accessibility_info_title
+    - field.field.node.place_of_business.field_additional_information
+    - field.field.node.place_of_business.field_additional_phones
+    - field.field.node.place_of_business.field_address_postal
+    - field.field.node.place_of_business.field_addresses
+    - field.field.node.place_of_business.field_alternative_name
+    - field.field.node.place_of_business.field_body_md
+    - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_exception_hours
+    - field.field.node.place_of_business.field_geographical_areas
+    - field.field.node.place_of_business.field_hr_organizational_unit
+    - field.field.node.place_of_business.field_keywords
+    - field.field.node.place_of_business.field_life_situations
+    - field.field.node.place_of_business.field_links
+    - field.field.node.place_of_business.field_opening_hours
+    - field.field.node.place_of_business.field_opening_hours_2
+    - field.field.node.place_of_business.field_opening_hours_3
+    - field.field.node.place_of_business.field_opening_hours_info
+    - field.field.node.place_of_business.field_opening_hours_info_2
+    - field.field.node.place_of_business.field_opening_hours_info_3
+    - field.field.node.place_of_business.field_search_keywords
+    - field.field.node.place_of_business.field_summary
+    - field.field.node.place_of_business.field_topics
+    - field.field.node.place_of_business.migrate_override_data
+    - node.type.place_of_business
+  module:
+    - text
+    - user
+id: node.place_of_business.liftup
+targetEntityType: node
+bundle: place_of_business
+mode: liftup
+content:
+  field_additional_information:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_accessibility_and_services: true
+  field_accessibility_info_title: true
+  field_additional_phones: true
+  field_address_postal: true
+  field_addresses: true
+  field_alternative_name: true
+  field_body_md: true
+  field_email: true
+  field_exception_hours: true
+  field_geographical_areas: true
+  field_hr_organizational_unit: true
+  field_keywords: true
+  field_life_situations: true
+  field_links: true
+  field_opening_hours: true
+  field_opening_hours_2: true
+  field_opening_hours_3: true
+  field_opening_hours_info: true
+  field_opening_hours_info_2: true
+  field_opening_hours_info_3: true
+  field_search_keywords: true
+  field_summary: true
+  field_topics: true
+  langcode: true
+  migrate_override_data: true
+  search_api_excerpt: true

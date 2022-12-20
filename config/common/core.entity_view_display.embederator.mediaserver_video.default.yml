@@ -1,0 +1,32 @@
+uuid: 5110d061-fae0-4e12-a892-959598376370
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.mediaserver_video
+    - field.field.embederator.mediaserver_video.field_mediaserver_video_number
+    - field.field.embederator.mediaserver_video.field_mediaserver_video_title
+  module:
+    - embederator
+id: embederator.mediaserver_video.default
+targetEntityType: embederator
+bundle: mediaserver_video
+mode: default
+content:
+  embed_id:
+    type: embederator_default
+    label: hidden
+    settings:
+      append_unique_id: false
+      nullify_cache: false
+      loadstyle: ''
+      initial_height: 500
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_mediaserver_video_number: true
+  field_mediaserver_video_title: true
+  label: true
+  search_api_excerpt: true
+  user_id: true

@@ -1,0 +1,17 @@
+uuid: f759dbb6-883a-4067-a09e-dc854145f0ba
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.zoning_information_author
+id: theme-ca2dffbeb
+label: Kaavatoimittaja
+weight: -1
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

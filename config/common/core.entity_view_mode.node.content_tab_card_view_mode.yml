@@ -1,0 +1,10 @@
+uuid: b697548a-294a-4dd4-9758-c44da4950b7e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.content_tab_card_view_mode
+label: 'Sisältövälilehden kortti'
+targetEntityType: node
+cache: true

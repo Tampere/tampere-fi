@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 'E-service channel'
+    -
+      label: 'Web page service channel'
+    -
+      label: 'Phone service channel'
+    -
+      label: 'Printable form'

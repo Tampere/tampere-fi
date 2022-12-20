@@ -1,0 +1,14 @@
+uuid: 81f4b29a-6263-444b-98e4-1073f10a871c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.small_news_item_author
+  module:
+    - user
+id: user_add_role_action.small_news_item_author
+label: 'Add the Pikku-uutistoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: small_news_item_author

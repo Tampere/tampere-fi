@@ -1,0 +1,10 @@
+uuid: cdcb2ba5-f22f-4653-bc8e-1b2ca88460a2
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.map_tab_card_view_mode
+label: 'Karttavälilehden kortti'
+targetEntityType: node
+cache: true

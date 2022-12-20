@@ -1,0 +1,18 @@
+uuid: de125050-4b94-42d7-848d-fa6e3d584498
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.life-situation-menu-fi
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: menu_link_content.life-situation-menu-fi
+target_entity_type_id: menu_link_content
+target_bundle: life-situation-menu-fi
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,50 @@
+display:
+  default:
+    display_title: Isäntä
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Käytä
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        id:
+          label: ID
+          separator: ', '
+        uid:
+          label: Kirjoittanut
+          separator: ', '
+        created:
+          label: Luotu
+          separator: ', '
+        parent_id:
+          label: Isäntä
+          separator: ', '
+        parent_type:
+          separator: ', '
+        status:
+          label: Julkaistu
+          separator: ', '
+        type:
+          label: Tyyppi
+          separator: ', '
+        nothing:
+          label: Toiminto
+          alter:
+            text: poista
+            alt: poista
+      filters:
+        type:
+          expose:
+            label: Tyyppi

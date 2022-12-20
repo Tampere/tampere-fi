@@ -1,0 +1,10 @@
+uuid: 256f2bcf-5ab1-46f9-806c-4309db0524fc
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.involvement_opportunity_card_view_mode
+label: Osallistumismahdollisuuskortti
+targetEntityType: node
+cache: true

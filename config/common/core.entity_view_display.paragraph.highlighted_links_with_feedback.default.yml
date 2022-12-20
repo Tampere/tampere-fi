@@ -1,0 +1,51 @@
+uuid: ff30354a-1394-4e5e-9848-10c2e3a12f50
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.highlighted_links_with_feedback.field_left_column
+    - field.field.paragraph.highlighted_links_with_feedback.field_right_column
+    - paragraphs.paragraphs_type.highlighted_links_with_feedback
+  module:
+    - ds
+    - entity_reference_revisions
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_feedback_section
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: only_content
+    regions:
+      feedback_section__tls_content:
+        - field_left_column
+      feedback_section__card_content:
+        - field_right_column
+id: paragraph.highlighted_links_with_feedback.default
+targetEntityType: paragraph
+bundle: highlighted_links_with_feedback
+mode: default
+content:
+  field_left_column:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: life_situation_links_view_mode
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: feedback_section__tls_content
+  field_right_column:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: feedback_section__card_content
+hidden:
+  search_api_excerpt: true

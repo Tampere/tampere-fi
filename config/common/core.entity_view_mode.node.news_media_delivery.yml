@@ -1,0 +1,10 @@
+uuid: 21513962-791e-4f12-af97-a7ce949b7521
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.news_media_delivery
+label: 'Uutisen mediajakelu'
+targetEntityType: node
+cache: true

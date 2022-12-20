@@ -1,0 +1,10 @@
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Tabs
+    group_general:
+      label: General
+    group_eservices:
+      label: 'E-service channels'
+    group_phone_channels:
+      label: 'Phone service channels'

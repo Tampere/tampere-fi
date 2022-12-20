@@ -1,0 +1,28 @@
+uuid: 8533e6a1-b838-435f-9374-40652a196d2e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.rss_feed.field_feed_block
+    - field.field.paragraph.rss_feed.field_feed_title
+    - field.field.paragraph.rss_feed.field_number_of_items_to_show
+    - field.field.paragraph.rss_feed.field_sort_order
+    - paragraphs.paragraphs_type.rss_feed
+id: paragraph.rss_feed.default
+targetEntityType: paragraph
+bundle: rss_feed
+mode: default
+content:
+  field_feed_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_feed_block: true
+  field_number_of_items_to_show: true
+  field_sort_order: true
+  search_api_excerpt: true

@@ -1,0 +1,7 @@
+tre_news_archive.save_current_news:
+  path: '/admin/content/news_archive/save_current_news'
+  defaults:
+    _controller: '\Drupal\tre_news_archive\Controller\CurrentNews::save'
+    _title: 'Save current news'
+  requirements:
+    _permission: 'access files overview'

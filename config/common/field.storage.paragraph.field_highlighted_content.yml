@@ -1,0 +1,20 @@
+uuid: de23fed3-0351-41c9-992b-e2e0c108e6ae
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+id: paragraph.field_highlighted_content
+field_name: field_highlighted_content
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

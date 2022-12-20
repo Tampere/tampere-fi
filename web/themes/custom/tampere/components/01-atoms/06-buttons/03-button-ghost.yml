@@ -1,0 +1,8 @@
+button_url:
+  "#"
+button_content:
+  "Ghost Button"
+button_modifiers:
+  - "ghost"
+button_icon_name:
+  "arrow"

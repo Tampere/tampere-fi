@@ -1,0 +1,23 @@
+uuid: a3a62058-becb-4432-a3be-e991b03fd35d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_media
+    - paragraphs.paragraphs_type.social_media_link
+  module:
+    - options
+id: paragraph.social_media_link.field_social_media
+field_name: field_social_media
+entity_type: paragraph
+bundle: social_media_link
+label: 'Sosiaalinen media'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: facebook
+default_value_callback: ''
+settings: {  }
+field_type: list_string

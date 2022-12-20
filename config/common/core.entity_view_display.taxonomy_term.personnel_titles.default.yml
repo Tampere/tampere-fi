@@ -1,0 +1,17 @@
+uuid: dd528461-7425-4441-8f62-e98bfe26ba8d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.personnel_titles.field_hr_id
+    - taxonomy.vocabulary.personnel_titles
+id: taxonomy_term.personnel_titles.default
+targetEntityType: taxonomy_term
+bundle: personnel_titles
+mode: default
+content: {  }
+hidden:
+  description: true
+  field_hr_id: true
+  langcode: true
+  search_api_excerpt: true

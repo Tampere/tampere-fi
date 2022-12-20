@@ -1,0 +1,19 @@
+uuid: 64374c9d-d0c2-4c99-8935-9fb8ea8512a8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_embed_description
+    - paragraphs.paragraphs_type.map_embed
+id: paragraph.map_embed.field_embed_description
+field_name: field_embed_description
+entity_type: paragraph
+bundle: map_embed
+label: 'Upotuksen kuvaus ruudunlukijoita varten'
+description: 'Saavutettavuuden vuoksi upotukselle tulee antaa lyhyt kuvaus tai kuvaava nimi ruudunlukijoita varten. Esimerkiksi <i>Kirjaston sijainti kartalla</i>.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

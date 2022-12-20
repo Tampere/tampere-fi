@@ -1,0 +1,15 @@
+uuid: e04a8bcb-ba4a-429a-ae59-bbcababd774b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: grouped_content_liftup
+label: 'Ryhmitelty sisältönosto'
+icon_uuid: null
+icon_default: null
+description: 'Mahdollistaa tietyn sisällöllisen aiheen esittelyn noston vasemmassa palstassa, ja siihen liittyvien 4-6 linkin kiinnittämisen tämän esittelyn oheen.'
+behavior_plugins: {  }

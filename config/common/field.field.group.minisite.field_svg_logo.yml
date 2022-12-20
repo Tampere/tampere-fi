@@ -1,0 +1,41 @@
+uuid: bda1cad1-4fb8-45ae-bd25-7bf5dc7bd914
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_svg_logo
+    - group.type.minisite
+  module:
+    - content_translation
+    - svg_image_field
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: group.minisite.field_svg_logo
+field_name: field_svg_logo
+entity_type: group
+bundle: minisite
+label: 'Svg logo'
+description: "Jos alasivustolle ei aseteta logoa, alasivuston nimeä käytetään sloganina Tampere-logon alapuolella ylätunnisteessa.\r\n<br/>\r\nJos haluat ikonin värin vaihtuvan dynaamisesti fontin värin mukaan, tarkista että tiedoston väriarvot (esim. #fff) on korvattu arvolla 'currentColor'."
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: svg
+  max_filesize: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+field_type: svg_image_field

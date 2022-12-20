@@ -1,0 +1,14 @@
+uuid: 0390a1f1-6fb7-4d05-9183-790fdab97012
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.zoning_information_author
+  module:
+    - user
+id: user_add_role_action.zoning_information_author
+label: 'Add the Kaavatoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: zoning_information_author

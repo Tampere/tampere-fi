@@ -1,0 +1,17 @@
+uuid: a1e72bf5-17d7-456b-b006-5ca60bff904b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.emergency_notice_author
+id: theme-c36d2ea4d
+label: Häiriöilmoitustoimittaja
+weight: -5
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

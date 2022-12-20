@@ -1,0 +1,33 @@
+pipeline {
+	agent {
+		docker {
+			image 'node:12'
+			args '-v /opt/yarncache:/yarncache --net host'
+		}
+	}
+	environment {
+		YARN_CACHE_DIR = '/yarncache'
+	}
+	stages {
+		stage('Install') {
+			steps {
+				sh 'yarn --cache-folder ${YARN_CACHE_DIR}'
+			}
+		}
+		stage('Lint') {
+			steps {
+				sh 'yarn lint'
+			}
+		}
+		stage('Build') {
+			steps {
+				sh 'yarn build'
+			}
+		}
+		stage('Storybook') {
+			steps {
+				sh 'yarn build-storybook'
+			}
+		}
+	}
+}

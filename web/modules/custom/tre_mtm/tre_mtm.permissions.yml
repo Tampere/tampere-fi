@@ -1,0 +1,3 @@
+administer tre_mtm:
+  title: 'Administer Mtm'
+  description: 'Perform maintenance tasks for Matomo Tag Manager.'

@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ * - group_footer_content: Contains footer content for a group as a render array
+ *   if current content belongs to a group with custom footer information.
+ * - is_minisite: Flag for whether or not currently on Minisite content.
+ * - first_footer_text_column: The content for the first footer text column.
+ * - second_footer_text_column: The content for the second footer text column.
+ * - social_media_items: The social media items as an array.
+ *   Each item contains:
+ *     - url: The URL for the social media item.
+ *     - icon: The name of the social media icon.
+ *     - aria_label: The alternative text for the social media link.
+ * - site_statement_links: The site statement links to be shown in the bottom
+ *     of the footer region.
+ * - site_copyright_information: The site copyright details as a string.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{% embed "@organisms/site/site-footer/site-footer.twig" with {
+  "footer_modifiers": is_minisite ? [ "minisite" ],
+  "custom_footer_content": group_footer_content,
+  "first_paragraph_content": first_footer_text_column,
+  "second_paragraph_content": second_footer_text_column,
+  "footer_some_row_items": social_media_items,
+  "footer_inline_menu_aria_label": "Site statement links"|t,
+  "footer_inline_menu_items": site_statement_links,
+  "footer_copyright_content": site_copyright_information,
+} %}
+  {% block footer_menu %}
+    {{ content }}
+  {% endblock %}
+{% endembed %}

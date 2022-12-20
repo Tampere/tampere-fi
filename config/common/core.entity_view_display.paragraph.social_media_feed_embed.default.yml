@@ -1,0 +1,36 @@
+uuid: 28ecf15a-7ca7-42ba-9339-f4a3201bc9a2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_feed_embed.field_displayed_posts_amount
+    - field.field.paragraph.social_media_feed_embed.field_juicer_id
+    - field.field.paragraph.social_media_feed_embed.field_post_text_max_length
+    - field.field.paragraph.social_media_feed_embed.field_summary
+    - field.field.paragraph.social_media_feed_embed.field_title
+    - paragraphs.paragraphs_type.social_media_feed_embed
+id: paragraph.social_media_feed_embed.default
+targetEntityType: paragraph
+bundle: social_media_feed_embed
+mode: default
+content:
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_displayed_posts_amount: true
+  field_juicer_id: true
+  field_post_text_max_length: true
+  search_api_excerpt: true

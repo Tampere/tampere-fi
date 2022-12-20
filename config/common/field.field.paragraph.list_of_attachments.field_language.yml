@@ -1,0 +1,21 @@
+uuid: 1484401f-869a-457b-884b-58b12e58c45d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_language
+    - paragraphs.paragraphs_type.list_of_attachments
+  module:
+    - options
+id: paragraph.list_of_attachments.field_language
+field_name: field_language
+entity_type: paragraph
+bundle: list_of_attachments
+label: Kielivalinta
+description: 'Valitse kieli, jos kyseessä on arabian-, venäjän- tai persian-/farsinkielinen sisältö. Koskee koko liitelista paragraafia.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

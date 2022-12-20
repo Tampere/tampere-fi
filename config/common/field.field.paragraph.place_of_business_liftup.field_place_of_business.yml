@@ -1,0 +1,29 @@
+uuid: 68b34539-d1c0-43a6-bb07-2c24f9babd43
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_place_of_business
+    - node.type.place_of_business
+    - paragraphs.paragraphs_type.place_of_business_liftup
+id: paragraph.place_of_business_liftup.field_place_of_business
+field_name: field_place_of_business
+entity_type: paragraph
+bundle: place_of_business_liftup
+label: Toimipiste
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      place_of_business: place_of_business
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

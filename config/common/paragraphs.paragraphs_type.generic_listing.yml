@@ -1,0 +1,10 @@
+uuid: 5115da85-50f3-4df3-b11c-957f965fab44
+langcode: fi
+status: true
+dependencies: {  }
+id: generic_listing
+label: 'Geneerinen listaus'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

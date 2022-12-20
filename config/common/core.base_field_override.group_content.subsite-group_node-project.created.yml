@@ -1,0 +1,18 @@
+uuid: 481aef70-8332-4433-8e4b-ded318f78c62
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.subsite-group_node-project
+id: group_content.subsite-group_node-project.created
+field_name: created
+entity_type: group_content
+bundle: subsite-group_node-project
+label: Luotu
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

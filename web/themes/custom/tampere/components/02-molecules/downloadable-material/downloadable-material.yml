@@ -1,0 +1,6 @@
+material__image__src: 'https://placeimg.com/1280/400/arch'
+material__image__alt: 'alt text'
+material__heading: 'Lorem ipsum dolor sit amet'
+material__summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sed dignissim augue. Pellentesque vestibulum massa dolor, a rhoncus erat elementum nec.'
+material__download_text: 'Lataa tästä'
+material__download_url: '#'

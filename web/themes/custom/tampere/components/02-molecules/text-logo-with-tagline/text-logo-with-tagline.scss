@@ -1,0 +1,53 @@
+$text-logo-w-tagline-main-logo-height: 39px;
+$text-logo-w-tagline-main-logo-height--large: 68px;
+$text-logo-w-tagline-main-logo-width: 108px;
+$text-logo-w-tagline-main-logo-width--large: 188px;
+
+.text-logo-with-tagline {
+  @include dynamic-color(minisite-identifier-background);
+
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+
+  &__main-logo {
+    margin-top: -7px;
+    margin-left: -7px;
+    height: $text-logo-w-tagline-main-logo-height;
+    width: $text-logo-w-tagline-main-logo-width;
+
+    @include large {
+      margin-top: 0;
+      margin-left: -12px;
+      position: absolute;
+      height: $text-logo-w-tagline-main-logo-height--large;
+      width: $text-logo-w-tagline-main-logo-width--large;
+    }
+  }
+
+  &__tagline {
+    display: none;
+
+    @include large {
+      @include word-wrap;
+
+      display: block;
+      font-family: $font-heading;
+      font-size: $font-15;
+      margin-left: 49px;
+      margin-top: 50px;
+    }
+  }
+
+  &--mobile-svg {
+    svg {
+      height: 30px;
+    }
+  }
+
+  &--desktop-svg {
+    svg {
+      height: 67px;
+    }
+  }
+}

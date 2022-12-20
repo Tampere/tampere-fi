@@ -1,0 +1,10 @@
+uuid: 84ae09df-65ee-4593-a47c-ba21bc75bf11
+langcode: fi
+status: true
+dependencies: {  }
+id: notice
+label: Huomiolaatikko
+icon_uuid: null
+icon_default: null
+description: 'Huomiota herättävään viestimiseen tarkoitettu korostuselementti.'
+behavior_plugins: {  }

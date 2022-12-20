@@ -1,0 +1,14 @@
+.comments {
+  &#{&} {
+    margin-bottom: $space-xl;
+
+    @include large {
+      margin-bottom: $space-xxxl;
+    }
+  }
+
+  &__heading {
+    @include section-heading;
+    @include text-element-spacer;
+  }
+}

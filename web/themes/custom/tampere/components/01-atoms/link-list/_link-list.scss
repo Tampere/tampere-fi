@@ -1,0 +1,136 @@
+$link-list-large-icons-xl-breakpoint: 1200px;
+
+.link-list {
+  $base_class: &;
+
+  @include list-reset;
+
+  &__list-item {
+    list-style-type: none;
+
+    &:not(:first-child) {
+      margin-top: $space-s;
+    }
+  }
+
+  &__link {
+    @include button-default;
+    @include button;
+
+    width: fit-content;
+  }
+
+  &__link-text {
+    @include word-wrap;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    height: $icon-default;
+    width: $icon-default;
+    margin-left: $space-l;
+  }
+
+  // Variations
+  &--large-icons {
+    display: grid;
+    column-gap: $space-xs;
+    row-gap: $gutter-small;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include large {
+      column-gap: clamp($gutter-small, 5%, $gutter-large);
+      grid-template-columns: repeat(3, 1fr);
+      padding: $space-m;
+    }
+
+    #{$base_class}__list-item {
+      list-style-type: none;
+      margin: 0;
+    }
+
+    #{$base_class}__link {
+      border: 0;
+      color: clr(text);
+      display: flex;
+      font-size: $font-15;
+      font-weight: $font-weight-bold;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      padding-top: $space-s;
+      padding-right: 0;
+      padding-bottom: $space-s;
+      padding-left: 0;
+      text-decoration: none;
+      text-transform: none;
+      width: 100%;
+
+      @include large {
+        font-size: $font-22;
+      }
+
+      &:focus,
+      &:hover {
+        #{$base_class}__link-text::after {
+          content: "";
+          background-color: clr(text);
+          display: block;
+          position: absolute;
+          height: 2px;
+          width: 100%;
+        }
+      }
+    }
+
+    #{$base_class}__link-text {
+      overflow-wrap: anywhere;
+      position: relative;
+    }
+
+    #{$base_class}__icon {
+      color: clr(secondary);
+      margin-right: $space-s;
+      margin-left: 0;
+      height: $icon-medium-plus;
+      width: $icon-medium-plus;
+
+      @include large {
+        margin-right: $space-m;
+        height: $icon-large;
+        width: $icon-large;
+      }
+    }
+  }
+
+  &--primary {
+    @include large {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0;
+    }
+
+    #{$base_class}__icon {
+      color: clr(primary);
+    }
+  }
+
+  &--accordion-content-view-mode {
+    @include accordion-content-spacer;
+  }
+
+  &--center {
+    #{$base_class}__list-item {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &--more-space {
+    #{$base_class}__list-item {
+      margin-top: $space-l;
+
+      @include large {
+        margin-top: $space-xl;
+      }
+    }
+  }
+}

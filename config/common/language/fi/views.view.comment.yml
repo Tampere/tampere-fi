@@ -1,0 +1,100 @@
+label: Kommentit
+display:
+  default:
+    display_title: Isäntä
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Suodatus
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ edellinen'
+            next: 'seuraava ›'
+            first: '« ensimmäinen'
+            last: 'viimeinen »'
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+            offset_label: Offset
+      fields:
+        comment_bulk_form:
+          action_title: Toiminto
+        subject:
+          label: Aihe
+          separator: ', '
+        uid:
+          separator: ', '
+        name:
+          label: Tekijä
+          separator: ', '
+        entity_id:
+          label: Kirjoitus
+          separator: ', '
+        changed:
+          label: Päivitetty
+          separator: ', '
+        operations:
+          label: Toimenpiteet
+        name_1:
+          separator: ', '
+      filters:
+        subject:
+          expose:
+            label: Aihe
+        combine:
+          expose:
+            label: 'Kirjoittajan nimi'
+        langcode:
+          expose:
+            label: Kieli
+      title: Kommentit
+      empty:
+        area_text_custom:
+          content: 'Kommentteja ei ole saatavilla.'
+      use_more_text: lisää
+  page_published:
+    display_title: 'Julkaistut kommentit'
+    display_options:
+      menu:
+        title: Kommentit
+  page_unapproved:
+    display_title: 'Hyväksyntää odottavat kommentit'
+    display_options:
+      menu:
+        title: 'Hyväksyntää odottavat kommentit'
+      filters:
+        subject:
+          expose:
+            label: Aihe
+        combine:
+          expose:
+            label: 'Tekijän nimi'
+        langcode:
+          expose:
+            label: Kieli
+      fields:
+        comment_bulk_form:
+          action_title: Toiminto
+        subject:
+          label: Aihe
+          separator: ', '
+        uid:
+          separator: ', '
+        name:
+          label: Tekijä
+          separator: ', '
+        entity_id:
+          label: Kirjoitus
+          separator: ', '
+        changed:
+          label: Päivitetty
+          separator: ', '
+        operations:
+          label: Toimenpiteet
+        name_1:
+          separator: ', '

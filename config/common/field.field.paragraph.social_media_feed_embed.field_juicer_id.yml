@@ -1,0 +1,19 @@
+uuid: b367e8d3-b345-4bfe-9f16-353f929fb613
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_juicer_id
+    - paragraphs.paragraphs_type.social_media_feed_embed
+id: paragraph.social_media_feed_embed.field_juicer_id
+field_name: field_juicer_id
+entity_type: paragraph
+bundle: social_media_feed_embed
+label: 'Juicer ID'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+uuid: 716889a8-53ff-47ab-b271-219f9ce905dd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+id: group.subsite.changed
+field_name: changed
+entity_type: group
+bundle: subsite
+label: Muuttunut
+description: 'Ajankohta jolloin ryhmää viimeksi muokattiin.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

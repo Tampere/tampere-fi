@@ -1,0 +1,14 @@
+uuid: f3b3fdcc-49b5-48b2-881d-734b306f5533
+langcode: fi
+status: true
+dependencies: {  }
+id: download_files
+label: 'Tiedostojen lataaminen'
+media_types:
+  file: file
+  dream_broker_video: 0
+  image: 0
+  remote_video: 0
+form_mode: bulk_upload
+show_alt: null
+show_title: null

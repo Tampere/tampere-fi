@@ -1,0 +1,20 @@
+uuid: 9aa17781-b4d9-4208-becc-3a8dcc1bfb55
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.theme-group_node-collection_page
+  module:
+    - path
+id: group_content.theme-group_node-collection_page.path
+field_name: path
+entity_type: group_content
+bundle: theme-group_node-collection_page
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

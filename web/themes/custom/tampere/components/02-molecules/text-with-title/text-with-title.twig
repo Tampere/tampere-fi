@@ -1,0 +1,24 @@
+{% set text_with_title__base_class = "text-with-title" %}
+
+<div {{ bem(text_with_title__base_class, text_with_title__modifiers|default([]), text_with_title__blockname) }}>
+  {% if text_with_title__heading %}
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      "heading_base_class": "title",
+      "heading_blockname": text_with_title__base_class,
+      "heading_level": 2,
+      "heading": text_with_title__heading,
+    } %}
+  {% endif %}
+
+  {% if text_with_title__content %}
+    <div {{ bem("content", text_with_title__content__modifiers, text_with_title__base_class) }}>
+      {% block text_with_title__content_block %}
+        {% include "@atoms/02-text/text/07-text-block.twig" with {
+          "text_block_base_class": "content",
+          "text_block_blockname": text_with_title__base_class,
+          "text_block_content": text_with_title__content,
+        } %}
+      {% endblock %}
+    </div>
+  {% endif %}
+</div>

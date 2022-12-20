@@ -1,0 +1,28 @@
+uuid: 295c7706-4986-461a-8f03-0031f5c437c1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.login_link.field_external_link
+    - paragraphs.paragraphs_type.login_link
+  module:
+    - link
+id: paragraph.login_link.default
+targetEntityType: paragraph
+bundle: login_link
+mode: default
+content:
+  field_external_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

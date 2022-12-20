@@ -1,0 +1,22 @@
+uuid: 85a6e603-bab2-46d7-ae06-bc8cc8212f22
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.place_of_business
+id: node.place_of_business.promote
+field_name: promote
+entity_type: node
+bundle: place_of_business
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

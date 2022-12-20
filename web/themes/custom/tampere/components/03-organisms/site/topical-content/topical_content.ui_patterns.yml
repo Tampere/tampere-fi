@@ -1,0 +1,23 @@
+topical_content:
+  label: Topical content
+  variants:
+    default:
+      label: Default
+    notice:
+      label: Notice
+    blog:
+      label: Blog
+  fields:
+    main_image_tag:
+      label: Main image tag
+    main_image_optional_tag:
+      label: Optional tag for main image
+    publication_date:
+      label: Publication date
+    main_image:
+      label: Main image
+    main_image_caption:
+      label: Main image caption
+    main_content:
+      label: Main content
+  use: "@organisms/site/topical-content/topical-content.twig"

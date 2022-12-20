@@ -1,0 +1,14 @@
+uuid: 5c9b791d-fc1f-46b8-bfca-4033d38d5763
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.front_page_author
+  module:
+    - user
+id: user_add_role_action.front_page_author
+label: 'Add the Etusivutoimittaja role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: front_page_author

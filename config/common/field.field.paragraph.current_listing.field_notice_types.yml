@@ -1,0 +1,29 @@
+uuid: bafea297-09a9-4e54-81fd-15b0821e3213
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_notice_types
+    - paragraphs.paragraphs_type.current_listing
+    - taxonomy.vocabulary.notice_types
+id: paragraph.current_listing.field_notice_types
+field_name: field_notice_types
+entity_type: paragraph
+bundle: current_listing
+label: Ilmoitustyypit
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      notice_types: notice_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

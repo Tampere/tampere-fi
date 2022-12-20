@@ -1,0 +1,42 @@
+uuid: 69daec25-d0b1-4395-b433-27515a6c9143
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_web_displayed_fields
+field_name: field_web_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: organization
+      label: Organisaatio
+    -
+      value: summary
+      label: Tiivistelmä
+    -
+      value: description
+      label: Kuvaus
+    -
+      value: link
+      label: Verkko-osoite
+    -
+      value: languages
+      label: 'Kielet, joilla verkkoasiointi käytettävissä'
+    -
+      value: support
+      label: 'Käytön tuki'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,27 @@
+liftup__heading: 'Mauris aliquam finibus'
+liftup__summary: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+liftups:
+  - card__heading: 'Vivamus felis'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Cras lacinia'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Etiam eros'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Pharetra'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Eleifend eu'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'
+  - card__heading: 'Praesent'
+    card__link__url: '#'
+    card__modifiers:
+      - 'grouped'

@@ -1,0 +1,5 @@
+label: 'Send to all affiliates'
+description: 'Make this content available to all domains'
+settings:
+  on_label: Enable
+  off_label: Disable

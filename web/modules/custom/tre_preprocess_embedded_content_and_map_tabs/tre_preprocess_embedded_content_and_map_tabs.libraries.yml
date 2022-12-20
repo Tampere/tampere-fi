@@ -1,0 +1,8 @@
+rpc:
+  version: 1.0
+  js:
+    js/map-tabs-rpc.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - tre_preprocess/oskari-rpc-client

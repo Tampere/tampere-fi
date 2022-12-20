@@ -1,0 +1,17 @@
+uuid: d22652ff-f31e-4f97-bb4b-79e084b750cf
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: positioned_image_medium_xs_image_style
+label: 'Asemoitu kuva (keskikokoinen) - xs (432×576)'
+effects:
+  38bb703a-c583-44be-9f55-0f88eb2746e5:
+    uuid: 38bb703a-c583-44be-9f55-0f88eb2746e5
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 432
+      height: 576
+      crop_type: focal_point

@@ -1,0 +1,14 @@
+uuid: 90c07908-98d7-4b5b-86b8-9731e14e5148
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.service_author
+  module:
+    - user
+id: user_remove_role_action.service_author
+label: 'Remove the Palvelutoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: service_author

@@ -1,0 +1,21 @@
+uuid: 8c2165f5-e776-4264-8c42-2696a3d4ba0e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: minisite-small_news_item_author
+label: Pikku-uutistoimittaja
+weight: 34
+internal: false
+audience: member
+group_type: minisite
+permissions_ui: true
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:small_news_item entity'
+  - 'delete any group_node:small_news_item entity'
+  - 'update any group_node:small_news_item entity'
+  - 'view group_node:front_page entity'
+  - 'view group_node:small_news_item entity'
+  - 'view unpublished group_node:small_news_item entity'

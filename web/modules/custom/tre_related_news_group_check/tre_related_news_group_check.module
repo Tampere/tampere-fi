@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains tre_related_news_group_check module.
+ */
+
+use Drupal\block\Entity\Block;
+use Drupal\Core\Access\AccessResult;
+
+/**
+ * Implements hook_block_access().
+ *
+ * The related_news_block view should not be visible, if node belongs to groups.
+ */
+function tre_related_news_group_check_block_access(Block $block, $operation) {
+  if ($operation === 'view' && $block->id() === 'views_block__related_news_related_news_block') {
+
+    $current_group = \Drupal::service('tre_preprocess_utility_functions.helper_functions')->getCurrentGroup();
+    if ($current_group !== NULL) {
+      return AccessResult::forbidden()->addCacheableDependency($block);
+    }
+  }
+}

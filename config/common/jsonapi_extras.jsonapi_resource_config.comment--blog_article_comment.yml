@@ -1,0 +1,131 @@
+uuid: 6638e14d-56e3-446d-b579-6f32db3c4822
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment--blog_article_comment
+disabled: true
+path: comment/blog_article_comment
+resourceType: comment--blog_article_comment
+resourceFields:
+  cid:
+    disabled: false
+    fieldName: cid
+    publicName: cid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  comment_type:
+    disabled: false
+    fieldName: comment_type
+    publicName: comment_type
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  uid:
+    disabled: false
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  pid:
+    disabled: false
+    fieldName: pid
+    publicName: pid
+    enhancer:
+      id: ''
+  entity_id:
+    disabled: false
+    fieldName: entity_id
+    publicName: entity_id
+    enhancer:
+      id: ''
+  subject:
+    disabled: false
+    fieldName: subject
+    publicName: subject
+    enhancer:
+      id: ''
+  name:
+    disabled: false
+    fieldName: name
+    publicName: name
+    enhancer:
+      id: ''
+  mail:
+    disabled: false
+    fieldName: mail
+    publicName: mail
+    enhancer:
+      id: ''
+  homepage:
+    disabled: false
+    fieldName: homepage
+    publicName: homepage
+    enhancer:
+      id: ''
+  hostname:
+    disabled: false
+    fieldName: hostname
+    publicName: hostname
+    enhancer:
+      id: ''
+  created:
+    disabled: false
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  thread:
+    disabled: false
+    fieldName: thread
+    publicName: thread
+    enhancer:
+      id: ''
+  entity_type:
+    disabled: false
+    fieldName: entity_type
+    publicName: entity_type
+    enhancer:
+      id: ''
+  field_name:
+    disabled: false
+    fieldName: field_name
+    publicName: field_name
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: false
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  comment_body:
+    disabled: false
+    fieldName: comment_body
+    publicName: comment_body
+    enhancer:
+      id: ''

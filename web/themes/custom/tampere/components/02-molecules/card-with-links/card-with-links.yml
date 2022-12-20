@@ -1,0 +1,10 @@
+card__image__src: 'https://placeimg.com/1280/720/nature'
+card__heading: 'Lorem ipsum dolor sit amet'
+card__body: 'Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+card__links__items:
+  1:
+    text: 'Lorem ipsum'
+    url: '#'
+  2:
+    text: 'Aliquet'
+    url: '#'

@@ -1,0 +1,14 @@
+uuid: 609b0692-c3c5-4192-912d-e247f3c6d2f5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.other_identifiers
+id: taxonomy_vocabulary_other_identifiers
+entity_type_id: taxonomy_vocabulary
+entity_id: other_identifiers
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

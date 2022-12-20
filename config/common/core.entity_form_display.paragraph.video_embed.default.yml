@@ -1,0 +1,38 @@
+uuid: a2216b0f-e57e-440e-b626-4cb1e5e23bb4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.video_embed.field_language
+    - field.field.paragraph.video_embed.field_video_file
+    - paragraphs.paragraphs_type.video_embed
+  module:
+    - media_library
+id: paragraph.video_embed.default
+targetEntityType: paragraph
+bundle: video_embed
+mode: default
+content:
+  field_language:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_video_file:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types:
+        - remote_video
+        - dream_broker_video
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,25 @@
+uuid: 0a3c230a-5114-4451-8e98-699a79ffb164
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_field_selection_help
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - markup
+id: paragraph.ptv_service_liftup.field_field_selection_help
+field_name: field_field_selection_help
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Kenttävalinnan ohje'
+description: ''
+required: false
+translatable: true
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: "<h3>Jos valitset palvelun yhteydessä näytettäväksi asiointikanavia, valitse myös niistä näytettävät tietosisällöt asiointikanavittain.</h3>\r\n"
+    format: basic_html
+field_type: markup

@@ -1,0 +1,30 @@
+_core:
+  default_config_hash: wOZVD8Wsf3NSSsAU36-FVkO7zaC4TgH_Buj0Up6vHYQ
+langcode: fi
+image_styles:
+  api_image_style: api_image_style
+  content_liftup_with_image_medium_image_style: '0'
+  content_liftup_with_image_small_image_style: '0'
+  content_liftup_with_image_xs_image_style: '0'
+  hero_large_image_style: '0'
+  hero_medium_image_style: '0'
+  hero_short_large_image_style: '0'
+  hero_short_medium_image_style: '0'
+  hero_short_small_image_style: '0'
+  hero_short_xs_image_style: '0'
+  hero_small_image_style: '0'
+  hero_xs_image_style: '0'
+  highlighted_content_liftup_with_image_large_image_style: '0'
+  highlighted_content_liftup_with_image_medium_image_style: '0'
+  large: '0'
+  large_listing_liftup_medium_image_style: '0'
+  linkit_result_thumbnail: '0'
+  listing_liftup_small_image_style: '0'
+  listing_liftup_xs_image_style: '0'
+  media_library: '0'
+  medium: '0'
+  search_widget_large_image_style: '0'
+  search_widget_medium_image_style: '0'
+  search_widget_small_image_style: '0'
+  search_widget_xs_image_style: '0'
+  thumbnail: '0'

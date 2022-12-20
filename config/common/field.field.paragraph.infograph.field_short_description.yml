@@ -1,0 +1,19 @@
+uuid: df710ce1-0990-4718-9f0a-e6101115809c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_short_description
+    - paragraphs.paragraphs_type.infograph
+id: paragraph.infograph.field_short_description
+field_name: field_short_description
+entity_type: paragraph
+bundle: infograph
+label: 'Lyhyt kuvaus'
+description: 'Max. 200 merkkiä'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

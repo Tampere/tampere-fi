@@ -1,0 +1,61 @@
+.paragraph {
+  position: relative;
+
+  &__heading {
+    @include text-element-spacer;
+  }
+
+  &--type-course-listing,
+  &--type-course-listing-sports {
+    .layout-container:not(.layout-container--with-sidebar) & {
+      @include large {
+        @include breakout(0);
+      }
+    }
+  }
+
+  &--type-course-listing,
+  &--type-course-listing-sports,
+  &--type-video-embed {
+    @include page-element-spacer;
+  }
+
+  &--type-image {
+    @include page-element-spacer;
+
+    max-width: var(--basic-component-max-width);
+  }
+
+  &--type-accordion-text-content,
+  &--type-text {
+    @include text-element-spacer;
+
+    max-width: var(--text-content-max-width);
+  }
+
+  &--type-accordion-text-content.paragraph--view-mode-accordion-content-view-mode,
+  &--type-text.paragraph--view-mode-accordion-content-view-mode {
+    @include large-down {
+      .text-long {
+        p, h4, h5 {
+          margin-bottom: $space-s;
+        }
+      }
+    }
+  }
+
+  &--type-image,
+  &--type-accordion-text-content.paragraph--view-mode-accordion-content-view-mode,
+  &--type-text.paragraph--view-mode-accordion-content-view-mode,
+  &--type-ptv-service-liftup.paragraph--view-mode-accordion-content-view-mode {
+    @include accordion-content-spacer;
+  }
+
+  &--type-ptv-service-liftup {
+    @include page-element-spacer;
+
+    .ptv-service-liftup-section-heading + * {
+      margin-top: 0;
+    }
+  }
+}

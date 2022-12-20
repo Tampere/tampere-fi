@@ -1,0 +1,10 @@
+uuid: 9308d909-9ffc-43af-9b38-c5fc8928df56
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.image_gallery_thumbnail_view_mode
+label: 'Kuvagallerian pikkukuva'
+targetEntityType: media
+cache: true

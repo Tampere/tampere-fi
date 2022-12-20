@@ -1,0 +1,89 @@
+uuid: 6bd1b452-869c-4c2b-b18d-15ae2338840d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.basic_content_page
+    - node.type.blog_article
+    - node.type.city_planning_and_constructions
+    - node.type.collection_page
+    - node.type.front_page
+    - node.type.news_item
+    - node.type.notice
+    - node.type.organization
+    - node.type.place
+    - node.type.project
+    - node.type.rich_article
+    - node.type.small_news_item
+    - node.type.zoning_information
+  module:
+    - content_moderation
+id: scheduled_transitions
+label: 'Ajoitetut siirtymät'
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Arkistoitu
+      weight: 0
+      published: false
+      default_revision: true
+    draft:
+      label: draft
+      weight: 1
+      published: false
+      default_revision: false
+    draft_state:
+      label: Luonnostila
+      weight: -2
+      published: false
+      default_revision: false
+    published:
+      label: Julkaistu
+      weight: -1
+      published: true
+      default_revision: true
+  transitions:
+    archive:
+      label: Arkistoi
+      from:
+        - draft_state
+        - published
+      to: archived
+      weight: 2
+    create_new_draft:
+      label: 'Luo uusi luonnos'
+      from:
+        - draft_state
+        - published
+      to: draft_state
+      weight: 4
+    publish:
+      label: Julkaise
+      from:
+        - draft_state
+        - published
+      to: published
+      weight: 1
+    restore_to_draft:
+      label: 'Palauta luonnokseksi'
+      from:
+        - archived
+      to: draft_state
+      weight: 5
+  entity_types:
+    node:
+      - basic_content_page
+      - blog_article
+      - city_planning_and_constructions
+      - collection_page
+      - front_page
+      - news_item
+      - notice
+      - organization
+      - place
+      - project
+      - rich_article
+      - small_news_item
+      - zoning_information
+  default_moderation_state: draft_state

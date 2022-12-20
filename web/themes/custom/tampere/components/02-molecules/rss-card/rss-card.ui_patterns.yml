@@ -1,0 +1,15 @@
+rss_card:
+  label: RSS card
+  variants:
+    default:
+      label: Default
+    colorful:
+      label: Colorful
+  fields:
+    rss_card__link__url:
+      label: URL
+    rss_card__date:
+      label: Date
+    rss_card__heading:
+      label: Heading
+  use: "@molecules/rss-card/rss-card.twig"

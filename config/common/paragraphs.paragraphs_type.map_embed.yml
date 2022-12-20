@@ -1,0 +1,10 @@
+uuid: 3f49f1f6-5e52-4742-b729-a5e88e64c37d
+langcode: fi
+status: true
+dependencies: {  }
+id: map_embed
+label: Karttaupotus
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

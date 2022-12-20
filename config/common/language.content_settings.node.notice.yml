@@ -1,0 +1,18 @@
+uuid: 19297856-dc38-4950-96b9-ff9efab60855
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.notice
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: node.notice
+target_entity_type_id: node
+target_bundle: notice
+default_langcode: current_interface
+language_alterable: true

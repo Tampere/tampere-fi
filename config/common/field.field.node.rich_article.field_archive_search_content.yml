@@ -1,0 +1,19 @@
+uuid: 92c1ce1b-800b-4cfb-b9c4-63b5be6e79b4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_archive_search_content
+    - node.type.rich_article
+id: node.rich_article.field_archive_search_content
+field_name: field_archive_search_content
+entity_type: node
+bundle: rich_article
+label: 'Tekstisisältö arkistohakuun'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,14 @@
+uuid: 31c48d4e-9bcc-4c5f-88ba-480e97a7bb6c
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: Mb_L3vE-0IBZH5s2rjpk2LNn0QHClQP9AARQdCmVLt4
+id: translations
+label: Translations
+category: Kieli
+likert: false
+options: ''

@@ -1,0 +1,18 @@
+uuid: 6de6a01d-8963-42bd-b792-3d9421c089b0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.embedded_content_and_map_tabs
+target_entity_type_id: paragraph
+target_bundle: embedded_content_and_map_tabs
+default_langcode: current_interface
+language_alterable: true

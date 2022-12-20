@@ -1,0 +1,15 @@
+uuid: bce695f5-31b7-4c4d-8f97-57da90c662e7
+langcode: fi
+status: true
+dependencies: {  }
+name: focal_point_thumbnail
+label: Fokaalipiste-pikkukuva
+effects:
+  0cb910bd-e815-410c-a607-0b3ead96665e:
+    uuid: 0cb910bd-e815-410c-a607-0b3ead96665e
+    id: image_scale
+    weight: 1
+    data:
+      width: 350
+      height: null
+      upscale: false

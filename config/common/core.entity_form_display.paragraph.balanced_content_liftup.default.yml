@@ -1,0 +1,34 @@
+uuid: c9d07ac1-7003-4b4a-b291-d941a183da44
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.balanced_content_liftup.field_content_liftups
+    - paragraphs.paragraphs_type.balanced_content_liftup
+  module:
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.balanced_content_liftup.default
+targetEntityType: paragraph
+bundle: balanced_content_liftup
+mode: default
+content:
+  field_content_liftups:
+    type: paragraphs_classic_asymmetric
+    weight: 0
+    region: content
+    settings:
+      title: Sisältönosto
+      title_plural: Sisältönostot
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: content_liftup
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,6 @@
+uuid: 90a2fe71-bcd7-4fa1-bc9c-d90c009fadf5
+langcode: en
+status: true
+dependencies: {  }
+id: minisite_main_menu_en
+label: 'Minisite main menu'

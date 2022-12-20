@@ -1,0 +1,2 @@
+label: 'Map height'
+description: 'Enter map height in pixels here if you want the map to use a certain height. By default, the map is displayed in 3:2 aspect ratio.'

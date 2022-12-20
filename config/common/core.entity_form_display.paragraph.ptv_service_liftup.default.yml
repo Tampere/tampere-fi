@@ -1,0 +1,155 @@
+uuid: c535c48e-fc7c-4747-9a4a-8edba6d29b20
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.ptv_service_liftup.field_field_selection_help
+    - field.field.paragraph.ptv_service_liftup.field_form_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_heading__basic_info
+    - field.field.paragraph.ptv_service_liftup.field_heading__instruction
+    - field.field.paragraph.ptv_service_liftup.field_heading__requirements
+    - field.field.paragraph.ptv_service_liftup.field_online_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_phone_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_pob_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_service
+    - field.field.paragraph.ptv_service_liftup.field_service_displayed_fields
+    - field.field.paragraph.ptv_service_liftup.field_web_displayed_fields
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - field_group
+    - field_states_ui
+    - heading
+    - limited_field_widgets
+    - markup
+    - options_table
+third_party_settings:
+  field_group:
+    group_override_headings:
+      children:
+        - field_heading__instruction
+        - field_heading__requirements
+        - field_heading__basic_info
+      label: Yliajo-otsikot
+      region: content
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: 'Jos haluat muuttaa palvelun tietojen oletusotsikoita tai niiden otsikkotasoja, muuta niitä täältä.'
+        required_fields: true
+id: paragraph.ptv_service_liftup.default
+targetEntityType: paragraph
+bundle: ptv_service_liftup
+mode: default
+content:
+  field_field_selection_help:
+    type: markup
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_form_displayed_fields:
+    type: options_buttons
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading__basic_info:
+    type: heading
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading__instruction:
+    type: heading
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading__requirements:
+    type: heading
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_online_displayed_fields:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_phone_displayed_fields:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pob_displayed_fields:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            eace21bd-83e2-4858-b8cb-e615010b4a0d:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
+        field_states: {  }
+      limited_field_widgets:
+        limit_values: '0'
+  field_service:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            ea3d738c-b304-4552-9457-8a40c1fd5ad3:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
+        field_states: {  }
+  field_service_displayed_fields:
+    type: options_table
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_web_displayed_fields:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

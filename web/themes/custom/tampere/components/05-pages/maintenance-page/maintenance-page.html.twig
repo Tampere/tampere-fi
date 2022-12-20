@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Theme override to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ * Some may be blank but they are provided for consistency.
+ *
+ * @see template_preprocess_maintenance_page()
+ */
+#}
+<header class="maintenance-page__header" role="banner">
+  {% if logo %}
+    <a href="{{ front_page }}" title="{{ 'Home'|t }}" rel="home">
+      <img src="{{ logo }}" alt="{{ 'Home'|t }}"/>
+    </a>
+  {% endif %}
+</header>
+
+<main class="maintenance-page__main" role="main">
+  {% if title or site_name %}
+    {% set hometitle = 'Home'|t({}, {'context' : 'Title for home link in h1'}) %}
+    <h1 class="maintenance-page__heading h1" lang="fi">{{site_name}}-verkkopalvelua huolletaan</h1>
+  {% endif %}
+
+  {{ page.highlighted }}
+
+  <div class="body">
+    <p lang="fi">
+      {{site_name}}  on parhaillaan huollettavana. Sivusto pyritään saamaan takaisin käyttöön pian. Kiitämme kärsivällisyydestä.
+    </p>
+    <p lang="en">
+      Maintenance mode is on. The {{site_name}} site will be available soon. Thank you for your patience.
+    </p>
+  </div>
+</main>
+
+{% if page.sidebar_first %}
+  <aside role="complementary">
+    {{ page.sidebar_first }}
+  </aside>
+{% endif %}
+
+{% if page.sidebar_second %}
+  <aside role="complementary">
+    {{ page.sidebar_second }}
+  </aside>
+{% endif %}
+
+{% if page.footer %}
+  <footer role="contentinfo">
+    {{ page.footer }}
+  </footer>
+{% endif %}

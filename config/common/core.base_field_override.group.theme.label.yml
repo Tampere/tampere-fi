@@ -1,0 +1,18 @@
+uuid: 4db304bb-f207-46bb-98bb-17334d031588
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+id: group.theme.label
+field_name: label
+entity_type: group
+bundle: theme
+label: Teema
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

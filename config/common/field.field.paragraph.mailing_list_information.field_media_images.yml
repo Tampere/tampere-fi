@@ -1,0 +1,23 @@
+uuid: 6364b577-4556-41b6-b4db-3a9affab72dd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_images
+    - paragraphs.paragraphs_type.mailing_list_information
+  module:
+    - link
+id: paragraph.mailing_list_information.field_media_images
+field_name: field_media_images
+entity_type: paragraph
+bundle: mailing_list_information
+label: Mediakuvat
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

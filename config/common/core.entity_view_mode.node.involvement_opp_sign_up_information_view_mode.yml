@@ -1,0 +1,10 @@
+uuid: 57c74545-6dd2-48e2-b553-cd8737ba8a39
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.involvement_opp_sign_up_information_view_mode
+label: 'Osallistumismahdollisuuden ilmoittautumisen ajankohta'
+targetEntityType: node
+cache: true

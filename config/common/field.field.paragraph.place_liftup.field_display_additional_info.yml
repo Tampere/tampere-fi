@@ -1,0 +1,23 @@
+uuid: e131ad7f-6a0e-4190-b507-989a3892afef
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_additional_info
+    - paragraphs.paragraphs_type.place_liftup
+id: paragraph.place_liftup.field_display_additional_info
+field_name: field_display_additional_info
+entity_type: paragraph
+bundle: place_liftup
+label: 'Näytä paikan lisätiedot'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

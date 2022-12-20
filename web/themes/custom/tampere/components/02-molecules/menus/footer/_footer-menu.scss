@@ -1,0 +1,39 @@
+$footer-mobile-font-size: $font-16;
+$footer-mobile-bold: $font-weight-bold;
+$footer-desktop-font-size: $font-18;
+$footer-desktop-bold: $font-weight-semi-bold;
+
+.footer-menu {
+  @include list-reset;
+
+  display: grid;
+  font-family: $font-body;
+  font-size: $footer-mobile-font-size;
+  font-weight: $footer-mobile-bold;
+  gap: $space-s;
+  grid-template-columns: 1fr 1fr;
+  
+  &__link {
+    @include link(
+      $color: clr(text-inverse), 
+      $color-hover: clr(text-inverse)
+    );
+    @include word-wrap;
+
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      text-underline-position: under;
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  @include large {
+    display: flex;
+    flex-direction: column;
+    font-weight: $footer-desktop-bold;
+    font-size: $footer-desktop-font-size;
+  }
+}

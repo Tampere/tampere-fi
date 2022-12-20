@@ -1,0 +1,19 @@
+uuid: 63962911-f6b9-4122-b551-9e83ae667b66
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - node.type.moderated_page
+  module:
+    - gnode
+    - node
+id: topic-group_node-moderated_page
+label: 'Aihepiiri: Group node (Moderoitu sivu)'
+description: 'Adds <em class="placeholder">Moderoitu sivu</em> content to groups both publicly and privately.'
+group_type: topic
+content_plugin: 'group_node:moderated_page'
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

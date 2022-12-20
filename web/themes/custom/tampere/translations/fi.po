@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Switch language"
+msgstr "Vaihda kieltä"
+
+msgid "current language"
+msgstr "nykyinen kieli"
+
+msgid "Opens in new window"
+msgstr "Avautuu uuteen ikkunaan"
+
+msgid "Breadcrumb"
+msgstr "Murupolku"
+
+msgid "Main navigation"
+msgstr "Päävalikko"
+
+msgid "Open mobile menu."
+msgstr "Avaa mobiilivalikko."
+
+msgid "Close mobile menu."
+msgstr "Sulje mobiilivalikko."
+
+msgid "Close menu"
+msgstr "Sulje valikko"
+
+msgid "Open menu"
+msgstr "Avaa valikko"
+
+msgid "Primary tabs"
+msgstr "Ensisijaiset välilehdet"
+
+msgid "Secondary tabs"
+msgstr "Toissijaiset välilehdet"
+
+msgid "Pagination"
+msgstr "Sivunumerointi"
+
+msgid "Go to previous page"
+msgstr "Mene edelliselle sivulle"
+
+msgid "Previous page"
+msgstr "Edellinen sivu"
+
+msgid "‹ Previous page"
+msgstr "‹ Edellinen sivu"
+
+msgid "Current page"
+msgstr "Nykyinen sivu"
+
+msgid "Page"
+msgstr "Sivu"
+
+msgid "Go to next page"
+msgstr "Siirry seuraavalle sivulle"
+
+msgid "Next page"
+msgstr "Seuraava sivu"
+
+msgid "Next page ›"
+msgstr "Seuraava sivu ›"
+
+msgid "Go to page @key"
+msgstr "Mene sivulle @key"
+
+msgid "Skip to main content"
+msgstr "Hyppää pääsisältöön"
+
+msgid "Home page"
+msgstr "Etusivu"
+
+msgid "Add to calendar"
+msgstr "Lisää kalenteriin"
+
+msgid "Add to Google calendar"
+msgstr "Lisää Google-kalenteriin"

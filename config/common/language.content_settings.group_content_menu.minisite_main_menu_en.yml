@@ -1,0 +1,11 @@
+uuid: 54c2ac73-c9e3-4319-9975-c980dfa9a308
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.minisite_main_menu_en
+id: group_content_menu.minisite_main_menu_en
+target_entity_type_id: group_content_menu
+target_bundle: minisite_main_menu_en
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,113 @@
+{% set listing_item__base_class = "listing-item" %}
+
+{% if not listing_item__modifiers %}
+  {% set listing_item__modifiers = [] %}
+{% endif %}
+
+{% set listing_item__email_address__modifiers = [ "primary-ghost", "full-width", "no-link-text-grow-on-mobile", "larger-link-surface" ] %}
+
+{% if variant %}
+  {% set is_search_result = "search" in variant %}
+  {% set listing_item__modifiers = listing_item__modifiers|merge([ variant ]) %}
+
+  {% if is_search_result %}
+    {% set listing_item__modifiers = listing_item__modifiers|merge([ "link-wrapper" ]) %}
+  {% endif %}
+{% endif %}
+
+{% if "person" in listing_item__modifiers %}
+  {% set listing_item__email_address__modifiers = listing_item__email_address__modifiers|merge(["icon-under-text"]) %}
+{% endif %}
+
+{% if listing_item__palette %}
+  {% set listing_item__modifiers = listing_item__modifiers|merge([ listing_item__palette ]) %}
+{% endif %}
+
+{% set listing_item__element = listing_item__element|default("div") %}
+
+{% if ("link-wrapper" in listing_item__modifiers) and listing_item__url %}
+  {% set display_listing_item_as_link = TRUE %}
+  {% set listing_item__element = "a" %}
+  {% set listing_item__attributes = {
+    "href": listing_item__url,
+  } %}
+{% endif %}
+
+{% if not listing_item__extra_classes %}
+  {% set listing_item__extra_classes = [] %}
+{% endif %}
+
+{% if not display_listing_item_as_link %}
+  {% set listing_item__extra_classes = listing_item__extra_classes|merge([ "tabbable" ]) %}
+  {% set listing_item__attributes = {
+    "tabindex": "-1",
+  } %}
+{% endif %}
+
+{% if not listing_item__additional_information|render|trim %}
+  {% set listing_item__additional_information = FALSE %}
+{% endif %}
+
+<{{ listing_item__element }} {{ bem(listing_item__base_class, listing_item__modifiers|default([]), listing_item__blockname, listing_item__extra_classes) }} {% for attribute,value in listing_item__attributes %}{{ attribute }}="{{ value }}"{% endfor %}>
+
+  {% if ("person" not in listing_item__modifiers) and ("place" not in listing_item__modifiers) %}
+    <div {{ bem("type", listing_item__type__modifiers|default([]), listing_item__base_class) }}>
+      <span {{ bem("type-wrapper", listing_item__type_wrapper__modifiers|default([]), listing_item__base_class) }}>
+        {{ listing_item__type }}
+      </span>
+    </div>
+  {% endif %}
+
+  <div {{ bem("content-wrapper", listing_item__content_wrapper__modifiers|default([]), listing_item__base_class) }}>
+    <div {{ bem("main-content", listing_item__main_content__modifiers|default([]), listing_item__base_class, [ "hyphenate" ]) }}>
+      {{ listing_item__main_content }}
+
+      {% if is_search_result and listing_item__breadcrumbs %}
+        <div {{ bem("breadcrumbs", listing_item__breadcrumbs__modifiers|default([]), listing_item__base_class) }}>
+          {% include "@molecules/menus/breadcrumbs/unlinked-breadcrumbs.twig" with {
+            "breadcrumb": listing_item__breadcrumbs,
+          } %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if "person" in listing_item__modifiers %}
+      <div {{ bem("additional-content", listing_item__additional_content__modifiers|default([]), listing_item__base_class) }}>
+    {% endif %}
+        {% if listing_item__additional_information %}
+          <div {{ bem("additional-information", listing_item__additional_information__modifiers|default([]), listing_item__base_class, [ "hyphenate" ]) }}>
+            {{ listing_item__additional_information }}
+          </div>
+        {% endif %}
+
+        <div {{ bem("link", listing_item__link__modifiers|default([]), listing_item__base_class) }}>
+          {% if display_listing_item_as_link %}
+            {% include "@atoms/04-images/icons/_icon.twig" with {
+              "icon_base_class": "icon",
+              "icon_blockname": listing_item__base_class,
+              "icon_name": listing_item__icon_name|default("arrow"),
+              "icon_decorative": TRUE,
+            } %}
+          {% else %}
+            {% if listing_item__email_address %}
+              {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+                "link_with_icon__url": "mailto:" ~ listing_item__email_address,
+                "link_with_icon__modifiers": listing_item__email_address__modifiers,
+                "link_with_icon__link_text": listing_item__contact__link_text|default("Contact us"|t),
+                "link_with_icon__link_icon": "contact",
+              } %}
+            {% elseif listing_item__url %}
+              {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+                "link_with_icon__url": listing_item__url,
+                "link_with_icon__modifiers": [ "primary-ghost", "full-width", "no-left-margin", "no-link-text-grow-on-mobile", "larger-link-surface", "small-icon" ],
+                "link_with_icon__aria_label": listing_item__link__aria_label,
+              } %}
+            {% endif %}
+          {% endif %}
+        </div>
+    {% if "person" in listing_item__modifiers %}
+      </div>
+    {% endif %}
+    
+  </div>
+</{{ listing_item__element }}>

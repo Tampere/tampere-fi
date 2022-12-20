@@ -1,0 +1,65 @@
+uuid: 15b1b1a2-cd9e-4375-9c1b-921cfa8d3d3c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - metatag
+id: metatag_defaults--metatag_defaults
+disabled: true
+path: metatag_defaults/metatag_defaults
+resourceType: metatag_defaults--metatag_defaults
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  tags:
+    disabled: false
+    fieldName: tags
+    publicName: tags
+    enhancer:
+      id: ''

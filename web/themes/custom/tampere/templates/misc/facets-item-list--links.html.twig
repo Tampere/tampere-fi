@@ -1,0 +1,47 @@
+{#
+/**
+ * @file
+ * Default theme implementation for a facets item list.
+ *
+ * Available variables:
+ * - items: A list of items. Each item contains:
+ *   - attributes: HTML attributes to be applied to each list item.
+ *   - value: The content of the list element.
+ * - title: The title of the list.
+ * - list_type: The tag for list element ("ul" or "ol").
+ * - wrapper_attributes: HTML attributes to be applied to the list wrapper.
+ * - attributes: HTML attributes to be applied to the list.
+ * - empty: A message to display when there are no items. Allowed value is a
+ *   string or render array.
+ * - context: A list of contextual data associated with the list. May contain:
+ *   - list_style: The ID of the widget plugin this facet uses.
+ * - facet: The facet for this result item.
+ *   - id: the machine name for the facet.
+ *   - label: The facet label.
+ *
+ * @see facets_preprocess_facets_item_list()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set accordion_item_aria_label = "Filter by "|t ({}, {'context' : 'Search facet desciption for screen reader users'}) ~ facet.label %}
+
+{% if facet_item_value %}
+  {% set accordion_item_aria_label = accordion_item_aria_label ~ ", current selection: "|t ~ facet_item_value %}
+{% endif %}
+
+{% embed "@organisms/accordion/facet-accordion/facet-accordion-item.twig" with {
+  "facet_accordion_item__title": facet.label,
+  "id": facet.id,
+  "accordion_item_aria_label": accordion_item_aria_label,
+  "attributes": attributes.addClass("facet-accordion-item")
+} %}
+  {% block facet_accordion_item_content %}
+    {% for item in items %}
+      <div {{ bem("content-item", facet_accordion_item__content_item__modifiers, "facet-accordion-item")}}>
+        {{ item.value }}
+      </div>
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

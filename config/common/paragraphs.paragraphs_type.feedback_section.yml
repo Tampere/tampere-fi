@@ -1,0 +1,10 @@
+uuid: 2d5c6b85-0901-47f2-b4d8-830ca51c0554
+langcode: fi
+status: true
+dependencies: {  }
+id: feedback_section
+label: Palauteosio
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

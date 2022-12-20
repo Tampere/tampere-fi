@@ -1,0 +1,119 @@
+uuid: 8f969276-542f-4c59-a7b4-d5f232d5a482
+langcode: fi
+status: true
+dependencies:
+  config:
+    - crop.type.focal_point
+id: crop--focal_point
+disabled: true
+path: crop/focal_point
+resourceType: crop--focal_point
+resourceFields:
+  cid:
+    disabled: false
+    fieldName: cid
+    publicName: cid
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  vid:
+    disabled: false
+    fieldName: vid
+    publicName: vid
+    enhancer:
+      id: ''
+  type:
+    disabled: false
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  entity_id:
+    disabled: false
+    fieldName: entity_id
+    publicName: entity_id
+    enhancer:
+      id: ''
+  entity_type:
+    disabled: false
+    fieldName: entity_type
+    publicName: entity_type
+    enhancer:
+      id: ''
+  uri:
+    disabled: false
+    fieldName: uri
+    publicName: uri
+    enhancer:
+      id: ''
+  height:
+    disabled: false
+    fieldName: height
+    publicName: height
+    enhancer:
+      id: ''
+  width:
+    disabled: false
+    fieldName: width
+    publicName: width
+    enhancer:
+      id: ''
+  x:
+    disabled: false
+    fieldName: x
+    publicName: x
+    enhancer:
+      id: ''
+  'y':
+    disabled: false
+    fieldName: 'y'
+    publicName: 'y'
+    enhancer:
+      id: ''
+  revision_timestamp:
+    disabled: false
+    fieldName: revision_timestamp
+    publicName: revision_timestamp
+    enhancer:
+      id: ''
+  revision_uid:
+    disabled: false
+    fieldName: revision_uid
+    publicName: revision_uid
+    enhancer:
+      id: ''
+  revision_log:
+    disabled: false
+    fieldName: revision_log
+    publicName: revision_log
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: false
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  revision_default:
+    disabled: false
+    fieldName: revision_default
+    publicName: revision_default
+    enhancer:
+      id: ''
+  revision_translation_affected:
+    disabled: false
+    fieldName: revision_translation_affected
+    publicName: revision_translation_affected
+    enhancer:
+      id: ''

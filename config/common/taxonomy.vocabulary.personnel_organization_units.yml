@@ -1,0 +1,8 @@
+uuid: e8188cf1-a2f8-43af-953f-c3f82561824d
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Henkilöstön organisaatioyksiköt'
+vid: personnel_organization_units
+description: ''
+weight: 0

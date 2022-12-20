@@ -1,0 +1,20 @@
+uuid: ef31ffee-80ce-47d2-911b-360c3b59b7f4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+    - taxonomy
+id: media.field_media_folder
+field_name: field_media_folder
+entity_type: media
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

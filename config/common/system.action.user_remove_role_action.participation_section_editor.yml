@@ -1,0 +1,14 @@
+uuid: 3af5ff39-f3fe-43c4-b3d4-2f6e2bb09a2e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.participation_section_editor
+  module:
+    - user
+id: user_remove_role_action.participation_section_editor
+label: 'Remove the Participation section editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: participation_section_editor

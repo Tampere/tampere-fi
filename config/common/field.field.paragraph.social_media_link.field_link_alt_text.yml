@@ -1,0 +1,19 @@
+uuid: 407b6ab3-680f-4ea2-9725-82df879443b1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_alt_text
+    - paragraphs.paragraphs_type.social_media_link
+id: paragraph.social_media_link.field_link_alt_text
+field_name: field_link_alt_text
+entity_type: paragraph
+bundle: social_media_link
+label: 'Linkin vaihtoehtoinen teksti'
+description: 'Lyhyt kuvaus osoitteesta johon linkki osoittaa ruudunlukijoita varten (esim. <i>Tampereen kaupungin Facebook-tili</i>).'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

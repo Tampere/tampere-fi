@@ -1,0 +1,40 @@
+uuid: 01af6210-7638-4cbb-b1c5-a9c122d75980
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: YrDHTv5UIIfokt8l9JSG10-xGYzpXwtwMTDIppHx4ZY
+label: 'Linkit WYSIWYG'
+id: linkit_wysiwyg
+description: 'Linkit in WYSIWYG'
+matchers:
+  d54ee5b4-f85e-4724-a3a8-9180190bc44e:
+    id: 'entity:node'
+    uuid: d54ee5b4-f85e-4724-a3a8-9180190bc44e
+    settings:
+      metadata: '[node:content-type:name]'
+      bundles:
+        basic_content_page: basic_content_page
+        blog_article: blog_article
+        city_planning_and_constructions: city_planning_and_constructions
+        collection_page: collection_page
+        front_page: front_page
+        involvement_opportunity: involvement_opportunity
+        moderated_page: moderated_page
+        news_item: news_item
+        notice: notice
+        organization: organization
+        place: place
+        project: project
+        rich_article: rich_article
+        small_news_item: small_news_item
+        zoning_information: zoning_information
+      group_by_bundle: false
+      substitution_type: canonical
+      limit: 100
+      translated_entities: 1
+      hide_untranslated_entities: false
+      include_unpublished: false
+    weight: 0

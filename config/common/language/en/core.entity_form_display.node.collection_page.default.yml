@@ -1,0 +1,15 @@
+third_party_settings:
+  field_group:
+    group_categorization:
+      label: Categorization
+    group_tabs:
+      label: Tabs
+    group_common:
+      label: Common
+    group_search_keywords:
+      label: 'Search keywords'
+content:
+  field_metadata_description:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'

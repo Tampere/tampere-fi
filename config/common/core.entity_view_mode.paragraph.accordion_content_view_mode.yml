@@ -1,0 +1,10 @@
+uuid: 0eb3d9e0-0c7e-448e-8455-7a077b0a0d54
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.accordion_content_view_mode
+label: 'Haitarin sisältö'
+targetEntityType: paragraph
+cache: true

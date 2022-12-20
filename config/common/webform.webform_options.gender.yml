@@ -1,0 +1,16 @@
+uuid: 0b6b96c7-cde5-4aec-8940-cfe73fc74318
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: K8qTfK5-87DpwTQBkqhgTMR4P0Zz8Z9aNI7OnMlTb0Q
+id: gender
+label: Sukupuoli
+category: Demographic
+likert: false
+options: |
+  Male: Male
+  Female: Female

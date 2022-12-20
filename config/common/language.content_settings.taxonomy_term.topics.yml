@@ -1,0 +1,18 @@
+uuid: 8da2d1cb-7813-4b5e-9da7-0fb7a753f3cf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.topics
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.topics
+target_entity_type_id: taxonomy_term
+target_bundle: topics
+default_langcode: current_interface
+language_alterable: true

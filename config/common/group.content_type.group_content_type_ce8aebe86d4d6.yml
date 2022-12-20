@@ -1,0 +1,19 @@
+uuid: e114c82a-d505-4e7b-92cf-eb6eb4253a3b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+    - node.type.city_planning_and_constructions
+  module:
+    - gnode
+    - node
+id: group_content_type_ce8aebe86d4d6
+label: 'Teema: Group node (Kaupunkisuunnittelu- ja rakentamishanke)'
+description: 'Adds <em class="placeholder">Kaupunkisuunnittelu- ja rakentamishanke</em> content to groups both publicly and privately.'
+group_type: theme
+content_plugin: 'group_node:city_planning_and_constructions'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

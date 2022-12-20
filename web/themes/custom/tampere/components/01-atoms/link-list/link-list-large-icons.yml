@@ -1,0 +1,47 @@
+link_list__items:
+  1:
+    icon: 'bike'
+    text: 'Activities'
+    url: '#'
+  2:
+    icon: 'book'
+    text: 'Reading'
+    url: '#'
+  3:
+    icon: 'city'
+    text: 'City living'
+    url: '#'
+  4:
+    icon: 'grow'
+    text: 'Gardening'
+    url: '#'
+  5:
+    icon: 'heart'
+    text: 'Care'
+    url: '#'
+  6:
+    icon: 'hockey'
+    text: 'Sports'
+    url: '#'
+  7:
+    icon: 'home'
+    text: 'Home'
+    url: '#'
+  8:
+    icon: 'park'
+    text: 'Parks and recreation'
+    url: '#'
+  9:
+    icon: 'school'
+    text: 'Education'
+    url: '#'
+  10:
+    icon: 'theater'
+    text: 'Performing arts'
+    url: '#'
+  11:
+    icon: 'tram'
+    text: 'Public transport'
+    url: '#'
+link_list__modifiers:
+  - 'large-icons'

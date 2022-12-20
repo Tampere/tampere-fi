@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Module for handling tablefield column dragging on edit node.
+ */
+
+ /**
+ * Implements hook_form_alter().
+ */
+function tre_tablefield_column_drag_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  /* @var Drupal\Core\Entity\FieldableEntityInterface $entity */
+  $formObject = $form_state->getFormObject();
+  if ($formObject instanceof \Drupal\Core\Entity\EntityFormInterface) {
+    $entity = $formObject->getEntity();
+    if (
+      $entity->getEntityTypeId() === 'node'
+    ) {
+      $bundle_info = \Drupal::service("entity_type.bundle.info")->getBundleInfo('paragraph');
+      $label = $bundle_info['table']['label'];
+      $form['#attached']['library'][] = 'tre_tablefield_column_drag/tablefield-column-drag';
+      $form['#attached']['drupalSettings']['tampere']['tablefieldColumnDragTargetLabel'] = $label;
+    }
+  }
+}

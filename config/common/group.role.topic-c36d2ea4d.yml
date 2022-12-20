@@ -1,0 +1,17 @@
+uuid: 81d86800-91b5-459e-bab4-9f1258ace646
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.emergency_notice_author
+id: topic-c36d2ea4d
+label: Häiriöilmoitustoimittaja
+weight: -8
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

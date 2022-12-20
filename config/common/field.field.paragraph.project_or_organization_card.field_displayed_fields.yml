@@ -1,0 +1,27 @@
+uuid: cc2e295d-64f4-4534-ad12-aaa42fca6726
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_displayed_fields
+    - paragraphs.paragraphs_type.project_or_organization_card
+  module:
+    - options
+id: paragraph.project_or_organization_card.field_displayed_fields
+field_name: field_displayed_fields
+entity_type: paragraph
+bundle: project_or_organization_card
+label: 'Näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: name
+  -
+    value: description
+  -
+    value: contacts
+default_value_callback: ''
+settings: {  }
+field_type: list_string

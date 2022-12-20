@@ -1,0 +1,19 @@
+.inline-field-group {
+  &,
+  &__label {
+    text-decoration: inherit;
+  }
+
+  &__label,
+  &__content {
+    display: inline-block;
+  }
+
+  &__label {
+    margin-right: $space-s;
+
+    @include large {
+      margin-right: $space-l;
+    }
+  }
+}

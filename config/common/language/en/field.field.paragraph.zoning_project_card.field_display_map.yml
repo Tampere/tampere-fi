@@ -1,0 +1,4 @@
+label: 'Display location with map'
+settings:
+  on_label: Display
+  off_label: Hide

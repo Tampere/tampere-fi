@@ -1,0 +1,20 @@
+uuid: 33c42635-ab11-435c-9a56-9047c191749e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - paragraphs
+id: paragraph.field_place_of_business
+field_name: field_place_of_business
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

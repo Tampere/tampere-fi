@@ -1,0 +1,17 @@
+uuid: f8350fc4-3652-4bf3-b47e-f168e6e0a241
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.basic_content_page_author
+id: theme-3b6f12127
+label: Perussisältösivutoimittaja
+weight: 7
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

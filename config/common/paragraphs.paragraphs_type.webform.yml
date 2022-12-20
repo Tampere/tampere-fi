@@ -1,0 +1,10 @@
+uuid: 15dea0c5-9464-41ee-8b1b-5ab87e54110b
+langcode: fi
+status: true
+dependencies: {  }
+id: webform
+label: Verkkolomake
+icon_uuid: null
+icon_default: null
+description: 'Paragraafi verkkolomakkeen näyttämiseksi.'
+behavior_plugins: {  }

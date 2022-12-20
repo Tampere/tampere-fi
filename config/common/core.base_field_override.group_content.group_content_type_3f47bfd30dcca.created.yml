@@ -1,0 +1,18 @@
+uuid: 65a0200e-5028-4554-a274-80e9f049315c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_3f47bfd30dcca
+id: group_content.group_content_type_3f47bfd30dcca.created
+field_name: created
+entity_type: group_content
+bundle: group_content_type_3f47bfd30dcca
+label: Luotu
+description: 'The time that the group content was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

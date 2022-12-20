@@ -1,0 +1,15 @@
+uuid: 577d7f98-4865-42b9-b711-f76c6eadb71e
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: gQ8ubdpIXe5hLOhENIb3Q_iRgrzxvlWDFC0ys9PvX4Y
+id: node
+label: Sisältö
+tags:
+  canonical_url: '[node:url]'
+  description: '[node:field_description:value]'
+  og_description: '[node:field_description:value]'
+  og_title: '[node:title] [Tampereen kaupunki]'
+  og_updated_time: '[node:changed:html_datetime]'
+  title: '[node:title] [[tre:node_document_title_breadcrumb]]'

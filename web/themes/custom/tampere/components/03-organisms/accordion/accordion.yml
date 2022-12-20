@@ -1,0 +1,26 @@
+accordion_heading: Lorem iposum dolor sit
+accordion_list:
+  - dl_heading:
+      Item 1
+    dl_content:
+      Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    id: 1
+  - dl_heading:
+      Item 2
+    dl_content:
+      Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    id: 2
+  - dl_heading:
+      Item 3
+    dl_content:
+      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
+    dl_heading_base_class:
+      accordion-heading
+    dl_content_base_class:
+      accordion-content
+    id: 3
+  - dl_heading:
+      Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vivamus magna justo, lacinia eget
+    dl_content:
+      Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+    id: 4

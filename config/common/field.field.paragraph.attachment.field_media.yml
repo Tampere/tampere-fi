@@ -1,0 +1,29 @@
+uuid: 0900907c-093f-4f45-ad41-a341e4ac6890
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media.type.file
+    - paragraphs.paragraphs_type.attachment
+id: paragraph.attachment.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: attachment
+label: Liitetiedosto
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      file: file
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

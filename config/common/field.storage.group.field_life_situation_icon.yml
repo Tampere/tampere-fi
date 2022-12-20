@@ -1,0 +1,20 @@
+uuid: 5575abfa-27cb-4b0f-be43-0ad8bff918ee
+langcode: fi
+status: true
+dependencies:
+  module:
+    - ex_icons
+    - group
+id: group.field_life_situation_icon
+field_name: field_life_situation_icon
+entity_type: group
+type: ex_icon
+settings:
+  case_sensitive: false
+module: ex_icons
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

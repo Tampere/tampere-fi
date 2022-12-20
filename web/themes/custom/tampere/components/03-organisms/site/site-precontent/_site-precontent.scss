@@ -1,0 +1,30 @@
+.site-precontent {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: $gutter-mobile;
+
+  @include large {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  @include large-plus {
+    margin-right: $gutter-large;
+    margin-left: $gutter-large;
+  }
+
+  &__breadcrumbs {
+    flex: 1 1 0;
+  }
+
+  &__readspeaker {
+    margin: 0 0 $gutter-xs auto;
+
+    @include large {
+      margin-top: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      margin-left: $space-s;
+    }
+  }
+}

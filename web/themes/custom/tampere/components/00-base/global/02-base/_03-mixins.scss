@@ -1,0 +1,559 @@
+/* Mixins */
+
+/**
+ * Mixin - Clearfix.
+ * Adds clearfix based on http://bourbon.io/docs/#clearfix
+ * use example =   @include cleafix
+ */
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+/**
+ * Mixin - Visually hidden
+ */
+@mixin visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+/*
+ * Mixin - Dynamic color
+ * Sets color based on the background color name given as parameter.
+ *
+ * See 'set-color()' for lightness check.
+ *
+ * Options:
+ *   - $property: The property to set dynamically. Defaults to 'color'.
+ *   - $color-primary: The color to use when '$color-name' passes the
+ *     lightness check. Defaults to 'text'.
+ *   - $color-secondary: The color to use when '$color-name' fails the
+ *     lightness check. Defaults to 'text-inverse'.
+ *   - $focus-primary: The color to use for focus when '$color-name'
+ *     passes the lightness check. Defaults to 'primary'.
+ *   - $inversed: Flag for flipping the lightness check to get the opposite
+ *     of the default behavior. Defaults to 'false'.
+ *   - $set-main-property: Whether or not to set the main property,
+ *     i.e. value given in '$property'. Defaults to 'true'.
+ *   - $set-focus-color: Whether or not to set the focus color.
+ *     Defaults to 'true'.
+ */
+@mixin dynamic-color(
+  $color-name,
+  $property: color,
+  $color-primary: text,
+  $color-secondary: text-inverse,
+  $focus-primary: primary,
+  $inversed: false,
+  $set-main-property: true,
+  $set-focus-color: true,
+) {
+  @if $set-focus-color {
+    --c-focus: #{set-color(map-get($defaultColors, $color-name), $focus-primary, $color-secondary, $inversed: $inversed)};
+  }
+
+  @if $set-main-property {
+    #{$property}: set-color(map-get($defaultColors, $color-name), $color-primary, $color-secondary, $inversed: $inversed);
+  }
+
+  @each $palette in $minisitePalettes {
+    $palette-color-value: map-get($palette, $color-name);
+
+    @if ($palette-color-value) {
+      $i: index($minisitePalettes, $palette);
+
+      .palette-#{$i} & {
+        @if $set-focus-color {
+          --c-focus: #{set-color($palette-color-value, $focus-primary, $color-secondary, $inversed: $inversed)};
+        }
+
+        @if $set-main-property {
+          #{$property}: set-color($palette-color-value, $color-primary, $color-secondary, $inversed: $inversed);
+        }
+      }
+    }
+  }
+}
+
+/*
+ * Use this on the outer wrapper of page-level elements.
+ * It ensures consistent spacing between elements on the page.
+ */
+@mixin page-element-spacer($property: 'margin') {
+  #{$property}-top: $gutter-medium;
+  #{$property}-bottom: $gutter-medium;
+
+  @include large {
+    #{$property}-top: $gutter-large;
+    #{$property}-bottom: $gutter-large;
+  }
+}
+
+@mixin text-element-spacer {
+  margin-top: $gutter-small;
+  margin-bottom: $gutter-small;
+
+  @include large {
+    margin-top: $gutter-medium;
+    margin-bottom: $gutter-medium;
+  }
+}
+
+@mixin accordion-content-spacer {
+  margin-top: $gutter-small;
+  margin-bottom: 0;
+
+  @include large {
+    margin-top: $gutter-medium;
+  }
+}
+
+@mixin form-item-spacing {
+  margin-top: $form-item-spacing;
+  margin-bottom: $form-item-spacing;
+
+  @include large {
+    margin-top: $form-item-spacing--large;
+    margin-bottom: $form-item-spacing--large;
+  }
+}
+
+/**
+ * Mixin - Wrapper
+ * Outer container mixin for large screens
+ */
+@mixin wrapper($container-max-width: $max-width, $outer-container-break: $small, $v-margin: 0, $v-padding: 0, $h-padding: $space-s, $h-padding-large: $h-padding) {
+  margin: #{$v-margin} auto;
+  max-width: #{$container-max-width};
+  padding: #{$v-padding} #{$h-padding};
+  width: 100%;
+
+  @include breakpoint($outer-container-break) {
+    padding: #{$v-padding} #{$h-padding-large};
+  }
+
+  @include breakpoint($container-max-width) {
+    padding-left: calc(#{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2)));
+    padding-right: calc(#{$h-padding-large} + calc(-50vw + calc(#{$container-max-width} / 2)));
+  }
+}
+
+/**
+ * Use the breakout mixin for elements that should be edge-to-edge
+ * Even when a parent container uses the wrapper mixin
+ */
+@mixin breakout($v-padding: $space-l) {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+
+  @if $v-padding != 0 {
+    padding-left: calc(#{$v-padding} + calc(-50vw + 50%));
+    padding-right: calc(#{$v-padding} + calc(-50vw + 50%));
+  }
+}
+
+/**
+ * Use when a component's background color should extend edge-to-edge (on mobile)
+ *
+ * When an entire component is positioned with the 'breakout' mixin on mobile,
+ * the spacing between the content and the edge of screen appears too
+ * small on Windows for smaller screens.
+ */
+@mixin edge-to-edge-background-color($color: clr(background)) {
+  &::before {
+    content: "";
+    background-color: $color;
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    left: calc(-50vw + 50%);
+    top: 0;
+    z-index: -5;
+  }
+}
+
+@mixin centered-content($max-width: var(--basic-content-max-width), $h-gutter: $gutter-mobile, $h-gutter-large: $gutter-large, $use-padding: true, $use-v-margin: true) {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $max-width;
+
+  @if $use-v-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @if $use-padding {
+    padding: 0 $h-gutter;
+
+    @include large {
+      padding: 0 $h-gutter-large;
+    }
+  }
+}
+
+/* Mixin - Standard Margin */
+@mixin margin($margin-bottom: $space-s) {
+  margin-bottom: $margin-bottom;
+}
+
+@mixin no-bottom {
+  margin-bottom: 0;
+}
+
+/**
+ * Mixin for converting properties values from pixels to rems
+ * Example:
+ * @include to-rem('width', 200);
+ *
+ * rendered as:
+ * width: 12.5rem;
+ */
+@mixin to-rem($property, $px-value) {
+  $baseline_px: 16;
+  $baseline_rem: ($baseline_px / 1rem);
+
+  #{$property}: ($px_value / $baseline_rem);
+}
+
+/* Adding hyphenation or word break when 'hypens' is not supported */
+@mixin word-wrap() {
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Mixin - Border. */
+@mixin border($width: 1px, $style: solid, $border-color: $color-border) {
+  border-color: $color-border;
+  border-style: $style;
+  border-width: $width;
+}
+
+/* Mixin - Placeholder */
+@mixin placeholder($color: $color-placeholder, $font-size: $base-font-size) {
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #{$color};
+    font-size: $font-size;
+  }
+
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: #{$color};
+    font-size: $font-size;
+  }
+
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: #{$color};
+    font-size: $font-size;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: #{$color};
+    font-size: $font-size;
+    opacity: 1;
+  }
+}
+
+/* Create a mixin for paragraph styles that can be implemented
+ * in components with other classnames.
+ */
+@mixin paragraph($margin: 0 0 $text-paragraph-margin-bottom) {
+  margin: #{$margin};
+  max-width: var(--text-content-max-width);
+}
+
+@mixin body-copy {
+  font-family: $font-body;
+  font-size: $body-font-size-mobile;
+  line-height: $line-height-base;
+
+  @include large {
+    font-size: $body-font-size;
+  }
+}
+
+@mixin summary {
+  font-size: $font-20;
+  font-style: italic;
+  font-weight: $font-weight-semi-bold;
+  max-width: var(--text-content-max-width);
+
+  @include large {
+    font-size: $font-22;
+  }
+}
+
+@mixin participate-summary {
+  font-size: $font-18;
+  font-weight: $font-weight-semi-bold;
+  margin-top: $space-m-plus;
+  margin-bottom: $space-m-plus;
+  max-width: var(--text-content-max-width);
+
+  @include large {
+    font-size: $font-22;
+    margin-top: $space-l;
+    margin-bottom: $space-l;
+  }
+}
+
+@mixin link($color: clr(primary), $color-hover: clr(text), $underline-offset: 2px) {
+  color: $color;
+  cursor: pointer;
+  text-underline-offset: $underline-offset;
+  text-decoration-thickness: 1px;
+
+  &:visited {
+    color: $color;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    color: $color-hover;
+  }
+}
+
+@mixin link-inherit {
+  &:link,
+  &:visited,
+  &:active,
+  &:focus,
+  &:hover {
+    color: inherit;
+  }
+}
+
+/* Mixin - list-reset
+ * Reset list item defaults when no margin, padding, list styles needed
+ */
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Mixin - Transition */
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+/* Resets buttons styles to apply other styles on top */
+@mixin button-reset() {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Mixin for global image captions */
+@mixin caption {
+  @include margin();
+
+  background-color: clr(muted);
+  font-family: $font-body;
+  font-size: $font-14;
+  padding: $space-xs;
+
+  @include large {
+    font-size: $font-18;
+    padding: $space-xs $space-l;
+  }
+}
+
+@mixin rounded-line-accent(
+  $width: $short-border-width,
+  $color: clr(accent),
+) {
+  &::after {
+    content: " ";
+    display: block;
+    background-color: $color;
+    border-top: 2px solid $color;
+    border-bottom: 2px solid $color;
+    border-radius: 2px;
+    width: $width;
+    position: absolute;
+    bottom: $space-xxs * (-1);
+
+    @include large {
+      bottom: $space-s * (-1);
+    }
+  }
+}
+
+@mixin left-border-accent($color: clr(primary)) {
+  &::before {
+    background-color: $color;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 16px;
+    height: 100%;
+  }
+}
+
+@mixin extend-background-color($color: clr(primary)) {
+  &::after {
+    content: "";
+    background-color: $color;
+    margin-left: calc(-50vw + 50%);
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+// https://css-tricks.com/snippets/css/fluid-typography/
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// close icon as white
+@mixin close-icon-white() {
+  background: url('data:image/svg+xml;utf8,<svg width="22" height="24" viewBox="0 0 22 24" xmlns="http://www.w3.org/2000/svg"><g fill="%23ffffff" fill-rule="nonzero"><path d="m1.15.736 21.557 21.557-1.414 1.414L-.264 2.15z"/><path d="m21.293.736 1.414 1.414L1.15 23.707l-1.414-1.414z"/></g></svg>') no-repeat;
+  background-size:1rem 1rem;
+}
+
+@mixin required-marker {
+  content: "*";
+  color: clr(notice);
+  font-family: $font-body;
+  font-size: $font-20;
+  font-weight: $font-weight-regular;
+  margin-left: $space-xs;
+}
+
+/* Mixin for custom input elements with input and icon inside the label */
+@mixin custom-input($class, $input-size, $has-round-icon: false) {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  * {
+    cursor: pointer;
+  }
+
+  &__wrapper {
+    @include list-reset;
+
+    &:not(:first-of-type) {
+      margin-top: $space-m;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    height: $input-size;
+    width: $input-size;
+    opacity: 0.00001;
+
+    &:focus,
+    &:hover {
+      ~ #{$class}__content {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-position: under;
+      }
+    }
+
+    &:not(:checked) {
+      ~ #{$class}__icon--checked {
+        display: none;
+      }
+    }
+
+    &.error {
+      ~ #{$class}__icon:not(#{$class}__icon--checked) {
+        background-color: clr(form-accent);
+        color: clr(notice);
+      }
+    }
+  }
+
+  &__icon {
+    color: clr(form-border);
+    height: $input-size;
+    // The viewport for the input SVG files is not a perfect square.
+    // Setting the icon width to be exactly the same as the height causes clipping on Safari.
+    width: calc(#{$input-size} + 2px);
+
+    @if $has-round-icon {
+      border-radius: 100%;
+    }
+
+    &--checked {
+      background-color: transparent;
+      color: clr(form-icon);
+      position: absolute;
+      left: -1px;
+
+      @if $has-round-icon {
+        padding: $space-xs;
+      } @else {
+        padding: $space-xxs;
+      }
+    }
+  }
+
+  &__content {
+    padding-left: $space-s;
+    width: 100%;
+
+    .required ~ & {
+      &::after {
+        @include required-marker;
+
+        position: absolute;
+      }
+    }
+  }
+}
+
+@mixin contact-card-heading-link($text-color: clr(text), $underline-color: clr(accent-tertiary)) {
+  color: $text-color;
+  text-underline-position: under;
+  text-decoration-color: $underline-color;
+  text-decoration-thickness: 2px;
+}

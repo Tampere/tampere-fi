@@ -1,0 +1,18 @@
+uuid: 76966b44-9347-43ec-99e7-9db793f6a7e3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.personnel_titles
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.personnel_titles
+target_entity_type_id: taxonomy_term
+target_bundle: personnel_titles
+default_langcode: current_interface
+language_alterable: true

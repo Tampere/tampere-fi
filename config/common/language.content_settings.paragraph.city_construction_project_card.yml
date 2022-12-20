@@ -1,0 +1,18 @@
+uuid: c88ec6d5-592b-42c6-8479-afa04432da1b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.city_construction_project_card
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.city_construction_project_card
+target_entity_type_id: paragraph
+target_bundle: city_construction_project_card
+default_langcode: current_interface
+language_alterable: true

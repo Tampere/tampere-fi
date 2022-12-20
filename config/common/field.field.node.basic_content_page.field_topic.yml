@@ -1,0 +1,29 @@
+uuid: a33c39d5-0c1b-4ae9-bd9a-b078f3a2c3c0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topic
+    - group.type.topic
+    - node.type.basic_content_page
+id: node.basic_content_page.field_topic
+field_name: field_topic
+entity_type: node
+bundle: basic_content_page
+label: Aihepiiri
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:group'
+  handler_settings:
+    target_bundles:
+      topic: topic
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,14 @@
+uuid: 82601ccb-1e7b-442e-bd04-ef9c00c621fc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.personnel_cost_centers
+id: taxonomy_vocabulary_personnel_cost_centers
+entity_type_id: taxonomy_vocabulary
+entity_id: personnel_cost_centers
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

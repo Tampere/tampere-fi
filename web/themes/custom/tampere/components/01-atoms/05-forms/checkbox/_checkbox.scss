@@ -1,0 +1,5 @@
+$checkbox-size: $icon-medium;
+
+.checkbox {
+  @include custom-input(&, $checkbox-size);
+}

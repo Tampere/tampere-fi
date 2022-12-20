@@ -1,0 +1,95 @@
+uuid: cfb7299e-b961-4d09-9fab-9d78a82baa5c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_membership
+id: group_content--life_situation-group_membership
+disabled: true
+path: group_content/life_situation-group_membership
+resourceType: group_content--life_situation-group_membership
+resourceFields:
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  type:
+    disabled: false
+    fieldName: type
+    publicName: type
+    enhancer:
+      id: ''
+  uid:
+    disabled: false
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  gid:
+    disabled: false
+    fieldName: gid
+    publicName: gid
+    enhancer:
+      id: ''
+  entity_id:
+    disabled: false
+    fieldName: entity_id
+    publicName: entity_id
+    enhancer:
+      id: ''
+  label:
+    disabled: false
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+  created:
+    disabled: false
+    fieldName: created
+    publicName: created
+    enhancer:
+      id: ''
+  changed:
+    disabled: false
+    fieldName: changed
+    publicName: changed
+    enhancer:
+      id: ''
+  path:
+    disabled: false
+    fieldName: path
+    publicName: path
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: false
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  metatag:
+    disabled: false
+    fieldName: metatag
+    publicName: metatag
+    enhancer:
+      id: ''
+  group_roles:
+    disabled: false
+    fieldName: group_roles
+    publicName: group_roles
+    enhancer:
+      id: ''

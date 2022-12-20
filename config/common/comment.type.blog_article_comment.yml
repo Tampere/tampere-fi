@@ -1,0 +1,8 @@
+uuid: a75f0ee8-ca4f-4906-9a6f-b9954e542f08
+langcode: fi
+status: true
+dependencies: {  }
+id: blog_article_comment
+label: 'Blogiartikkelin kommentti'
+target_entity_type_id: node
+description: ''

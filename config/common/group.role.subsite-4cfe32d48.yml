@@ -1,0 +1,17 @@
+uuid: 64e12e94-1d9e-4a29-8668-fb78579773e0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+  enforced:
+    config:
+      - user.role.front_page_author
+id: subsite-4cfe32d48
+label: Etusivutoimittaja
+weight: -7
+internal: true
+audience: outsider
+group_type: subsite
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,31 @@
+{% set breadcrumb__base_class = "breadcrumb" %}
+
+{% if not breadcrumb__modifiers %}
+  {% set breadcrumb__modifiers = [] %}
+{% endif %}
+
+{% set breadcrumb__modifiers = breadcrumb__modifiers|merge([ "all-items-visible" ]) %}
+
+{% if breadcrumb|length == 1 %}
+  {% set breadcrumb__modifiers = breadcrumb__modifiers|merge([ "single-item" ]) %}
+{% endif %}
+
+{% if breadcrumb %}
+  <ol {{ bem(breadcrumb__base_class, (breadcrumb__modifiers|default([])), breadcrumb__blockname) }}>
+  {% spaceless %}
+  {% for item in breadcrumb %}
+    <li {{ bem("item", (breadcrumb__item__modifiers|default([])), breadcrumb__base_class, [ "hyphenate" ]) }}>
+      {{ item }}
+    </li>
+    {% if loop.index != breadcrumb|length %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: "separator-icon",
+        icon_blockname: breadcrumb__base_class,
+        icon_name: "chevron-right",
+        icon_decorative: TRUE,
+      } %}
+    {% endif %}
+  {% endfor %}
+  {% endspaceless %}
+  </ol>
+{% endif %}

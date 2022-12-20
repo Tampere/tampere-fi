@@ -1,0 +1,17 @@
+uuid: a39467ad-bf99-436b-afa9-1d6efdc2502e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: listing_liftup_xs_image_style
+label: 'Listausnosto - xs (480×275)'
+effects:
+  b303a9cb-4c0e-4b88-836c-3c0a4f85fb45:
+    uuid: b303a9cb-4c0e-4b88-836c-3c0a4f85fb45
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 275
+      crop_type: focal_point

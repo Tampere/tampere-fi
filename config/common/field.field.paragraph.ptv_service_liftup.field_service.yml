@@ -1,0 +1,29 @@
+uuid: 3c780e74-25f0-4fac-b021-31cd6257e93c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_service
+    - node.type.ptv_service
+    - paragraphs.paragraphs_type.ptv_service_liftup
+id: paragraph.ptv_service_liftup.field_service
+field_name: field_service
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: Palvelu
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      ptv_service: ptv_service
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

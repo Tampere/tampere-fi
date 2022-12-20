@@ -1,0 +1,19 @@
+uuid: 7c236485-e6b7-4874-a718-14bf2c586189
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_map_embed_code
+    - paragraphs.paragraphs_type.map_embed
+id: paragraph.map_embed.field_map_embed_code
+field_name: field_map_embed_code
+entity_type: paragraph
+bundle: map_embed
+label: 'Kartan upotuskoodi'
+description: 'Upotuskoodi muodossa: &lt;iframe src="..."&gt;&lt;/iframe&gt;.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

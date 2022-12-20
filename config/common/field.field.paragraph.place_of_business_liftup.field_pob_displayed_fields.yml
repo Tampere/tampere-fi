@@ -1,0 +1,29 @@
+uuid: 5a89ab68-6d73-44eb-9811-ad99e03e0fab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pob_displayed_fields
+    - paragraphs.paragraphs_type.place_of_business_liftup
+  module:
+    - options
+id: paragraph.place_of_business_liftup.field_pob_displayed_fields
+field_name: field_pob_displayed_fields
+entity_type: paragraph
+bundle: place_of_business_liftup
+label: 'Näytettävät kentät'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: name
+  -
+    value: address
+  -
+    value: phone
+  -
+    value: email
+default_value_callback: ''
+settings: {  }
+field_type: list_string

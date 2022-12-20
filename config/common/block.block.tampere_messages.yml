@@ -1,0 +1,22 @@
+uuid: d42989f5-864c-4785-92bc-10b0a975a949
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tampere
+_core:
+  default_config_hash: 5MNdk3fpMKx_xxBTcz2T11DL4XEU1H5SgHl8BsYdFsA
+id: tampere_messages
+theme: tampere
+region: admin_tasks
+weight: -17
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

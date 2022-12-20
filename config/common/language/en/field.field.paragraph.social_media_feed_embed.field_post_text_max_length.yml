@@ -1,0 +1,2 @@
+label: 'Limit the length of text in the posts'
+description: 'Truncates the post text after the maximum length and shows a read more link.'

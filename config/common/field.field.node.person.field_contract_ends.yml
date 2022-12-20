@@ -1,0 +1,21 @@
+uuid: c8e9a1f7-c2ba-42eb-bb86-62a5952c9a9d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contract_ends
+    - node.type.person
+  module:
+    - datetime
+id: node.person.field_contract_ends
+field_name: field_contract_ends
+entity_type: node
+bundle: person
+label: 'Työsopimus päättyy'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,29 @@
+uuid: 805b8d47-2c09-4141-a683-b3ceb10cf676
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_place
+    - node.type.place
+    - paragraphs.paragraphs_type.place_liftup
+id: paragraph.place_liftup.field_place
+field_name: field_place
+entity_type: paragraph
+bundle: place_liftup
+label: Paikka
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: unpublished
+  handler_settings:
+    target_bundles:
+      place: place
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: 0
+    auto_create_bundle: ''
+field_type: entity_reference

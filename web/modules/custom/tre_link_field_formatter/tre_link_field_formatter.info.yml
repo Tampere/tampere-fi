@@ -1,0 +1,7 @@
+name: 'TRE Link Field Formatter'
+type: module
+description: 'Formats a link field to use the absolute URL as a base for the link text.'
+package: 'TRE'
+core_version_requirement: '>=9.3'
+dependencies:
+  - drupal:link

@@ -1,0 +1,26 @@
+uuid: c966f3c4-6694-4fc8-8ab4-c66a55e61718
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_accordion_text
+    - paragraphs.paragraphs_type.accordion_text_content
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - accordion_text
+id: paragraph.accordion_text_content.field_accordion_text
+field_name: field_accordion_text
+entity_type: paragraph
+bundle: accordion_text_content
+label: 'Haitarin teksti'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

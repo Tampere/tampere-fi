@@ -1,0 +1,19 @@
+uuid: c46594ce-4c5b-4485-8231-1c2e6981e32e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.list_of_attachments
+id: paragraph.list_of_attachments.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: list_of_attachments
+label: 'Listan otsikko'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

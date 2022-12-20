@@ -1,0 +1,18 @@
+uuid: ff961a1a-576c-4ed6-a0d5-afeca1e4a288
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group.life_situation
+target_entity_type_id: group
+target_bundle: life_situation
+default_langcode: current_interface
+language_alterable: true

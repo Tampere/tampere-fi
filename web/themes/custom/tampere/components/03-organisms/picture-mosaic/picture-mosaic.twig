@@ -1,0 +1,73 @@
+{#
+ # Available variables:
+ # - picture_mosaic__base_class - base classname of the wrapper.
+ # - picture_mosaic__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - picture_mosaic__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - picture_mosaic__wrapper__modifiers - array of modifiers to add to the base classname of the content wrapper.
+ #
+ # - picture_mosaic__items - array of cards to display in the picture mosaic.
+ #}
+{% set picture_mosaic__base_class = "picture-mosaic" %}
+
+{% if picture_mosaic__items|length > 3 %}
+  {% set two_row_mosaic = TRUE %}
+{% endif %}
+
+<div {{ bem(picture_mosaic__base_class, picture_mosaic__modifiers|default([]), picture_mosaic__blockname) }}>
+  <div {{ bem("wrapper", picture_mosaic__wrapper__modifiers|default([]), picture_mosaic__base_class) }}>
+    {% block picture_mosaic_content %}
+      {% for item in picture_mosaic__items %}
+
+        {% set is_first_row_item_in_two_row_mosaic = two_row_mosaic and (loop.index == 1 or loop.index == 2) %}
+
+        <div {{ bem("item", picture_mosaic__item__modifiers|default([]), picture_mosaic__base_class) }}>
+          {# Card #}
+          {% if not item.card__image__src and not item.card__image %}
+            {% set card_variables = {
+              "card__modifiers": card__modifiers,
+              "card__link__url": item.card__link__url,
+              "card__heading": item.card__heading,
+              "card__icon__name": item.card__icon__name,
+            } %}
+
+            {# Body text should only be used in cards on the first row of a two-row mosaic. #}
+            {% if is_first_row_item_in_two_row_mosaic %}
+              {% set card_variables = card_variables|merge({ "card__body": item.card__body, }) %}
+            {% endif %}
+
+            {% include "@molecules/card/01-card.twig" with card_variables %}
+          {# Image card #}
+          {% elseif (item.card__image__src or item.card__image) and item.card__heading and item.card__link__url %}
+            {% if not is_first_row_item_in_two_row_mosaic or not two_row_mosaic %}
+              {% set card__modifiers = [ "top-corner-tag" ] %}
+            {% endif %}
+
+            {% include "@molecules/image-card/image-card.twig" with {
+              "card__modifiers": card__modifiers,
+              "card__link__url": item.card__link__url,
+              "card__image": item.card__image,
+              "card__image__src": item.card__image__src,
+              "card__heading": item.card__heading,
+            } %}
+          {# Image #}
+          {% else %}
+            {% if item.card__image %}
+              <div {{ bem("image", picture_mosaic__item__modifiers|default([]), picture_mosaic__base_class) }}>
+                {{ item.card__image }}
+              </div>
+            {% else %}
+              {% include "@atoms/04-images/00-image/_image.twig" with {
+                "image_base_class": "image",
+                "image_modifiers": card__modifiers,
+                "image_blockname": picture_mosaic__base_class,
+                "img_src": item.card__image__src,
+                "img_alt": item.card__image__alt,
+              } %}
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% endblock %}
+  </div>
+</div>

@@ -1,0 +1,31 @@
+uuid: 1868cdc3-6e3a-4377-b9a3-52d54c870691
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_video_file
+    - media.type.dream_broker_video
+    - media.type.remote_video
+    - paragraphs.paragraphs_type.video_embed
+id: paragraph.video_embed.field_video_file
+field_name: field_video_file
+entity_type: paragraph
+bundle: video_embed
+label: Videotiedosto
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      dream_broker_video: dream_broker_video
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: dream_broker_video
+field_type: entity_reference

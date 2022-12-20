@@ -1,0 +1,17 @@
+uuid: 07aee039-c71d-4509-882e-bdd63c13c994
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.participation_section_editor
+id: theme-daa7f2c13
+label: 'Osallistumisen osiovastaava'
+weight: 9
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

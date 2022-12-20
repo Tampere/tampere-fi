@@ -1,0 +1,14 @@
+uuid: 6716c883-cd3f-4762-892f-5f578023b702
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: 8rVcRXLnTAEoWs7zl8du-7RIUnayqUcGYnvb3JT21-o
+id: time_zones
+label: Aikavyöhykkeet
+category: 'Aika ja päiväys'
+likert: false
+options: ''

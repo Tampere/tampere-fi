@@ -1,0 +1,17 @@
+uuid: 26996e68-aa32-4d8d-9cd9-ce0bc30de62b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: picture_mosaic_xs_view_mode
+label: 'Kuvamosaiikki - xs (480×218)'
+effects:
+  324dd01e-4a7a-4dbb-a99c-0020dd74956a:
+    uuid: 324dd01e-4a7a-4dbb-a99c-0020dd74956a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 218
+      crop_type: focal_point

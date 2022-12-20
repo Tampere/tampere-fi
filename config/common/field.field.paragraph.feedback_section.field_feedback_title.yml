@@ -1,0 +1,19 @@
+uuid: 017833a9-4ccd-4ff2-89dd-d844732b1af5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_feedback_title
+    - paragraphs.paragraphs_type.feedback_section
+id: paragraph.feedback_section.field_feedback_title
+field_name: field_feedback_title
+entity_type: paragraph
+bundle: feedback_section
+label: Otsikko
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

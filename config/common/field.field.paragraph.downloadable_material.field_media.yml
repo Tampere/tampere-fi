@@ -1,0 +1,31 @@
+uuid: ac663e12-9123-4058-bf25-61b14abc64bf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media.type.file
+    - media.type.image
+    - paragraphs.paragraphs_type.downloadable_material
+id: paragraph.downloadable_material.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: downloadable_material
+label: Materiaali
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      file: file
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

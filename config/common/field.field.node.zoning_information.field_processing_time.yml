@@ -1,0 +1,21 @@
+uuid: 30617a74-bc3d-4469-9b07-5c66852e3954
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_processing_time
+    - node.type.zoning_information
+  module:
+    - datetime_range
+id: node.zoning_information.field_processing_time
+field_name: field_processing_time
+entity_type: node
+bundle: zoning_information
+label: Käsittelyaika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

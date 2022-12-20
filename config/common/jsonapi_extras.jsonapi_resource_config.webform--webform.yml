@@ -1,0 +1,149 @@
+uuid: ea527831-e631-491a-93ec-bb62f3d19b8a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - webform
+id: webform--webform
+disabled: true
+path: webform/webform
+resourceType: webform--webform
+resourceFields:
+  uuid:
+    disabled: false
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+  langcode:
+    disabled: false
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  status:
+    disabled: false
+    fieldName: status
+    publicName: status
+    enhancer:
+      id: ''
+  dependencies:
+    disabled: false
+    fieldName: dependencies
+    publicName: dependencies
+    enhancer:
+      id: ''
+  third_party_settings:
+    disabled: false
+    fieldName: third_party_settings
+    publicName: third_party_settings
+    enhancer:
+      id: ''
+  _core:
+    disabled: false
+    fieldName: _core
+    publicName: _core
+    enhancer:
+      id: ''
+  open:
+    disabled: false
+    fieldName: open
+    publicName: open
+    enhancer:
+      id: ''
+  close:
+    disabled: false
+    fieldName: close
+    publicName: close
+    enhancer:
+      id: ''
+  weight:
+    disabled: false
+    fieldName: weight
+    publicName: weight
+    enhancer:
+      id: ''
+  uid:
+    disabled: false
+    fieldName: uid
+    publicName: uid
+    enhancer:
+      id: ''
+  template:
+    disabled: false
+    fieldName: template
+    publicName: template
+    enhancer:
+      id: ''
+  archive:
+    disabled: false
+    fieldName: archive
+    publicName: archive
+    enhancer:
+      id: ''
+  id:
+    disabled: false
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+  title:
+    disabled: false
+    fieldName: title
+    publicName: title
+    enhancer:
+      id: ''
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
+    enhancer:
+      id: ''
+  category:
+    disabled: false
+    fieldName: category
+    publicName: category
+    enhancer:
+      id: ''
+  elements:
+    disabled: false
+    fieldName: elements
+    publicName: elements
+    enhancer:
+      id: ''
+  css:
+    disabled: false
+    fieldName: css
+    publicName: css
+    enhancer:
+      id: ''
+  javascript:
+    disabled: false
+    fieldName: javascript
+    publicName: javascript
+    enhancer:
+      id: ''
+  settings:
+    disabled: false
+    fieldName: settings
+    publicName: settings
+    enhancer:
+      id: ''
+  access:
+    disabled: false
+    fieldName: access
+    publicName: access
+    enhancer:
+      id: ''
+  handlers:
+    disabled: false
+    fieldName: handlers
+    publicName: handlers
+    enhancer:
+      id: ''
+  variants:
+    disabled: false
+    fieldName: variants
+    publicName: variants
+    enhancer:
+      id: ''

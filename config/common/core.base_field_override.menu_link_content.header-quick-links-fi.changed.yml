@@ -1,0 +1,18 @@
+uuid: 45128867-6e0f-4e51-9640-6a89f313410c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.header-quick-links-fi
+id: menu_link_content.header-quick-links-fi.changed
+field_name: changed
+entity_type: menu_link_content
+bundle: header-quick-links-fi
+label: Muuttunut
+description: 'The time that the menu link was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

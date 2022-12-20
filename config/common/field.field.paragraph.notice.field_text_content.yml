@@ -1,0 +1,26 @@
+uuid: e50dffd6-3f27-4d00-954e-957a1e95edd9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_content
+    - paragraphs.paragraphs_type.notice
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - notice_html
+id: paragraph.notice.field_text_content
+field_name: field_text_content
+entity_type: paragraph
+bundle: notice
+label: Tekstisisältö
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

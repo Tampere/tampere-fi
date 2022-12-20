@@ -1,0 +1,12 @@
+entity.node.tre_node_logger:
+ path: '/node/{node}/tre_node_logger'
+ defaults:
+  _controller: '\Drupal\tre_node_logger\Controller\TRENodeLoggerController::getOutput'
+  _title: 'Logs'
+ requirements:
+  _permission: 'view node logs'
+ options:
+  _admin_route: TRUE
+  parameters:
+    node:
+      type: entity:node

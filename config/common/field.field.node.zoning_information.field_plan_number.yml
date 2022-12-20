@@ -1,0 +1,29 @@
+uuid: 85cccce7-2618-406d-b266-326f6e9b9ba8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plan_number
+    - node.type.zoning_information
+    - taxonomy.vocabulary.plan_numbers
+id: node.zoning_information.field_plan_number
+field_name: field_plan_number
+entity_type: node
+bundle: zoning_information
+label: Kaavanumero
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      plan_numbers: plan_numbers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

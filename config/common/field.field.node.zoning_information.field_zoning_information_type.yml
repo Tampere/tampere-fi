@@ -1,0 +1,21 @@
+uuid: 1dbbe171-3fae-4d20-983f-e85a42f71228
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_zoning_information_type
+    - node.type.zoning_information
+  module:
+    - options
+id: node.zoning_information.field_zoning_information_type
+field_name: field_zoning_information_type
+entity_type: node
+bundle: zoning_information
+label: 'Kaavataso (poistettu käytöstä)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

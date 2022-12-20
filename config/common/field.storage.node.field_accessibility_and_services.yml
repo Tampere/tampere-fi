@@ -1,0 +1,20 @@
+uuid: cbf4b020-1aea-4993-98a7-ad281a0b808b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_accessibility_and_services
+field_name: field_accessibility_and_services
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

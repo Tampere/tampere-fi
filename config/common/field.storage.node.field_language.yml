@@ -1,0 +1,30 @@
+uuid: 004c5e77-4a33-40e4-b222-74af6e63a4f0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_language
+field_name: field_language
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: arb
+      label: Arabia
+    -
+      value: ru
+      label: Venäjä
+    -
+      value: fa
+      label: 'Persia (Farsi)'
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

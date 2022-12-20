@@ -1,0 +1,14 @@
+uuid: fd694a1d-64cf-4a73-a003-36ae1297b220
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.rss_item
+id: node_type_rss_item
+entity_type_id: node_type
+entity_id: rss_item
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

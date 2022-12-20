@@ -1,0 +1,38 @@
+uuid: 65cf0a32-ec79-4ab1-a1cf-36e7a0708a8a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.mediaserver_live
+    - field.field.embederator.mediaserver_live.field_mediaserver_live_title
+id: embederator.mediaserver_live.default
+targetEntityType: embederator
+bundle: mediaserver_live
+mode: default
+content:
+  embed_id:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mediaserver_live_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  user_id: true

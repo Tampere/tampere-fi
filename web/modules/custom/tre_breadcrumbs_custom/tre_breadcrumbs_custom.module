@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_breadcrumbs_custom module.
+ */
+
+use Drupal\group\Entity\GroupContent;
+use Drupal\block\Entity\Block;
+use Drupal\Core\Access\AccessResult;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_block_access().
+ *
+ * Hides breadcrumbs block from group type minisite's frontpage.
+ */
+function tre_breadcrumbs_custom_block_access(Block $block) {
+  $group = NULL;
+  $group_type_name = NULL;
+  $minisite_group = NULL;
+  $group_frontpage_id = NULL;
+  $node = NULL;
+  $node_id = NULL;
+  $plugin_id = NULL;
+  $belongs_to_minisite = FALSE;
+
+  // Check Plugin id.
+  $plugin_id = $block->getPluginId();
+
+  /*
+   * If plugin is the breadcrumb plugin, proceed.
+   * Otherwise return AccessResult::neutral() as we don't care about it.
+   */
+  if ($plugin_id === "system_breadcrumb_block") {
+    // Get current node.
+    $node = \Drupal::routeMatch()->getParameter('node');
+
+    if ($node instanceof NodeInterface) {
+      // Get node's ID.
+      $node_id = $node->id();
+      // Get current node's group name.
+      $group_contents = GroupContent::loadByEntity($node);
+
+      foreach ($group_contents as $group_content) {
+        $group = $group_content->getGroup();
+        $group_type_name = $group->bundle();
+
+        // If group is a minisite save group and set boolean to TRUE.
+        if ($group_type_name == 'minisite') {
+          $minisite_group = $group_content->getGroup();
+          $belongs_to_minisite = TRUE;
+        }
+      }
+
+      /*
+       * If node belongs to a minisite, continue.
+       * Otherwise return Neutral, as we don't care.
+       */
+      if ($belongs_to_minisite) {
+        $group_frontpage_id = $minisite_group->field_front_page->target_id;
+        /*
+         * Compare Node's ID and group's frontpage ID.
+         * If current Node is frontpage, hide the Breadcrumbs block.
+         */
+        if ($node_id == $group_frontpage_id) {
+          // If it is the frontpage, get the breadcrumbs plugin and hide it.
+          return AccessResult::forbidden()->addCacheableDependency($node)->addCacheableDependency($block)->addCacheableDependency($group);
+        }
+        else {
+          // If it is not the frontpage, we don't care.
+          return AccessResult::neutral()->addCacheableDependency($node)->addCacheableDependency($block)->addCacheableDependency($group);
+        }
+      }
+      else {
+        // If Node does not belong to minisite, return Neutral.
+        return AccessResult::neutral()->addCacheableDependency($node)->addCacheableDependency($block)->addCacheableDependency($group);
+      }
+    }
+  }
+}

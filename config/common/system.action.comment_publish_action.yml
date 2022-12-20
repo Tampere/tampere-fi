@@ -1,0 +1,13 @@
+uuid: 4c931b5d-68f6-4422-8660-8f914749bbde
+langcode: fi
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: C00dyL_W_5M0nFlgUB3lWUTUs96jn51Jw1MLHVEHZD0
+id: comment_publish_action
+label: 'Julkaise kommentti'
+type: comment
+plugin: 'entity:publish_action:comment'
+configuration: {  }

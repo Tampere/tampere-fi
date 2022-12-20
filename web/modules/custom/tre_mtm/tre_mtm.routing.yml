@@ -1,0 +1,7 @@
+tre_mtm.settings:
+  path: 'admin/config/system/tre_mtm'
+  defaults:
+    _form: '\Drupal\tre_mtm\Form\SettingsForm'
+    _title: 'MTM Settings'
+  requirements:
+    _permission: 'administer mtm'

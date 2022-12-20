@@ -1,0 +1,23 @@
+uuid: 65dfa321-54b1-4104-be53-57cdffd1b23b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pirkanmaa_events_sort
+    - paragraphs.paragraphs_type.event_and_hobby_listing
+  module:
+    - options
+id: paragraph.event_and_hobby_listing.field_pirkanmaa_events_sort
+field_name: field_pirkanmaa_events_sort
+entity_type: paragraph
+bundle: event_and_hobby_listing
+label: 'Tapahtumien listausjärjestys'
+description: "Oletusjärjestys: ensimmäisenä näytetään tänään, sitten huomenna, sitten ylihuomenna, sitten yliylihuomenna alkavat tapahtumat.<br>\r\nSeuraavana listalla näytetään päättymisjärjestyksessä aiemmin kuin tänään tai myöhemmin kuin ylihuomenna alkaneet/alkavat tapahtumat."
+required: true
+translatable: true
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

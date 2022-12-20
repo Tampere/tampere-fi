@@ -1,0 +1,5 @@
+label: 'Content help text'
+settings:
+  markup:
+    value: "<p>The Text paragraph will be deleted in the future, so use Accordion text content instead. Please move text content to Accordion text content paragraph in old accordions.</p>\r\n"
+    format: footer_text

@@ -1,0 +1,10 @@
+uuid: 0c387237-5648-4ba6-b8df-e3683ff26719
+langcode: fi
+status: true
+dependencies: {  }
+id: zoning_project_cards
+label: Kaavakortit
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

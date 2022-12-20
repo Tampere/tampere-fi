@@ -1,0 +1,8 @@
+services:
+  tre_ptv_import.commands:
+    class: \Drupal\tre_ptv_import\Commands\TrePtvImportCommands
+    arguments:
+      - '@entity_type.manager'
+      - '@tre_ptv_import.ptv_intermediate_storage'
+    tags:
+      - { name: drush.command }

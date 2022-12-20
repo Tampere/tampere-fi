@@ -1,0 +1,23 @@
+uuid: 54f12c0c-0b0f-43f9-ac09-f91d3aa396e8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_liftup_display
+    - paragraphs.paragraphs_type.current_listing
+  module:
+    - options
+id: paragraph.current_listing.field_liftup_display
+field_name: field_liftup_display
+entity_type: paragraph
+bundle: current_listing
+label: 'Nostojen esitystapa'
+description: 'Ajankohtaislistauksen nostot voidaan näyttää kuvien kanssa tai ilman.'
+required: true
+translatable: true
+default_value:
+  -
+    value: images
+default_value_callback: ''
+settings: {  }
+field_type: list_string

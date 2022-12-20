@@ -1,0 +1,15 @@
+uuid: 037943b8-78c9-4006-a11b-0025e6c059e6
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: text_with_bgcolor
+label: 'Teksti taustavärillä'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

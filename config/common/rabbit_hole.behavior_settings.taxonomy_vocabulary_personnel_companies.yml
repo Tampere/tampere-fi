@@ -1,0 +1,14 @@
+uuid: 27b980ee-08a9-4b4e-8f03-0e0664dd589d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.personnel_companies
+id: taxonomy_vocabulary_personnel_companies
+entity_type_id: taxonomy_vocabulary
+entity_id: personnel_companies
+action: access_denied
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

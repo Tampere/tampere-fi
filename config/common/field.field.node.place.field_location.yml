@@ -1,0 +1,21 @@
+uuid: 1ec24f91-b640-4eb1-a2f4-6819434f409d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.place
+  module:
+    - geofield
+id: node.place.field_location
+field_name: field_location
+entity_type: node
+bundle: place
+label: Sijainti
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

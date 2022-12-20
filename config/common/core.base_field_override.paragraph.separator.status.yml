@@ -1,0 +1,22 @@
+uuid: 73a3569f-4558-4bb3-82cd-9010c64243ec
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.separator
+id: paragraph.separator.status
+field_name: status
+entity_type: paragraph
+bundle: separator
+label: Julkaistu
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -1,0 +1,23 @@
+uuid: ee79ebdb-3d64-4274-be9c-793475d84913
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_links
+    - node.type.place_of_business
+  module:
+    - link
+id: node.place_of_business.field_links
+field_name: field_links
+entity_type: node
+bundle: place_of_business
+label: Verkkosivu
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link

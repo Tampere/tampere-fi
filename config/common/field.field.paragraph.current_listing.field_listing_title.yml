@@ -1,0 +1,19 @@
+uuid: 69214252-bd23-48e2-868f-78b6dbc48a1e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_listing_title
+    - paragraphs.paragraphs_type.current_listing
+id: paragraph.current_listing.field_listing_title
+field_name: field_listing_title
+entity_type: paragraph
+bundle: current_listing
+label: 'Listauksen otsikko'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

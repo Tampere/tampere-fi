@@ -1,0 +1,19 @@
+uuid: 3f854ad5-8252-42af-a736-e3c418bcdeef
+langcode: fi
+status: true
+dependencies:
+  module:
+    - markup_field
+    - node
+id: node.field_service_voucher_heading
+field_name: field_service_voucher_heading
+entity_type: node
+type: markup_field
+settings: {  }
+module: markup_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

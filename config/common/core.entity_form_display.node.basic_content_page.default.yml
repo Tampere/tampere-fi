@@ -1,0 +1,277 @@
+uuid: 79f69fc2-c050-4157-b35f-4423bb2575b9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.basic_content_page.field_geographical_areas
+    - field.field.node.basic_content_page.field_help_text
+    - field.field.node.basic_content_page.field_keywords
+    - field.field.node.basic_content_page.field_life_situations
+    - field.field.node.basic_content_page.field_main_image
+    - field.field.node.basic_content_page.field_metadata_description
+    - field.field.node.basic_content_page.field_paragraphs
+    - field.field.node.basic_content_page.field_search_keywords
+    - field.field.node.basic_content_page.field_topic
+    - field.field.node.basic_content_page.field_topics
+    - node.type.basic_content_page
+    - workflows.workflow.scheduled_transitions
+  module:
+    - content_moderation
+    - field_group
+    - field_states_ui
+    - limited_field_widgets
+    - markup
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+    - path
+third_party_settings:
+  field_group:
+    group_categorization:
+      children:
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - group_search_keywords
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_tabs:
+      children:
+        - group_yleinen
+        - group_categorization
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_yleinen:
+      children:
+        - field_main_image
+        - title
+        - langcode
+        - translation
+        - field_metadata_description
+        - field_paragraphs
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_search_keywords:
+      children:
+        - field_search_keywords
+      label: Avainsanat
+      region: content
+      parent_name: group_categorization
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: node.basic_content_page.default
+targetEntityType: node
+bundle: basic_content_page
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_help_text:
+    type: markup
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_main_image:
+    type: media_library_widget
+    weight: 101
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_metadata_description:
+    type: string_textarea
+    weight: 105
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      maxlength:
+        maxlength_js: 200
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: true
+        maxlength_js_truncate_html: false
+  field_paragraphs:
+    type: paragraphs_classic_asymmetric
+    weight: 106
+    region: content
+    settings:
+      title: Paragraafi
+      title_plural: Paragraafit
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_search_keywords:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 103
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 102
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 104
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_topic: true
+  promote: true
+  published_at: true
+  sticky: true

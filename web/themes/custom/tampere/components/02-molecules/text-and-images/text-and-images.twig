@@ -1,0 +1,7 @@
+{% set text_and_images__base_class = "text-and-images" %}
+
+<div {{ bem(text_and_images__base_class, text_and_images__modifiers|default([]), text_and_images__blockname)}}>
+  {% block text_and_images_content %}
+  {% endblock %}
+  <div {{ bem("clear", text_and_images__content__modifiers|default([]), text_and_images__base_class) }}></div>
+</div>

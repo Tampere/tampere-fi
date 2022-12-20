@@ -1,0 +1,29 @@
+{% set feedback_links__base_class = "feedback-links" %}
+
+<li {{ bem("list-item", (feedback_links__list_item__modifiers|default([])), feedback_links__base_class) }} {{ feedback_links__item_attributes }}>
+  <a {{ bem("link", (feedback_links__link__modifiers|default([])), feedback_links__base_class) }} href="{{ feedback_links__item_url }}">
+    <span {{ bem("link-text", (feedback_links__link_text__modifiers|default([])), feedback_links__base_class) }}>
+      {{ feedback_links__item_text }}
+    </span>
+    {% block feedback_links_item_icon %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_decorative: true,
+        icon_base_class: "icon",
+        icon_blockname: feedback_links__base_class,
+        icon_extra_class: [ "regular" ],
+        icon_filename: feedback_links__icon_filename,
+        icon_name: feedback_links__item_icon|default("service-arrow-large"),
+      } %}
+    {% endblock %}
+    {% block feedback_links_item_mobile_icon %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_decorative: true,
+        icon_base_class: "icon",
+        icon_blockname: feedback_links__base_class,
+        icon_extra_class: [ "mobile" ],
+        icon_filename: feedback_links__icon_filename,
+        icon_name: feedback_links__item_mobile_icon|default("service-arrow"),
+      } %}
+    {% endblock %}
+  </a>
+</li>

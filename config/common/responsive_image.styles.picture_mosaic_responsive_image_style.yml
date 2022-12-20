@@ -1,0 +1,36 @@
+uuid: fc94c2aa-e0e3-49e6-a1d7-4105d979d198
+langcode: fi
+status: true
+dependencies:
+  config:
+    - image.style.picture_mosaic_large_view_mode
+    - image.style.picture_mosaic_medium_view_mode
+    - image.style.picture_mosaic_small_view_mode
+    - image.style.picture_mosaic_xs_view_mode
+  theme:
+    - tampere
+id: picture_mosaic_responsive_image_style
+label: 'Responsiivinen kuvamosaiikki'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: picture_mosaic_large_view_mode
+    breakpoint_id: tampere.lg
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: picture_mosaic_medium_view_mode
+    breakpoint_id: tampere.md
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: picture_mosaic_small_view_mode
+    breakpoint_id: tampere.sm
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: picture_mosaic_xs_view_mode
+    breakpoint_id: tampere.xs
+    multiplier: 1x
+breakpoint_group: tampere
+fallback_image_style: picture_mosaic_xs_view_mode

@@ -1,0 +1,24 @@
+uuid: dc0c9ece-883e-4082-ac98-f3faee19e241
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_of_publication
+    - node.type.news_item
+  module:
+    - datetime
+id: node.news_item.field_date_of_publication
+field_name: field_date_of_publication
+entity_type: node
+bundle: news_item
+label: Ensijulkaisupäivämäärä
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

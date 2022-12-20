@@ -1,0 +1,10 @@
+uuid: 0d84547a-668d-4cac-880d-d3ed7e5f9bd8
+langcode: fi
+status: true
+dependencies: {  }
+id: highlighted_content_liftup_w_img
+label: 'Korostettu kuvallinen sisältönosto'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

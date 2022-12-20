@@ -1,0 +1,20 @@
+uuid: ab560fad-8ddb-46d6-beac-ca2b4744a8e7
+langcode: fi
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_pirkanmaa_events_start
+field_name: field_pirkanmaa_events_start
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

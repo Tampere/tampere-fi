@@ -1,0 +1,26 @@
+uuid: 5cb894de-6040-41bf-819d-be5da71e7144
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_information
+    - node.type.place
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - plain_html
+id: node.place.field_additional_information
+field_name: field_additional_information
+entity_type: node
+bundle: place
+label: Lisätiedot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

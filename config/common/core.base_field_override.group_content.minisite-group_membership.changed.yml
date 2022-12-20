@@ -1,0 +1,18 @@
+uuid: c673080c-3d77-4bb3-82d6-4c67bf4f74b7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_membership
+id: group_content.minisite-group_membership.changed
+field_name: changed
+entity_type: group_content
+bundle: minisite-group_membership
+label: Muuttunut
+description: 'Ajankohta jolloin ryhmäsisältöä viimeksi muokattiin.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: 80f37cae-0281-4ae9-9f92-66e00b0fdcbe
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+id: group.topic.label
+field_name: label
+entity_type: group
+bundle: topic
+label: Aihepiiri
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

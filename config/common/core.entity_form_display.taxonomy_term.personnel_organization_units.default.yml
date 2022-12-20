@@ -1,0 +1,44 @@
+uuid: 1ddb2196-9b7c-4c68-bf69-3556a6764914
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.personnel_organization_units.field_hr_id
+    - taxonomy.vocabulary.personnel_organization_units
+id: taxonomy_term.personnel_organization_units.default
+targetEntityType: taxonomy_term
+bundle: personnel_organization_units
+mode: default
+content:
+  field_hr_id:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  status: true

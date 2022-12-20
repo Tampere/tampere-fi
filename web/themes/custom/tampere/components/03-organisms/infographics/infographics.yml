@@ -1,0 +1,7 @@
+infographics:
+  - infograph__heading: '123 456'
+    infograph__content: 'Vivamus at quam at felis.'
+  - infograph__heading: '45'
+    infograph__content: 'Cras lacinia sagittis mauris a volutpat.'
+  - infograph__heading: '0.05'
+    infograph__content: 'Etiam scelerisque eros.'

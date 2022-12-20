@@ -1,0 +1,17 @@
+<svg width="75" height="75" viewBox="0 0 75 75" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <circle id="a" cx="37.5" cy="37.5" r="37.5"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <mask id="b" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="currentColor" xlink:href="#a"/>
+        <g mask="url(#b)" stroke="#FFF" stroke-width="5">
+            <g transform="translate(12.143 14.286)">
+                <ellipse cx="25.13" cy="18.13" rx="15.617" ry="15.63"/>
+                <rect x="2.5" y="42.27" width="46.429" height="42.373" rx="19"/>
+            </g>
+        </g>
+    </g>
+</svg>

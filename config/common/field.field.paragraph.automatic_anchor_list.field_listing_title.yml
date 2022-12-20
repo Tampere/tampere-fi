@@ -1,0 +1,19 @@
+uuid: a311af1f-d7f8-4263-a4a7-7d381021d8de
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_listing_title
+    - paragraphs.paragraphs_type.automatic_anchor_list
+id: paragraph.automatic_anchor_list.field_listing_title
+field_name: field_listing_title
+entity_type: paragraph
+bundle: automatic_anchor_list
+label: 'Listauksen otsikko'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

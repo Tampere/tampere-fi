@@ -1,0 +1,9 @@
+id: content_path
+label: 'Sisällön polku'
+ui_limit: "*|current_liftup_view_mode\r\n*|current_liftup_wo_image_view_mode\r\n*|highlighted_current_liftup\r\n*|contact_information_list_content_view_mode"
+type: twig
+type_label: 'Twig field'
+entities:
+  node: node
+properties:
+  content: '{{ path(''entity.node.canonical'', {''node'': node.id}) }}'

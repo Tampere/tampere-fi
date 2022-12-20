@@ -1,0 +1,22 @@
+uuid: 927eacc1-18c2-43e3-b9be-7966efdf46e6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icon
+    - paragraphs.paragraphs_type.current_liftup
+  module:
+    - ex_icons
+id: paragraph.current_liftup.field_icon
+field_name: field_icon
+entity_type: paragraph
+bundle: current_liftup
+label: Kuvake
+description: 'Nostossa käytetään oletusarvoisesti info-kuvaketta.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+field_type: ex_icon

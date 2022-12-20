@@ -1,0 +1,42 @@
+uuid: 64f48495-caa0-4f21-92e6-125df6a0471b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_displayed_opp_fields
+field_name: field_displayed_opp_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: sign_up_information
+      label: 'Ilmoittautumisen ajankohta'
+    -
+      value: participate_summary
+      label: Ingressi
+    -
+      value: address_street
+      label: Katuosoite
+    -
+      value: link_single
+      label: Verkkosijainti
+    -
+      value: additional_single_link
+      label: Lisälinkki
+    -
+      value: location
+      label: 'Sijainti kartalla'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

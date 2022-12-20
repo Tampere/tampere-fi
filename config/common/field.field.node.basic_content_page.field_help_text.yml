@@ -1,0 +1,26 @@
+uuid: c8fdd7d9-a2d8-487b-b001-ed39df8195c7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_help_text
+    - node.type.basic_content_page
+  module:
+    - markup
+id: node.basic_content_page.field_help_text
+field_name: field_help_text
+entity_type: node
+bundle: basic_content_page
+label: help_text
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    markup: null
+default_value_callback: ''
+settings:
+  markup:
+    value: "<ul type=\"square\">\r\n\t<li>Ajastaaksesi Julkaistu-tilassa olevan sivun sisällön muutoksia julkaistumaan, valitse sivun tilaksi Luonnos, ennen kuin tallennat ajastettaviksi tarkoitetut muutokset. Tee sen jälkeen muutosten (sivun) julkaistumisen ajastus Ajastetut muutokset -toiminnolla.</li>\r\n\t<li>Arkistoitu-tilassa tallentaminen poistaa sivun julkisuudesta.</li>\r\n</ul>\r\n"
+    format: basic_html
+field_type: markup

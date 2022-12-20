@@ -1,0 +1,14 @@
+uuid: f2497ae6-369a-493c-af7c-e04be6fc192a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.news_item_author
+  module:
+    - user
+id: user_remove_role_action.news_item_author
+label: 'Remove the Uutistoimittaja role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: news_item_author

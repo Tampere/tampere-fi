@@ -1,0 +1,22 @@
+uuid: c60cd7db-38f3-4956-a847-84a699a176ac
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+id: group.minisite.status
+field_name: status
+entity_type: group
+bundle: minisite
+label: Julkaistu
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

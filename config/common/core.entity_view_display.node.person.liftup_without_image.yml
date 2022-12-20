@@ -1,0 +1,99 @@
+uuid: d33d3a01-2180-40ec-b42e-db25f179e75a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.liftup_without_image
+    - field.field.node.person.field_additional_information
+    - field.field.node.person.field_additional_phones
+    - field.field.node.person.field_address_postal
+    - field.field.node.person.field_address_street
+    - field.field.node.person.field_contract_begins
+    - field.field.node.person.field_contract_ends
+    - field.field.node.person.field_email
+    - field.field.node.person.field_first_names
+    - field.field.node.person.field_hr_company
+    - field.field.node.person.field_hr_cost_center
+    - field.field.node.person.field_hr_id
+    - field.field.node.person.field_hr_organizational_unit
+    - field.field.node.person.field_hr_title
+    - field.field.node.person.field_image
+    - field.field.node.person.field_keywords
+    - field.field.node.person.field_last_name
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_phone_supplementary
+    - field.field.node.person.field_place
+    - field.field.node.person.field_search_keywords
+    - field.field.node.person.field_topics
+    - field.field.node.person.migrate_override_data
+    - node.type.person
+  module:
+    - migrate_override
+    - telephone
+    - user
+_core:
+  default_config_hash: ueOxoYWiMJIS0aKTp9dSmC5kKk_HmvhZdfoJ_mDkrbo
+id: node.person.liftup_without_image
+targetEntityType: node
+bundle: person
+mode: liftup_without_image
+content:
+  field_email:
+    type: email_mailto
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_first_names:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_last_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_phone:
+    type: telephone_link
+    label: hidden
+    settings:
+      title: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  migrate_override_data:
+    type: override_formatter_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: hidden
+hidden:
+  field_additional_information: true
+  field_additional_phones: true
+  field_address_postal: true
+  field_address_street: true
+  field_contract_begins: true
+  field_contract_ends: true
+  field_hr_company: true
+  field_hr_cost_center: true
+  field_hr_id: true
+  field_hr_organizational_unit: true
+  field_hr_title: true
+  field_image: true
+  field_keywords: true
+  field_phone_supplementary: true
+  field_place: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

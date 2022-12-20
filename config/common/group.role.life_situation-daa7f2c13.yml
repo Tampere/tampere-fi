@@ -1,0 +1,17 @@
+uuid: 591ed059-6385-49e6-9d8d-dac55e68d7df
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.life_situation
+  enforced:
+    config:
+      - user.role.participation_section_editor
+id: life_situation-daa7f2c13
+label: 'Osallistumisen osiovastaava'
+weight: 9
+internal: true
+audience: outsider
+group_type: life_situation
+permissions_ui: false
+permissions: {  }

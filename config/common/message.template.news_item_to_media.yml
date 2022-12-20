@@ -1,0 +1,14 @@
+uuid: 9a6bc7f5-aedd-4b8b-a955-8c9f03f22bdf
+langcode: fi
+status: true
+dependencies: {  }
+template: news_item_to_media
+label: 'Uutisen mediajakelu'
+description: ''
+text: {  }
+settings:
+  'token options':
+    clear: false
+    'token replace': false
+  purge_override: false
+  purge_methods: {  }

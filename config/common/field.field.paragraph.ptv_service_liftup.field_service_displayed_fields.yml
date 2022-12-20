@@ -1,0 +1,21 @@
+uuid: 14d45426-ee2d-4f19-8988-341422a25e60
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_service_displayed_fields
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - options
+id: paragraph.ptv_service_liftup.field_service_displayed_fields
+field_name: field_service_displayed_fields
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Palvelun näytettävät kentät'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

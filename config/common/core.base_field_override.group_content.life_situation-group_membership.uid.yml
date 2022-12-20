@@ -1,0 +1,20 @@
+uuid: 4417d4b5-bbdb-410b-87a2-e9be6e056f8c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.life_situation-group_membership
+id: group_content.life_situation-group_membership.uid
+field_name: uid
+entity_type: group_content
+bundle: life_situation-group_membership
+label: 'Ryhmän luoja'
+description: 'Ryhmän luoneen käyttäjän käyttäjätunnus.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupContent::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

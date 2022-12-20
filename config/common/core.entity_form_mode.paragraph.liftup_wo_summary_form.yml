@@ -1,0 +1,10 @@
+uuid: 6bc52399-0b34-47f5-b589-2b51fef5d6b9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.liftup_wo_summary_form
+label: 'Nosto ilman lyhennelmää'
+targetEntityType: paragraph
+cache: true

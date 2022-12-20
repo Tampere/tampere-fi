@@ -1,0 +1,8 @@
+label: 'All places entity browser'
+display_configuration:
+  link_text: 'Select places'
+widgets:
+  828ca723-4520-4613-b0a5-ab1cc0034499:
+    settings:
+      submit_text: 'Select places'
+    label: 'All places'

@@ -1,0 +1,22 @@
+uuid: 616aaeb4-b018-45c9-a72c-62769276895a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - comment.type.blog_article_comment
+id: comment.blog_article_comment.status
+field_name: status
+entity_type: comment
+bundle: blog_article_comment
+label: Julkaistu
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultStatus'
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

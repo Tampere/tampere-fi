@@ -1,0 +1,20 @@
+uuid: 142fb1d7-dce1-42c4-9559-77f33cb26768
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_epsg_3067_northing
+field_name: field_epsg_3067_northing
+entity_type: node
+type: decimal
+settings:
+  precision: 15
+  scale: 5
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

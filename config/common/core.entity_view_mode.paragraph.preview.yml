@@ -1,0 +1,12 @@
+uuid: 7c9743f0-34ac-4bd5-8bf9-1039d8a7d621
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+_core:
+  default_config_hash: h3BeHVei4Lnyqbkao3YiF4KqoY-DhRvUNfEgKG8Rgjg
+id: paragraph.preview
+label: Esikatselu
+targetEntityType: paragraph
+cache: true

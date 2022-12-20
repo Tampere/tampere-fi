@@ -1,0 +1,22 @@
+uuid: 7fc8f33e-fe30-4fc9-a3a9-c3897f8903aa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.ptv_service
+id: node.ptv_service.promote
+field_name: promote
+entity_type: node
+bundle: ptv_service
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

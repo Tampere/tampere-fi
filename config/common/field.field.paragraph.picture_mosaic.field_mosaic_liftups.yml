@@ -1,0 +1,157 @@
+uuid: 2c848a98-e92f-4b16-93a0-68e9e083c38b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mosaic_liftups
+    - paragraphs.paragraphs_type.mosaic_liftup
+    - paragraphs.paragraphs_type.picture_mosaic
+  module:
+    - entity_reference_revisions
+id: paragraph.picture_mosaic.field_mosaic_liftups
+field_name: field_mosaic_liftups
+entity_type: paragraph
+bundle: picture_mosaic
+label: Mosaiikkinostot
+description: 'Yhteensä nostoja suositellaan lisäämään joko kolme tai viisi.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      mosaic_liftup: mosaic_liftup
+    negate: 0
+    target_bundles_drag_drop:
+      accessibility_information:
+        weight: 35
+        enabled: false
+      accordion_item:
+        weight: 37
+        enabled: false
+      accordions:
+        weight: 36
+        enabled: false
+      attachment:
+        weight: 38
+        enabled: false
+      balanced_content_liftup:
+        weight: 39
+        enabled: false
+      city_construction_project_card:
+        weight: 54
+        enabled: false
+      city_construction_project_cards:
+        weight: 55
+        enabled: false
+      colorful_content_liftup:
+        weight: 40
+        enabled: false
+      content_liftup:
+        weight: 41
+        enabled: false
+      content_liftup_with_image:
+        weight: 42
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 59
+        enabled: false
+      event_and_hobby_listing:
+        weight: 43
+        enabled: false
+      external_link:
+        weight: 44
+        enabled: false
+      external_link_with_link_text:
+        weight: 62
+        enabled: false
+      grouped_content_liftup:
+        weight: 45
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 46
+        enabled: false
+      highlighted_link_list:
+        weight: 47
+        enabled: false
+      icon_and_text_link:
+        weight: 48
+        enabled: false
+      infograph:
+        weight: 72
+        enabled: false
+      infographs:
+        weight: 73
+        enabled: false
+      internal_link:
+        weight: 49
+        enabled: false
+      internal_link_with_link_text:
+        weight: 75
+        enabled: false
+      link_list:
+        weight: 76
+        enabled: false
+      list_of_attachments:
+        weight: 50
+        enabled: false
+      metadata_attachment_list:
+        weight: 78
+        enabled: false
+      mosaic_liftup:
+        weight: 51
+        enabled: true
+      notice:
+        weight: 52
+        enabled: false
+      person_liftup:
+        weight: 53
+        enabled: false
+      person_liftups:
+        weight: 54
+        enabled: false
+      picture_mosaic:
+        weight: 55
+        enabled: false
+      place_liftup:
+        weight: 84
+        enabled: false
+      place_of_business_liftup:
+        weight: 58
+        enabled: false
+      project_and_organization_cards:
+        weight: 59
+        enabled: false
+      project_or_organization_card:
+        weight: 60
+        enabled: false
+      rss_feed:
+        weight: 61
+        enabled: false
+      service_highlight:
+        weight: 62
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 63
+        enabled: false
+      social_media_feed_embed:
+        weight: 64
+        enabled: false
+      social_media_link:
+        weight: 65
+        enabled: false
+      table:
+        weight: 66
+        enabled: false
+      text:
+        weight: 94
+        enabled: false
+      two_column_liftup:
+        weight: 67
+        enabled: false
+      webform:
+        weight: 68
+        enabled: false
+field_type: entity_reference_revisions

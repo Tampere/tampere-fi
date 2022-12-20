@@ -1,0 +1,70 @@
+uuid: 522845da-4e9d-41d2-b117-373aa940038e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group.minisite.field_color_palette
+    - field.field.group.minisite.field_footer_content
+    - field.field.group.minisite.field_front_page
+    - field.field.group.minisite.field_keywords
+    - field.field.group.minisite.field_minisite_heading
+    - field.field.group.minisite.field_svg_logo
+    - group.type.minisite
+  module:
+    - ds
+    - svg_image_field
+    - text
+id: group.minisite.default
+targetEntityType: group
+bundle: minisite
+mode: default
+content:
+  field_footer_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_svg_logo:
+    type: svg_image_field_formatter
+    label: hidden
+    settings:
+      inline: true
+      apply_dimensions: false
+      width: 25
+      height: 25
+      enable_alt: true
+      enable_title: true
+      link: ''
+      force_fill: true
+      sanitize: '1'
+      sanitize_remote: 0
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  changed: true
+  created: true
+  field_color_palette: true
+  field_front_page: true
+  field_keywords: true
+  field_minisite_heading: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

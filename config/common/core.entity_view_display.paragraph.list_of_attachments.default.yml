@@ -1,0 +1,21 @@
+uuid: 7ed74c5e-07b7-450d-a4d8-630a7d3d83e1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.list_of_attachments.field_attachment
+    - field.field.paragraph.list_of_attachments.field_language
+    - field.field.paragraph.list_of_attachments.field_summary
+    - field.field.paragraph.list_of_attachments.field_title
+    - paragraphs.paragraphs_type.list_of_attachments
+id: paragraph.list_of_attachments.default
+targetEntityType: paragraph
+bundle: list_of_attachments
+mode: default
+content: {  }
+hidden:
+  field_attachment: true
+  field_language: true
+  field_summary: true
+  field_title: true
+  search_api_excerpt: true

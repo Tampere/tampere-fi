@@ -1,0 +1,21 @@
+uuid: e8a23e63-a196-4bb9-ab3c-1e07fde442ed
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_geographical_areas
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_geographical_areas
+field_name: field_geographical_areas
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Maantieteelliset alueet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings: {  }
+field_type: entity_reference

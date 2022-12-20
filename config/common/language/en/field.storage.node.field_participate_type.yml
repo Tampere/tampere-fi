@@ -1,0 +1,20 @@
+settings:
+  allowed_values:
+    -
+      label: Survey
+    -
+      label: Voting
+    -
+      label: Hearing
+    -
+      label: Discussion
+    -
+      label: Workshop
+    -
+      label: Bee
+    -
+      label: Celebration
+    -
+      label: Brainstorming
+    -
+      label: 'Other participation'

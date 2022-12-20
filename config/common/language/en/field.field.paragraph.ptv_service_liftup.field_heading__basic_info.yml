@@ -1,0 +1,5 @@
+label: 'Override heading: Basic information'
+default_value:
+  -
+    size: h2
+    text: 'Basic information'

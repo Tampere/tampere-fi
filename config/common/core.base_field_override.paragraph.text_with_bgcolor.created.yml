@@ -1,0 +1,18 @@
+uuid: faefee6f-3213-4a71-b5d8-d40c31ae46be
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.text_with_bgcolor
+id: paragraph.text_with_bgcolor.created
+field_name: created
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

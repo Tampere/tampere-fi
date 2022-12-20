@@ -1,0 +1,29 @@
+uuid: f4bf9262-c1ed-4b13-9209-dc562d8753d4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_file_in_other_lang
+    - media.type.image_in_other_language
+    - paragraphs.paragraphs_type.image
+id: paragraph.image.field_media_file_in_other_lang
+field_name: field_media_file_in_other_lang
+entity_type: paragraph
+bundle: image
+label: 'Muunkielinen kuvatiedosto'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image_in_other_language: image_in_other_language
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

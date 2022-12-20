@@ -1,0 +1,26 @@
+uuid: 3a32dbe6-cf7b-4ed0-b049-1d594d1fb6ae
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_content
+    - paragraphs.paragraphs_type.webform
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: paragraph.webform.field_text_content
+field_name: field_text_content
+entity_type: paragraph
+bundle: webform
+label: Tekstisisältö
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

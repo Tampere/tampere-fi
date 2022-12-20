@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Liftups with images'
+    -
+      label: 'Liftups without images'

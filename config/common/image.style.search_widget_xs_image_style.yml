@@ -1,0 +1,17 @@
+uuid: 70c74a1b-f4a8-479a-bb32-24538f88d994
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: search_widget_xs_image_style
+label: 'Hakuwidgetti - xs (480×305)'
+effects:
+  32445bf6-b9de-4827-85a3-21168ea26663:
+    uuid: 32445bf6-b9de-4827-85a3-21168ea26663
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 305
+      crop_type: focal_point

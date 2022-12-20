@@ -1,0 +1,33 @@
+uuid: 70d6c004-5396-4b8e-b0dc-2a2d9b8191be
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: persons_fi
+label: 'Henkilöt FI'
+type: 'canonical_entities:node'
+pattern: 'henkilo/[node:title]'
+selection_criteria:
+  1e0a234b-3c34-43f1-b740-c71219845371:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 1e0a234b-3c34-43f1-b740-c71219845371
+    context_mapping:
+      node: node
+    bundles:
+      person: person
+  7959d4fe-942b-4b4b-94ef-5b3fdd52c1f0:
+    id: language
+    negate: false
+    uuid: 7959d4fe-942b-4b4b-94ef-5b3fdd52c1f0
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fi: fi
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Kieli

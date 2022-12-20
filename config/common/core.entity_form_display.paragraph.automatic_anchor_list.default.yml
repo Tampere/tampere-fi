@@ -1,0 +1,28 @@
+uuid: 923c7805-d323-4a64-90a7-5b961affee30
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.automatic_anchor_list.field_listing_title
+    - paragraphs.paragraphs_type.automatic_anchor_list
+id: paragraph.automatic_anchor_list.default
+targetEntityType: paragraph
+bundle: automatic_anchor_list
+mode: default
+content:
+  field_listing_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,58 @@
+{{ attach_library("tampere/search-toggle") }}
+
+{% set search_toggle__base_class = "search-toggle" %}
+{% set search_toggle_button_mode = search_toggle_button_mode|default("desktop") %}
+{% set search_toggle_controls = search_toggle_controls|default("search-toggle-search-bar") %}
+
+<div {{ bem(search_toggle__base_class, (search_toggle__modifiers|default([])), search_toggle__blockname) }}>
+  <button
+    {{ bem("button", (search_toggle__button__modifiers|default([])), search_toggle__base_class) }}
+    aria-controls="{{ search_toggle_controls }}"
+    aria-expanded="false"
+    aria-label="{{ "Show search bar"|t }}"
+    data-toggle-mode="{{ search_toggle_button_mode }}"
+  >
+    {% block search_toggle__content %}
+      <span {{ bem("text", (search_toggle__text__modifiers|default([])), search_toggle__base_class) }}>
+        {{ "Search"|t ({}, { "context" : "Search button text" }) }}
+      </span>
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_name: "close",
+        icon_base_class: "icon",
+        icon_modifiers: [ "open" ],
+        icon_extra_class: [ "shown-on-mobile" ],
+        icon_blockname: search_toggle__base_class,
+        icon_decorative: search_toggle__icon_decorative|default(true),
+      } %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_name: "close-desktop",
+        icon_base_class: "icon",
+        icon_modifiers: [ "open" ],
+        icon_extra_class: [ "shown-on-desktop" ],
+        icon_blockname: search_toggle__base_class,
+        icon_decorative: search_toggle__icon_decorative|default(true),
+      } %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_name: "search",      
+        icon_base_class: "icon",
+        icon_modifiers: [ "closed" ],
+        icon_blockname: search_toggle__base_class,
+        icon_decorative: search_toggle__icon_decorative|default(true),
+      } %}
+    {% endblock %}
+  </button>
+
+  <div
+    id="{{ search_toggle_controls }}"
+    {{ bem("search-bar", (search_toggle__search_bar__modifiers|default([])), search_toggle__base_class) }}
+  >
+    {% block search_toggle_search_bar %}
+      {% include "@molecules/search-bar/search-bar.twig" with {
+        "search_bar__modifiers": [ "long" ],
+        "search_bar_form_aria_label": search_toggle__search_bar__aria_label,
+        "search_bar_value": search_toggle__search_bar__value,
+        "search_bar__form_action": search_toggle__search_bar__form_action,
+      } %}
+    {% endblock %}
+  </div>
+</div>

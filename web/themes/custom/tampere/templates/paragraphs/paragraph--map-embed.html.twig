@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - map_embed_iframe_src: The map embed's iframe source URL.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set iframe_wrapper___modifiers = [] %}
+
+{% set iframe_attributes = {
+  "data-tampere-cookie-information": "skip",
+} %}
+
+{% if paragraph.field_display_wider.0.value is same as ('1') %}
+  {% set display_wider = TRUE %}
+{% endif %}
+
+{% set map_height = paragraph.field_map_height.value %}
+
+{% if map_height or display_wider %}
+  {% if display_wider %}
+    {% set iframe_wrapper___modifiers = iframe_wrapper___modifiers|merge([ "extra-wide" ]) %}
+  {% endif %}
+
+  {# Default map height for maps that should be displayed wider but have no height set. #}
+  {% if not map_height %}
+    {% set map_height = "550" %}
+  {% endif %}
+
+  {% set iframe_attributes = iframe_attributes|merge({
+    "height": map_height ~ "px",
+    "width": "100%",
+  }) %}
+
+  {% set iframe_wrapper___modifiers = iframe_wrapper___modifiers|merge([ "fixed-height" ]) %}
+{% endif %}
+
+{% embed "@organisms/_paragraph.twig" with {
+  "display_extra_wide": display_wider,
+} %}
+  {% block paragraph_content %}
+    {% include "@atoms/10-iframe/iframe.twig" with {
+      "iframe__heading": paragraph.field_title.value,
+      "iframe_wrapper___modifiers": iframe_wrapper___modifiers,
+      "iframe_attributes": iframe_attributes,
+      "iframe__src": map_embed_iframe_src,
+      "iframe__title": paragraph.field_embed_description.value,
+      "attributes": [],
+    } %}
+  {% endblock %}
+{% endembed %}

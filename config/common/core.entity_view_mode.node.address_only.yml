@@ -1,0 +1,10 @@
+uuid: e39cfd50-ce3c-4fd0-bfca-fdbbdeb3c484
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.address_only
+label: 'Vain osoite'
+targetEntityType: node
+cache: true

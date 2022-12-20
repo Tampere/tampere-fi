@@ -1,0 +1,19 @@
+uuid: dc1bc044-dec2-467e-95e3-29454be934d5
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - social_media
+id: node.field_social_media_share
+field_name: field_social_media_share
+entity_type: node
+type: social_media
+settings: {  }
+module: social_media
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,140 @@
+{#
+ # Available variables:
+ # - person_contact__base_class - base classname of the wrapper.
+ # - person_contact__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - person_contact__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - person_contact__image__src - the actual image file location.
+ # - person_contact__image__alt - (optional) the alt text for screen readers and when the image cannot load.
+ #
+ # - person_contact__main_content__modifiers - array of modifiers to add to the base classname of the main content.
+ #
+ # - person_contact__information__modifiers - array of modifiers to add to the base classname of the information.
+ #
+ # - person_contact__preheading - the information to display before the heading.
+ #
+ # - person_contact__name__heading_level - (optional) the heading level to use for the contact name.
+ # - person_contact__name - the name of the contact.
+ #
+ # - person_contact__subheading - the information to display after the heading.
+ #
+ # - person_contact__additional_information - any additional information to display.
+ #
+ # - person_contact__phone_number_label - the label for the phone number.
+ # - person_contact__phone_number - the phone number for the contact.
+
+ # - person_contact__additional_phones_label - the label for the phone number.
+ # - person_contact__additional_phones - the additional phone numbers for the contact.
+ #
+ # - person_contact__email_address_label - the label for the email address.
+ # - person_contact__email_address - the email address for the contact.
+ #}
+
+{% set person_contact__base_class = "person-contact" %}
+{% if not person_contact__subheading or person_contact__additional_information %}
+  {% set person_contact__information__modifiers = [ "full" ] %}
+{% endif %}
+
+<div {{ bem(person_contact__base_class, person_contact__modifiers, person_contact__blockname) }}>
+  <div {{ bem("image-container", person_contact__image_container__modifiers, person_contact__base_class) }} aria-hidden="true">
+    {% block person_contact_image %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: card__icon__base_class|default("image"),
+        icon_blockname: person_contact__base_class,
+        icon_extra_class: [ "mobile" ],
+        icon_filename: "logo-icons",
+        icon_name: "person-placeholder-mobile",
+        icon_decorative: true,
+      } %}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: card__icon__base_class|default("image"),
+        icon_blockname: person_contact__base_class,
+        icon_extra_class: [ "desktop" ],
+        icon_filename: "logo-icons",
+        icon_name: "person-placeholder-desktop",
+        icon_decorative: true,
+      } %}
+    {% endblock %}
+  </div>
+
+  {% set has_main_information_content =
+    person_contact__legend or
+    person_contact__preheading or
+    person_contact__name or
+    person_contact__phone_number or
+    person_contact__additional_phones or
+    person_contact__email_address
+  %}
+
+  <div {{ bem("main-content", person_contact__main_content__modifiers, person_contact__base_class) }}>
+    {% if has_main_information_content %}
+      <div {{ bem("information", person_contact__information__modifiers, person_contact__base_class) }}>
+
+        {% if person_contact__legend or person_contact__preheading or person_contact__name or person_contact__name %}
+          <span {{ bem("name_wrapper", person_contact__name_wrapper__modifiers, person_contact__base_class)}}>
+            {% if person_contact__legend %}
+              <span {{ bem("legend", [], person_contact__base_class) }}>
+                {{ person_contact__legend }}
+              </span>
+            {% endif %}
+
+            {% if person_contact__preheading %}
+              <span {{ bem("details", [], person_contact__base_class) }}>
+                {{ person_contact__preheading }}
+              </span>
+            {% endif %}
+
+            {% if person_contact__name %}
+              <span {{ bem("name", [], person_contact__base_class) }}>
+                {{ person_contact__name }}
+              </span>
+            {% endif %}
+          </span>
+        {% endif %}
+
+        {% if person_contact__phone_number %}
+          <div {{ bem("phone-details", [], person_contact__base_class) }}>
+            {{ person_contact__phone_number }}
+          </div>
+        {% endif %}
+
+        {% if person_contact__additional_phones %}
+          <div {{ bem("additional-phone-details", [], person_contact__base_class) }}>
+            {{ person_contact__additional_phones }}
+          </div>
+        {% endif %}
+
+        {% if person_contact__email_address %}
+          <div {{ bem("email-details", [], person_contact__base_class) }}>
+            {{ person_contact__email_address }}
+          </div>
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+    {% if person_contact__subheading or person_contact__additional_information %}
+      <div {{ bem("contact-details", person_contact__contact_details__modifiers, person_contact__base_class) }}>
+
+        {% if person_contact__subheading %}
+          <p {{ bem("details", [], person_contact__base_class) }}>
+            {{ person_contact__subheading }}
+          </p>
+        {% endif %}
+
+        {% if person_contact__additional_information %}
+          <p {{ bem("details", [], person_contact__base_class) }}>
+            {{ person_contact__additional_information }}
+          </p>
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+    {% if person_contact__description %}
+      <div {{ bem("description", person_contact__description__modifiers, person_contact__base_class) }}>
+        {{ person_contact__description }}
+      </div>
+    {% endif %}
+  </div>
+</div>

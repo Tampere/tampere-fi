@@ -1,0 +1,33 @@
+uuid: 0b1dc120-c698-40ff-9d3c-8e5959d8f0e4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.related_blogs
+  module:
+    - node
+    - views
+  theme:
+    - tampere
+id: views_block__related_blogs_related_blogs_block
+theme: tampere
+region: post_content
+weight: -25
+provider: null
+plugin: 'views_block:related_blogs-related_blogs_block'
+settings:
+  id: 'views_block:related_blogs-related_blogs_block'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      blog_article: blog_article

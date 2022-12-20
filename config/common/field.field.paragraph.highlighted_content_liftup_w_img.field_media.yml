@@ -1,0 +1,29 @@
+uuid: c7ec2aac-5908-477e-94f8-42701db144b9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media
+    - media.type.image
+    - paragraphs.paragraphs_type.highlighted_content_liftup_w_img
+id: paragraph.highlighted_content_liftup_w_img.field_media
+field_name: field_media
+entity_type: paragraph
+bundle: highlighted_content_liftup_w_img
+label: Kuva
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

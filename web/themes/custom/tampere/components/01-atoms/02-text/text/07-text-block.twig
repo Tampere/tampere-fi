@@ -1,0 +1,30 @@
+{#
+/**
+ * Available variables:
+ * - text_block_element - html element to render the text, e.g. span
+ * - text_block_base_class - the base classname
+ * - text_block_modifiers - array of modifiers to add to the base classname
+ * - text_block_blockname - blockname prepended to the base classname
+ * - text_block_extra_classes - array of classes to add to the text block
+ * - text_block_content - the content of the text_block (typically text)
+ *
+ * Available blocks:
+ * - text_block_content - used to replace the content of the text_block with something other than plain text
+ *   for example: A formatted text field in Drupal
+ */
+#}
+{% set text_block_base_class = text_block_base_class|default("") %}
+{% set text_block_element = text_block_element|default("div") %}
+
+<{{text_block_element}} {{ bem(text_block_base_class, (text_block_modifiers), text_block_blockname, text_block_extra_classes) }} {% if aria_hidden %}aria-hidden="true"{% endif %}
+>
+  {% block text_block_content %}
+    {% if wrap_content %}
+      <span {{ bem(test_block_span_blockname|default("span-wrapper"), text_block_modifiers|default([]), text_block_blockname) }}>
+    {% endif %}
+      {{ text_block_content }}
+    {% if wrap_content %}
+      </span>
+    {% endif %}
+  {% endblock %}
+</{{text_block_element}}>

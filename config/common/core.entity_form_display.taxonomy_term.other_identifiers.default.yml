@@ -1,0 +1,56 @@
+uuid: f31f37e8-3b75-4e8a-b39c-16f648a31ef9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.other_identifiers
+  module:
+    - path
+    - text
+id: taxonomy_term.other_identifiers.default
+targetEntityType: taxonomy_term
+bundle: other_identifiers
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: false
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

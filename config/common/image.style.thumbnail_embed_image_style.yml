@@ -1,0 +1,15 @@
+uuid: 99165f43-1b61-4a74-99c9-0dc9d1ef717b
+langcode: fi
+status: true
+dependencies: {  }
+name: thumbnail_embed_image_style
+label: Pikkukuva-upotus
+effects:
+  32cb0ea6-0656-4772-8e93-2b968b7554c3:
+    uuid: 32cb0ea6-0656-4772-8e93-2b968b7554c3
+    id: image_scale
+    weight: 1
+    data:
+      width: 250
+      height: null
+      upscale: false

@@ -1,0 +1,32 @@
+uuid: 802f232f-cbe2-42bd-ba86-6f2beade0c93
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.media.dream_broker_video.field_media_dreambroker
+    - media.type.dream_broker_video
+  module:
+    - media_entity_dreambroker
+id: media.dream_broker_video.default
+targetEntityType: media
+bundle: dream_broker_video
+mode: default
+content:
+  field_media_dreambroker:
+    type: dreambroker_embed
+    label: hidden
+    settings:
+      responsive: true
+      autoplay: false
+      width: 854
+      height: 480
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

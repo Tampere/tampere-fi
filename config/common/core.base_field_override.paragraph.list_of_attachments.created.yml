@@ -1,0 +1,18 @@
+uuid: 413df037-cd26-4bcd-bf6f-40464b739b64
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.list_of_attachments
+id: paragraph.list_of_attachments.created
+field_name: created
+entity_type: paragraph
+bundle: list_of_attachments
+label: Luotu
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

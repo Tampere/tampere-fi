@@ -1,0 +1,81 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ * Available variables:
+ * - paragraph: Full paragraph entity.
+ *   - id: The paragraph ID.
+ *   - bundle: The type of the paragraph, for example, "image" or "text".
+ *   - authorid: The user ID of the paragraph author.
+ *   - createdtime: Formatted creation date. Preprocess functions can
+ *     reformat it by calling format_date() with the desired parameters on
+ *     $variables['paragraph']->getCreatedTime().
+ * - content: All paragraph items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - paragraphs: The current template type (also known as a "theming hook").
+ *   - paragraphs--type-[type]: The current paragraphs type. For example, if the paragraph is an
+ *     "Image" it would result in "paragraphs--type--image". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - paragraphs--view-mode--[view_mode]: The View Mode of the paragraph; for example, a
+ *     preview would result in: "paragraphs--view-mode--preview", and
+ *     default: "paragraphs--view-mode--default".
+ * - view_mode: View mode; for example, "preview" or "full".
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ * - project_or_organization_title: Optional. The title of the referenced content
+ *   as a string.
+ * - project_or_organization_url: Optional. The URL of the referenced content as
+ *   a string.
+ * - project_or_organization_description: Optional. The referenced content description
+ *   as a render array.
+ * - project_or_organization_contact_name: Optional. The contact name for the card as
+ *   a string.
+ * - project_or_organization_contact_details: Optional. The contact details for the card
+ *   as a render array.
+ * - project_or_organization_contact_email_address: Optional. The email address for the
+ *   contact as a string.
+ *
+ * @see template_preprocess_paragraph()
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% set project_or_organization_description_markup = project_or_organization_description|render %}
+{% set project_or_organization_contact_details_markup = project_or_organization_contact_details|render %}
+
+{% if
+  project_or_organization_title or
+  project_or_organization_description_markup|trim or
+  project_or_organization_contact_name or
+  project_or_organization_contact_details_markup|trim or
+  project_or_organization_contact_email_address
+%}
+  {% set has_fields_to_display = TRUE %}
+{% endif %}
+
+{% if has_fields_to_display %}
+  {% embed "@organisms/_paragraph.twig" %}
+    {% block paragraph_content %}
+      {% include "@molecules/general-contact-card/general-contact-card.twig" with {
+        "general_contact_card__name": project_or_organization_title,
+        "general_contact_card__url": project_or_organization_url,
+        "general_contact_card__main_content": project_or_organization_description_markup,
+        "general_contact_card__additional_information": project_or_organization_contact_name,
+        "general_contact_card__additional_content": project_or_organization_contact_details_markup,
+        "general_contact_card__email_address": project_or_organization_contact_email_address,
+        "attributes": [],
+      } %}
+
+      {{ content['#cache'] }}
+    {% endblock %}
+  {% endembed %}
+{% endif %}

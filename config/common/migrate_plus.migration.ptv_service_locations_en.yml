@@ -1,0 +1,164 @@
+uuid: 9a5fb2c3-4cac-4630-b0fc-72973d6fb9ea
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - tre_ptv_import
+id: ptv_service_locations_en
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: tre_ptv
+label: 'PTV Service Locations in English'
+source:
+  plugin: ptv_service_locations
+  language: en
+  key: default
+  target: default
+  batch_size: 100
+  track_changes: true
+  constants:
+    LANGUAGE: en
+    TELEPHONE_SUPPLEMENTARY_OFFSET: 0
+    TELEPHONE_SUPPLEMENTARY_MAXLENGTH: 255
+    MB_SUBSTR_ENCODING: UTF-8
+process:
+  langcode:
+    plugin: default_value
+    default_value: en
+  title:
+    plugin: get
+    source: name
+    language: constants/LANGUAGE
+  field_alternative_name:
+    plugin: get
+    source: additional_name
+    language: constants/LANGUAGE
+  field_summary:
+    plugin: get
+    source: summary
+    language: constants/LANGUAGE
+  field_body_md/value:
+    plugin: get
+    source: description
+    language: constants/LANGUAGE
+  field_body_md/format:
+    plugin: default_value
+    default_value: ptv_markdown
+  field_address_postal:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: postal_address
+    -
+      plugin: addressfield
+      language: constants/LANGUAGE
+  field_addresses:
+    plugin: sub_process
+    source: street_addresses
+    process:
+      target_id:
+        plugin: entity_generate
+        access_check: false
+        entity_type: node
+        bundle: map_point
+        bundle_key: type
+        value_key: field_address_hash
+        source: address_hash
+        default_values:
+          langcode: en
+        values:
+          title: address_label
+          field_address_hash: address_hash
+          field_description: description
+          field_epsg_3067_northing: northing
+          field_epsg_3067_easting: easting
+          field_address_street/address_line1: thoroughfare
+          field_address_street/postal_code: postal_code
+          field_address_street/locality: locality
+          field_address_street/country_code: country
+  field_additional_phones:
+    plugin: sub_process
+    source: phones
+    process:
+      telephone_number: number
+      telephone_title: title
+      telephone_supplementary: label
+      display_international_number:
+        plugin: default_value
+        default_value: 0
+      country_code:
+        source: country_code
+        plugin: static_map
+        map:
+          '+358': FI
+        default_value: FI
+  field_links: web_pages
+  field_email:
+    -
+      plugin: array_shift
+      source: emails
+  field_opening_hours:
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 0
+      language: en
+    -
+      plugin: get
+  field_opening_hours_2:
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 1
+      language: en
+    -
+      plugin: get
+  field_opening_hours_3:
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 2
+      language: en
+    -
+      plugin: get
+  field_opening_hours_info:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 0
+      language: en
+  field_opening_hours_info_2:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 1
+      language: en
+  field_opening_hours_info_3:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 2
+      language: en
+  field_exception_hours:
+    plugin: get
+    source: exception_hours_info
+    language: constants/LANGUAGE
+destination:
+  plugin: 'entity:node'
+  default_bundle: place_of_business
+migration_dependencies: null

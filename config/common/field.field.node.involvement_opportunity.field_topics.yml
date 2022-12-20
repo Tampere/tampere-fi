@@ -1,0 +1,29 @@
+uuid: f0469006-f983-410a-bc01-845f5cca851a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topics
+    - node.type.involvement_opportunity
+    - taxonomy.vocabulary.topics
+id: node.involvement_opportunity.field_topics
+field_name: field_topics
+entity_type: node
+bundle: involvement_opportunity
+label: Aihealueet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

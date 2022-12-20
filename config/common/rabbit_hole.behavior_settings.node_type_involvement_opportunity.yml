@@ -1,0 +1,14 @@
+uuid: 1fad8d24-121b-4fec-8892-27ef16d45a52
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.involvement_opportunity
+id: node_type_involvement_opportunity
+entity_type_id: node_type
+entity_id: involvement_opportunity
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

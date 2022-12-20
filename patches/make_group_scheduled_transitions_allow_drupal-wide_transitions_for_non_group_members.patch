@@ -1,0 +1,64 @@
+diff --git a/src/Access/AddScheduledTransitions.php b/src/Access/AddScheduledTransitions.php
+index d77c28c..84e47c4 100644
+--- a/src/Access/AddScheduledTransitions.php
++++ b/src/Access/AddScheduledTransitions.php
+@@ -6,6 +6,7 @@ use Drupal\Core\Access\AccessResult;
+ use Drupal\Core\Routing\Access\AccessInterface;
+ use Drupal\Core\Routing\RouteMatchInterface;
+ use Drupal\Core\Session\AccountInterface;
++use Drupal\scheduled_transitions\ScheduledTransitionsPermissions;
+ use Symfony\Component\Routing\Route;
+ use Drupal\group\Access\GroupAccessResult;
+ use Drupal\group\Entity\GroupContent;
+@@ -51,6 +52,19 @@ class AddScheduledTransitions implements AccessInterface {
+           }
+         }
+       }
++      else {
++        // Since the routing access system treats a neutral results as
++        // forbidden, we need to explicitly handle the situation where a user is
++        // not a member of a group but might still be allowed to add scheduled
++        // transtions on nodes that belong to no groups.
++        $bundle = $node->bundle();
++        $permission = ScheduledTransitionsPermissions::addScheduledTransitionsPermission('node', $bundle);
++        $access_result = AccessResult::allowedIfHasPermission($account, $permission);
++
++        if ($access_result->isAllowed()) {
++          return AccessResult::allowed();
++        }
++      }
+     }
+ 
+     return AccessResult::neutral();
+diff --git a/src/Access/ViewScheduledTransitions.php b/src/Access/ViewScheduledTransitions.php
+index 54c2c16..fd79f04 100644
+--- a/src/Access/ViewScheduledTransitions.php
++++ b/src/Access/ViewScheduledTransitions.php
+@@ -6,6 +6,7 @@ use Drupal\Core\Access\AccessResult;
+ use Drupal\Core\Routing\Access\AccessInterface;
+ use Drupal\Core\Routing\RouteMatchInterface;
+ use Drupal\Core\Session\AccountInterface;
++use Drupal\scheduled_transitions\ScheduledTransitionsPermissions;
+ use Symfony\Component\Routing\Route;
+ use Drupal\group\Access\GroupAccessResult;
+ use Drupal\group\Entity\GroupContent;
+@@ -51,6 +52,19 @@ class ViewScheduledTransitions implements AccessInterface {
+           }
+         }
+       }
++      else {
++        // Since the routing access system treats a neutral results as
++        // forbidden, we need to explicitly handle the situation where a user is
++        // not a member of a group but might still be allowed to view scheduled
++        // transtions on nodes that belong to no groups.
++        $bundle = $node->bundle();
++        $permission = ScheduledTransitionsPermissions::viewScheduledTransitionsPermission('node', $bundle);
++        $access_result = AccessResult::allowedIfHasPermission($account, $permission);
++
++        if ($access_result->isAllowed()) {
++          return AccessResult::allowed();
++        }
++      }
+     }
+ 
+     return AccessResult::neutral();

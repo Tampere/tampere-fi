@@ -1,0 +1,15 @@
+uuid: 6bdb0cec-ad1f-42ed-bcfa-4d004e6cf6ca
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraph_view_mode
+third_party_settings:
+  paragraph_view_mode:
+    enabled: false
+id: service_highlight
+label: Asiointilinkki
+icon_uuid: null
+icon_default: null
+description: 'Käytetään tilanteissa, jossa käyttäjä ohjataan ulos sivustolta asiointipalveluun, jossa käyttäjältä vaaditaan sisäänkirjautumista. Voidaan esittää asiointilinkkipainikkeena tai asiointinostona.'
+behavior_plugins: {  }

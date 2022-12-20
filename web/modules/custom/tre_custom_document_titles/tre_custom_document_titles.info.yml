@@ -1,0 +1,8 @@
+name: 'TRE Custom Document Titles'
+type: module
+description: 'Customises the document titles for node pages based on their breadcrumbs.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - easy_breadcrumb:easy_breadcrumb
+  - tre_custom_paths:tre_custom_paths

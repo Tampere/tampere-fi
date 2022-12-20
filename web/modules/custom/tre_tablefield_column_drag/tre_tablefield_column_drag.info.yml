@@ -1,0 +1,7 @@
+name: 'TRE Tablefield Column Drag'
+type: module
+description: 'Handles tablefield column dragging.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - tablefield:tablefield

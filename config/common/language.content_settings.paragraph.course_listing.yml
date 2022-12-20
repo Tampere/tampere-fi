@@ -1,0 +1,18 @@
+uuid: fe92708b-90b9-4152-99c7-4b22c7dd7ad2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.course_listing
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.course_listing
+target_entity_type_id: paragraph
+target_bundle: course_listing
+default_langcode: current_interface
+language_alterable: true

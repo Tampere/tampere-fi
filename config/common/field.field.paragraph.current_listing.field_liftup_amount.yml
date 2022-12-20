@@ -1,0 +1,23 @@
+uuid: 7fe5adcd-2fa1-4494-a28c-464fa1e7d6a9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_liftup_amount
+    - paragraphs.paragraphs_type.current_listing
+  module:
+    - options
+id: paragraph.current_listing.field_liftup_amount
+field_name: field_liftup_amount
+entity_type: paragraph
+bundle: current_listing
+label: 'Näytettävien nostojen määrä'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

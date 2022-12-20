@@ -1,0 +1,46 @@
+{% set basic_content_base_class = basic_content_base_class|default("basic-content") %}
+
+{% set use_right_to_left = content_language == "arb" or content_language == "fa" %}
+
+{% if last_updated|render|trim %}
+  {% set has_last_updated_date = TRUE %}
+{% endif %}
+
+{% if main_image|render|trim %}
+  {% set content_has_image = TRUE %}
+{% endif %}
+
+<article
+  {{ bem(basic_content_base_class, basic_content_modifiers|default([]), basic_content_blockname) }}
+  {% if content_language %} lang="{{ content_language }}" {% endif %}
+  {% if use_right_to_left %} dir="rtl" {% endif %}
+>
+  {% if content_has_image %}
+    <div {{ bem("main-image", basic_content__main_image__modifiers|default([]), basic_content_base_class) }}>
+      {{ main_image }}
+    </div>
+  {% endif %}
+  <div {{ bem("main-content", basic_content__main_content__modifiers|default([]), basic_content_base_class) }}>
+    {% block basic_content_pre_title_content %}
+      {{ pre_title_content }}
+    {% endblock %}
+
+    <div {{ bem("heading", basic_content__heading__modifiers|default([]), basic_content_base_class) }}>
+      {% include "@molecules/hero/hero.twig" with {
+        "hero__modifiers": [ "no-header-margin" ],
+        "hero__heading": main_title,
+        "has_image": FALSE,
+      } %}
+    </div>
+
+    {% block basic_content_main_content %}
+      {{ main_content }}
+    {% endblock %}
+    
+    {% if has_last_updated_date %}
+      <div {{ bem("last-updated", basic_content__last_updated__modifiers|default([]), basic_content_base_class) }}>
+        {{ last_updated }}
+      </div>
+    {% endif %}
+  </div>
+</article>

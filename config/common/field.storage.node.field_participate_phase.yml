@@ -1,0 +1,39 @@
+uuid: f4e69cfb-743e-4b23-a054-c0f526cfdca4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_participate_phase
+field_name: field_participate_phase
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: get_to_know
+      label: Tutustu
+    -
+      value: reply
+      label: 'Vastaa ja kerro kantasi'
+    -
+      value: develop_and_work_together
+      label: 'Kehitä ja tee yhdessä'
+    -
+      value: vote
+      label: Äänestä
+    -
+      value: receive_results
+      label: 'Kuule tuloksista'
+    -
+      value: other
+      label: Osallistu
+  allowed_values_function: null
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

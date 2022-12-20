@@ -1,0 +1,14 @@
+uuid: c8aff28d-5e3e-49c1-8352-0161fb0faa12
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.notice_types
+id: taxonomy_vocabulary_notice_types
+entity_type_id: taxonomy_vocabulary
+entity_id: notice_types
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

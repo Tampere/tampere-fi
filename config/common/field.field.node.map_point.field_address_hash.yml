@@ -1,0 +1,19 @@
+uuid: f7c9ace2-a5a6-4452-b032-4db980e1512c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address_hash
+    - node.type.map_point
+id: node.map_point.field_address_hash
+field_name: field_address_hash
+entity_type: node
+bundle: map_point
+label: Tunniste
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

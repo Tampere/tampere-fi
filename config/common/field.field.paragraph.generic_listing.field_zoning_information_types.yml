@@ -1,0 +1,29 @@
+uuid: 0b7935e0-5c9b-4b45-89d2-2544c78638a2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_zoning_information_types
+    - paragraphs.paragraphs_type.generic_listing
+    - taxonomy.vocabulary.zoning_information_types
+id: paragraph.generic_listing.field_zoning_information_types
+field_name: field_zoning_information_types
+entity_type: paragraph
+bundle: generic_listing
+label: Kaavatasot
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      zoning_information_types: zoning_information_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,10 @@
+uuid: a53e10a1-5693-4528-b6d0-91d0504431f8
+langcode: fi
+status: true
+dependencies: {  }
+id: accordion_text_content
+label: 'Haitarin tekstisisältö'
+icon_uuid: null
+icon_default: null
+description: 'Käytetään haitarin tekstin syöttöön.'
+behavior_plugins: {  }

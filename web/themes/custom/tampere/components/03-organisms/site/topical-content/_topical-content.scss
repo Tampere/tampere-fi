@@ -1,0 +1,18 @@
+.topical-content {
+  @include centered-content(var(--article-content-max-width));
+
+  @include large {
+    .main-content--with-sidebar & {
+      --basic-component-max-width: #{$article-max-width};
+
+      margin-right: 0;
+      margin-left: $gutter-sidebar-content * (-1);
+      padding-left: $gutter-sidebar-content;
+      padding-right: $gutter-sidebar-content;
+    }
+  }
+
+  &__main-content > *:not(.field-authors) {
+    @include page-element-spacer;
+  }
+}

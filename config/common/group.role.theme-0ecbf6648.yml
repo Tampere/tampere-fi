@@ -1,0 +1,17 @@
+uuid: b34294b2-992d-4308-83f5-58fc44302e63
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.rich_article_author
+id: theme-0ecbf6648
+label: Artikkelitoimittaja
+weight: 2
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

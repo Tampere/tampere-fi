@@ -1,0 +1,19 @@
+uuid: a74e2fbd-4499-4073-ae7b-460424a40d05
+langcode: fi
+status: true
+dependencies:
+  module:
+    - markup
+    - paragraphs
+id: paragraph.field_field_selection_help
+field_name: field_field_selection_help
+entity_type: paragraph
+type: markup
+settings: {  }
+module: markup
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

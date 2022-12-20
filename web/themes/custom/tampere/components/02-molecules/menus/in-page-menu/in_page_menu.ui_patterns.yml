@@ -1,0 +1,13 @@
+in_page_menu:
+  label: In-page menu
+  variants:
+    default:
+      label: Default
+    dynamic:
+      label: Dynamic
+  fields:
+    in_page_menu__heading:
+      label: Heading
+    in_page_menu__list_items:
+      label: List items
+  use: "@molecules/menus/in-page-menu/in-page-menu.twig"

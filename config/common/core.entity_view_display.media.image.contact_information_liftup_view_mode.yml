@@ -1,0 +1,90 @@
+uuid: 7e109104-5c95-455e-9c32-589f38044614
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.contact_information_liftup_view_mode
+    - field.field.media.image.field_author
+    - field.field.media.image.field_category_instructions_bulk
+    - field.field.media.image.field_description
+    - field.field.media.image.field_geographical_areas
+    - field.field.media.image.field_keywords
+    - field.field.media.image.field_life_situations
+    - field.field.media.image.field_media_folder
+    - field.field.media.image.field_media_image
+    - field.field.media.image.field_other_identifiers
+    - field.field.media.image.field_plan_numbers
+    - field.field.media.image.field_record_numbers
+    - field.field.media.image.field_topics
+    - image.style.contact_information_liftup_image_style
+    - media.type.image
+  module:
+    - blazy
+    - ds
+_core:
+  default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
+id: media.image.contact_information_liftup_view_mode
+targetEntityType: media
+bundle: image
+mode: contact_information_liftup_view_mode
+content:
+  field_media_image:
+    type: blazy
+    label: hidden
+    settings:
+      caption:
+        title: '0'
+        alt: '0'
+      icon: ''
+      layout: ''
+      view_mode: ''
+      cache: 0
+      current_view_mode: contact_information_liftup_view_mode
+      skin: ''
+      fx: ''
+      style: ''
+      background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_media_style: ''
+      responsive_image_style: ''
+      box_style: ''
+      image_style: contact_information_liftup_image_style
+      media_switch: ''
+      ratio: '1:1'
+      thumbnail_style: ''
+      _uri: ''
+      breakpoints: {  }
+      sizes: ''
+      grid_header: ''
+      grid: ''
+      grid_medium: ''
+      grid_small: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_author: true
+  field_category_instructions_bulk: true
+  field_description: true
+  field_geographical_areas: true
+  field_keywords: true
+  field_life_situations: true
+  field_media_folder: true
+  field_other_identifiers: true
+  field_plan_numbers: true
+  field_record_numbers: true
+  field_topics: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

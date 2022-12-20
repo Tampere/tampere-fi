@@ -1,0 +1,7 @@
+name: 'TRE React & Share'
+type: module
+description: 'Provides a block for embedding React & Share on the site.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - drupal:block

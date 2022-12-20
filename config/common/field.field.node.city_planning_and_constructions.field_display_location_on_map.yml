@@ -1,0 +1,23 @@
+uuid: 3c16075e-2056-442d-999c-aa6a9b139aac
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_location_on_map
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_display_location_on_map
+field_name: field_display_location_on_map
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Näytä sijainti kartalla'
+description: 'Valitse tämä, jos haluat näyttää hankkeen omalla sivulla sen sijainnin kartalla.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

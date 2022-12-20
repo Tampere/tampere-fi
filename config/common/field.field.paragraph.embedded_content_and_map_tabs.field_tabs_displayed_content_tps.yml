@@ -1,0 +1,21 @@
+uuid: 56588d1e-640c-48cc-bc46-3740a851a5e9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tabs_displayed_content_tps
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+  module:
+    - options
+id: paragraph.embedded_content_and_map_tabs.field_tabs_displayed_content_tps
+field_name: field_tabs_displayed_content_tps
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: 'Näytettävät sisältötyypit'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

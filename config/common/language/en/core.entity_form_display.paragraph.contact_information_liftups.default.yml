@@ -1,0 +1,5 @@
+content:
+  field_contact_information_liftup:
+    settings:
+      title: 'Contact information'
+      title_plural: 'Contact information'

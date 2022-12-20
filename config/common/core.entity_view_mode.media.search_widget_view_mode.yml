@@ -1,0 +1,10 @@
+uuid: 7fd85072-a1e5-4669-a540-06c62eafed92
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.search_widget_view_mode
+label: Hakuwidgetti
+targetEntityType: media
+cache: true

@@ -1,0 +1,19 @@
+uuid: ae7f4cdf-392f-4928-817b-240cd10fa3e2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_keywords
+    - node.type.place_of_business
+id: node.place_of_business.field_search_keywords
+field_name: field_search_keywords
+entity_type: node
+bundle: place_of_business
+label: Avainsanat
+description: 'Käytetään sisällön nostamiseen esiin sivuston hakutoiminnallisuudessa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

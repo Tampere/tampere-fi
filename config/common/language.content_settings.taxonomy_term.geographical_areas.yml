@@ -1,0 +1,18 @@
+uuid: a6cdd7e9-9f7d-4a5a-9529-f183dc52c988
+langcode: fi
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.geographical_areas
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.geographical_areas
+target_entity_type_id: taxonomy_term
+target_bundle: geographical_areas
+default_langcode: current_interface
+language_alterable: true

@@ -1,0 +1,19 @@
+uuid: e00bf337-a239-49cb-a8e6-f67664f34d0c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+    - node.type.organization
+  module:
+    - gnode
+    - node
+id: theme-group_node-organization
+label: 'Teema: Group node (Organisaatio)'
+description: 'Adds <em class="placeholder">Organisaatio</em> content to groups both publicly and privately.'
+group_type: theme
+content_plugin: 'group_node:organization'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

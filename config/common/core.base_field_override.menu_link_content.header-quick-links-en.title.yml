@@ -1,0 +1,18 @@
+uuid: c9d1d2d8-f421-44c2-8bc4-3413d4709a53
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.header-quick-links-en
+id: menu_link_content.header-quick-links-en.title
+field_name: title
+entity_type: menu_link_content
+bundle: header-quick-links-en
+label: 'Valikon linkin otsikko'
+description: 'Linkin teksti valikossa käytettäväksi.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

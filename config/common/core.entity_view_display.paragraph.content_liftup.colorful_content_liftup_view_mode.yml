@@ -1,0 +1,26 @@
+uuid: 59faa046-b4ef-4a31-ad80-b030d1dda31e
+langcode: fi
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.colorful_content_liftup_view_mode
+    - field.field.paragraph.content_liftup.field_content_link
+    - field.field.paragraph.content_liftup.field_liftup_title
+    - field.field.paragraph.content_liftup.field_summary
+    - paragraphs.paragraphs_type.content_liftup
+id: paragraph.content_liftup.colorful_content_liftup_view_mode
+targetEntityType: paragraph
+bundle: content_liftup
+mode: colorful_content_liftup_view_mode
+content:
+  field_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_content_link: true
+  field_liftup_title: true
+  search_api_excerpt: true

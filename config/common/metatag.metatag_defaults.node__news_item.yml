@@ -1,0 +1,13 @@
+uuid: 21608ad6-ee37-42ac-9014-42e04e6e0a58
+langcode: fi
+status: true
+dependencies: {  }
+id: node__news_item
+label: 'Sisältö: Uutinen'
+tags:
+  article_modified_time: '[node:changed:html_datetime]'
+  article_published_time: '[node:published:html_datetime]'
+  article_tag: '[node:field_topics],[node:field_keywords],[node:field_life_situations],[node:field_geographical_areas]'
+  description: '[node:field_lead:value]'
+  og_description: '[node:field_lead:value]'
+  og_type: article

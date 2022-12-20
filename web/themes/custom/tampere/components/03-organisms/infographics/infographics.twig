@@ -1,0 +1,15 @@
+{% set infographics__base_class = "infographics" %}
+
+<div {{ bem(infographics__base_class, infographics__modifiers|default([]), infographics__blockname) }}>
+  {% block infographics__content %}
+    {% for item in infographics %}
+      <div {{ bem("item", infographics__item__modifiers|default([]), infographics__base_class) }}>
+        {% include "@molecules/infograph/infograph.twig" with {
+          infograph__modifiers: item.infograph__modifiers,
+          infograph__heading: item.infograph__heading,
+          infograph__content: item.infograph__content,
+        } %}
+      </div>
+    {% endfor %}
+  {% endblock %}
+</div>

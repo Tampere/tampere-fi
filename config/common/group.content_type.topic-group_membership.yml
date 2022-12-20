@@ -1,0 +1,17 @@
+uuid: 6fd00db9-34a0-4112-9eac-4a356db8d538
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  module:
+    - user
+id: topic-group_membership
+label: 'Topic: Group membership'
+description: 'Adds users to groups as members.'
+group_type: topic
+content_plugin: group_membership
+plugin_config:
+  group_cardinality: 0
+  entity_cardinality: 1
+  use_creation_wizard: false

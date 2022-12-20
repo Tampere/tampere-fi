@@ -1,0 +1,93 @@
+uuid: 947dc26a-9582-4e12-b13a-d5c85a726e2a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.rss_item.body
+    - field.field.node.rss_item.field_guid
+    - field.field.node.rss_item.field_link_single
+    - node.type.rss_item
+  module:
+    - node
+    - publication_date
+label: RSS-syöte
+id: rss_feed
+description: ''
+help: ''
+import_period: 0
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: true
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: rss_item
+  langcode: und
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _delete
+  skip_hash_check: false
+  authorize: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources: {  }
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: content
+      summary: '----'
+    settings:
+      language: ''
+      format: basic_html
+  -
+    target: created
+    map:
+      value: timestamp
+    settings:
+      language: ''
+      timezone: Europe/Helsinki
+  -
+    target: uid
+    map:
+      target_id: 'parent:uid'
+    settings:
+      language: ''
+      reference_by: uid
+      autocreate: 0
+  -
+    target: field_link_single
+    map:
+      uri: url
+      title: '----'
+    settings:
+      language: null
+  -
+    target: field_guid
+    map:
+      value: guid
+    settings:
+      language: null
+    unique:
+      value: '1'
+  -
+    target: published_at
+    map:
+      value: timestamp
+    settings:
+      language: ''
+      timezone: Europe/Helsinki

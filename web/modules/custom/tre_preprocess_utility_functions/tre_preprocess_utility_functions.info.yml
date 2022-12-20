@@ -1,0 +1,7 @@
+name: 'Preprocess Utility Functions'
+type: module
+description: 'Provides utility functions that can be useful for preprocessing.'
+core_version_requirement: ^8 || ^9
+package: 'TRE'
+dependencies:
+  - easy_breadcrumb:easy_breadcrumb

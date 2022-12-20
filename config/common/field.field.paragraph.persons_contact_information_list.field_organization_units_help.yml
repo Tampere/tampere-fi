@@ -1,0 +1,26 @@
+uuid: f4b8a653-8fd6-4b9a-b5d4-779b734d5fe5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_organization_units_help
+    - paragraphs.paragraphs_type.persons_contact_information_list
+  module:
+    - markup
+id: paragraph.persons_contact_information_list.field_organization_units_help
+field_name: field_organization_units_help
+entity_type: paragraph
+bundle: persons_contact_information_list
+label: Organisaatioyksikköohje
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    markup: null
+default_value_callback: ''
+settings:
+  markup:
+    value: "<h3>Valitse, mistä organisaatioyksiköistä hakuja tehdään. Henkilön ei tarvitse kuulua kaikkiin valittuihin organisaatioyksiköihin vaan vain johonkin niistä.</h3>\r\n"
+    format: basic_html
+field_type: markup

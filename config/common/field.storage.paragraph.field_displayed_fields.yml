@@ -1,0 +1,30 @@
+uuid: 5dcddfc5-8dc2-491b-a9d2-eec936310a2a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_displayed_fields
+field_name: field_displayed_fields
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: Nimi
+    -
+      value: description
+      label: Kuvaus
+    -
+      value: contacts
+      label: Yhteystiedot
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

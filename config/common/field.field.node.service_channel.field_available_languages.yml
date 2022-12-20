@@ -1,0 +1,21 @@
+uuid: 216702e4-1abb-4466-850d-be72fb63184b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_available_languages
+    - node.type.service_channel
+  module:
+    - options
+id: node.service_channel.field_available_languages
+field_name: field_available_languages
+entity_type: node
+bundle: service_channel
+label: 'Palvelun kielet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

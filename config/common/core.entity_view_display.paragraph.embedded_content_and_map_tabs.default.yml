@@ -1,0 +1,31 @@
+uuid: ececd341-2ac9-451d-ba3b-ea841c558c14
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embedded_content_and_map_tabs.field_description_text
+    - field.field.paragraph.embedded_content_and_map_tabs.field_geographical_areas
+    - field.field.paragraph.embedded_content_and_map_tabs.field_keywords
+    - field.field.paragraph.embedded_content_and_map_tabs.field_life_situations
+    - field.field.paragraph.embedded_content_and_map_tabs.field_tabs_displayed_content_tps
+    - field.field.paragraph.embedded_content_and_map_tabs.field_taxonomy_combination
+    - field.field.paragraph.embedded_content_and_map_tabs.field_title
+    - field.field.paragraph.embedded_content_and_map_tabs.field_topics
+    - field.field.paragraph.embedded_content_and_map_tabs.field_zoning_information_types
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+id: paragraph.embedded_content_and_map_tabs.default
+targetEntityType: paragraph
+bundle: embedded_content_and_map_tabs
+mode: default
+content: {  }
+hidden:
+  field_description_text: true
+  field_geographical_areas: true
+  field_keywords: true
+  field_life_situations: true
+  field_tabs_displayed_content_tps: true
+  field_taxonomy_combination: true
+  field_title: true
+  field_topics: true
+  field_zoning_information_types: true
+  search_api_excerpt: true

@@ -1,0 +1,33 @@
+uuid: fb8e9984-8a29-41a4-8af8-f5ed73296441
+langcode: fi
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: emergency_notices_en
+label: 'Emergency notices EN'
+type: 'canonical_entities:node'
+pattern: 'emergency_notice/[node:title]'
+selection_criteria:
+  b8e22b38-cc1e-4d4a-8045-223faa1624ef:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: b8e22b38-cc1e-4d4a-8045-223faa1624ef
+    context_mapping:
+      node: node
+    bundles:
+      emergency_notice: emergency_notice
+  05c8dbc6-4cee-4788-9b48-7e96c9020483:
+    id: language
+    negate: false
+    uuid: 05c8dbc6-4cee-4788-9b48-7e96c9020483
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Kieli

@@ -1,0 +1,23 @@
+uuid: 888259e9-eb6f-4d3f-8feb-db466f280508
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_color_palette
+    - group.type.minisite
+  module:
+    - options
+id: group.minisite.field_color_palette
+field_name: field_color_palette
+entity_type: group
+bundle: minisite
+label: Väripaletti
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: palette-1
+default_value_callback: ''
+settings: {  }
+field_type: list_string

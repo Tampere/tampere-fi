@@ -1,0 +1,41 @@
+uuid: eb3a465c-8b77-4089-99fa-6a81279a2705
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.news_media_delivery
+    - field.field.paragraph.place_liftup.field_display_additional_info
+    - field.field.paragraph.place_liftup.field_display_map
+    - field.field.paragraph.place_liftup.field_display_place_description
+    - field.field.paragraph.place_liftup.field_link_to_place_content
+    - field.field.paragraph.place_liftup.field_place
+    - paragraphs.paragraphs_type.place_liftup
+  module:
+    - ds
+id: paragraph.place_liftup.news_media_delivery
+targetEntityType: paragraph
+bundle: place_liftup
+mode: news_media_delivery
+content:
+  field_place:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: news_media_delivery
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  field_display_additional_info: true
+  field_display_map: true
+  field_display_place_description: true
+  field_link_to_place_content: true
+  search_api_excerpt: true

@@ -1,0 +1,10 @@
+uuid: cc40e35c-d6a3-4eee-a2de-a615435c54cf
+langcode: fi
+status: true
+dependencies: {  }
+id: internal_link_with_link_text
+label: 'Sisäinen linkki linkkitekstillä'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

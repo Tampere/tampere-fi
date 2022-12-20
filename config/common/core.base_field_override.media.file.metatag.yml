@@ -1,0 +1,18 @@
+uuid: d1e441f4-e0c4-402c-b8e5-61ba9ac1dde5
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.file
+id: media.file.metatag
+field_name: metatag
+entity_type: media
+bundle: file
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

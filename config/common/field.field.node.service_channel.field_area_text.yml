@@ -1,0 +1,26 @@
+uuid: 066e2ba8-87b8-4c09-be2b-fb6ce155d2f7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_area_text
+    - node.type.service_channel
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - basic_html
+id: node.service_channel.field_area_text
+field_name: field_area_text
+entity_type: node
+bundle: service_channel
+label: 'Alue, jossa tarjolla'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

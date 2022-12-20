@@ -1,0 +1,198 @@
+$card-with-icon-image-height: 227px;
+$card-with-icon-image-height-large: 365px;
+
+.card-with-icon {
+  $base_class: &;
+
+  background-color: clr(accent);
+  color: clr(text-inverse);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:not(#{$base_class}--colorful):not(#{$base_class}--with-image) {
+    @include dynamic-color(accent);
+  }
+
+  &__image-container {
+    height: $card-with-icon-image-height;
+    overflow: hidden;
+
+    @include large {
+      height: $card-with-icon-image-height-large;
+    }
+
+    // Drupal image containers.
+    div {
+      height: 100%;
+    }
+  }
+
+  &__content {
+    padding-top: $space-l;
+    padding-right: $space-s;
+    padding-left: $space-s;
+    padding-bottom: $space-s;
+
+    @include large {
+      padding-top: $space-xxl;
+      padding-right: $space-xl;
+      padding-left: $space-xl;
+      padding-bottom: $space-l;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-bottom: $space-m;
+    height: $icon-medium-plus;
+    width: $icon-medium-plus;
+
+    @include large {
+      margin-bottom: $space-l;
+    }
+
+    &--topic {
+      margin-bottom: $space-s;
+      height: $icon-large;
+      width: $icon-large;
+
+      @include large {
+        margin-bottom: $space-m;
+        width: $icon-xl;
+      }
+    }
+  }
+
+  &__heading {
+    font-size: $font-20;
+    margin-bottom: $space-xs;
+
+    @include large {
+      font-size: $font-24;
+      margin-bottom: 0;
+    }
+  }
+
+  &__body {
+    margin-top: $space-xs;
+    margin-bottom: $space-xs;
+
+    @include large {
+      margin-top: $space-l
+    }
+  }
+
+  &__link {
+    background-image: url('/themes/custom/tampere/images/waves-transparent-new.svg');
+    background-repeat: no-repeat;
+    background-position: top $space-s right -70px;
+    margin-bottom: auto;
+    padding-right: $space-s;
+    padding-bottom: $space-xxl;
+    padding-left: $space-s;
+    height: 100%;
+
+    @include large {
+      background-position: top $space-m right;
+      padding-right: $space-xl;
+      padding-left: $space-xl;
+    }
+  }
+
+  // Variations
+  &--with-image {
+    background-color: transparent;
+    color: clr(primary);
+
+    #{$base_class}__title-container {
+      @include large {
+        display: flex;
+      }
+    }
+
+    #{$base_class}__icon {
+      @include large {
+        margin-bottom: $space-m;
+      }
+
+      &:not(#{$base_class}__icon--topic) {
+        @include large-down {
+          margin-bottom: $space-xs;
+        }
+      }
+    }
+
+    #{$base_class}__icon--topic {
+      @include large-down {
+        margin-bottom: 0;
+      }
+
+      margin-bottom: $space-s;
+    }
+
+    #{$base_class}__content {
+      display: flex;
+      flex-direction: column;
+      padding-top: $space-s;
+      padding-bottom: 0;
+
+      @include large {
+        margin-top: $space-l;
+        padding: 0;
+      }
+    }
+
+    #{$base_class}__heading {
+      margin-bottom: $space-s;
+
+      @include large {
+        align-self: center;
+        margin-bottom: $space-m;
+        margin-left: $space-l;
+      }
+    }
+
+    #{$base_class}__body {
+      color: clr(text);
+      margin-top: $space-xs * (-1);
+      margin-bottom: $space-s;
+
+      @include large {
+        margin-top: 0;
+        margin-bottom: $space-xl;
+      }
+    }
+
+    #{$base_class}__link {
+      background: none;
+      height: unset;
+      margin-top: auto;
+      margin-bottom: 0;
+      padding-bottom: $space-s;
+
+      @include large {
+        padding: 0;
+      }
+    }
+  }
+
+  // Color variations.
+  &--colorful-1 {
+    @include dynamic-color(#{$colorful-card-1-color-name});
+
+    background-color: clr(#{$colorful-card-1-color-name});
+  }
+
+  &--colorful-2 {
+    @include dynamic-color(#{$colorful-card-2-color-name});
+
+    background-color: clr('alternative-#{$colorful-card-2-color-name}', #{clr(#{$colorful-card-2-color-name})});
+  }
+
+  &--colorful-3 {
+    @include dynamic-color(#{$colorful-card-3-color-name});
+
+    background-color: clr('alternative-#{$colorful-card-3-color-name}', #{clr(#{$colorful-card-3-color-name})});
+  }
+}

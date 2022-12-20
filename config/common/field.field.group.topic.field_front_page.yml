@@ -1,0 +1,29 @@
+uuid: 2145d257-0a2a-4bd3-964c-fbcf0d50496f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_front_page
+    - group.type.topic
+    - node.type.collection_page
+id: group.topic.field_front_page
+field_name: field_front_page
+entity_type: group
+bundle: topic
+label: Etusivu
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      collection_page: collection_page
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

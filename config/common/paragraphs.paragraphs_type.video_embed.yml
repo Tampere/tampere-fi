@@ -1,0 +1,10 @@
+uuid: 3da2eb27-e44d-4283-baf5-95f02f097620
+langcode: fi
+status: true
+dependencies: {  }
+id: video_embed
+label: Videoupotus
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

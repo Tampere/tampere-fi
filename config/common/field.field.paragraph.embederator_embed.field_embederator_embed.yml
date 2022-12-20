@@ -1,0 +1,27 @@
+uuid: 88ce31e5-098e-4fb0-9de7-d2ab2f96bdde
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_embederator_embed
+    - paragraphs.paragraphs_type.embederator_embed
+id: paragraph.embederator_embed.field_embederator_embed
+field_name: field_embederator_embed
+entity_type: paragraph
+bundle: embederator_embed
+label: 'Ulkoinen mediaupotus'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:embederator'
+  handler_settings:
+    target_bundles: null
+    negate: '0'
+    target_bundles_drag_drop:
+      quickchannel_embed:
+        weight: '2'
+        enabled: 0
+field_type: entity_reference

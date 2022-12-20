@@ -1,0 +1,30 @@
+uuid: c81a1eab-ee54-487d-ae34-6a625c88118a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.mediaserver_live
+    - field.field.embederator.mediaserver_live.field_mediaserver_live_title
+  module:
+    - embederator
+id: embederator.mediaserver_live.default
+targetEntityType: embederator
+bundle: mediaserver_live
+mode: default
+content:
+  embed_id:
+    type: embederator_default
+    label: hidden
+    settings:
+      append_unique_id: false
+      nullify_cache: false
+      loadstyle: ''
+      initial_height: 500
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_mediaserver_live_title: true
+  label: true
+  search_api_excerpt: true
+  user_id: true

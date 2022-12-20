@@ -1,0 +1,18 @@
+uuid: 829648a2-775b-41d5-8750-c8eabeda946d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-project
+id: group_content.minisite-group_node-project.changed
+field_name: changed
+entity_type: group_content
+bundle: minisite-group_node-project
+label: 'Changed on'
+description: 'The time that the group content was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

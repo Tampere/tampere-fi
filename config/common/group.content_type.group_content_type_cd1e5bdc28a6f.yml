@@ -1,0 +1,19 @@
+uuid: 596f21a9-e08d-43a5-883e-11af91e1ba26
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - node.type.basic_content_page
+  module:
+    - gnode
+    - node
+id: group_content_type_cd1e5bdc28a6f
+label: 'Aihepiiri: Group node (Perussisältösivu)'
+description: 'Adds <em class="placeholder">Perussisältösivu</em> content to groups both publicly and privately.'
+group_type: topic
+content_plugin: 'group_node:basic_content_page'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

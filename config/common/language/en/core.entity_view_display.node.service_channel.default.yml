@@ -1,0 +1,21 @@
+third_party_settings:
+  ds:
+    layout:
+      settings:
+        pattern:
+          settings:
+            additional_content_label: 'Basic information:'
+  field_group:
+    group_form_delivery_details:
+      label: 'Form delivery details'
+      format_settings:
+        pattern_settings:
+          icon_field_group:
+            field_label: 'Form delivery details'
+content:
+  field_service_hours_daily:
+    settings:
+      closed_format: Closed
+  field_service_hours_overnight:
+    settings:
+      closed_format: Closed

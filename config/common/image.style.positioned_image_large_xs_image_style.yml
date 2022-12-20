@@ -1,0 +1,17 @@
+uuid: 546913e7-abfa-4965-9f59-0f4f1cc39b32
+langcode: fi
+status: true
+dependencies:
+  module:
+    - focal_point
+name: positioned_image_large_xs_image_style
+label: 'Asemoitu kuva (iso) - xs (480×320)'
+effects:
+  76440200-460c-4f55-b2f7-3e43b87aacb2:
+    uuid: 76440200-460c-4f55-b2f7-3e43b87aacb2
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 480
+      height: 320
+      crop_type: focal_point

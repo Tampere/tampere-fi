@@ -1,0 +1,23 @@
+uuid: 50c9ae33-30b9-4e9c-8f32-256313d9af08
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_generic_boolean_value
+    - paragraphs.paragraphs_type.attachment
+id: paragraph.attachment.field_generic_boolean_value
+field_name: field_generic_boolean_value
+entity_type: paragraph
+bundle: attachment
+label: 'Näytä mediatiedoston kuvaus paragraafissa asetetun kuvauksen sijasta'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

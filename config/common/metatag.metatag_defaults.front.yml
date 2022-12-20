@@ -1,0 +1,14 @@
+uuid: 92cc6038-8c46-4ab4-bf10-200ad7805f77
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 1noCXlegCr5HFehQRF1ViXy1jhU1jZ_sNN99a8Sj5jo
+id: front
+label: Etusivu
+tags:
+  canonical_url: '[site:url]'
+  description: 'Tampereen kaupungin verkkosivuilta löydät kaupungin palvelut sekä ajankohtaiset asiat ja pääset kaupungin asiointipalveluihin.'
+  og_description: 'Tampereen kaupungin verkkosivuilta löydät kaupungin palvelut sekä ajankohtaiset asiat ja pääset kaupungin asiointipalveluihin.'
+  og_title: 'Tampereen kaupunki'
+  shortlink: '[site:url]'

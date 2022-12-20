@@ -1,0 +1,26 @@
+uuid: 3883aec5-1a41-4839-b684-2d58c171a717
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_footer_content
+    - group.type.minisite
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats:
+      - footer_text
+id: group.minisite.field_footer_content
+field_name: field_footer_content
+entity_type: group
+bundle: minisite
+label: 'Sivuston alatunniste'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

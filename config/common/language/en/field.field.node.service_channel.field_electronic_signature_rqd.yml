@@ -1,0 +1,4 @@
+label: 'Electronic signature required'
+settings:
+  on_label: 'E-service requires an electronic signature.'
+  off_label: 'E-service does not require an electronic signature.'

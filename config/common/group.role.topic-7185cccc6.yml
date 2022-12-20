@@ -1,0 +1,17 @@
+uuid: 540beb3e-9a1b-488a-8f6c-0c996147a7c1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.author
+id: topic-7185cccc6
+label: Toimittaja
+weight: -7
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

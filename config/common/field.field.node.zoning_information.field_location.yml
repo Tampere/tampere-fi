@@ -1,0 +1,21 @@
+uuid: 660e40ef-dcf2-44c1-8e87-d58abe7f351c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.zoning_information
+  module:
+    - geofield
+id: node.zoning_information.field_location
+field_name: field_location
+entity_type: node
+bundle: zoning_information
+label: Sijainti
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

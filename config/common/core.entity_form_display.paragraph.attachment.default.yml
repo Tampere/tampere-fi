@@ -1,0 +1,52 @@
+uuid: 0a12e47f-c513-44b3-ae4f-fb2de6b5cd1f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.attachment.field_description_text
+    - field.field.paragraph.attachment.field_generic_boolean_value
+    - field.field.paragraph.attachment.field_media
+    - paragraphs.paragraphs_type.attachment
+  module:
+    - maxlength
+    - media_library
+id: paragraph.attachment.default
+targetEntityType: paragraph
+bundle: attachment
+mode: default
+content:
+  field_description_text:
+    type: string_textarea
+    weight: 14
+    region: content
+    settings:
+      rows: 2
+      placeholder: ''
+    third_party_settings:
+      maxlength:
+        maxlength_js: 120
+        maxlength_js_label: 'Sisältö rajoitettu @limit merkkiin, merkkejä jäljellä: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+        maxlength_js_truncate_html: false
+  field_generic_boolean_value:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_media:
+    type: media_library_widget
+    weight: 13
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

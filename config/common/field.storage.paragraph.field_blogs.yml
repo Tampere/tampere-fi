@@ -1,0 +1,20 @@
+uuid: c1e22ad3-6d42-4a3d-ac8c-bbfa7f8bfa54
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_blogs
+field_name: field_blogs
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

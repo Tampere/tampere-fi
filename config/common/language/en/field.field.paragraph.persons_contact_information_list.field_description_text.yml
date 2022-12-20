@@ -1,0 +1,3 @@
+default_value:
+  -
+    value: 'Email addresses are generally in the format firstname.lastname@tampere.fi unless otherwise specified for the person.'

@@ -1,0 +1,19 @@
+uuid: 96a8313a-2e70-4bcc-bbd6-a647882b2c68
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_exception_hours
+    - node.type.place_of_business
+id: node.place_of_business.field_exception_hours
+field_name: field_exception_hours
+entity_type: node
+bundle: place_of_business
+label: Poikkeusaukioloajat
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

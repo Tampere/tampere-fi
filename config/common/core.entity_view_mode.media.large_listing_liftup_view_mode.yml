@@ -1,0 +1,10 @@
+uuid: 822383e1-1fac-4855-a90f-4417c158ca43
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.large_listing_liftup_view_mode
+label: 'Iso listausnosto'
+targetEntityType: media
+cache: true
