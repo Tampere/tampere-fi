@@ -3,6 +3,7 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.node.news_item.field_additional_info_for_media
     - field.field.node.news_item.field_archive_search_content
     - field.field.node.news_item.field_author
     - field.field.node.news_item.field_body
@@ -149,6 +150,7 @@ third_party_settings:
       children:
         - field_send_to_media
         - field_mailing_list_information
+        - field_additional_info_for_media
       label: Mediajulkaisu
       region: content
       parent_name: ''
@@ -172,6 +174,14 @@ content:
     weight: 2
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_additional_info_for_media:
+    type: string_textarea
+    weight: 35
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_author:
     type: string_textarea

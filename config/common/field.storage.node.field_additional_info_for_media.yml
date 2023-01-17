@@ -1,0 +1,19 @@
+uuid: 8fa02b96-26ab-409b-a4a3-de5d81a6dc62
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_additional_info_for_media
+field_name: field_additional_info_for_media
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

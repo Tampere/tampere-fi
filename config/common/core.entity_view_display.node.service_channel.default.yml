@@ -62,14 +62,13 @@ third_party_settings:
         - group_form_delivery_details
         - field_form_receiver
         - field_additional_phones
-        - field_links
         - field_address_postal
+        - field_links
         - field_delivery_details
         - field_support_phones
         - field_support_emails
         - field_accessibility_and_services
       place_contact__right_column_content:
-        - field_services
         - field_service_hours_daily
         - field_service_hours_overnight
         - field_exception_hours
@@ -307,7 +306,7 @@ content:
       time_format: G
       compress: false
       grouped: false
-      show_closed: all
+      show_closed: open
       closed_format: suljettu
       separator:
         days: '<br />'
@@ -319,8 +318,12 @@ content:
         position: ''
         open_text: 'Currently open!'
         closed_text: 'Currently closed'
+      exceptions:
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        title: 'Exception hours'
       timezone_field: ''
-      office_hours_first_day: ''
+      office_hours_first_day: '1'
       schema:
         enabled: false
     third_party_settings:
@@ -344,7 +347,7 @@ content:
       time_format: G
       compress: false
       grouped: false
-      show_closed: all
+      show_closed: open
       closed_format: suljettu
       separator:
         days: '<br />'
@@ -356,8 +359,12 @@ content:
         position: ''
         open_text: 'Currently open!'
         closed_text: 'Currently closed'
+      exceptions:
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        title: 'Exception hours'
       timezone_field: ''
-      office_hours_first_day: ''
+      office_hours_first_day: '1'
       schema:
         enabled: false
     third_party_settings:
@@ -423,4 +430,5 @@ hidden:
   field_service_channel_type: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

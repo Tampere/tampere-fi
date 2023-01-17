@@ -270,7 +270,7 @@ content:
       time_format: G
       compress: false
       grouped: false
-      show_closed: all
+      show_closed: open
       closed_format: Suljettu
       separator:
         days: '<br />'
@@ -282,8 +282,12 @@ content:
         position: ''
         open_text: 'Currently open!'
         closed_text: 'Currently closed'
+      exceptions:
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        title: 'Exception hours'
       timezone_field: ''
-      office_hours_first_day: ''
+      office_hours_first_day: '1'
       schema:
         enabled: false
     third_party_settings:
@@ -352,4 +356,5 @@ hidden:
   field_service_hours_overnight: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

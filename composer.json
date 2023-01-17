@@ -386,7 +386,8 @@
             "drupal/group": {
                 "2815971 - More contexts": "https://www.drupal.org/files/issues/2021-02-19/2815971-28.patch",
                 "2881769 - group/<id>/node/create uses the permissions of group/<id>/node/add": "https://www.drupal.org/files/issues/2020-10-01/2881769-22.patch",
-                "GroupContentStorage exceptions": "patches/groupcontentstorage_exceptions.patch"
+                "GroupContentStorage exceptions": "patches/groupcontentstorage_exceptions.patch",
+                "Load group using group parameter - group 8.x-1.5": "patches/load_group_using_group_parameter.patch"
             },
             "drupal/group_content_menu": {
                 "3209011 - Active trail is cached incorrectly": "https://www.drupal.org/files/issues/2021-04-21/group_content_menu-active_trail_cache_problem-3209011-10.patch",

@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Contains tre_news_and_article_view_fixes module.
+ */
+
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+
+/**
+ * Implements hook_views_query_alter().
+ *
+ * Increase the max published_at timestamp to cover the whole day.
+ */
+function tre_news_and_article_view_fixes_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  if ($view->id() == 'news_and_article_archive') {
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {
+        if (str_starts_with($condition['field'], 'node_field_data.published_at <=')) {
+          // Since the field and value are together, let's extract the max
+          // published_at timestamp and increase it to cover the whole day.
+          $parts = explode(' <= ', $condition['field']);
+          $published_at_max_increased_one_day = intval($parts[1]) + 24 * 60 * 60 - 1;
+          $condition['field'] = $parts[0] . ' <= ' . strval($published_at_max_increased_one_day);
+        }
+      }
+    }
+  }
+}

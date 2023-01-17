@@ -130,6 +130,10 @@
     }
   }
 
+  &--eservice-channel-liftup-view-mode {
+    margin: 0;
+  }
+
   // On narrow content pages, the CTA element should use the halfwidth variation styles
   // inside an accordion even when there is no sidebar.
   .basic-content &--accordion-content-view-mode,

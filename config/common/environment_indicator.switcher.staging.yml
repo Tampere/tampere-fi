@@ -5,6 +5,6 @@ dependencies: {  }
 machine: staging
 description: null
 name: Staging
-url: 'https://tampere-staging.exove.eu'
+url: 'https://tampere-staging.example.com'
 fg_color: '#abacab'
 bg_color: '#de7123'

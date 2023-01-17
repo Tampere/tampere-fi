@@ -16,6 +16,7 @@ use Tampere\PtvV11\PtvModel\V11VmOpenApiElectronicChannel;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiPhoneChannel;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiPrintableFormChannel;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiWebPageChannel;
+use Tampere\PtvV11\PtvModel\V8VmOpenApiAddressDelivery;
 
 /**
  * Plugin class for source plugin for PTV Service Channels.
@@ -432,19 +433,23 @@ class PtvServiceChannels extends SqlBase {
     $all_delivery_receivers = [];
     $index = 0;
 
-    if (!empty($delivery_addresses)) {
-      while (count($all_delivery_receivers) == 0) {
-        $delivery_receiver = $delivery_addresses[$index]->getReceiver();
-
-        if (!empty($delivery_receiver)) {
-          $delivery_details = array_map(function ($item) {
-            return $item->getValue();
-          }, $data_helpers::getOpenApiLanguageItemStringsByLanguage($delivery_receiver, $language));
-
-          $all_delivery_receivers[] = implode(", ", $delivery_details);
-        }
-        $index++;
+    // Reset keys to numeric so it is safe to use 0-based indices.
+    $delivery_addresses = array_values($delivery_addresses);
+    while (count($all_delivery_receivers) == 0 && array_key_exists($index, $delivery_addresses)) {
+      $address = $delivery_addresses[$index];
+      if (!($address instanceof V8VmOpenApiAddressDelivery)) {
+        continue;
       }
+      $delivery_receiver = $address->getReceiver();
+
+      if (!empty($delivery_receiver)) {
+        $delivery_details = array_map(function ($item) {
+          return $item->getValue();
+        }, $data_helpers::getOpenApiLanguageItemStringsByLanguage($delivery_receiver, $language));
+
+        $all_delivery_receivers[] = implode(", ", $delivery_details);
+      }
+      $index++;
     }
 
     return implode("\n", $all_delivery_receivers);

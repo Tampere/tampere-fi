@@ -77,26 +77,7 @@
     }
 
     > *:not(#{$base_class}__additional-content-label) {
-      display: inline;
-    }
-
-    > ::before {
-      content: ", ";
-      margin-left: -4px;
-    }
-
-    &:not(#{$base_class}--with-label) {
-      > :first-child::before {
-        content: none;
-        margin-left: 0;
-      }
-    }
-
-    &--with-label {
-      > :nth-child(2)::before {
-        content: none;
-        margin-left: 0;
-      }
+      margin-top: $space-xs;
     }
   }
 

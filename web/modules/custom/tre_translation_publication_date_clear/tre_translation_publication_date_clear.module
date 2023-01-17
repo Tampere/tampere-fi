@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Contains tre_translation_publication_date_clear.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_entity_translation_create().
+ */
+function tre_translation_publication_date_clear_entity_translation_create(EntityInterface $translation) {
+  if ($translation instanceof NodeInterface && $translation->hasField('published_at')) {
+    $translation->set('published_at', NULL);
+  }
+}

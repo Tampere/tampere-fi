@@ -1,4 +1,6 @@
 content_img__img__src: 'https://placeimg.com/1280/720/nature'
 content_img__img__caption: 'This is image caption'
 content_img__tag: 'Uutinen'
-content_img__date: '00.00.2021 klo 15.20' 
+content_img__date: '00.00.2021 klo 15.20'
+content_img__img__url: '#'
+content_img__img__link_alt: 'Lorem ipsum'

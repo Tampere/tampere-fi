@@ -2,6 +2,10 @@
  * @file
  * A JavaScript file containing the image gallery functionality.
  *
+ * Initializes a Tobii instance if one does not already exist for
+ * the page. Can be used with any component requiring the lightbox
+ * functionality.
+ *
  */
 
 /**
@@ -13,19 +17,20 @@
  * @returns {string}
  */
 function getCaption(currentElement) {
-  const captionElement = currentElement.closest('.image-gallery__item')
-    .querySelector('.image-gallery__caption');
-  let caption;
+  const galleryItem = currentElement.closest('.image-gallery__item');
+  let caption = "";
+
+  if (!galleryItem) {
+    return caption;
+  }
+
+  const captionElement = galleryItem.querySelector('.image-gallery__caption');
 
   if (captionElement) {
     caption = captionElement.innerText;
-
-    if (caption) {
-      return caption;
-    }
   }
 
-  return "";
+  return caption;
 }
 
 /**
@@ -37,29 +42,29 @@ function getCaption(currentElement) {
  * @returns {string}
  */
  function getItemName(currentElement) {
-  const nameElement = currentElement.closest('.image-gallery__item')
-    .querySelector('.image-gallery__item-name');
-  let name;
+  const galleryItem = currentElement.closest('.image-gallery__item');
+  let name = "";
+
+  if (!galleryItem) {
+    return name;
+  }
+
+  const nameElement = galleryItem.querySelector('.image-gallery__item-name');
 
   if (nameElement) {
     name = nameElement.innerText;
-
-    if (name) {
-      return name;
-    }
   }
 
-  return "";
+  return name;
 }
 
 Drupal.behaviors.imageGallery = {
   attach(context) {
+    const closeIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke="none" d="M0 0h24v24H0z"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
     const imageGalleries = once('image-gallery', '.image-gallery', context);
     const tobiiOnceId = 'tobii';
     let imageGalleryImages;
     let parentLink;
-    let tobii;
-    let tobiiOncedElement;
 
     if (imageGalleries) {
       imageGalleries.forEach((gallery) => {
@@ -73,17 +78,28 @@ Drupal.behaviors.imageGallery = {
           parentLink.setAttribute('aria-label', Drupal.t('Show image @name in a larger size', { '@name': itemName }));
         });
       });
+    }
 
-      tobiiOncedElement = once.find(tobiiOnceId);
-      if (tobiiOncedElement.length === 0) {
-        tobii = new Tobii({
-          captionText: getCaption,
-          navLabel: [Drupal.t('Previous image'), Drupal.t('Next image')],
-          closeLabel: Drupal.t('Close'),
-          loadingIndicatorLabel: Drupal.t('Image loading'),
-        });
+    let tobiiOnced = once.find(tobiiOnceId);
+    if (tobiiOnced.length === 0) {
+      const tobii = new Tobii({
+        captionText: getCaption,
+        navLabel: [Drupal.t('Previous image'), Drupal.t('Next image')],
+        closeText: `${Drupal.t('Close window')} ${closeIcon}`,
+        loadingIndicatorLabel: Drupal.t('Image loading'),
+      });
 
-        tobiiOncedElement = once(tobiiOnceId, document.body, context).shift();
+      tobiiOnced = once(tobiiOnceId, document.body, context);
+    }
+
+    if (tobiiOnced) {
+      const tobiiOncedElement = tobiiOnced.shift();
+      const tobiiCloseButton = tobiiOncedElement.querySelector('.tobii__btn--close', context);
+
+      if (tobiiCloseButton) {
+        // Remove unnecessary aria-label from Tobii close button as the library
+        // always adds an aria label even when the button contains discernible text.
+        tobiiCloseButton.removeAttribute('aria-label');
       }
     }
   },

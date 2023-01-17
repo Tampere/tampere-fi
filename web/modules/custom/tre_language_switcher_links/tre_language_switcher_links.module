@@ -1,16 +1,31 @@
 <?php
 
-use Drupal\Component\Render\FormattableMarkup;
-
 /**
  * @file
  * Contains tre_language_switcher_links.module.
  */
 
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\node\NodeInterface;
+
 /**
  * Implements hook_language_switch_links_alter().
  */
 function tre_language_switcher_links_language_switch_links_alter(array &$links, $type, $path) {
+  $links = _tre_language_switcher_links_modify_language_titles($links);
+  $links = _tre_language_switcher_links_modify_minisite_language_links($links);
+}
+
+/**
+ * Helper function to modify language switcher titles.
+ *
+ * @param array $links
+ *   The language switcher links.
+ *
+ * @return array
+ *   Modified links.
+ */
+function _tre_language_switcher_links_modify_language_titles(array $links) {
   $active_theme_name = \Drupal::service('theme.manager')->getActiveTheme()->getName();
   $default_theme_name = \Drupal::config('system.theme')->get('default');
 
@@ -32,4 +47,55 @@ function tre_language_switcher_links_language_switch_links_alter(array &$links, 
       }
     }
   }
+  return $links;
+}
+
+/**
+ * Helper function to modify ministe language switcher links.
+ *
+ * For minisite nodes, set minisite's front page as the translation link
+ * if there is no translation. Set the translation of minisite's front page
+ * if translation exists; otherwise put the front page in FI.
+ *
+ * @param array $links
+ *   The language switcher links.
+ *
+ * @return array
+ *   Modified links.
+ */
+function _tre_language_switcher_links_modify_minisite_language_links(array $links) {
+  $helper_functions = \Drupal::service('tre_preprocess_utility_functions.helper_functions');
+  $current_group = $helper_functions->getCurrentGroup();
+
+  if (!$current_group || !$helper_functions->isMinisite()) {
+    return $links;
+  }
+
+  foreach ($links as $lang_id => $link) {
+    if ($links[$lang_id]['url']->getRouteName() !== '<front>') {
+      continue;
+    }
+
+    if (!$current_group->hasField('field_front_page') || $current_group->get('field_front_page')->isEmpty()) {
+      continue;
+    }
+
+    $group_front_page = $current_group->get('field_front_page')->entity;
+
+    if (!($group_front_page instanceof NodeInterface)) {
+      continue;
+    }
+
+    if ($group_front_page->hasTranslation($lang_id)) {
+      $translated_front_page = $group_front_page->getTranslation($lang_id);
+    }
+    else {
+      $translated_front_page = $group_front_page->getTranslation('fi');
+    }
+
+    $links[$lang_id]['url'] = $translated_front_page->toUrl();
+
+  }
+
+  return $links;
 }

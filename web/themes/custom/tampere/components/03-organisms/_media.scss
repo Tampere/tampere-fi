@@ -23,3 +23,17 @@ iframe {
     }
   }
 }
+
+// Tobii lightbox
+.tobii__btn--close {
+  height: $icon-medium-plus;
+  width: fit-content;
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: $gutter-small;
+
+  svg {
+    width: auto;
+  }
+}

@@ -1,0 +1,19 @@
+uuid: d425f951-edf3-4f73-b594-e283825fca44
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_info_for_media
+    - node.type.news_item
+id: node.news_item.field_additional_info_for_media
+field_name: field_additional_info_for_media
+entity_type: node
+bundle: news_item
+label: 'Lisätietoja mediajulkaisulle'
+description: 'Näytetään vain mediajulkaisun sähköpostiviestissä.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

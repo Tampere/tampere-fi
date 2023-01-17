@@ -109,4 +109,12 @@
       }
     }
   }
+
+  &--varying-heights {
+    #{$base_class}__wrapper {
+      @include large {
+        grid-auto-rows: auto;
+      }
+    }
+  }
 }

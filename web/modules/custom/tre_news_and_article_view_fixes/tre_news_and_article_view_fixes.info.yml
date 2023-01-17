@@ -1,0 +1,5 @@
+name: 'TRE News And Article View Fixes'
+type: module
+description: 'Fixing issues with news and article view such as date filter'
+core_version_requirement: '>=9'
+package: 'TRE'

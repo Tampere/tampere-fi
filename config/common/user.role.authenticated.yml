@@ -23,7 +23,6 @@ dependencies:
     - node
     - paragraphs
     - paragraphs_type_permissions
-    - publication_date
     - search_api_autocomplete
     - system
     - toolbar
@@ -39,7 +38,6 @@ permissions:
   - 'access environment indicator'
   - 'access toolbar'
   - 'post comments'
-  - 'set any published on date'
   - 'use admin toolbar search'
   - 'use content_moderation transition create_new_draft'
   - 'use content_moderation transition submit_for_review'

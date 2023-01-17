@@ -1,0 +1,16 @@
+diff --git a/src/Context/GroupRouteContextTrait.php b/src/Context/GroupRouteContextTrait.php
+index 99e9a41..acf5122 100644
+--- a/src/Context/GroupRouteContextTrait.php
++++ b/src/Context/GroupRouteContextTrait.php
+@@ -78,6 +78,11 @@ trait GroupRouteContextTrait {
+       return $this->getEntityTypeManager()->getStorage('group')->create(['type' => $group_type->id()]);
+     }
+ 
++    // Load the group entity using the group ID parameter in the route
++    if (($group_id = $route_match->getParameter('group')) && is_string($group)) {
++      return $this->getEntityTypeManager()->getStorage('group')->load($group_id);
++    }
++
+     return NULL;
+   }
+

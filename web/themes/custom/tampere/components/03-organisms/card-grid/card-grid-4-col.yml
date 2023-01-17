@@ -1,5 +1,6 @@
 card_grid__modifiers:
   - '4-col'
+  - 'varying-heights'
 cards:
   - card__heading: 'Lorem ipsum dolor sit amet'
     card__link__url: '#'

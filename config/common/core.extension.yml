@@ -197,6 +197,7 @@ module:
   tre_menu_link_alterations: 0
   tre_minisite_breadcrumb: 0
   tre_mtm: 0
+  tre_news_and_article_view_fixes: 0
   tre_news_archive: 0
   tre_news_email_release: 0
   tre_node_location_coordinate_conversion: 0
@@ -213,6 +214,7 @@ module:
   tre_related_news_group_check: 0
   tre_search_exclusion: 0
   tre_tablefield_column_drag: 0
+  tre_translation_publication_date_clear: 0
   tre_wp_sites_import: 0
   twig_tweak: 0
   ui_patterns: 0

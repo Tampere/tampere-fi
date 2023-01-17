@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_index
+    - field.field.node.news_item.field_additional_info_for_media
     - field.field.node.news_item.field_archive_search_content
     - field.field.node.news_item.field_author
     - field.field.node.news_item.field_body
@@ -168,6 +169,7 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  field_additional_info_for_media: true
   field_archive_search_content: true
   field_cross_site_publications: true
   field_date_of_publication: true
@@ -181,4 +183,5 @@ hidden:
   field_topic: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

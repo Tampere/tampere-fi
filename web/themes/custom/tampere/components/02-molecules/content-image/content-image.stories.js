@@ -17,7 +17,7 @@ export const contentImage = () => (
 export const contentImageNotice = () => (
   <div
     dangerouslySetInnerHTML={{
-      __html: contentImgComponent(contentImgNoticeData),
+      __html: contentImgComponent({ ...contentImgData, ...contentImgNoticeData }),
     }}
   />
 );
@@ -25,7 +25,7 @@ export const contentImageNotice = () => (
 export const contentImageBlog = () => (
   <div
     dangerouslySetInnerHTML={{
-      __html: contentImgComponent(contentImgBlogData),
+      __html: contentImgComponent({ ...contentImgData, ...contentImgBlogData }),
     }}
   />
 );

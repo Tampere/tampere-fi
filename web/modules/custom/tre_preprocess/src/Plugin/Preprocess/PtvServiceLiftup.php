@@ -220,9 +220,10 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
       ],
     ];
 
-    // Currently only phone service channels have their own heading.
+    // Currently only phone and e service channels have their own heading.
     $service_channel_headings_by_type = [
       'phone_service' => new TranslatableMarkup("Telephone services", [], ['context' => 'PTV Service liftup heading for phone services']),
+      'eservice' => new TranslatableMarkup("E-services", [], ['context' => 'PTV Service liftup heading for E-services']),
     ];
 
     if (isset($service_channel_headings_by_type[$type])) {

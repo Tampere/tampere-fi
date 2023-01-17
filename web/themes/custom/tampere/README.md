@@ -67,7 +67,6 @@ in tampere.theme you will find a `tampere_preprocess_links__language_block` func
 ### Local tools setup
 When doing theme development, you should disable page and render caches in your local environment for avoiding constant `drush cr`s.
 Also you need Twig debug to be configured.
-Read this [Intra article](https://intra.exove.net/developers/guides/how-configure-twig-debug-disable-local-cache-drupal-8) for instructions how to set up these.
 
 ### Using components in Drupal templates
 When component is ready, you can use it in the twig templates under the `/templates` by including, extending or embedding them. Have a look how it's done in existing templates. Essentially, your task is to pass real drupal variables to the Pattern Lab components.

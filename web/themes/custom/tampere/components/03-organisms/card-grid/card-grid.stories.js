@@ -63,7 +63,7 @@ export const cardGridWith3ExpandingColumnsWithFifteenItems = () => (
   />
 );
 
-export const cardGridWith4Columns = () => (
+export const cardGridWith4ColumnsVaryingHeights = () => (
   <div
     dangerouslySetInnerHTML={{
       __html: cardGridComponent(cardGrid4ColData),

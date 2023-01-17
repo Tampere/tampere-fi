@@ -1,0 +1,23 @@
+{
+  "name": "codebase",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.exove.net/projects/EXOVE/repos/codebase"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "version": "1.1.0",
+  "description": "Linter packages.",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0"
+  },
+  "lint-staged": {
+    "web/modules/custom/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --level 5"],
+    "web/themes/custom/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --level 5"],
+    "web/profiles/codebase/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --level 5"]
+  },
+  "scripts": {
+    "prepare": "husky install"
+  }
+}

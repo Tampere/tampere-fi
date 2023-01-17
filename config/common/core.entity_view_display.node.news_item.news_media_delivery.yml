@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.news_media_delivery
+    - field.field.node.news_item.field_additional_info_for_media
     - field.field.node.news_item.field_archive_search_content
     - field.field.node.news_item.field_author
     - field.field.node.news_item.field_body
@@ -48,6 +49,7 @@ third_party_settings:
       content:
         - published_at
         - 'dynamic_twig_field:node-title_h1'
+        - field_additional_info_for_media
         - field_lead
         - field_body
         - field_paragraphs
@@ -57,7 +59,7 @@ third_party_settings:
     fields:
       'dynamic_twig_field:node-author_and_photographer':
         plugin_id: 'dynamic_twig_field:node-author_and_photographer'
-        weight: 7
+        weight: 8
         label: hidden
         formatter: default
       'dynamic_twig_field:node-title_h1':
@@ -76,6 +78,41 @@ targetEntityType: node
 bundle: news_item
 mode: news_media_delivery
 content:
+  field_additional_info_for_media:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: false
+            lbw-el: ''
+            lbw-cl: ''
+            lbw-at: ''
+            lb-col: false
+            ow: true
+            ow-el: p
+            ow-cl: ''
+            ow-at: 'style="font-style:italic;margin-bottom:15px;"'
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-el: ''
+            fis-cl: ''
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 2
+    region: content
   field_body:
     type: text_default
     label: hidden
@@ -88,7 +125,7 @@ content:
             lb: Pääsisältö
             lb-col: true
             classes: {  }
-    weight: 3
+    weight: 4
     region: content
   field_contact_info_paragraph:
     type: entity_reference_revisions_entity_view
@@ -128,7 +165,7 @@ content:
             fi-def-at: false
             prefix: ''
             suffix: ''
-    weight: 6
+    weight: 7
     region: content
   field_lead:
     type: basic_string
@@ -142,7 +179,7 @@ content:
             lb: ''
             lb-col: true
             classes: {  }
-    weight: 2
+    weight: 3
     region: content
   field_link_list:
     type: entity_reference_revisions_entity_view
@@ -158,7 +195,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 5
+    weight: 6
     region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
@@ -177,7 +214,7 @@ content:
             lb: Lisäsisältö
             lb-col: true
             classes: {  }
-    weight: 4
+    weight: 5
     region: content
   published_at:
     type: timestamp

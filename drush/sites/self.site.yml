@@ -3,28 +3,28 @@
 
 # Production:
 # p:
-#   host: tampere.exove.eu
-#   user: exove
+#   host: tampere.example.com
+#   user: example
 #   root: /var/www/html/web
-#   uri: https://tampere.exove.eu
+#   uri: https://tampere.example.com
 #   paths:
 #     files: /var/www/html/web/sites/default/files/
 #     libraries: /var/www/html/web/libraries
 
 # Staging
 # s:
-#   host: tampere-staging.exove.eu
-#   user: exove
+#   host: tampere-staging.example.com
+#   user: example
 #   root: /var/www/html/web
-#   uri: https://tampere-staging.exove.eu
+#   uri: https://tampere-staging.example.com
 #   paths:
 #     files: /var/www/html/web/sites/default/files/
 #     libraries: /var/www/html/web/libraries
 
 # Dev:
 d:
-  host: tampere-dev.exove.eu
-  user: exove
+  host: tampere-dev.example.com
+  user: example
   root: /var/www/html/web
   uri: https://web-dev.tampere.fi
   paths:

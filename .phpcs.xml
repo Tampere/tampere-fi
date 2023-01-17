@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="codebase">
+  <description>PHP CodeSniffer configuration for Exove Codebase projects.</description>
+  <!-- Check https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-Ruleset for more information -->
+
+  <!-- If you run phpcs without parameters, checks our custom assets only.
+  Be aware that it can consume lot of time and memory, so this is not recommended. -->
+  <file>./web/modules/custom</file>
+  <file>./web/themes/custom</file>
+
+  <!-- Do not check these folders, as they are not our responsability.  -->
+  <exclude-pattern>web/core/</exclude-pattern>
+  <exclude-pattern>web/modules/contrib</exclude-pattern>
+  <exclude-pattern>web/themes/contrib</exclude-pattern>
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/bower_components/*</exclude-pattern>
+  <exclude-pattern>vendor</exclude-pattern>
+
+  <!-- Commong extensions for Drupal assets. -->
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme"/>
+
+  <!-- Change this value to 8 if you want to check Drupal 8 code. -->
+  <config name="drupal_core_version" value="9"/>
+
+  <!-- Apply drupal coder coding standards. -->
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal"></rule>
+  <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice"/>
+</ruleset>

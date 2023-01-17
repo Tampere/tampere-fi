@@ -5,6 +5,10 @@
  # - blog_header__description: Blog description.
  # - blog_header__image: Blog image src.
  # - blog_header__field_author__label: field_author label text.
+ #
+ # - topical_content__main_image__name: Name of the main image as a string.
+ # - topical_content__main_image__url: URL for the main image file as a string.
+ # - topical_content__main_image__alt: The alternative text for the main image if one exists.
  #}
 
 {% set topical_content_base_class = topical_content_base_class|default("topical-content") %}
@@ -34,17 +38,17 @@
     {% endembed %}
   {% endif %}
   <div {{ bem("header", (topical_content__header__modifiers), topical_content_base_class) }}>
-    {% embed "@molecules/content-image/content-image.twig" with {
+    {% include "@molecules/content-image/content-image.twig" with {
       "content_img__heading__modifiers": [ variant ],
       "content_img__tag": main_image_tag,
       "content_img__optional_tag": main_image_optional_tag,
       "content_img__date": publication_date,
       "content_img__img__caption": main_image_caption,
+      "content_img__img__url": topical_content__main_image__url,
+      "content_img__img": main_image,
+      "content_img__img__name": topical_content__main_image__name,
+      "content_img__img__alt": topical_content__main_image__alt,
     } %}
-      {% block content_image %}
-        {{ main_image }}
-      {% endblock %}
-    {% endembed %}
   </div>
 
   <div {{ bem("main-content", (topical_content__main_content__modifiers|default([])), topical_content_base_class) }}>

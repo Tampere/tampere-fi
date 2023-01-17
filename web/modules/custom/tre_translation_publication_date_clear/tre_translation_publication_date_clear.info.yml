@@ -1,0 +1,7 @@
+name: 'TRE Translation Publication Date Clear'
+type: module
+description: 'Ensures translated content items do not inherit their publication date from the original content.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - publication_date:publication_date
