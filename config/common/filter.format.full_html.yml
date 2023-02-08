@@ -10,7 +10,6 @@ dependencies:
     - editor
     - linkit
     - media
-    - slick
 _core:
   default_config_hash: mqAvImQe1g36Ry70Pm0h7ZH2Ys-M9-hVyRwvtvDFOxQ
 name: 'Full HTML'
@@ -85,11 +84,3 @@ filters:
         img: img
         iframe: iframe
       use_data_uri: '0'
-  slick_filter:
-    id: slick_filter
-    provider: slick
-    status: false
-    weight: 4
-    settings:
-      optionset: default
-      media_switch: ''

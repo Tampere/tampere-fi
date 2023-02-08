@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.blog_article.field_geographical_areas
     - field.field.node.blog_article.field_help_text
     - field.field.node.blog_article.field_keywords
+    - field.field.node.blog_article.field_lead
     - field.field.node.blog_article.field_life_situations
     - field.field.node.blog_article.field_link_list
     - field.field.node.blog_article.field_main_image
@@ -54,6 +55,7 @@ third_party_settings:
         - field_media_caption
       main_content:
         - node_title
+        - field_lead
         - field_body
         - field_paragraphs
         - field_link_list
@@ -116,7 +118,7 @@ content:
             fi-def-at: false
             prefix: ''
             suffix: ''
-    weight: 8
+    weight: 9
     region: main_content
   field_blog_post_photographer:
     type: string
@@ -152,14 +154,14 @@ content:
             fi-def-at: false
             prefix: ''
             suffix: ''
-    weight: 9
+    weight: 10
     region: main_content
   field_body:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: main_content
   field_comment:
     type: comment_default
@@ -168,7 +170,14 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
-    weight: 11
+    weight: 12
+    region: main_content
+  field_lead:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
     region: main_content
   field_link_list:
     type: entity_reference_revisions_entity_view
@@ -177,7 +186,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: main_content
   field_main_image:
     type: entity_reference_entity_view
@@ -203,14 +212,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: main_content
   field_social_media_share:
     type: social_media_default
     label: inline
     settings: {  }
     third_party_settings: {  }
-    weight: 10
+    weight: 11
     region: main_content
   published_at:
     type: timestamp

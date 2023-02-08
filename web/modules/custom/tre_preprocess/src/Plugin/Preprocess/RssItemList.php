@@ -17,6 +17,20 @@ use Drupal\views\Views;
 class RssItemList extends TrePreProcessPluginBase {
 
   /**
+   * The maximum amount of results to display in the RSS feed paragraph.
+   *
+   * The 'field_number_of_items_to_show' field in the paragraph determines
+   * how many results to display in the listing, but in case "all" results
+   * should be displayed this value will be used instead of the field value.
+   */
+  const MAX_RESULTS_AMOUNT = 150;
+
+  /**
+   * The key that corresponds to the 'All' label for the results amount.
+   */
+  const MAX_RESULTS_KEY = 100;
+
+  /**
    * {@inheritdoc}
    */
   public function preprocess(array $variables): array {
@@ -64,6 +78,13 @@ class RssItemList extends TrePreProcessPluginBase {
 
     $page_size_string = $paragraph->get('field_number_of_items_to_show')->getString();
     $page_size = ctype_digit($page_size_string) ? intval($page_size_string) : 6;
+
+    // Overrides the 'All' option that has its key tied to a fixed number
+    // in the field settings.
+    if ($page_size === self::MAX_RESULTS_KEY) {
+      $page_size = self::MAX_RESULTS_AMOUNT;
+    }
+
     $view->setItemsPerPage($page_size);
 
     // Feeds to show -> contextual filter value.

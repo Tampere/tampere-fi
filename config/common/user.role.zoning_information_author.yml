@@ -259,6 +259,7 @@ permissions:
   - 'use scheduled_transitions transition archive'
   - 'use scheduled_transitions transition create_new_draft'
   - 'use scheduled_transitions transition publish'
+  - 'use scheduled_transitions transition restore_draft'
   - 'use scheduled_transitions transition restore_to_draft'
   - 'use siteimprove'
   - 'use siteimprove prepublish'

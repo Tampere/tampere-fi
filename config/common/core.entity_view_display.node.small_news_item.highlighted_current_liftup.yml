@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.small_news_item.field_geographical_areas
     - field.field.node.small_news_item.field_help_text
     - field.field.node.small_news_item.field_keywords
+    - field.field.node.small_news_item.field_lead
     - field.field.node.small_news_item.field_life_situations
     - field.field.node.small_news_item.field_link_list
     - field.field.node.small_news_item.field_main_image
@@ -24,7 +25,6 @@ dependencies:
     - node.type.small_news_item
   module:
     - ds
-    - text
     - user
 third_party_settings:
   ds:
@@ -47,7 +47,7 @@ third_party_settings:
       topical_card__heading:
         - node_title
       topical_card__summary:
-        - field_body
+        - field_lead
     fields:
       'dynamic_twig_field:node-content_path':
         plugin_id: 'dynamic_twig_field:node-content_path'
@@ -69,11 +69,10 @@ targetEntityType: node
 bundle: small_news_item
 mode: highlighted_current_liftup
 content:
-  field_body:
-    type: text_trimmed
+  field_lead:
+    type: basic_string
     label: hidden
-    settings:
-      trim_length: 100
+    settings: {  }
     third_party_settings: {  }
     weight: 4
     region: topical_card__summary
@@ -106,6 +105,7 @@ content:
 hidden:
   content_moderation_control: true
   field_author: true
+  field_body: true
   field_date_of_publication: true
   field_geographical_areas: true
   field_help_text: true

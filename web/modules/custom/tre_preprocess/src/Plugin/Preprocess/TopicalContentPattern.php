@@ -38,6 +38,10 @@ class TopicalContentPattern extends TrePreProcessPluginBase {
 
     $main_image_media = $this->entityTypeManager->getStorage('media')->load($main_image_id);
 
+    if (empty($main_image_media)) {
+      return $variables;
+    }
+
     /** @var \Drupal\media\MediaInterface $translated_media_entity */
     $translated_media_entity = $this->entityRepository->getTranslationFromContext($main_image_media);
 

@@ -32,6 +32,7 @@ dependencies:
     - ds
     - field_delimiter
     - field_group
+    - link
     - office_hours
     - options
     - text
@@ -232,17 +233,17 @@ content:
     weight: 13
     region: place_contact__right_column_content
   field_form_links:
-    type: tre_absolute_url_text
+    type: link
     label: above
     settings:
-      trim_length: ''
-      url_only: 0
-      url_plain: 0
-      rel: 0
-      target: 0
+      trim_length: null
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
     third_party_settings:
       field_delimiter:
-        delimiter: ''
+        delimiter: '<br>'
       ds:
         ds_limit: ''
         ft:

@@ -161,7 +161,6 @@ warmers:
       solr_request_handler--solr_request_handler: '0'
       simple_sitemap--simple_sitemap: '0'
       simple_sitemap_type--simple_sitemap_type: '0'
-      slick--slick: '0'
       action--action: '0'
       menu--menu: '0'
       taxonomy_term--accessibility_and_service_infos: '0'

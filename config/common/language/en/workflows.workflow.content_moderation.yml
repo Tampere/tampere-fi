@@ -1,20 +1,24 @@
-label: 'Scheduled transitions'
+label: 'Content moderation'
 type_settings:
   states:
     archived:
       label: Archived
     draft:
       label: Draft
-    draft_state:
+    in_review:
+      label: 'In review'
+    luonnostila:
       label: Draft
     published:
       label: Published
   transitions:
     archive:
-      label: Archive
+      label: Archived
     create_draft:
       label: 'Create draft'
     publish:
       label: Publish
     restore_draft:
       label: 'Restore draft'
+    submit_for_review:
+      label: 'Submit for review'

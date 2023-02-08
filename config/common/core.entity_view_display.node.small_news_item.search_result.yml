@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.small_news_item.field_geographical_areas
     - field.field.node.small_news_item.field_help_text
     - field.field.node.small_news_item.field_keywords
+    - field.field.node.small_news_item.field_lead
     - field.field.node.small_news_item.field_life_situations
     - field.field.node.small_news_item.field_link_list
     - field.field.node.small_news_item.field_main_image
@@ -69,6 +70,7 @@ hidden:
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_lead: true
   field_life_situations: true
   field_link_list: true
   field_main_image: true
@@ -82,4 +84,5 @@ hidden:
   field_topics: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

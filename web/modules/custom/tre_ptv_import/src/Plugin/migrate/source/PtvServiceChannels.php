@@ -223,6 +223,7 @@ class PtvServiceChannels extends SqlBase {
    *   enable skipping the import for this particular row.
    *
    * @throws \Tampere\PtvV11\ApiException
+   *    Upon API errors.
    */
   public static function mangleServiceChannelIntoSourceValues(
     $service_channel,
@@ -237,7 +238,8 @@ class PtvServiceChannels extends SqlBase {
       'uuid' => $service_channel->getId(),
     ];
 
-    $values['name'] = $data_helpers::getDescriptionStringByLanguageAndType($service_channel->getServiceChannelNames(), $language, 'Name');
+    $service_channel_name = $data_helpers::getDescriptionStringByLanguageAndType($service_channel->getServiceChannelNames(), $language, 'Name');
+    $values['name'] = $service_channel_name;
 
     if (empty($values['name'])) {
       return [];
@@ -294,7 +296,7 @@ class PtvServiceChannels extends SqlBase {
 
       $values['delivery_details'] = self::processDeliveryAddressTexts($service_channel_delivery_addresses, $language, $data_helpers);
       $values['form_receiver'] = self::processDeliveryAddressReceiver($service_channel_delivery_addresses, $language, $data_helpers);
-      $values['forms'] = self::processFormLinks($service_channel->getChannelUrls(), $language);
+      $values['forms'] = self::processFormLinks($service_channel->getChannelUrls(), $service_channel_name, $language);
     }
 
     $values['web_pages'] = $data_helpers::processWebPages($service_channel->getWebPages(), $language);
@@ -461,22 +463,27 @@ class PtvServiceChannels extends SqlBase {
    * @param \Tampere\PtvV11\PtvModel\VmOpenApiLocalizedListItem[] $form_urls
    *   The form URLs associated with a service, accessible by the
    *   'getChannelUrls()' method.
+   * @param string $form_channel_name
+   *   The name for the form channel to be used as a link text.
    * @param string $language
    *   The language to use for extracting language-aware texts.
    *
    * @return array|null
    *   Form links in an array if successful, otherwise null.
    */
-  public static function processFormLinks(array $form_urls, string $language): ?array {
+  public static function processFormLinks(array $form_urls, string $form_channel_name, string $language): ?array {
     $form_links = [];
 
     $form_url_data_in_language = array_filter($form_urls, function ($form_url) use ($language) {
       return $form_url->getLanguage() == $language;
     });
 
-    foreach ($form_url_data_in_language as $form_url) {
+    foreach ($form_url_data_in_language as $key => $form_url) {
+      $count = $key + 1;
+
       $form_links[] = [
         'uri' => $form_url->getValue(),
+        'title' => $key === 0 ? $form_channel_name : "{$form_channel_name} {$count}",
       ];
     }
 

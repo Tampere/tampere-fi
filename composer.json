@@ -145,7 +145,7 @@
         "drupal/ds": "^3.9",
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/elb": "^2.0",
-        "drupal/embederator": "^3.2",
+        "drupal/embederator": "^4.0",
         "drupal/entity_browser": "^2.5",
         "drupal/entity_reference_unpublished": "^1.3",
         "drupal/entity_type_clone": "^1.7",
@@ -196,6 +196,8 @@
         "drupal/mimemail": "^1.0@alpha",
         "drupal/office_hours": "^1.5",
         "drupal/open_readspeaker": "^1.9",
+        "drupal/openapi_jsonapi": "^3.0",
+        "drupal/openapi_ui_swagger": "^1.0@RC",
         "drupal/openid_connect": "^1.1",
         "drupal/options_table": "^2.0",
         "drupal/override_node_options": "^2.6",
@@ -224,7 +226,6 @@
         "drupal/simple_responsive_table": "^2.3",
         "drupal/simple_sitemap": "^4.1",
         "drupal/siteimprove": "^1.12",
-        "drupal/slick": "^2.2",
         "drupal/social_media": "^1.9",
         "drupal/social_media_links": "^2.8",
         "drupal/svg_image_field": "^2.1",
@@ -247,6 +248,7 @@
         "gaambo/slick": "^1.8",
         "league/commonmark": "^1",
         "midzer/tobii": "^2.3",
+        "mnsami/composer-custom-directory-installer": "^2.0",
         "mpdf/mpdf": "^8.1",
         "oskariorg/rpc-client": "^2.1",
         "proj4php/proj4php": "^2.0",
@@ -266,7 +268,8 @@
             "drupal/console-extend-plugin": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "mnsami/composer-custom-directory-installer": true
         }
     },
     "extra": {
@@ -304,6 +307,7 @@
                 "type:drupal-core"
             ],
             "web/libraries/{$name}": [
+                "swagger-api/swagger-ui",
                 "type:drupal-library"
             ],
             "web/modules/contrib/{$name}": [
@@ -357,7 +361,7 @@
                 "3107993 - Template is not defined error on node edit / admin pages": "https://www.drupal.org/files/issues/2021-06-24/DRUP86-template_not_defined.patch"
             },
             "drupal/cookieinformation": {
-                "3194493 & 3194494 - Add support for Google consent mode and blocking iframes - support for Embederator lazyload": "patches/add_support_for_blocking_iframes_3194493_3194494.diff"
+                "3194493 & 3194494 - Add support for Google consent mode and blocking iframes and Readspeaker buttons - support for Embederator lazyload": "patches/add_support_for_blocking_iframes_and_readspeaker_3194493_3194494.diff"
             },
             "drupal/core": {
                 "#2546212: Entity view/form mode formatter/widget settings have no translation UI": "https://www.drupal.org/files/issues/2020-10-02/2546212-155.patch",
@@ -387,7 +391,8 @@
                 "2815971 - More contexts": "https://www.drupal.org/files/issues/2021-02-19/2815971-28.patch",
                 "2881769 - group/<id>/node/create uses the permissions of group/<id>/node/add": "https://www.drupal.org/files/issues/2020-10-01/2881769-22.patch",
                 "GroupContentStorage exceptions": "patches/groupcontentstorage_exceptions.patch",
-                "Load group using group parameter - group 8.x-1.5": "patches/load_group_using_group_parameter.patch"
+                "Load group using group parameter - group 8.x-1.5": "patches/load_group_using_group_parameter.patch",
+                "3071489 - Incorrect Access Check on Media Library": "https://www.drupal.org/files/issues/2022-05-17/incorrect-access-check-on-media-library-3071489-27.patch"
             },
             "drupal/group_content_menu": {
                 "3209011 - Active trail is cached incorrectly": "https://www.drupal.org/files/issues/2021-04-21/group_content_menu-active_trail_cache_problem-3209011-10.patch",
@@ -417,15 +422,15 @@
             "drupal/publication_date": {
                 "3074373 - Publication date is required for completing the form": "https://www.drupal.org/files/issues/2022-12-20/publication_date_is_required_for_completing_the_form-3074373-11.patch"
             },
+            "drupal/quick_node_clone": {
+                "3075889 - Add option to have cloned node publish status default to unpublished": "https://www.drupal.org/files/issues/2022-05-07/quick_node_clone-unpublish-clone-option-3075889-11.patch"
+            },
             "drupal/simple_responsive_table": {
                 "3269622 - Add core/jquery.once as a dependency": "https://www.drupal.org/files/issues/2022-03-15/add-jquery-once-dependency-3269622.patch",
                 "Add custom selectors for css in simple responsive table - Use this module only in table paragraph": "patches/custom_css_in_simple_responsive_table.patch"
             },
             "drupal/tablefield": {
                 "3040358 - Add support for dragging table rows": "https://www.drupal.org/files/issues/2022-04-05/3040358-tabledrag-support-36.patch"
-            },
-            "drupal/timesup": {
-                "3318856 - The 'core_version_requirement' constraint (^9) requires the 'core' key not be set": "https://www.drupal.org/files/issues/2022-11-03/timesup-info-yml-core-key-removal-3318856.patch"
             }
         }
     },

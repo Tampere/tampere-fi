@@ -605,12 +605,13 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items:
-              2:
+              1:
                 title: Luonnostila
                 operator: in
                 value:
                   scheduled_transitions-draft_state: scheduled_transitions-draft_state
-              3:
+                  scheduled_transitions-draft: scheduled_transitions-draft
+              2:
                 title: Arkistoitu
                 operator: in
                 value:

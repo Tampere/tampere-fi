@@ -3,4 +3,4 @@ _core:
 langcode: fi
 path_prefix: api
 include_count: true
-default_disabled: false
+default_disabled: true

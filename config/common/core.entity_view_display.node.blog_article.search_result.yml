@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.blog_article.field_geographical_areas
     - field.field.node.blog_article.field_help_text
     - field.field.node.blog_article.field_keywords
+    - field.field.node.blog_article.field_lead
     - field.field.node.blog_article.field_life_situations
     - field.field.node.blog_article.field_link_list
     - field.field.node.blog_article.field_main_image
@@ -94,6 +95,7 @@ hidden:
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_lead: true
   field_life_situations: true
   field_link_list: true
   field_main_image: true

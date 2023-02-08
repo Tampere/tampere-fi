@@ -13,45 +13,47 @@ type_settings:
   states:
     archived:
       label: Arkistoitu
-      weight: 5
+      weight: 0
       published: false
       default_revision: true
     draft:
-      label: Draft
-      weight: 0
+      label: Luonnostila
+      weight: -3
       published: false
       default_revision: false
     draft_state:
       label: Luonnostila
-      weight: 2
+      weight: 1
       published: false
       default_revision: false
     in_review:
       label: Arviointitila
-      weight: 4
+      weight: -1
       published: false
       default_revision: true
     published:
       label: Julkaistu
-      weight: 1
+      weight: -2
       published: true
       default_revision: true
   transitions:
     archive:
       label: Arkistoi
       from:
+        - draft
         - draft_state
         - in_review
         - published
       to: archived
       weight: 4
-    create_new_draft:
-      label: 'Luo uusi luonnos'
+    create_draft:
+      label: 'Luo luonnos'
       from:
+        - draft
         - draft_state
         - published
-      to: draft_state
-      weight: 2
+      to: draft
+      weight: 5
     julkaise:
       label: Julkaise
       from:
@@ -59,16 +61,17 @@ type_settings:
         - published
       to: published
       weight: 3
-    restore_to_draft:
+    restore_draft:
       label: 'Palauta luonnokseksi'
       from:
         - archived
         - in_review
-      to: draft_state
-      weight: 1
+      to: draft
+      weight: 6
     send_for_review:
       label: 'Lähetä arvioitavaksi'
       from:
+        - draft
         - draft_state
         - in_review
       to: in_review

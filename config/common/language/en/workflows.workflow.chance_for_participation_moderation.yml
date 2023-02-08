@@ -1,4 +1,4 @@
-label: 'Scheduled transitions'
+label: 'Chance for participation moderation'
 type_settings:
   states:
     archived:
@@ -7,6 +7,8 @@ type_settings:
       label: Draft
     draft_state:
       label: Draft
+    in_review:
+      label: 'In review'
     published:
       label: Published
   transitions:
@@ -14,7 +16,9 @@ type_settings:
       label: Archive
     create_draft:
       label: 'Create draft'
-    publish:
+    julkaise:
       label: Publish
     restore_draft:
       label: 'Restore draft'
+    send_for_review:
+      label: 'Send for review'

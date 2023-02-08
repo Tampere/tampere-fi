@@ -10,3 +10,8 @@ third_party_settings:
       label: Common
     group_search_keywords:
       label: 'Search keywords'
+content:
+  field_lead:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'

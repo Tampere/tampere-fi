@@ -8,6 +8,7 @@ dependencies:
     - embederator
     - feeds
     - media
+    - openapi
     - paragraphs_type_permissions
     - search_api_autocomplete
     - system
@@ -20,6 +21,7 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access openapi api docs'
   - 'post comments'
   - 'use search_api_autocomplete for search'
   - 'view 404_page_content config page entity'

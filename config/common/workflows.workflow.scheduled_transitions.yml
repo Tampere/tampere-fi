@@ -29,13 +29,13 @@ type_settings:
       published: false
       default_revision: true
     draft:
-      label: draft
-      weight: 1
+      label: Luonnostila
+      weight: -2
       published: false
       default_revision: false
     draft_state:
       label: Luonnostila
-      weight: -2
+      weight: 1
       published: false
       default_revision: false
     published:
@@ -47,30 +47,33 @@ type_settings:
     archive:
       label: Arkistoi
       from:
+        - draft
         - draft_state
         - published
       to: archived
-      weight: 2
-    create_new_draft:
-      label: 'Luo uusi luonnos'
+      weight: -2
+    create_draft:
+      label: 'Luo luonnos'
       from:
+        - draft
         - draft_state
         - published
-      to: draft_state
-      weight: 4
+      to: draft
+      weight: 1
     publish:
       label: Julkaise
       from:
+        - draft
         - draft_state
         - published
       to: published
-      weight: 1
-    restore_to_draft:
+      weight: -2
+    restore_draft:
       label: 'Palauta luonnokseksi'
       from:
         - archived
-      to: draft_state
-      weight: 5
+      to: draft
+      weight: 2
   entity_types:
     node:
       - basic_content_page
@@ -86,4 +89,4 @@ type_settings:
       - rich_article
       - small_news_item
       - zoning_information
-  default_moderation_state: draft_state
+  default_moderation_state: draft

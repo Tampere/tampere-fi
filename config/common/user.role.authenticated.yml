@@ -21,6 +21,7 @@ dependencies:
     - filter
     - media
     - node
+    - openapi
     - paragraphs
     - paragraphs_type_permissions
     - search_api_autocomplete
@@ -36,12 +37,15 @@ permissions:
   - 'access comments'
   - 'access content'
   - 'access environment indicator'
+  - 'access openapi api docs'
   - 'access toolbar'
   - 'post comments'
   - 'use admin toolbar search'
+  - 'use content_moderation transition create_draft'
   - 'use content_moderation transition create_new_draft'
   - 'use content_moderation transition submit_for_review'
   - 'use scheduled_transitions transition archive'
+  - 'use scheduled_transitions transition create_draft'
   - 'use scheduled_transitions transition create_new_draft'
   - 'use scheduled_transitions transition publish'
   - 'use search_api_autocomplete for search'

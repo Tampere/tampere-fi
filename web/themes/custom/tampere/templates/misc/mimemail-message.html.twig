@@ -42,8 +42,16 @@
         border: dotted 1px black; 
       }
 
+      .paragraph--type-contact-information-liftups {
+        border: none;
+      }
+
       svg {
         display: none;
+      }
+
+      .person-contact__details, .person-contact__name, .person-contact__legend {
+        display: block;
       }
 
       {# To make sure that the blocks of content are arranged in the vertical direction. #}
@@ -70,6 +78,16 @@
       .field p {
         margin-block-start: 0;
         margin-block-end: 0;
+      }
+
+      .person-contact__name{
+        font-weight: bold;
+      }
+
+      .field.field-name-field-phone.field-label-inline, 
+      .field.field-name-field-email.field-label-above {
+        display: inline;
+        font-weight: bold;
       }
 
     </style>

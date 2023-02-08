@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.rich_article.field_geographical_areas
     - field.field.node.rich_article.field_help_text
     - field.field.node.rich_article.field_keywords
+    - field.field.node.rich_article.field_lead
     - field.field.node.rich_article.field_life_situations
     - field.field.node.rich_article.field_link_list
     - field.field.node.rich_article.field_main_image
@@ -25,7 +26,6 @@ dependencies:
     - node.type.rich_article
   module:
     - ds
-    - text
     - user
 third_party_settings:
   ds:
@@ -50,7 +50,7 @@ third_party_settings:
       topical_card__heading:
         - node_title
       topical_card__summary:
-        - field_body
+        - field_lead
     fields:
       'dynamic_twig_field:node-content_path':
         plugin_id: 'dynamic_twig_field:node-content_path'
@@ -77,11 +77,10 @@ targetEntityType: node
 bundle: rich_article
 mode: highlighted_current_liftup
 content:
-  field_body:
-    type: text_trimmed
-    label: hidden
-    settings:
-      trim_length: 100
+  field_lead:
+    type: basic_string
+    label: above
+    settings: {  }
     third_party_settings: {  }
     weight: 5
     region: topical_card__summary
@@ -115,6 +114,7 @@ hidden:
   content_moderation_control: true
   field_archive_search_content: true
   field_author: true
+  field_body: true
   field_date_of_publication: true
   field_geographical_areas: true
   field_help_text: true

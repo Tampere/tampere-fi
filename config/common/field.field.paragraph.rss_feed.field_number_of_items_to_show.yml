@@ -12,7 +12,7 @@ field_name: field_number_of_items_to_show
 entity_type: paragraph
 bundle: rss_feed
 label: 'Näytettävien RSS-otsikoiden määrä'
-description: 'Näyttää maksimissaan 100 otsikkoa.'
+description: 'Näyttää maksimissaan 150 otsikkoa.'
 required: true
 translatable: true
 default_value:
