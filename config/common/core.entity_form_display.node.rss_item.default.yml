@@ -6,7 +6,6 @@ dependencies:
     - field.field.node.rss_item.body
     - field.field.node.rss_item.feeds_item
     - field.field.node.rss_item.field_domain_all_affiliates
-    - field.field.node.rss_item.field_geographical_areas
     - field.field.node.rss_item.field_guid
     - field.field.node.rss_item.field_link_single
     - field.field.node.rss_item.field_topics
@@ -133,7 +132,6 @@ content:
     third_party_settings: {  }
 hidden:
   feeds_item: true
-  field_geographical_areas: true
   field_topics: true
   promote: true
   published_at: true

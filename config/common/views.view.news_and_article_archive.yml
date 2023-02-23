@@ -725,7 +725,7 @@ display:
           exposed: true
           expose:
             operator_id: published_at_op
-            label: Julkaisuajankohta
+            label: 'Julkaisuaika alkaen'
             description: ''
             use_operator: false
             operator: published_at_op
@@ -791,7 +791,7 @@ display:
           exposed: true
           expose:
             operator_id: published_at_1_op
-            label: Julkaisuajankohta
+            label: 'Julkaisuaika päättyen'
             description: ''
             use_operator: false
             operator: published_at_1_op
@@ -985,6 +985,7 @@ display:
         - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
         - 'config:core.entity_view_display.node.news_item.jsonapi'
         - 'config:core.entity_view_display.node.news_item.news_media_delivery'
+        - 'config:core.entity_view_display.node.news_item.pdf'
         - 'config:core.entity_view_display.node.news_item.search_index'
         - 'config:core.entity_view_display.node.news_item.search_result'
         - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
@@ -1509,7 +1510,7 @@ display:
           exposed: true
           expose:
             operator_id: published_at_op
-            label: 'Date of publication'
+            label: 'Julkaisuaika alkaen'
             description: ''
             use_operator: false
             operator: published_at_op
@@ -1575,7 +1576,7 @@ display:
           exposed: true
           expose:
             operator_id: published_at_1_op
-            label: 'Date of publication'
+            label: 'Julkaisuaika päättyen'
             description: ''
             use_operator: false
             operator: published_at_1_op
@@ -1757,6 +1758,7 @@ display:
         - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
         - 'config:core.entity_view_display.node.news_item.jsonapi'
         - 'config:core.entity_view_display.node.news_item.news_media_delivery'
+        - 'config:core.entity_view_display.node.news_item.pdf'
         - 'config:core.entity_view_display.node.news_item.search_index'
         - 'config:core.entity_view_display.node.news_item.search_result'
         - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
@@ -1888,6 +1890,7 @@ display:
         - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
         - 'config:core.entity_view_display.node.news_item.jsonapi'
         - 'config:core.entity_view_display.node.news_item.news_media_delivery'
+        - 'config:core.entity_view_display.node.news_item.pdf'
         - 'config:core.entity_view_display.node.news_item.search_index'
         - 'config:core.entity_view_display.node.news_item.search_result'
         - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'

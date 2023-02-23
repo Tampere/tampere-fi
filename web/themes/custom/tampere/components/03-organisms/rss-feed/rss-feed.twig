@@ -40,7 +40,7 @@
         icon_decorative: true,
       } %}
     </div>
-    <div {{ bem("feed", rss_feed__feed__modifiers|default([]), rss_feed__base_class) }}>
+    <ul {{ bem("feed", rss_feed__feed__modifiers|default([]), rss_feed__base_class) }}>
       {% block rss_feed_content %}
         {% for item in rss_feed__items %}
           {% include "@molecules/rss-card/rss-card.twig" with {
@@ -50,6 +50,6 @@
           } %}
         {% endfor %}
       {% endblock %}
-    </div>
+    </ul>
   </div>
 </div>

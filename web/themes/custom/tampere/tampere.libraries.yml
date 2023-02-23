@@ -37,13 +37,6 @@ hyphenation:
     js/hyphenation.js: {}
     node_modules/hyphenopoly/Hyphenopoly_Loader.js: {}
 
-language-dropdown:
-  js:
-    dist/js/02-molecules/language-dropdown/language-dropdown.js: {}
-  dependencies:
-    - core/drupal
-    - core/once
-
 back-to-top:
   js:
     dist/js/02-molecules/back-to-top-button/back-to-top.js: {}

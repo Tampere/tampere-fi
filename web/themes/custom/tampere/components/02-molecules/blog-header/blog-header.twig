@@ -3,18 +3,7 @@
 <div {{ bem(blog_header__base_class, blog_header__modifiers, blog_header__blockname)}}>
   <div {{ bem("container", blog_header__container__modifiers, blog_header__base_class)}}>
     <div class="blog-header__inner-container">
-      {# Image #}
-      <div {{ bem("image-container", blog_header__image_container__modifiers, blog_header__base_class)}}>
-        {% block blog_header__img %}
-          {% include "@atoms/04-images/00-image/_image.twig" with {
-            image_base_class: "image",
-            image_blockname: blog_header__base_class,
-            img_src: blog_header__image__src,
-            img_alt: blog_header__image__alt,
-          } %}
-        {% endblock %}
-      </div>
-      
+      {# Content starts #}
       <div {{ bem("content", blog_header__content__modifiers|default([]), blog_header__base_class) }}>
         {# Heading #}
         {% if blog_header__heading %}
@@ -46,6 +35,19 @@
             paragraph_content: blog_header__author,
           } %}
         {% endif %}
+      </div>
+      {# Content ends #}
+
+      {# Image #}
+      <div {{ bem("image-container", blog_header__image_container__modifiers, blog_header__base_class)}}>
+        {% block blog_header__img %}
+          {% include "@atoms/04-images/00-image/_image.twig" with {
+            image_base_class: "image",
+            image_blockname: blog_header__base_class,
+            img_src: blog_header__image__src,
+            img_alt: blog_header__image__alt,
+          } %}
+        {% endblock %}
       </div>
     </div>
 

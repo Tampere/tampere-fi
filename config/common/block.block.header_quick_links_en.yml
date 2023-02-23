@@ -12,7 +12,7 @@ dependencies:
 id: header_quick_links_en
 theme: tampere
 region: header
-weight: -22
+weight: -23
 provider: null
 plugin: 'system_menu_block:header-quick-links-en'
 settings:

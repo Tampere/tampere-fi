@@ -74,7 +74,7 @@ $inline-menu-item-margin-right: $space-m;
         @include link(clr(text));
       }
 
-      &.is-active {
+      &--is-active {
         @include large {
           font-weight: $font-weight-semi-bold;
           text-decoration: underline;
@@ -123,7 +123,7 @@ $inline-menu-item-margin-right: $space-m;
         }
       }
 
-      &.is-active {
+      &--is-active {
         @include large {
           border-bottom: $border-thick-secondary;
         }
@@ -168,7 +168,7 @@ $inline-menu-item-margin-right: $space-m;
         }
       }
 
-      &.is-active {
+      &--is-active {
         @include large {
           font-weight: $font-weight-bold;
         }
@@ -202,7 +202,7 @@ $inline-menu-item-margin-right: $space-m;
         }
       }
 
-      &.is-active {
+      &--is-active {
         border-bottom: $border-thick-inverse;
       }
     }

@@ -19,6 +19,7 @@ $blog-header-image-size--large: 154px;
     @include large {
       margin: 0 $gutter-large;
       display: flex;
+      flex-direction: row-reverse;
       padding-top: $space-l;
       padding-bottom: $space-l;
       padding-left: $space-xl;  
@@ -34,11 +35,13 @@ $blog-header-image-size--large: 154px;
     height: $blog-header-image-size;
     border-radius: 50%;
     overflow: hidden;
+    top: $space-m;
 
     @include large {
       position: inherit;
       min-width: $blog-header-image-size--large;
       min-height: $blog-header-image-size--large;
+      top: auto;
     }
   }
 

@@ -1,0 +1,19 @@
+uuid: 1fc9854c-e6d1-4dc6-bdb7-09d0d047c38f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - markup
+    - paragraphs
+id: paragraph.field_image_gallery_help
+field_name: field_image_gallery_help
+entity_type: paragraph
+type: markup
+settings: {  }
+module: markup
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

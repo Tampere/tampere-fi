@@ -1,4 +1,6 @@
 .text-with-title {
+  @include text-element-spacer;
+
   &__title {
     margin-bottom: $space-s;
 

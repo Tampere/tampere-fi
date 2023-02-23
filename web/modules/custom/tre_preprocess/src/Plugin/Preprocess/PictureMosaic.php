@@ -46,6 +46,7 @@ class PictureMosaic extends TrePreProcessPluginBase {
 
         $liftup_icon_name = NULL;
         $liftup_url = NULL;
+        $is_internal_link_paragraph = NULL;
         if (!$translated_liftup_paragraph->get('field_content_link')->isEmpty()) {
           /** @var \Drupal\paragraphs\ParagraphInterface $link_paragraph */
           $link_paragraph = $translated_liftup_paragraph->get('field_content_link')->entity;
@@ -77,6 +78,7 @@ class PictureMosaic extends TrePreProcessPluginBase {
             'card__body' => $liftup_summary,
             'card__link__url' => $liftup_url,
             'card__icon__name' => $liftup_icon_name,
+            'is_external_link' => !$is_internal_link_paragraph,
           ];
         }
       }

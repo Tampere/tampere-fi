@@ -11,7 +11,7 @@ dependencies:
 id: search_form_mobile
 theme: tampere
 region: header
-weight: 0
+weight: -1
 provider: null
 plugin: 'views_exposed_filter_block:search-page_1'
 settings:

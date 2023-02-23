@@ -54,6 +54,7 @@ class IconAndTextLink extends TrePreProcessPluginBase {
 
       $variables['link_url'] = $link_url;
       $variables['link_text'] = $link_text;
+      $variables['is_external_link'] = !$is_internal_link_paragraph;
     }
 
     return $variables;

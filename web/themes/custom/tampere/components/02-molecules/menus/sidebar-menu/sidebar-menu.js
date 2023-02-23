@@ -44,10 +44,10 @@ Drupal.behaviors.sidebarMenu = {
 
     if (sidebarMenu) {
       try {
-        activeLinksWithSubs = once('sidebar-menu-active-links', '.sidebar-menu__link--active.sidebar-menu__link--with-sub', context); // eslint-disable-line
+        activeLinksWithSubs = once('sidebar-menu-active-links', '.sidebar-menu__link--active-trail.sidebar-menu__link--with-sub', context); // eslint-disable-line
       } catch (e) {
         activeLinksWithSubs = document.querySelectorAll(
-          '.sidebar-menu__link--active.sidebar-menu__link--with-sub'
+          '.sidebar-menu__link--active-trail.sidebar-menu__link--with-sub'
         );
       }
 

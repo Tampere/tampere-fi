@@ -1,3 +1,5 @@
+infographics__heading: 'Lorem ipsum dolor sit'
+infographics__heading_level: 2
 infographics:
   - infograph__heading: '123 456'
     infograph__content: 'Vivamus at quam at felis.'

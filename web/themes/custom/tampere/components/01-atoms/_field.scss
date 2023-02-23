@@ -77,6 +77,15 @@ $field-sections-v-gutter-desktop: $space-xl;
     }
   }
 
+  &-label-heading {
+    font-size: $font-16;
+    font-weight: var(--field-label-font-weight);
+
+    @include large {
+      font-size: $font-20;
+    }
+  }
+
   &-label-above,
   &-label-inline {
     font-weight: var(--field-label-font-weight);

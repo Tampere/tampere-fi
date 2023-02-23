@@ -1,0 +1,5 @@
+{% set generic_listing__base_class = "generic-listing" %}
+
+<ul {{ bem("listing", generic_listing__listing__modifiers|default([]), generic_listing__base_class) }}>
+  {% block content %}{% endblock %}
+</ul>

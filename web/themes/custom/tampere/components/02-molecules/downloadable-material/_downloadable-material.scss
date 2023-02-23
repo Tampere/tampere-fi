@@ -1,22 +1,42 @@
 $material-image-size: 90px;
 
 .downloadable-material {
+  $base_class: &;
+
   @include list-reset;
 
-  $base_class: &;
+  display: flex;
+  flex-direction: column;
 
   @include large {
     align-items: flex-start;
-    display: flex;
+    flex-direction: row;
     gap: $space-l-plus;
   }
 
   &__image-wrapper {
     flex-shrink: 0;
+    order: 1;
 
     @include large-down {
       display: flex;
+      flex-direction: row-reverse;
       gap: $space-s;
+      justify-content: flex-end;
+    }
+
+    &--desktop {
+      display: none;
+
+      @include large {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      @include large {
+        display: none;
+      }
     }
   }
 
@@ -27,6 +47,8 @@ $material-image-size: 90px;
   }
 
   &__content-wrapper {
+    order: 2;
+
     @include large {
       flex-basis: 45%;
       flex-grow: 1;
@@ -56,6 +78,10 @@ $material-image-size: 90px;
   &__summary {
     font-size: $font-14;
 
+    @include large-down {
+      margin-bottom: $space-xs;
+    }
+
     @include large {
       font-size: $font-18;
       margin-top: $space-xs;
@@ -63,7 +89,7 @@ $material-image-size: 90px;
   }
 
   &__link-wrapper {
-    margin-left: auto;
+    order: 3;
 
     @include large-down {
       margin-top: $space-xs;

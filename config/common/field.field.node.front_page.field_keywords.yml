@@ -11,7 +11,7 @@ field_name: field_keywords
 entity_type: node
 bundle: front_page
 label: Asiasanat
-description: ''
+description: 'Käytetään sisällön ohjaamiseksi sivuilla oleviin automaattisiin sisältölistauksiin. Älä ideoi asiasanoja vaan käytä sovittuja sisällöstä riippuen. Esim. ajankohtaissisällöissä asiasanoiksi lisätään niiden sivujen pääotsikot, joiden ajankohtaispalstoille sisältö halutaan ohjata.'
 required: false
 translatable: true
 default_value: {  }

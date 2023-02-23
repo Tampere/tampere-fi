@@ -57,7 +57,7 @@ $sidebar-menu-link-left-padding--minisite: $space-xxxl;
       overflow-wrap: anywhere;
     }
 
-    &.is-active,
+    &--is-active,
     &:hover,
     &:focus {
       @include left-border-accent($color: var(--sidebar-menu-accent-color));
@@ -69,7 +69,7 @@ $sidebar-menu-link-left-padding--minisite: $space-xxxl;
       }
     }
 
-    &.is-active {
+    &--is-active {
       font-weight: $font-weight-bold;
     }
 

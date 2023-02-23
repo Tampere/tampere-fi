@@ -33,6 +33,7 @@
  * - icon_name: The name of the selected icon.
  * - link_url: The URL for the link.
  * - link_text: The link text to use.
+ * - is_external_link: Flag for whether or not the link points to an external destination.
  *
  * @see template_preprocess_paragraph()
  *
@@ -43,8 +44,10 @@
 {% if link_url %}
   {% include "@atoms/link-list/link-list-item.twig" with {
     "link_list__item_url": link_url,
+    "is_external_link": is_external_link,
     "link_list__item_text": link_text,
     "link_list__icon_filename": "icons",
     "link_list__item_icon": icon_name,
+    "link_list__item_wrapper_element": "li"
   } %}
 {% endif %}

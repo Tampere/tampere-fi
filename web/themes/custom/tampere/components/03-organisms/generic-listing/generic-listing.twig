@@ -31,17 +31,19 @@
       } %}
       {{ title_suffix }}
     {% endif %}
-    <div {{ bem("listing", generic_listing__listing__modifiers|default([]), generic_listing__base_class) }}>
-      {% block generic_listing_content %}
-        {% for item in generic_listing__items %}
-          {% include "@molecules/rss-card/rss-card.twig" with {
-            "rss_card__modifiers": [ "colorful" ],
-            "rss_card__link__url": item.url,
-            "rss_card__heading": item.heading,
-            "rss_card__icon_name": "arrow",
-          } %}
-        {% endfor %}
-      {% endblock %}
-    </div>
+    {% block generic_listing_content %}
+      {% embed "@organisms/generic-listing/_generic-listing-list-wrapper.twig" %}
+        {% block content %}
+          {% for item in generic_listing__items %}
+            {% include "@molecules/rss-card/rss-card.twig" with {
+              "rss_card__modifiers": [ "colorful" ],
+              "rss_card__link__url": item.url,
+              "rss_card__heading": item.heading,
+              "rss_card__icon_name": "arrow",
+            } %}
+          {% endfor %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
   </div>
 </div>

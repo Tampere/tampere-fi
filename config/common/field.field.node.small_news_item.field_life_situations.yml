@@ -11,7 +11,7 @@ field_name: field_life_situations
 entity_type: node
 bundle: small_news_item
 label: Elämäntilanteet
-description: ''
+description: 'Käytetään sisällön ohjaamiseksi sivuilla oleviin automaattisiin sisältölistauksiin ja jotta asiakas voi elämäntilanteella suodattamalla löytää sisällön sivuston hauissa.'
 required: false
 translatable: true
 default_value: {  }

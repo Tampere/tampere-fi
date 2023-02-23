@@ -18,15 +18,22 @@
   }
 
   &__liftups {
-    margin-top: $space-s;
+    @include list-reset;
+
+    display: grid;
+    gap: $gutter-small;
 
     @include large {
-      margin-top: $space-l;
+      grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 4)), 1fr));
     }
-  }
 
-  &__highlighted-liftup {
-    margin-bottom: $space-m;
+    .layout-container--with-sidebar & {
+      &:not(#{$base_class}--always-full-width) {
+        @include large {
+          grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 2.5)), 1fr));
+        }
+      }
+    }
   }
 
   &__link {

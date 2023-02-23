@@ -32,13 +32,14 @@
     "display_header_tagline": TRUE,
     "header__tagline": group_name,
   } %}
-    {% block header_language_dropdown %}
+    {% block header_language_switcher %}
       {{ elements.languageswitcher }}
     {% endblock %}
 
       {% block header_text_logo_with_tagline %}
         {% if group_logo %}
           {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+            "group_name": group_name,
             "text_logo_w_tagline__url": group_front_page_url,
             "display_tagline": FALSE,
             "text_logo_w_tagline__modifiers": ["desktop-svg"],
@@ -56,6 +57,7 @@
       {% block header_mobile_text_logo_with_tagline %}
         {% if group_logo %}
         {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+          "group_name": group_name,
           "text_logo_w_tagline__url": group_front_page_url,
           "display_tagline": FALSE,
           "text_logo_w_tagline__modifiers": ["mobile-svg"],
@@ -78,7 +80,7 @@
       {{ elements.search_form_mobile }}
     {% endblock %}
 
-    {% block header_mobile_language_dropdown %}
+    {% block header_mobile_language_switcher %}
       {{ elements.language_switcher_mobile }}
     {% endblock %}
 
@@ -98,12 +100,8 @@
       {{ elements.header_quick_links_en }}
     {% endblock %}
 
-    {% block header_language_dropdown %}
+    {% block header_language_switcher %}
       {{ elements.languageswitcher }}
-    {% endblock %}
-
-    {% block header_mobile_language_dropdown %}
-      {{ elements.language_switcher_mobile }}
     {% endblock %}
 
     {% block header_secondary_navigation %}

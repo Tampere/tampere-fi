@@ -1,63 +1,59 @@
-{% set topical_card__base_class = "topical-card" %} 
+{% set topical_card__base_class = "topical-card" %}
 
-<a {{ bem(topical_card__base_class, topical_card__modifiers|default([ variant ]), topical_card__blockname)}} href="{{ topical_card__link__url }}">
+<li {{ bem(topical_card__wrapper__blockname|default("wrapper"), topical_card__wrapper__modifiers|default([ variant ]), topical_card__wrapper__base_class|default(topical_card__base_class)) }}>
+  <a {{ bem(topical_card__base_class, topical_card__modifiers|default([ variant ]), topical_card__blockname)}} href="{{ topical_card__link__url }}">
+    {# Content starts #}
+    <div {{ bem("content", topical_card__content__modifiers|default([]), topical_card__base_class) }}>
+      {# Heading #}
+      {% if topical_card__heading %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_base_class: topical_card__heading__base_class|default("heading"),
+          heading_modifiers: topical_card__heading__modifiers,
+          heading_blockname: topical_card__base_class,
+          heading_level: 3,
+          heading: topical_card__heading,
+        } %}
+      {% endif %}
 
-  {% if topical_card__image or topical_card__image__src or is_example %}
-    <div aria-hidden="true" {{ bem("image-container", topical_card__image_container__modifiers|default([]), topical_card__base_class) }}>
-      {% block topical_card__img %}
-        {% if topical_card__image__src %}
-          {% include "@atoms/04-images/00-image/_image.twig" with {
-            image_base_class: "image",
-            image_blockname: topical_card__base_class,
-            img_src: topical_card__image__src,
-            img_alt: topical_card__image__alt,
-          } %}
-        {% else %}
-          {{ topical_card__image }}
-        {% endif %}
-      {% endblock %}
-    </div>
-  {% endif %}
+      <div {{ bem("details", topical_card__subheading__modifiers|default([]), topical_card__base_class)}}>
+        {{ topical_card__date }}{% if topical_card__tag %} | {{ topical_card__tag }}{% endif %}
+      </div>
 
-  <div {{ bem("content", topical_card__content__modifiers|default([]), topical_card__base_class) }}>
-    <div {{ bem("details", topical_card__subheading__modifiers|default([]), topical_card__base_class)}}>
-      {{ topical_card__date }}{% if topical_card__tag %} | {{ topical_card__tag }}{% endif %}
-    </div>
+      {% if topical_card__summary %}
+        {% block topical_card__summary_text %}
+          <div {{ bem("summary", topical_card__summary__modifiers|default([]), topical_card__base_class)}}>
+            {{ topical_card__summary }}
+          </div>
+        {% endblock %}
+      {% endif %}
 
-    {# Heading #}
-    {% if topical_card__heading and topical_card__summary %}
-      {% include "@atoms/02-text/00-headings/_heading.twig" with {
-        heading_base_class: topical_card__heading__base_class|default("heading"),
-        heading_modifiers: topical_card__heading__modifiers,
-        heading_blockname: topical_card__base_class,
-        heading_level: 3,
-        heading: topical_card__heading,
+      {# Icon #}
+      {% include "@atoms/04-images/icons/_icon.twig" with {
+        icon_base_class: topical_card__icon__base_class|default("icon"),
+        icon_modifiers: topical_card__icon__modifiers,
+        icon_blockname: topical_card__base_class,
+        icon_name: topical_card__icon__name|default("arrow"),
+        icon_decorative: true,
       } %}
-    {% elseif topical_card__heading %}
-      {% include "@atoms/02-text/text/07-text-block.twig" with {
-        text_block_base_class: topical_card__heading__base_class|default("heading"),
-        text_block_modifiers: topical_card__heading__modifiers,
-        text_block_blockname: topical_card__base_class,
-        text_block_extra_classes: [ "h3", "hyphenate" ],
-        text_block_content: topical_card__heading,
-      } %}
-    {% endif %}
+    </div>
+    {# Content ends #}
 
-    {% if topical_card__summary %}
-      {% block topical_card__summary_text %}
-        <div {{ bem("summary", topical_card__summary__modifiers|default([]), topical_card__base_class)}}>
-          {{ topical_card__summary }}
-        </div>
-      {% endblock %}
+    {# Image #}
+    {% if topical_card__image or topical_card__image__src or is_example %}
+      <div aria-hidden="true" {{ bem("image-container", topical_card__image_container__modifiers|default([]), topical_card__base_class) }}>
+        {% block topical_card__img %}
+          {% if topical_card__image__src %}
+            {% include "@atoms/04-images/00-image/_image.twig" with {
+              image_base_class: "image",
+              image_blockname: topical_card__base_class,
+              img_src: topical_card__image__src,
+              img_alt: topical_card__image__alt,
+            } %}
+          {% else %}
+            {{ topical_card__image }}
+          {% endif %}
+        {% endblock %}
+      </div>
     {% endif %}
-
-    {# Icon #}
-    {% include "@atoms/04-images/icons/_icon.twig" with {
-      icon_base_class: topical_card__icon__base_class|default("icon"),
-      icon_modifiers: topical_card__icon__modifiers,
-      icon_blockname: topical_card__base_class,
-      icon_name: topical_card__icon__name|default("arrow"),
-      icon_decorative: true,
-    } %}
-  </div>
-</a>
+  </a>
+</li>

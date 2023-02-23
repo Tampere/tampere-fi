@@ -1,12 +1,15 @@
 {% set link_list__base_class = "link-list" %}
 
-<li {{ bem("list-item", (link_list__list_item__modifiers|default([])), link_list__base_class) }} {{ link_list__item_attributes }}>
+{% set link_list__item_wrapper_element = link_list__item_wrapper_element|default("div") %}
+
+<{{ link_list__item_wrapper_element }} {{ bem("list-item", (link_list__list_item__modifiers|default([])), link_list__base_class) }} {{ link_list__item_attributes }}>
   <a {{ bem("link", (link_list__link__modifiers|default([])), link_list__base_class) }} href="{{ link_list__item_url }}">
     <span {{ bem("link-text", (link_list__link_text__modifiers|default([])), link_list__base_class, [ "hyphenate" ]) }}>
       {{ link_list__item_text }}
     </span>
     {% block link_list_item_icon %}
       {% include "@atoms/04-images/icons/_icon.twig" with {
+        is_external_link: is_external_link,
         icon_decorative: true,
         icon_base_class: "icon",
         icon_blockname: link_list__base_class,
@@ -16,4 +19,4 @@
       } %}
     {% endblock %}
   </a>
-</li>
+</{{ link_list__item_wrapper_element }}>

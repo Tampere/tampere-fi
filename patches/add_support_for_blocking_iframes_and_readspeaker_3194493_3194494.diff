@@ -105,7 +105,7 @@ index 0000000..9a3bce2
 +            '<div class="consent-placeholder" data-category="cookie_cat_functional" style="display: ' + display_style + '">'
 +            + '<p class="consent-placeholder__text">'
 +            + Drupal.t(
-+              "Unfortunately you are not able to view this content since you haven't accepted functional cookies. You can accept cookies by clicking on the green icon in the bottom left corner or on the Accept cookies button below.",
++              "Unfortunately you are not able to view this content since you haven't accepted functional cookies. You can accept cookies by clicking the Renew consent icon at the bottom left corner of the website or on the Accept cookies button below.",
 +              {},
 +              { context: 'Cookie information' },
 +            )

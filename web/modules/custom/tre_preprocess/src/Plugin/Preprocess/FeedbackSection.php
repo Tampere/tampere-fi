@@ -52,6 +52,7 @@ class FeedbackSection extends TrePreProcessPluginBase {
         $links[] = [
           'text' => $link_text,
           'url' => $link_url,
+          'is_external_link' => !$is_internal_link_paragraph,
         ];
       }
 

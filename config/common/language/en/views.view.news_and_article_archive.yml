@@ -19,6 +19,18 @@ display:
           reset_button_label: 'Remove filters'
           exposed_sorts_label: Sort
           text_input_required: 'Select any filter and click Filter to see the results'
+      filters:
+        published_at:
+          expose:
+            label: 'Publication date from'
+            placeholder: dd.mm.yyyy
+        published_at_1:
+          expose:
+            label: 'Publication date to'
+            placeholder: dd.mm.yyyy
+        field_archive_search_content_value:
+          expose:
+            label: 'Filter by word search'
   archive_en:
     display_options:
       filters:
@@ -33,3 +45,12 @@ display:
                 title: Article
               3:
                 title: News
+        published_at:
+          expose:
+            label: 'Publication date from'
+        published_at_1:
+          expose:
+            label: 'Publication date to'
+        field_archive_search_content_value:
+          expose:
+            label: 'Filter by word search'

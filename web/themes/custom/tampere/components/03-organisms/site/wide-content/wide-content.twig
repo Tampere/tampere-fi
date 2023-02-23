@@ -21,18 +21,17 @@
 {% endif %}
 
 <article {{ bem(wide_content_base_class, wide_content_modifiers|default([]), wide_content_blockname) }}>
-  {% include "@atoms/02-text/00-headings/_heading.twig" with {
-    "heading_base_class": wide_content_base_class,
-    "heading_blockname": "title",
-    "custom_classes": [ "visually-hidden" ],
-    "heading_level": 1,
-    "heading": main_title,
-  } %}
+  {% if main_title %}
+    <div class="visually-hidden">
+      {{ main_title }}
+    </div>
+  {% endif %}
 
   <div {{ bem("main-content", wide_content__main_content__modifiers|default([]), wide_content_base_class) }}>
     <div {{ bem("header", wide_content__header__modifiers|default([]), wide_content_base_class) }}>
       {% embed "@molecules/hero/hero.twig" with {
         "hero__heading": hero_title,
+        "use_heading_element": cta_link_url ? TRUE : FALSE,
         "hero__modifiers": [ "title-without-icon" ],
         "has_image": has_image,
         "hero__heading__level": hero_heading_level,

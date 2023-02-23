@@ -58,10 +58,6 @@ to enable hyphenation.
 String in the theme are translated in /translations %language.po files. Create a new file to add another language, e.g. sv.fi for swedish translations.
 To import trasnlations, run `drush locale-check && drush locale-update && drush cr`. Notice, that you need to have `locale` module enable.
 
-### Language switcher dropdown
-By default language links block is rendered as a list of links. In most cases we need it to be a dropdown element. There is template override for it in a templates/navigation/links--language-block.html.twig that takes care of converting list to an accessible dropdown.
-in tampere.theme you will find a `tampere_preprocess_links__language_block` function that gets an active language code to display in a template. Also, there is `language-dropdown` library attached that add a functionality and some sytles to the dropdown.
-
 ## Frontend gotchas
 
 ### Local tools setup

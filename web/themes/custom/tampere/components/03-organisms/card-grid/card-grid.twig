@@ -1,23 +1,18 @@
 {% set card_grid__base_class = "card-grid" %}
 
+{% set card_grid__has_multiple_items = card_grid__has_multiple_items|default(cards|length > 1) %}
+
+{% if card_grid__has_multiple_items %}
+  {% set card_grid__wrapper_element = "ul" %}
+{% else %}
+  {% set card_grid__wrapper_element = "div" %}
+{% endif %}
+
 <div {{ bem(card_grid__base_class, card_grid__modifiers|default([]), card_grid__blockname) }}>
-  <div {{ bem("wrapper", card_grid__wrapper__modifiers|default([]), card_grid__base_class) }}>
+  <{{ card_grid__wrapper_element }} {{ bem("wrapper", card_grid__wrapper__modifiers|default([]), card_grid__base_class) }}>
     {% block card_grid__content %}
       {% for card in cards %}
-        {% if card_type == "topical-card" %}
-          {# Topical cards support either image__src strings or image render arrays. #}
-          {% include "@molecules/topical-card/topical-card.twig" with {
-            topical_card__link__url: card.card__link__url,
-            topical_card__modifiers: topical_card__modifiers,
-            topical_card__image__src: card.card__image__src,
-            topical_card__image: card.card__image,
-            topical_card__date: card.card__date,
-            topical_card__tag: card.card__tag,
-            topical_card__heading: card.card__heading,
-            topical_card__summary: card.card__summary,
-            topical_card__icon__name: card.card__icon__name,
-          } %}
-        {% elseif card_type == "rss-card" %}
+        {% if card_type == "rss-card" %}
           {% include "@molecules/rss-card/rss-card.twig" with {
             rss_card__link__url: card.card__link__url,
             rss_card__date: card.card__date,
@@ -25,15 +20,17 @@
           } %}
         {% else %}
           {% include "@molecules/card/01-card.twig" with {
+            card__is_list_item: card_grid__has_multiple_items,
             card__modifiers: card.card__modifiers,
             card__image__src: card.card__image__src,
             card__heading: card.card__heading,
             card__link__url: card.card__link__url,
+            card__link__is_external: card.card__link__is_external,
             card__body: card.card__body,
             card__icon__name: card.card__icon__name,
           } %}
         {% endif %}
       {% endfor %}
     {% endblock %}
-  </div>
+  </{{ card_grid__wrapper_element }}>
 </div>

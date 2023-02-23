@@ -16,6 +16,10 @@
  */
 #}
 
-{% for row in rows %}
-  {{- row.content -}}
-{% endfor %}
+{% embed "@organisms/generic-listing/_generic-listing-list-wrapper.twig" %}
+  {% block content %}
+    {% for row in rows %}
+      {{- row.content -}}
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

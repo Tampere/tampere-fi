@@ -44,13 +44,4 @@
  * @see template_preprocess_form_element()
  */
 #}
-{%
-  set classes = [
-    'js-form-item',
-    'form-item',
-    'form-item-date-of-publication-max',
-  ]
-%}
-{% include "@atoms/05-forms/_form-element.twig" with {
-  label_display: FALSE,
-} %}
+{% include "form-element--views--news-and-article-archive--archive-en--date-of-publication-max.html.twig" %}

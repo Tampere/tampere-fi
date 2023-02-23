@@ -38,6 +38,7 @@
 #}
 
 {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+  "link_with_icon__is_external": TRUE,
   "link_with_icon__modifiers": [ "secondary" ],
   "link_with_icon__url": paragraph.field_external_link_w_link_text.0.uri,
   "link_with_icon__link_text": paragraph.field_external_link_w_link_text.0.title,

@@ -68,6 +68,7 @@ class BalancedContentLiftup extends TrePreProcessPluginBase {
           'card__body' => $liftup_summary,
           'card__modifiers' => self::LIFTUP_MODIFIERS,
           'card__link__url' => $liftup_url,
+          'card__link__is_external' => !$is_internal_link_paragraph,
         ];
       }
     }

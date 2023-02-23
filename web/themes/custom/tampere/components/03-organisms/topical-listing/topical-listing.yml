@@ -1,13 +1,13 @@
 topical_listing__heading: 'Lorem ipsum dolor sit amet'
 has_highlighted_liftup: TRUE
-topical_card__date: '14.12.2021'
-topical_card__tag:
+topical_listing__highlighted__date: '14.12.2021'
+topical_listing__highlighted__tag:
   'News item'
-topical_card__heading:
+topical_listing__highlighted__heading:
   'Lorem ipsum dolor sit amet'
-topical_card__summary:
+topical_listing__highlighted__summary:
   'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit.'
-topical_card__link__url:
+topical_listing__highlighted__link__url:
   '#'
 topical_listing__highlighted_liftup__modifiers:
   - "event"

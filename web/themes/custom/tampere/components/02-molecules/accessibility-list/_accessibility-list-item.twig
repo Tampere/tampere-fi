@@ -1,0 +1,35 @@
+{#
+/**
+ * Available variables:
+ * - a11y_list_item__base_class - the base classname
+ * - a11y_list_item__modifiers - array of modifiers to add to the base classname
+ * - a11y_list_item__blockname - blockname prepended to the base classname
+ *
+ * - a11y_list_item__icon_name - name of the icon to display
+ *
+ * - a11y_list_item__content - content to display next to icon
+ */
+#}
+{% set a11y_list_item__base_class = "accessibility-list" %}
+
+<li {{ bem("list-item", a11y_list_item__modifiers, a11y_list_item__base_class) }}>
+  {% if a11y_list_item__icon_name %}
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      "icon_base_class": a11y_list_item__icon__base_class|default("icon"),
+      "icon_modifiers": a11y_list_item__icon__modifiers,
+      "icon_blockname": a11y_list_item__base_class,
+      "icon_name": a11y_list_item__icon_name,
+      "icon_decorative": true,
+    } %}
+  {% endif %}
+
+  {% if a11y_list_item__content %}
+    {% block a11y_list_item__content_block %}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        "text_block_base_class": "content",
+        "text_block_blockname": a11y_list_item__base_class|default(a11y_list_item__base_class),
+        "text_block_content": a11y_list_item__content,
+      } %}
+    {% endblock %}
+  {% endif %}
+</li>

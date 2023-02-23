@@ -13,19 +13,26 @@
 #}
 {% set link_list__base_class = "link-list" %}
 
+{% set link_list__wrapper_element = "div" %}
+{% set link_list__item_wrapper_element = "div" %}
+
 {% if "large-icons" in link_list__modifiers %}
   {% set link_list__icon_filename = "icons" %}
+  {% set link_list__wrapper_element = "ul" %}
+  {% set link_list__item_wrapper_element = "li" %}
 {% endif %}
 
-<ul {{ bem(link_list__base_class, (link_list__modifiers|default([])), link_list__blockname) }}>
+<{{ link_list__wrapper_element }} {{ bem(link_list__base_class, (link_list__modifiers|default([])), link_list__blockname) }}>
   {% block list_content %}
     {% for link_list__item in link_list__items %}
       {% include "@atoms/link-list/link-list-item.twig" with {
+        "is_external_link": link_list__item.is_external_link,
         "link_list__item_url": link_list__item.url,
         "link_list__item_text": link_list__item.text,
         "link_list__item_icon": link_list__item.icon,
         "link_list__icon_filename": link_list__icon_filename,
+        "link_list__item_wrapper_element": link_list__item_wrapper_element
       } %}
     {% endfor %}
   {% endblock %}
-</ul>
+</{{ link_list__wrapper_element }}>

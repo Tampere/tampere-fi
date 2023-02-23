@@ -37,12 +37,12 @@
 #}
 
 {% if use_minisite_language_switcher %}
-  {% set language_dropdown__modifiers = [ "dynamic" ] %}
+  {% set language_switcher__modifiers = [ "dynamic" ] %}
 {% endif %}
 
 {% if links -%}
-  {% include "@molecules/language-dropdown/language-dropdown.twig" with {
-    "language_dropdown__modifiers": language_dropdown__modifiers,
+  {% include "@molecules/language-switcher/language-switcher.twig" with {
+    "language_switcher__modifiers": language_switcher__modifiers,
     "links": links,
     "current_language_code": current_language_code,
     "current_language_name": current_language_name,

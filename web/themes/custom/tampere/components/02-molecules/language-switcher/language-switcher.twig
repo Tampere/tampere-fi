@@ -1,0 +1,25 @@
+{% set language_switcher__base_class = "language-switcher" %}
+
+{% set language_switcher_id = language_switcher_id|default("language-switcher") %}
+{% set language_switcher_toggle_id = language_switcher_toggle_id|default("language-switcher-toggle") %}
+
+<div id="{{ language_switcher_id }}" {{ bem(language_switcher__base_class, language_switcher__modifiers|default([]), language_switcher__blockname)}}>
+  <ul {{ bem("menu", language_switcher__menu__modifiers|default([]), language_switcher__base_class)}}>
+    {%- for key, item in links -%}
+      <li
+        {{ bem("menu-item", language_switcher__menu_item__modifiers|default([]), language_switcher__base_class)}}
+        lang="{{ key }}"
+      >
+        {%- if item.link -%}
+          {{ item.link }}
+        {%- elseif item.text_attributes -%}
+          <span{{ item.text_attributes }}>{{ item.text }}</span>
+        {%- else -%}
+          <a class="language-link" href="{{ language_switcher_example_link_url|default("#") }}">
+            {{ key|upper }}
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>

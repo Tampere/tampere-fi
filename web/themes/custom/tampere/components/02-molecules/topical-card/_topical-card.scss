@@ -1,3 +1,5 @@
+$topical-card-content-min-height: 230px;
+$topical-card-3-col-breakpoint: 77.438rem;
 $topical-card-image-height: 244px;
 $topical-card-mobile-image-height: 202px;
 $topical-card-image-mobile-size--alt: 172px;
@@ -10,7 +12,7 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
   background-color: clr(background);
   color: clr(text);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   height: 100%;
   text-decoration: none;
 
@@ -20,6 +22,16 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
       text-decoration: underline;
       text-underline-position: under;
       text-decoration-thickness: 2px;
+    }
+  }
+
+  &__wrapper {
+    list-style-type: none;
+
+    &--big {
+      @include large {
+        grid-column: 1 / -1;
+      }
     }
   }
 
@@ -52,12 +64,13 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
 
   &__content {
     box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
+    display: flex;
+    flex-direction: column;
     padding: $space-s;
 
     @include large {
-      display: flex;
-      flex-direction: column;
       flex-grow: 1;
+      min-height: $topical-card-content-min-height;
       padding: $space-m;
     }  
   }
@@ -65,6 +78,7 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
   &__details {
     font-size: $font-12;
     font-family: $font-body;
+    order: -1;
 
     @include large {
       font-size: $font-16;
@@ -107,7 +121,7 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
 
     @include large-down {
       box-shadow: $topical-card-box-shadow;
-      flex-direction: row;
+      flex-direction: row-reverse;
       min-height: $topical-card-image-mobile-size--alt;
     }
 
@@ -152,6 +166,7 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
       height: $topical-card-mobile-image-height;
 
       @include large {
+        order: 1;
         height: 100%;
       }
     }
@@ -160,6 +175,7 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
       padding: $space-m $space-s;
 
       @include large {
+        order: 2;
         justify-content: center;
         padding: $space-xl;
       }

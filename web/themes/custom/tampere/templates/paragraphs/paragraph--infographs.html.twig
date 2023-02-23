@@ -30,6 +30,8 @@
  *   current user is a logged-in member.
  * - is_admin: Flag for admin user status. Will be true when the current user
  *   is an administrator.
+ * - infographics_heading_text: The heading content. Optional.
+ * - infographics_heading_level: The heading level selected for the title. Optional.
  * - infographics: Available infographics as an array. Each item contains:
  *     - infograph__modifiers: An array of modifiers for the infographic.
  *     - infograph__heading: The title for the infographic.
@@ -44,8 +46,11 @@
 {% embed "@organisms/_paragraph.twig" %}
   {% block paragraph_content %}
     {% include "@organisms/infographics/infographics.twig" with {
+      "infographics__heading": infographics_heading_text,
+      "infographics__heading_level": infographics_heading_level,
       "infographics": infographics,
       "attributes": [],
     } %}
+    {{ content['#cache'] }}
   {% endblock %}
 {% endembed %}

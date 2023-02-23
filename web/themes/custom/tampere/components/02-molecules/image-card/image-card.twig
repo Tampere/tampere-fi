@@ -20,9 +20,24 @@
 {% set card__base_class = "image-card" %}
 
 <a {{ bem(card__base_class, card__modifiers|default([]), card__blockname, card__extra_classes) }} href="{{ card__link__url }}">
+  {# Heading #}
+  {% if card__heading %}
+    <div {{ bem("tag", card__tag__modifiers|default([]), card__base_class)}}>
+      {{ title_prefix }}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        "text_block_base_class": card__heading__base_class|default("heading"),
+        "text_block_modifiers": card__heading__modifiers,
+        "text_block_blockname": card__base_class,
+        "text_block_extra_classes": [ "h2", "hyphenate" ],
+        "text_block_content": card__heading,
+      } %}
+      {{ title_suffix }}
+    </div>
+  {% endif %}
+
   {# Image #}
   {% if card__image__src or card__image %}
-    <div {{ bem("image-container", card__image_container__modifiers|default([]), card__base_class)}} aria-hidden="true">
+    <div {{ bem("image-container", card__image_container__modifiers|default([]), card__base_class)}}>
       {% block card_image %}
         {% if card__image %}
           {{ card__image }}
@@ -37,19 +52,7 @@
     </div>
   {% endif %}
 
-  {# Heading #}
-  {% if card__heading %}
-    <div {{ bem("tag", card__tag__modifiers|default([]), card__base_class)}}>
-      {{ title_prefix }}
-      {% include "@atoms/02-text/text/07-text-block.twig" with {
-        "text_block_element": "span",
-        "text_block_base_class": "heading",
-        "text_block_modifiers": card__heading__modifiers,
-        "text_block_blockname": card__base_class,
-        "text_block_extra_classes": [ "h2", "hyphenate" ],
-        "text_block_content": card__heading,
-      } %}
-      {{ title_suffix }}
-    </div>
+  {% if is_external_link %}
+    <span class="visually-hidden">{{ "Link to an external website"|t }}</span>
   {% endif %}
 </a>

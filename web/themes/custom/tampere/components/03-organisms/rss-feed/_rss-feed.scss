@@ -29,6 +29,10 @@
     width: $icon-medium;
   }
 
+  &__feed {
+    @include list-reset;
+  }
+
   .layout-container--with-sidebar & {
     #{$base_class}__wrapper {
       @include large {

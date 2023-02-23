@@ -8,7 +8,7 @@ Drupal.behaviors.backToTop = {
   attach(context) {
     const easeOutCubic = (time) => --time * time * time + 1; // eslint-disable-line
     const motionQuery = window.matchMedia('(prefers-reduced-motion)');
-    const backToTopElement = document.querySelector('.back-to-top', context);
+    const backToTopElements = document.querySelectorAll('.back-to-top', context);
     const bodyElem = document.querySelector('body', context);
     let animationRequest;
     let prefersReducedMotion = motionQuery.matches;
@@ -74,9 +74,11 @@ Drupal.behaviors.backToTop = {
     window.addEventListener('touchmove', handleUserInitiatedScroll);
     window.addEventListener('keydown', handleKeyDown);
 
-    if (backToTopElement) {
-      backToTopElement.addEventListener('click', backToTop);
-      backToTopElement.addEventListener('click', switchFocus);
+    if (backToTopElements) {
+      backToTopElements.forEach(element => {
+        element.addEventListener('click', backToTop);
+        element.addEventListener('click', switchFocus);
+      });
     }
 
     motionQuery.addEventListener('change', handleReduceMotionChanged);

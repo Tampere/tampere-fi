@@ -37,6 +37,10 @@
  */
 #}
 
-{% for item in items %}
-  {{ item.content }}
-{% endfor %}
+{% embed "@molecules/accessibility-list/accessibility-list.twig" %}
+  {% block list_content %}
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

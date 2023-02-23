@@ -48,8 +48,10 @@
 {% endif %}
 
 {% set event_card_modifier = "event" %}
+{% set highlighted_card_modifier = "big" %}
 
-{% set card_grid_modifiers = [ "3-col" ] %}
+{% set card_wrapper_modifiers = [ highlighted_card_modifier ] %}
+{% set card_modifiers = [ event_card_modifier, highlighted_card_modifier ] %}
 
 {% embed "@organisms/_paragraph.twig" %}
   {% block paragraph_content %}
@@ -59,7 +61,6 @@
       "topical_listing__modifiers": [ "events" ],
       "topical_listing__summary": paragraph.field_summary.value,
       "has_highlighted_liftup": featured_liftup_exists or content_not_empty,
-      "topical_listing__liftup__modifiers": [ event_card_modifier ],
     } %}
       {% block highlighed_liftup %}
         {{ content|without("field_summary") }}
@@ -73,7 +74,8 @@
             "topical_card__summary": featured_liftup.summary,
             "topical_card__link__url": featured_liftup.url,
             "topical_card__icon__name": "external",
-            "topical_card__modifiers": [ event_card_modifier, "big" ],
+            "topical_card__wrapper__modifiers": card_wrapper_modifiers,
+            "topical_card__modifiers": card_modifiers,
           } %}
         {% endif %}
       {% endblock %}

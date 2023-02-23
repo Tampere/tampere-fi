@@ -77,13 +77,17 @@
     }
 
     & .form-item.form-item-date-of-publication-max {
-      align-items: flex-end;
-      display: flex;
       width: calc(100% - #{$dash-width} - #{$datepicker-margin});
 
       @include small {
-        width: $date-picker-field-width;
+        flex-basis: calc(45% - #{$dash-width} - #{$datepicker-margin});
         margin: $space-m 0 $space-m 0;
+        width: unset;
+      }
+
+      @include large {
+        flex-basis: calc(25% - #{$dash-width} - #{$datepicker-margin});
+        margin-right: $space-l;
       }
 
       // Calendar icon.
@@ -100,19 +104,27 @@
     & .form-item.form-item-date-of-publication-min,
     & .form-item.form-item-date-of-publication-max {
       position: relative;
+
+      @include large {
+        min-width: 240px;
+      }
     }
 
     & .form-item.form-item-date-of-publication-min {
+      align-content: flex-end;
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
       margin-top: $space-m;
       margin-bottom: $space-m;
       margin-left: 0;
 
       @include small {
+        flex-basis: 45%;
         margin-right: $datepicker-margin;
-        width: calc(#{$date-picker-field-width} + #{$dash-width} + #{$datepicker-margin});
+      }
+
+      @include large {
+        flex-basis: 25%;
       }
 
       .form-item__textfield {
@@ -145,13 +157,21 @@
       }
     }
 
+    .form-item-date-of-publication-max,
+    .form-item-field-archive-search-content-value {
+      @include small {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+    }
+
     .form-item-field-archive-search-content-value {
       margin-top: $space-m;
       margin-bottom: $space-m;
 
       @include large {
-        margin-left: $space-l;
-        width: auto;
+        width: 30%;
       }
 
       .form-item__textfield {

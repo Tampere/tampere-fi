@@ -46,8 +46,6 @@
 
 {% set topical_listing__heading = paragraph.field_listing_title.value %}
 
-{% set card_grid_modifiers = [ "3-col" ] %}
-
 {% embed "@organisms/_paragraph.twig" %}
   {% block paragraph_content %}
     {% embed "@organisms/topical-listing/topical-listing.twig" with {
@@ -59,15 +57,9 @@
       {% endblock %}
 
       {% block topical_listing_liftups %}
-        {% embed "@organisms/card-grid/card-grid.twig" with {
-          "card_grid__modifiers": card_grid_modifiers,
-        } %}
-          {% block card_grid__content %}
-            {% for liftup in current_listing_liftups %}
-              {{ liftup }}
-            {% endfor %}
-          {% endblock %}
-        {% endembed %}
+        {% for liftup in current_listing_liftups %}
+          {{ liftup }}
+        {% endfor %}
       {% endblock %}
     {% endembed %}
   {% endblock %}

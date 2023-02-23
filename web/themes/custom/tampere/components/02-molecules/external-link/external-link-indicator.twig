@@ -9,8 +9,6 @@
 
 {% set external_link_indicator__base_class = "external-link-indicator" %}
 
-{% set external_link_indicator__description = "Link to an external website"|t %}
-
 <template id="external-link-indicator-template">
   <span {{ bem(external_link_indicator__base_class, external_link_indicator__modifiers|default([]), external_link_indicator__blockname) }}>
     {%- include "@atoms/04-images/icons/_icon.twig" with {
@@ -18,8 +16,6 @@
       "icon_modifiers": external_link_indicator__icon__modifiers,
       "icon_blockname": external_link_indicator__base_class,
       "icon_name": "external",
-      "icon_decorative": true,
     } -%}
-    <span class="visually-hidden">{{ external_link_indicator__description }}</span>
   </span>
 </template>

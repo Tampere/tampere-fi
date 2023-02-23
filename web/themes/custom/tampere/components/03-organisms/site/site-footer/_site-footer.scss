@@ -186,7 +186,6 @@ $footer-background-image-bottom-position--desktop: 93px;
 
     color: clr(text-inverse);
     font-size: $font-12;
-    order: 3;
 
     @include large {
       font-size: $font-16;
@@ -194,13 +193,29 @@ $footer-background-image-bottom-position--desktop: 93px;
     }
   }
 
+  &__copyright,
+  &__back-to-top {
+    &--desktop {
+      display: none;
+
+      @include large {
+        display: block;
+      }
+    }
+
+    &--mobile {
+      @include large {
+        display: none;
+      }
+    }
+  }
+
   &__site-links {
-    order: 3;
     width: 100%;
 
     @include large {
-      order: 4;
       width: auto;
+      padding-right: $space-l;
       padding-left: $space-l;
     }
   }
@@ -208,9 +223,9 @@ $footer-background-image-bottom-position--desktop: 93px;
   &__back-to-top {
     align-self: flex-start;
     padding-top: $space-xs;
+    padding-bottom: $space-xs;
 
     @include large {
-      order: 4;
       align-self: center;
       margin-left: auto;
     }

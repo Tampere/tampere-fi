@@ -11,7 +11,7 @@ field_name: field_geographical_areas
 entity_type: node
 bundle: basic_content_page
 label: 'Maantieteelliset alueet'
-description: ''
+description: 'Käytetään sisällön ohjaamiseksi sivuilla oleviin automaattisiin sisältölistauksiin ja jotta asiakas voi sijainnilla suodattamalla löytää sisällön sivuston hauissa.'
 required: false
 translatable: true
 default_value: {  }

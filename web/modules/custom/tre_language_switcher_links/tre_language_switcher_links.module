@@ -28,21 +28,26 @@ function tre_language_switcher_links_language_switch_links_alter(array &$links, 
 function _tre_language_switcher_links_modify_language_titles(array $links) {
   $active_theme_name = \Drupal::service('theme.manager')->getActiveTheme()->getName();
   $default_theme_name = \Drupal::config('system.theme')->get('default');
+  $current_lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
   if ($active_theme_name == $default_theme_name) {
-    $span_string = '<span class="mobile" aria-hidden="true">@mobile_title</span><span class="mobile visually-hidden">@desktop_title</span><span class="desktop">@desktop_title</span>';
+    $span_string = '<span aria-hidden="true">@lang_code</span><span class="visually-hidden">@description</span>';
 
     foreach ($links as $lang_id => $link) {
+      if ($current_lang_code === $lang_id) {
+        $links[$lang_id]['attributes']['aria-current'] = 'true';
+      }
+
       if ($lang_id == 'fi') {
         $links[$lang_id]['title'] = new FormattableMarkup($span_string, [
-          '@mobile_title' => 'FI',
-          '@desktop_title' => 'Suomi (FI)',
+          '@lang_code' => 'FI',
+          '@description' => 'Valitse sivuston kieli: suomi',
         ]);
       }
       elseif ($lang_id == 'en') {
         $links[$lang_id]['title'] = new FormattableMarkup($span_string, [
-          '@mobile_title' => 'EN',
-          '@desktop_title' => 'English (EN)',
+          '@lang_code' => 'EN',
+          '@description' => 'Select site language: English',
         ]);
       }
     }

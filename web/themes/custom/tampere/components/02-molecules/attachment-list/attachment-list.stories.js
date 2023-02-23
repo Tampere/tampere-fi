@@ -4,7 +4,7 @@ import attachmentListComponent from './attachment-list.twig';
 
 import attachmentListData from './attachment-list.yml';
 
-export default { title: 'Atoms/Lists/Attachment List' };
+export default { title: 'Molecules/Attachment List' };
 
 export const attachmentList = () => (
   <div

@@ -83,19 +83,25 @@ $person-contact-image-size--large: 105px;
     }
   }
 
+  &__name-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__legend {
     font-size: $font-16;
     font-weight: $font-weight-bold;
     font-family: $font-body;
-    padding-bottom: $space-xxs;
+    order: 1;
 
     @include large {
       font-size: $font-20;
-      padding-bottom: $space-xs;
     }
   }
 
   &__name {
+    order: 3;
+
     @include heading-small(
       $font-size: $font-18,
       $font-size-large: $font-24,
@@ -145,6 +151,7 @@ $person-contact-image-size--large: 105px;
     font-size: $font-16;
     font-weight: $font-weight-regular;
     margin: 0;
+    order: 2;
 
     @include large {
       font-size: $font-20;

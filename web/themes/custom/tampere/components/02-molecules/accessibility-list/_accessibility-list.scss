@@ -1,6 +1,18 @@
-.icon-with-text {
-  display: flex;
-  
+.accessibility-list {
+  @include list-reset;
+
+  display: grid;
+  column-gap: $space-s;
+  row-gap: $space-s;
+
+  @include medium {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__list-item {
+    display: flex;
+  }
+
   &__icon {
     flex-shrink: 0;
     width: $icon-medium;

@@ -1,8 +1,0 @@
-icon-with-text:
-  label: Icon with text
-  fields:
-    icon_with_text__icon:
-      label: Icon
-    icon_with_text__content:
-      label: Content
-  use: "@molecules/icon-with-text/icon-with-text.twig"

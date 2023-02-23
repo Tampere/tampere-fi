@@ -20,7 +20,9 @@
 {% set heading_base_class = heading_base_class|default("heading") %}
 {% set custom_classes = custom_classes|default([]) %}
 
-{% set heading_level_class = "h" ~ heading_level %}
+{% if not skip_heading_level_class %}
+  {% set heading_level_class = "h" ~ heading_level %}
+{% endif %}
 
 {% if custom_classes %}
   {% set custom_classes = custom_classes|merge([ heading_level_class ]) %}

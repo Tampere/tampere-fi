@@ -2,12 +2,37 @@
 
 {% set use_right_to_left = content_language == "arb" or content_language == "fa" %}
 
-{% if last_updated|render|trim %}
+{% if not basic_content__heading__modifiers %}
+  {% set basic_content__heading__modifiers = [] %}
+{% endif %}
+
+{% if not basic_content__main_image_wrapper__modifiers %}
+  {% set basic_content__main_image_wrapper__modifiers = [] %}
+{% endif %}
+
+{% set last_updated_markup = last_updated|render %}
+
+{% if last_updated_markup|trim %}
   {% set has_last_updated_date = TRUE %}
 {% endif %}
 
-{% if main_image|render|trim %}
-  {% set content_has_image = TRUE %}
+{% set main_image_markup = main_image|render %}
+
+{% if main_image_markup|trim %}
+  {% set has_main_image = TRUE %}
+{% endif %}
+
+{% set pre_title_content_markup = pre_title_content|render %}
+
+{% if pre_title_content_markup|trim %}
+  {% set has_pre_title_content = TRUE %}
+
+  {% set basic_content__heading__modifiers = basic_content__heading__modifiers|merge([ "no-margin" ]) %}
+  {% set basic_content__main_image_wrapper__modifiers = basic_content__main_image_wrapper__modifiers|merge([ "no-bottom-margin" ]) %}
+{% endif %}
+
+{% if not has_main_image and not has_pre_title_content %}
+  {% set basic_content__heading__modifiers = basic_content__heading__modifiers|merge([ "no-preceding-content" ]) %}
 {% endif %}
 
 <article
@@ -15,22 +40,32 @@
   {% if content_language %} lang="{{ content_language }}" {% endif %}
   {% if use_right_to_left %} dir="rtl" {% endif %}
 >
-  {% if content_has_image %}
-    <div {{ bem("main-image", basic_content__main_image__modifiers|default([]), basic_content_base_class) }}>
-      {{ main_image }}
-    </div>
-  {% endif %}
   <div {{ bem("main-content", basic_content__main_content__modifiers|default([]), basic_content_base_class) }}>
-    {% block basic_content_pre_title_content %}
-      {{ pre_title_content }}
-    {% endblock %}
+    <div {{ bem("header-wrapper", basic_content__header_wrapper__modifiers|default([]), basic_content_base_class) }}>
+      <div {{ bem("heading", basic_content__heading__modifiers|default([]), basic_content_base_class) }}>
+        {% include "@molecules/hero/hero.twig" with {
+          "hero__modifiers": [ "no-header-margin" ],
+          "hero__heading": main_title,
+          "use_heading_element": TRUE,
+          "has_image": FALSE,
+        } %}
+      </div>
 
-    <div {{ bem("heading", basic_content__heading__modifiers|default([]), basic_content_base_class) }}>
-      {% include "@molecules/hero/hero.twig" with {
-        "hero__modifiers": [ "no-header-margin" ],
-        "hero__heading": main_title,
-        "has_image": FALSE,
-      } %}
+      {% if has_pre_title_content %}
+        <div {{ bem("pre-title-content", basic_content__pre_title_content__modifiers|default([]), basic_content_base_class) }}>
+          {% block basic_content_pre_title_content %}
+            {{ pre_title_content_markup }}
+          {% endblock %}
+        </div>
+      {% endif %}
+
+      {% if has_main_image %}
+        <div {{ bem("main-image-wrapper", basic_content__main_image_wrapper__modifiers|default([]), basic_content_base_class) }}>
+          <div {{ bem("main-image", basic_content__main_image__modifiers|default([]), basic_content_base_class) }}>
+            {{ main_image_markup }}
+          </div>
+        </div>
+      {% endif %}
     </div>
 
     {% block basic_content_main_content %}
@@ -39,7 +74,7 @@
     
     {% if has_last_updated_date %}
       <div {{ bem("last-updated", basic_content__last_updated__modifiers|default([]), basic_content_base_class) }}>
-        {{ last_updated }}
+        {{ last_updated_markup }}
       </div>
     {% endif %}
   </div>

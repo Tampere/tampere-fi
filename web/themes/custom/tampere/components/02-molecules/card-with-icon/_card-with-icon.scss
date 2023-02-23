@@ -134,6 +134,7 @@ $card-with-icon-image-height-large: 365px;
     #{$base_class}__content {
       display: flex;
       flex-direction: column;
+      order: 2;
       padding-top: $space-s;
       padding-bottom: 0;
 
@@ -169,11 +170,16 @@ $card-with-icon-image-height-large: 365px;
       height: unset;
       margin-top: auto;
       margin-bottom: 0;
+      order: 3;
       padding-bottom: $space-s;
 
       @include large {
         padding: 0;
       }
+    }
+
+    #{$base_class}__image-container {
+      order: 1;
     }
   }
 

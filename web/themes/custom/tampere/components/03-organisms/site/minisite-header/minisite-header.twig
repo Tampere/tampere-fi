@@ -19,10 +19,10 @@
             "link_with_icon__link_icon": "breadcrumb-arrow-mobile",
           } %}
         </div>
-        <div {{ bem("language-dropdown", (header__language_dropdown__modifiers|default([])), header__base_class)}}>
-          {% block header_language_dropdown %}
-            {% include "@molecules/language-dropdown/language-dropdown.twig" with {
-              "language_dropdown__modifiers": [ "dynamic" ],
+        <div {{ bem("language-switcher", (header__language_switcher__modifiers|default([])), header__base_class)}}>
+          {% block header_language_switcher %}
+            {% include "@molecules/language-switcher/language-switcher.twig" with {
+              "language_switcher__modifiers": [ "dynamic" ],
               "links": header__language__links,
               "current_language_code": header__current_language__code,
               "current_language_name": header__current_language__name,
@@ -38,6 +38,7 @@
       <div {{ bem("bottom-section", (header__bottom_section__modifiers|default([ "desktop" ])), header__base_class)}}>
         {% block header_text_logo_with_tagline %}
           {% include "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+            "group_name": group_name,
             "text_logo_w_tagline__url": front_page_url,
             "display_tagline": TRUE,
             "text_logo_w_tagline__tagline": header__tagline,
@@ -70,18 +71,18 @@
       <div {{ bem("top-section", (header__top_section__modifiers|default([ "mobile" ])), header__base_class)}}>
         {% block header_mobile_text_logo_with_tagline %}
           {% include "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+            "group_name": group_name,
             "text_logo_w_tagline__url": front_page_url,
             "display_tagline": FALSE,
           } %}
         {% endblock %}
 
-        <div {{ bem("language-dropdown", [ "mobile" ], header__base_class)}}>
-          {% block header_mobile_language_dropdown %}
-            {% include "@molecules/language-dropdown/language-dropdown.twig" with {
-              "language_dropdown__modifiers": [ "dynamic" ],
-              "language_dropdown_id": "mobile-language-dropdown",
-              "language_dropdown_toggle_id": "mobile-language-dropdown-toggle",
-              "language_dropdown_list_role": "menubar",
+        <div {{ bem("language-switcher", [ "mobile" ], header__base_class)}}>
+          {% block header_mobile_language_switcher %}
+            {% include "@molecules/language-switcher/language-switcher.twig" with {
+              "language_switcher__modifiers": [ "dynamic" ],
+              "language_switcher_id": "mobile-language-switcher",
+              "language_switcher_toggle_id": "mobile-language-switcher-toggle",
               "links": header__language__links,
               "current_language_code": header__current_language__code,
               "current_language_name": header__current_language__name,

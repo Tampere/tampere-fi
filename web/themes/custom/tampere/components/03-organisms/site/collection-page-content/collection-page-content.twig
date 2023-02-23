@@ -14,6 +14,7 @@
   <div {{ bem("header", collection_page_content__header__modifiers|default([]), collection_page_content_base_class) }}>
     {% embed "@molecules/hero/hero.twig" with {
       "hero__heading": main_title,
+      "use_heading_element": TRUE,
       "has_image": has_image,
       "hero__item_icon": hero_icon_name,
     } %}

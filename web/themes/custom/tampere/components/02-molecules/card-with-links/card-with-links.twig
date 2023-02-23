@@ -36,22 +36,7 @@
   {% block paragraph_content %}
     <div {{ bem(card__base_class, card__modifiers|default([]), card__blockname, card__extra_classes) }}>
       <div {{ bem("wrapper", card__wrapper__modifiers|default([]), card__base_class) }}>
-        {# Image #}
-        <div {{ bem("image-container", card__content__modifiers|default([]), card__base_class) }}>
-          {% block card__img %}
-            {% if card__image__src %}
-              {% include "@atoms/04-images/00-image/_image.twig" with {
-                image_base_class: "image",
-                image_blockname: card__base_class,
-                img_src: card__image__src,
-                img_alt: card__image__alt,
-              } %}
-            {% else %}
-              {{ card__image }}
-            {% endif %}
-          {% endblock %}
-        </div>
-        {# Content #}
+        {# Content starts #}
         <div {{ bem("content", card__content__modifiers|default([]), card__base_class) }}>
           {# Heading #}
           {% if card__heading %}
@@ -89,6 +74,24 @@
             {% endif %}
           </div>
         </div>
+        {# Content ends #}
+
+        {# Image starts #}
+        <div {{ bem("image-container", card__content__modifiers|default([]), card__base_class) }}>
+          {% block card__img %}
+            {% if card__image__src %}
+              {% include "@atoms/04-images/00-image/_image.twig" with {
+                image_base_class: "image",
+                image_blockname: card__base_class,
+                img_src: card__image__src,
+                img_alt: card__image__alt,
+              } %}
+            {% else %}
+              {{ card__image }}
+            {% endif %}
+          {% endblock %}
+        </div>
+        {# Image ends #}
       </div>
     </div>
   {% endblock %}

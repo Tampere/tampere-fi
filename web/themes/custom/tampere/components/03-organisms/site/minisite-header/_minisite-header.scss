@@ -117,7 +117,7 @@ $minisite-header-search-width: 140px;
     @include dynamic-color(minisite-identifier-background);
   }
 
-  &__language-dropdown {
+  &__language-switcher {
     display: none;
     margin-left: auto;
 

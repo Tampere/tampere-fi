@@ -1,8 +1,10 @@
+$material-download-list-breakpoint: 80rem;
+
 .material-download-list {
   @include page-element-spacer;
 
   &__summary {
-    @include large {
+    @include breakpoint($material-download-list-breakpoint) {
       margin-top: $space-m-plus;
     }
   }
@@ -14,13 +16,13 @@
     padding: 0;
     max-width: var(--basic-component-max-width);
 
-    @include large {
+    @include breakpoint($material-download-list-breakpoint) {
       column-gap: $space-xl;
       grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 3)), 1fr));
     }
 
     .layout-container--with-sidebar & {
-      @include large {
+      @include breakpoint($material-download-list-breakpoint) {
         grid-template-columns: 1fr;
       }
     }

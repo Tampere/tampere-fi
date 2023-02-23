@@ -27,6 +27,7 @@ $image-card-image-height--mobile: 218px;
     left: 0;
     bottom: 0;
     max-width: 80%;
+    z-index: 1;
 
     @include large {
       padding: $space-s $space-l $space-s $space-l-plus;

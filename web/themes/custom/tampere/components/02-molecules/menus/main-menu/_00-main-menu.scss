@@ -89,7 +89,7 @@
       }
     }
 
-    &--active {
+    &--active-trail {
       @include large {
         @include left-border-accent($color: var(--main-menu-border-color));
 
@@ -180,8 +180,8 @@
 
         &:hover,
         &:focus,
-        &.is-active,
-        &--active {
+        &--is-active,
+        &--active-trail {
           text-decoration: none;
 
           &::after {
@@ -196,8 +196,8 @@
         }
       }
 
-      &.is-active,
-      &--active {
+      &--is-active,
+      &--active-trail {
         @include main-menu-breakpoint {
           font-weight: $font-weight-bold;
         }

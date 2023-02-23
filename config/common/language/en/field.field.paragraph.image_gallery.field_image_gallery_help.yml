@@ -1,0 +1,4 @@
+settings:
+  markup:
+    value: "<p>Make sure the selected images have a clear name and an alternative text for screen readers. The name of the image is read when browsing the images in the image gallery, and the alternative text is read when the image is shown in a larger size.</p>\r\n"
+    format: basic_html

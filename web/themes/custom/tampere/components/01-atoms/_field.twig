@@ -48,6 +48,8 @@
             {% if heading_level %}
                 {% include "@atoms/02-text/00-headings/_heading.twig" with {
                     "heading_level": heading_level,
+                    "heading_base_class": heading_base_class|default("field-label-heading"),
+                    "skip_heading_level_class": skip_heading_level_class,
                     "heading": label,
                     attributes: []
                 } %}

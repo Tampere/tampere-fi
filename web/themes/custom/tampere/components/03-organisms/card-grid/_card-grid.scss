@@ -4,6 +4,8 @@
   &__wrapper {
     display: grid;
     gap: $gutter-mobile;
+    margin: 0;
+    padding: 0;
 
     @include large {
       grid-auto-rows: 1fr;

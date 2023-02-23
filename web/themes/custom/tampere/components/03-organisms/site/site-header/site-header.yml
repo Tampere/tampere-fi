@@ -18,7 +18,7 @@ header__inline__items:
   - title: 'Yhteystiedot'
     url: '#'
 header__inline__modifiers:
-  - "main"
+  - "main-inverted"
 header__current_language__name: English
 header__current_language__code: EN
 header__language__links:

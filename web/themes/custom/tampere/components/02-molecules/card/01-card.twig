@@ -6,7 +6,9 @@
  # - card__extra_classes - array of extra classes to add to the wrapper.
  # - card__attributes - HTML attributes for the wrapper.
  # - card__link__url - the URL the link should point to.
+ # - card__link__is_external - Flag for whether or not the card link points to an external destination.
  #
+ # - card__is_list_item - flag for whether or not the component should be wrapped in an 'li' element.
  # - card__element - the element to use as a wrapper. Either 'a' or 'div'.
  #
  # - card__content__modifiers - array of modifiers to add to the base classname of the copy wrapper.
@@ -48,63 +50,71 @@
   {% set card__modifiers = card__modifiers|merge([ "no-body" ]) %}
 {% endif %}
 
-<{{ card__element }}
-  {{ bem(card__base_class, card__modifiers|default([]), card__blockname, card__extra_classes) }}
-  {% for attribute, value in card__attributes %}
-    {{ attribute }}="{{ value }}"
-  {% endfor %}
->
-  {# Content #}
-  <div {{ bem("content", card__content__modifiers|default([]), card__base_class) }}>
-    {# Heading #}
-    {% if card__heading and card__body %}
-      {{ title_prefix }}
-      {% include "@atoms/02-text/00-headings/_heading.twig" with {
-        heading_base_class: card__heading__base_class|default("heading"),
-        heading_modifiers: card__heading__modifiers,
-        heading_blockname: card__base_class,
-        heading_level: 2,
-        heading: card__heading,
-      } %}
-      {{ title_suffix }}
-    {% elseif card__heading %}
-      {% include "@atoms/02-text/text/07-text-block.twig" with {
-        text_block_base_class: card__heading__base_class|default("heading"),
-        text_block_modifiers: card__heading__modifiers,
-        text_block_blockname: card__base_class,
-        text_block_extra_classes: [ "h2", "hyphenate" ],
-        text_block_content: card__heading,
-      } %}
-    {% endif %}
-    {# Body #}
-    {% if card__body %}
-      {% include "@atoms/02-text/text/01-paragraph.twig" with {
-        paragraph_base_class: card__body__base_class|default("body"),
-        paragraph_modifiers: card__body__modifiers,
-        paragraph_blockname: card__base_class,
-        paragraph_content: card__body,
-      } %}
-    {% endif %}
-    {# Icon #}
-    {% if card__link__url %}
-      {% include "@atoms/04-images/icons/_icon.twig" with {
-        icon_base_class: card__icon__base_class|default("icon"),
-        icon_modifiers: card__icon__modifiers,
-        icon_blockname: card__base_class,
-        icon_extra_class: [ "regular" ],
-        icon_name: card__icon__name|default("arrow"),
-        icon_decorative: true,
-      } %}
-      {% if card__mobile_icon__name %}
-        {% include "@atoms/04-images/icons/_icon.twig" with {
-          icon_base_class: card__mobile_icon__base_class|default("icon"),
-          icon_modifiers: card__mobile_icon__modifiers,
-          icon_blockname: card__base_class,
-          icon_extra_class: [ "mobile" ],
-          icon_name: card__mobile_icon__name|default("arrow"),
-          icon_decorative: true,
+{% if card__is_list_item %}
+<li {{ bem("wrapper", card__wrapper__modifiers|default([]), card__base_class) }}>
+{% endif %}
+  <{{ card__element }}
+    {{ bem(card__base_class, card__modifiers|default([]), card__blockname, card__extra_classes) }}
+    {% for attribute, value in card__attributes %}
+      {{ attribute }}="{{ value }}"
+    {% endfor %}
+  >
+    {# Content #}
+    <div {{ bem("content", card__content__modifiers|default([]), card__base_class) }}>
+      {# Heading #}
+      {% if card__heading and "colorful" in card__modifiers %}
+        {{ title_prefix }}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_base_class: card__heading__base_class|default("heading"),
+          heading_modifiers: card__heading__modifiers,
+          heading_blockname: card__base_class,
+          heading_level: 2,
+          heading: card__heading,
+        } %}
+        {{ title_suffix }}
+      {% elseif card__heading %}
+        {% include "@atoms/02-text/text/07-text-block.twig" with {
+          text_block_base_class: card__heading__base_class|default("heading"),
+          text_block_modifiers: card__heading__modifiers,
+          text_block_blockname: card__base_class,
+          text_block_extra_classes: [ "h2", "hyphenate" ],
+          text_block_content: card__heading,
         } %}
       {% endif %}
-    {% endif %}
-  </div>
-</{{ card__element }}>
+      {# Body #}
+      {% if card__body %}
+        {% include "@atoms/02-text/text/01-paragraph.twig" with {
+          paragraph_base_class: card__body__base_class|default("body"),
+          paragraph_modifiers: card__body__modifiers,
+          paragraph_blockname: card__base_class,
+          paragraph_content: card__body,
+        } %}
+      {% endif %}
+      {# Icon #}
+      {% if card__link__url %}
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: card__icon__base_class|default("icon"),
+          icon_modifiers: card__icon__modifiers,
+          icon_blockname: card__base_class,
+          icon_extra_class: [ "regular" ],
+          icon_name: card__icon__name|default("arrow"),
+          is_external_link: card__link__is_external,
+          icon_decorative: true,
+        } %}
+        {% if card__mobile_icon__name %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_base_class: card__mobile_icon__base_class|default("icon"),
+            icon_modifiers: card__mobile_icon__modifiers,
+            icon_blockname: card__base_class,
+            icon_extra_class: [ "mobile" ],
+            icon_name: card__mobile_icon__name|default("arrow"),
+            is_external_link: card__link__is_external,
+            icon_decorative: true,
+          } %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </{{ card__element }}>
+{% if card__is_list_item %}
+</li>
+{% endif %}

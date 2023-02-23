@@ -1,0 +1,8 @@
+accessibility-list-item:
+  label: Accessibility list item
+  fields:
+    a11y_list_item__icon_name:
+      label: Icon
+    a11y_list_item__content:
+      label: Content
+  use: "@molecules/accessibility-list/_accessibility-list-item.twig"

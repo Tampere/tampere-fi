@@ -9,10 +9,10 @@ $card-with-links-image-max-height: 720px;
     @include centered-content($max-width: $max-width, $use-padding: false);
 
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     @include large {
-      flex-direction: row;
+      flex-direction: row-reverse;
     }
   }
 

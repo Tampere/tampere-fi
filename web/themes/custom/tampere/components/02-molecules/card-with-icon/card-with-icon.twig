@@ -46,20 +46,7 @@
 {% endif %}
 
 <div {{ bem(card__base_class, card__modifiers|default([]), card__blockname, card__extra_classes) }}>
-  {# Image #}
-  {% if card__image__src or has_image %}
-    <div {{ bem("image-container", card__image_container__modifiers|default([]), card__base_class) }} aria-hidden="true">
-      {% block card__img %}
-        {% include "@atoms/04-images/00-image/_image.twig" with {
-          "image_base_class": "image",
-          "image_blockname": card__base_class,
-          "img_src": card__image__src,
-          "img_alt": card__image__alt,
-        } %}
-      {% endblock %}
-    </div>
-  {% endif %}
-  {# Content #}
+  {# Content starts #}
   <div {{ bem("content", card__content__modifiers|default([]), card__base_class) }}>
     <div {{ bem("title-container", card__title_container__modifiers|default([]), card__base_class) }}>
       {# Icon #}
@@ -94,16 +81,31 @@
       } %}
     {% endif %}
   </div>
+  {# Content ends #}
+
   {# Link #}
   {% if card__link_item__url %}
     <div {{ bem("link", card__link__modifiers|default([]), card__base_class) }} {% if is_example %}style="background-image:url('images/waves-transparent-new.svg');"{% endif %}>
       {% include "@atoms/link-with-icon/link-with-icon.twig" with {
-        "link_with_icon__aria_label": card__link_item__aria_label,
         "link_with_icon__modifiers": card__link_item_modifiers,
         "link_with_icon__url": card__link_item__url,
         "link_with_icon__link_text": card__link_item__text,
         "link_with_icon__link_icon": card__link_item__icon|default("arrow"),
       } %}
+    </div>
+  {% endif %}
+
+  {# Image #}
+  {% if card__image__src or has_image %}
+    <div {{ bem("image-container", card__image_container__modifiers|default([]), card__base_class) }} aria-hidden="true">
+      {% block card__img %}
+        {% include "@atoms/04-images/00-image/_image.twig" with {
+          "image_base_class": "image",
+          "image_blockname": card__base_class,
+          "img_src": card__image__src,
+          "img_alt": card__image__alt,
+        } %}
+      {% endblock %}
     </div>
   {% endif %}
 </div>

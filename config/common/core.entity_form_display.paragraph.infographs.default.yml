@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.infographs.field_infograph
+    - field.field.paragraph.infographs.field_infograph_heading
     - paragraphs.paragraphs_type.infographs
   module:
+    - heading
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.infographs.default
 targetEntityType: paragraph
@@ -14,7 +16,7 @@ mode: default
 content:
   field_infograph:
     type: paragraphs_classic_asymmetric
-    weight: 0
+    weight: 3
     region: content
     settings:
       title: Paragraph
@@ -24,8 +26,14 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
+  field_infograph_heading:
+    type: heading
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

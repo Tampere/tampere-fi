@@ -73,26 +73,40 @@
       } %}
     {% endif %}
     {# Liftups #}
-    <div {{ bem("liftups", topical_listing__liftups__modifiers|default([]), topical_listing__base_class) }}>
+    <ul {{ bem("liftups", topical_listing__liftups__modifiers|default([]), topical_listing__base_class) }}>
       {% if has_highlighted_liftup %}
-        <div {{ bem("highlighted-liftup", topical_listing__highlighted_liftup_wrapper__modifiers, topical_listing__base_class) }}>
-          {% block highlighed_liftup %}
-            {% include "@molecules/topical-card/topical-card.twig" with {
-              "topical_card__image__src": topical_listing__highlighted__image_src,
-              "topical_card__modifiers": topical_listing__highlighted_liftup__modifiers,
-            } %}
-          {% endblock %}
-        </div>
+        {% block highlighed_liftup %}
+          {% include "@molecules/topical-card/topical-card.twig" with {
+            "topical_card__wrapper__modifiers": topical_listing__highlighted_liftup__modifiers,
+            "topical_card__image__src": topical_listing__highlighted__image_src,
+            "topical_card__modifiers": topical_listing__highlighted_liftup__modifiers,
+            "topical_card__link__url": topical_listing__highlighted__link__url,
+            "topical_card__image": topical_listing__highlighted__image,
+            "topical_card__date": topical_listing__highlighted__date,
+            "topical_card__tag": topical_listing__highlighted__tag,
+            "topical_card__heading": topical_listing__highlighted__heading,
+            "topical_card__summary": topical_listing__highlighted__summary,
+            "topical_card__icon__name": topical_listing__highlighted__icon_name,
+          } %}
+        {% endblock %}
       {% endif %}
       {% block topical_listing_liftups %}
-        {% include "@organisms/card-grid/card-grid.twig" with {
-          "card_type": "topical-card",
-          "topical_card__modifiers": topical_listing__liftup__modifiers,
-          "card_grid__modifiers": [ "3-col" ],
-          "cards": liftups,
-        } %}
+        {% for liftup in liftups %}
+          {# Topical cards support either image__src strings or image render arrays. #}
+          {% include "@molecules/topical-card/topical-card.twig" with {
+            "topical_card__link__url": liftup.card__link__url,
+            "topical_card__modifiers": topical_listing__liftup__modifiers,
+            "topical_card__image__src": liftup.card__image__src,
+            "topical_card__image": liftup.card__image,
+            "topical_card__date": liftup.card__date,
+            "topical_card__tag": liftup.card__tag,
+            "topical_card__heading": liftup.card__heading,
+            "topical_card__summary": liftup.card__summary,
+            "topical_card__icon__name": liftup.card__icon__name,
+          } %}
+        {% endfor %}
       {% endblock %}
-    </div>
+    </ul>
     {# Links #}
     {% if link_list__items %}
       {% include "@atoms/link-list/link-list.twig" with {

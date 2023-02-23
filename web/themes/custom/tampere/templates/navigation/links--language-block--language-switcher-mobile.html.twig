@@ -37,18 +37,17 @@
 #}
 
 {% if use_minisite_language_switcher %}
-  {% set language_dropdown__modifiers = [ "dynamic" ] %}
+  {% set language_switcher__modifiers = [ "dynamic" ] %}
 {% endif %}
 
 {% if links -%}
-  {% include "@molecules/language-dropdown/language-dropdown.twig" with {
-    "language_dropdown__modifiers": language_dropdown__modifiers,
+  {% include "@molecules/language-switcher/language-switcher.twig" with {
+    "language_switcher__modifiers": language_switcher__modifiers,
     "links": links,
     "current_language_code": current_language_code,
     "current_language_name": current_language_name,
-    "language_dropdown_id": "mobile-language-dropdown",
-    "language_dropdown_toggle_id": "mobile-language-dropdown-toggle",
-    "language_dropdown_list_role": "menubar",
+    "language_switcher_id": "mobile-language-switcher",
+    "language_switcher_toggle_id": "mobile-language-switcher-toggle",
     "attributes": [],
   } %}
 {%- endif -%}

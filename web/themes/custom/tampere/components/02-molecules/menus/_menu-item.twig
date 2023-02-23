@@ -4,7 +4,7 @@
 {# Pass original item modifiers down to children #}
 {% set original_item_modifiers = item_modifiers %}
 {% if item.in_active_trail == TRUE %}
-  {% set item_modifiers = item_modifiers|merge(["active"]) %}
+  {% set item_modifiers = item_modifiers|merge(["active-trail"]) %}
 {% endif %}
 {% if menu_level > 0 %}
   {% set item_modifiers = item_modifiers|merge(["sub", "sub-" ~ menu_level]) %}
@@ -12,8 +12,9 @@
 {% if item.below %}
   {% set item_modifiers = item_modifiers|merge(["with-sub"]) %}
 {% endif %}
-{% if item.url|render == current_path %}
-    {% set item_modifiers = item_modifiers|merge(["is-active"]) %}
+{% if item.url|render == path("<current>") %}
+  {% set is_active_item = TRUE %}
+  {% set item_modifiers = item_modifiers|merge(["is-active"]) %}
 {% endif %}
 {# below could maybe be done without a loop? #}
 {% for modifier in item.modifiers %}
@@ -53,7 +54,13 @@
     {# if drupal #}
     {% if directory %}
       {% if not hide_menu_link %}
-        {{ link(item.title, item.url, bem(item_base_class|default(menu_class ~ "__link"), item_modifiers, '', ['hyphenate'])) }}
+        {% set menu_item_attributes = bem(item_base_class|default(menu_class ~ "__link"), item_modifiers, "", ["hyphenate"]) %}
+
+        {% if is_active_item %}
+          {% set menu_item_attributes = menu_item_attributes.setAttribute("aria-current", "page") %}
+        {% endif %}
+
+        {{ link(item.title, item.url, menu_item_attributes) }}
       {% endif %}
     {% else %}
       {% include "@atoms/01-links/link/link.twig" with {

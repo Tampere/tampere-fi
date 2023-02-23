@@ -114,6 +114,25 @@ function tampere_preprocess_block(&$variables) {
 /**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
+function tampere_theme_suggestions_container_alter(array &$suggestions, array &$variables) {
+  if (!empty($variables['element']['#type'])) {
+    $type = $variables['element']['#type'];
+    $suggestions[] = 'container__' . $type;
+  }
+
+  if (!empty($variables['element']['#name'])) {
+    $name = $variables['element']['#name'];
+    $suggestions[] = 'container__' . $name;
+  }
+
+  if (isset($name) && isset($type)) {
+    $suggestions[] = 'container__' . $type . '__' . $name;
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
 function tampere_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
   if (!empty($variables['element']['#theme'])) {
     $theme = $variables['element']['#theme'];

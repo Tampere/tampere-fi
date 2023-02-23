@@ -29,21 +29,9 @@
               } %}
             {% endblock %}
           </div>
-          <div {{ bem("language-dropdown", (header__language_dropdown__modifiers|default([])), header__base_class)}}>
-            {% block header_language_dropdown %}
-              {% include "@molecules/language-dropdown/language-dropdown.twig" with {
-                links: header__language__links,
-                current_language_code: header__current_language__code,
-                current_language_name: header__current_language__name,
-              } %}
-            {% endblock %}
-          </div>
-          <div {{ bem("language-dropdown", [ "mobile" ], header__base_class)}}>
-            {% block header_mobile_language_dropdown %}
-              {% include "@molecules/language-dropdown/language-dropdown.twig" with {
-                language_dropdown_id: "mobile-language-dropdown",
-                language_dropdown_toggle_id: "mobile-language-dropdown-toggle",
-                language_dropdown_list_role: "menubar",
+          <div {{ bem("language-switcher", (header__language_switcher__modifiers|default([])), header__base_class)}}>
+            {% block header_language_switcher %}
+              {% include "@molecules/language-switcher/language-switcher.twig" with {
                 links: header__language__links,
                 current_language_code: header__current_language__code,
                 current_language_name: header__current_language__name,

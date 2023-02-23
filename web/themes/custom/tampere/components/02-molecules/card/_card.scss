@@ -36,6 +36,10 @@ $grouped-card-background-position: bottom -305px right -10px;
     }
   }
 
+  &__wrapper {
+    @include list-reset;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;

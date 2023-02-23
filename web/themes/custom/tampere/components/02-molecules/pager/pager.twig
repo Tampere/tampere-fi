@@ -34,7 +34,7 @@
 
 {% if items %}
   <nav {{ bem(pager__base_class, pager__modifiers) }} role="navigation" aria-labelledby="{{ heading_id }}">
-    <h4 id="{{ heading_id }}" class="visually-hidden">{{ "Pagination"|t }}</h4>
+    <h2 id="{{ heading_id }}" class="visually-hidden">{{ "Pagination"|t }}</h2>
     {% if not items.previous %}
       <span {{ bem("inactive-icon", [ "prev" ], pager__base_class) }}>
         {% include "@atoms/04-images/icons/_icon.twig" with {

@@ -49,14 +49,7 @@
     "attributes": [],
   } %}
     {% block topical_listing_liftups %}
-      {% embed "@organisms/card-grid/card-grid.twig" with {
-        "card_grid__modifiers": [ "3-col" ],
-        "attributes": [],
-      } %}
-        {% block card_grid__content %}
-          {{ rows }}
-        {% endblock %}
-      {% endembed %}
+      {{ rows }}
     {% endblock %}
   {% endembed %}
 {% endif %}

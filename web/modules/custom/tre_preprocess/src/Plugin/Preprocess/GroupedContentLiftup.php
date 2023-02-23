@@ -80,6 +80,7 @@ class GroupedContentLiftup extends TrePreProcessPluginBase {
         'card__body' => $liftup_summary,
         'card__modifiers' => ['grouped'],
         'card__link__url' => $liftup_url,
+        'card__link__is_external' => !$is_internal_link_paragraph,
         'card__icon__name' => $liftup_icon_name,
       ];
     }

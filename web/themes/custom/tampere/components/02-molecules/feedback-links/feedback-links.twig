@@ -18,6 +18,7 @@
     {% for feedback_links__item in feedback_links__items %}
       {% include "@molecules/feedback-links/feedback-links-item.twig" with {
         "feedback_links__item_url": feedback_links__item.url,
+        "is_external_link": feedback_links__item.is_external_link,
         "feedback_links__item_text": feedback_links__item.text,
         "feedback_links__item_icon": feedback_links__item.icon,
         "feedback_links__item_mobile_icon": feedback_links__item.mobile_icon,

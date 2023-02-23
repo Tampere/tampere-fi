@@ -1,11 +1,13 @@
 {% set text_logo_w_tagline__base_class = text_logo_w_tagline__base_class|default("text-logo-with-tagline") %}
 
+{% set text_logo_w_tagline_aria_label = "Back to @group_name front page"|t({ "@group_name": group_name }) %}
+
 {% if text_logo_w_tagline__url %}
   {% set text_logo_with_tagline__element = "a" %}
 
   {% set text_logo_with_tagline__attributes = {
     "href": text_logo_w_tagline__url,
-    "aria-label": "Back to front page"|t,
+    "aria-label": text_logo_w_tagline_aria_label,
   } %}
 {% else %}
   {% set text_logo_with_tagline__element = "span" %}

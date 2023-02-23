@@ -12,13 +12,9 @@ $hero-icon-large-width: 105px;
   $base_class: &;
 
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   overflow: hidden;
   position: relative;
-
-  @include large {
-    flex-direction: column;
-  }
 
   &__image-container {
     overflow: hidden;
@@ -58,6 +54,7 @@ $hero-icon-large-width: 105px;
     @include word-wrap;
 
     display: inline-block;
+    font-family: $font-heading;
     font-size: $hero-title-font-size;
     font-weight: $font-weight-black;
     line-height: 1.3;
@@ -113,7 +110,7 @@ $hero-icon-large-width: 105px;
 
   &--title-centered,
   &--with-cta {
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     #{$base_class}__image-container {
       height: $hero-image-height-large;
@@ -166,6 +163,10 @@ $hero-icon-large-width: 105px;
       #{$base_class}__span-wrapper {
         padding-bottom: 0;
       }
+    }
+
+    #{$base_class}__title-container {
+      flex-basis: 100%;
     }
 
     #{$base_class}__link {
@@ -237,6 +238,8 @@ $hero-icon-large-width: 105px;
   }
 
   &--no-header-margin {
+    margin: 0;
+
     #{$base_class}__header {
       margin: 0;
     }

@@ -26,47 +26,56 @@
 
 {% if 'colorful' in rss_card__modifiers or variant == 'colorful' %}
   {% set rss_card__icon_name = 'arrow' %}
+  {% set is_external_link = FALSE %}
+{% else %}
+  {% set is_external_link = TRUE %}
 {% endif %}
 
-<a {{ bem(rss_card__base_class, rss_card__modifiers|default([ variant ]), rss_card__blockname, rss_card__extra_classes) }} href="{{ rss_card__link__url|striptags|trim }}">
-  <div {{ bem("content", rss_card__content__modifiers|default([]), rss_card__base_class) }}>
-    {% if rss_card__date or rss_card__heading %}
-      <div {{ bem("text-content", rss_card__text_content__modifiers|default([]), rss_card__base_class) }}>
-        {# Details #}
-        {% if rss_card__date %}
-          {% include "@atoms/02-text/text/01-paragraph.twig" with {
-            paragraph_base_class: rss_card__date__base_class|default("date"),
-            paragraph_modifiers: rss_card__date__modifiers,
-            paragraph_blockname: rss_card__base_class,
-            paragraph_content: rss_card__date,
-          } %}
-        {% endif %}
+<li {{ bem("wrapper", rss_card__wrapper__modifiers|default([]), rss_card__base_class) }}>
+  <a {{ bem(rss_card__base_class, rss_card__modifiers|default([ variant ]), rss_card__blockname, rss_card__extra_classes) }} href="{{ rss_card__link__url|striptags|trim }}">
+    <div {{ bem("content", rss_card__content__modifiers|default([]), rss_card__base_class) }}>
+      {% if rss_card__date or rss_card__heading %}
+        <div {{ bem("text-content", rss_card__text_content__modifiers|default([]), rss_card__base_class) }}>
+          {# Details #}
+          {% if rss_card__date %}
+            {% include "@atoms/02-text/text/01-paragraph.twig" with {
+              paragraph_base_class: rss_card__date__base_class|default("date"),
+              paragraph_modifiers: rss_card__date__modifiers,
+              paragraph_blockname: rss_card__base_class,
+              paragraph_content: rss_card__date,
+            } %}
+          {% endif %}
 
-        {# Heading #}
-        {% if rss_card__heading %}
-          {{ title_prefix }}
-          {% include "@atoms/02-text/text/07-text-block.twig" with {
-            text_block_base_class:rss_card__heading__base_class|default("heading"),
-            text_block_modifiers: rss_card__heading__modifiers,
-            text_block_blockname: rss_card__base_class,
-            text_block_extra_classes: [ "h2", "hyphenate" ],
-            text_block_content: rss_card__heading,
-          } %}
-          {{ title_suffix }}
-        {% endif %}
-      </div>
-    {% endif %}
+          {# Heading #}
+          {% if rss_card__heading %}
+            {{ title_prefix }}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class:rss_card__heading__base_class|default("heading"),
+              text_block_modifiers: rss_card__heading__modifiers,
+              text_block_blockname: rss_card__base_class,
+              text_block_extra_classes: [ "h2", "hyphenate" ],
+              text_block_content: rss_card__heading,
+            } %}
+            {{ title_suffix }}
+          {% endif %}
+        </div>
+      {% endif %}
 
-    {# Icon #}
-    {% if rss_card__icon_name %}
-      <div {{ bem("icon-content", rss_card__icon_content__modifiers|default([]), rss_card__base_class) }}>
-        {% include "@atoms/04-images/icons/_icon.twig" with {
-          icon_name: rss_card__icon_name,
-          icon_base_class: "icon",
-          icon_blockname: rss_card__base_class,
-          icon_decorative: true,
-        } %}
-      </div>
+      {# Icon #}
+      {% if rss_card__icon_name %}
+        <div {{ bem("icon-content", rss_card__icon_content__modifiers|default([]), rss_card__base_class) }}>
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_name: rss_card__icon_name,
+            icon_base_class: "icon",
+            icon_blockname: rss_card__base_class,
+            icon_decorative: true,
+          } %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if is_external_link %}
+      <span class="visually-hidden">{{ "Link to an external website"|t }}</span>
     {% endif %}
-  </div>
-</a>
+  </a>
+</li>

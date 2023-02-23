@@ -3,6 +3,8 @@ $feedback-card-image-height-large: 290px;
 
 .feedback-card {
   background-color: clr(background);
+  display: flex;
+  flex-direction: column-reverse;
 
   &__image-container {
     height: $feedback-card-image-height;

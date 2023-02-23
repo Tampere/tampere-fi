@@ -1,0 +1,5 @@
+a11y_list__items:
+  - icon_name: 'guide_dog'
+    content: 'Otathan kiireellisissä asiakaspalveluasioissa lorem ipsum dolor sit amet'
+  - icon_name: 'isa'
+    content: 'Lorem ipsum dolor sit amet'

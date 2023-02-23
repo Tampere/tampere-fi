@@ -112,6 +112,20 @@
           } %}
         {% endblock %}
 
+        <div {{ bem("back-to-top", [ "mobile" ], footer_base_class)}}>
+          {% include "@molecules/back-to-top-button/back-to-top.twig" %}
+        </div>
+
+        {% if footer_copyright_content %}
+          {% include "@atoms/02-text/text/01-paragraph.twig" with {
+            paragraph_blockname: footer_base_class,
+            paragraph_modifiers: [ "desktop" ],
+            paragraph_custom_classes: [ "hyphenate" ],
+            paragraph_base_class: "copyright",
+            paragraph_content: footer_copyright_content,
+          } %}
+        {% endif %}
+
         {% if footer_inline_menu_items %}
           <div {{ bem("site-links", (footer_inline_menu_modifiers), footer_base_class)}}>
             {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
@@ -126,13 +140,14 @@
         {% if footer_copyright_content %}
           {% include "@atoms/02-text/text/01-paragraph.twig" with {
             paragraph_blockname: footer_base_class,
+            paragraph_modifiers: [ "mobile" ],
             paragraph_custom_classes: [ "hyphenate" ],
             paragraph_base_class: "copyright",
             paragraph_content: footer_copyright_content,
           } %}
         {% endif %}
 
-        <div {{ bem("back-to-top", (footer_btt_modifiers), footer_base_class)}}>
+        <div {{ bem("back-to-top", [ "desktop" ], footer_base_class)}}>
           {% include "@molecules/back-to-top-button/back-to-top.twig" %}
         </div>
 

@@ -112,22 +112,11 @@ $header-secondary-inline-padding: 13px;
     }
   }
 
-  &__language-dropdown {
-    display: none;
+  &__language-switcher {
     margin-right: $space-s;
 
     @include large {
-      display: block;
       padding-top: $header-secondary-inline-padding;
-    }
-
-    &--mobile {
-      margin-left: auto;
-      display: block;
-
-      @include large {
-        display: none;
-      }
     }
   }
 

@@ -10,7 +10,7 @@ field_name: field_search_keywords
 entity_type: node
 bundle: front_page
 label: Avainsanat
-description: 'Käytetään sisällön nostamiseen esiin sivuston hakutoiminnallisuudessa.'
+description: 'Käytetään sisällön nostamiseksi esiin sivuston omassa haussa. Kirjoita 1-3 osuvinta konkreettisesti sisältöösi liittyvää ydintermiä, älä listaa useita aihetta sivuavia yleisen tason termejä.'
 required: false
 translatable: true
 default_value: {  }

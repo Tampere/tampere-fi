@@ -77,16 +77,6 @@
 
     @include medium {
       margin: $space-xl;
-      
-      &--two-columns {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: $space-s;
-        row-gap: $space-s;
-
-        &.active {
-          display: grid;
-        }
-      }
     }
 
     &--no-margin {

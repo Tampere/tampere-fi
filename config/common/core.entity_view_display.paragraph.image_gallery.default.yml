@@ -3,6 +3,7 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.paragraph.image_gallery.field_image_gallery_help
     - field.field.paragraph.image_gallery.field_images
     - paragraphs.paragraphs_type.image_gallery
   module:
@@ -22,4 +23,5 @@ content:
     weight: 0
     region: content
 hidden:
+  field_image_gallery_help: true
   search_api_excerpt: true

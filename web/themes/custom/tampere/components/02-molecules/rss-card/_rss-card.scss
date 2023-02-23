@@ -7,8 +7,12 @@
   position: relative;
   text-decoration: none;
 
-  & + #{$base_class} {
-    margin-top: $space-xs;
+  &__wrapper {
+    @include list-reset;
+
+    + #{$base_class}__wrapper {
+      margin-top: $space-xs;
+    }
   }
 
   &:hover,
