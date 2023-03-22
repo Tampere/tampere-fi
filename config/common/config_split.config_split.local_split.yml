@@ -10,10 +10,10 @@ stackable: false
 storage: folder
 folder: ../config/local
 module:
-  dblog: 0
   stage_file_proxy: 0
 theme: {  }
-complete_list: {  }
+complete_list:
+  - dblog_filter.settings
 partial_list:
   - environment_indicator.indicator
   - system.performance

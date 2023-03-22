@@ -97,6 +97,11 @@ class CurrentListing extends TrePreProcessPluginBase {
 
       [$current_listing_node_ids, $selected_content_types] = $this->getNodeIdsForCurrentListingParagraph($translated_paragraph, $current_language_id);
 
+      // Prevent system from loading all nodes due to empty argument.
+      if (empty($current_listing_node_ids)) {
+        return $variables;
+      }
+
       $current_listing_nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($current_listing_node_ids);
 
       $selected_liftup_display_style = $translated_paragraph->get('field_liftup_display')->getString();

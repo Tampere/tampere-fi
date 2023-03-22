@@ -39,6 +39,11 @@ class MetadataAttachmentList extends TrePreProcessPluginBase {
     $current_language_id = $this->languageManager->getCurrentLanguage()->getId();
     $media_file_ids = $this->getAttachmentListMediaFileIds($current_language_id, $paragraph_taxonomy_values);
 
+    // Prevent system from loading all media due to empty argument.
+    if (empty($media_file_ids)) {
+      return $variables;
+    }
+
     $attachments = [];
     $media_entities = $this->entityTypeManager->getStorage('media')->loadMultiple($media_file_ids);
     foreach ($media_entities as $media_entity) {

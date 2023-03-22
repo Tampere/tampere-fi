@@ -27,7 +27,7 @@
   }
 
   &__liftups {
-    .card--grouped:nth-of-type(3n + 2) {
+    .card__wrapper:nth-of-type(3n + 2) .card--grouped {
       @include dynamic-color(#{$colorful-card-2-color-name}, $set-focus-color: false);
 
       background-color: clr('alternative-#{$colorful-card-2-color-name}', #{clr(#{$colorful-card-2-color-name})});
@@ -40,7 +40,7 @@
       }
     }
 
-    .card--grouped:nth-of-type(3n + 3) {
+    .card__wrapper:nth-of-type(3n + 3) .card--grouped {
       @include dynamic-color(#{$colorful-card-3-color-name}, $set-focus-color: false);
 
       background-color: clr('alternative-#{$colorful-card-3-color-name}', #{clr(#{$colorful-card-3-color-name})});

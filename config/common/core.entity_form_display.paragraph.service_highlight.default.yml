@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.service_highlight
   module:
     - allowed_formats
+    - field_states_ui
     - limited_field_widgets
     - maxlength
     - paragraphs_asymmetric_translation_widgets
@@ -33,11 +34,16 @@ content:
     settings:
       title: Linkki
       title_plural: Linkit
-      edit_mode: open
+      edit_mode: closed
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
     third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
       limited_field_widgets:
         limit_values: '0'
   field_service_text:

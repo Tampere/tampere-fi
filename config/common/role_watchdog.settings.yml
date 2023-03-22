@@ -1,0 +1,24 @@
+_core:
+  default_config_hash: r3nWfQw2xrKshQRjkK49pfAFDe-LadmW8f01Ov1D3T4
+langcode: fi
+role_watchdog_monitor_roles:
+  authenticated: authenticated
+  mailing_list_admin: mailing_list_admin
+  emergency_notice_author: emergency_notice_author
+  service_author: service_author
+  contact_info_author: contact_info_author
+  blog_article_author: blog_article_author
+  notice_author: notice_author
+  zoning_information_author: zoning_information_author
+  small_news_item_author: small_news_item_author
+  news_item_author: news_item_author
+  rich_article_author: rich_article_author
+  basic_content_page_author: basic_content_page_author
+  media_editor: media_editor
+  front_page_author: front_page_author
+  author: author
+  section_editor: section_editor
+  participation_section_editor: participation_section_editor
+  super_user: super_user
+  administrator: administrator
+role_watchdog_notify_email: ''

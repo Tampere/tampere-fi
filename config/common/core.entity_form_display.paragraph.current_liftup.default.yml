@@ -13,6 +13,7 @@ dependencies:
   module:
     - color_field
     - ex_icons
+    - field_states_ui
     - media_library
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.current_liftup.default
@@ -34,11 +35,16 @@ content:
     settings:
       title: Linkki
       title_plural: Linkit
-      edit_mode: preview
+      edit_mode: open
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
-    third_party_settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_icon:
     type: ex_icon_select
     weight: 1

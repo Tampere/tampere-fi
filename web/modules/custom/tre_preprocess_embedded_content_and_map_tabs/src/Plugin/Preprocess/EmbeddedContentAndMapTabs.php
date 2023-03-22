@@ -77,8 +77,12 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
         $selected_taxonomy_condition_group,
       );
 
-      $tab_list_nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($tab_list_node_ids);
+      // Prevent system from loading all nodes due to empty argument.
+      if (empty($tab_list_node_ids)) {
+        return $variables;
+      }
 
+      $tab_list_nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($tab_list_node_ids);
       foreach ($selected_content_types as $content_type) {
         $variables['#cache']['tags'][] = "node_list:{$content_type}";
       }
@@ -206,7 +210,7 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
   protected function getMap(ParagraphInterface $paragraph) {
     $map = [];
 
-    if (!($paragraph) instanceof ParagraphInterface) {
+    if (!($paragraph instanceof ParagraphInterface)) {
       return $map;
     }
 

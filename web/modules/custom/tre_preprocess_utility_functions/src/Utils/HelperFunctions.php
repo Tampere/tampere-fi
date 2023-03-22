@@ -313,7 +313,7 @@ class HelperFunctions implements HelperFunctionsInterface {
    * {@inheritdoc}
    */
   public function getExternalLinkParagraphContents(ParagraphInterface $link_paragraph): ?array {
-    if (!$link_paragraph instanceof ParagraphInterface) {
+    if (!($link_paragraph instanceof ParagraphInterface)) {
       return NULL;
     }
 
@@ -447,7 +447,7 @@ class HelperFunctions implements HelperFunctionsInterface {
    * {@inheritdoc}
    */
   public function getInternalLinkParagraphContents(ParagraphInterface $link_paragraph): ?array {
-    if (!$link_paragraph instanceof ParagraphInterface || !$link_paragraph->hasField('field_internal_link')) {
+    if (!($link_paragraph instanceof ParagraphInterface) || !$link_paragraph->hasField('field_internal_link')) {
       return NULL;
     }
 
@@ -459,7 +459,7 @@ class HelperFunctions implements HelperFunctionsInterface {
     $referenced_entities = $link_paragraph->get('field_internal_link')->referencedEntities();
     $referenced_node = reset($referenced_entities);
 
-    if (!$referenced_node instanceof NodeInterface) {
+    if (!($referenced_node instanceof NodeInterface)) {
       return NULL;
     }
 
@@ -573,7 +573,7 @@ class HelperFunctions implements HelperFunctionsInterface {
    * {@inheritdoc}
    */
   public function isInternalLinkParagraph(ParagraphInterface $link_paragraph): bool {
-    if (!$link_paragraph instanceof ParagraphInterface) {
+    if (!($link_paragraph instanceof ParagraphInterface)) {
       return FALSE;
     }
 
@@ -650,7 +650,7 @@ class HelperFunctions implements HelperFunctionsInterface {
   public function getNodeLiftupMap(NodeInterface $node, string $map_class, bool $use_lazyload = FALSE): array {
     $map = [];
 
-    if (!($node) instanceof NodeInterface) {
+    if (!($node instanceof NodeInterface)) {
       return $map;
     }
 

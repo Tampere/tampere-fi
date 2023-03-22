@@ -5,6 +5,7 @@ dependencies: {  }
 machine: local
 description: null
 name: Local
+weight: null
 url: 'https://tampere.l'
 fg_color: '#abacab'
 bg_color: '#237d16'

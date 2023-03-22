@@ -1,0 +1,5 @@
+name: 'TRE Admin Theme Modifications'
+type: module
+description: 'Modifications for the admin theme.'
+package: 'TRE'
+core_version_requirement: '>=9.3'

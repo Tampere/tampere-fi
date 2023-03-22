@@ -10,43 +10,34 @@
     margin: 0 !important;
   }
 
-  .j-stacker {
-    display: flex;
-    flex-wrap: wrap;
-
-    @include large {
-      flex-wrap: nowrap;
-    }
-
-    > * {
-      display: flex !important;
-      flex-direction: column !important;
-    }
-  }
-
   .j-stack {
+    display: grid !important;
+    grid-gap: $space-s;
+    grid-template-columns: 1fr;
+    margin-bottom: $space-m;
     padding: 0 !important;
     width: 100% !important;
 
-    & + .j-stack {
-      @include large {
-        padding-left: $space-s !important;
-      }
+    @include small {
+      grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    }
+
+    @include large {
+      margin-bottom: $space-l;
     }
   }
 
   .feed-item {
     box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
-    margin-bottom: $space-m !important;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0 !important;
     position: relative;
-
-    @include large {
-      margin-bottom: $space-l !important;
-    }
 
     // Account details and post date
     .j-poster {
       background-color: clr(background);
+      flex-shrink: 0;
       height: 42px;
       padding: 0;
 
@@ -62,7 +53,6 @@
         padding: $space-xs;
 
         @include large {
-          display: block;
           padding: $space-s;
         }
       }
@@ -75,7 +65,8 @@
 
       .j-twitter-screen-name,
       h3,
-      .j-date {
+      .j-date,
+      .profile-name {
         color: clr(text);
         font-family: $font-body;
         font-size: $font-12;
@@ -86,17 +77,20 @@
         }
       }
 
-      h3 {
+      h3,
+      .profile-name {
         margin-right: auto;
       }
 
       .j-twitter-screen-name,
-      h3 {
+      h3,
+      .profile-name {
         font-weight: $font-weight-bold;
       }
 
       .j-date {
         font-weight: $font-weight-regular;
+        flex-shrink: 0;
       }
 
       .j-twitter-display-name {
@@ -130,11 +124,13 @@
       }
     }
 
+    .j-image {
+      display: block;
+    }
+
     &.j-twitter {
       .j-poster {
-        a {
-          justify-content: flex-start;
-        }
+        justify-content: flex-start;
       }
 
       .j-text {
@@ -158,6 +154,9 @@
     // Post content and social media specific details
     .j-text {
       background-color: clr(background);
+      display: flex;
+      height: 100%;
+      flex-direction: column;
       padding: $space-s;
 
       @include large {
@@ -192,16 +191,12 @@
         align-items: flex-end;
         display: flex;
         height: $icon-medium;
-        margin-top: $space-s;
+        padding-top: $space-xl;
+        margin-top: auto;
         justify-content: flex-end;
 
         @include large {
-          margin-top: $space-l;
-        }
-
-        // Social media actions (i.e. likes, sharing, replies)
-        ul {
-          display: none;
+          padding-top: $space-xxl;
         }
 
         .j-twitter-date {

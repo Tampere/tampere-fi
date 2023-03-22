@@ -89,6 +89,10 @@ class MigrateImportPrepareSubscriber implements EventSubscriberInterface {
     };
 
     foreach ($nid_chunks as $chunk) {
+      // Prevent accidents if $chunk happens to be NULL for any reason.
+      if (empty($chunk)) {
+        continue;
+      }
       $nodes_to_delete = $storage->loadMultiple($chunk);
       $map_points_to_delete = array_filter($nodes_to_delete, $map_point_filter);
       $storage->delete($map_points_to_delete);

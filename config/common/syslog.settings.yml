@@ -3,4 +3,4 @@ _core:
 langcode: fi
 identity: drupal
 facility: 128
-format: '!base_url|!timestamp|!type|!ip|!request_uri|!referer|!uid|!link|!message'
+format: '!base_url|!timestamp|!type|!severity|!ip|!request_uri|!referer|!uid|!link|!message'

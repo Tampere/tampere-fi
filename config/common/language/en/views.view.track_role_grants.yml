@@ -1,0 +1,53 @@
+label: 'Track Role Grants'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        changed:
+          label: Date
+          separator: ', '
+        field_role_id_target_id:
+          label: 'Role ID'
+          separator: ', '
+        name:
+          label: Change
+          separator: ', '
+        field_user_performed_on:
+          label: 'User (performed on)'
+          separator: ', '
+        uid:
+          label: 'Authored by'
+          separator: ', '
+      title: 'Track Role Grants'
+      header:
+        area_text_custom:
+          content: 'Go back to the user profile: {{ uid }}'
+      empty:
+        area_text_custom:
+          content: 'No Role Grant made. Go back to the user profile. <a href="/user/{{ user_id }}">Back</a>'
+      arguments:
+        uid:
+          exception:
+            title: All
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Track Role Grants'

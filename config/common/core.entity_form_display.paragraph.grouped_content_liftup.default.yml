@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.grouped_content_liftup.field_title
     - paragraphs.paragraphs_type.grouped_content_liftup
   module:
+    - field_states_ui
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.grouped_content_liftup.default
 targetEntityType: paragraph
@@ -21,11 +22,16 @@ content:
     settings:
       title: Sisältönosto
       title_plural: Sisältönostot
-      edit_mode: open
+      edit_mode: closed
       add_mode: button
       form_display_mode: liftup_wo_summary_form
       default_paragraph_type: content_liftup
-    third_party_settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_summary:
     type: string_textarea
     weight: 11

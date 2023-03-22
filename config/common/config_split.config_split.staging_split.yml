@@ -10,7 +10,6 @@ stackable: false
 storage: folder
 folder: ../config/staging
 module:
-  dblog: 0
   purge: 0
   purge_drush: 0
   purge_file: 0
@@ -23,6 +22,7 @@ module:
   varnish_purger: 0
 theme: {  }
 complete_list:
+  - dblog_filter.settings
   - purge.logger_channels
   - purge.plugins
   - purge_queuer_coretags.settings

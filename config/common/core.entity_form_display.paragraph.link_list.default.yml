@@ -8,6 +8,8 @@ dependencies:
     - field.field.paragraph.link_list.field_title
     - paragraphs.paragraphs_type.link_list
   module:
+    - field_states_ui
+    - limited_field_widgets
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.link_list.default
 targetEntityType: paragraph
@@ -21,11 +23,18 @@ content:
     settings:
       title: Linkki
       title_plural: Linkit
-      edit_mode: open
+      edit_mode: closed
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
-    third_party_settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
   field_summary:
     type: string_textarea
     weight: 1

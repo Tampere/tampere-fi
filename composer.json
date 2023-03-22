@@ -122,7 +122,7 @@
         "drupal/admin_toolbar": "^3.0",
         "drupal/allowed_formats": "^1.3",
         "drupal/antibot": "^1.4",
-        "drupal/auto_entitylabel": "^3.0@beta",
+        "drupal/auto_entitylabel": "^3.0",
         "drupal/backward_compatibility": "^1.0",
         "drupal/better_exposed_filters": "^5.0",
         "drupal/blazy": "^2.0",
@@ -137,9 +137,10 @@
         "drupal/console": "^1.0.2",
         "drupal/content_moderation_notifications": "^3.4",
         "drupal/cookieinformation": "^1.1",
-        "drupal/core-composer-scaffold": "~9.4.8",
-        "drupal/core-project-message": "~9.4.8",
-        "drupal/core-recommended": "~9.4.8",
+        "drupal/core-composer-scaffold": "~9.5.4",
+        "drupal/core-project-message": "~9.5.4",
+        "drupal/core-recommended": "~9.5.4",
+        "drupal/dblog_filter": "^3.2",
         "drupal/decorative_image_widget": "^1.0.0-alpha4",
         "drupal/diff": "^1.0",
         "drupal/ds": "^3.9",
@@ -147,8 +148,8 @@
         "drupal/elb": "^2.0",
         "drupal/embederator": "^4.0",
         "drupal/entity_browser": "^2.5",
+        "drupal/entity_log": "^1.4",
         "drupal/entity_reference_unpublished": "^1.3",
-        "drupal/entity_type_clone": "^1.7",
         "drupal/entity_usage": "^2.0@beta",
         "drupal/environment_indicator": "^4.0",
         "drupal/ex_icons": "^1.3",
@@ -182,7 +183,7 @@
         "drupal/markdown": "^3.0@RC",
         "drupal/markup": "^1.0@beta",
         "drupal/markup_field": "^1.1@beta",
-        "drupal/maxlength": "^1.0@RC",
+        "drupal/maxlength": "^2.1",
         "drupal/media_bulk_upload": "^3.0",
         "drupal/media_entity_dreambroker": "1.x-dev#83563d31",
         "drupal/media_entity_file_replace": "^1.1",
@@ -207,6 +208,7 @@
         "drupal/paragraphs_asymmetric_translation_widgets": "^1.0@beta",
         "drupal/path_guard": "^1.0@alpha",
         "drupal/pathauto": "^1.6",
+        "drupal/permission_watchdog": "^2.0",
         "drupal/preprocess": "^2.0",
         "drupal/publication_date": "^2.0@beta",
         "drupal/purge": "^3.2",
@@ -217,6 +219,7 @@
         "drupal/redirect": "^1.5",
         "drupal/robotstxt": "^1.4",
         "drupal/role_delegation": "^1.1",
+        "drupal/role_watchdog": "^2.0",
         "drupal/scheduled_transitions": "^2.1",
         "drupal/scn": "^2.0",
         "drupal/search_api": "^1.16",
@@ -369,7 +372,13 @@
                 "2700667 - Notice: Undefined index: #type in drupal_process_states()": "https://www.drupal.org/files/issues/2021-05-12/2700667-133a.patch",
                 "2230909 - Simple decimals fail to pass validation": "https://www.drupal.org/files/issues/2021-10-07/drupal-simple-decimal-validation-ver_9.2.7-2230909-234.patch",
                 "2868014 - Views Date Filter Datetime Granularity Option": "https://www.drupal.org/files/issues/2021-04-26/2868014-110.patch",
-                "2993688 - Views relationships with multi-valued entity reference fields invalidate Distinct query option - 99": "https://www.drupal.org/files/issues/2022-06-16/2993688-99.patch"
+                "2993688 - Views relationships with multi-valued entity reference fields invalidate Distinct query option - 99": "https://www.drupal.org/files/issues/2022-06-16/2993688-99.patch",
+                "3171835 - Claro: Field Groups marked as required are missing red asterisk": "https://www.drupal.org/files/issues/2020-09-18/required-asterisk-missing--3171835--2.patch",
+                "3301088 - Claro: Removing max-width property for resolution 1300px and above": "https://www.drupal.org/files/issues/2022-08-01/claro-theme-resolution-fix_1.patch",
+                "3151534 - Claro: 'Add another item' field button is displayed as a modal action": "https://www.drupal.org/files/issues/2022-11-04/3151534-42.patch"
+            },
+            "drupal/dblog_filter": {
+                "3342635 - Get log values (type and level) for syslog like the input box for dblog" : "https://www.drupal.org/files/issues/2023-02-23/add-log-values-input-box-for-syslog-filter-3342635.patch"
             },
             "drupal/elb": {
                 "3327333 - PHP 8 compatibility issue": "https://www.drupal.org/files/issues/2022-12-15/3327333-filter-empty-values-from-config-2.patch"
@@ -419,11 +428,17 @@
             "drupal/path_guard": {
                 "#3192503 Invalid translation language (en) specified": "https://www.drupal.org/files/issues/2021-01-13/3192503-2.patch"
             },
+            "drupal/permission_watchdog": {
+                "3340219 - Log permission changes using Drupal logger as well": "https://www.drupal.org/files/issues/2023-02-09/log-using-drupal-logger-in-permission-watchdog-3340219.diff"
+            },
             "drupal/publication_date": {
                 "3074373 - Publication date is required for completing the form": "https://www.drupal.org/files/issues/2022-12-20/publication_date_is_required_for_completing_the_form-3074373-11.patch"
             },
             "drupal/quick_node_clone": {
                 "3075889 - Add option to have cloned node publish status default to unpublished": "https://www.drupal.org/files/issues/2022-05-07/quick_node_clone-unpublish-clone-option-3075889-11.patch"
+            },
+            "drupal/role_watchdog": {
+                "3340190 - Log every role change using Drupal logger as well": "https://www.drupal.org/files/issues/2023-02-24/log-using-drupal-logger-3340190.patch"
             },
             "drupal/simple_responsive_table": {
                 "3269622 - Add core/jquery.once as a dependency": "https://www.drupal.org/files/issues/2022-03-15/add-jquery-once-dependency-3269622.patch",

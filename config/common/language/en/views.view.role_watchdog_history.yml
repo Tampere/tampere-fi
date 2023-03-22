@@ -1,0 +1,65 @@
+label: 'Role Watchdog History'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        id:
+          label: ID
+          separator: ', '
+        name:
+          label: Name
+          separator: ', '
+        changed:
+          label: Changed
+          separator: ', '
+        created:
+          label: Created
+          separator: ', '
+        field_role_id_target_id:
+          label: 'Role ID'
+          separator: ', '
+        field_user_performed_on:
+          label: 'User(performed on)'
+          separator: ', '
+        uid:
+          label: 'Authored by'
+          separator: ', '
+        delete_role_watchdog:
+          label: 'Link to delete Role Watchdog'
+          text: 'Delete History'
+        roles_target_id:
+          label: Roles
+      filters:
+        uid:
+          expose:
+            label: Author
+        uid_1:
+          expose:
+            label: 'User (performed on)'
+      title: 'Role Watchdog History'
+      empty:
+        area:
+          content:
+            value: 'There is no role change history saved in the system.'
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Role Watchdog History'

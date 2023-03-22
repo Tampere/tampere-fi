@@ -6,6 +6,8 @@ dependencies:
     - field.field.paragraph.zoning_project_cards.field_zoning_project_cards
     - paragraphs.paragraphs_type.zoning_project_cards
   module:
+    - field_states_ui
+    - limited_field_widgets
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.zoning_project_cards.default
 targetEntityType: paragraph
@@ -19,11 +21,18 @@ content:
     settings:
       title: Paragraph
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
-    third_party_settings: {  }
+      default_paragraph_type: zoning_project_card
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
   translation:
     weight: 10
     region: content

@@ -46,8 +46,8 @@ third_party_settings:
       listing_item__type:
         - 'bundle_field:node'
       listing_item__main_content:
-        - field_hr_title
         - node_title
+        - field_hr_title
         - field_hr_organizational_unit
       listing_item__additional_information:
         - field_phone
@@ -60,7 +60,7 @@ third_party_settings:
         formatter: default
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -147,7 +147,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 1
+    weight: 2
     region: listing_item__main_content
   field_phone:
     type: string
@@ -185,4 +185,5 @@ hidden:
   langcode: true
   links: true
   migrate_override_data: true
+  published_at: true
   search_api_excerpt: true

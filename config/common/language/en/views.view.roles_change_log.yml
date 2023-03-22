@@ -1,0 +1,59 @@
+label: 'Roles change log'
+display:
+  default:
+    display_title: Default
+    display_options:
+      title: 'Permission change report'
+      fields:
+        timestamp:
+          label: 'Time action performed'
+          separator: ', '
+        uid:
+          label: 'User who made the change'
+          separator: ', '
+        role:
+          label: 'Changed role'
+          separator: ', '
+        actions_permission:
+          label: 'Permission actions'
+          separator: ', '
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      filters:
+        role:
+          expose:
+            label: 'Changed role'
+        actions_permission:
+          admin_label: Permission
+          expose:
+            label: Permission
+        actions_action:
+          expose:
+            label: 'Permission action'
+          group_info:
+            label: Action
+            group_items:
+              1:
+                title: Added
+              2:
+                title: Removed
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Permission change report'
+        description: 'Display a log of changes to role permissions'

@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.infographs.field_infograph_heading
     - paragraphs.paragraphs_type.infographs
   module:
+    - field_states_ui
     - heading
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.infographs.default
@@ -21,11 +22,16 @@ content:
     settings:
       title: Paragraph
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
-    third_party_settings: {  }
+      default_paragraph_type: infograph
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_infograph_heading:
     type: heading
     weight: 0

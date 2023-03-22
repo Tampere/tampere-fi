@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.picture_mosaic.field_mosaic_liftups
     - paragraphs.paragraphs_type.picture_mosaic
   module:
+    - field_states_ui
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.picture_mosaic.default
 targetEntityType: paragraph
@@ -23,7 +24,12 @@ content:
       add_mode: button
       form_display_mode: default
       default_paragraph_type: mosaic_liftup
-    third_party_settings: {  }
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 10
     region: content

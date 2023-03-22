@@ -21,7 +21,7 @@ content:
     settings:
       title: Linkki
       title_plural: Linkkiä
-      edit_mode: preview
+      edit_mode: closed
       add_mode: button
       form_display_mode: default
       default_paragraph_type: involvement_opportunity_card

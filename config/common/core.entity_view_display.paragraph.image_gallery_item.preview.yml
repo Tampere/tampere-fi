@@ -1,0 +1,41 @@
+uuid: 6f1f86c0-45d5-49f2-8692-f37da5891ac3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.preview
+    - field.field.paragraph.image_gallery_item.field_caption
+    - field.field.paragraph.image_gallery_item.field_media
+    - paragraphs.paragraphs_type.image_gallery_item
+  module:
+    - ds
+id: paragraph.image_gallery_item.preview
+targetEntityType: paragraph
+bundle: image_gallery_item
+mode: preview
+content:
+  field_caption:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: small_image_embed_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

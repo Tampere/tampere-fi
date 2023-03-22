@@ -1,0 +1,22 @@
+log_values: ''
+severity_levels:
+  emergency: 0
+  alert: 0
+  critical: 0
+  error: 0
+  warning: 0
+  notice: 0
+  info: 0
+  debug: 0
+method: include
+syslog_severity_levels:
+  emergency: 0
+  alert: 0
+  critical: 0
+  error: 0
+  warning: 0
+  notice: 0
+  info: 0
+  debug: 0
+syslog_method: include
+syslog_log_values: "user|notice\r\npermission_watchdog|notice\r\nrole_watchdog|notice\r\nentity_log|info\r\ncontent|notice\r\nphp|error"

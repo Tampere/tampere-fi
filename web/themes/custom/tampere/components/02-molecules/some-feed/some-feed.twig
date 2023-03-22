@@ -48,18 +48,17 @@
     {% endif %}
 
     <div {{ bem("feed", some_feed__feed__modifiers|default([]), some_feed__base_class) }}>
-      <script src="https://assets.juicer.io/embed.js" type="text/javascript"></script>
-      <link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css" />
-      <ul class="juicer-feed"
-        data-after="Drupal.tampere.formatSocialMediaFeed()"
+      <div class="juicer-feed"
         data-feed-id="{{ juicer_feed_id }}"
+        data-after="Drupal.tampere.formatSocialMediaFeed()"
         data-style="modern"
         data-overlay="false"
-        data-columns="3"
+        data-columns="1"
         {% if post_amount %}data-per="{{ post_amount }}"{% endif %}
         {% if truncate_amount %}data-truncate="{{ truncate_amount }}"{% endif %}
       >
-      </ul>
+      </div>
+      <script type="text/javascript" src="https://www.juicer.io/embed/{{ juicer_feed_id }}/embed-code.js" async defer></script>
     </div>
   </div>
 </div>

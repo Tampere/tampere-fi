@@ -32,12 +32,3 @@ filters:
         img: img
         iframe: iframe
       use_data_uri: '0'
-  media_embed:
-    id: media_embed
-    provider: media
-    status: false
-    weight: 100
-    settings:
-      default_view_mode: default
-      allowed_view_modes: {  }
-      allowed_media_types: {  }

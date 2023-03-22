@@ -8,6 +8,8 @@ dependencies:
     - field.field.paragraph.process_accordions.field_process_accordions
     - paragraphs.paragraphs_type.process_accordions
   module:
+    - field_states_ui
+    - limited_field_widgets
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.process_accordions.default
 targetEntityType: paragraph
@@ -37,11 +39,18 @@ content:
     settings:
       title: Paragraph
       title_plural: Paragraphs
-      edit_mode: open
+      edit_mode: closed
       add_mode: dropdown
       form_display_mode: default
-      default_paragraph_type: ''
-    third_party_settings: {  }
+      default_paragraph_type: process_accordion_item
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
   translation:
     weight: 3
     region: content

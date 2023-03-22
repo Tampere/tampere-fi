@@ -183,6 +183,18 @@ $listing-item-person-link-column-min-width: 295px;
         grid-template-columns: 1fr 2fr;
       }
     }
+
+    #{$base_class}__main-content {
+      display: flex;
+      flex-direction: column;
+
+      // The person name (heading) comes structurally before the HR title,
+      // but the HR title should come visually before the name.
+      .field-name-field-hr-title {
+        order: -1;
+      }
+    }
+
     #{$base_class}__additional-information {
       @include large {
         width: 100%;

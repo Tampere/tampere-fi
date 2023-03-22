@@ -1,0 +1,49 @@
+/* Status message colors inverted */
+.messages {
+  background-color: #f3f4f9 !important;
+  color: #353641 !important;
+}
+
+.messages a:not(.button) {
+  color: #22437b !important;
+}
+
+.messages a:hover:not(.button) {
+  color: #29549a !important;
+}
+
+/* Dropbutton item max-width was hiding long paragraph names */
+.dropbutton__item:first-of-type ~ .dropbutton__item {
+  max-width: none;
+}
+
+/* Paragraph field modifications for space between text and buttons */
+.js .field--widget-paragraphs-classic-asymmetric .dropbutton-wrapper {
+  margin-right: 1rem;
+}
+
+.field--widget-paragraphs-classic-asymmetric .form-actions {
+  align-items: center;
+}
+
+.field--widget-paragraphs-classic-asymmetric .placeholder {
+  margin-left: 8px;
+}
+
+/*
+  Buttons in entity lists (e.g. internal link paragraph with selected content)
+  set to minimum width to make the remove/edit buttons same width.
+*/
+.entities-list .item-container > input {
+  min-width: 130px;
+}
+
+/* Admin language switcher */
+.block-language {
+  margin-bottom: 1rem;
+}
+
+.block-language h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
