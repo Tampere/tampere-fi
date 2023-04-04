@@ -1,0 +1,19 @@
+uuid: 96c1566d-fd61-454e-8a94-9d131d4fcd97
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+    - node.type.portfolio
+  module:
+    - gnode
+    - node
+id: subsite-group_node-portfolio
+label: 'Alasivusto: Group node (Portfolio)'
+description: 'Adds <em class="placeholder">Portfolio</em> content to groups both publicly and privately.'
+group_type: subsite
+content_plugin: 'group_node:portfolio'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

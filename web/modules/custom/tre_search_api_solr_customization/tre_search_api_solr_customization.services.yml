@@ -1,0 +1,5 @@
+services:
+  tre_search_api_solr_customization.search_field_mapping_subscriber:
+    class: Drupal\tre_search_api_solr_customization\EventSubscriber\SearchFieldMappingSubscriber
+    tags:
+      - { name: event_subscriber }

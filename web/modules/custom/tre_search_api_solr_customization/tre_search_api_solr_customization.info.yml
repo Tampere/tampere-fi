@@ -1,0 +1,7 @@
+name: 'TRE Search API Solr Customization'
+type: module
+description: 'Modifications related to search_api_solr module'
+core_version_requirement: '>=9'
+package: 'TRE'
+dependencies:
+  - search_api_solr:search_api_solr

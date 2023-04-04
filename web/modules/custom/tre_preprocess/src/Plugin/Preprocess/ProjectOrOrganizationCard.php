@@ -29,68 +29,86 @@ class ProjectOrOrganizationCard extends TrePreProcessPluginBase {
   public function preprocess(array $variables): array {
     $paragraph = $variables['paragraph'];
 
-    $parent_node_id = $paragraph->getParentEntity()->getParentEntity()->id();
+    if (!($paragraph instanceof ParagraphInterface)) {
+      return $variables;
+    }
 
-    if ($paragraph instanceof ParagraphInterface) {
-      /** @var \Drupal\paragraphs\ParagraphInterface $translated_card_paragraph */
-      $translated_card_paragraph = $this->entityRepository->getTranslationFromContext($paragraph);
+    /** @var \Drupal\paragraphs\ParagraphInterface $translated_card_paragraph */
+    $translated_card_paragraph = $this->entityRepository->getTranslationFromContext($paragraph);
 
-      if (!$translated_card_paragraph->get('field_project_or_organization')->isEmpty()) {
-        $referenced_entities = $translated_card_paragraph->get('field_project_or_organization')->referencedEntities();
-        $project_or_organization_node = reset($referenced_entities);
+    if ($translated_card_paragraph->get('field_project_or_organization')->isEmpty()) {
+      return $variables;
+    }
 
-        if ($project_or_organization_node instanceof NodeInterface) {
-          /** @var \Drupal\node\NodeInterface $translated_project_or_organization_node */
-          $translated_project_or_organization_node = $this->entityRepository->getTranslationFromContext($project_or_organization_node);
+    $referenced_entities = $translated_card_paragraph->get('field_project_or_organization')->referencedEntities();
+    $project_or_organization_node = reset($referenced_entities);
 
-          $project_or_organization_node_id = $translated_project_or_organization_node->id();
-          $variables['#cache']['tags'][] = "node:{$project_or_organization_node_id}";
+    if (!($project_or_organization_node instanceof NodeInterface)) {
+      return $variables;
+    }
 
-          $node_is_published = $translated_project_or_organization_node->isPublished();
-          if (!$node_is_published) {
-            return $variables;
-          }
+    /** @var \Drupal\node\NodeInterface $translated_project_or_organization_node */
+    $translated_project_or_organization_node = $this->entityRepository->getTranslationFromContext($project_or_organization_node);
 
-          $displayed_fields_field_values = $translated_card_paragraph->get('field_displayed_fields')->getValue();
-          $fields_selected_for_display = [];
-          foreach ($displayed_fields_field_values as $key => $field_value) {
-            $fields_selected_for_display[$key] = $field_value['value'];
-          }
+    $project_or_organization_node_id = $translated_project_or_organization_node->id();
+    $variables['#cache']['tags'][] = "node:{$project_or_organization_node_id}";
 
-          if (in_array('name', $fields_selected_for_display, TRUE)) {
-            $variables['project_or_organization_title'] = $translated_project_or_organization_node->getTitle();
-          }
+    $node_is_published = $translated_project_or_organization_node->isPublished();
+    if (!$node_is_published) {
+      return $variables;
+    }
 
-          if (in_array('description', $fields_selected_for_display, TRUE)) {
-            if (!$translated_project_or_organization_node->get('field_description')->isEmpty()) {
-              $variables['project_or_organization_description'] = $translated_project_or_organization_node->get('field_description')->view(self::LIFTUP_VIEW_MODE);
-            }
-          }
+    $displayed_fields_field_values = $translated_card_paragraph->get('field_displayed_fields')->getValue();
+    $fields_selected_for_display = [];
+    foreach ($displayed_fields_field_values as $key => $field_value) {
+      $fields_selected_for_display[$key] = $field_value['value'];
+    }
 
-          if (in_array('contacts', $fields_selected_for_display, TRUE)) {
-            /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $paragraph_field_items */
-            $paragraph_field_items = $translated_project_or_organization_node->get('field_contact_info_paragraph');
-            /** @var \Drupal\node\NodeInterface|null $translated_person_node */
-            $translated_person_node = $this->getTranslatedPersonNodeFromParagraphFieldValues($paragraph_field_items);
-            if (!is_null($translated_person_node)) {
-              $variables['project_or_organization_contact_name'] = $translated_person_node->getTitle();
+    if (in_array('name', $fields_selected_for_display, TRUE)) {
+      $variables['project_or_organization_title'] = $translated_project_or_organization_node->getTitle();
+    }
 
-              if (!$translated_person_node->get('field_email')->isEmpty()) {
-                $variables['project_or_organization_contact_email_address'] = $translated_person_node->get('field_email')->getString();
-              }
-
-              /** @var \Drupal\Core\Entity\EntityViewBuilderInterface $node_view_builder */
-              $node_view_builder = $this->entityTypeManager->getViewBuilder('node');
-              $variables['project_or_organization_contact_details'] = $node_view_builder->view($translated_person_node, self::LIFTUP_VIEW_MODE);
-            }
-
-          }
-
-          if ($parent_node_id != $project_or_organization_node_id) {
-            $variables['project_or_organization_url'] = $translated_project_or_organization_node->toUrl()->toString(TRUE)->getGeneratedUrl();
-          }
-        }
+    if (in_array('description', $fields_selected_for_display, TRUE)) {
+      if (!$translated_project_or_organization_node->get('field_description')->isEmpty()) {
+        $variables['project_or_organization_description'] = $translated_project_or_organization_node->get('field_description')->view(self::LIFTUP_VIEW_MODE);
       }
+    }
+
+    if (in_array('contacts', $fields_selected_for_display, TRUE)) {
+      /** @var \Drupal\Core\Field\EntityReferenceFieldItemListInterface $paragraph_field_items */
+      $paragraph_field_items = $translated_project_or_organization_node->get('field_contact_info_paragraph');
+      /** @var \Drupal\node\NodeInterface|null $translated_person_node */
+      $translated_person_node = $this->getTranslatedPersonNodeFromParagraphFieldValues($paragraph_field_items);
+      if (!is_null($translated_person_node)) {
+        $variables['project_or_organization_contact_name'] = $translated_person_node->getTitle();
+
+        if (!$translated_person_node->get('field_email')->isEmpty()) {
+          $variables['project_or_organization_contact_email_address'] = $translated_person_node->get('field_email')->getString();
+        }
+
+        /** @var \Drupal\Core\Entity\EntityViewBuilderInterface $node_view_builder */
+        $node_view_builder = $this->entityTypeManager->getViewBuilder('node');
+        $variables['project_or_organization_contact_details'] = $node_view_builder->view($translated_person_node, self::LIFTUP_VIEW_MODE);
+      }
+
+    }
+
+    $parent_paragraph = $paragraph->getParentEntity();
+
+    if (!($parent_paragraph instanceof ParagraphInterface)) {
+      return $variables;
+    }
+
+    $parent_node = $parent_paragraph->getParentEntity();
+
+    if (!($parent_node instanceof NodeInterface)) {
+      return $variables;
+    }
+
+    $parent_node_id = $parent_node->id();
+
+    if ($parent_node_id !== $project_or_organization_node_id) {
+      $variables['project_or_organization_url'] = $translated_project_or_organization_node->toUrl()->toString(TRUE)->getGeneratedUrl();
     }
 
     return $variables;

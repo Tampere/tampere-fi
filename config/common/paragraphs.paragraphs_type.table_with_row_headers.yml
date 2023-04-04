@@ -1,0 +1,10 @@
+uuid: 5515ae79-80cd-4034-a554-419a4699671e
+langcode: fi
+status: true
+dependencies: {  }
+id: table_with_row_headers
+label: 'Taulukko riviotsikoilla'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

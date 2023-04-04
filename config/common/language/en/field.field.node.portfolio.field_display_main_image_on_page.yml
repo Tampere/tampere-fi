@@ -1,0 +1,5 @@
+label: 'Display main image on content page'
+description: 'Select this option if you want to display the main image for the portfolio in the full page view.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

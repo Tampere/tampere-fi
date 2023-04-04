@@ -1,0 +1,14 @@
+uuid: cfe1195a-3d5e-4ed3-99a6-276fe9cc0f15
+langcode: fi
+status: true
+dependencies:
+  config:
+    - media.type.image_in_other_language
+id: media_type_image_in_other_language
+entity_type_id: media_type
+entity_id: image_in_other_language
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

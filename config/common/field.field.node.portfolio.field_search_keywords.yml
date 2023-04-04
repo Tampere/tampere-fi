@@ -1,0 +1,19 @@
+uuid: d5622a36-84c3-4f27-bd51-1bca02cd59d3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_search_keywords
+    - node.type.portfolio
+id: node.portfolio.field_search_keywords
+field_name: field_search_keywords
+entity_type: node
+bundle: portfolio
+label: Avainsanat
+description: 'Käytetään sisällön nostamiseksi esiin sivuston omassa haussa. Kirjoita 1-3 osuvinta konkreettisesti sisältöösi liittyvää ydintermiä, älä listaa useita aihetta sivuavia yleisen tason termejä.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

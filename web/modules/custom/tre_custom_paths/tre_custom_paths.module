@@ -76,6 +76,8 @@ use Drupal\pathauto\PathautoPatternInterface;
  * Additionally:
  * - if the node is in a menu on level 2+ in a subsite or a minisite, its
  *   breadcrumb is amended with the menu parent node titles.
+ * - if the node is of type 'portfolio', its path is modified to include the
+ *   content type name.
  */
 function tre_custom_paths_pathauto_pattern_alter(PathautoPatternInterface $pattern, array $context) {
   // Only operate on node aliases.
@@ -139,6 +141,33 @@ function tre_custom_paths_pathauto_pattern_alter(PathautoPatternInterface $patte
 }
 
 /**
+ * Returns additional pattern part for nodes of type 'portfolio'.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node in question.
+ *
+ * @return string
+ *   The string to add to the path of a given portfolio.
+ *   Empty string if not applicable.
+ */
+function _tre_custom_paths_get_pattern_part_for_portfolios(NodeInterface $node): string {
+  if ($node->bundle() !== 'portfolio') {
+    return '';
+  }
+
+  /** @var \Drupal\Core\Language\LanguageManager $language_manager */
+  $language_manager = \Drupal::languageManager();
+
+  $current_lang_code = $language_manager->getCurrentLanguage()->getId();
+
+  if ($current_lang_code === 'fi') {
+    return 'portfoliot';
+  }
+
+  return 'portfolios';
+}
+
+/**
  * Helper function to generate a pathauto pattern for 'main' group types.
  *
  * In practice, the pattern is only given if a node has been attached to a group
@@ -161,7 +190,13 @@ function _tre_custom_paths_get_pathauto_pattern_for_main_group_node(array $group
 
     $front_page_node = current($group->get('field_front_page')->referencedEntities());
 
-    if ($group->bundle() == 'minisite') {
+    $additional_portfolio_path_part = _tre_custom_paths_get_pattern_part_for_portfolios($node);
+    if (!empty($additional_portfolio_path_part)) {
+      $pattern_parts[] = $additional_portfolio_path_part;
+    }
+
+    // Portfolio content should not get additional path parts based on menus.
+    if ($group->bundle() == 'minisite' && empty($additional_portfolio_path_part)) {
       $group_menu_token = _tre_custom_paths_get_pathauto_pattern_part_for_group_content_menu($node, $group);
       if (!empty($group_menu_token)) {
         $pattern_parts[] = $group_menu_token;
@@ -269,6 +304,11 @@ function _tre_custom_paths_get_pathauto_pattern_for_theme_node(GroupInterface $t
   }
   else {
     $pattern = '[tre:node_group_frontpage_title]';
+  }
+
+  $additional_portfolio_path_part = _tre_custom_paths_get_pattern_part_for_portfolios($node);
+  if (!empty($additional_portfolio_path_part)) {
+    $pattern .= '/' . $additional_portfolio_path_part;
   }
 
   // Only add node:title when not aliasing the theme frontpage node itself.
@@ -400,8 +440,14 @@ function _tre_custom_paths_get_pathauto_pattern_for_subsite_node(GroupInterface 
     $pattern_parts[] = '[tre:node_group_frontpage_title]';
   }
 
+  $additional_portfolio_path_part = _tre_custom_paths_get_pattern_part_for_portfolios($node);
+  if (!empty($additional_portfolio_path_part)) {
+    $pattern_parts[] = $additional_portfolio_path_part;
+  }
+
   $group_menu_token = _tre_custom_paths_get_pathauto_pattern_part_for_group_content_menu($node, $subsite_group);
-  if (!empty($group_menu_token)) {
+  // Portfolio content should not get additional path parts based on menus.
+  if (!empty($group_menu_token) && empty($additional_portfolio_path_part)) {
     $pattern_parts[] = $group_menu_token;
   }
 

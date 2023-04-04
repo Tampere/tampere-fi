@@ -44,6 +44,7 @@ third_party_settings:
         - name
         - field_author
         - group_image_upload
+        - replace_file
         - langcode
       label: General
       region: content
@@ -82,7 +83,6 @@ third_party_settings:
     group_image_upload:
       children:
         - field_media_image
-        - replace_file
       label: 'Image upload'
       region: content
       parent_name: group_general
@@ -210,7 +210,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 5
+    weight: 6
     region: content
     settings:
       include_locked: false
@@ -224,7 +224,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   replace_file:
-    weight: 6
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }

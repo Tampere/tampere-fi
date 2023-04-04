@@ -3,7 +3,7 @@ langcode: fi
 status: true
 dependencies: {  }
 id: table
-label: Taulukko
+label: 'Taulukko sarakeotsikoilla tai ilman otsikoita'
 icon_uuid: null
 icon_default: null
 description: ''

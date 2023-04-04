@@ -18,4 +18,5 @@ permissions:
   - 'update any group_node:news_item entity'
   - 'view group_node:front_page entity'
   - 'view group_node:news_item entity'
+  - 'view group_node:portfolio entity'
   - 'view unpublished group_node:news_item entity'

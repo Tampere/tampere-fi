@@ -39,9 +39,12 @@
  * @see template_preprocess_table()
  */
 #}
+
+{{ attach_library("tampere/table") }}
+
 <table{{ attributes.addClass("table", "hyphens") }}>
   {% if caption %}
-    <caption>{{ caption }}</caption>
+    <caption class="table__caption">{{ caption }}</caption>
   {% endif %}
 
   {% for colgroup in colgroups %}
@@ -60,9 +63,14 @@
     <thead>
       <tr>
         {% for cell in header %}
-          <{{ cell.tag }}{{ cell.attributes.addClass("table__heading-cell") }}>
-            {{- cell.content -}}
-          </{{ cell.tag }}>
+          {% if not cell.content %}
+            {# Don't render empty header cells inside 'th' element. #}
+            <td {{ cell.attributes.addClass("table__heading-cell") }}></td>
+          {% else %}
+            <{{ cell.tag }} {{ cell.attributes.addClass("table__heading-cell") }} {% if cell.tag == "th" %}scope="col"{% endif %}>
+              {{- cell.content -}}
+            </{{ cell.tag }}>
+          {% endif %}
         {% endfor %}
       </tr>
     </thead>
@@ -73,7 +81,14 @@
       {% for row in rows %}
         <tr{{ row.attributes.addClass("table__row") }}>
           {% for cell in row.cells %}
-            <{{ cell.tag }}{{ cell.attributes.addClass("table__cell") }}>
+
+            {% if cell.tag == "th" %}
+              {% set row_cell_class = "table__row-header-cell" %}
+            {% else %}
+              {% set row_cell_class = "table__cell" %}
+            {% endif %}
+
+            <{{ cell.tag }} {{ cell.attributes.addClass(row_cell_class) }} {% if cell.tag == "th" %}scope="row"{% endif %}>
               {{- cell.content -}}
             </{{ cell.tag }}>
           {% endfor %}

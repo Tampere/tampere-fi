@@ -4,6 +4,7 @@ namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
 use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
+use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 
 /**
  * Topical content pattern preprocessing.
@@ -28,6 +29,15 @@ class TopicalContentPattern extends TrePreProcessPluginBase {
       || $node->get('field_main_image')->isEmpty()
     ) {
       return $variables;
+    }
+
+    // Some nodes have a field for toggling the visibility of the page main
+    // image.
+    if (
+      $node->hasField('field_display_main_image_on_page') &&
+      $node->get('field_display_main_image_on_page')->getString() !== HelperFunctionsInterface::BOOLEAN_FIELD_TRUE
+    ) {
+      $variables['hide_topical_content_main_image'] = TRUE;
     }
 
     $main_image_id = $node->get('field_main_image')->getString();

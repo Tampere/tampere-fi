@@ -46,39 +46,41 @@
       {% endif %}
   </div>
 
-  {# Image #}
-  {% block content_image %}
-    {# Image link opening tag #}
-    {% if content_img__img__url %}
-      <a {{ bem("link", content_img__link__modifiers, content_img__base_class, [ "lightbox" ]) }}
-        href="{{ content_img__img__url }}"
-        aria-label="{{ content_img__img__link_alt }}"
-        data-zoom="false"
-      >
+  {% if not hide_content_image %}
+    {# Image #}
+    {% block content_image %}
+      {# Image link opening tag #}
+      {% if content_img__img__url %}
+        <a {{ bem("link", content_img__link__modifiers, content_img__base_class, [ "lightbox" ]) }}
+          href="{{ content_img__img__url }}"
+          aria-label="{{ content_img__img__link_alt }}"
+          data-zoom="false"
+        >
+      {% endif %}
+
+      {% if content_img__img__src %}
+        {% include "@atoms/04-images/00-image/_image.twig" with {
+          "image_base_class": "figure",
+          "image_blockname": content_img__base_class,
+          "img_src": content_img__img__src,
+          "img_alt": content_img__img__alt,
+        } %}
+      {% else %}
+        {{ content_img__img }}
+      {% endif %}
+
+      {# Image link closing tag #}
+      {% if content_img__img__url %}
+        </a>
+      {% endif %}
+
+    {% endblock %}
+
+    {# Caption #}
+    {% if has_caption %}
+      <figcaption {{ bem("caption", content_img__cation__modifiers, content_img__base_class)}}>
+        {{ content_img__img__caption}}
+      </figcaption>
     {% endif %}
-
-    {% if content_img__img__src %}
-      {% include "@atoms/04-images/00-image/_image.twig" with {
-        image_base_class: "figure",
-        image_blockname: content_img__base_class,
-        img_src: content_img__img__src,
-        img_alt: content_img__img__alt,
-      } %}
-    {% else %}
-      {{ content_img__img }}
-    {% endif %}
-
-    {# Image link closing tag #}
-    {% if content_img__img__url %}
-      </a>
-    {% endif %}
-
-  {% endblock %}
-
-  {# Caption #}
-  {% if has_caption %}
-    <figcaption {{ bem("caption", content_img__cation__modifiers, content_img__base_class)}}>
-      {{ content_img__img__caption}}
-    </figcaption>
   {% endif %}
 </figure>

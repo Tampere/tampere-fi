@@ -1,0 +1,72 @@
+uuid: 7815619d-6957-4399-9eec-d9c5dd3011ce
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tablefield
+    - paragraphs.paragraphs_type.table_with_row_headers
+  module:
+    - tablefield
+id: paragraph.table_with_row_headers.field_tablefield
+field_name: field_tablefield
+entity_type: paragraph
+bundle: table_with_row_headers
+label: Taulukkokenttä
+description: 'Ensimmäisen sarakkeen solut toimivat taulukon riviotsikkoina.'
+required: false
+translatable: true
+default_value:
+  -
+    rebuild:
+      cols: '5'
+      rows: '5'
+    value:
+      0:
+        weight: '0'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      1:
+        weight: '1'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      2:
+        weight: '2'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      3:
+        weight: '3'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      4:
+        weight: '4'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      caption: ''
+    format: null
+    caption: ''
+default_value_callback: ''
+settings:
+  export: false
+  restrict_rebuild: true
+  restrict_import: true
+  lock_values: false
+  cell_processing: 0
+  empty_rules:
+    ignore_table_structure: false
+    ignore_table_header: false
+field_type: tablefield

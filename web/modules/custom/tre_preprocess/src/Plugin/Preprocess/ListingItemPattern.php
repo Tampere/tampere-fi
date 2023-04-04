@@ -111,23 +111,25 @@ class ListingItemPattern extends TrePreProcessPluginBase {
    *   The list of mapped content types to show in search.
    */
   protected function getMappedSearchContentTypes() {
-    return [
-      'blog_article' => $this->t('Blog post', [], ['context' => 'Mapped content type']),
-      'front_page' => $this->t('Front page', [], ['context' => 'Mapped content type']),
-      'news_item' => $this->t('News item', [], ['context' => 'Mapped content type']),
-      'notice' => $this->t('Notice', [], ['context' => 'Mapped content type']),
-      'rich_article' => $this->t('Rich article', [], ['context' => 'Mapped content type']),
-      'basic_content_page' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'moderated_page' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'project' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'organization' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'place' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'collection_page' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'city_planning_and_constructions' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'zoning_information' => $this->t('Page', [], ['context' => 'Mapped content type']),
-      'involvement_opportunity' => $this->t('Page', [], ['context' => 'Mapped content type']),
-    ];
+    $context = ['context' => 'Mapped content type'];
 
+    return [
+      'basic_content_page' => $this->t('Page', [], $context),
+      'blog_article' => $this->t('Blog post', [], $context),
+      'city_planning_and_constructions' => $this->t('Page', [], $context),
+      'collection_page' => $this->t('Page', [], $context),
+      'front_page' => $this->t('Front page', [], $context),
+      'involvement_opportunity' => $this->t('Page', [], $context),
+      'moderated_page' => $this->t('Page', [], $context),
+      'news_item' => $this->t('News item', [], $context),
+      'notice' => $this->t('Notice', [], $context),
+      'organization' => $this->t('Page', [], $context),
+      'place' => $this->t('Page', [], $context),
+      'portfolio' => $this->t('Page', [], $context),
+      'project' => $this->t('Page', [], $context),
+      'rich_article' => $this->t('Rich article', [], $context),
+      'zoning_information' => $this->t('Page', [], $context),
+    ];
   }
 
 }

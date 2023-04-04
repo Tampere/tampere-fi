@@ -18,17 +18,21 @@ enabled_content_types:
   notice: notice
   organization: organization
   place: place
+  portfolio: portfolio
   project: project
   rich_article: rich_article
   rss_item: rss_item
   small_news_item: small_news_item
   zoning_information: zoning_information
+  content_in_other_language: '0'
   emergency_notice: '0'
   map_point: '0'
   person: '0'
   place_of_business: '0'
   ptv_service: '0'
+  service_channel: '0'
 enabled_taxonomies:
+  accessibility_and_service_infos: '0'
   blogs: '0'
   cross_site_publications: '0'
   geographical_areas: '0'
@@ -47,6 +51,5 @@ enabled_taxonomies:
   record_numbers: '0'
   service_classes: '0'
   topics: '0'
-  service_vouchers: '0'
   zoning_information_types: '0'
 overlay_default_collapse: 1

@@ -6,6 +6,8 @@
  # - blog_header__image: Blog image src.
  # - blog_header__field_author__label: field_author label text.
  #
+ # - hide_topical_content_main_image: Flag for hiding the main image.
+ #
  # - topical_content__main_image__name: Name of the main image as a string.
  # - topical_content__main_image__url: URL for the main image file as a string.
  # - topical_content__main_image__alt: The alternative text for the main image if one exists.
@@ -37,6 +39,7 @@
       {% endblock blog_header__img %}
     {% endembed %}
   {% endif %}
+
   <div {{ bem("header", (topical_content__header__modifiers), topical_content_base_class) }}>
     {% include "@molecules/content-image/content-image.twig" with {
       "content_img__heading__modifiers": [ variant ],
@@ -48,6 +51,7 @@
       "content_img__img": main_image,
       "content_img__img__name": topical_content__main_image__name,
       "content_img__img__alt": topical_content__main_image__alt,
+      "hide_content_image": hide_topical_content_main_image,
     } %}
   </div>
 

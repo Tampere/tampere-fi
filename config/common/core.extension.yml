@@ -55,6 +55,7 @@ module:
   entity_reference_revisions: 0
   entity_reference_unpublished: 0
   entity_usage: 0
+  entitygroupfield: 0
   environment_indicator: 0
   environment_indicator_ui: 0
   ex_icons: 0
@@ -155,6 +156,7 @@ module:
   rabbit_hole: 0
   redirect: 0
   responsive_image: 0
+  rh_media: 0
   rh_node: 0
   rh_taxonomy: 0
   robotstxt: 0
@@ -170,7 +172,6 @@ module:
   search_api_solr: 0
   search_api_solr_admin: 0
   serialization: 0
-  simple_responsive_table: 0
   simple_sitemap: 0
   siteimprove: 0
   social_media: 0
@@ -221,8 +222,10 @@ module:
   tre_ptv_import: 0
   tre_react_and_share: 0
   tre_related_news_group_check: 0
+  tre_search_api_solr_customization: 0
   tre_search_exclusion: 0
   tre_tablefield_column_drag: 0
+  tre_tablefield_form_alterations: 0
   tre_translation_publication_date_clear: 0
   tre_wp_sites_import: 0
   twig_tweak: 0

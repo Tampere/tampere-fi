@@ -40,6 +40,9 @@ bundles:
     bundle: place
   -
     entity_type: node
+    bundle: portfolio
+  -
+    entity_type: node
     bundle: project
   -
     entity_type: node

@@ -26,11 +26,11 @@ visibility:
     context_mapping:
       node: '@node.node_route_context:node'
     bundles:
-      content_in_other_language: content_in_other_language
       basic_content_page: basic_content_page
       blog_article: blog_article
       city_planning_and_constructions: city_planning_and_constructions
       collection_page: collection_page
+      content_in_other_language: content_in_other_language
       front_page: front_page
       involvement_opportunity: involvement_opportunity
       moderated_page: moderated_page
@@ -38,6 +38,7 @@ visibility:
       notice: notice
       organization: organization
       place: place
+      portfolio: portfolio
       project: project
       rich_article: rich_article
       small_news_item: small_news_item

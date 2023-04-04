@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_tablefield_form_alterations module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+
+/**
+ * Implements hook_field_widget_form_alter().
+ *
+ * Adds a required constraint to the 'caption' field inside tablefield fields.
+ */
+function tre_tablefield_form_alterations_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (!isset($context['items']) || $context['items']->getFieldDefinition()->getType() !== 'tablefield') {
+    return;
+  }
+
+  if (isset($element['caption'])) {
+    $element['caption']['#required'] = TRUE;
+    $element['caption']['#title'] = new TranslatableMarkup('Table Caption for screen readers (required)', [], ['context' => 'TRE TableField Form Alterations']);
+  }
+}

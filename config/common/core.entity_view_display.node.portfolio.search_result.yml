@@ -1,0 +1,87 @@
+uuid: e6c7975c-33ce-4f13-ac1e-98460ec6202a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_result
+    - field.field.node.portfolio.field_author
+    - field.field.node.portfolio.field_body
+    - field.field.node.portfolio.field_display_main_image_on_page
+    - field.field.node.portfolio.field_geographical_areas
+    - field.field.node.portfolio.field_help_text
+    - field.field.node.portfolio.field_keywords
+    - field.field.node.portfolio.field_lead
+    - field.field.node.portfolio.field_life_situations
+    - field.field.node.portfolio.field_link_list
+    - field.field.node.portfolio.field_main_image
+    - field.field.node.portfolio.field_main_image_caption
+    - field.field.node.portfolio.field_minisites
+    - field.field.node.portfolio.field_paragraphs
+    - field.field.node.portfolio.field_photographer
+    - field.field.node.portfolio.field_search_keywords
+    - field.field.node.portfolio.field_social_media_share
+    - field.field.node.portfolio.field_topics
+    - node.type.portfolio
+  module:
+    - ds
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_listing_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default-search
+    regions:
+      listing_item__main_content:
+        - node_title
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.portfolio.search_result
+targetEntityType: node
+bundle: portfolio
+mode: search_result
+content: {  }
+hidden:
+  content_moderation_control: true
+  entitygroupfield: true
+  field_author: true
+  field_body: true
+  field_display_main_image_on_page: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_lead: true
+  field_life_situations: true
+  field_link_list: true
+  field_main_image: true
+  field_main_image_caption: true
+  field_minisites: true
+  field_paragraphs: true
+  field_photographer: true
+  field_search_keywords: true
+  field_social_media_share: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

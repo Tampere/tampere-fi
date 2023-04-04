@@ -1,0 +1,23 @@
+uuid: c622e5dc-28d5-4321-8974-21c25eac8db3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_main_image_on_page
+    - node.type.portfolio
+id: node.portfolio.field_display_main_image_on_page
+field_name: field_display_main_image_on_page
+entity_type: node
+bundle: portfolio
+label: 'Näytä pääkuva sivulla'
+description: 'Valitse tämä, jos haluat näyttää portfolion omalla sivulla sille asetetun pääkuvan.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

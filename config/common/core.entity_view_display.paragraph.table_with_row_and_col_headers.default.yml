@@ -1,0 +1,35 @@
+uuid: 2e9e89d2-8eb7-4044-b585-2ffd4108dda9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.table_with_row_and_col_headers.field_display_table_caption
+    - field.field.paragraph.table_with_row_and_col_headers.field_tablefield
+    - paragraphs.paragraphs_type.table_with_row_and_col_headers
+  module:
+    - ds
+    - tablefield
+id: paragraph.table_with_row_and_col_headers.default
+targetEntityType: paragraph
+bundle: table_with_row_and_col_headers
+mode: default
+content:
+  field_tablefield:
+    type: tablefield
+    label: hidden
+    settings:
+      row_header: true
+      column_header: true
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  field_display_table_caption: true
+  search_api_excerpt: true

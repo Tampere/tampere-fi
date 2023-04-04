@@ -7,6 +7,12 @@
     padding: 0 $gutter-default;
   }
 
+  // Display remove facets link by default as it only exists
+  // when facets can be removed.
+  .remove-facets {
+    display: block;
+  }
+
   &__header {
     margin-top: $space-m;
     margin-bottom: $space-m;

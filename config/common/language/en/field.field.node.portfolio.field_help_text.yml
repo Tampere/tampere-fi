@@ -1,0 +1,4 @@
+settings:
+  markup:
+    value: "<ul type=\"square\">\r\n\t<li>To set a scheduled transition of publishing for a published content that is modified, choose the state Draft before saving the modifications, then set the scheduled transition.</li>\r\n\t<li>To unpublish a published content, choose Archived.</li>\r\n</ul>\r\n"
+    format: basic_html

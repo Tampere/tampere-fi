@@ -1,0 +1,25 @@
+uuid: dbed7bc8-e225-4999-8e1c-de898ecdb41a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_social_media_share
+    - node.type.portfolio
+  module:
+    - social_media
+id: node.portfolio.field_social_media_share
+field_name: field_social_media_share
+entity_type: node
+bundle: portfolio
+label: 'Jaa sosiaalisessa mediassa'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: social_media

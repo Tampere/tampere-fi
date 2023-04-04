@@ -1,0 +1,29 @@
+uuid: a8d5d325-8a05-4a04-8568-c6cc6ba9a32d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topics
+    - node.type.portfolio
+    - taxonomy.vocabulary.topics
+id: node.portfolio.field_topics
+field_name: field_topics
+entity_type: node
+bundle: portfolio
+label: Aihealueet
+description: 'Käytetään, jotta asiakas voi aihealueella suodattamalla löytää sisällön sivuston hauissa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

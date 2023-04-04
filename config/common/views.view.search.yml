@@ -86,6 +86,7 @@ display:
               notice: search_result
               organization: search_result
               place: search_result
+              portfolio: search_result
               project: search_result
               rich_article: search_result
               zoning_information: search_result

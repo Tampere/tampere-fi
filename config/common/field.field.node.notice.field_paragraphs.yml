@@ -16,6 +16,8 @@ dependencies:
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.service_highlight
     - paragraphs.paragraphs_type.table
+    - paragraphs.paragraphs_type.table_with_row_and_col_headers
+    - paragraphs.paragraphs_type.table_with_row_headers
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.zoning_project_cards
   module:
@@ -47,13 +49,15 @@ settings:
       project_and_organization_cards: project_and_organization_cards
       table: table
       contact_information_liftups: contact_information_liftups
+      table_with_row_and_col_headers: table_with_row_and_col_headers
+      table_with_row_headers: table_with_row_headers
     negate: 0
     target_bundles_drag_drop:
-      accessibility_information:
-        weight: 99
-        enabled: false
       accordion_item:
         weight: 101
+        enabled: false
+      accordion_text_content:
+        weight: 83
         enabled: false
       accordions:
         weight: 100
@@ -86,7 +90,7 @@ settings:
         weight: 106
         enabled: false
       contact_information_liftups:
-        weight: 22
+        weight: 24
         enabled: true
       contact_information_list:
         weight: 115
@@ -94,11 +98,20 @@ settings:
       content_liftup:
         weight: 108
         enabled: false
+      course_listing:
+        weight: 96
+        enabled: false
+      course_listing_sports:
+        weight: 97
+        enabled: false
       current_liftup:
         weight: 123
         enabled: false
       current_listing:
         weight: 119
+        enabled: false
+      downloadable_material:
+        weight: 100
         enabled: false
       embedded_content_and_map_tabs:
         weight: 109
@@ -117,6 +130,9 @@ settings:
         enabled: false
       feedback_section:
         weight: 131
+        enabled: false
+      generic_listing:
+        weight: 107
         enabled: false
       grouped_content_liftup:
         weight: 120
@@ -177,6 +193,9 @@ settings:
         enabled: false
       map_embed:
         weight: 149
+        enabled: false
+      material_download_list:
+        weight: 128
         enabled: false
       metadata_attachment_list:
         weight: 16
@@ -242,7 +261,13 @@ settings:
         weight: 151
         enabled: false
       table:
+        weight: 22
+        enabled: true
+      table_with_row_and_col_headers:
         weight: 20
+        enabled: true
+      table_with_row_headers:
+        weight: 21
         enabled: true
       text:
         weight: 9

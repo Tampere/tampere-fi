@@ -5,21 +5,40 @@
  * Module for handling tablefield column dragging on edit node.
  */
 
- /**
+use Drupal\Core\Entity\EntityFormInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
  * Implements hook_form_alter().
  */
-function tre_tablefield_column_drag_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  /* @var Drupal\Core\Entity\FieldableEntityInterface $entity */
+function tre_tablefield_column_drag_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $formObject = $form_state->getFormObject();
-  if ($formObject instanceof \Drupal\Core\Entity\EntityFormInterface) {
+  if ($formObject instanceof EntityFormInterface) {
+    /** @var Drupal\Core\Entity\FieldableEntityInterface $entity */
     $entity = $formObject->getEntity();
+
     if (
       $entity->getEntityTypeId() === 'node'
     ) {
+      $table_paragraph_bundles = [
+        'table_with_row_and_col_headers',
+        'table_with_row_headers',
+        'table',
+      ];
+
       $bundle_info = \Drupal::service("entity_type.bundle.info")->getBundleInfo('paragraph');
-      $label = $bundle_info['table']['label'];
-      $form['#attached']['library'][] = 'tre_tablefield_column_drag/tablefield-column-drag';
-      $form['#attached']['drupalSettings']['tampere']['tablefieldColumnDragTargetLabel'] = $label;
+
+      $column_drag_target_labels = [];
+      foreach ($table_paragraph_bundles as $bundle) {
+        if (isset($bundle_info[$bundle]['label'])) {
+          $column_drag_target_labels[] = $bundle_info[$bundle]['label'];
+        }
+      }
+
+      if (!empty($column_drag_target_labels)) {
+        $form['#attached']['library'][] = 'tre_tablefield_column_drag/tablefield-column-drag';
+        $form['#attached']['drupalSettings']['tampere']['tablefieldColumnDrag']['labels'] = $column_drag_target_labels;
+      }
     }
   }
 }

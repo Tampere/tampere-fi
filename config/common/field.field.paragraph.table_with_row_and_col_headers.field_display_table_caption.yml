@@ -1,0 +1,23 @@
+uuid: ba8e5089-f6a3-4812-8f29-1fa9848231db
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_table_caption
+    - paragraphs.paragraphs_type.table_with_row_and_col_headers
+id: paragraph.table_with_row_and_col_headers.field_display_table_caption
+field_name: field_display_table_caption
+entity_type: paragraph
+bundle: table_with_row_and_col_headers
+label: 'Näytä taulukon selite sivulla'
+description: 'Valitse tämä, jos haluat selitteen näkyvän sivulla kaikille käyttäjille taulukon pääotsikkona.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

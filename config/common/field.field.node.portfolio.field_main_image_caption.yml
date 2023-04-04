@@ -1,0 +1,19 @@
+uuid: 4c58bb51-285b-4586-b268-3856b220feb4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_image_caption
+    - node.type.portfolio
+id: node.portfolio.field_main_image_caption
+field_name: field_main_image_caption
+entity_type: node
+bundle: portfolio
+label: Pääkuvateksti
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

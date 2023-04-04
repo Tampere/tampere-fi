@@ -34,6 +34,7 @@ processor_configuration:
   update_non_existent: _delete
   skip_hash_check: false
   authorize: false
+  revision: false
   expire: -1
   owner_feed_author: false
   owner_id: 0

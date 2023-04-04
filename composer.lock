@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3b8f796a4db8d6303c058b1960386a2",
+    "content-hash": "65173172f9ab5f1f5e90c22f6ed34df1",
     "packages": [
         {
             "name": "afarkas/lazysizes",
@@ -3316,16 +3316,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "9.5.4",
+            "version": "9.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "d48ad3173a39d6792e617f884fefe86c4bf41630"
+                "reference": "bf51aa8ed6ab733fcaf60d0860aefd3918140fe3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/d48ad3173a39d6792e617f884fefe86c4bf41630",
-                "reference": "d48ad3173a39d6792e617f884fefe86c4bf41630",
+                "url": "https://api.github.com/repos/drupal/core/zipball/bf51aa8ed6ab733fcaf60d0860aefd3918140fe3",
+                "reference": "bf51aa8ed6ab733fcaf60d0860aefd3918140fe3",
                 "shasum": ""
             },
             "require": {
@@ -3477,22 +3477,22 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/9.5.4"
+                "source": "https://github.com/drupal/core/tree/9.5.7"
             },
-            "time": "2023-03-01T14:08:11+00:00"
+            "time": "2023-03-24T16:54:38+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "9.5.4",
+            "version": "9.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
-                "reference": "df1f779d3f94500f6cc791427aa729e0ba4b2464"
+                "reference": "c78779acff7b39fc0f29ff1edd710361c15ed87b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-composer-scaffold/zipball/df1f779d3f94500f6cc791427aa729e0ba4b2464",
-                "reference": "df1f779d3f94500f6cc791427aa729e0ba4b2464",
+                "url": "https://api.github.com/repos/drupal/core-composer-scaffold/zipball/c78779acff7b39fc0f29ff1edd710361c15ed87b",
+                "reference": "c78779acff7b39fc0f29ff1edd710361c15ed87b",
                 "shasum": ""
             },
             "require": {
@@ -3527,13 +3527,13 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.5.4"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.5.7"
             },
-            "time": "2022-06-19T16:14:18+00:00"
+            "time": "2023-03-09T21:29:23+00:00"
         },
         {
             "name": "drupal/core-project-message",
-            "version": "9.5.4",
+            "version": "9.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-project-message.git",
@@ -3568,22 +3568,22 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-project-message/tree/9.5.4"
+                "source": "https://github.com/drupal/core-project-message/tree/9.5.7"
             },
             "time": "2022-02-24T17:40:53+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "9.5.4",
+            "version": "9.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "0198a05229b7560caf1bdb7dcf59b1d50c9b9b7b"
+                "reference": "4b63b8220b166ad9eca7b5ea05e485cbe1f2b4a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/0198a05229b7560caf1bdb7dcf59b1d50c9b9b7b",
-                "reference": "0198a05229b7560caf1bdb7dcf59b1d50c9b9b7b",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/4b63b8220b166ad9eca7b5ea05e485cbe1f2b4a7",
+                "reference": "4b63b8220b166ad9eca7b5ea05e485cbe1f2b4a7",
                 "shasum": ""
             },
             "require": {
@@ -3592,7 +3592,7 @@
                 "doctrine/annotations": "~1.13.3",
                 "doctrine/lexer": "~1.2.3",
                 "doctrine/reflection": "~1.2.3",
-                "drupal/core": "9.5.4",
+                "drupal/core": "9.5.7",
                 "egulias/email-validator": "~3.2.1",
                 "guzzlehttp/guzzle": "~6.5.8",
                 "guzzlehttp/promises": "~1.5.2",
@@ -3654,9 +3654,9 @@
             ],
             "description": "Core and its dependencies with known-compatible minor versions. Require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/9.5.4"
+                "source": "https://github.com/drupal/core-recommended/tree/9.5.7"
             },
-            "time": "2023-03-01T14:08:11+00:00"
+            "time": "2023-03-24T16:54:38+00:00"
         },
         {
             "name": "drupal/crop",
@@ -4863,6 +4863,61 @@
             }
         },
         {
+            "name": "drupal/entitygroupfield",
+            "version": "1.0.0-alpha2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/entitygroupfield.git",
+                "reference": "1.0.0-alpha2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/entitygroupfield-1.0.0-alpha2.zip",
+                "reference": "1.0.0-alpha2",
+                "shasum": "a6eedf0c4297f0c011a927ff0a916d57fd8c8829"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9",
+                "drupal/group": "~1.0"
+            },
+            "require-dev": {
+                "drupal/variationcache": "~1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-alpha2",
+                    "datestamp": "1598843615",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Derek Wright",
+                    "homepage": "https://www.drupal.org/u/dww",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Ivan Duarte",
+                    "homepage": "https://www.drupal.org/u/jidrone",
+                    "role": "Co-Maintainer"
+                }
+            ],
+            "description": "Defines a field to view and edit the groups associated with content.",
+            "homepage": "http://drupal.org/project/entitygroupfield",
+            "support": {
+                "source": "https://git.drupalcode.org/project/entitygroupfield",
+                "issues": "https://drupal.org/project/issues/entitygroupfield"
+            }
+        },
+        {
             "name": "drupal/environment_indicator",
             "version": "4.0.14",
             "source": {
@@ -5703,6 +5758,22 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "acquia",
+                    "homepage": "https://www.drupal.org/user/1231722"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "kaynen",
+                    "homepage": "https://www.drupal.org/user/733308"
+                },
+                {
+                    "name": "mglaman",
+                    "homepage": "https://www.drupal.org/user/2416470"
+                },
                 {
                     "name": "solotandem",
                     "homepage": "https://www.drupal.org/user/240748"
@@ -8783,12 +8854,12 @@
                     "role": "Maintainer"
                 },
                 {
-                    "name": "jefuri",
-                    "homepage": "https://www.drupal.org/user/2733365"
-                },
-                {
                     "name": "sjerdo",
                     "homepage": "https://www.drupal.org/user/3495403"
+                },
+                {
+                    "name": "Steven Buteneers",
+                    "homepage": "https://www.drupal.org/user/3301055"
                 }
             ],
             "description": "Provides a plugin type for preprocessing.",
@@ -9911,54 +9982,6 @@
             }
         },
         {
-            "name": "drupal/simple_responsive_table",
-            "version": "2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/simple_responsive_table.git",
-                "reference": "8.x-2.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_responsive_table-8.x-2.3.zip",
-                "reference": "8.x-2.3",
-                "shasum": "42406e00803f071908bb9a09586bf8274226cf3e"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-2.3",
-                    "datestamp": "1588675534",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "manojapare",
-                    "homepage": "https://www.drupal.org/user/2825053"
-                },
-                {
-                    "name": "rakesh.gectcr",
-                    "homepage": "https://www.drupal.org/user/1177822"
-                }
-            ],
-            "description": "Simple module to make table responsive.",
-            "homepage": "https://www.drupal.org/project/simple_responsive_table",
-            "support": {
-                "source": "https://git.drupalcode.org/project/simple_responsive_table"
-            }
-        },
-        {
             "name": "drupal/simple_sitemap",
             "version": "4.1.4",
             "source": {
@@ -10313,26 +10336,26 @@
         },
         {
             "name": "drupal/tablefield",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/tablefield.git",
-                "reference": "8.x-2.3"
+                "reference": "8.x-2.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/tablefield-8.x-2.3.zip",
-                "reference": "8.x-2.3",
-                "shasum": "ee37306ebb9710f954f0358b558e9d674b225a06"
+                "url": "https://ftp.drupal.org/files/projects/tablefield-8.x-2.4.zip",
+                "reference": "8.x-2.4",
+                "shasum": "ef024051b3a02aaf8c41b50fc27ab535d7618980"
             },
             "require": {
-                "drupal/core": "^8 || ^9"
+                "drupal/core": "^9.1 || ^10"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.3",
-                    "datestamp": "1659345818",
+                    "version": "8.x-2.4",
+                    "datestamp": "1677254141",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -18677,35 +18700,31 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.2.0",
+            "version": "1.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e"
+                "reference": "e27e92d939e2e3636f0a1f0afaba59692c0bf571"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
-                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/e27e92d939e2e3636f0a1f0afaba59692c0bf571",
+                "reference": "e27e92d939e2e3636f0a1f0afaba59692c0bf571",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1 || ^8.0"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan": "^1.5",
+                "phpstan/phpstan-phpunit": "^1.1",
                 "phpstan/phpstan-strict-rules": "^1.0",
                 "phpunit/phpunit": "^9.5",
                 "symfony/process": "^5.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "PHPStan\\PhpDocParser\\": [
@@ -18720,9 +18739,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.2.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.16.1"
             },
-            "time": "2021-09-16T20:46:02+00:00"
+            "time": "2023-02-07T18:11:17+00:00"
         },
         {
             "name": "phpstan/phpstan",
@@ -19016,6 +19035,7 @@
         "drupal/address_display": 10,
         "drupal/decorative_image_widget": 15,
         "drupal/entity_usage": 10,
+        "drupal/entitygroupfield": 15,
         "drupal/feeds": 10,
         "drupal/language_switcher_extended": 10,
         "drupal/markdown": 5,

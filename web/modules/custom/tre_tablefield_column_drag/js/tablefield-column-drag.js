@@ -120,7 +120,7 @@ Drupal.behaviors.columnDrag = {
 
     paragraphTitles.forEach(paragraphTitle => {
       // Check that title is target label (table paragraph)
-      if (paragraphTitle.textContent === drupalSettings.tampere.tablefieldColumnDragTargetLabel) {
+      if (drupalSettings.tampere.tablefieldColumnDrag.labels.includes(paragraphTitle.textContent)) {
         let tableSubform = paragraphTitle.parentElement.nextElementSibling;
         if (tableSubform !== null) {
           // eslint-disable-next-line no-undef

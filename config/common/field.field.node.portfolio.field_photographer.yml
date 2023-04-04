@@ -1,0 +1,19 @@
+uuid: 1b69de4f-2e4f-406d-9896-d1c820069d88
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_photographer
+    - node.type.portfolio
+id: node.portfolio.field_photographer
+field_name: field_photographer
+entity_type: node
+bundle: portfolio
+label: Kuvat
+description: 'Syötä kuvaajan tiedot.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

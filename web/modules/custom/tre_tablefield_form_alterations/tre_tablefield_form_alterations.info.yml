@@ -1,0 +1,7 @@
+name: 'TRE TableField Form Alterations'
+type: module
+description: 'Modifies tablefield fields on forms.'
+core_version_requirement: '>=9.3'
+package: 'TRE'
+dependencies:
+  - tablefield:tablefield

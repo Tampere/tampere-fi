@@ -12,7 +12,7 @@ field_name: field_tablefield
 entity_type: paragraph
 bundle: table
 label: Taulukkokenttä
-description: ''
+description: 'Ensimmäinen rivi soluja toimii taulukon sarakeotsikkoina. Jos taulukossa ei niitä tarvita, jätä ensimmäinen rivi tyhjäksi.'
 required: false
 translatable: true
 default_value: {  }

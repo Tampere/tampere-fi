@@ -3,6 +3,7 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.paragraph.table.field_display_table_caption
     - field.field.paragraph.table.field_tablefield
     - paragraphs.paragraphs_type.table
   module:
@@ -12,15 +13,22 @@ targetEntityType: paragraph
 bundle: table
 mode: default
 content:
+  field_display_table_caption:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_tablefield:
     type: tablefield
-    weight: 0
+    weight: 1
     region: content
     settings:
       input_type: textfield
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }

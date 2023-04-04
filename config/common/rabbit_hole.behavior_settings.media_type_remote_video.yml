@@ -1,0 +1,14 @@
+uuid: 968e71e3-bf01-4b9d-bebd-f641374d5c1e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - media.type.remote_video
+id: media_type_remote_video
+entity_type_id: media_type
+entity_id: remote_video
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

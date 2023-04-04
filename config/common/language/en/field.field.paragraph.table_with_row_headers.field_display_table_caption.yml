@@ -1,0 +1,5 @@
+label: 'Display table caption on page'
+description: 'Select this if you want the caption to be displayed on the page as the table main header for all users.'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

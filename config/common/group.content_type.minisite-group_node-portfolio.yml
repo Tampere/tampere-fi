@@ -1,0 +1,19 @@
+uuid: 9fe1045b-eec8-4a71-8470-839774d8ae81
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.portfolio
+  module:
+    - gnode
+    - node
+id: minisite-group_node-portfolio
+label: 'Minikotisivusto: Group node (Portfolio)'
+description: 'Adds <em class="placeholder">Portfolio</em> content to groups both publicly and privately.'
+group_type: minisite
+content_plugin: 'group_node:portfolio'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

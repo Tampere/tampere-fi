@@ -99,6 +99,8 @@ permissions:
   - 'view paragraph content social_media_feed_embed'
   - 'view paragraph content social_media_link'
   - 'view paragraph content table'
+  - 'view paragraph content table_with_row_and_col_headers'
+  - 'view paragraph content table_with_row_headers'
   - 'view paragraph content text'
   - 'view paragraph content text_and_images'
   - 'view paragraph content text_with_bgcolor'

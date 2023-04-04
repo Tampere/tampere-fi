@@ -1,0 +1,14 @@
+uuid: 05347649-de81-489f-9491-08bccb91449f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - media.type.image
+id: media_type_image
+entity_type_id: media_type
+entity_id: image
+action: page_not_found
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,242 @@
+uuid: 04531d5a-e20e-4e8d-bce9-179449e05126
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.portfolio.field_author
+    - field.field.node.portfolio.field_body
+    - field.field.node.portfolio.field_display_main_image_on_page
+    - field.field.node.portfolio.field_geographical_areas
+    - field.field.node.portfolio.field_help_text
+    - field.field.node.portfolio.field_keywords
+    - field.field.node.portfolio.field_lead
+    - field.field.node.portfolio.field_life_situations
+    - field.field.node.portfolio.field_link_list
+    - field.field.node.portfolio.field_main_image
+    - field.field.node.portfolio.field_main_image_caption
+    - field.field.node.portfolio.field_minisites
+    - field.field.node.portfolio.field_paragraphs
+    - field.field.node.portfolio.field_photographer
+    - field.field.node.portfolio.field_search_keywords
+    - field.field.node.portfolio.field_social_media_share
+    - field.field.node.portfolio.field_topics
+    - node.type.portfolio
+  module:
+    - ds
+    - entity_reference_revisions
+    - social_media
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_topical_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      publication_date:
+        - published_at
+      main_image:
+        - field_main_image
+      main_image_caption:
+        - field_main_image_caption
+      main_content:
+        - node_title
+        - field_lead
+        - field_body
+        - field_paragraphs
+        - field_link_list
+        - field_author
+        - field_photographer
+        - field_social_media_share
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 3
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.portfolio.default
+targetEntityType: node
+bundle: portfolio
+mode: default
+content:
+  field_author:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: true
+            lbw-el: span
+            lbw-cl: field-authors__label
+            lbw-at: ''
+            lb-col: true
+            ow: true
+            ow-el: div
+            ow-cl: field-authors
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: true
+            fis-el: span
+            fis-cl: field-authors_content
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 8
+    region: main_content
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
+  field_lead:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: main_content
+  field_link_list:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: main_content
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: article_main_image_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: main_image
+  field_main_image_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: main_image_caption
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 6
+    region: main_content
+  field_photographer:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: true
+            lbw-el: span
+            lbw-cl: field-authors__label
+            lbw-at: ''
+            lb-col: true
+            ow: true
+            ow-el: div
+            ow-cl: field-authors
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: true
+            fis-el: span
+            fis-cl: field-authors_content
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 9
+    region: main_content
+  field_social_media_share:
+    type: social_media_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: main_content
+  published_at:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: custom
+      custom_date_format: 'j.n.Y H.i'
+      timezone: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: publication_date
+hidden:
+  content_moderation_control: true
+  entitygroupfield: true
+  field_display_main_image_on_page: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_minisites: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

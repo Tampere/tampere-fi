@@ -12,6 +12,7 @@ dependencies:
     - node.type.notice
     - node.type.organization
     - node.type.place
+    - node.type.portfolio
     - node.type.project
     - node.type.rich_article
     - node.type.small_news_item
@@ -85,6 +86,7 @@ type_settings:
       - notice
       - organization
       - place
+      - portfolio
       - project
       - rich_article
       - small_news_item

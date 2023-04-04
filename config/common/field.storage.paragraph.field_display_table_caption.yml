@@ -1,0 +1,18 @@
+uuid: d1ce76b2-de37-44c8-88ad-61909e638436
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_display_table_caption
+field_name: field_display_table_caption
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

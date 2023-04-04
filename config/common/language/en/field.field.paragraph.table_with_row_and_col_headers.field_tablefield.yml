@@ -1,0 +1,2 @@
+label: Table
+description: 'Cells of the first row will appear as columns headers. Cells of the first column will appear as rows headers. If you use both, leave the first cell of the table (top left corner) blank.'

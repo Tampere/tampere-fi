@@ -1,0 +1,19 @@
+uuid: a8c706a2-1e15-4374-84b1-95410d13a8e2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lead
+    - node.type.portfolio
+id: node.portfolio.field_lead
+field_name: field_lead
+entity_type: node
+bundle: portfolio
+label: Ingressi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

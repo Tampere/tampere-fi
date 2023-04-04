@@ -1,0 +1,10 @@
+uuid: 4e43a013-e36e-4d00-80ce-64ce1da408ff
+langcode: fi
+status: true
+dependencies: {  }
+id: table_with_row_and_col_headers
+label: 'Taulukko rivi- ja sarakeotsikoilla'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

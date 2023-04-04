@@ -23,6 +23,8 @@ dependencies:
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.service_highlight
     - paragraphs.paragraphs_type.table
+    - paragraphs.paragraphs_type.table_with_row_and_col_headers
+    - paragraphs.paragraphs_type.table_with_row_headers
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.video_embed
     - paragraphs.paragraphs_type.zoning_project_cards
@@ -63,6 +65,8 @@ settings:
       process_accordions: process_accordions
       video_embed: video_embed
       contact_information_liftups: contact_information_liftups
+      table_with_row_and_col_headers: table_with_row_and_col_headers
+      table_with_row_headers: table_with_row_headers
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -102,13 +106,19 @@ settings:
         weight: 43
         enabled: false
       contact_information_liftups:
-        weight: 29
+        weight: 32
         enabled: true
       contact_information_list:
         weight: 51
         enabled: false
       content_liftup:
         weight: 44
+        enabled: false
+      course_listing:
+        weight: 96
+        enabled: false
+      course_listing_sports:
+        weight: 97
         enabled: false
       current_liftup:
         weight: 59
@@ -123,7 +133,7 @@ settings:
         weight: 45
         enabled: false
       embederator_embed:
-        weight: 26
+        weight: 29
         enabled: true
       event_and_hobby_listing:
         weight: 46
@@ -237,7 +247,7 @@ settings:
         weight: 49
         enabled: false
       process_accordions:
-        weight: 27
+        weight: 30
         enabled: true
       project_and_organization_cards:
         weight: 24
@@ -267,7 +277,13 @@ settings:
         weight: 79
         enabled: false
       table:
+        weight: 27
+        enabled: true
+      table_with_row_and_col_headers:
         weight: 25
+        enabled: true
+      table_with_row_headers:
+        weight: 26
         enabled: true
       text:
         weight: 9
@@ -282,7 +298,7 @@ settings:
         weight: 80
         enabled: false
       video_embed:
-        weight: 28
+        weight: 31
         enabled: true
       webform:
         weight: 81

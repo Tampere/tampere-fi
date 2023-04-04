@@ -21,6 +21,8 @@ dependencies:
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.service_highlight
     - paragraphs.paragraphs_type.table
+    - paragraphs.paragraphs_type.table_with_row_and_col_headers
+    - paragraphs.paragraphs_type.table_with_row_headers
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.video_embed
     - paragraphs.paragraphs_type.zoning_project_cards
@@ -59,6 +61,8 @@ settings:
       process_accordions: process_accordions
       video_embed: video_embed
       contact_information_liftups: contact_information_liftups
+      table_with_row_and_col_headers: table_with_row_and_col_headers
+      table_with_row_headers: table_with_row_headers
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -92,19 +96,25 @@ settings:
         weight: 61
         enabled: false
       city_construction_project_cards:
-        weight: 16
+        weight: 15
         enabled: true
       colorful_content_liftup:
         weight: 40
         enabled: false
       contact_information_liftups:
-        weight: 28
+        weight: 30
         enabled: true
       contact_information_list:
         weight: 68
         enabled: false
       content_liftup:
         weight: 42
+        enabled: false
+      course_listing:
+        weight: 96
+        enabled: false
+      course_listing_sports:
+        weight: 97
         enabled: false
       current_liftup:
         weight: 73
@@ -119,7 +129,7 @@ settings:
         weight: 60
         enabled: false
       embederator_embed:
-        weight: 25
+        weight: 27
         enabled: true
       event_and_hobby_listing:
         weight: 43
@@ -152,7 +162,7 @@ settings:
         weight: 66
         enabled: false
       image:
-        weight: 17
+        weight: 16
         enabled: true
       image_gallery:
         weight: 77
@@ -164,7 +174,7 @@ settings:
         weight: 67
         enabled: false
       infographs:
-        weight: 13
+        weight: 12
         enabled: true
       internal_link:
         weight: 48
@@ -176,13 +186,13 @@ settings:
         weight: 41
         enabled: false
       involvement_opportunity_cards:
-        weight: 21
+        weight: 20
         enabled: true
       link_list:
         weight: 72
         enabled: false
       list_of_attachments:
-        weight: 18
+        weight: 17
         enabled: true
       login_link:
         weight: 46
@@ -194,13 +204,13 @@ settings:
         weight: 84
         enabled: false
       map_embed:
-        weight: 15
+        weight: 14
         enabled: true
       material_download_list:
-        weight: 19
+        weight: 18
         enabled: true
       metadata_attachment_list:
-        weight: 20
+        weight: 19
         enabled: true
       mosaic_liftup:
         weight: 74
@@ -221,7 +231,7 @@ settings:
         weight: 75
         enabled: false
       place_liftup:
-        weight: 22
+        weight: 21
         enabled: true
       place_of_business_liftup:
         weight: 52
@@ -233,10 +243,10 @@ settings:
         weight: 57
         enabled: false
       process_accordions:
-        weight: 26
+        weight: 28
         enabled: true
       project_and_organization_cards:
-        weight: 23
+        weight: 22
         enabled: true
       project_or_organization_card:
         weight: 53
@@ -263,6 +273,12 @@ settings:
         weight: 58
         enabled: false
       table:
+        weight: 25
+        enabled: true
+      table_with_row_and_col_headers:
+        weight: 23
+        enabled: true
+      table_with_row_headers:
         weight: 24
         enabled: true
       text:
@@ -278,7 +294,7 @@ settings:
         weight: 81
         enabled: false
       video_embed:
-        weight: 27
+        weight: 29
         enabled: true
       webform:
         weight: 37
@@ -287,6 +303,6 @@ settings:
         weight: 82
         enabled: false
       zoning_project_cards:
-        weight: 14
+        weight: 13
         enabled: true
 field_type: entity_reference_revisions

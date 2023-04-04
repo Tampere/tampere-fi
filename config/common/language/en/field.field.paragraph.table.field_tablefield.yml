@@ -1,1 +1,2 @@
 label: Table
+description: 'Cells of the first row will appear as columns headers. Leave the first row blank if you do not need headers.'

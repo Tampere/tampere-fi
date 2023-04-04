@@ -1,0 +1,72 @@
+uuid: 63f082eb-0775-491e-aeb2-81d9687104be
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tablefield
+    - paragraphs.paragraphs_type.table_with_row_and_col_headers
+  module:
+    - tablefield
+id: paragraph.table_with_row_and_col_headers.field_tablefield
+field_name: field_tablefield
+entity_type: paragraph
+bundle: table_with_row_and_col_headers
+label: Taulukkokenttä
+description: 'Ensimmäinen rivi soluja toimii taulukon sarakeotsikkoina. Ensimmäisen sarakkeen solut toimivat taulukon riviotsikkoina. Jos käytät molempia, jätä taulukon ensimmäinen solu (vasen yläkulma) tyhjäksi.'
+required: false
+translatable: true
+default_value:
+  -
+    rebuild:
+      cols: '5'
+      rows: '5'
+    value:
+      0:
+        weight: '0'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      1:
+        weight: '1'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      2:
+        weight: '2'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      3:
+        weight: '3'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      4:
+        weight: '4'
+        0: ''
+        1: ''
+        2: ''
+        3: ''
+        4: ''
+      caption: ''
+    format: null
+    caption: ''
+default_value_callback: ''
+settings:
+  export: false
+  restrict_rebuild: true
+  restrict_import: true
+  lock_values: false
+  cell_processing: 0
+  empty_rules:
+    ignore_table_structure: false
+    ignore_table_header: false
+field_type: tablefield

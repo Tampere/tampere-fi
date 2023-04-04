@@ -1,0 +1,14 @@
+uuid: d580cca7-2c13-4357-8d84-5f038ceed7c4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.portfolio
+id: node_type_portfolio
+entity_type_id: node_type
+entity_id: portfolio
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

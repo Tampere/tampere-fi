@@ -16,7 +16,6 @@ $small: 30rem;
 $small-down: 29.99rem;
 $medium: 45rem;
 $medium-down: 44.99rem;
-$medium-plus-down: 50.99rem;
 $large: 61.56rem;
 $large-down: 61.559rem;
 $large-plus: 76rem;
@@ -33,6 +32,8 @@ $main-menu-width: 83rem;
 $main-menu-width-down: 82.99rem;
 $picture-mosaic-breakpoint: 70rem;
 $picture-mosaic-breakpoint-down: 69.99rem;
+$table-breakpoint: 50rem;
+$table-breakpoint-down: 49.99rem;
 
 /**
  * Mixin - xs Breakpoint
@@ -135,16 +136,6 @@ $picture-mosaic-breakpoint-down: 69.99rem;
 }
 
 /**
- * Mixin - medium plus down Breakpoint
- * Allows easier @include medium-plus-down {} syntax
- */
- @mixin medium-plus-down {
-  @include breakpoint(0 $medium-plus-down) {
-    @content;
-  }
-}
-
-/**
  * Mixin - large down Breakpoint
  * Allows easier @include large-down {} syntax
  */
@@ -200,6 +191,26 @@ $picture-mosaic-breakpoint-down: 69.99rem;
  */
  @mixin picture-mosaic-breakpoint-down {
   @include breakpoint(0 $picture-mosaic-breakpoint-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - Table Breakpoint
+ * Allows easier @include picture-mosaic-breakpoint {} syntax
+ */
+ @mixin table-breakpoint {
+  @include breakpoint($table-breakpoint) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - Table Down Breakpoint
+ * Allows easier @include table-breakpoint-down {} syntax
+ */
+ @mixin table-breakpoint-down {
+  @include breakpoint(0 $table-breakpoint-down) {
     @content;
   }
 }
