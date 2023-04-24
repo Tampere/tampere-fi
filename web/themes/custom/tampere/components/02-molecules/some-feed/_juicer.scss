@@ -128,9 +128,15 @@
       display: block;
     }
 
+    // Twitter posts
     &.j-twitter {
       .j-poster {
         justify-content: flex-start;
+      }
+
+      .j-twitter-poster {
+        margin-right: auto;
+        padding-right: $space-xxl;
       }
 
       .j-text {

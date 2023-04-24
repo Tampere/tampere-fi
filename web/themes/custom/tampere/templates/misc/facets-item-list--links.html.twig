@@ -25,7 +25,11 @@
  */
 #}
 
-{% set accordion_item_aria_label = "Filter by "|t ({}, {'context' : 'Search facet desciption for screen reader users'}) ~ facet.label %}
+{% set translation_context = "Search facet desciption for screen reader users" %}
+
+{% set accordion_item_aria_label = "Filter by @type"|t ({ "@type" : facet.label }, { "context" : translation_context }) %}
+
+{% set accordion_item_aria_label = accordion_item_aria_label ~ ", " ~ "the page will refresh after every new filter"|t ({}, { "context" : translation_context }) %}
 
 {% if facet_item_value %}
   {% set accordion_item_aria_label = accordion_item_aria_label ~ ", current selection: "|t ~ facet_item_value %}

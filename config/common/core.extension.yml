@@ -191,6 +191,7 @@ module:
   toolbar: 0
   tre_admin_theme_modifications: 0
   tre_breadcrumbs_custom: 0
+  tre_cloned_node_alteration: 0
   tre_course_listing: 0
   tre_current_content_archive_search_content: 0
   tre_custom_document_titles: 0

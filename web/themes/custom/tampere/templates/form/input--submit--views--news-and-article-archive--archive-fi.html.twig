@@ -10,9 +10,5 @@
  * @see template_preprocess_input()
  */
 #}
-{% include "@atoms/06-buttons/01-button.twig" with {
-  "button_content": attributes.value,
-  "button_modifiers": "link",
-} %}
 
-{{ children }}
+{% include "input--submit--views--news-and-article-archive--archive-en.html.twig" %}

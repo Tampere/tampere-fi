@@ -15,6 +15,10 @@
   <div {{ bem("content", search_page__content__modifiers|default([]), search_page__base_class) }}>
     <div {{ bem("content-wrapper", search_page__content_wrapper__modifiers|default([]), search_page__base_class) }}>
       {% if content_facets %}
+        <div {{ bem("additional-information", search_page__additional_information__modifiers|default([]), search_page__base_class) }}>
+          {{ search_page_additional_information }}
+        </div>
+
         <div {{ bem("facets", search_page__facets__modifiers|default([]), search_page__base_class) }}>
           {% include "@atoms/02-text/00-headings/_heading.twig" with {
             "heading_level": 2,

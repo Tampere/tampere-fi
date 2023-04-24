@@ -43,6 +43,20 @@ Drupal.tampere.changeReadMoreText = function (feed) {
 };
 
 Drupal.tampere.changeJuicerMetaStructure = function (feed) {
+  const metaElements = feed.querySelectorAll('.j-meta:not(.js-meta-modified)');
+
+  metaElements.forEach(metaElem => {
+    const navElement = metaElem.querySelector('nav');
+
+    // Removing the unnecessary 'nav' wrapper.
+    navElement?.replaceWith(...navElement.childNodes);
+
+    metaElem.querySelector('ul').remove();
+    metaElem.classList.add('js-meta-modified');
+  });
+};
+
+Drupal.tampere.changeSocialLinkAriaLabels = function (feed) {
 
   /**
    * Replaces the aria label for a social link.
@@ -54,6 +68,10 @@ Drupal.tampere.changeJuicerMetaStructure = function (feed) {
    * @param {HTMLElement} socialLink
    */
   function replaceSocialLinkAriaLabel(socialLink) {
+    if (!socialLink) {
+      return;
+    }
+
     // Not relying on the current aria label in case Juicer
     // changes it in the future. Getting the source from the parent feed item.
     const parentFeedItem = socialLink.closest('.feed-item');
@@ -65,19 +83,11 @@ Drupal.tampere.changeJuicerMetaStructure = function (feed) {
       : `Open original post on ${postSource}`);
   }
 
-  const metaElements = feed.querySelectorAll('.j-meta:not(.js-meta-modified)');
+  const socialLinks = feed.querySelectorAll('.j-social:not(.js-social-modified)');
 
-  metaElements.forEach((metaElem) => {
-    const navElement = metaElem.querySelector('nav');
-    const socialLink = metaElem.querySelector('.j-social');
-
-    // Removing the unnecessary 'nav' wrapper.
-    navElement.replaceWith(...navElement.childNodes);
-
+  socialLinks.forEach(socialLink => {
     replaceSocialLinkAriaLabel(socialLink);
-
-    metaElem.querySelector('ul').remove();
-    metaElem.classList.add('js-meta-modified');
+    socialLink.classList.add('js-social-modified');
   });
 };
 
@@ -86,13 +96,18 @@ Drupal.tampere.changeTwitterPostStructure = function (feed) {
   const tweets = feed.querySelectorAll('.feed-item.j-twitter:not(.js-twitter-feed-item-modified)');
 
   if (tweets.length) {
-    tweets.forEach((tweet) => {
+    tweets.forEach(tweet => {
       const image = tweet.querySelector('.j-image');
 
       if (image && image.previousElementSibling) {
         image.parentNode.insertBefore(image, image.previousElementSibling);
-        tweet.classList.add('js-twitter-feed-item-modified');
       }
+
+      // Remove link wrapper from date.
+      const dateLink = tweet.querySelector('.j-twitter-date').parentNode;
+      dateLink?.replaceWith(...dateLink.childNodes);
+
+      tweet.classList.add('js-twitter-feed-item-modified');
     });
   }
 };
@@ -142,6 +157,7 @@ Drupal.tampere.formatSocialMediaFeed = function () {
   socialMediaFeeds.forEach((socialMediaFeed) => {
     Drupal.tampere.changeTwitterPostStructure(socialMediaFeed);
     Drupal.tampere.changeJuicerMetaStructure(socialMediaFeed);
+    Drupal.tampere.changeSocialLinkAriaLabels(socialMediaFeed);
     Drupal.tampere.changeReadMoreText(socialMediaFeed);
     Drupal.tampere.formatJuicerSocialMediaFeedDates(socialMediaFeed);
     Drupal.tampere.setJuicerProfileNameElements(socialMediaFeed);

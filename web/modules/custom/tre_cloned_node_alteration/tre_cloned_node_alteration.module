@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains tre_cloned_node_alteration.module.
+ */
+
+/**
+ * Implements hook_cloned_node_alter().
+ *
+ * Unsets the 'published_at' field value for cloned nodes.
+ */
+function tre_cloned_node_alteration_cloned_node_alter(&$clone, $original) {
+  if (isset($clone->published_at)) {
+    unset($clone->published_at);
+  }
+}

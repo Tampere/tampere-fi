@@ -344,6 +344,7 @@ display:
         filters: true
         filter_groups: true
         header: false
+        footer: false
       display_description: ''
       header:
         result:
@@ -356,6 +357,20 @@ display:
           plugin_id: result
           empty: true
           content: 'Yhteensä @total tulosta'
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: 'Ohjeteksti sivun automaattisista muutoksista'
+          plugin_id: text
+          empty: true
+          content:
+            value: 'Kun valitset suodattimen, hakutulokset rajautuvat automaattisesti valintasi mukaisiksi.'
+            format: footer_text
+          tokenize: false
       exposed_block: true
       display_extenders:
         metatag_display_extender:

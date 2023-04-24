@@ -36,3 +36,9 @@ display:
       header:
         result:
           content: 'Total of @total results'
+      footer:
+        area:
+          admin_label: 'Help text for automatic changes for page'
+          content:
+            value: "<p>When you select a filter, the search results are automatically narrowed down to your selection.</p>\r\n"
+            format: footer_text
