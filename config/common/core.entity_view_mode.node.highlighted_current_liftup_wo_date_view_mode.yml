@@ -1,0 +1,10 @@
+uuid: 0900962d-a6b3-40a9-8979-b6b8d7da580c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.highlighted_current_liftup_wo_date_view_mode
+label: 'Korostettu ajankohtaisnosto ilman päivämäärää'
+targetEntityType: node
+cache: true

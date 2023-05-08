@@ -1,0 +1,30 @@
+uuid: 87dd36a9-254c-4f05-a839-bd6e0f110575
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_portfolio_liftup_amount
+field_name: field_portfolio_liftup_amount
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '3'
+      label: '3'
+    -
+      value: '6'
+      label: '6'
+    -
+      value: all
+      label: Kaikki
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

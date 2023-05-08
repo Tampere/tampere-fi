@@ -108,7 +108,8 @@ process:
       index:
         - 0
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
   field_opening_hours_2:
     -
       plugin: extract
@@ -117,7 +118,8 @@ process:
       index:
         - 1
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
   field_opening_hours_3:
     -
       plugin: extract
@@ -126,7 +128,8 @@ process:
       index:
         - 2
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
   field_opening_hours_info:
     -
       plugin: extract
@@ -135,6 +138,9 @@ process:
       index:
         - 0
       language: fi
+    -
+      plugin: skip_on_empty
+      method: process
   field_opening_hours_info_2:
     -
       plugin: extract
@@ -143,6 +149,9 @@ process:
       index:
         - 1
       language: fi
+    -
+      plugin: skip_on_empty
+      method: process
   field_opening_hours_info_3:
     -
       plugin: extract
@@ -151,6 +160,9 @@ process:
       index:
         - 2
       language: fi
+    -
+      plugin: skip_on_empty
+      method: process
   field_exception_hours:
     plugin: get
     source: exception_hours_info

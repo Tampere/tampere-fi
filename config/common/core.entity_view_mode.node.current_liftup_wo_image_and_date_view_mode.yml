@@ -1,0 +1,10 @@
+uuid: 1b73114c-43cc-4a59-b86d-eb544d6c4285
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.current_liftup_wo_image_and_date_view_mode
+label: 'Ajankohtaisnosto ilman kuvaa ja päivämäärää'
+targetEntityType: node
+cache: true

@@ -116,6 +116,7 @@ permissions:
   - 'view paragraph content picture_mosaic'
   - 'view paragraph content place_liftup'
   - 'view paragraph content place_of_business_liftup'
+  - 'view paragraph content portfolio_content_listing'
   - 'view paragraph content positioned_image'
   - 'view paragraph content process_accordion_item'
   - 'view paragraph content process_accordions'

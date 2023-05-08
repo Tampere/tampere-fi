@@ -214,4 +214,17 @@ interface PtvServiceIntermediateStorageInterface {
    */
   public function insertLifeSituationSourceData(array $services);
 
+  /**
+   * Fetches specific services from PTV API by UUIDs.
+   *
+   * @param string[] $uuids
+   *   The UUIDs for the services to fetch.
+   *
+   * @return \Tampere\PtvV11\PtvModel\V11VmOpenApiService[]
+   *   The services found with the UUIDs, keyed by the UUID. If an UUID produces
+   *   no results from the API, it will not be present in the returned array at
+   *   all.
+   */
+  public function getSpecificServicesFromApi(array $uuids): array;
+
 }

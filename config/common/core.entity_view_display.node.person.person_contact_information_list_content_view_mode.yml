@@ -165,6 +165,7 @@ content:
     weight: 4
     region: listing_item__additional_information
 hidden:
+  entitygroupfield: true
   field_additional_phones: true
   field_address_postal: true
   field_address_street: true

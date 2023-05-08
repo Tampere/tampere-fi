@@ -128,6 +128,7 @@ module:
   migrate_override: 0
   migrate_plus: 0
   migrate_source_csv: 0
+  migrate_tools: 0
   mimemail: 0
   mysql: 0
   node: 0
@@ -229,6 +230,7 @@ module:
   tre_tablefield_form_alterations: 0
   tre_translation_publication_date_clear: 0
   tre_wp_sites_import: 0
+  tre_zoning_information_redirect: 0
   twig_tweak: 0
   ui_patterns: 0
   ui_patterns_ds: 0

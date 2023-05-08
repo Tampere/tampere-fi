@@ -1,0 +1,181 @@
+uuid: de88b771-1ce0-4cbf-9043-820b39d85317
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.portfolio_content_listing.field_display_archive_link
+    - field.field.paragraph.portfolio_content_listing.field_display_publish_dates
+    - field.field.paragraph.portfolio_content_listing.field_geographical_areas
+    - field.field.paragraph.portfolio_content_listing.field_hide_previous_content_link
+    - field.field.paragraph.portfolio_content_listing.field_highlighted_content
+    - field.field.paragraph.portfolio_content_listing.field_keywords
+    - field.field.paragraph.portfolio_content_listing.field_life_situations
+    - field.field.paragraph.portfolio_content_listing.field_liftup_display
+    - field.field.paragraph.portfolio_content_listing.field_listing_title
+    - field.field.paragraph.portfolio_content_listing.field_minisites
+    - field.field.paragraph.portfolio_content_listing.field_omitted_nodes
+    - field.field.paragraph.portfolio_content_listing.field_portfolio_liftup_amount
+    - field.field.paragraph.portfolio_content_listing.field_topics
+    - paragraphs.paragraphs_type.portfolio_content_listing
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_categorization:
+      children:
+        - field_topics
+        - field_keywords
+        - field_life_situations
+        - field_geographical_areas
+        - field_minisites
+      label: Luokittelut
+      region: content
+      parent_name: ''
+      weight: 6
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_display_archive_link:
+      children:
+        - field_display_archive_link
+        - field_hide_previous_content_link
+      label: 'Näytä arkisto-linkki'
+      region: content
+      parent_name: ''
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: 'Voit lisätä paragraafiin linkin portfolioiden listaussivulle tästä.'
+        required_fields: true
+id: paragraph.portfolio_content_listing.default
+targetEntityType: paragraph
+bundle: portfolio_content_listing
+mode: default
+content:
+  field_display_archive_link:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_display_publish_dates:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 11
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_previous_content_link:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_highlighted_content:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_life_situations:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_liftup_display:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_listing_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_minisites:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_omitted_nodes:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_portfolio_liftup_amount:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useId } from "react";
 import styled from "styled-components";
 
-const StyledFilter = styled.button`
+const StyledFilter = styled.li`
   align-items: center;
   background-color: ${props => props.isActive ? "var(--color-primary)" : "transparent"};
   border: 2px solid var(--color-primary);
@@ -12,20 +12,39 @@ const StyledFilter = styled.button`
   font-family: var(--font-family-heading);
   font-size: var(--font-size-18);
   text-decoration: ${props => props.isActive ? "underline" : "none"};
-  padding-top: 10px;
-  padding-right: ${props => props.isActive ? "72px" : "35px"};
-  padding-bottom: 10px;
-  padding-left: 36px;
   position: relative;
 
-  &:focus,
-  &:hover {
+  &:focus-within {
+    outline: 1px solid var(--color-primary);
+    outline-offset: 3px;
     text-decoration: underline;
+  }
+
+  &:hover {
+    text-decoration: ${props => props.isActive ? "none" : "underline"};
   }
 
   @media screen and (min-width: 61.56rem) {
     font-size: var(--font-size-20);
   }
+`;
+
+const StyledCheckbox = styled.input`
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1rem;
+  width: 1rem;
+`;
+
+const StyledLabel = styled.label`
+  cursor: pointer;
+  padding-top: 10px;
+  padding-right: ${props => props.isActive ? "72px" : "35px"};
+  padding-bottom: 10px;
+  padding-left: 36px;
 `;
 
 const CloseIcon = styled.span`
@@ -41,32 +60,28 @@ const CloseIcon = styled.span`
 export default function Filter({
   filterItem,
   selectFilter,
-  activeFilters,
-  filterItemParentNames
+  activeFilters
 }) {
   const isActive = activeFilters.some(
     filter => filter.keywords.includes(`${filterItem.type}:${filterItem.id}`)
   );
 
-  let filterDisplayName = filterItem.name;
-
-  if (filterItemParentNames.has(filterItem.parent)) {
-    const parentItemName = filterItemParentNames.get(filterItem.parent);
-    filterDisplayName = `${filterDisplayName} ${parentItemName}`;
-  }
-
-  let ariaLabel;
-  if (isActive) {
-    ariaLabel = Drupal.t('Remove filter @name', { '@name': filterDisplayName });
-  }
+  const filterId = useId();
 
   return (
-    <StyledFilter
-      aria-label={ariaLabel}
-      onClick={() => selectFilter(filterItem)}
-      isActive={isActive}
-    >
-      { filterDisplayName }
+    <StyledFilter isActive={isActive}>
+      <StyledCheckbox
+        id={`filter-${filterId}`}
+        type="checkbox"
+        onChange={() => selectFilter(filterItem)}
+        defaultChecked={isActive}
+      />
+      <StyledLabel
+        htmlFor={`filter-${filterId}`}
+        isActive={isActive}
+      >
+        { filterItem.name }
+      </StyledLabel>
       { isActive && <CloseIcon /> }
     </StyledFilter>
   );

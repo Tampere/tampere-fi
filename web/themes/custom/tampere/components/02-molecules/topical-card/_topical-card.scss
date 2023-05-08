@@ -33,6 +33,10 @@ $topical-card-box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
         grid-column: 1 / -1;
       }
     }
+
+    &--with-margin-bottom {
+      margin-bottom: $gutter-small;
+    }
   }
 
   &__image-container {

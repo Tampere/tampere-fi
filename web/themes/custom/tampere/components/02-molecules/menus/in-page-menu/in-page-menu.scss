@@ -32,15 +32,11 @@ $in-page-menu-list-item-negative-left-margin-desktop: calc(#{$in-page-menu-list-
   }
 
   &__icon {
-    color: clr(accent-tertiary);
-    margin-right: $space-xs;
-    height: $icon-small;
-    width: $icon-small;
-
-    @include large {
-      margin-right: $space-s;
-      width: $icon-medium;
-    }
+    color: clr(primary);
+    margin-left: $space-xs;
+    transform: rotate(-90deg);
+    height: $icon-xs;
+    width: $icon-xs;
   }
 
   &__list-item + #{$base_class}__list-item {

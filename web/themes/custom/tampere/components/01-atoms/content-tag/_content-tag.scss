@@ -1,0 +1,40 @@
+.content-tag {
+  --content-tag-bg-color: #{clr(primary)};
+  --content-tag-color: #{clr(text-inverse)};
+
+  background-color: var(--content-tag-bg-color);
+  color: var(--content-tag-color);
+  margin: 0;
+  padding: $space-s $space-m;
+  font-size: $font-12;
+  font-family: $font-body;
+  font-weight: $font-weight-regular;
+  display: inline-block;
+
+  @include large {
+    font-size: $font-16;
+    padding: $space-s $space-l;
+  }
+
+  &__item {
+    display: inline-block;
+
+    > * {
+      display: inline-block;
+    }
+  }
+
+  &__item + &__item::before {
+    content: "|";
+  }
+
+  // Variations
+  &--notice {
+    --content-tag-bg-color: #{clr(notice-secondary)};
+  }
+
+  &--blog {
+    --content-tag-bg-color: #{clr(muted)};
+    --content-tag-color: #{clr(primary)};
+  }
+}

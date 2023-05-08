@@ -1,0 +1,43 @@
+parameters:
+	ignoreErrors:
+		# See getForm() documentation, it says multiple arguments are allowed.
+		-
+			message: '#^Method Drupal\\Core\\Form\\FormBuilderInterface\:\:getForm\(\) invoked with 2 parameters, 1 required\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Controller/PtvRefreshController.php
+
+		# The \Tampere\PtvV11\PtvApi\ServiceChannelApi code is documented incorrectly: the actual values for booleans must be strings for the client to translate the parameters to query parameters correctly.
+		-
+			message: '#^Parameter \#[2346] \$(includeWholeCountry|serviceWithGD|showHeader) of method Tampere\\PtvV11\\PtvApi\\ServiceApi\:\:(apiV11ServiceListAreaAreaCodeCodeGet|apiV11ServiceServiceWithGDIdGet|apiV11ServiceIdGet)\(\) expects bool, string given\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Service/PtvServiceListIterator.php
+
+		# The \Tampere\PtvV11\PtvApi\ServiceChannelApi::apiV11ServiceChannelListGet code is documented incorrectly: the actual values for booleans must be strings for the client to translate the parameters to query parameters correctly.
+		# The \Tampere\PtvV11\PtvApi\ServiceChannelApi::apiV11ServiceChannelListGet code is documented incorrectly: the actual value for $guids can be either an array of strings or a comma-separated string.
+		-
+			message: '#^Parameter \#[12] \$(guids|showHeader) of method Tampere\\PtvV11\\PtvApi\\ServiceChannelApi\:\:apiV11ServiceChannelListGet\(\) expects (bool|string\|null), (string|array<string>) given\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Service/PtvServiceChannelListIterator.php
+
+		# PhpStan gets this wrong. The statement is reachable on line 246.
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Service/PtvDataHelpers.php
+
+		# The \Tampere\PtvV11\PtvModel\VmOpenApiAddressStreetWithCoordinates::getMunicipality code is documented incorrectly: it may return NULL.
+		-
+			message: '#^Call to function is_null\(\) with Tampere\\PtvV11\\PtvModel\\VmOpenApiMunicipality will always evaluate to false\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Service/PtvDataHelpers.php
+
+		# The code before line 671 array_walks the data into another type and the value is in fact an array at that point and the 'hours' and 'info' keys are very useful there.
+		-
+			message: '#^Cannot assign offset ''(hours|info)'' to Tampere\\PtvV11\\PtvModel\\V11VmOpenApiServiceHour\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Service/PtvDataHelpers.php
+		-
+			message: '#^Offset ''(hours|info)'' on Tampere\\PtvV11\\PtvModel\\V11VmOpenApiServiceHour on left side of \?\? does not exist\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Service/PtvDataHelpers.php
+		# For some reason, phpstan does not understand that the ::create method sets up an instance and that the call on line 44 is relevant.
+		-
+			message: '#^Property Drupal\\tre_ptv_import\\Form\\PtvRefreshForm\:\:\$updater is never written, only read\.$#'
+			path: web/modules/custom/tre_ptv_import/src/Form/PtvRefreshForm.php
+		# Phpstan overinterprets the phpdoc type hint and thinks that the function will only ever receive string arrays, whereas in reality it may receive arrays with any kinds of members.
+		-
+			message: '#^Variable \$non_strings in empty\(\) always exists and is always falsy\.$#'
+			path: web/modules/custom/tre_ptv_import/src/PtvUpdateQueueItem.php

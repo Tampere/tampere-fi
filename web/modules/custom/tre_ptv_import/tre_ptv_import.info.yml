@@ -5,3 +5,4 @@ core_version_requirement: '>=9.3'
 package: 'TRE Integrations'
 dependencies:
   - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools

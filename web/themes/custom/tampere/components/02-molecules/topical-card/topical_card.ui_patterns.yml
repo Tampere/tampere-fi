@@ -1,5 +1,10 @@
 topical_card:
   label: Topical card
+  settings:
+    display_as_list_item:
+      type: boolean
+      label: Display as list item
+      default_value: 1
   variants:
     default:
       label: Default

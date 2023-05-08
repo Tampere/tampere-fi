@@ -384,4 +384,22 @@ interface PtvDataHelpersInterface {
    */
   public static function getServiceChannelObjectFromServiceChannelsObject(V11VmOpenApiServiceChannels $apiServiceChannelsCollection);
 
+  /**
+   * Separates service location channel objects from service channel objects.
+   *
+   * @param array $allChannels
+   *   An array of different service channel objects of the following types:
+   *   - \Tampere\PtvV11\PtvModel\V11VmOpenApiElectronicChannel
+   *   - \Tampere\PtvV11\PtvModel\V11VmOpenApiServiceLocationChannel
+   *   - \Tampere\PtvV11\PtvModel\V11VmOpenApiPhoneChannel
+   *   - \Tampere\PtvV11\PtvModel\V11VmOpenApiPrintableFormChannel
+   *   - \Tampere\PtvV11\PtvModel\V11VmOpenApiWebPageChannel.
+   *
+   * @return array
+   *   A two-member array whose first member contains all the
+   *   V11VmOpenApiServiceLocationChannel objects from the source array and the
+   *   second member the rest of the array.
+   */
+  public static function separateLocationsFromOtherServiceChannels(array $allChannels): array;
+
 }

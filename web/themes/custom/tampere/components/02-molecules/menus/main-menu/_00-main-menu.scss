@@ -65,8 +65,8 @@
     display: block;
     font-family: $font-heading;
     font-size: $font-18;
-    margin-right: ($icon-medium + $space-s) * (-1);
-    padding: $space-s ($icon-medium + $space-l) $space-s $space-l;
+    margin-right: ($icon-menu-item + $space-s) * (-1);
+    padding: $space-s ($icon-menu-item + $space-l) $space-s $space-m;
     position: relative;
     text-decoration: none;
     width: 100%;
@@ -99,9 +99,9 @@
   }
 
   &__icon {
-    color: clr(primary);
-    height: $icon-small;
-    width: $icon-small;
+    color: clr(secondary);
+    height: $icon-menu-item;
+    width: $icon-menu-item;
     margin-right: $space-s;
 
     @include large {
@@ -205,6 +205,10 @@
     }
 
     #{$base_class}__icon {
+      color: clr(primary);
+      height: $icon-default;
+      width: $icon-default;
+
       @include main-menu-breakpoint-down {
         display: block;
       }

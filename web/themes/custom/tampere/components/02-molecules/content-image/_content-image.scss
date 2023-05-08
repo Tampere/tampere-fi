@@ -2,43 +2,6 @@
   margin: 0;
   max-width: $basic-content-max-width;
 
-  &__heading {
-    background-color: clr(primary);
-    color: clr(text-inverse);
-    margin: 0;
-    padding: $space-s $space-m;
-    font-size: $font-12;
-    font-family: $font-body;
-    font-weight: $font-weight-regular;
-    display: inline-block;
-
-    > * {
-      display: inline-block;
-    }
-
-    &--notice {
-      background-color: clr(notice-secondary);
-    }
-
-    &--blog {
-      background-color: clr(muted);
-      color: clr(primary);
-    }
-
-    &-item + &-item::before {
-      content: "|";
-    }
-
-    &-item > * {
-      display: inline-block;
-    }
-
-    @include large {
-      font-size: $font-16;
-      padding: $space-s $space-l;
-    }
-  }
-
   &__link {
     display: block;
   }

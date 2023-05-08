@@ -1,16 +1,18 @@
-import React, { useId } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import Filter from "./Filter";
 
 const StyledFilterGroup = styled.div`
+  margin-top: 24px;
+  width: 100%;
+`;
+
+const StyledFilterList = styled.ul`
   display: ${props => props.isActive ? "flex" : "none"};
   flex-wrap: wrap;
   gap: 16px;
-  left: 0;
-  margin-top: 24px;
   padding: 0;
-  width: 100%;
 `;
 
 export default function FilterGroup({
@@ -19,8 +21,7 @@ export default function FilterGroup({
   availableFilters,
   selectFilter,
   activeFilters,
-  activeFilterGroup,
-  filterItemParentNames
+  activeFilterGroup
 }) {
   const isActive = activeFilterGroup === type;
   const availableFiltersForType = availableFilters.filter(isOfType).sort(sortByName);
@@ -50,22 +51,22 @@ export default function FilterGroup({
       id={`filters${id}`}
       aria-labelledby={`label${id}`}
       aria-hidden={!isActive}
-      isActive={isActive}
       role="tabpanel"
     >
-      {
-        availableFiltersForType.map(filterItem => {
-          return (
-            <Filter
-              filterItem={filterItem}
-              selectFilter={selectFilter}
-              activeFilters={activeFiltersForType}
-              filterItemParentNames={filterItemParentNames}
-              key={`${filterItem.type}:${filterItem.id}`}
-            />
-          );
-        })
-      }
+      <StyledFilterList isActive={isActive}>
+        {
+          availableFiltersForType.map(filterItem => {
+            return (
+              <Filter
+                filterItem={filterItem}
+                selectFilter={selectFilter}
+                activeFilters={activeFiltersForType}
+                key={`${filterItem.type}:${filterItem.id}`}
+              />
+            );
+          })
+        }
+      </StyledFilterList>
     </StyledFilterGroup>
   );
 };

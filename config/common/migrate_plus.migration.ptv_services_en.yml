@@ -44,11 +44,15 @@ process:
     plugin: default_value
     default_value: ptv_markdown
   field_places_of_business:
-    plugin: migration_lookup
-    source: service_locations
-    no_stub: true
-    migration: ptv_service_locations_en
-    language: constants/LANGUAGE
+    -
+      plugin: skip_on_empty
+      source: service_locations
+      method: process
+    -
+      plugin: migration_lookup
+      migration: ptv_service_locations_en
+      no_stub: true
+      language: constants/LANGUAGE
   field_user_instruction_md/value:
     plugin: get
     source: user_instruction

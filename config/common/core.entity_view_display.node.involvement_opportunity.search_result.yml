@@ -73,6 +73,7 @@ mode: search_result
 content: {  }
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_additional_information: true
   field_address_street: true
   field_contact_info_paragraph: true

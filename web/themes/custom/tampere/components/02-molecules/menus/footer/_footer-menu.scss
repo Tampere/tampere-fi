@@ -2,8 +2,13 @@ $footer-mobile-font-size: $font-16;
 $footer-mobile-bold: $font-weight-bold;
 $footer-desktop-font-size: $font-18;
 $footer-desktop-bold: $font-weight-semi-bold;
+$footer-menu-link-vertical-padding: $space-xs;
+$footer-menu-icon-size: $icon-xs;
+$footer-menu-icon-margin: $space-xs;
 
 .footer-menu {
+  $base-class: &;
+
   @include list-reset;
 
   display: grid;
@@ -12,6 +17,24 @@ $footer-desktop-bold: $font-weight-semi-bold;
   font-weight: $footer-mobile-bold;
   gap: $space-s;
   grid-template-columns: 1fr 1fr;
+
+  @include large {
+    display: flex;
+    flex-direction: column;
+    font-weight: $footer-desktop-bold;
+    font-size: $footer-desktop-font-size;
+    gap: 0;
+  }
+
+  &__item {
+    display: flex;
+
+    @include large {
+      &:first-child {
+        margin-top: $footer-menu-link-vertical-padding * (-1);
+      }
+    }
+  }
   
   &__link {
     @include link(
@@ -20,7 +43,33 @@ $footer-desktop-bold: $font-weight-semi-bold;
     );
     @include word-wrap;
 
+    padding-right: $footer-menu-icon-size;
+    position: relative;
     text-decoration: none;
+
+    @include large-down {
+      #{$base-class}__item:nth-child(even) & {
+        padding-right: 0;
+      }
+    }
+
+    @include large {
+      margin-left: $space-s * (-1);
+      padding: $footer-menu-link-vertical-padding calc($footer-menu-icon-size + $space-m) $footer-menu-link-vertical-padding $space-m;
+    }
+
+    &::after {
+      background-image: url("/themes/custom/tampere/images/white-arrow.svg");
+      background-size: $footer-menu-icon-size $footer-menu-icon-size;
+      content: "";
+      display: inline-block;
+      margin-right: ($footer-menu-icon-size + $footer-menu-icon-margin) * (-1);
+      margin-left: $footer-menu-icon-margin;
+      position: relative;
+      top: 2px;
+      height: $footer-menu-icon-size;
+      width: $footer-menu-icon-size;
+    }
 
     &:hover,
     &:focus {
@@ -28,12 +77,5 @@ $footer-desktop-bold: $font-weight-semi-bold;
       text-underline-position: under;
       text-decoration-thickness: 2px;
     }
-  }
-
-  @include large {
-    display: flex;
-    flex-direction: column;
-    font-weight: $footer-desktop-bold;
-    font-size: $footer-desktop-font-size;
   }
 }

@@ -1,8 +1,7 @@
 {% set remove_facets__base_class = "remove-facets" %}
 
-<a 
-  {{ bem(remove_facets__base_class, remove_facets__modifiers, remove_facets__blockname)}} 
-  href="{{search_link}}"
->
-  {{  "Remove filters"|t }}
-</a>
+<div {{ bem(remove_facets__base_class, remove_facets__modifiers, remove_facets__blockname)}}>
+  <a {{ bem("link", remove_facets__link__modifiers|default([]), remove_facets__base_class) }} href="{{search_link}}">
+    {{  "Remove filters"|t }}
+  </a>
+</div>

@@ -24,6 +24,20 @@
  * @ingroup themeable
  */
 #}
+{% if cache_hash %}
+  <!-- facets cacheable metadata
+    hash: {{ cache_hash }}
+  {% if cache_contexts %}
+    contexts: {{ cache_contexts }}
+  {%- endif %}
+  {% if cache_tags %}
+    tags: {{ cache_tags }}
+  {%- endif %}
+  {% if cache_max_age %}
+    max age: {{ cache_max_age }}
+  {%- endif %}
+  -->
+{%- endif %}
 
 {% set translation_context = "Search facet desciption for screen reader users" %}
 
@@ -42,10 +56,12 @@
   "attributes": attributes.addClass("facet-accordion-item")
 } %}
   {% block facet_accordion_item_content %}
-    {% for item in items %}
-      <div {{ bem("content-item", facet_accordion_item__content_item__modifiers, "facet-accordion-item")}}>
-        {{ item.value }}
-      </div>
-    {% endfor %}
+    {%- if items -%}
+      {%- for item in items -%}
+        <li{{ item.attributes.addClass("facet-accordion-item__list-item") }}>{{ item.value }}</li>
+      {%- endfor -%}
+    {%- else -%}
+      {{- empty -}}
+    {%- endif -%}
   {% endblock %}
 {% endembed %}

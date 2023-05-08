@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\tre_ptv_import\Service;
 
 use Drupal\Component\Datetime\DateTimePlus;
@@ -10,6 +12,7 @@ use Drupal\tre_ptv_import\PtvDataHelpersInterface;
 use Tampere\PtvV11\PtvApi\OrganizationApi;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiServiceHour;
+use Tampere\PtvV11\PtvModel\V11VmOpenApiServiceLocationChannel;
 use Tampere\PtvV11\PtvModel\V4VmOpenApiPhoneWithType;
 use Tampere\PtvV11\PtvModel\V9VmOpenApiAddressLocation;
 use Tampere\PtvV11\PtvModel\VmOpenApiAttachment;
@@ -44,12 +47,12 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
     // @phpstan-ignore-next-line
     if (!is_null($exception_hour->getValidFrom())) {
       $start_date_value = $exception_hour->getValidFrom()->format('j.n.Y');
-      $sortable_date = (int)$exception_hour->getValidFrom()->format('Ymd');
+      $sortable_date = (int) $exception_hour->getValidFrom()->format('Ymd');
     }
     else {
       $start_date_value = '';
       // Assign a negative value in order to place the exception hour without
-      // a starting date at the top of the list
+      // a starting date at the top of the list.
       $sortable_date = -1;
     }
 
@@ -199,6 +202,34 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
   /**
    * {@inheritdoc}
    */
+  public static function separateLocationsFromOtherServiceChannels(array $allChannels): array {
+    $location_class = V11VmOpenApiServiceLocationChannel::class;
+    $locations = array_filter($allChannels, function ($item) use ($location_class) {
+      return $item instanceof $location_class;
+    });
+
+    $locations_by_uuid = [];
+    /** @var \Tampere\PtvV11\PtvModel\V11VmOpenApiServiceLocationChannel $location */
+    foreach ($locations as $location) {
+      $locations_by_uuid[$location->getId()] = $location;
+    }
+
+    $non_locations = array_filter($allChannels, function ($item) use ($location_class) {
+      return !($item instanceof $location_class);
+    });
+
+    $non_locations_by_uuid = [];
+    /** @var \Tampere\PtvV11\PtvModel\V11VmOpenApiWebPageChannel|\Tampere\PtvV11\PtvModel\V11VmOpenApiElectronicChannel|\Tampere\PtvV11\PtvModel\V11VmOpenApiPrintableFormChannel|\Tampere\PtvV11\PtvModel\V11VmOpenApiPhoneChannel $non_location */
+    foreach ($non_locations as $non_location) {
+      $non_locations_by_uuid[$non_location->getId()] = $non_location;
+    }
+
+    return [$locations_by_uuid, $non_locations_by_uuid];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public static function getServiceChannelObjectFromServiceChannelsObject(V11VmOpenApiServiceChannels $apiServiceChannelsCollection) {
     $object_candidates = [
       $apiServiceChannelsCollection->getElectronicChannel(),
@@ -317,8 +348,6 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
    * {@inheritdoc}
    */
   public static function processLocationSingle(V9VmOpenApiAddressLocation &$address, $key, array $additional_data) {
-    $data_helpers = $additional_data['data_helpers'];
-
     $coordinates = self::getCoordinatesForAddressLocation($address);
     if (is_array($coordinates)) {
       $coordinate_string = self::formatCoordinatesAsString($coordinates);
@@ -367,8 +396,7 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
     }
     $address_item = $address->getOtherAddress();
 
-    $street_name = current(self::getOpenApiLanguageItemStringsByLanguage($address_item
-        ->getAdditionalInformation(), $additional_data['language']))->getValue();
+    $street_name = current(self::getOpenApiLanguageItemStringsByLanguage($address_item->getAdditionalInformation(), $additional_data['language']))->getValue();
 
     $locality_data = is_null($address_item->getMunicipality()) ? $address_item->getPostOffice() : $address_item->getMunicipality()
       ->getName();
@@ -543,7 +571,7 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
       $opening_hours_entries = $hours_entry->getOpeningHour();
       $value_keys = self::findOpeningHourEntryByWeekday($weekday, $opening_hours_entries);
       if ($value_keys !== FALSE) {
-        foreach ($value_keys as  $value_key){
+        foreach ($value_keys as $value_key) {
           $opening_hour = $opening_hours_entries[$value_key];
 
           $start_time_with_seconds = $opening_hour->getFrom();
@@ -582,7 +610,7 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
   }
 
   /**
-   * {@inheritdoc }
+   * {@inheritdoc}
    */
   public static function processServiceHours(array &$values, array $opening_hours_types_with_processors, array $service_hours, string $language) {
     $hours_by_type = [];
@@ -712,11 +740,12 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
     if (!empty($northing) && !empty($easting)) {
       // Drupal configuration has been set to only allow 5 decimals.
       return [
-        'N' => round($northing, 5),
-        'E' => round($easting, 5),
+        'N' => round(floatval($northing), 5),
+        'E' => round(floatval($easting), 5),
       ];
     }
 
     return NULL;
   }
+
 }

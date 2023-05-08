@@ -1,0 +1,4 @@
+label: 'Display archive link'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

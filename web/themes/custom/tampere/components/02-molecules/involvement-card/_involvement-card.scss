@@ -34,8 +34,14 @@
   }
 
   &__heading {
+    @include heading-medium(
+      $line-height: $contact-card-line-height,
+      $mobile-line-height: $contact-card-line-height--mobile
+    );
+
     font-size: $font-18;
     padding-top: $space-xs;
+    position: relative;
     margin-right: $space-s;
 
     @include large {
@@ -43,15 +49,10 @@
       margin-right: $space-xl;
       padding-top: $space-l;
     }
+  }
 
-    &--link {
-      border-bottom: $border-thick-primary;
-      
-      a {
-        text-decoration: none;
-        color: clr(text);
-      }
-    }
+  &__heading-link {
+    @include contact-card-heading-link;
   }
 
   &__type-container {

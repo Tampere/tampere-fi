@@ -1,0 +1,23 @@
+uuid: 10626317-896b-4949-994e-ecc562996f53
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_portfolio_liftup_amount
+    - paragraphs.paragraphs_type.portfolio_content_listing
+  module:
+    - options
+id: paragraph.portfolio_content_listing.field_portfolio_liftup_amount
+field_name: field_portfolio_liftup_amount
+entity_type: paragraph
+bundle: portfolio_content_listing
+label: 'Näytettävien nostojen määrä'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: '3'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

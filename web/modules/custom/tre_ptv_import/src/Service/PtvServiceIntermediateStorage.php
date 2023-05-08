@@ -5,9 +5,12 @@ namespace Drupal\tre_ptv_import\Service;
 use Drupal\Component\Serialization\SerializationInterface;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Logger\RfcLogLevel;
 use Drupal\Core\Site\Settings;
 use Drupal\tre_ptv_import\PtvDataHelpersInterface;
 use Drupal\tre_ptv_import\PtvServiceIntermediateStorageInterface;
+use Drupal\tre_ptv_import\PtvServiceSingleFetcherInterface;
+use Tampere\PtvV11\ApiException;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiElectronicChannel;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiPhoneChannel;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiPrintableFormChannel;
@@ -38,16 +41,16 @@ class PtvServiceIntermediateStorage implements PtvServiceIntermediateStorageInte
   /**
    * The iterator for PTV services.
    *
-   * @var \Iterator
+   * @var \Drupal\tre_ptv_import\PtvServiceSingleFetcherInterface
    */
-  private \Iterator $serviceListIterator;
+  private PtvServiceSingleFetcherInterface $serviceListIterator;
 
   /**
    * The iterator for PTV service channels.
    *
-   * @var \Iterator
+   * @var \Drupal\tre_ptv_import\Service\PtvServiceChannelListIteratorInterface
    */
-  private \Iterator $serviceChannelIterator;
+  private PtvServiceChannelListIteratorInterface $serviceChannelIterator;
 
   /**
    * Cache for PTV services.
@@ -80,7 +83,7 @@ class PtvServiceIntermediateStorage implements PtvServiceIntermediateStorageInte
   /**
    * Constructs the class instance.
    */
-  public function __construct(Connection $database, PtvDataHelpersInterface $ptv_data_helpers, \Iterator $service_list_iterator, \Iterator $service_channel_iterator, CacheBackendInterface $service_cache, CacheBackendInterface $service_channel_cache, SerializationInterface $serialization) {
+  public function __construct(Connection $database, PtvDataHelpersInterface $ptv_data_helpers, PtvServiceSingleFetcherInterface $service_list_iterator, PtvServiceChannelListIteratorInterface $service_channel_iterator, CacheBackendInterface $service_cache, CacheBackendInterface $service_channel_cache, SerializationInterface $serialization) {
     $this->db = $database;
     $this->serviceListIterator = $service_list_iterator;
     $this->serviceChannelIterator = $service_channel_iterator;
@@ -234,6 +237,23 @@ class PtvServiceIntermediateStorage implements PtvServiceIntermediateStorageInte
   /**
    * {@inheritdoc}
    */
+  public function getSpecificServicesFromApi(array $uuids): array {
+    $services = [];
+    foreach ($uuids as $id) {
+      try {
+        $service = $this->serviceListIterator->getSingleServiceFromApi($id);
+        $services[$id] = $service;
+      }
+      catch (ApiException $exception) {
+        watchdog_exception('tre_ptv_import', $exception, NULL, [], RfcLogLevel::WARNING);
+      }
+    }
+    return $services;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function insertServices(array $services) {
     $upsert_service_query = $this->db->upsert('tre_ptv_import_service');
     $upsert_service_query->fields(['uuid', 'data']);
@@ -327,7 +347,7 @@ class PtvServiceIntermediateStorage implements PtvServiceIntermediateStorageInte
 
         foreach ($this->serviceChannelIterator as $service_channel_channels_object) {
           $channel_model = $this->dataHelpers::getServiceChannelObjectFromServiceChannelsObject($service_channel_channels_object);
-          $actual_channels[] = $channel_model;
+          $actual_channels[$channel_model->getId()] = $channel_model;
         }
 
         $this->serviceChannelCache->set($cid, $actual_channels);

@@ -1,3 +1,4 @@
+$search-bar-border: 2px solid clr(search-bar);
 $search-bar-height: 55px;
 $search-bar-max-width: 350px;
 $search-bar-max-width--long: 540px;
@@ -13,7 +14,7 @@ $search-bar-max-width--long: 540px;
   }
 
   &__search-form {
-    border: $border-thick-primary;
+    border: $search-bar-border;
     display: flex;
     height: 100%;
     width: 100%;
@@ -21,7 +22,7 @@ $search-bar-max-width--long: 540px;
 
   &__input {
     border-top: 0;
-    border-right: $border-thick-primary;
+    border-right: $search-bar-border;
     border-bottom: 0;
     border-left: 0;
     border-radius: 0;
@@ -40,7 +41,7 @@ $search-bar-max-width--long: 540px;
 
   &__button {
     align-items: center;
-    background-color: clr(primary);
+    background-color: clr(search-bar);
     border: 0;
     color: clr(text-inverse);
     cursor: pointer;
@@ -55,7 +56,7 @@ $search-bar-max-width--long: 540px;
     &:focus,
     &:hover {
       background-color: clr(background);
-      color: clr(primary);
+      color: clr(search-bar);
     }
   }
 
@@ -95,7 +96,7 @@ $search-bar-max-width--long: 540px;
     #{$base_class}__label {
       @include heading-large;
 
-      color: clr(primary);
+      color: clr(search-bar);
       font-size: $font-21;
       flex-basis: 100%;
       margin-bottom: $space-l;

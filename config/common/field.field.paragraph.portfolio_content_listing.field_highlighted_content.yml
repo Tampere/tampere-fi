@@ -1,0 +1,29 @@
+uuid: 778f8b61-82c9-4883-89d4-fbd73c177be3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_highlighted_content
+    - node.type.portfolio
+    - paragraphs.paragraphs_type.portfolio_content_listing
+id: paragraph.portfolio_content_listing.field_highlighted_content
+field_name: field_highlighted_content
+entity_type: paragraph
+bundle: portfolio_content_listing
+label: 'Korostettu sisältö'
+description: 'Valittu portfolio-sisältö esitetään korostetusti ennen listauksen muuta sisältöä.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      portfolio: portfolio
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

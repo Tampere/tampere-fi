@@ -18,14 +18,14 @@
   {% if use_right_to_left %} dir="rtl"{% endif %}
 >
   <a {{ bem("link", (in_page_menu__link__modifiers), in_page_menu__base_class, [ "hyphenate" ]) }} href="{{ in_page_menu__link__url }}">
+    {{ in_page_menu__link__title }}
     {% if "back-to-top" in in_page_menu__list_item__modifiers %}
       {% include "@atoms/04-images/icons/_icon.twig" with {
-        icon_name: "arrow-plain-new",
+        icon_name: "arrow",
         icon_base_class: "icon",
         icon_blockname: in_page_menu__base_class,
         icon_decorative: true,
       } %}
     {% endif %}
-    {{ in_page_menu__link__title }}
   </a>
 </li>

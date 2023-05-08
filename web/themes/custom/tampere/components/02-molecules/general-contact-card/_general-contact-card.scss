@@ -35,11 +35,7 @@
   }
 
   &__name-link {
-    @include link(clr(text), clr(text), $underline-offset: 0);
-
-    text-underline-position: under;
-    text-decoration-color: clr(contact-accent);
-    text-decoration-thickness: 2px;
+    @include contact-card-heading-link;
   }
 
   &__heading-container + .conditional-content,

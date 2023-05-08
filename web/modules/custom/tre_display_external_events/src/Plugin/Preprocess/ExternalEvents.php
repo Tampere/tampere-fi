@@ -236,6 +236,7 @@ class ExternalEvents extends TrePreProcessPluginBase {
 
       // Filter out empty elements from the variables going to the template.
       $events[] = array_filter([
+        "card__display_as_list_item" => TRUE,
         "card__heading" => $item->name->{$desired_language},
         "card__date" => $event_time,
         "card__tag" => $location,

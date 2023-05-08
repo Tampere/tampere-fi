@@ -1,0 +1,4 @@
+label: 'Display publish dates for content in listing'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

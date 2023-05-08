@@ -127,7 +127,8 @@ process:
         - 0
       language: en
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
 
   field_opening_hours_2:
     # As the field only supports 1 value, we extract the second value from the input array.
@@ -139,7 +140,8 @@ process:
         - 1
       language: en
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
 
   field_opening_hours_3:
     # As the field only supports 1 value, we extract the third value from the input array.
@@ -151,7 +153,8 @@ process:
         - 2
       language: en
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
 
   field_opening_hours_info:
     -
@@ -161,6 +164,9 @@ process:
       index:
         - 0
       language: en
+    -
+      plugin: skip_on_empty
+      method: process
 
   field_opening_hours_info_2:
     -
@@ -170,15 +176,24 @@ process:
       index:
         - 1
       language: en
+    -
+      plugin: skip_on_empty
+      method: process
 
   field_opening_hours_info_3:
     -
-      plugin: extract
+      plugin: skip_on_empty
       source: regular_hours_info
+      method: process
+    -
+      plugin: extract
       default: {  }
       index:
         - 2
       language: en
+    -
+      plugin: skip_on_empty
+      method: process
 
   # The source exists as an array and the destination field is a multi-value field with cardinality -1.
   field_exception_hours:

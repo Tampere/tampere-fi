@@ -1,14 +1,25 @@
 .remove-facets {
-  color: clr(primary);
-  text-underline-position: under;
-  text-decoration-thickness: 1px;
   display: none;
   padding-top: $space-m;
   padding-bottom: $space-m;
-  font-size: $font-16;
 
   @include large {
     padding-bottom: $space-l;
-    font-size: $font-20;
+  }
+
+  &__link {
+    color: clr(primary);
+    font-size: $font-16;
+    text-underline-position: under;
+    text-decoration-thickness: 1px;
+
+    @include large {
+      font-size: $font-20;
+    }
+
+    &:focus,
+    &:hover {
+      text-decoration: none;
+    }
   }
 }

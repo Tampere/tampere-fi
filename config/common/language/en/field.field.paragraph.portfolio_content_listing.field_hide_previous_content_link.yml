@@ -1,0 +1,4 @@
+label: 'Hide previous content link'
+settings:
+  on_label: 'On'
+  off_label: 'Off'

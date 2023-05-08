@@ -1,0 +1,10 @@
+uuid: cf4c8520-b484-4dd9-83a1-af5b772f7665
+langcode: fi
+status: true
+dependencies: {  }
+id: portfolio_content_listing
+label: Portfolio-sisältölistaus
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

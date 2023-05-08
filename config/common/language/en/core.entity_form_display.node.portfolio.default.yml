@@ -1,0 +1,25 @@
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Tabs
+    group_general:
+      label: General
+    group_categorization:
+      label: Categorization
+    group_search_keywords:
+      label: Keywords
+    group_main_image:
+      label: 'Main image and caption'
+content:
+  field_author:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_lead:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_photographer:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'

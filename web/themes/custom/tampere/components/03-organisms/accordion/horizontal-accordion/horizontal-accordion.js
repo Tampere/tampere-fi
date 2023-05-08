@@ -1,108 +1,63 @@
 Drupal.behaviors.horizontalAccordion = {
   attach(context) {
-    const accordionHeadings = context.querySelectorAll(
-      '.horizontal-accordion__button'
-    );
-    const accordionContents = context.querySelectorAll(
-      '.horizontal-accordion__content'
-    );
-    const horizontalAccordion = context.querySelectorAll(
-      '.horizontal-accordion'
-    );
-    let activeIndex = 0;
-    let nestedActiveIndex = null;
-
     /**
-     * toggleAccordion
-     * @description Toggles specific accordion based on index. Returns nothing.
-     * @param {Number} index The index of the accordion to open.
+     * Toggles state for given horizontal accordion button while closing all others.
+     *
+     * @param {HTMLElement} selectedAccordionButton
+     *   The selected horizontal accordion button element.
      */
-    function toggleAccordion(index) {
-      if (
-        index !== activeIndex &&
-        index >= 0 &&
-        index <= accordionHeadings.length &&
-        !accordionHeadings[index].classList.contains('nested-accordion')
-      ) {
-        accordionHeadings[activeIndex].classList.remove('is-active');
-        accordionHeadings[activeIndex].setAttribute('aria-expanded', false);
-        accordionContents[activeIndex].classList.remove('active');
-        accordionContents[activeIndex].setAttribute('aria-hidden', true);
-        accordionHeadings[index].classList.add('is-active');
-        accordionHeadings[index].setAttribute('aria-expanded', true);
-        accordionContents[index].classList.add('active');
-        accordionContents[index].setAttribute('aria-hidden', false);
-        activeIndex = index;
-      } else if (
-        index !== nestedActiveIndex &&
-        index >= 0 &&
-        index <= accordionHeadings.length &&
-        accordionHeadings[index].classList.contains('nested-accordion')
-      ) {
-        if (nestedActiveIndex !== null) {
-          accordionHeadings[nestedActiveIndex].classList.remove('is-active');
-          accordionHeadings[nestedActiveIndex].setAttribute(
-            'aria-expanded',
-            false
-          );
-          accordionContents[nestedActiveIndex].classList.remove('active');
-          accordionContents[nestedActiveIndex].setAttribute(
-            'aria-hidden',
-            true
-          );
-        }
-        accordionHeadings[index].classList.add('is-active');
-        accordionHeadings[index].setAttribute('aria-expanded', true);
-        accordionContents[index].classList.add('active');
-        accordionContents[index].setAttribute('aria-hidden', false);
-        nestedActiveIndex = index;
-      } else {
-        if (accordionHeadings[index].classList.contains('is-active')) {
-          accordionHeadings[index].setAttribute('aria-expanded', false);
-        } else {
-          accordionHeadings[index].setAttribute('aria-expanded', true);
-        }
-        accordionHeadings[index].classList.toggle('is-active');
-        if (accordionContents[index].classList.contains('active')) {
-          accordionContents[index].setAttribute('aria-hidden', true);
-        } else {
-          accordionContents[index].setAttribute('aria-hidden', false);
-        }
-        accordionContents[index].classList.toggle('active');
-      }
-    }
+    function toggleHorizontalAccordionButton(selectedAccordionButton) {
+      const selectedAccordionButtonId = selectedAccordionButton.getAttribute('id');
+      const horizontalAccordion = selectedAccordionButton.closest('.horizontal-accordion');
+      const horizontalAccordionButtons = horizontalAccordion?.querySelectorAll(
+        '.horizontal-accordion__button'
+      );
 
-    /**
-     * handleClick
-     * @description Handles click event listeners on each of the Headings in the
-     *   tab accordion. Returns nothing.
-     * @param {HTMLElement} link The button to listen for events on
-     * @param {Number} index The index of that button
-     */
-    function handleClick(link, index) {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        toggleAccordion(index);
+      horizontalAccordionButtons?.forEach(horizontalAccordionButton => {
+        const accordionButtonId = horizontalAccordionButton.getAttribute('id');
+        const accordionContentId = horizontalAccordionButton.getAttribute('aria-controls');
+        const accordionContent = document.querySelector(
+          `#${accordionContentId}`
+        );
+
+        // Toggle state only for selected accordion button.
+        if (selectedAccordionButtonId === accordionButtonId) {
+          const isExpanded =
+            horizontalAccordionButton.getAttribute('aria-expanded') === 'true' || false;
+
+          horizontalAccordionButton?.setAttribute('aria-expanded', !isExpanded);
+          horizontalAccordionButton?.classList.toggle('is-active');
+          accordionContent?.setAttribute('aria-hidden', isExpanded);
+          accordionContent?.classList.toggle('active');
+        }
+        else {
+          horizontalAccordionButton?.setAttribute('aria-expanded', false);
+          horizontalAccordionButton?.classList.remove('is-active');
+          accordionContent?.setAttribute('aria-hidden', true);
+          accordionContent?.classList.remove('active');
+        }
       });
     }
 
-    for (let i = 0; i < horizontalAccordion.length; i += 1) {
-      if (
-        horizontalAccordion[i].closest('.accordion') ||
-        horizontalAccordion[i].closest('.process-accordion')
-      ) {
-        const nestedAccordionHeadings = horizontalAccordion[i].querySelectorAll(
-          '.accordion-heading'
-        );
-        for (let j = 0; j < nestedAccordionHeadings.length; j += 1) {
-          nestedAccordionHeadings[j].classList.add('nested-accordion');
-        }
-      }
+    /**
+     * Handles horizontal accordion button interaction.
+     *
+     * @param {Event} event
+     *   The event on the horizontal accordion button.
+     */
+    function handleHorizontalAccordionButtonClick(event) {
+      toggleHorizontalAccordionButton(event.currentTarget);
     }
 
-    for (let i = 0; i < accordionHeadings.length; i += 1) {
-      const link = accordionHeadings[i];
-      handleClick(link, i);
+    let accordionButtons;
+    try {
+      accordionButtons = once('horizontal-accordion-buttons', '.horizontal-accordion__button', context);
+    } catch (error) {
+      accordionButtons = document.querySelectorAll('.horizontal-accordion__button');
     }
+
+    accordionButtons?.forEach(heading => {
+      heading.addEventListener('click', handleHorizontalAccordionButtonClick);
+    });
   },
 };

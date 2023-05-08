@@ -1,0 +1,14 @@
+tre_ptv_import.ptv_refresh_task:
+  path: '/node/{node}/refresh_from_ptv'
+  defaults:
+    _controller: '\Drupal\tre_ptv_import\Controller\PtvRefreshController::refreshNode'
+    _title: 'Refresh from PTV'
+  requirements:
+    _custom_access: '\Drupal\tre_ptv_import\Controller\PtvRefreshController::checkAccess'
+    _entity_access: 'node.update'
+  options:
+    _admin_route: TRUE
+    parameters:
+      node:
+        type: entity:node
+

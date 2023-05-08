@@ -50,6 +50,11 @@
 
   &--primary-ghost {
     @include link(clr(primary), clr(primary));
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &--transparent {

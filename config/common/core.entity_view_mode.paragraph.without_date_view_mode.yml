@@ -1,0 +1,10 @@
+uuid: 00b6dab7-e352-4be7-8b46-ed562811bab1
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.without_date_view_mode
+label: 'Ilman päivämäärää'
+targetEntityType: paragraph
+cache: true

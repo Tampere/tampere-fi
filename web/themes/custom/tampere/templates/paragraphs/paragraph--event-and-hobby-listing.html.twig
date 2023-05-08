@@ -66,6 +66,7 @@
         {{ content|without("field_summary") }}
         {% if featured_liftup_exists %}
           {% include "@molecules/topical-card/topical-card.twig" with {
+            "display_as_list_item": true,
             "topical_card__image__src": featured_liftup.image_src,
             "topical_card__date": featured_liftup.date,
             "topical_card__tag": featured_liftup.location,

@@ -25,6 +25,22 @@
   {% set blog_header__modifiers = [ "with-image" ] %}
 {% endif %}
 
+{% if not topical_content__tags %}
+  {% set topical_content__tags = [] %}
+
+  {% if main_image_tag %}
+    {% set topical_content__tags = topical_content__tags|merge(main_image_tag) %}
+  {% endif %}
+
+  {% if main_image_optional_tag %}
+    {% set topical_content__tags = topical_content__tags|merge(main_image_optional_tag) %}
+  {% endif %}
+
+  {% if publication_date %}
+    {% set topical_content__tags = topical_content__tags|merge(publication_date) %}
+  {% endif %}
+{% endif %}
+
 <article {{ bem(topical_content_base_class, (topical_content_modifiers|default([])), topical_content_blockname) }}>
   {# Additional Blog header #}
   {% if variant == "blog" and has_blog_header %}
@@ -40,12 +56,32 @@
     {% endembed %}
   {% endif %}
 
-  <div {{ bem("header", (topical_content__header__modifiers), topical_content_base_class) }}>
+  {# Heading #}
+  {% if main_title is not empty %}
+    <div {{ bem("main-title", (topical_content__main_title__modifiers), topical_content_base_class) }}>
+      {{ main_title }}
+    </div>
+  {% endif %}
+
+  {# Content tag #}
+  {% if topical_content__tags is not empty %}
+    <div {{ bem("tags", (topical_content__tags__modifiers), topical_content_base_class) }}>
+      {% include "@atoms/content-tag/content-tag.twig" with {
+        "content_tag__tags": topical_content__tags,
+        "content_tag__modifiers": [ variant ],
+      } %}
+    </div>
+  {% endif %}
+
+  {# Summary #}
+  {% if summary is not empty %}
+    <div {{ bem("summary", (topical_content__summary__modifiers), topical_content_base_class) }}>
+      {{ summary }}
+    </div>
+  {% endif %}
+
+  <div {{ bem("main-image", (topical_content__main_image__modifiers), topical_content_base_class) }}>
     {% include "@molecules/content-image/content-image.twig" with {
-      "content_img__heading__modifiers": [ variant ],
-      "content_img__tag": main_image_tag,
-      "content_img__optional_tag": main_image_optional_tag,
-      "content_img__date": publication_date,
       "content_img__img__caption": main_image_caption,
       "content_img__img__url": topical_content__main_image__url,
       "content_img__img": main_image,

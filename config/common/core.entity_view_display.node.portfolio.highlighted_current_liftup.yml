@@ -36,6 +36,8 @@ third_party_settings:
         pattern:
           field_templates: only_content
           variant: big
+          settings:
+            display_as_list_item: 0
     regions:
       topical_card__link__url:
         - 'dynamic_twig_field:node-content_path'
@@ -43,6 +45,8 @@ third_party_settings:
         - field_main_image
       topical_card__date:
         - published_at
+      topical_card__heading:
+        - node_title
       topical_card__summary:
         - field_lead
     fields:
@@ -51,6 +55,22 @@ third_party_settings:
         weight: 0
         label: hidden
         formatter: default
+      node_title:
+        plugin_id: node_title
+        weight: 3
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
 id: node.portfolio.highlighted_current_liftup
 targetEntityType: node
 bundle: portfolio
@@ -61,7 +81,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 4
     region: topical_card__summary
   field_main_image:
     type: entity_reference_entity_view
@@ -77,7 +97,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 0
+    weight: 1
     region: topical_card__image
   published_at:
     type: timestamp
@@ -94,7 +114,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 0
+    weight: 2
     region: topical_card__date
 hidden:
   content_moderation_control: true

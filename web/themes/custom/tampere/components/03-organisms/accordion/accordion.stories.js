@@ -9,6 +9,7 @@ import facetAccordionComponent from './facet-accordion/facet-accordion.twig';
 import accordionData from './accordion.yml';
 import accordionPlainData from './accordion-plain.yml';
 import accordionItemMiniData from './accordion-item-mini.yml';
+import accordionNavigationData from './accordion-navigation.yml';
 import horizontalAccordionData from './horizontal-accordion/horizontal-accordion.yml';
 import processAccordionData from './process-accordion/process-accordion.yml';
 import facetAccordionData from './facet-accordion/facet-accordion.yml';
@@ -34,6 +35,14 @@ export const accordionPlain = () => (
   <div
     dangerouslySetInnerHTML={{
       __html: accordionComponent({ ...accordionData, ...accordionPlainData }),
+    }}
+  />
+);
+
+export const accordionNavigation = () => (
+  <div
+    dangerouslySetInnerHTML={{
+      __html: accordionComponent(accordionNavigationData),
     }}
   />
 );

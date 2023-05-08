@@ -15,7 +15,6 @@ $breadcrumb-separator-icon-extra-small-size: 10px;
 .breadcrumb__link:visited,
 .breadcrumb__link:focus {
   color: $breadcrumb-color;
-  text-decoration: none;
 }
 
 .breadcrumb__link {
@@ -23,15 +22,15 @@ $breadcrumb-separator-icon-extra-small-size: 10px;
 
   display: flex;
   align-items: center;
+  text-decoration: underline;
 
   @include medium {
     display: inline;
   }
 
-  &:hover,
-  &:active,
-  &.active {
-    text-decoration: underline;
+  &:focus,
+  &:hover {
+    text-decoration: none;
   }
 }
 

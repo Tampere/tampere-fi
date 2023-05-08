@@ -1,20 +1,19 @@
 {% set involvement_card__base_class = "involvement-card" %}
 
-{% if involvement_card__heading__url %}
-  {% set involvement_card__heading__modifiers = [ "link" ] %}
-{% endif %}
-
 <div {{ bem(involvement_card__base_class, involvement_card__modifiers, involvement_card__blockname)}}>
   <div {{ bem("main-content", involvement_card__main_content__modifiers, involvement_card__base_class)}}>
     <div {{ bem("header", involvement_card__heading_container__modifiers, involvement_card__base_class)}}>
       <div {{ bem("heading-container", involvement_card__heading_container__modifiers, involvement_card__base_class)}}>
         {% if involvement_card__heading %}
           {% include "@atoms/02-text/00-headings/_heading.twig" with {
+            heading_base_class: "heading",
             heading_blockname: involvement_card__base_class,
             heading_level: 2,
             heading_modifiers: involvement_card__heading__modifiers,
             heading: involvement_card__heading,
             heading_url: involvement_card__heading__url,
+            heading_link_blockname: involvement_card__base_class,
+            heading_link_base_class: "heading-link",
           } %}
         {% endif %}
 

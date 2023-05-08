@@ -4,5 +4,6 @@ services:
     arguments:
       - '@entity_type.manager'
       - '@tre_ptv_import.ptv_intermediate_storage'
+      - '@tre_ptv_import.single_item_updater'
     tags:
       - { name: drush.command }

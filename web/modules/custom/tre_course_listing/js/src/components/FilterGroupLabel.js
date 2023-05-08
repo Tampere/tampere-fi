@@ -7,6 +7,14 @@ const Label = styled.span`
   word-break: break-word;
 `;
 
+// Visibility of description (Show/Hide filters) toggled so that screenreaders
+// use the proper filter group label when announcing changes to active filters
+// (e.g. "Semester, active filters 3" instead of "Hide filters Semester,
+// active filters 3").
+const StyledAlternativeDescription = styled.span`
+  display: none;
+`;
+
 const StyledFilterGroupLabel = styled.button`
   align-items: center;
   background-color: ${props => props.isActive ? "var(--color-primary)" : "transparent"};
@@ -20,6 +28,12 @@ const StyledFilterGroupLabel = styled.button`
 
   @media screen and (min-width: 61.56rem) {
     padding: 20px 28px;
+  }
+
+  &:focus {
+    ${StyledAlternativeDescription} {
+      display: block;
+    }
   }
 
   &:focus,
@@ -76,15 +90,17 @@ const FilterGroupLabel = forwardRef((props, ref) => {
       tabIndex={index === currentActiveIndex ? null : -1}
       ref={ref}
     >
-      <span className="visually-hidden">
+      <StyledAlternativeDescription className="visually-hidden">
         { isActive ?
           Drupal.t("Hide filters", {}, { context: "Course listing assistive text for filter buttons" }) :
           Drupal.t("Show filters", {}, { context: "Course listing assistive text for filter buttons" })
         }
-      </span>
+      </StyledAlternativeDescription>
+
       <Label isActive={isActive}>
         { label }
       </Label>
+
       { hasActiveFilters &&
         <Count>
           <span className="visually-hidden">{ Drupal.t("Active filters", {}, { context: "Course listing assistive text for active filters count" }) }: </span>

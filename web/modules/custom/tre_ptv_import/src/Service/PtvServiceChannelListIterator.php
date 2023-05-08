@@ -7,7 +7,7 @@ use Drupal\tre_ptv_import\PtvV11\PtvApi\CorrectedServiceChannelApi;
 /**
  * An iterator class for PTV service channel definitions.
  */
-class PtvServiceChannelListIterator implements \Iterator {
+class PtvServiceChannelListIterator implements PtvServiceChannelListIteratorInterface {
 
   /**
    * The current position of the iterator.
@@ -74,7 +74,7 @@ class PtvServiceChannelListIterator implements \Iterator {
    * @throws \Tampere\PtvV11\ApiException
    *   If the API request fails.
    */
-  public function setGuids(array $guids) {
+  public function setGuids(array $guids): void {
     if (count($guids) > 100) {
       throw new \InvalidArgumentException("Too many guids at once.");
     }
@@ -85,35 +85,35 @@ class PtvServiceChannelListIterator implements \Iterator {
   /**
    * {@inheritdoc}
    */
-  public function current() {
+  public function current(): mixed {
     return $this->getByListPosition($this->position);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function next() {
+  public function next(): void {
     $this->position++;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function key() {
+  public function key(): int {
     return $this->position;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function rewind() {
+  public function rewind(): void {
     $this->position = 0;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function valid() {
+  public function valid(): bool {
     return !is_null($this->getByListPosition($this->position));
   }
 
@@ -131,7 +131,7 @@ class PtvServiceChannelListIterator implements \Iterator {
    *   - \Tampere\PtvV11\PtvModel\V11VmOpenApiPrintableFormChannel
    *   - \Tampere\PtvV11\PtvModel\V11VmOpenApiWebPageChannel.
    */
-  protected function getByListPosition(int $position) {
+  protected function getByListPosition(int $position): mixed {
     if (isset($this->items[$position])) {
       return $this->items[$position];
     }
@@ -145,7 +145,7 @@ class PtvServiceChannelListIterator implements \Iterator {
    * @throws \Tampere\PtvV11\ApiException
    *   If the API request fails.
    */
-  protected function getPageItems() {
+  protected function getPageItems(): void {
     $this->items = $this->apiConnection->apiV11ServiceChannelListGet($this->guids, $this->includeHeaders);
   }
 

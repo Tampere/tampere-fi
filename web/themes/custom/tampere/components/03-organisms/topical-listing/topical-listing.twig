@@ -49,6 +49,8 @@
 
 {% set topical_listing__liftup__modifiers = topical_listing__liftup__modifiers|merge([ "alt" ]) %}
 
+{% set liftups_wrapper_element = liftups_wrapper_element|default("ul") %}
+
 <div {{ bem(topical_listing__base_class, topical_listing__modifiers|default([]), topical_listing__blockname, topical_listing__extra_classes) }}>
   <div {{ bem("wrapper", topical_listing__wrapper__modifiers|default([]), topical_listing__base_class) }}>
     {# Heading #}
@@ -73,10 +75,11 @@
       } %}
     {% endif %}
     {# Liftups #}
-    <ul {{ bem("liftups", topical_listing__liftups__modifiers|default([]), topical_listing__base_class) }}>
+    <{{ liftups_wrapper_element }} {{ bem("liftups", topical_listing__liftups__modifiers|default([]), topical_listing__base_class) }}>
       {% if has_highlighted_liftup %}
         {% block highlighed_liftup %}
           {% include "@molecules/topical-card/topical-card.twig" with {
+            "display_as_list_item": topical_listing__highlighted_liftup__display_as_list_item,
             "topical_card__wrapper__modifiers": topical_listing__highlighted_liftup__modifiers,
             "topical_card__image__src": topical_listing__highlighted__image_src,
             "topical_card__modifiers": topical_listing__highlighted_liftup__modifiers,
@@ -94,6 +97,7 @@
         {% for liftup in liftups %}
           {# Topical cards support either image__src strings or image render arrays. #}
           {% include "@molecules/topical-card/topical-card.twig" with {
+            "display_as_list_item": liftup.card__display_as_list_item,
             "topical_card__link__url": liftup.card__link__url,
             "topical_card__modifiers": topical_listing__liftup__modifiers,
             "topical_card__image__src": liftup.card__image__src,
@@ -106,7 +110,7 @@
           } %}
         {% endfor %}
       {% endblock %}
-    </ul>
+    </{{ liftups_wrapper_element }}>
     {# Links #}
     {% if link_list__items %}
       {% include "@atoms/link-list/link-list.twig" with {

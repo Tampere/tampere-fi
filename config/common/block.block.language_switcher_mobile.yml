@@ -3,7 +3,6 @@ langcode: fi
 status: true
 dependencies:
   module:
-    - group
     - language
   theme:
     - tampere
@@ -18,11 +17,4 @@ settings:
   label: 'Kielen vaihtaja: mobiili'
   label_display: '0'
   provider: language
-visibility:
-  group_type:
-    id: group_type
-    group_types:
-      minisite: minisite
-    negate: false
-    context_mapping:
-      group: '@group.group_route_context:group'
+visibility: {  }

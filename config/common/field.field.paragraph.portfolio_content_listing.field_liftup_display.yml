@@ -1,0 +1,23 @@
+uuid: 8f82320d-b839-4c33-a817-70c22f40fab0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_liftup_display
+    - paragraphs.paragraphs_type.portfolio_content_listing
+  module:
+    - options
+id: paragraph.portfolio_content_listing.field_liftup_display
+field_name: field_liftup_display
+entity_type: paragraph
+bundle: portfolio_content_listing
+label: 'Nostojen esitystapa'
+description: 'Portfolio-sisältölistauksen nostot voidaan näyttää kuvien kanssa tai ilman.'
+required: true
+translatable: true
+default_value:
+  -
+    value: images
+default_value_callback: ''
+settings: {  }
+field_type: list_string

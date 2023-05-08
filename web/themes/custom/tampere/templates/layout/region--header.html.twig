@@ -90,7 +90,20 @@
     {% endblock %}
   {% endembed %}
 {% else %}
-  {% embed "@organisms/site/site-header/site-header.twig" %}
+  {% set contents_by_topic_menu_accordion_content %}
+    {{ elements.main_menu_mobile_fi }}
+    {{ elements.main_menu_mobile_en }}
+  {% endset %}
+
+  {% set life_situation_menu_accordion_content %}
+    {{ elements.life_situation_menu_mobile_fi }}
+    {{ elements.life_situation_menu_mobile_en }}
+  {% endset %}
+
+  {% embed "@organisms/site/site-header/site-header.twig" with {
+    "contents_by_topic_menu_accordion_content": contents_by_topic_menu_accordion_content,
+    "life_situation_menu_accordion_content": life_situation_menu_accordion_content,
+  } %}
     {% block header_main_logo %}
       {{ elements.tampere_branding }}
     {% endblock %}
@@ -138,18 +151,12 @@
       {{ elements.search_form }}
     {% endblock %}
 
+    {% block header_mobile_language_switcher %}
+      {{ elements.language_switcher_mobile }}
+    {% endblock %}
+
     {% block header_search_mobile %}
       {{ elements.search_form_mobile }}
-    {% endblock %}
-
-    {% block header_mobile_main_navigation %}
-      {{ elements.main_menu_mobile_fi }}
-      {{ elements.main_menu_mobile_en }}
-    {% endblock %}
-
-    {% block header_mobile_secondary_main_navigation %}
-      {{ elements.life_situation_menu_mobile_fi }}
-      {{ elements.life_situation_menu_mobile_en }}
     {% endblock %}
   {% endembed %}
 {% endif %}

@@ -38,8 +38,9 @@ const ResetButton = styled.button`
   margin: 32px 0;
   text-decoration: underline;
 
+  &:focus,
   &:hover {
-    color: #000;
+    text-decoration: none;
   }
 `;
 
@@ -48,7 +49,6 @@ export default function Filters({
   selectFilter,
   resetFilters,
   activeFilters,
-  filterItemParentNames,
   filterTypes
  }) {
   const [activeFilterGroup, setActiveFilterGroup] = useState("");
@@ -200,7 +200,6 @@ export default function Filters({
             selectFilter={selectFilter}
             activeFilters={activeFilters}
             activeFilterGroup={activeFilterGroup}
-            filterItemParentNames={filterItemParentNames}
             key={`filterGroup${filterTypeIds.get(filterType)}`}
           />
         ))

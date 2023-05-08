@@ -20,6 +20,11 @@ services:
     factory: cache_factory:get
     arguments:
       - tre_ptv_import_organization_names
+  tre_ptv_import.single_item_updater:
+    class: Drupal\tre_ptv_import\Service\SingleItemUpdater
+    arguments:
+      - '@plugin.manager.migration'
+      - '@queue'
   tre_ptv_import.import_config:
     class: Drupal\tre_ptv_import\PtvV11\PtvApi\PtvConfiguration
     arguments:

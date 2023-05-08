@@ -106,13 +106,14 @@ $pager-item-padding--desktop: 0 $space-xs;
   &__link:visited {
     color: $pager-color;
     text-decoration: none;
+
+    &.is-active {
+      font-weight: $font-weight-extra-bold;
+    }
   
     &.is-active,
     &:hover {
-      font-weight: $font-weight-extra-bold;
       text-decoration: underline;
-      text-underline-position: under;
-      text-decoration-thickness: 3px;
     }
   }
 
@@ -157,7 +158,7 @@ $pager-item-padding--desktop: 0 $space-xs;
   }
 
   // Variations:
-  &--generic-listing {
+  &--listing {
     margin-top: $space-l;
     margin-bottom: $space-l;
 

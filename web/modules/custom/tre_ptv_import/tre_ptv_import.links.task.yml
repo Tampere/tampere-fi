@@ -1,0 +1,5 @@
+tre_ptv_import.ptv_refresh_task.service:
+  title: "Refresh from PTV"
+  route_name: tre_ptv_import.ptv_refresh_task
+  base_route: entity.node.canonical
+  weight: 140

@@ -54,7 +54,14 @@
     }
   }
 
+  // Toggled with JS.
+  &__count-desc {
+    display: none;
+  }
+
   &__facet-number {
+    @include heading-medium;
+
     margin: 0;
     margin-left: $space-m;
     background-color: clr(facet);
@@ -73,56 +80,83 @@
     }
   }
 
-  &__content-item {
+  &__list {
+    @include list-reset;
+
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__list-item {
     color: clr(primary);
     border: $border-thick-primary;
-    border-radius: 64px;
+    border-radius: $space-l;
     margin: $space-xs;
-    padding: $space-xs $space-m;
+    position: relative;
     font-size: $font-18;
     display: flex;
     align-items: center;
+    text-underline-offset: 4px;
     width: fit-content;
+
+    @include large {
+      font-size: $font-20;
+    }
+
+    &:focus-within {
+      outline: 1px solid clr(focus);
+      outline-offset: var(--focus-outline-offset);
+    }
+
+    &:focus-within,
+    &:hover {
+      text-decoration: underline;
+    }
 
     &.is-active {
       background-color: clr(primary);
       color: clr(text-inverse);
-    }
+      text-decoration: underline;
 
-    a {
-      color: clr(primary);
-      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
 
       &::after {
-          display: none;
-        }
-      
-      &:hover, &:focus, &.is-active {
-        text-decoration: underline;
-        text-underline-position: under;
+        @include close-icon-white;
+
+        content: "";
+        display: inline-block;
+        margin-left: $space-s * (-1);
+        pointer-events: none;
+        position: relative;
+        right: $space-m;
+        top: 1px;
+        height: $icon-xs;
+        width: $icon-xs;
       }
 
-      &.is-active {
-        color: clr(text-inverse);
-
-        &::after {
-          margin-left: $space-xs;
-          margin-bottom: -3px;
-          content: "";
-          width: $icon-xs;
-          height: $icon-xs;
-          display: inline-block;
-
-          @include close-icon-white();
-        }
-      }
-      .facet-item__status {
-       display: none;
+      label {
+        padding-right: $space-xl;
       }
     }
 
-    @include large {
-      font-size: $font-20;
+    label,
+    .facets-checkbox {
+      cursor: pointer;
+    }
+
+    label {
+      padding: $space-xs $space-m;
+    }
+
+    .facets-checkbox {
+      position: absolute;
+      opacity: 0;
+      width: 1rem;
+      height: 1rem;
+      top: 0;
+      left: 0;
     }
   }
 }

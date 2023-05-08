@@ -7,35 +7,40 @@
   <button
     {{ bem("heading", facet_accordion_item__button__modifiers, facet_accordion_item__base_class, [ 'accordion-heading' ]) }}
     aria-controls="content-{{ id }}" 
-    aria-expanded="false" 
-    id="accordion-control-{{ id }}" 
-    {% if accordion_item_aria_label %}
-      aria-label="{{ accordion_item_aria_label }}"
-    {% endif %}
+    aria-expanded="false"
+    id="accordion-control-{{ id }}"
   >
+    <span class="visually-hidden">{{ accordion_item_aria_label }}</span>
     {% include "@atoms/02-text/00-headings/_heading.twig" with {
       "heading_level": 3,
       "heading": facet_accordion_item__title,
       "heading_blockname": facet_accordion_item__base_class,
       "heading_base_class": "title",
     } %}
-    {% include "@atoms/02-text/00-headings/_heading.twig" with {
-      "heading_level": 3,
-      "heading": "",
-      "heading_blockname": facet_accordion_item__base_class,
-      "heading_base_class": "facet-number",
+
+    {# Assistive text for active facet count #}
+    <span {{ bem("count-desc", (facet_accordion_item__count_desc__modifiers), facet_accordion_item__base_class, [ 'visually-hidden' ]) }}>
+      {{ "Active filters"|t({}, { "context": "Course listing assistive text for active filters count" }) }}: </span>
+
+    {# Active facet count updated with JS #}
+    {% include "@atoms/02-text/text/07-text-block.twig" with {
+      "text_block_element": "span",
+      "text_block_blockname": facet_accordion_item__base_class,
+      "text_block_base_class": "facet-number",
     } %}
   </button>
-  
+
   <div 
     {{ bem("content", (facet_accordion_item__content__modifiers), facet_accordion_item__base_class, [ 'accordion-content-section' ]) }} 
-    role="region" 
+    role="group"
     aria-labelledby="accordion-control-{{ id }}" 
     aria-hidden="true" 
     id="content-{{ id }}"
   >
-    {% block facet_accordion_item_content %}
-      {{ facet_accordion_item_body }}
-    {% endblock %}
+    <ul {{ bem("list", (facet_accordion_item__list__modifiers), facet_accordion_item__base_class) }}>
+      {% block facet_accordion_item_content %}
+        {{ facet_accordion_item_body }}
+      {% endblock %}
+    </ul>
   </div>
 </div>

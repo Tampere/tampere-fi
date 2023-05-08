@@ -98,4 +98,10 @@
       }
     }
   }
+
+  &--without-liftups-grid {
+    #{$base_class}__liftups {
+      display: block;
+    }
+  }
 }

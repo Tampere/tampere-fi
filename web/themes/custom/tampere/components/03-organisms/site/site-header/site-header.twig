@@ -77,8 +77,7 @@
               {% block header_secondary_main_navigation %}
                 {% include "@molecules/menus/main-menu/main-menu.twig" with {
                   "main_menu_title_id": "life-situation-menu-title",
-                  "main_menu_title": "Services in different life situations"|t,
-                  "main_menu_title": header__secondary_main_menu__title,
+                  "main_menu_title": header__secondary_main_menu__title|default("Services in different life situations"|t),
                   "main_menu_modifiers": [ "secondary" ],
                 } %}
               {% endblock %}
@@ -86,25 +85,44 @@
           </div>
           {# Desktop navigation container ends #}
         </div>
+
+        {# Desktop search #}
         <div {{ bem("search", [ "desktop" ], header__base_class)}}>
           {% block header_search %}{% endblock %}
         </div>
+
+        {# Mobile language switcher #}
+        <div {{ bem("language-switcher", [ "mobile" ], header__base_class)}}>
+          {% block header_mobile_language_switcher %}
+            {% include "@molecules/language-switcher/language-switcher.twig" with {
+              "links": header__language__links,
+              "current_language_code": header__current_language__code,
+              "current_language_name": header__current_language__name,
+            } %}
+          {% endblock %}
+        </div>
+
+        {# Mobile menu button #}
         <div {{ bem("menu", [ "mobile" ], header__base_class)}}>
           {% include "@molecules/menu-button/menu-button.twig" with {
-            menu_button_controls: header_navigation_container_mobile_id,
-            menu_button__modifiers: [ "mobile" ],
+            "menu_button_controls": header_navigation_container_mobile_id,
+            "menu_button__modifiers": [ "mobile" ],
           } %}
         </div>
+
+        {# Mobile search #}
         <div {{ bem("search", [ "mobile" ], header__base_class)}}>
           {% block header_search_mobile %}{% endblock %}
         </div>
+
+        {# Desktop secondary navigation #}
         <div {{ bem("secondary-navigation", (header__secondary_navigation__modifiers|default([])), header__base_class)}}>
           {% block header_secondary_navigation %}
             {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
-              inline_menu_label_id: "secondary-navigation-label",
-              inline_menu_aria_label: "Secondary menu"|t,
-              inline_menu_items: header__inline__items,
-              menu_modifiers: header__inline__modifiers,
+              "inline_menu_label_id": "secondary-navigation-label",
+              "inline_menu_aria_label": "Secondary menu"|t,
+              "inline_menu_items": header__inline__items,
+              "menu_modifiers": header__inline__modifiers,
             } %}
           {% endblock %}
         </div>
@@ -113,24 +131,50 @@
 
     {# Mobile navigation container begins #}
     <div id="{{ header_navigation_container_mobile_id }}" {{ bem("navigation-container", [ "mobile" ], header__base_class, [ "is-closed" ])}} tabindex="-1">
-      <div {{ bem("mobile-quick-links-and-language", (header__mobile_quick_links_and_language__modifiers|default([])), header__base_class)}}>
-        <div {{ bem("quick-links", [ "mobile" ], header__base_class)}}>
-          {% block header_mobile_quick_links %}
-            {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
-              inline_menu_label_id: "header-quick-links-label",
-              inline_menu_items: header__secondary_inline__items,
-              menu_modifiers: header__secondary_menu__modifiers,
-            } %}
-          {% endblock %}
-        </div>
-      </div>
+      {# Main and life situation navigation for mobile #}
       <div {{ bem("main-navigation", [ "mobile" ], header__base_class)}}>
-        {% block header_mobile_main_navigation %}
-          {% include "@molecules/menus/main-menu/main-menu.twig" with {
-            "main_menu_label_id": "main-menu-label",
-          } %}
-        {% endblock %}
+        {% embed "@organisms/accordion/accordion.twig" with {
+          "ac_modifiers": [ "navigation" ],
+        } %}
+          {% block accordion_items %}
+            {% embed "@organisms/accordion/accordion-item.twig" with {
+              "accordion_heading": "Topics"|t({}, {"context": "Mobile navigation label for main menu"}),
+              "accordion_content": contents_by_topic_menu_accordion_content,
+              "accordion_item_h_element": "div",
+              "id": "contents-by-topic-menu-accordion",
+            } %}
+              {% block accordion_item_content %}
+                {% if contents_by_topic_menu_accordion_content %}
+                  {{ parent() }}
+                {% else %}
+                  {% include "@molecules/menus/main-menu/main-menu.twig" with {
+                    "main_menu_label_id": "main-menu-label",
+                  } %}
+                {% endif %}
+              {% endblock %}
+            {% endembed %}
+
+            {% embed "@organisms/accordion/accordion-item.twig" with {
+              "accordion_heading": "Services in different life situations"|t({}, {"context": "Mobile navigation label for life situation menu"}),
+              "accordion_content": life_situation_menu_accordion_content,
+              "accordion_item_h_element": "div",
+              "id": "life-situation-menu-accordion",
+            } %}
+              {% block accordion_item_content %}
+                {% if life_situation_menu_accordion_content %}
+                  {{ parent() }}
+                {% else %}
+                  {% include "@molecules/menus/main-menu/main-menu.twig" with {
+                    "main_menu_label_id": "life-situation-menu-title",
+                  } %}
+                {% endif %}
+              {% endblock %}
+            {% endembed %}
+          {% endblock %}
+        {% endembed %}
       </div>
+
+      {# Mobile secondary navigation #}
       <div {{ bem("secondary-navigation", [ "mobile" ], header__base_class)}}>
         {% block header_mobile_secondary_navigation %}
           {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
@@ -140,13 +184,14 @@
           } %}
         {% endblock %}
       </div>
-      <div {{ bem("secondary-main-navigation", [ "mobile" ], header__base_class)}}>
-        {% block header_mobile_secondary_main_navigation %}
-          {% include "@molecules/menus/main-menu/main-menu.twig" with {
-            "main_menu_id": "mobile-secondary-main-menu",
-            "main_menu_title_id": "life-situation-menu-title",
-            "main_menu_title": header__secondary_main_menu__title,
-            "main_menu_modifiers": [ "secondary" ],
+
+      {# Mobile quick links #}
+      <div {{ bem("quick-links", [ "mobile" ], header__base_class)}}>
+        {% block header_mobile_quick_links %}
+          {% include "@molecules/menus/inline-menu/inline-menu.twig" with {
+            inline_menu_label_id: "header-quick-links-label",
+            inline_menu_items: header__secondary_inline__items,
+            menu_modifiers: header__secondary_menu__modifiers,
           } %}
         {% endblock %}
       </div>

@@ -60,6 +60,7 @@ mode: search_result
 content: {  }
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_additional_information: true
   field_address: true
   field_description: true

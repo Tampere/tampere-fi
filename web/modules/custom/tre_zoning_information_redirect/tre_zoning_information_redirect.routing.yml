@@ -1,0 +1,12 @@
+tre_zoning_information_redirect.zoning_information_paths:
+  path: '/kaavat/{plan_number}'
+  defaults:
+    _controller: '\Drupal\tre_zoning_information_redirect\Controller\ZoningInformationController::redirectToNode'
+    _title: 'View Zoning information node'
+  requirements:
+    _permission: 'access content'
+    plan_number: '[a-zA-Z0-9\-]+'
+  options:
+    parameters:
+      plan_number:
+        type: string

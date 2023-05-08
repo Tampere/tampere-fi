@@ -32,10 +32,21 @@ $inline-menu-item-margin-right: $space-m;
   }
 }
 
+.inline-navigation {
+  @include large-down {
+    width: 100%;
+  }
+}
+
 .inline-menu {
   $base_class: &;
   
   @include inline-default;
+
+  #{$base_class}__icon {
+    display: none;
+    pointer-events: none;
+  }
 
   &--footer {
     font-family: $font-body;
@@ -61,17 +72,44 @@ $inline-menu-item-margin-right: $space-m;
     }
   }
 
+  &--main-secondary,
+  &--main {
+    #{$base_class}__item {
+      @include large-down {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 0;
+      }
+    }
+  }
+
   &--main-secondary {
+    #{$base_class}__item {
+      justify-content: center;
+    }
+
+    #{$base_class}__icon {
+      @include large-down {
+        display: block;
+      }
+    }
+
     #{$base-class}__link {
       @include link(clr(text-inverse), clr(text-inverse));
+
+      @include large-down {
+        margin-right: calc($icon-menu-item--small + $space-m) * (-1);
+        padding: $space-xs calc($icon-menu-item--small + $space-m) $space-xs $space-m;
+      }
+
+      @include large {
+        @include link(clr(text), clr(text));
+      }
 
       &:hover,
       &:focus {
         text-decoration: underline;
-      }
-
-      @include large {
-        @include link(clr(text));
       }
 
       &--is-active {
@@ -81,38 +119,62 @@ $inline-menu-item-margin-right: $space-m;
         }
       }
     }
+
+    #{$base_class}__icon {
+      color: clr(text-inverse);
+      height: $icon-menu-item--small;
+      margin-left: $space-xs;
+      width: $icon-menu-item--small;
+
+      @include large-down {
+        display: block;
+      }
+    }
   }
 
   &--main {
     font-size: $inline-menu-mobile-main-font-size;
 
     @include large-down {
-      background-color: clr(primary);
-      padding: $space-l;
+      background-color: clr(background);
+      margin-top: $space-s;
+      margin-bottom: $space-s;
     }
 
     @include large {
       font-size: $inline-menu-desktop-main-font-size;
     }
 
-    #{$base-class}__item {
-      display: block;
+    #{$base_class}__icon {
+      @include large-down {
+        display: block;
+      }
+    }
 
+    #{$base-class}__item {
       @include large {
         display: inline;
       }
 
       + #{$base-class}__item {
-        margin-top: $space-m;
+        @include large {
+          margin-top: $space-m;
+        }
       }
     }
 
     #{$base-class}__link {
+      @include link(clr(text), clr(text));
+
       display: block;
 
-      @include large {
-        @include link(clr(text));
+      @include large-down {
+        margin-right: calc($icon-menu-item + $space-m-plus) * (-1);
+        padding: $space-xs-plus $space-m-plus;
+        width: 100%;
+      }
 
+      @include large {
         display: inline-block;
 
         &:hover,
@@ -129,6 +191,18 @@ $inline-menu-item-margin-right: $space-m;
         }
       }
     }
+
+    #{$base_class}__icon {
+      color: clr(primary);
+      height: $icon-menu-item;
+      margin-right: $space-m-plus;
+      margin-left: auto;
+      width: $icon-menu-item;
+
+      @include large-down {
+        display: block;
+      }
+    }
   }
 
   &--main,
@@ -140,8 +214,6 @@ $inline-menu-item-margin-right: $space-m;
     }
 
     #{$base-class}__link {
-      @include link(clr(text-inverse), clr(text-inverse));
-
       position: relative;
 
       &:hover,
@@ -150,7 +222,7 @@ $inline-menu-item-margin-right: $space-m;
       }
 
       @include large {
-        @include link(clr(text));
+        @include link(clr(text), clr(text));
 
         display: inline-block;
 
@@ -193,7 +265,6 @@ $inline-menu-item-margin-right: $space-m;
       @include link(clr(text-inverse), clr(text-inverse));
 
       display: inline-block;
-      position: relative;
 
       &:hover,
       &:focus {

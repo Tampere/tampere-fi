@@ -123,7 +123,8 @@ process:
       index:
         - 0
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
   field_service_hours_overnight:
     -
       plugin: extract
@@ -132,7 +133,8 @@ process:
       index:
         - 0
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
   field_exception_hours:
     plugin: get
     source: exception_hours_info

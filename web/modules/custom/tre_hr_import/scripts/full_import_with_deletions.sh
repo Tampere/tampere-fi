@@ -31,7 +31,7 @@ elif [ "$PERCENTAGE" -lt "$MINIMUM_PERCENTAGE" ]; then
   echo "$(date '+%Y-%m-%d %H:%M:%S') Under $MINIMUM_PERCENTAGE % of lines in CSV, so bailing out. Mailing summary of percentage to $MAIL_ERROR to signal that no further action was taken."
   echo "$(date '+%Y-%m-%d %H:%M:%S') Only $NUMBER_OF_ROWS_STRING lines in the CSV ($COMBINED_CSV_PATH), which would mean that only $PERCENTAGE percent of person nodes would remain in the system after the import (the rest would get deleted)." |mail -s 'TRE HR Import canceled' "$MAIL_ERROR"
 else
-  # Since we're using Drush 10, instead of migrate_tools, the switch to use is --delete and not --sync.
+  # Since we're using migrate_tools and since it overrides Drush built-in commands, the switch to use is --sync.
   # The set -e will prevent the following lines from running in case drush returns with a non-zero exit code.
   # This can happen e.g. when the script runs into a database deadlock situation, which is beyond our control.
   # Therefore we append a '|| true' to make it appear to bash like everything is good.
@@ -40,7 +40,7 @@ else
   echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to reset migration just in case it has gotten stuck previously..."
   sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:reset ipaas_import_csv || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to import new and updated lines, and delete the ones missing, from CSV..."
-  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --delete --update --no-progress ipaas_import_csv || true
+  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --sync --update --skip-progress-bar ipaas_import_csv || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') Drush command run."
 fi
 

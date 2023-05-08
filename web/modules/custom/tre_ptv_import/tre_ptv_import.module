@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for the tre_ptv_import module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface;
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function tre_ptv_import_entity_type_build(array &$entity_types) {
+  if (isset($entity_types['node'])) {
+    $entity_types['node']->setFormClass('tre_ptv_import_refresh', 'Drupal\tre_ptv_import\Form\PtvRefreshForm');
+  }
+
+}
+
+/**
+ * Implements hook_entity_operation().
+ */
+function tre_ptv_import_entity_operation(EntityInterface $entity) {
+  $operations = [];
+
+  // Only add an operation for node entities.
+  if ($entity->getEntityTypeId() !== 'node') {
+    return $operations;
+  }
+
+  if (!_tre_ptv_import_has_refresh_permission($entity)) {
+    return $operations;
+  }
+
+  $operations['tre_ptv_import_refresh'] = [
+    'title' => t('Refresh from PTV'),
+    'weight' => '101',
+    'url' => Url::fromRoute('tre_ptv_import.ptv_refresh_task', ['node' => $entity->id()]),
+  ];
+
+  return $operations;
+}
+
+/**
+ * Checks current user's access to update the entity from the PTV API.
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
+ *   The node to check for access.
+ *
+ * @return bool
+ *   TRUE if the current user has the permission to update current content type
+ *   and if the content item in question is updateable from the PTV API.
+ */
+function _tre_ptv_import_has_refresh_permission(EntityInterface $entity) {
+  if (!($entity instanceof NodeInterface)) {
+    return FALSE;
+  }
+
+  $user_has_access = $entity->access('update');
+  $correct_content_type = $user_has_access && in_array($entity->bundle(), array_keys(SingleItemUpdaterInterface::CONTENT_TYPES_TO_MIGRATIONS_MAP), TRUE);
+  // Only proceed to checking for migration map in case we're checking a
+  // correct content type.
+  return $correct_content_type && \Drupal::service('tre_ptv_import.single_item_updater')->checkMigrationSource($entity);
+}

@@ -1,0 +1,23 @@
+uuid: 07d6bfeb-375f-4ed0-8188-0e106978e8c5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_previous_content_link
+    - paragraphs.paragraphs_type.portfolio_content_listing
+id: paragraph.portfolio_content_listing.field_hide_previous_content_link
+field_name: field_hide_previous_content_link
+entity_type: paragraph
+bundle: portfolio_content_listing
+label: 'Piilota aiemmat sisällöt -linkki'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

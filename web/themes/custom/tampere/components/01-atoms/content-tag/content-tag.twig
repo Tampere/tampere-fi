@@ -1,0 +1,13 @@
+{% set content_tag__base_class = "content-tag" %}
+
+<div {{ bem(content_tag__base_class, content_tag__modifiers|default([]), content_tag__blockname)}}>
+  {% for tag in content_tag__tags %}
+    {% if tag is not empty %}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        "text_block_base_class": content_tag__tag__base_class|default("item"),
+        "text_block_blockname": content_tag__base_class,
+        "text_block_content": tag,
+      } %}
+    {% endif %}
+  {% endfor %}
+</div>

@@ -1,6 +1,19 @@
 {% set topical_card__base_class = "topical-card" %}
 
-<li {{ bem(topical_card__wrapper__blockname|default("wrapper"), topical_card__wrapper__modifiers|default([ variant ]), topical_card__wrapper__base_class|default(topical_card__base_class)) }}>
+{% if not topical_card__wrapper__modifiers %}
+  {% set topical_card__wrapper__modifiers = [] %}
+{% endif %}
+
+{% set topical_card__wrapper__modifiers = topical_card__wrapper__modifiers|merge([ variant ]) %}
+
+{% if display_as_list_item %}
+  {% set wrapper_element = "li" %}
+{% else %}
+  {% set wrapper_element = "div" %}
+  {% set topical_card__wrapper__modifiers = topical_card__wrapper__modifiers|merge([ "with-margin-bottom" ]) %}
+{% endif %}
+
+<{{ wrapper_element }} {{ bem(topical_card__wrapper__blockname|default("wrapper"), topical_card__wrapper__modifiers, topical_card__wrapper__base_class|default(topical_card__base_class)) }}>
   <a {{ bem(topical_card__base_class, topical_card__modifiers|default([ variant ]), topical_card__blockname)}} href="{{ topical_card__link__url }}">
     {# Content starts #}
     <div {{ bem("content", topical_card__content__modifiers|default([]), topical_card__base_class) }}>
@@ -56,4 +69,4 @@
       </div>
     {% endif %}
   </a>
-</li>
+</{{ wrapper_element }}>

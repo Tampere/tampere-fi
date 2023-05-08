@@ -67,10 +67,6 @@
     background-color: clr(accent-secondary);
     border: 0;
 
-    #{$base_class}__heading-link {
-      @include contact-card-heading-link($underline-color: clr(primary));
-    }
-
     #{$base_class}__columns {
       @include large {
         margin-right: $space-l;

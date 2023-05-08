@@ -104,7 +104,12 @@ $header-secondary-inline-padding: 13px;
     }
 
     &--mobile {
-      display: block;
+      @include dynamic-color(secondary, $set-main-property: false);
+
+      background-color: clr(secondary);
+      display: flex;
+      padding: $space-s;
+      line-height: 1;
 
       @include large {
         display: none;
@@ -113,10 +118,23 @@ $header-secondary-inline-padding: 13px;
   }
 
   &__language-switcher {
+    display: none;
     margin-right: $space-s;
 
     @include large {
+      display: block;
       padding-top: $header-secondary-inline-padding;
+    }
+
+    &--mobile {
+      align-items: center;
+      display: flex;
+      margin-right: auto;
+      margin-left: $space-xs-plus * (-1);
+
+      @include large {
+        display: none;
+      }
     }
   }
 
@@ -190,36 +208,34 @@ $header-secondary-inline-padding: 13px;
   }
 
   &__navigation-container {
+    background-color: clr(background);
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 15;
+
+    @include large {
+      box-shadow: 0 8px 4px 0 clr(border-transparent);
+      margin-top: $gutter-mobile;
+    }
+
     // Not an interactable element, but Safari shows the outline
     // because of the negative tab index.
     &:focus {
       outline: none;
     }
 
-    @include large {
-      background-color: clr(background);
-      box-shadow: 0 8px 4px 0 clr(border-transparent);
-      position: absolute;
-      left: 0;
-      right: 0;
-      width: 100%;
-      z-index: 5;
-      margin-top: $gutter-mobile;
-    }
-
     &.is-closed {
       display: none;
     }
+
+    &--mobile {
+      box-shadow: 0 5px 6px 0 clr(border-transparent);
+    }
   }
 
-  &__mobile-quick-links-and-language {
-    @include dynamic-color(secondary, $set-main-property: false);
-
-    background-color: clr(secondary);
-    display: flex;
-    padding: $space-s;
-    line-height: 1;
-
+  &__main-navigation--mobile {
     @include large {
       display: none;
     }

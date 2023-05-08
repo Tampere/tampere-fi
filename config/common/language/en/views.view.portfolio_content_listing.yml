@@ -1,0 +1,14 @@
+label: 'Portfolio content listing'
+description: 'Used in the Portfolio content listing paragraph to display content.'
+display:
+  default:
+    display_options:
+      title: 'Portfolio content listing'
+  liftups_with_image_and_date:
+    display_title: 'Liftups with image and date'
+  liftups_without_image_with_date:
+    display_title: 'Liftups without image with date'
+  liftups_with_image_without_date:
+    display_title: 'Liftups with image without date'
+  liftups_without_image_and_date:
+    display_title: 'Liftups without image and date'

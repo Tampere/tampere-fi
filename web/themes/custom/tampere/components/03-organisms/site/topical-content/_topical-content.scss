@@ -12,6 +12,17 @@
     }
   }
 
+  &__tags,
+  &__summary {
+    margin-top: $gutter-small;
+    margin-bottom: $gutter-small;
+
+    @include large {
+      margin-top: $gutter-medium;
+      margin-bottom: $gutter-medium;
+    }
+  }
+
   &__main-content > *:not(.field-authors) {
     @include page-element-spacer;
   }

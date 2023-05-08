@@ -27,7 +27,7 @@ hierarchy:
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 widget:
-  type: links
+  type: checkbox
   config:
     show_numbers: false
     soft_limit: 0
@@ -49,6 +49,11 @@ processor_configs:
       sort: 40
     settings:
       sort: ASC
+  hierarchy_processor:
+    processor_id: hierarchy_processor
+    weights:
+      build: 100
+    settings: {  }
   translate_entity:
     processor_id: translate_entity
     weights:

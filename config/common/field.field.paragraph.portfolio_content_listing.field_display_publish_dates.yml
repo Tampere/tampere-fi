@@ -1,0 +1,23 @@
+uuid: 40b3e831-6bde-4e9e-bfb1-4a6953ef9a37
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_publish_dates
+    - paragraphs.paragraphs_type.portfolio_content_listing
+id: paragraph.portfolio_content_listing.field_display_publish_dates
+field_name: field_display_publish_dates
+entity_type: paragraph
+bundle: portfolio_content_listing
+label: 'Näytä sisältöjen julkaisupäivämäärät listauksessa'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

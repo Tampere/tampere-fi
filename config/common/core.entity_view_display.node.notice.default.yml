@@ -54,8 +54,9 @@ third_party_settings:
         - field_main_image
       main_image_caption:
         - field_media_caption
-      main_content:
+      main_title:
         - node_title
+      main_content:
         - group_dates
         - field_time_limit
         - field_display_period
@@ -269,6 +270,7 @@ content:
     region: publication_date
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_date_of_publication: true
   field_geographical_areas: true
   field_help_text: true

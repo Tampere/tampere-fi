@@ -1,0 +1,10 @@
+uuid: deb256d8-2a53-482f-976e-9985d93f698f
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.current_liftup_wo_date_view_mode
+label: 'Ajankohtaisnosto ilman päivämäärää'
+targetEntityType: node
+cache: true

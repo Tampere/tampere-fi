@@ -1,0 +1,18 @@
+uuid: 9392044f-5899-4ce9-b6b0-7fe7bd06d88f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.portfolio_content_listing
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.portfolio_content_listing
+target_entity_type_id: paragraph
+target_bundle: portfolio_content_listing
+default_langcode: current_interface
+language_alterable: true

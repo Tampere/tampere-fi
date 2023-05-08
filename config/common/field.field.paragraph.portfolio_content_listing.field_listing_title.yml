@@ -1,0 +1,19 @@
+uuid: 2abd3cd4-af51-40be-8981-7b1e24421ddf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_listing_title
+    - paragraphs.paragraphs_type.portfolio_content_listing
+id: paragraph.portfolio_content_listing.field_listing_title
+field_name: field_listing_title
+entity_type: paragraph
+bundle: portfolio_content_listing
+label: 'Listauksen otsikko'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

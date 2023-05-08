@@ -27,8 +27,11 @@
 {% set li_blockname = item_blockname %}
 
 {% if menu_class == "main-menu" %}
-  {% set is_main_menu = TRUE %}
   {% set use_menu_item_container = TRUE %}
+{% endif %}
+
+{% if menu_class == "inline-menu" or menu_class == "main-menu" %}
+  {% set display_menu_item_icon = TRUE %}
 {% endif %}
 
 {% if menu_class == "sidebar-menu" %}
@@ -71,7 +74,7 @@
       } %}
     {% endif %}
 
-    {% if is_main_menu and not hide_menu_link %}
+    {% if display_menu_item_icon and not hide_menu_link %}
       {% include "@atoms/04-images/icons/_icon.twig" with {
         icon_base_class: item_base_class|default(menu_class ~ "__icon"),
         icon_name: "arrow",

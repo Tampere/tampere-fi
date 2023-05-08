@@ -1,0 +1,5 @@
+name: 'TRE Zoning Information Redirect'
+type: module
+description: 'Custom module for handling redirects for Zoning information content.'
+core_version_requirement: '>=9.3'
+package: 'TRE'

@@ -1,0 +1,56 @@
+uuid: 39f21a9c-bfea-40de-bca5-0560c11ccafb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.portfolio_content_listing.field_display_archive_link
+    - field.field.paragraph.portfolio_content_listing.field_display_publish_dates
+    - field.field.paragraph.portfolio_content_listing.field_geographical_areas
+    - field.field.paragraph.portfolio_content_listing.field_hide_previous_content_link
+    - field.field.paragraph.portfolio_content_listing.field_highlighted_content
+    - field.field.paragraph.portfolio_content_listing.field_keywords
+    - field.field.paragraph.portfolio_content_listing.field_life_situations
+    - field.field.paragraph.portfolio_content_listing.field_liftup_display
+    - field.field.paragraph.portfolio_content_listing.field_listing_title
+    - field.field.paragraph.portfolio_content_listing.field_minisites
+    - field.field.paragraph.portfolio_content_listing.field_omitted_nodes
+    - field.field.paragraph.portfolio_content_listing.field_portfolio_liftup_amount
+    - field.field.paragraph.portfolio_content_listing.field_topics
+    - paragraphs.paragraphs_type.portfolio_content_listing
+  module:
+    - ds
+id: paragraph.portfolio_content_listing.default
+targetEntityType: paragraph
+bundle: portfolio_content_listing
+mode: default
+content:
+  field_highlighted_content:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: highlighted_current_liftup
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: content
+hidden:
+  field_display_archive_link: true
+  field_display_publish_dates: true
+  field_geographical_areas: true
+  field_hide_previous_content_link: true
+  field_keywords: true
+  field_life_situations: true
+  field_liftup_display: true
+  field_listing_title: true
+  field_minisites: true
+  field_omitted_nodes: true
+  field_portfolio_liftup_amount: true
+  field_topics: true
+  search_api_excerpt: true

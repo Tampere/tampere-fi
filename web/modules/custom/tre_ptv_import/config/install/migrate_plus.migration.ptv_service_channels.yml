@@ -127,7 +127,8 @@ process:
       index:
         - 0
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
 
   field_service_hours_overnight:
     # As the field only supports 1 value, we extract the first value from the input array.
@@ -138,7 +139,8 @@ process:
       index:
         - 0
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
 
   # The source exists as an array and the destination field is a multi-value field with cardinality -1.
   field_exception_hours:

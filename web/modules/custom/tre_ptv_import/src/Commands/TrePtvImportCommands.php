@@ -5,9 +5,11 @@ namespace Drupal\tre_ptv_import\Commands;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\node\NodeInterface;
 use Drupal\tre_ptv_import\PtvServiceIntermediateStorageInterface;
+use Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface;
 use Drush\Commands\DrushCommands;
-use InvalidArgumentException;
+use Drush\Exceptions\CommandFailedException;
 
 /**
  * Drush commandfile for the tre_hr_import module.
@@ -29,11 +31,40 @@ class TrePtvImportCommands extends DrushCommands {
   private PtvServiceIntermediateStorageInterface $ptvStorage;
 
   /**
+   * The PTV single item updater service.
+   *
+   * @var \Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface
+   */
+  private SingleItemUpdaterInterface $ptvUpdater;
+
+  /**
    * Constructs the commands object.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, PtvServiceIntermediateStorageInterface $ptv_storage) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, PtvServiceIntermediateStorageInterface $ptv_storage, SingleItemUpdaterInterface $ptv_updater) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');
     $this->ptvStorage = $ptv_storage;
+    $this->ptvUpdater = $ptv_updater;
+  }
+
+  /**
+   * Queues a single node for direct update from the PTV API.
+   *
+   * @param int $nid
+   *   The node id of the node to update.
+   *
+   * @command tre_ptv_import:update_single_node
+   * @aliases ptv_single_node_update
+   *
+   * @throws \Drush\Exceptions\CommandFailedException
+   */
+  public function updateSingleNode(int $nid) {
+    $node = $this->nodeStorage->load($nid);
+    if (!($node instanceof NodeInterface) || !$this->ptvUpdater->checkMigrationSource($node)) {
+      throw new CommandFailedException("Given node is not refreshable from PTV.");
+    }
+
+    $this->ptvUpdater->updateSingleItem($node);
+    $this->logger()->success("Queued node $nid to update from PTV.");
   }
 
   /**
@@ -54,18 +85,21 @@ class TrePtvImportCommands extends DrushCommands {
    * @aliases ptv_data_refresh
    */
   public function refreshPtvServicesAndServiceChannels($service_ids = 'all') {
+    $refresh_requested = $this->input()->hasOption('refresh-cache');
     if ($service_ids !== 'all') {
-      // @todo Create method for updating single service
-      return;
+      $uuids = str_getcsv($service_ids);
+      $services = $this->ptvStorage->getSpecificServicesFromApi($uuids);
+    }
+    else {
+      $services = $this->ptvStorage->getServicesFromApi($refresh_requested);
     }
 
-    $refresh_requested = $this->input()->hasOption('refresh-cache');
-    $services = $this->ptvStorage->getServicesFromApi($refresh_requested);
-
     if (is_array($services) && count($services) > 0) {
-      // @todo Implement checking for amount of services so as to avoid wiping
-      // everything.
-      $this->ptvStorage->wipePtvData();
+      // Only clean the intermediate tables in case _all_ services are being
+      // updated.
+      if ($service_ids === 'all') {
+        $this->ptvStorage->wipePtvData();
+      }
 
       $this->ptvStorage->insertServices($services);
       $service_chunks = array_chunk($services, Settings::get('ptv_service_import_batch_size', 50));
@@ -109,11 +143,11 @@ class TrePtvImportCommands extends DrushCommands {
    */
   public function debugSingleItem(string $type, string $storage, string $id) {
     if (!in_array($type, ['service', 'channel'], TRUE)) {
-      throw new InvalidArgumentException("Invalid type requested. Use either 'service' or 'channel'.");
+      throw new \InvalidArgumentException("Invalid type requested. Use either 'service' or 'channel'.");
     }
 
     if (!in_array($storage, ['api', 'db'])) {
-      throw new InvalidArgumentException("Invalid storage requested. Use either 'api' or 'db'.");
+      throw new \InvalidArgumentException("Invalid storage requested. Use either 'api' or 'db'.");
     }
 
     switch ($type) {

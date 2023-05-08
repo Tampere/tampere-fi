@@ -81,8 +81,14 @@ function handleHeaderBodyInteraction(event) {
  *   The event on site header.
  */
 function handleHeaderFocusOut(event) {
-  const header = event.currentTarget;
-  if (!header.contains(event.relatedTarget)) {
+  const header = document.getElementById('site-header');
+  // The site-header navigation container on mobile now contains
+  // accordions that will trigger the focusout event. It is necessary to ensure
+  // that the event wasn't caused by the accordions so that the menu button
+  // works correctly on iOS devices.
+  const focusOutNotCausedByNavigationAccordion = !event.originalTarget.classList.contains('accordion__heading');
+
+  if (!header.contains(event.relatedTarget) && focusOutNotCausedByNavigationAccordion) {
     const expandedNavContainerButton = header.querySelector(
       '.menu-button[aria-expanded=true]'
     );
@@ -118,13 +124,11 @@ Drupal.behaviors.siteHeader = {
       if (menuButtons) {
         menuButtons.forEach((menuButton) => {
           menuButton.addEventListener('click', handleMenuButtonInteraction);
-          menuButton.addEventListener('tap', handleMenuButtonInteraction);
         });
       }
 
       if (bodyElem) {
         bodyElem.addEventListener('click', handleHeaderBodyInteraction);
-        bodyElem.addEventListener('tap', handleHeaderBodyInteraction);
       }
 
       siteHeader.addEventListener('focusout', handleHeaderFocusOut);

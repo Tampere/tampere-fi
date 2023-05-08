@@ -8,6 +8,10 @@ topical_content:
     blog:
       label: Blog
   fields:
+    main_title:
+      label: Main title
+    summary:
+      label: Summary
     main_image_tag:
       label: Main image tag
     main_image_optional_tag:

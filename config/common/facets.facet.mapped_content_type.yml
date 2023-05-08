@@ -27,7 +27,7 @@ hierarchy:
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 widget:
-  type: links
+  type: checkbox
   config:
     show_numbers: false
     soft_limit: 0
@@ -63,6 +63,11 @@ processor_configs:
       build: 50
     settings:
       replacement_values: "r|blog_article|Blogiartikkeli\r\nr|front_page|Etusivu\r\nr|news_item|Uutinen\r\nr|notice|Ilmoitus\r\nr|rich_article|Artikkeli\r\nr|page|Sivu"
+  hierarchy_processor:
+    processor_id: hierarchy_processor
+    weights:
+      build: 100
+    settings: {  }
   url_processor_handler:
     processor_id: url_processor_handler
     weights:

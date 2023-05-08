@@ -70,22 +70,31 @@ Drupal.behaviors.facetAccordion = {
         `#${contentId}`
       );
 
-      const activeContentItems = content.querySelectorAll(
-        '.facet-accordion-item__content-item .is-active'
+      const activeItems = content.querySelectorAll(
+        '.facet-accordion-item__list-item .is-active'
       );
 
-      // Add 'is-active' class to all active content item parents for styling.
-      activeContentItems.forEach(item => item.parentElement?.classList.add('is-active'));
+      // Add 'is-active' class to all active item parents for styling.
+      activeItems.forEach(item => item.parentElement?.classList.add('is-active'));
 
-      if (activeContentItems.length > 0) {
+      if (activeItems.length > 0) {
         const headingFacetNumber = heading.querySelector('.facet-accordion-item__facet-number');
+        const headingFacetNumberDescription = heading.querySelector('.facet-accordion-item__count-desc');
 
-        headingFacetNumber.textContent = activeContentItems.length;
+        headingFacetNumber.textContent = activeItems.length;
         headingFacetNumber.style.display = 'block';
+        headingFacetNumberDescription.style.display = 'block';
       }
     }
 
-    once('facet-accordion-item-headings', '.facet-accordion-item__heading', context).forEach(heading => {
+    let accordionHeadings;
+    try {
+      accordionHeadings = once('facet-accordion-item-headings', '.facet-accordion-item__heading', context);
+    } catch (error) {
+      accordionHeadings = document.querySelectorAll('.facet-accordion-item__heading');
+    }
+
+    accordionHeadings?.forEach(heading => {
       // Move facet accordion headings inside 'facet-accordion__headings' class
       // in order to style them separately from facet accordion items.
       const facetAccordionHeadingsContainer = document.querySelector('.facet-accordion__headings');

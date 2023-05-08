@@ -2,13 +2,15 @@
 
 namespace Drupal\tre_ptv_import\Service;
 
+use Drupal\tre_ptv_import\PtvServiceSingleFetcherInterface;
 use Tampere\PtvV11\PtvApi\ServiceApi;
+use Tampere\PtvV11\PtvModel\V11VmOpenApiService;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiServicesWithPaging;
 
 /**
  * An iterator class for PTV service definitions.
  */
-class PtvServiceListIterator implements \Iterator {
+class PtvServiceListIterator implements PtvServiceSingleFetcherInterface {
 
   /**
    * The current position of the iterator.
@@ -109,28 +111,28 @@ class PtvServiceListIterator implements \Iterator {
   /**
    * {@inheritdoc}
    */
-  public function current() {
+  public function current(): mixed {
     return $this->getByListPosition($this->position);
   }
 
   /**
    * {@inheritdoc}
    */
-  public function next() {
+  public function next(): void {
     $this->position++;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function key() {
+  public function key(): mixed {
     return $this->position;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function rewind() {
+  public function rewind(): void {
     $this->position = 0;
   }
 
@@ -143,7 +145,7 @@ class PtvServiceListIterator implements \Iterator {
    * @return \Tampere\PtvV11\PtvModel\V11VmOpenApiService|null
    *   The service definition from the given position in the list or NULL.
    */
-  protected function getByListPosition(int $position) {
+  protected function getByListPosition(int $position): ?V11VmOpenApiService {
     if (empty($this->items)) {
       $this->getPageItems();
     }
@@ -160,7 +162,7 @@ class PtvServiceListIterator implements \Iterator {
    * @throws \Tampere\PtvV11\ApiException
    *   If the API request fails.
    */
-  protected function getPageItems() {
+  protected function getPageItems(): void {
     $counter = 0;
 
     $page = 1;
@@ -184,8 +186,25 @@ class PtvServiceListIterator implements \Iterator {
   /**
    * {@inheritdoc}
    */
-  public function valid() {
+  public function valid(): bool {
     return !is_null($this->getByListPosition($this->position));
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getSingleServiceFromApi(string $uuid): V11VmOpenApiService {
+    if ($this->includeGeneralDescriptions) {
+      $response = $this->apiConnection->apiV11ServiceServiceWithGDIdGet($uuid, $this->includeHeaders);
+      if ($response instanceof V11VmOpenApiService) {
+        return $response;
+      }
+    }
+
+    $response = $this->apiConnection->apiV11ServiceIdGet($uuid, $this->includeHeaders);
+    if ($response instanceof V11VmOpenApiService) {
+      return $response;
+    }
   }
 
 }

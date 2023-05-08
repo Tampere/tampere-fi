@@ -112,6 +112,7 @@ content:
     region: ds_content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_display_location_on_map: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

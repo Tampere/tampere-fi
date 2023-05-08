@@ -60,10 +60,7 @@ const PagerButton = styled.button`
   text-transform: uppercase;
 
   &:hover {
-    font-weight: 800;
     text-decoration: underline;
-    text-underline-position: under;
-    text-decoration-thickness: 3px;
   }
 `;
 
@@ -163,8 +160,6 @@ const PageNumberButton = styled(PagerButton)`
   margin: 0 8px;
   padding: 8px;
   text-decoration: ${props => props.isActive ? "underline" : "none"};
-  text-underline-position: under;
-  text-decoration-thickness: 3px;
 `;
 
 export default function Pager({

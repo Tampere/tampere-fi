@@ -1,0 +1,29 @@
+uuid: d872a59b-c4db-4099-875b-afed27145f0d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_omitted_nodes
+    - node.type.portfolio
+    - paragraphs.paragraphs_type.portfolio_content_listing
+id: paragraph.portfolio_content_listing.field_omitted_nodes
+field_name: field_omitted_nodes
+entity_type: paragraph
+bundle: portfolio_content_listing
+label: 'Poisjätettävä sisältö'
+description: 'Valitse sisältöä, jota ei haluta listaukseen.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      portfolio: portfolio
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

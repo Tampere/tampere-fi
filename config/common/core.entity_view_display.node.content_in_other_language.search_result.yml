@@ -44,6 +44,7 @@ bundle: content_in_other_language
 mode: search_result
 content: {  }
 hidden:
+  entitygroupfield: true
   field_geographical_areas: true
   field_keywords: true
   field_language: true
