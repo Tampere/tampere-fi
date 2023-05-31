@@ -1,0 +1,60 @@
+{#
+ # Available variables:
+ # - logo_wall_url - The URL for the content item connected with the popup card.
+ #
+ # - logo_wall__base_class - base class name of the wrapper.
+ # - logo_wall__modifiers - array of modifiers to add to the base class name of the wrapper.
+ # - logo_wall__blockname - blockname prepended to the base class name of the wrapper(s) and each component.
+ #
+ # - logo_wall__content__base_class - base class name of the content. Defaults to "content".
+ # - logo_wall__content__modifiers - array of modifiers to add to the content class name.
+ #
+ # - logo_wall__heading__base_class - base class name of the heading. Defaults to "heading".
+ # - logo_wall__heading__modifiers - array of modifiers to add to the heading class name.
+ # - logo_wall__heading_level - heading level of the heading element. Defaults to "2".
+ # - logo_wall__heading - the content for the heading element.
+ #
+ # - logo_wall__body__base_class - base class name of the body. Defaults to "body".
+ # - logo_wall__body__modifiers - array of modifiers to add to the body class name.
+ # - logo_wall__body - the content for the body element.
+ #
+ # - logo_wall__logos__base_class - base class name of the logos. Defaults to "logos".
+ # - logo_wall__logos__modifiers - array of modifiers to add to the base class name of the grid.
+ # - logo_wall__logos - array of logos to display.
+ #}
+{% set logo_wall__base_class = "logo-wall" %}
+
+{% if not logo_wall__modifiers %}
+  {% set logo_wall__modifiers = [] %}
+{% endif %}
+
+{% if not logo_wall__heading %}
+  {% set logo_wall__modifiers = logo_wall__modifiers|merge([ "no-heading" ]) %}
+{% endif %}
+
+<div {{ bem(logo_wall__base_class, logo_wall__modifiers|default([]), logo_wall__blockname) }}>
+  <div {{ bem(logo_wall__content__base_class|default("content"), logo_wall__content__modifiers|default([]), logo_wall__base_class) }}>
+    {# Heading #}
+    {% if logo_wall__heading %}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        "heading_base_class": logo_wall__heading__base_class|default("heading"),
+        "heading_modifiers": logo_wall__heading__modifiers,
+        "heading_blockname": logo_wall__base_class,
+        "heading_level": logo_wall__heading_level|default(2),
+        "heading": logo_wall__heading,
+      } %}
+    {% endif %}
+
+    {# Logos #}
+    <div {{ bem(logo_wall__logos__base_class|default("logos"), logo_wall__logos__modifiers|default([]), logo_wall__base_class) }}>
+      {% for logo in logo_wall__logos %}
+        {% include "@atoms/04-images/logo/logo.twig" with {
+          "logo__link__url": logo.link_url,
+          "logo__link__aria_label": logo.link_aria_label,
+          "logo__image": logo.image,
+          "logo__image__src": logo.image_src,
+        } %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

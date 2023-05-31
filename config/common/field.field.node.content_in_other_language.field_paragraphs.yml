@@ -7,6 +7,7 @@ dependencies:
     - node.type.content_in_other_language
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.list_of_attachments
+    - paragraphs.paragraphs_type.logo_wall
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.text
     - paragraphs.paragraphs_type.video_embed
@@ -31,6 +32,7 @@ settings:
       image: image
       list_of_attachments: list_of_attachments
       video_embed: video_embed
+      logo_wall: logo_wall
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -78,6 +80,12 @@ settings:
       content_liftup:
         weight: 47
         enabled: false
+      course_listing:
+        weight: 101
+        enabled: false
+      course_listing_sports:
+        weight: 102
+        enabled: false
       current_liftup:
         weight: 62
         enabled: false
@@ -124,7 +132,7 @@ settings:
         weight: 57
         enabled: false
       image:
-        weight: 16
+        weight: 11
         enabled: true
       image_gallery:
         weight: 17
@@ -154,7 +162,7 @@ settings:
         weight: 20
         enabled: false
       list_of_attachments:
-        weight: 19
+        weight: 12
         enabled: true
       login_link:
         weight: 49
@@ -162,6 +170,12 @@ settings:
       login_link_with_text:
         weight: 72
         enabled: false
+      logo:
+        weight: 131
+        enabled: false
+      logo_wall:
+        weight: 13
+        enabled: true
       mailing_list_information:
         weight: 74
         enabled: false
@@ -198,6 +212,9 @@ settings:
       place_of_business_liftup:
         weight: 68
         enabled: false
+      portfolio_content_listing:
+        weight: 145
+        enabled: false
       positioned_image:
         weight: 53
         enabled: false
@@ -220,7 +237,7 @@ settings:
         weight: 27
         enabled: false
       separator:
-        weight: 5
+        weight: 10
         enabled: true
       service_highlight:
         weight: 3
@@ -234,11 +251,23 @@ settings:
       social_media_link:
         weight: 73
         enabled: false
+      social_media_link_list:
+        weight: 158
+        enabled: false
+      social_media_link_list_item:
+        weight: 159
+        enabled: false
       table:
         weight: 31
         enabled: false
+      table_with_row_and_col_headers:
+        weight: 161
+        enabled: false
+      table_with_row_headers:
+        weight: 162
+        enabled: false
       text:
-        weight: 0
+        weight: 9
         enabled: true
       text_and_images:
         weight: 33
@@ -250,7 +279,7 @@ settings:
         weight: 12
         enabled: false
       video_embed:
-        weight: 38
+        weight: 15
         enabled: true
       webform:
         weight: 37

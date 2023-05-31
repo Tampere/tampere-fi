@@ -169,7 +169,7 @@
       }
 
       @include main-menu-breakpoint {
-        @include link(clr(text));
+        @include link(clr(text), clr(text));
 
         border-bottom: 0;
         font-size: $font-20;

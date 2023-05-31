@@ -1,0 +1,20 @@
+uuid: fc48fdcf-02ab-459b-a04a-00c4bf09de50
+langcode: fi
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_logo_link
+field_name: field_logo_link
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

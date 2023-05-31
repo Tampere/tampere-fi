@@ -1,0 +1,19 @@
+uuid: ce8b376e-295c-4f91-8e4b-84ac12355ebf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link_aria_label
+    - paragraphs.paragraphs_type.logo
+id: paragraph.logo.field_link_aria_label
+field_name: field_link_aria_label
+entity_type: paragraph
+bundle: logo
+label: 'Linkin kohteen kuvaus ruudunlukijoille'
+description: 'Ruudunlukijoita varten lyhyt kuvaus kohteesta, johon linkki osoittaa, esim. kohdeverkkopalvelun nimi tai kohdesivun pääotsikko.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

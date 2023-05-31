@@ -89,6 +89,7 @@ display:
               portfolio: search_result
               project: search_result
               rich_article: search_result
+              small_news_item: search_result
               zoning_information: search_result
       pager:
         type: full

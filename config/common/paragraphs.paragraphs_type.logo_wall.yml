@@ -1,0 +1,10 @@
+uuid: a260133e-fb3d-487c-9e88-ccbcc1d35262
+langcode: fi
+status: true
+dependencies: {  }
+id: logo_wall
+label: Logoseinä
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

@@ -3,7 +3,15 @@ $header-secondary-inline-padding: 13px;
 .site-header {
   $base_class: &;
 
-  &.menu-closed {
+  @at-root {
+    body.mobile-menu-open {
+      @include large-down {
+        overflow: hidden;
+      }
+    }
+  }
+
+  &.mobile-menu-closed {
     @include large-down {
       border-bottom: $border-thick-default;
     }
@@ -17,6 +25,26 @@ $header-secondary-inline-padding: 13px;
     margin: 0 auto;
     max-width: $max-width;
     position: relative;
+
+    .mobile-menu-open & {
+      @include large-down {
+        background-color: clr(background);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        z-index: 10;
+      }
+
+      .toolbar-fixed & {
+        @include large-down {
+          top: $drupal-toolbar-horizontal-height;
+        }
+      }
+    }
   }
 
   &__top-content {
@@ -108,6 +136,7 @@ $header-secondary-inline-padding: 13px;
 
       background-color: clr(secondary);
       display: flex;
+      height: 100%;
       padding: $space-s;
       line-height: 1;
 
@@ -215,6 +244,11 @@ $header-secondary-inline-padding: 13px;
     width: 100%;
     z-index: 15;
 
+    @include large-down {
+      display: flex;
+      flex-direction: column;
+    }
+
     @include large {
       box-shadow: 0 8px 4px 0 clr(border-transparent);
       margin-top: $gutter-mobile;
@@ -231,7 +265,11 @@ $header-secondary-inline-padding: 13px;
     }
 
     &--mobile {
-      box-shadow: 0 5px 6px 0 clr(border-transparent);
+      display: block;
+
+      @include large {
+        display: none;
+      }
     }
   }
 

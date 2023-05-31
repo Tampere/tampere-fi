@@ -6,6 +6,17 @@
   <a {{ bem("link", attachment__link__modifiers|default([]), attachment__base_class)}} href="{{ attachment__link_url }}">
     {% block list_item_content %}
       <div {{ bem("file", [], attachment__base_class)}}>
+        {# Additional icon #}
+        {% if attachment__additional_icon_name %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_base_class: "additional-icon",
+            icon_blockname: attachment__base_class,
+            icon_name: attachment__additional_icon_name,
+            icon_aria_label: attachment__additional_icon_aria_label,
+            icon_decorative: attachment__additional_icon_aria_label ? FALSE : TRUE,
+          } %}
+        {% endif %}
+
         {# Name #}
         {% if attachment__name %}
           {% block list_item_name %}
@@ -38,6 +49,7 @@
               icon_base_class: "icon",
               icon_blockname: attachment__base_class,
               icon_name: attachment__icon_name,
+              icon_decorative: attachment__icon_name == "external" ? FALSE : TRUE,
             } %}
           {% endblock %}
         {% endif %}

@@ -9,7 +9,7 @@ id: paragraph.portfolio_content_listing.field_hide_previous_content_link
 field_name: field_hide_previous_content_link
 entity_type: paragraph
 bundle: portfolio_content_listing
-label: 'Piilota aiemmat sisällöt -linkki'
+label: 'Piilota kaikki sisällöt -linkki'
 description: ''
 required: false
 translatable: true

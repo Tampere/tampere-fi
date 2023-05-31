@@ -1,0 +1,15 @@
+uuid: fb2a772e-ca02-4985-ac21-863d95e6db2e
+langcode: fi
+status: true
+dependencies: {  }
+name: logo_wall_image_style
+label: Logoseinä
+effects:
+  f46b25fd-e749-4055-af15-fba40f26af6f:
+    uuid: f46b25fd-e749-4055-af15-fba40f26af6f
+    id: image_scale
+    weight: 1
+    data:
+      width: 200
+      height: null
+      upscale: true

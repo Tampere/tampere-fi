@@ -33,6 +33,7 @@
  * - highlighted_liftup: The highlighted liftup as a render array. Optional.
  * - portfolio_content_listing_block: The view block for the portfolio content
  *   as a render array.
+ * - listing_links: The links to display after the listing. Optional.
  *
  * @see template_preprocess_paragraph()
  *
@@ -60,6 +61,7 @@
         "topical_listing__heading": paragraph.field_listing_title.value,
         "liftups_wrapper_element": "div",
         "has_highlighted_liftup": has_highlighted_liftup,
+        "link_list__items": listing_links,
       } %}
         {% block highlighed_liftup %}
           {{ highlighted_liftup }}

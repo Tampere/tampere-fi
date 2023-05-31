@@ -1,0 +1,42 @@
+uuid: 109597de-0c23-45f5-9682-392c96dd8d58
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_social_media_for_link_list
+field_name: field_social_media_for_link_list
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: facebook
+      label: Facebook
+    -
+      value: instagram
+      label: Instagram
+    -
+      value: twitter
+      label: Twitter
+    -
+      value: youtube
+      label: YouTube
+    -
+      value: linkedin
+      label: LinkedIn
+    -
+      value: tiktok
+      label: TikTok
+    -
+      value: snapchat
+      label: Snapchat
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 11e27e76-701a-4901-b34c-1858756fc25b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_social_media_for_link_list
+    - paragraphs.paragraphs_type.social_media_link_list_item
+  module:
+    - options
+id: paragraph.social_media_link_list_item.field_social_media_for_link_list
+field_name: field_social_media_for_link_list
+entity_type: paragraph
+bundle: social_media_link_list_item
+label: 'Sosiaalinen media'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

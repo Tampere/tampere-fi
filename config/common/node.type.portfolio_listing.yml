@@ -1,0 +1,17 @@
+uuid: b9ba3f04-a82a-4130-9005-0f078cfdf3e9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Portfoliolistaus
+type: portfolio_listing
+description: ''
+help: "Uutta <i>Portfoliolistaus</i>-sisältöä luodaan sivustolle automaattisesti.<br>\r\nVoit kuitenkin tarvittaessa uudelleen tallentaa olemassa olevan Portfoliolistaus-sisällön päivittääksesi sen käytössä olevan polun."
+new_revision: true
+preview_mode: 0
+display_submitted: false

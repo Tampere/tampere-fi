@@ -5,7 +5,7 @@
 {% set header_navigation_container_id = "header-navigation-container" %}
 {% set header_navigation_container_mobile_id = "mobile-header-navigation-container" %}
 
-<header id="site-header" {{ bem(header__base_class, (header__modifiers|default([])), header__blockname, [ "menu-closed" ]) }}>
+<header id="site-header" {{ bem(header__base_class, (header__modifiers|default([])), header__blockname, [ "mobile-menu-closed" ]) }}>
   <div {{ bem("inner", (header__inner__modifiers|default([])), header__base_class)}}>
     <div {{ bem("top-content", (header__top_content__modifiers|default([])), header__base_class)}}>
       <div {{ bem("first-line", (header__first_line__modifiers|default([])), header__base_class)}}>

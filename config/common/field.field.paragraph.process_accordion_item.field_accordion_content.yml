@@ -13,6 +13,7 @@ dependencies:
     - paragraphs.paragraphs_type.place_liftup
     - paragraphs.paragraphs_type.process_accordion_item
     - paragraphs.paragraphs_type.service_highlight
+    - paragraphs.paragraphs_type.social_media_link_list
     - paragraphs.paragraphs_type.text
   module:
     - entity_reference_revisions
@@ -37,8 +38,9 @@ settings:
       link_list: link_list
       metadata_attachment_list: metadata_attachment_list
       place_liftup: place_liftup
-      text: text
       contact_information_liftups: contact_information_liftups
+      text: text
+      social_media_link_list: social_media_link_list
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -78,7 +80,7 @@ settings:
         weight: 74
         enabled: false
       contact_information_liftups:
-        weight: 17
+        weight: 18
         enabled: true
       contact_information_list:
         weight: 76
@@ -86,11 +88,20 @@ settings:
       content_liftup:
         weight: 77
         enabled: false
+      course_listing:
+        weight: 99
+        enabled: false
+      course_listing_sports:
+        weight: 100
+        enabled: false
       current_liftup:
         weight: 78
         enabled: false
       current_listing:
         weight: 79
+        enabled: false
+      downloadable_material:
+        weight: 103
         enabled: false
       embedded_content_and_map_tabs:
         weight: 80
@@ -109,6 +120,9 @@ settings:
         enabled: false
       feedback_section:
         weight: 84
+        enabled: false
+      generic_listing:
+        weight: 110
         enabled: false
       grouped_content_liftup:
         weight: 90
@@ -170,6 +184,9 @@ settings:
       map_embed:
         weight: 106
         enabled: false
+      material_download_list:
+        weight: 131
+        enabled: false
       metadata_attachment_list:
         weight: 15
         enabled: true
@@ -196,6 +213,9 @@ settings:
         enabled: true
       place_of_business_liftup:
         weight: 114
+        enabled: false
+      portfolio_content_listing:
+        weight: 141
         enabled: false
       positioned_image:
         weight: 126
@@ -233,11 +253,23 @@ settings:
       social_media_link:
         weight: 124
         enabled: false
+      social_media_link_list:
+        weight: 17
+        enabled: true
+      social_media_link_list_item:
+        weight: 155
+        enabled: false
       table:
         weight: 125
         enabled: false
+      table_with_row_and_col_headers:
+        weight: 157
+        enabled: false
+      table_with_row_headers:
+        weight: 158
+        enabled: false
       text:
-        weight: 18
+        weight: 19
         enabled: true
       text_and_images:
         weight: 140

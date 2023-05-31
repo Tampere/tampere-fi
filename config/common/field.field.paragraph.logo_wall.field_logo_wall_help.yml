@@ -1,0 +1,26 @@
+uuid: 67b5d90c-a59a-493c-a55d-1f312a814214
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_logo_wall_help
+    - paragraphs.paragraphs_type.logo_wall
+  module:
+    - markup
+id: paragraph.logo_wall.field_logo_wall_help
+field_name: field_logo_wall_help
+entity_type: paragraph
+bundle: logo_wall
+label: 'Logoseinän ohje'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    markup: null
+default_value_callback: ''
+settings:
+  markup:
+    value: "<p>Varmista, että valituille logoille on annettu Mediakirjastossa vaihtoehtoinen teksti. Logon vaihtoehtoinen teksti luetaan asiakkaalle logoja ruudunlukijalla selatessa. Jos logo toimii linkkinä, asiakkaalle luetaan <em>Linkin kohteen kuvaus ruudunlukijoille</em> -kentän sisältö.</p>\r\n"
+    format: plain_html
+field_type: markup

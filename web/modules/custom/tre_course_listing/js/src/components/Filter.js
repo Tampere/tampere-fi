@@ -53,6 +53,7 @@ const CloseIcon = styled.span`
   background-repeat: no-repeat;
   height: 32px;
   position: absolute;
+  pointer-events: none;
   right: 13px;
   width: 32px;
 `;

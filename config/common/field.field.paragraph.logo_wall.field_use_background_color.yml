@@ -1,0 +1,23 @@
+uuid: 00e8e2e3-39ac-4ff4-b518-b7c2a6e72416
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_use_background_color
+    - paragraphs.paragraphs_type.logo_wall
+id: paragraph.logo_wall.field_use_background_color
+field_name: field_use_background_color
+entity_type: paragraph
+bundle: logo_wall
+label: 'Käytä logoseinässä taustaväriä'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

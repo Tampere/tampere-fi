@@ -128,6 +128,7 @@ class ListingItemPattern extends TrePreProcessPluginBase {
       'portfolio' => $this->t('Page', [], $context),
       'project' => $this->t('Page', [], $context),
       'rich_article' => $this->t('Rich article', [], $context),
+      'small_news_item' => $this->t('News item', [], $context),
       'zoning_information' => $this->t('Page', [], $context),
     ];
   }

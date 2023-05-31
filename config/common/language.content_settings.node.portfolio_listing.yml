@@ -1,0 +1,16 @@
+uuid: 5508f2a6-e547-4207-a152-1e3ae5a26f8c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.portfolio_listing
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.portfolio_listing
+target_entity_type_id: node
+target_bundle: portfolio_listing
+default_langcode: current_interface
+language_alterable: true

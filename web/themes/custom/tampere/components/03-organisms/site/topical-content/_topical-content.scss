@@ -1,4 +1,6 @@
 .topical-content {
+  --page-content-max-width: var(--article-content-max-width);
+
   @include centered-content(var(--article-content-max-width));
 
   @include large {

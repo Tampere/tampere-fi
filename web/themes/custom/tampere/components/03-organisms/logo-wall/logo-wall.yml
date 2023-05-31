@@ -1,0 +1,12 @@
+logo_wall__heading: "Lorem ipsum dolor sit amet"
+logo_wall__logos:
+  - link_url: "#"
+    image_src: "https://placehold.co/200x200"
+  - link_url: "#"
+    image_src: "https://placehold.co/200x150"
+  - link_url:
+    image_src: "https://placehold.co/200x300"
+  - link_url: '#'
+    image_src: "https://placehold.co/200x250"
+  - link_url: '#'
+    image_src: "https://placehold.co/200x300"

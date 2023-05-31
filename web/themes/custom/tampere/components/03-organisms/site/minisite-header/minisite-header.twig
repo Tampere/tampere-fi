@@ -5,7 +5,7 @@
 {% set header_navigation_container_id = "minisite-header-navigation-container" %}
 {% set main_site_front_page = path('<front>') %}
 
-<header id="site-header" {{ bem(header__base_class, (header__modifiers|default([])), header__blockname, [ "menu-closed" ]) }}>
+<header id="site-header" {{ bem(header__base_class, (header__modifiers|default([])), header__blockname) }}>
   <div {{ bem("main-wrapper", (header__main_wrapper__modifiers|default([])), header__base_class)}}>
     <div {{ bem("main", (header__main__modifiers|default([])), header__base_class)}}>
 

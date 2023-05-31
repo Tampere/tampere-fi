@@ -1,0 +1,12 @@
+label: 'Group portfolios'
+display:
+  portfolios_en:
+    display_title: 'Portfolios (EN)'
+  portfolios_fi:
+    display_title: 'Portfolios (FI)'
+  default:
+    display_options:
+      title: 'All contents'
+      header:
+        result:
+          content: 'Total @total result(s)'

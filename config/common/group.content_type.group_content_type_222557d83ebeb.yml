@@ -1,0 +1,19 @@
+uuid: 0947991a-af95-4e47-b46e-a969cc14bc96
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+    - node.type.portfolio_listing
+  module:
+    - gnode
+    - node
+id: group_content_type_222557d83ebeb
+label: 'Teema: Group node (Portfoliolistaus)'
+description: 'Adds <em class="placeholder">Portfoliolistaus</em> content to groups both publicly and privately.'
+group_type: theme
+content_plugin: 'group_node:portfolio_listing'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

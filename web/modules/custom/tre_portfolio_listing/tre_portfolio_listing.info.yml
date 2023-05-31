@@ -1,0 +1,5 @@
+name: 'TRE Portfolio Listing'
+type: module
+description: 'Custom module for customizing portfolio_listing content.'
+core_version_requirement: '>=9.3'
+package: 'TRE'

@@ -108,6 +108,7 @@ content:
     weight: 0
     region: ds_content
 hidden:
+  entitygroupfield: true
   field_additional_information: true
   field_address_postal: true
   field_address_street: true
@@ -129,4 +130,5 @@ hidden:
   langcode: true
   links: true
   migrate_override_data: true
+  published_at: true
   search_api_excerpt: true

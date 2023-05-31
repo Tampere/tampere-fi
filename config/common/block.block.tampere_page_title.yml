@@ -39,6 +39,7 @@ visibility:
       organization: organization
       place: place
       portfolio: portfolio
+      portfolio_listing: portfolio_listing
       project: project
       rich_article: rich_article
       small_news_item: small_news_item

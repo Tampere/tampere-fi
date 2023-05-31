@@ -218,6 +218,7 @@ module:
   tre_openid_connect_windows_aad_tampere_edu: 0
   tre_openid_connect_windows_aad_tampere_opetus: 0
   tre_phone_field_formatter: 0
+  tre_portfolio_listing: 0
   tre_preprocess: 0
   tre_preprocess_embedded_content_and_map_tabs: 0
   tre_preprocess_utility_functions: 0

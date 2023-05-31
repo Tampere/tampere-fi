@@ -22,6 +22,7 @@ permissions:
   - 'view group_node:organization entity'
   - 'view group_node:place entity'
   - 'view group_node:portfolio entity'
+  - 'view group_node:portfolio_listing entity'
   - 'view group_node:project entity'
   - 'view group_node:small_news_item entity'
   - 'view group_node:zoning_information entity'

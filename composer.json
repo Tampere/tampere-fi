@@ -149,7 +149,7 @@
         "drupal/embederator": "^4.0",
         "drupal/entity_browser": "^2.5",
         "drupal/entity_log": "^1.4",
-        "drupal/entity_reference_unpublished": "^1.3",
+        "drupal/entity_reference_unpublished": "^2.0",
         "drupal/entity_usage": "^2.0@beta",
         "drupal/entitygroupfield": "^1.0@alpha",
         "drupal/environment_indicator": "^4.0",
@@ -180,7 +180,7 @@
         "drupal/language_switcher_extended": "^1.0@beta",
         "drupal/lazy": "^3.11",
         "drupal/limited_field_widgets": "^2.0",
-        "drupal/linkit": "^6.0",
+        "drupal/linkit": "^6.0@RC",
         "drupal/markdown": "^3.0@RC",
         "drupal/markup": "^1.0@beta",
         "drupal/markup_field": "^1.1@beta",
@@ -240,7 +240,7 @@
         "drupal/timesup": "^1.0",
         "drupal/twig_tweak": "^3.1",
         "drupal/ui_patterns": "^1.2",
-        "drupal/ui_patterns_settings": "^2.0@beta",
+        "drupal/ui_patterns_settings": "^2.0",
         "drupal/username_enumeration_prevention": "^1.1",
         "drupal/varnish_purge": "^2.1",
         "drupal/views_custom_cache_tag": "^1.2",
@@ -382,9 +382,6 @@
             "drupal/dblog_filter": {
                 "3342635 - Get log values (type and level) for syslog like the input box for dblog" : "https://www.drupal.org/files/issues/2023-02-23/add-log-values-input-box-for-syslog-filter-3342635.patch"
             },
-            "drupal/elb": {
-                "3327333 - PHP 8 compatibility issue": "https://www.drupal.org/files/issues/2022-12-15/3327333-filter-empty-values-from-config-2.patch"
-            },
             "drupal/external_data_source": {
                 "3194516 - Replace EntityManagerInterface with EntityTypeManagerInterface": "https://www.drupal.org/files/issues/2021-01-25/replace-entityManagerInaterface-3194516-1.patch",
                 "3259684 - ExternalDataSource widgets break Dependency Injection": "https://www.drupal.org/files/issues/2022-05-02/3259684_dependency_injection_fix-4.patch"
@@ -413,7 +410,7 @@
                 "Access return fix for group scheduled transitions": "patches/make_group_scheduled_transitions_allow_drupal-wide_transitions_for_non_group_members.patch"
             },
             "drupal/linkit": {
-                "#2886455: Add support for multilanguage": "https://git.drupalcode.org/project/linkit/-/merge_requests/2.diff"
+                "#2886455: Add support for multilanguage": "https://www.drupal.org/files/issues/2023-05-19/2886455-multilingual-6.0.0-rc1.patch"
             },
             "drupal/markdown": {
                 "#3265416: Error when using markdown module with PHP 8.1 on Drupal 9.3": "https://www.drupal.org/files/issues/2022-11-08/3265416-markdown-php-81-14.patch"

@@ -144,6 +144,7 @@ content:
     weight: 4
     region: listing_item__additional_information
 hidden:
+  entitygroupfield: true
   field_additional_information: true
   field_additional_phones: true
   field_address_postal: true
@@ -164,4 +165,5 @@ hidden:
   langcode: true
   links: true
   migrate_override_data: true
+  published_at: true
   search_api_excerpt: true

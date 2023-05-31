@@ -40,6 +40,7 @@ third_party_settings:
     regions:
       listing_item__main_content:
         - node_title
+        - published_at
     fields:
       node_title:
         plugin_id: node_title
@@ -61,9 +62,27 @@ id: node.small_news_item.search_result
 targetEntityType: node
 bundle: small_news_item
 mode: search_result
-content: {  }
+content:
+  published_at:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: custom
+      custom_date_format: j.n.Y
+      timezone: ''
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 1
+    region: listing_item__main_content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_author: true
   field_body: true
   field_date_of_publication: true
@@ -84,5 +103,4 @@ hidden:
   field_topics: true
   langcode: true
   links: true
-  published_at: true
   search_api_excerpt: true

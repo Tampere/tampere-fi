@@ -1,0 +1,99 @@
+uuid: 7290fa17-4632-4b9c-986d-a464ed357555
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.logo.field_link_aria_label
+    - field.field.paragraph.logo.field_logo_link
+    - field.field.paragraph.logo.field_media
+    - paragraphs.paragraphs_type.logo
+  module:
+    - field_group
+    - field_states_ui
+    - maxlength
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+third_party_settings:
+  field_group:
+    group_link:
+      children:
+        - field_logo_link
+        - field_link_aria_label
+      label: Linkki
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: paragraph.logo.default
+targetEntityType: paragraph
+bundle: logo
+mode: default
+content:
+  field_link_aria_label:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list:
+            d7d88693-c985-46c6-95aa-c50881421cca:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
+        field_states:
+          d7d88693-c985-46c6-95aa-c50881421cca:
+            uuid: d7d88693-c985-46c6-95aa-c50881421cca
+            id: required
+            data:
+              target: field_logo_link
+              comparison: filled
+              value: ''
+              submit: 'Lisää Peruuta'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+  field_logo_link:
+    type: paragraphs_classic_asymmetric
+    weight: 3
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: closed
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_media:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -18,5 +18,6 @@ permissions:
   - 'update any group_node:zoning_information entity'
   - 'view group_node:front_page entity'
   - 'view group_node:portfolio entity'
+  - 'view group_node:portfolio_listing entity'
   - 'view group_node:zoning_information entity'
   - 'view unpublished group_node:zoning_information entity'

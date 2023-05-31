@@ -1,0 +1,5 @@
+label: 'Logo wall help'
+settings:
+  markup:
+    value: "<p>Make sure the selected images have an alternative text set in the Media library. The alternative text is read when browsing the logos with a screen reader. When the logo acts as a link, the <em>Link destination description for screen readers</em> field content is read by screen readers.</p>\r\n"
+    format: plain_html

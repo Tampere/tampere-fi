@@ -15,10 +15,8 @@ $minisite-header-search-width: 140px;
 
   position: relative;
 
-  &.menu-closed {
-    @include large-down {
-      border-bottom: $border-thick-default;
-    }
+  @include large-down {
+    border-bottom: $border-thick-default;
   }
 
   &.mobile-search-bar-visible,
@@ -243,6 +241,13 @@ $minisite-header-search-width: 140px;
     &.is-closed {
       @include main-menu-breakpoint-down {
         display: none;
+      }
+    }
+
+    &:not(.is-closed) {
+      @include large-down {
+        // Hides bottom border when navigation is open.
+        margin-bottom: -2px;
       }
     }
   }

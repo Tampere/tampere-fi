@@ -271,6 +271,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_topic: true
   promote: true
   published_at: true

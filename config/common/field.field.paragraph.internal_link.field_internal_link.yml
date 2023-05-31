@@ -18,6 +18,7 @@ dependencies:
     - node.type.person
     - node.type.place
     - node.type.place_of_business
+    - node.type.portfolio
     - node.type.project
     - node.type.ptv_service
     - node.type.rich_article
@@ -54,6 +55,7 @@ settings:
       ptv_service: ptv_service
       basic_content_page: basic_content_page
       small_news_item: small_news_item
+      portfolio: portfolio
       project: project
       rss_item: rss_item
       rich_article: rich_article

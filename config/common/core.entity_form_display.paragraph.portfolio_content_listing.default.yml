@@ -3,7 +3,6 @@ langcode: fi
 status: true
 dependencies:
   config:
-    - field.field.paragraph.portfolio_content_listing.field_display_archive_link
     - field.field.paragraph.portfolio_content_listing.field_display_publish_dates
     - field.field.paragraph.portfolio_content_listing.field_geographical_areas
     - field.field.paragraph.portfolio_content_listing.field_hide_previous_content_link
@@ -42,9 +41,8 @@ third_party_settings:
         required_fields: true
     group_display_archive_link:
       children:
-        - field_display_archive_link
         - field_hide_previous_content_link
-      label: 'Näytä arkisto-linkki'
+      label: 'Linkki portfolioiden listaussivulle'
       region: content
       parent_name: ''
       weight: 7
@@ -53,20 +51,13 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
-        description: 'Voit lisätä paragraafiin linkin portfolioiden listaussivulle tästä.'
+        description: 'Voit piilottaa paragraafista linkin portfolioiden listaussivulle tästä.'
         required_fields: true
 id: paragraph.portfolio_content_listing.default
 targetEntityType: paragraph
 bundle: portfolio_content_listing
 mode: default
 content:
-  field_display_archive_link:
-    type: boolean_checkbox
-    weight: 9
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_display_publish_dates:
     type: boolean_checkbox
     weight: 5

@@ -3,6 +3,6 @@ third_party_settings:
     group_categorization:
       label: Categorization
     group_display_archive_link:
-      label: 'Display archive link'
+      label: 'Link to portfolio listing page'
       format_settings:
-        description: 'You can add a link to the portfolio content listing page here.'
+        description: 'You can hide the link to the portfolio content listing page here.'

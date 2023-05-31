@@ -1,0 +1,19 @@
+uuid: 71b1f594-88e4-43a3-83ed-c023f5432237
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_link_list.field_some_link_list_items
+    - field.field.paragraph.social_media_link_list.field_summary
+    - field.field.paragraph.social_media_link_list.field_title
+    - paragraphs.paragraphs_type.social_media_link_list
+id: paragraph.social_media_link_list.default
+targetEntityType: paragraph
+bundle: social_media_link_list
+mode: default
+content: {  }
+hidden:
+  field_some_link_list_items: true
+  field_summary: true
+  field_title: true
+  search_api_excerpt: true

@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.without_date_view_mode
-    - field.field.paragraph.portfolio_content_listing.field_display_archive_link
     - field.field.paragraph.portfolio_content_listing.field_display_publish_dates
     - field.field.paragraph.portfolio_content_listing.field_geographical_areas
     - field.field.paragraph.portfolio_content_listing.field_hide_previous_content_link
@@ -42,7 +41,6 @@ content:
     weight: 0
     region: content
 hidden:
-  field_display_archive_link: true
   field_display_publish_dates: true
   field_geographical_areas: true
   field_hide_previous_content_link: true

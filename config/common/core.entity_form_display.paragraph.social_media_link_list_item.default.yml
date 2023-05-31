@@ -1,0 +1,37 @@
+uuid: 5ebd3f41-6b9c-41bd-b0fe-f559ab66e38b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_link_list_item.field_external_link_w_link_text
+    - field.field.paragraph.social_media_link_list_item.field_social_media_for_link_list
+    - paragraphs.paragraphs_type.social_media_link_list_item
+  module:
+    - link
+id: paragraph.social_media_link_list_item.default
+targetEntityType: paragraph
+bundle: social_media_link_list_item
+mode: default
+content:
+  field_external_link_w_link_text:
+    type: link_default
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_social_media_for_link_list:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

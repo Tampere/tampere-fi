@@ -1,0 +1,22 @@
+uuid: 280a0d7e-2d71-49c0-93e3-9c6b8fd7fe5f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.portfolio_listing
+id: node.portfolio_listing.promote
+field_name: promote
+entity_type: node
+bundle: portfolio_listing
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

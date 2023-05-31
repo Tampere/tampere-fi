@@ -415,6 +415,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_archive_search_content: true
   field_comment: true
   field_date_of_publication: true

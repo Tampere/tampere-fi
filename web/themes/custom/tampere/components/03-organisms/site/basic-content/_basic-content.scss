@@ -2,6 +2,7 @@
   $base_class: &;
 
   --text-content-max-width: 100%;
+  --page-content-max-width: var(--basic-content-max-width);
 
   @include large {
     .main-content--with-sidebar & {

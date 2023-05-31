@@ -25,7 +25,7 @@ visibility:
   request_path:
     id: request_path
     negate: true
-    pages: "/ajankohtaista\r\n/ajankohtaista/*\r\n/blogit\r\n/blogit/*\r\n/ilmoitustaulu\r\n/ilmoitustaulu/*\r\n<front>"
+    pages: "/ajankohtaista\r\n/ajankohtaista/*\r\n/blogit\r\n/blogit/*\r\n/ilmoitustaulu\r\n/ilmoitustaulu/*\r\n*/portfoliot\r\n*/portfoliot/*\r\n<front>"
   language:
     id: language
     negate: false

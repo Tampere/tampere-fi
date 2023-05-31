@@ -28,6 +28,8 @@
         {% include "@molecules/attachment-list/_attachment.twig" with {
           attachment__link_url: item.link_url,
           attachment__icon_name: item.icon_name,
+          attachment__additional_icon_name: item.additional_icon_name,
+          attachment__additional_icon_aria_label: item.additional_icon_aria_label,
           attachment__name: item.name,
           attachment__file_info: item.file_info,
           attachment__summary: item.summary,

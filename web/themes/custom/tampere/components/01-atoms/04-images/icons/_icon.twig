@@ -22,9 +22,13 @@
 
 {% set external_icon_description = "Link to an external website"|t %}
 
+{% if icon_name == "external" or is_external_link %}
+  {% set icon_aria_label = external_icon_description %}
+{% endif %}
+
 <svg {{ bem(icon_base_class, icon_modifiers, icon_blockname, icon_extra_class) }}
-  {% if icon_name == "external" or is_external_link %}
-    role="img" aria-label="{{ external_icon_description }}"
+  {% if icon_aria_label %}
+    role="img" aria-label="{{ icon_aria_label }}"
   {% elseif icon_decorative %}
     aria-hidden="true" role="presentation"
   {% elseif icon_role %}

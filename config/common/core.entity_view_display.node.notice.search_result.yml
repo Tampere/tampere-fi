@@ -83,6 +83,7 @@ content:
     region: listing_item__main_content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_author: true
   field_body: true
   field_date_of_publication: true

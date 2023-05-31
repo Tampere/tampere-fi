@@ -1,0 +1,10 @@
+uuid: 3730dfb8-fd1e-462c-8e0a-00812c6c939c
+langcode: fi
+status: true
+dependencies: {  }
+id: logo
+label: Logo
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

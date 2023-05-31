@@ -1,0 +1,18 @@
+uuid: 1763c8c2-ee6b-483d-857f-061488cf55fa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.logo_wall
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.logo_wall
+target_entity_type_id: paragraph
+target_bundle: logo_wall
+default_langcode: current_interface
+language_alterable: true

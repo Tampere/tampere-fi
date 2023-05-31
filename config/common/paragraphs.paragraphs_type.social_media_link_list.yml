@@ -1,0 +1,10 @@
+uuid: 2c57a85a-8a05-49a6-bb6a-91eaea17fc57
+langcode: fi
+status: true
+dependencies: {  }
+id: social_media_link_list
+label: Somelinkkilista
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

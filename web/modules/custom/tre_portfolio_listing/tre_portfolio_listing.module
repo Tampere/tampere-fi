@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Contains tre_portfolio_listing.module.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\tre_portfolio_listing\Event\PortfolioListingEvent;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Hides the title field for 'portfolio_listing' content.
+ */
+function tre_portfolio_listing_form_node_portfolio_listing_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['title']['#access'] = FALSE;
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function tre_portfolio_listing_entity_presave(EntityInterface $entity) {
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $group_content_insert_event = new PortfolioListingEvent($entity);
+  $event_dispatcher->dispatch(
+    $group_content_insert_event,
+    PortfolioListingEvent::PORTFOLIO_LISTING_ENTITY_PRESAVE
+  );
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function tre_portfolio_listing_group_content_insert(EntityInterface $entity) {
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $group_content_insert_event = new PortfolioListingEvent($entity);
+  $event_dispatcher->dispatch(
+    $group_content_insert_event,
+    PortfolioListingEvent::PORTFOLIO_GROUP_CONTENT_INSERT
+  );
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function tre_portfolio_listing_node_update(EntityInterface $entity) {
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $group_content_insert_event = new PortfolioListingEvent($entity);
+  $event_dispatcher->dispatch(
+    $group_content_insert_event,
+    PortfolioListingEvent::PORTFOLIO_NODE_UPDATE
+  );
+}

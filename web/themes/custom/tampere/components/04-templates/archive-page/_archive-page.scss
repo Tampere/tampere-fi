@@ -1,10 +1,20 @@
 .archive-page {
+  $base_class: &;
+
   margin-bottom: $space-xl;
   padding: 0 $gutter-mobile;
 
   @include large {
     margin-bottom: $space-xxl;
     padding: 0 $gutter-default;
+
+    .main-content--with-sidebar & {
+      padding-left: 0;
+
+      #{$base_class}__title {
+        margin-top: 0;
+      }
+    }
   }
 
   &__header {

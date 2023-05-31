@@ -1,4 +1,4 @@
-label: 'Display archive link'
+label: 'Use background color on logo wall'
 settings:
   on_label: 'On'
   off_label: 'Off'

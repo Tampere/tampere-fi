@@ -35,6 +35,10 @@ class Search extends TrePreProcessPluginBase {
     if (!empty($active_facets)) {
       $language = $this->languageManager->getCurrentLanguage()->getId();
 
+      if (!isset($variables['pager']['#parameters']['s'])) {
+        return $variables;
+      }
+
       $items = $variables['pager']['#parameters']['s'];
 
       // Use current path to preserve search path arguments.

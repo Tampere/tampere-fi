@@ -75,6 +75,7 @@ content:
     weight: 6
     region: hidden
 hidden:
+  entitygroupfield: true
   field_additional_information: true
   field_additional_phones: true
   field_address_postal: true
@@ -94,4 +95,5 @@ hidden:
   field_search_keywords: true
   field_topics: true
   langcode: true
+  published_at: true
   search_api_excerpt: true

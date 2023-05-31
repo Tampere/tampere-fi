@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.image
     - paragraphs.paragraphs_type.involvement_opportunity_cards
     - paragraphs.paragraphs_type.list_of_attachments
+    - paragraphs.paragraphs_type.logo_wall
     - paragraphs.paragraphs_type.metadata_attachment_list
     - paragraphs.paragraphs_type.place_liftup
     - paragraphs.paragraphs_type.project_and_organization_cards
@@ -47,10 +48,11 @@ settings:
       involvement_opportunity_cards: involvement_opportunity_cards
       place_liftup: place_liftup
       project_and_organization_cards: project_and_organization_cards
-      table: table
-      contact_information_liftups: contact_information_liftups
       table_with_row_and_col_headers: table_with_row_and_col_headers
       table_with_row_headers: table_with_row_headers
+      table: table
+      contact_information_liftups: contact_information_liftups
+      logo_wall: logo_wall
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -90,7 +92,7 @@ settings:
         weight: 106
         enabled: false
       contact_information_liftups:
-        weight: 24
+        weight: 25
         enabled: true
       contact_information_list:
         weight: 115
@@ -174,7 +176,7 @@ settings:
         weight: 102
         enabled: false
       involvement_opportunity_cards:
-        weight: 17
+        weight: 18
         enabled: true
       link_list:
         weight: 130
@@ -188,6 +190,12 @@ settings:
       login_link_with_text:
         weight: 155
         enabled: false
+      logo:
+        weight: 131
+        enabled: false
+      logo_wall:
+        weight: 16
+        enabled: true
       mailing_list_information:
         weight: 157
         enabled: false
@@ -198,7 +206,7 @@ settings:
         weight: 128
         enabled: false
       metadata_attachment_list:
-        weight: 16
+        weight: 17
         enabled: true
       mosaic_liftup:
         weight: 134
@@ -219,10 +227,13 @@ settings:
         weight: 139
         enabled: false
       place_liftup:
-        weight: 18
+        weight: 19
         enabled: true
       place_of_business_liftup:
         weight: 142
+        enabled: false
+      portfolio_content_listing:
+        weight: 145
         enabled: false
       positioned_image:
         weight: 116
@@ -234,7 +245,7 @@ settings:
         weight: 114
         enabled: false
       project_and_organization_cards:
-        weight: 19
+        weight: 20
         enabled: true
       project_or_organization_card:
         weight: 145
@@ -260,14 +271,20 @@ settings:
       social_media_link:
         weight: 151
         enabled: false
+      social_media_link_list:
+        weight: 158
+        enabled: false
+      social_media_link_list_item:
+        weight: 159
+        enabled: false
       table:
-        weight: 22
+        weight: 23
         enabled: true
       table_with_row_and_col_headers:
-        weight: 20
+        weight: 21
         enabled: true
       table_with_row_headers:
-        weight: 21
+        weight: 22
         enabled: true
       text:
         weight: 9

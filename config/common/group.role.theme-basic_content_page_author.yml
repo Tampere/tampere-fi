@@ -22,5 +22,6 @@ permissions:
   - 'view group_node:basic_content_page entity'
   - 'view group_node:content_in_other_language entity'
   - 'view group_node:portfolio entity'
+  - 'view group_node:portfolio_listing entity'
   - 'view unpublished group_node:basic_content_page entity'
   - 'view unpublished group_node:content_in_other_language entity'

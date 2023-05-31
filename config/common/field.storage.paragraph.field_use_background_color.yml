@@ -1,0 +1,18 @@
+uuid: e3975860-ecd4-4681-bb74-0c53d63b5ae8
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_use_background_color
+field_name: field_use_background_color
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

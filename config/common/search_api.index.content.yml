@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_topics
-    - field.storage.node.field_search_keywords
-    - field.storage.node.field_life_situations
     - field.storage.node.field_geographical_areas
+    - field.storage.node.field_life_situations
+    - field.storage.node.field_search_keywords
+    - field.storage.node.field_topics
     - search_api.server.solr
     - core.entity_view_mode.node.search_index
   module:
@@ -59,7 +59,9 @@ third_party_settings:
       limit_to_content_language: false
       include_language_independent: true
       use_language_undefined_as_fallback_language: false
-      specific_languages: {  }
+      specific_languages:
+        fi: '0'
+        en: '0'
       use_universal_collation: false
 _core:
   default_config_hash: x4bqq-3Xet2UC1P9-WmhdiD5hPb2cs2Jioxv7hcqxaM
@@ -124,7 +126,7 @@ field_settings:
     type: string
     configuration:
       field: 'entity:node/type'
-      mapping: "basic_content_page|page\r\ncollection_page|page\r\nmoderated_page|page\r\nproject|page\r\norganization|page\r\nzoning_information|page\r\nplace|page\r\ncity_planning_and_constructions|page\r\ninvolvement_opportunity|page\r\nportfolio|page"
+      mapping: "basic_content_page|page\r\ncollection_page|page\r\nmoderated_page|page\r\nproject|page\r\norganization|page\r\nzoning_information|page\r\nplace|page\r\ncity_planning_and_constructions|page\r\ninvolvement_opportunity|page\r\nportfolio|page\r\nsmall_news_item|news_item"
       with_value: ''
       without_value: ''
   nid:
@@ -203,10 +205,10 @@ datasource_settings:
         - map_point
         - person
         - place_of_business
+        - portfolio_listing
         - ptv_service
         - rss_item
         - service_channel
-        - small_news_item
     languages:
       default: true
       selected: {  }

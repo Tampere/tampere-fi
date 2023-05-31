@@ -233,6 +233,9 @@ $listing-link-icon-size--desktop: $icon-small;
  * Base
  */
 
+/* Drupal */
+$drupal-toolbar-horizontal-height: 39px;
+
 /* shadows */
 $box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.07);
 
@@ -304,6 +307,7 @@ $form-item-max-width: 32rem;
   --text-content-max-width: 748px;
   --article-content-max-width: #{$article-content-max-width};
   --basic-content-max-width: #{$basic-content-max-width};
+  --page-content-max-width: 90rem;
   --field-label-font-weight: #{$font-weight-bold};
   --focus-outline-offset: 3px;
 }

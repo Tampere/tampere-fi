@@ -1,0 +1,8 @@
+services:
+  tre_portfolio_listing.group_content_subscriber:
+    class: Drupal\tre_portfolio_listing\EventSubscriber\PortfolioGroupContentInsertSubscriber
+    arguments:
+      - '@entity_type.manager'
+      - '@language_manager'
+    tags:
+      - { name: event_subscriber }

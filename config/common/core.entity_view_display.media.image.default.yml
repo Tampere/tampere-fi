@@ -35,29 +35,29 @@ content:
       layout: ''
       view_mode: ''
       cache: 0
-      current_view_mode: default
       skin: ''
-      fx: ''
       lazy: ''
-      loading: lazy
-      preload: false
       style: ''
       background: false
       box_caption: ''
       box_caption_custom: ''
       box_media_style: ''
+      loading: lazy
+      preload: false
       responsive_image_style: ''
       box_style: ''
       image_style: ''
       media_switch: ''
       ratio: ''
       thumbnail_style: ''
-      _item: ''
-      _uri: ''
-      grid_header: ''
       grid: ''
       grid_medium: ''
       grid_small: ''
+      current_view_mode: default
+      fx: ''
+      grid_header: ''
+      _item: ''
+      _uri: ''
     third_party_settings: {  }
     weight: 0
     region: content

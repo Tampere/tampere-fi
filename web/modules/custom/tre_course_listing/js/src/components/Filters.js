@@ -1,5 +1,8 @@
 import React, { createRef, useId, useRef, useState, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import styled from "styled-components";
+
+import { LISTING_TYPE_SPORTS } from '../constants';
 
 import FilterGroup from "./FilterGroup";
 import FilterGroupLabel from "./FilterGroupLabel";
@@ -49,29 +52,38 @@ export default function Filters({
   selectFilter,
   resetFilters,
   activeFilters,
-  filterTypes
+  filterTypes,
+  listingType
  }) {
   const [activeFilterGroup, setActiveFilterGroup] = useState("");
   const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
   const [filtersHaveFocus, setFiltersHaveFocus] = useState(false);
-  const hasActiveFilters = Boolean(activeFilters && activeFilters.length);
-
-  const filtersTitleId = `filtersTitle${useId()}`;
-
-  const headingRef = useRef(null);
 
   const filterGroupRefs = filterTypes.map(() => createRef());
+  const filtersTitleId = `filters-title-${useId()}`;
+  const filterTypeIds = useRef(null);
+  const hasActiveFilters = Boolean(activeFilters && activeFilters.length);
+  const headingRef = useRef(null);
   const lastFilterRefIndex = filterGroupRefs.length - 1;
 
-  const getLabel = (type) => {
-    switch (type) {
+  // The Drupal.t() calls are repetitive because replacing the repetitive parts
+  // (e.g. context) with variables stopped the strings from showing up as
+  // translatable strings in the UI.
+  const getLabel = (filterType) => {
+    switch (filterType) {
       case "department":
+        if (listingType === LISTING_TYPE_SPORTS) {
+          return Drupal.t("Location", {}, { context: "Course listing (sports) filter type" });
+        }
         return Drupal.t("Location", {}, { context: "Course listing filter type" });
       case "subject":
       case "category":
         return Drupal.t("Course subject", {}, { context: "Course listing filter type" });
       case "period":
       default:
+        if (listingType === LISTING_TYPE_SPORTS) {
+          return Drupal.t("Season", {}, { context: "Course listing (sports) filter type" });
+        }
         return Drupal.t("Semester", {}, { context: "Course listing filter type" });
     }
   };
@@ -150,6 +162,12 @@ export default function Filters({
   };
 
   useEffect(() => {
+    const filterTypeIdMap = new Map();
+    filterTypes.forEach(filterType => filterTypeIdMap.set(filterType, `filter-type-${uuidv4()}`));
+    filterTypeIds.current = filterTypeIdMap;
+  }, []);
+
+  useEffect(() => {
     moveFocusToCurrent();
   }, [currentActiveIndex]);
 
@@ -158,9 +176,6 @@ export default function Filters({
       setCurrentActiveIndex(filterTypes.indexOf(activeFilterGroup));
     }
   }, [activeFilterGroup]);
-
-  const filterTypeIds = new Map();
-  filterTypes.forEach(filterType => filterTypeIds.set(filterType, useId()));
 
   return (
     <StyledFilters>
@@ -174,9 +189,9 @@ export default function Filters({
         onFocus={handleFocus}
       >
         {
-          filterTypes.map((filterType, index) => (
+          filterTypeIds.current && filterTypes.map((filterType, index) => (
             <FilterGroupLabel
-              id={filterTypeIds.get(filterType)}
+              id={filterTypeIds.current.get(filterType)}
               label={getLabel(filterType)}
               type={filterType}
               activeFilters={activeFilters}
@@ -186,21 +201,21 @@ export default function Filters({
               currentActiveIndex={currentActiveIndex}
               index={index}
               ref={filterGroupRefs[index]}
-              key={`filterGroupLabel${filterTypeIds.get(filterType)}`}
+              key={`filterGroupLabel${filterTypeIds.current.get(filterType)}`}
             />
           ))
         }
       </FilterGroupLabelsContainer>
       {
-        filterTypes.map(filterType => (
+        filterTypeIds.current && filterTypes.map(filterType => (
           <FilterGroup
-            id={filterTypeIds.get(filterType)}
+            id={filterTypeIds.current.get(filterType)}
             type={filterType}
             availableFilters={availableFilters}
             selectFilter={selectFilter}
             activeFilters={activeFilters}
             activeFilterGroup={activeFilterGroup}
-            key={`filterGroup${filterTypeIds.get(filterType)}`}
+            key={`filterGroup${filterTypeIds.current.get(filterType)}`}
           />
         ))
       }

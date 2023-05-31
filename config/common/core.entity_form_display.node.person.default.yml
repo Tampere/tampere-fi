@@ -363,6 +363,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_contract_begins: true
   field_contract_ends: true
   field_hr_id: true

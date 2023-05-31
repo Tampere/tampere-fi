@@ -1,0 +1,10 @@
+uuid: 587ae7d5-456c-41ad-b1df-d41cb349dec4
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.logo_wall_view_mode
+label: Logoseinä
+targetEntityType: media
+cache: true

@@ -4,7 +4,9 @@ import styled from "styled-components";
 import {
   FILTER_TYPES_BY_LISTING_TYPE,
   FILTER_TYPES_WO_COMPLEX_RELATIONSHIPS,
-  FILTER_TYPE_PARENTS
+  FILTER_TYPE_PARENTS,
+  FILTER_LABEL_REPLACEMENTS_BY_LISTING_TYPE,
+  LISTING_TYPE_SPORTS
 } from './constants';
 
 import CourseCards from "./components/CourseCards";
@@ -97,10 +99,17 @@ export default function App({ title, description, originalItems, sortType, listi
     // https://api.opistopalvelut.fi/#tag/Catalog/operation/GetCatalog
     const catalogItems = originalItems.map(item => {
       let processedCatalogItems = item.catalogitems.filter(catalogItem => {
+        // Collecting parent catalog item names so they can be appended to
+        // the names of their children. Currently only affects terms.
+        // E.g. Autumn semester 2022-2023.
         if (FILTER_TYPE_PARENTS.includes(catalogItem.type) && !catalogItem.parent) {
-          // Collecting parent catalog item names so they can be appended to
-          // the names of their children. Currently only affects semesters.
-          // E.g. Autumn semester 2022-2023.
+          // In case of sports course listings, only the end year should be
+          // displayed for the terms so modifying the item name first if
+          // it consists of a starting and ending year.
+          if (listingType === LISTING_TYPE_SPORTS) {
+            catalogItem.name = getTermEndYear(catalogItem.name);
+          }
+
           filterItemParentNames.set(`${catalogItem["type"]}:${catalogItem["id"]}`, catalogItem.name);
         }
 
@@ -112,8 +121,15 @@ export default function App({ title, description, originalItems, sortType, listi
         }
       });
 
-      // Append parent names to catalog items that have stored parent names.
       processedCatalogItems = processedCatalogItems.map(catalogItem => {
+        // Replace filter labels that should not use the original label from
+        // the API.
+        if (FILTER_LABEL_REPLACEMENTS_BY_LISTING_TYPE.hasOwnProperty(listingType) &&
+            FILTER_LABEL_REPLACEMENTS_BY_LISTING_TYPE[listingType].hasOwnProperty(catalogItem.name)) {
+          catalogItem.name = FILTER_LABEL_REPLACEMENTS_BY_LISTING_TYPE[listingType][catalogItem.name];
+        }
+
+        // Append parent names to catalog items that have stored parent names.
         if (!filterItemParentNames.has(catalogItem.parent)) {
           return catalogItem;
         }
@@ -136,6 +152,14 @@ export default function App({ title, description, originalItems, sortType, listi
     setAvailableFilters(originalFilters.current);
     setItems(originalItems);
   }, []);
+
+  // Returns the end year for a given term string.
+  // Assumes the term is either a single year (e.g. 2023) or two years
+  // separated by a dash (e.g. 2023-2024).
+  const getTermEndYear = term => {
+    const array = term.split("-");
+    return array.length === 1 ? term : array[1];
+  };
 
   // Make sure all filters appear only once by mapping them by their type and ID.
   const getUniqueFilters = array => {
@@ -342,6 +366,7 @@ export default function App({ title, description, originalItems, sortType, listi
         resetFilters={resetFilters}
         activeFilters={activeFilters}
         filterTypes={FILTER_TYPES}
+        listingType={listingType}
       />
       <ResultAmount>
         { Drupal.t("Total of @amount results", { "@amount": items.length }) }

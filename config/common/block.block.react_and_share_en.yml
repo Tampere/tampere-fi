@@ -25,7 +25,7 @@ visibility:
   request_path:
     id: request_path
     negate: true
-    pages: "/current\r\n/current/*\r\n/blogs\r\n/blogs/*\r\n<front>"
+    pages: "/current\r\n/current/*\r\n/blogs\r\n/blogs/*\r\n*/portfolios\r\n*/portfolios/*\r\n<front>"
   language:
     id: language
     negate: false

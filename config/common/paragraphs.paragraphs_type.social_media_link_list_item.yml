@@ -1,0 +1,10 @@
+uuid: 518cda8c-ea9c-40f4-8523-fccab1a9d0f1
+langcode: fi
+status: true
+dependencies: {  }
+id: social_media_link_list_item
+label: 'Somelinkkilistan linkki'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

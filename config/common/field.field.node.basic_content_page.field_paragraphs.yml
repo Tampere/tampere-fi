@@ -26,6 +26,7 @@ dependencies:
     - paragraphs.paragraphs_type.involvement_opportunity_cards
     - paragraphs.paragraphs_type.link_list
     - paragraphs.paragraphs_type.list_of_attachments
+    - paragraphs.paragraphs_type.logo_wall
     - paragraphs.paragraphs_type.map_embed
     - paragraphs.paragraphs_type.material_download_list
     - paragraphs.paragraphs_type.metadata_attachment_list
@@ -41,6 +42,7 @@ dependencies:
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.service_highlight
     - paragraphs.paragraphs_type.social_media_feed_embed
+    - paragraphs.paragraphs_type.social_media_link_list
     - paragraphs.paragraphs_type.table
     - paragraphs.paragraphs_type.table_with_row_and_col_headers
     - paragraphs.paragraphs_type.table_with_row_headers
@@ -95,9 +97,11 @@ settings:
       involvement_opportunity_cards: involvement_opportunity_cards
       ptv_service_liftup: ptv_service_liftup
       place_liftup: place_liftup
+      portfolio_content_listing: portfolio_content_listing
       project_and_organization_cards: project_and_organization_cards
       rss_feed: rss_feed
       embedded_content_and_map_tabs: embedded_content_and_map_tabs
+      social_media_link_list: social_media_link_list
       social_media_feed_embed: social_media_feed_embed
       event_and_hobby_listing: event_and_hobby_listing
       table_with_row_and_col_headers: table_with_row_and_col_headers
@@ -112,7 +116,7 @@ settings:
       video_embed: video_embed
       colorful_content_liftup: colorful_content_liftup
       contact_information_liftups: contact_information_liftups
-      portfolio_content_listing: portfolio_content_listing
+      logo_wall: logo_wall
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -149,13 +153,13 @@ settings:
         weight: 23
         enabled: true
       colorful_content_liftup:
-        weight: 54
+        weight: 56
         enabled: true
       contact_information_liftups:
-        weight: 55
+        weight: 57
         enabled: true
       contact_information_list:
-        weight: 49
+        weight: 51
         enabled: true
       content_liftup:
         weight: 49
@@ -176,13 +180,13 @@ settings:
         weight: 56
         enabled: false
       embedded_content_and_map_tabs:
-        weight: 40
+        weight: 41
         enabled: true
       embederator_embed:
-        weight: 50
+        weight: 52
         enabled: true
       event_and_hobby_listing:
-        weight: 42
+        weight: 44
         enabled: true
       external_link:
         weight: 52
@@ -236,7 +240,7 @@ settings:
         weight: 63
         enabled: false
       involvement_opportunity_cards:
-        weight: 34
+        weight: 35
         enabled: true
       link_list:
         weight: 31
@@ -250,6 +254,12 @@ settings:
       login_link_with_text:
         weight: 74
         enabled: false
+      logo:
+        weight: 131
+        enabled: false
+      logo_wall:
+        weight: 32
+        enabled: true
       mailing_list_information:
         weight: 76
         enabled: false
@@ -257,10 +267,10 @@ settings:
         weight: 22
         enabled: true
       material_download_list:
-        weight: 32
+        weight: 33
         enabled: true
       metadata_attachment_list:
-        weight: 33
+        weight: 34
         enabled: true
       mosaic_liftup:
         weight: 65
@@ -281,13 +291,13 @@ settings:
         weight: 29
         enabled: true
       place_liftup:
-        weight: 36
+        weight: 37
         enabled: true
       place_of_business_liftup:
         weight: 70
         enabled: false
       portfolio_content_listing:
-        weight: 37
+        weight: 38
         enabled: true
       positioned_image:
         weight: 55
@@ -296,19 +306,19 @@ settings:
         weight: 57
         enabled: false
       process_accordions:
-        weight: 51
+        weight: 53
         enabled: true
       project_and_organization_cards:
-        weight: 38
+        weight: 39
         enabled: true
       project_or_organization_card:
         weight: 71
         enabled: false
       ptv_service_liftup:
-        weight: 35
+        weight: 36
         enabled: true
       rss_feed:
-        weight: 39
+        weight: 40
         enabled: true
       separator:
         weight: 14
@@ -320,37 +330,43 @@ settings:
         weight: 73
         enabled: false
       social_media_feed_embed:
-        weight: 41
+        weight: 43
         enabled: true
       social_media_link:
         weight: 75
         enabled: false
+      social_media_link_list:
+        weight: 42
+        enabled: true
+      social_media_link_list_item:
+        weight: 155
+        enabled: false
       table:
-        weight: 45
+        weight: 47
         enabled: true
       table_with_row_and_col_headers:
-        weight: 43
+        weight: 45
         enabled: true
       table_with_row_headers:
-        weight: 44
+        weight: 46
         enabled: true
       text:
         weight: 9
         enabled: true
       text_and_images:
-        weight: 48
+        weight: 50
         enabled: true
       text_with_bgcolor:
-        weight: 47
+        weight: 49
         enabled: true
       two_column_liftup:
         weight: 21
         enabled: true
       video_embed:
-        weight: 53
+        weight: 55
         enabled: true
       webform:
-        weight: 52
+        weight: 54
         enabled: true
       zoning_project_card:
         weight: 77

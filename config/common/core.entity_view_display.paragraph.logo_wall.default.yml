@@ -1,0 +1,31 @@
+uuid: f2dcc311-f2cb-483a-b0a0-c764d5912fed
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.logo_wall.field_logo_wall_help
+    - field.field.paragraph.logo_wall.field_logos
+    - field.field.paragraph.logo_wall.field_title
+    - field.field.paragraph.logo_wall.field_use_background_color
+    - paragraphs.paragraphs_type.logo_wall
+  module:
+    - entity_reference_revisions
+id: paragraph.logo_wall.default
+targetEntityType: paragraph
+bundle: logo_wall
+mode: default
+content:
+  field_logos:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_logo_wall_help: true
+  field_title: true
+  field_use_background_color: true
+  search_api_excerpt: true

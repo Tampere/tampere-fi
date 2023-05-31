@@ -1,0 +1,19 @@
+uuid: e9a8dffe-40b3-4db7-b47f-bfefd8080b49
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - node.type.portfolio_listing
+  module:
+    - gnode
+    - node
+id: group_content_type_053a645f58df8
+label: 'Aihepiiri: Group node (Portfoliolistaus)'
+description: 'Adds <em class="placeholder">Portfoliolistaus</em> content to groups both publicly and privately.'
+group_type: topic
+content_plugin: 'group_node:portfolio_listing'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

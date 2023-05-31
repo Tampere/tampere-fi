@@ -2,6 +2,10 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
+use Drupal\group\Entity\GroupInterface;
+use Drupal\group\Entity\GroupContentInterface;
+use Drupal\group\Entity\Storage\GroupContentStorageInterface;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
@@ -76,6 +80,24 @@ class PortfolioContentListing extends TrePreProcessPluginBase {
 
     $variables['portfolio_content_listing_block'] = $portfolio_content_listing_block;
 
+    $hide_previous_content_link_field_value = $this->helperFunctions->getFieldValueString($translated_paragraph, 'field_hide_previous_content_link');
+    $display_previous_content_link = $hide_previous_content_link_field_value !== HelperFunctionsInterface::BOOLEAN_FIELD_TRUE;
+
+    if ($display_previous_content_link) {
+      $listing_node = $this->getPortfolioListingNodeForParagraph($translated_paragraph);
+
+      if (!($listing_node instanceof NodeInterface)) {
+        return $variables;
+      }
+
+      $previous_content_link = [
+        'text' => $this->t('All contents', [], ['context' => 'Portfolio content listing paragraph']),
+        'url' => $listing_node->toUrl()->toString(TRUE)->getGeneratedUrl(),
+      ];
+
+      $variables['listing_links'][] = $previous_content_link;
+    }
+
     return $variables;
   }
 
@@ -96,6 +118,58 @@ class PortfolioContentListing extends TrePreProcessPluginBase {
     }
 
     return $display_dates ? self::LIFTUPS_WO_IMAGE_DISPLAY_ID : self::LIFTUPS_WO_IMAGE_AND_DATE_DIPLAY_ID;
+  }
+
+  /**
+   * Returns listing node belonging to the same group with a given paragraph.
+   *
+   * @param \Drupal\paragraphs\ParagraphInterface $paragraph
+   *   The paragraph entity to get the associated listing node for.
+   *
+   * @return \Drupal\node\NodeInterface|null
+   *   The listing node entity if succesful. Otherwise null.
+   */
+  protected function getPortfolioListingNodeForParagraph(ParagraphInterface $paragraph) {
+    $paragraph_parent_entity = $paragraph->getParentEntity();
+
+    if (!($paragraph_parent_entity instanceof NodeInterface)) {
+      return NULL;
+    }
+
+    $paragraph_parent_group = $this->helperFunctions->getNodeGroup($paragraph_parent_entity);
+
+    if (!($paragraph_parent_group instanceof GroupInterface)) {
+      return NULL;
+    }
+
+    $group_content_storage = $this->entityTypeManager->getStorage('group_content');
+
+    if (!($group_content_storage instanceof GroupContentStorageInterface)) {
+      return NULL;
+    }
+
+    $group_portfolio_listing_contents = $group_content_storage->loadByGroup($paragraph_parent_group, 'group_node:portfolio_listing');
+
+    if (empty($group_portfolio_listing_contents)) {
+      return NULL;
+    }
+
+    $group_portfolio_listing_content = reset($group_portfolio_listing_contents);
+
+    if (!($group_portfolio_listing_content instanceof GroupContentInterface)) {
+      return NULL;
+    }
+
+    $listing_node = $group_portfolio_listing_content->getEntity();
+
+    if (!($listing_node instanceof NodeInterface)) {
+      return NULL;
+    }
+
+    /** @var \Drupal\node\NodeInterface $translated_listing_node */
+    $translated_listing_node = $this->entityRepository->getTranslationFromContext($listing_node);
+
+    return $translated_listing_node;
   }
 
   /**

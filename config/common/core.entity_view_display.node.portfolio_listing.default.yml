@@ -1,0 +1,19 @@
+uuid: aaefe79c-56fa-4e1b-8390-e4880fe6c1cf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.portfolio_listing
+  module:
+    - user
+id: node.portfolio_listing.default
+targetEntityType: node
+bundle: portfolio_listing
+mode: default
+content: {  }
+hidden:
+  entitygroupfield: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

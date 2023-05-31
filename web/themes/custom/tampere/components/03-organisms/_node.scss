@@ -3,6 +3,7 @@
 .node {
   &__title {
     .main-content--with-sidebar & {
+      margin-top: 0;
       max-width: var(--basic-component-max-width);
     }
 

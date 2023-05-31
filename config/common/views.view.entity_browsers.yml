@@ -8,6 +8,7 @@ dependencies:
     - node.type.person
     - node.type.place
     - node.type.place_of_business
+    - node.type.portfolio_listing
     - node.type.ptv_service
     - node.type.rss_item
   module:
@@ -541,12 +542,13 @@ display:
           plugin_id: bundle
           operator: 'not in'
           value:
+            person: person
             emergency_notice: emergency_notice
             map_point: map_point
-            person: person
-            place_of_business: place_of_business
-            rss_item: rss_item
             ptv_service: ptv_service
+            portfolio_listing: portfolio_listing
+            rss_item: rss_item
+            place_of_business: place_of_business
           group: 1
           exposed: false
           expose:

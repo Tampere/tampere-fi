@@ -1,4 +1,4 @@
-label: 'Hide previous content link'
+label: 'Hide all contents link'
 settings:
   on_label: 'On'
   off_label: 'Off'

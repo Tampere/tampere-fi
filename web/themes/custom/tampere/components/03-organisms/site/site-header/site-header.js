@@ -5,12 +5,58 @@
  */
 
 /**
+ * Handles keydown events in the site header.
+ *
+ * Traps focus inside the open header menu overlay when on mobile.
+ *
+ * @param {Event} event
+ *   The event on site header.
+ */
+function handleHeaderKeydown(event) {
+  const isNotTabKey = event.key !== 'Tab';
+
+  if (isNotTabKey) {
+    return;
+  }
+
+  const openMobileMenuButton = document.querySelector('.menu-button--mobile.is-open');
+
+  if (!openMobileMenuButton) {
+    return;
+  }
+
+  const header = event.currentTarget;
+  // Not an exhaustive list of focusable elements. Just ones relevant to the
+  // 'site-header' component.
+  const focusableElements = header.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+  const firstFocusable = focusableElements[0];
+  const lastFocusable = focusableElements[focusableElements.length - 1];
+
+  if (event.shiftKey) {
+    // When shift + tab is used, move to last focusable element if currently on
+    // the first element.
+    if (document.activeElement === firstFocusable) {
+      lastFocusable.focus();
+      event.preventDefault();
+    }
+  } else {
+    // Otherwise, move to first focusable element if currently on the last
+    // element.
+    if (document.activeElement === lastFocusable) {
+      firstFocusable.focus();
+      event.preventDefault();
+    }
+  }
+}
+
+/**
  * Toggles menu container visibility for given menu button.
  *
  * @param {HTMLElement} button
  *   The menu button that controls a container.
  */
 function toggleMenuContainer(button) {
+  const body = document.body;
   const header = document.getElementById('site-header');
   const isAriaExpanded = button.getAttribute('aria-expanded') === 'true';
   const controlledContainerId = button.getAttribute('aria-controls');
@@ -26,9 +72,24 @@ function toggleMenuContainer(button) {
     ariaLabel = !isAriaExpanded ? 'Hide menu' : 'Show menu';
   }
 
+  // Mobile menu needs some extra classes that desktop menu doesn't use.
+  if (controlledContainerId.includes('mobile')) {
+    if (isAriaExpanded) {
+      body.classList.add('mobile-menu-closed');
+      body.classList.remove('mobile-menu-open');
+      header.classList.add('mobile-menu-closed');
+      header.classList.remove('mobile-menu-open');
+    }
+    else {
+      body.classList.add('mobile-menu-open');
+      body.classList.remove('mobile-menu-closed');
+      header.classList.add('mobile-menu-open');
+      header.classList.remove('mobile-menu-closed');
+    }
+  }
+
   navigationContainer.classList.toggle('is-closed');
   button.classList.toggle('is-open');
-  header.classList.toggle('menu-closed');
 
   button.setAttribute('aria-expanded', !isAriaExpanded ? 'true' : 'false');
   button.setAttribute('aria-label', ariaLabel);
@@ -51,8 +112,8 @@ function handleMenuButtonInteraction(event) {
 /**
  * Handles interaction with the body element.
  *
- * Closes navigation container if click/tap occurs outside the container.
- * The container is different on desktop and mobile.
+ * Closes desktop or minisite navigation container if click/tap occurs outside
+ * the container.
  *
  * @param {Event} event
  *   The event on body element.
@@ -63,40 +124,75 @@ function handleHeaderBodyInteraction(event) {
     event.target.closest('.site-header__menu') ||
     event.target.closest('.minisite-header__navigation');
 
-  const expandedNavContainerButtons = document.querySelectorAll(
-    '.menu-button[aria-expanded=true]'
+  const expandedNavContainerButton = document.querySelector(
+    '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]'
   );
 
-  if (!selectedHeaderMenuContainer && expandedNavContainerButtons.length > 0) {
-    expandedNavContainerButtons.forEach((button) => {
-      toggleMenuContainer(button);
-    });
+  if (!selectedHeaderMenuContainer && expandedNavContainerButton) {
+    toggleMenuContainer(expandedNavContainerButton);
   }
 }
 
 /**
  * Handles focus leaving the site header.
  *
+ * Closes desktop and minisite navigation container if it is open.
+ *
  * @param {Event} event
  *   The event on site header.
  */
 function handleHeaderFocusOut(event) {
-  const header = document.getElementById('site-header');
-  // The site-header navigation container on mobile now contains
-  // accordions that will trigger the focusout event. It is necessary to ensure
-  // that the event wasn't caused by the accordions so that the menu button
-  // works correctly on iOS devices.
-  const focusOutNotCausedByNavigationAccordion = !event.originalTarget.classList.contains('accordion__heading');
+  const header = event.currentTarget;
 
-  if (!header.contains(event.relatedTarget) && focusOutNotCausedByNavigationAccordion) {
-    const expandedNavContainerButton = header.querySelector(
-      '.menu-button[aria-expanded=true]'
-    );
-
-    if (expandedNavContainerButton) {
-      toggleMenuContainer(expandedNavContainerButton);
-    }
+  if (header.contains(event.relatedTarget)) {
+    return;
   }
+
+  const expandedNavContainerButton = header.querySelector(
+    '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]'
+  );
+
+  if (expandedNavContainerButton) {
+    toggleMenuContainer(expandedNavContainerButton);
+  }
+}
+
+/**
+ * Handles resize events.
+ *
+ * Ensures mobile menu related classes aren't active outside its intended
+ * viewport size.
+ */
+function handleResize() {
+  const mediaQuery = window.matchMedia('(max-width: 61.56rem)');
+
+  if (mediaQuery.matches) {
+    return;
+  }
+
+  const body = document.body;
+  const header = document.getElementById('site-header');
+
+  if (
+    body.classList.contains('mobile-menu-closed') &&
+    header.classList.contains('mobile-menu-closed')
+  ) {
+    return;
+  }
+
+  const button = header.querySelector('.menu-button--mobile');
+  const controlledContainerId = button.getAttribute('aria-controls');
+  const navigationContainer = document.getElementById(controlledContainerId);
+
+  body.classList.add('mobile-menu-closed');
+  body.classList.remove('mobile-menu-open');
+  button.classList.remove('is-open');
+  header.classList.add('mobile-menu-closed');
+  header.classList.remove('mobile-menu-open');
+  navigationContainer.classList.add('is-closed');
+
+  button.setAttribute('aria-expanded', 'false');
+  button.setAttribute('aria-label', Drupal.t('Show menu'));
 }
 
 Drupal.behaviors.siteHeader = {
@@ -132,6 +228,13 @@ Drupal.behaviors.siteHeader = {
       }
 
       siteHeader.addEventListener('focusout', handleHeaderFocusOut);
+
+      // Add main site site-header specific event listeners.
+      const isMinisite = siteHeader.classList.contains('minisite-header');
+      if (!isMinisite) {
+        siteHeader.addEventListener('keydown', handleHeaderKeydown);
+        window.addEventListener('resize', () => requestAnimationFrame(handleResize));
+      }
     }
   },
 };

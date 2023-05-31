@@ -89,12 +89,6 @@ $inline-menu-item-margin-right: $space-m;
       justify-content: center;
     }
 
-    #{$base_class}__icon {
-      @include large-down {
-        display: block;
-      }
-    }
-
     #{$base-class}__link {
       @include link(clr(text-inverse), clr(text-inverse));
 
@@ -143,12 +137,6 @@ $inline-menu-item-margin-right: $space-m;
 
     @include large {
       font-size: $inline-menu-desktop-main-font-size;
-    }
-
-    #{$base_class}__icon {
-      @include large-down {
-        display: block;
-      }
     }
 
     #{$base-class}__item {
