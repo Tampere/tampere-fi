@@ -8,6 +8,7 @@ Drupal.behaviors.mapTabsContent = {
   attach(context, drupalSettings) {
     // The domain must match the iframe source URL, per https://github.com/oskariorg/rpc-client#usage
     const IFRAME_DOMAIN = drupalSettings.tampere.mmlMapIframeDomain;
+    const CURRENT_LANGUAGE = drupalSettings.tampere.currentLanguage;
     const LOCATION_PIN_VECTOR_LAYER_ID_BASE = 'MAP_TABS_LOCATION_PIN_VECTOR_LAYER';
     const SEARCH_VECTOR_LAYER_ID_BASE = 'MAP_TABS_SEARCH_VECTOR_LAYER';
     const ACTIVE_SEARCH_MARKER_SHAPE =
@@ -27,7 +28,6 @@ Drupal.behaviors.mapTabsContent = {
     // Key'd by the ID of the containing paragraph and then by node IDs.
     // One node can be connected to multiple locations.
     const locations = drupalSettings.tampere.embeddedContentAndMapTabs.locations;
-    let activeFeatureId;
 
     /**
      * Toggles given feature location pin styles.
@@ -36,8 +36,10 @@ Drupal.behaviors.mapTabsContent = {
      *   The channel connected with the map.
      * @param {Object} feature
      *   The feature to update.
+     * @param {string} activeFeatureId
+     *   The active feature's ID.
      */
-    function toggleLocationPin(channel, feature) {
+    function toggleLocationPin(channel, feature, activeFeatureId) {
       const featureId = feature.id;
       const { layerId } = feature;
       const isFeatureActive = feature.geojson.features[0].properties.active;
@@ -129,24 +131,32 @@ Drupal.behaviors.mapTabsContent = {
       }
 
       const isFeatureActive = feature.geojson.features[0].properties.active;
-
-      toggleLocationPin(channel, feature);
+      const informationCard = mapElement.closest('.js-search-panel-map').querySelector('.search-panel__popup-item');
+      const loadingText = mapElement.closest('.js-search-panel-map').querySelector('.search-panel__loading-text');
+      const activeFeatureId = informationCard.getAttribute('data-featureId');
+      toggleLocationPin(channel, feature, activeFeatureId);
 
       const locationNid = feature.geojson.features[0].properties.nid;
-      const informationCard = mapElement.closest('.js-search-panel-map').querySelector(`[data-nid="${locationNid}"]`);
-      const isCardVisible = informationCard.hidden;
 
-      const previouslyOpenedCard = mapElement.closest('.js-search-panel-map').querySelector(`[data-nid]:not([hidden])`);
+      loadingText.hidden = false;
 
-      // Close card opened earlier if there is one except if it's the same location that was opened from a different pin earlier.
-      // Multiple locations can have the same information card.
-      if (!previouslyOpenedCard) {
-        informationCard.hidden = !isCardVisible;
+      informationCard.innerHTML = '';
+
+      if (!isFeatureActive) {
+        let baseUrl = '/map-data-from-node/';
+        if (CURRENT_LANGUAGE == 'en') {
+          baseUrl = '/en/map-data-from-node/';
+        }
+        jQuery(informationCard).load(`${baseUrl}${locationNid}`, function() {
+          loadingText.hidden = true;
+        });
+      } else {
+        loadingText.hidden = true;
       }
-      else if (previouslyOpenedCard.dataset.nid !== locationNid || isFeatureActive) {
-        previouslyOpenedCard.hidden = true;
-        informationCard.hidden = !isCardVisible;
-      }
+
+      informationCard.setAttribute('data-nid', locationNid);
+      informationCard.setAttribute('data-featureId', feature.id);
+      informationCard.hidden = isFeatureActive;
 
       return false;
     }
@@ -259,9 +269,8 @@ Drupal.behaviors.mapTabsContent = {
      *   The channel connected with the map.
      */
     function handleCardButtonInteraction(event, channel) {
-      const button = event.currentTarget;
-      const popupItem = button.closest('.search-panel__popup-item');
-      const mapElement = button.closest('.js-search-panel-map').querySelector('[id^="map"]');
+      const popupItem = event.target.closest('.search-panel__popup-item');
+      const mapElement = event.target.closest('.js-search-panel-map').querySelector('[id^="map"]');
 
       if (popupItem && mapElement) {
         popupItem.hidden = !popupItem.hidden;
@@ -295,7 +304,6 @@ Drupal.behaviors.mapTabsContent = {
           },
         ]);
 
-        activeFeatureId = null;
       }
     }
 
@@ -349,6 +357,13 @@ Drupal.behaviors.mapTabsContent = {
                 handleCardButtonInteraction(event, channel);
               }.bind(button, channel));
             });
+
+            containerSearchPanel.addEventListener('click', (event) => {
+              if (event.target.closest('.popup-card__button') || event.target.classList.contains('popup-card__button')) {
+                handleCardButtonInteraction(event, channel);
+              }
+          });
+
           }
 
           if (locationsExistForMap) {

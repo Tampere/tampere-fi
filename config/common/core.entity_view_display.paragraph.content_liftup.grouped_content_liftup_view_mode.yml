@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.grouped_content_liftup_view_mode
+    - field.field.paragraph.content_liftup.field_content_liftup_link_help
     - field.field.paragraph.content_liftup.field_content_link
+    - field.field.paragraph.content_liftup.field_internal_content_link
     - field.field.paragraph.content_liftup.field_liftup_title
     - field.field.paragraph.content_liftup.field_summary
     - paragraphs.paragraphs_type.content_liftup
@@ -22,6 +24,8 @@ content:
     weight: 0
     region: content
 hidden:
+  field_content_liftup_link_help: true
   field_content_link: true
+  field_internal_content_link: true
   field_summary: true
   search_api_excerpt: true

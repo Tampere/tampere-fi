@@ -233,6 +233,7 @@ permissions:
   - 'update paragraph content picture_mosaic'
   - 'update paragraph content place_liftup'
   - 'update paragraph content place_of_business_liftup'
+  - 'update paragraph content portfolio_content_listing'
   - 'update paragraph content positioned_image'
   - 'update paragraph content process_accordion_item'
   - 'update paragraph content process_accordions'

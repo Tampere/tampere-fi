@@ -1,0 +1,19 @@
+uuid: c9dafa9d-b6ff-41d1-a2b9-be85be6569b2
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_listing_search_content
+field_name: field_listing_search_content
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

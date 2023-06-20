@@ -1,0 +1,17 @@
+uuid: 71807214-8dae-4e2a-89b7-f9c5edf1e114
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.contact_info_author
+id: mailing_list-497bd0061
+label: Yhteystietotoimittaja
+weight: -5
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions: {  }

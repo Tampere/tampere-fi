@@ -66,7 +66,6 @@ module:
   field: 0
   field_delimiter: 0
   field_group: 0
-  field_states_ui: 0
   field_ui: 0
   file: 0
   file_delete: 0
@@ -212,6 +211,7 @@ module:
   tre_news_and_article_view_fixes: 0
   tre_news_archive: 0
   tre_news_email_release: 0
+  tre_node_json_api_static: 0
   tre_node_location_coordinate_conversion: 0
   tre_node_logger: 0
   tre_openid_connect_windows_aad_tampere: 0
@@ -245,6 +245,7 @@ module:
   username_enumeration_prevention: 0
   variationcache: 0
   views_custom_cache_tag: 0
+  views_filters_populate: 0
   views_ui: 0
   warmer: 0
   warmer_cdn: 0
@@ -262,6 +263,7 @@ module:
   views: 10
   paragraphs: 11
   publication_date: 99
+  field_states_ui: 200
   codebase: 1000
 theme:
   stark: 0

@@ -10,7 +10,7 @@ id: paragraph.portfolio_content_listing.field_keywords
 field_name: field_keywords
 entity_type: paragraph
 bundle: portfolio_content_listing
-label: Asiasanat
+label: Ohjaukset
 description: ''
 required: false
 translatable: true

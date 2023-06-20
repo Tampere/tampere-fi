@@ -1,0 +1,16 @@
+diff --git a/src/OfficeHoursFormatterTrait.php b/src/OfficeHoursFormatterTrait.php
+index d4116dc..fb435ed 100644
+--- a/src/OfficeHoursFormatterTrait.php
++++ b/src/OfficeHoursFormatterTrait.php
+@@ -417,6 +417,11 @@ trait OfficeHoursFormatterTrait {
+         // Comments are not allowed, but may have been entered somehow.
+         $info['comments'] = [];
+       }
++
++      // Ensure empty comments are filtered out to prevent adjacent commas
++      // from being displayed to the end-user.
++      $info['comments'] = array_filter(array_map('trim', $info['comments']));
++
+       // Concatenate the comment lines.
+       $info['comments'] = implode($slot_separator, $info['comments']);
+ 

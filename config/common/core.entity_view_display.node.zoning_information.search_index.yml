@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.zoning_information.field_geographical_areas
     - field.field.node.zoning_information.field_help_text
     - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_listing_search_content
     - field.field.node.zoning_information.field_location
     - field.field.node.zoning_information.field_main_image
     - field.field.node.zoning_information.field_other_identifiers
@@ -147,12 +148,14 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_display_location_on_map: true
   field_display_period: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
   field_feedback_form: true
   field_help_text: true
+  field_listing_search_content: true
   field_location: true
   field_main_image: true
   field_other_identifiers: true
@@ -161,4 +164,5 @@ hidden:
   field_zoning_information_type: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

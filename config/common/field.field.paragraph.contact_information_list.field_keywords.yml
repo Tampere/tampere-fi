@@ -10,7 +10,7 @@ id: paragraph.contact_information_list.field_keywords
 field_name: field_keywords
 entity_type: paragraph
 bundle: contact_information_list
-label: Asiasanat
+label: Ohjaukset
 description: ''
 required: false
 translatable: true

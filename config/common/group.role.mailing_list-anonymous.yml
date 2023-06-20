@@ -1,0 +1,14 @@
+uuid: 50d04b31-5bba-4997-adb8-f1ffe6f6ccce
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+id: mailing_list-anonymous
+label: Anonyymi
+weight: -102
+internal: true
+audience: anonymous
+group_type: mailing_list
+permissions_ui: true
+permissions: {  }

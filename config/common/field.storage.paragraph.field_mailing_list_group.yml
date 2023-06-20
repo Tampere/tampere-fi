@@ -1,0 +1,20 @@
+uuid: 9a41678d-1751-4d59-95d9-c3eec7965ea5
+langcode: fi
+status: true
+dependencies:
+  module:
+    - group
+    - paragraphs
+id: paragraph.field_mailing_list_group
+field_name: field_mailing_list_group
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: group
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

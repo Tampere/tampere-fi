@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for tre_preprocess_embedded_content_and_map_tabs module.
+ */
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function tre_preprocess_embedded_content_and_map_tabs_node_presave(NodeInterface $node) {
+
+  if (!$node->hasField('field_listing_search_content')) {
+    return;
+  }
+
+  $text_content = [];
+
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
+  $renderer = \Drupal::service('renderer');
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+  $build = $view_builder->view($node, 'content_tab_card_view_mode');
+  $text_content[] = $renderer->renderPlain($build);
+
+  $text_string = implode("\n", $text_content);
+  $text_without_tags = strip_tags($text_string);
+
+  $title = $node->getTitle();
+
+  $node->set('field_listing_search_content', "{$title}\n{$text_without_tags}");
+
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ *
+ * Resave all the parent nodes when a map-point node gets updated,
+ * to update listing_search_content field in the parent nodes.
+ */
+function tre_preprocess_embedded_content_and_map_tabs_node_update(NodeInterface $node) {
+  if (!$node->bundle() == 'map_point') {
+    return;
+  }
+
+  $parent_nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+    'field_addresses' => $node->id(),
+  ]);
+
+  // Update the search field of all parent nodes when a map_point node gets updated.
+  foreach ($parent_nodes as $parent_node) {
+    $parent_node->save();
+  }
+
+}

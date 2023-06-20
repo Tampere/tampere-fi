@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.place_of_business.field_keywords
     - field.field.node.place_of_business.field_life_situations
     - field.field.node.place_of_business.field_links
+    - field.field.node.place_of_business.field_listing_search_content
     - field.field.node.place_of_business.field_opening_hours
     - field.field.node.place_of_business.field_opening_hours_2
     - field.field.node.place_of_business.field_opening_hours_3
@@ -471,6 +472,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
+  field_listing_search_content: true
   path: true
   promote: true
   published_at: true

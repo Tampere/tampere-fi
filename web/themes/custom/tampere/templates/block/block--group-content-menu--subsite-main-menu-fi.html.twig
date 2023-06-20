@@ -24,20 +24,19 @@
  * - group_front_page_title: The title for the group's front page.
  * - group_front_page_url: The URL for the group's front page.
  * - group_front_page_link_extra_classes: The extra classes for the group's
- * - group_sidebar_region: The name of the sidebar region.
- *   front page link
- * - group_sidebar__has_content: Boolean if sidebar has content inside.
- *   
+ * - group_menu_block_region: The group menu block's region name.
+ * - group_sidebar__has_content: A flag for whether or not the sidebar has
+ *   content.
  *
  * @see template_preprocess_block()
  */
 #}
 
 {% if group_sidebar__has_content %}
-  {% if group_sidebar_region == "sidebar_heading" %}
+  {% if group_menu_block_region == "sidebar_heading" %}
     {% include "@organisms/sidebar-menu-container/_sidebar-menu-container-title.twig" with {
-      "sidebar_menu_container_heading": group_front_page_title,
-      "sidebar_menu_container_heading_url": group_front_page_url,
+      "sidebar_menu_container__heading": group_front_page_title,
+      "sidebar_menu_container_heading__url": group_front_page_url,
       "sidebar_menu_container__extra_classes": group_front_page_link_extra_classes,
       "sidebar_menu_container_title__modifiers": [ "is-heading" ],
       "attributes": []
@@ -45,8 +44,8 @@
   {% else %}
     {% embed "@organisms/sidebar-menu-container/sidebar-menu-container.twig" with {
       "sidebar_menu_container_has_menu_items": 1,
-      "sidebar_menu_container_heading": group_front_page_title,
-      "sidebar_menu_container_heading_url": group_front_page_url,
+      "sidebar_menu_container__heading": group_front_page_title,
+      "sidebar_menu_container_heading__url": group_front_page_url,
       "sidebar_menu_container__extra_classes": group_front_page_link_extra_classes,
       "attributes": []
     } %}

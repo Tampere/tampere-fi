@@ -403,11 +403,10 @@ class HelperFunctions implements HelperFunctionsInterface {
   /**
    * {@inheritdoc}
    */
-  public function getGroupFrontPageDetails($group_id = NULL): ?array {
+  public function getGroupFrontPageDetails($group_id = NULL, $group = NULL): ?array {
     $current_language_id = $this->languageManager->getCurrentLanguage()->getId();
 
     // Load group using group_id parameter, if exists.
-    $group = NULL;
     if (isset($group_id)) {
       $group = $this->entityTypeManager->getStorage('group')->load($group_id);
     }

@@ -10,8 +10,8 @@ id: node.project.field_keywords
 field_name: field_keywords
 entity_type: node
 bundle: project
-label: Asiasanat
-description: 'Käytetään sisällön ohjaamiseksi sivuilla oleviin automaattisiin sisältölistauksiin. Älä ideoi asiasanoja vaan käytä sovittuja sisällöstä riippuen. Esim. ajankohtaissisällöissä asiasanoiksi lisätään niiden sivujen pääotsikot, joiden ajankohtaispalstoille sisältö halutaan ohjata.'
+label: Ohjaukset
+description: 'Käytetään sisällön ohjaamiseksi sivuilla oleviin automaattisiin sisältölistauksiin. Älä ideoi ohjaustermejä vaan käytä sovittuja sisällöstä riippuen. Esim. ajankohtaissisällöissä ohjaustermeiksi lisätään niiden sivujen pääotsikot, joiden ajankohtaispalstoille sisältö halutaan ohjata.'
 required: false
 translatable: true
 default_value: {  }

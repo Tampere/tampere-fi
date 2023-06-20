@@ -27,7 +27,7 @@
     tableCells: 'tbody td',
     tableHeading: 'table-heading',
     windowLink: 'window-link',
-    columnHeaders: 'thead th[scope="col"]',
+    columnHeaders: 'thead th[scope="col"], thead td',
     rowHeaders: 'tbody th[scope="row"]',
     caption: 'caption',
     h2: 'h2',

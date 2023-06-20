@@ -52,6 +52,7 @@ $search-bar-max-width--long: 540px;
     justify-content: center;
     padding: $space-xs;
     width: $search-bar-height;
+    margin: 0;
 
     &:focus,
     &:hover {

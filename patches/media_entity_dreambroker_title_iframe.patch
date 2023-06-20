@@ -1,0 +1,61 @@
+diff --git a/src/Plugin/Field/FieldFormatter/DreambrokerEmbedFormatter.php b/src/Plugin/Field/FieldFormatter/DreambrokerEmbedFormatter.php
+index 65e796b..50adbea 100644
+--- a/src/Plugin/Field/FieldFormatter/DreambrokerEmbedFormatter.php
++++ b/src/Plugin/Field/FieldFormatter/DreambrokerEmbedFormatter.php
+@@ -6,6 +6,7 @@ use Drupal\Core\Field\FieldItemListInterface;
+ use Drupal\Core\Field\FieldItemInterface;
+ use Drupal\Core\Field\FormatterBase;
+ use Drupal\Core\Form\FormStateInterface;
++use Drupal\media\MediaInterface;
+ use Drupal\media_entity_dreambroker\Plugin\media\Source\Dreambroker;
+ 
+ /**
+@@ -43,6 +44,28 @@ class DreambrokerEmbedFormatter extends FormatterBase {
+         break;
+     }
+   }
++  
++  /**
++   * Retrieves the title of the media entity in the current language context.
++   *
++   * This method gets the title of the media entity, using the current language
++   * context. If a translation of the media entity exists in the current language
++   * context, it will return the translated title. If no such translation exists,
++   * it will return the title in the default language.
++   *
++   * @param \Drupal\media\MediaInterface $media
++   *   The media entity for which to retrieve the title.
++   *
++   * @return string
++   *   The title of the media entity in the current language context, or the title
++   *   in the default language if no translation exists in the current language context.
++   */
++  protected function getMediaTitle(MediaInterface $media) {
++    $entityRepository = \Drupal::service('entity.repository');
++    $translatedMedia = $entityRepository->getTranslationFromContext($media);
++
++    return $translatedMedia->label();
++  }
+ 
+   /**
+    * {@inheritdoc}
+@@ -51,6 +74,11 @@ class DreambrokerEmbedFormatter extends FormatterBase {
+     $element = [];
+     foreach ($items as $delta => $item) {
+       $matches = [];
++      $media = $item->getEntity();
++      $title = "";
++      if($media instanceof MediaInterface){
++        $title = $this->getMediaTitle($media);
++      }
+ 
+       foreach (Dreambroker::$validationRegexp as $pattern => $key) {
+         if (preg_match($pattern, $this->getEmbedCode($item), $item_matches)) {
+@@ -71,6 +99,7 @@ class DreambrokerEmbedFormatter extends FormatterBase {
+           ],
+           '#attributes' => [
+             'class' => ['dreambroker-iframe'],
++            'title' => $title,
+           ],
+         ];
+ 

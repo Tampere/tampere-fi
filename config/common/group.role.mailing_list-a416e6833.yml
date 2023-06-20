@@ -1,0 +1,30 @@
+uuid: ee90ac9a-af95-4d58-a068-08b241d3ae47
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.administrator
+id: mailing_list-a416e6833
+label: Ylläpitäjä
+weight: 9
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions:
+  - 'access content overview'
+  - 'administer group'
+  - 'administer members'
+  - 'delete group'
+  - 'delete group revisions'
+  - 'edit group'
+  - 'revert group revisions'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view group revisions'
+  - 'view group_membership content'
+  - 'view latest group version'
+  - 'view own unpublished group'

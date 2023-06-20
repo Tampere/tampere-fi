@@ -41,6 +41,7 @@
   {% set search_panel__extra_classes = search_panel__extra_classes|merge([ "js-search-panel-map" ]) %}
   {% set search_panel_search_bar_input_placeholder = "Search for address"|t ({}, { "context" : "Embedded content and map tabs search placeholder in the map view" }) %}
   {% set search_panel_search_button_aria_label = "Search from map"|t ({}, { "context" : "Embedded content and map tabs search button description for screenreaders in map view" }) %}
+  {% set search_panel_loading_text = "Loading..."|t ({}, { "context" : "Embedded content and map tabs loading text in map view" }) %}
 {% endif %}
 
 <div {{ bem(search_panel__base_class, search_panel__modifiers|default([]), search_panel__blockname, search_panel__extra_classes) }}>
@@ -108,13 +109,13 @@
       {% endblock %}
     </div>
   </div>
-  {% if search_panel_popup_content %}
+  {% if add_popup_content_placeholder %}
     <div {{ bem("popup-content", search_panel__popup_content__modifiers|default([]), search_panel__base_class) }}>
-      {% for item in search_panel_popup_content %}
-        <div {{ bem("popup-item", search_panel__popup_item__modifiers|default([]), search_panel__base_class) }} hidden data-nid="{{ item.nid }}">
-          {{ item.content }}
-        </div>
-      {% endfor %}
+      <div {{ bem("loading-text", search_panel__popup_item__modifiers|default([]), search_panel__base_class) }} hidden>
+        {{ search_panel_loading_text }}
+      </div>
+      <div {{ bem("popup-item", search_panel__popup_item__modifiers|default([]), search_panel__base_class) }} hidden>
+      </div>
     </div>
   {% endif %}
 </div>

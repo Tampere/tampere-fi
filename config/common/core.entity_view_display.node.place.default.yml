@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.place.field_geographical_areas
     - field.field.node.place.field_help_text
     - field.field.node.place.field_keywords
+    - field.field.node.place.field_listing_search_content
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
     - field.field.node.place.field_paragraphs
@@ -85,6 +86,13 @@ content:
     third_party_settings: {  }
     weight: 2
     region: main_content
+  field_listing_search_content:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_location:
     type: geofield_latlon
     label: above

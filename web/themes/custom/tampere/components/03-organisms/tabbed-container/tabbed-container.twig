@@ -12,10 +12,12 @@
  # - tabbed_container__heading - heading for the component.
  #
  # - tabbed_container_tabs - array of tabs to display in the container. Eaach tab contains.
- *   - title: The title to be displayed inside the tab.
- *   - content: The full content to be displayed in the tab panel.
- *
- * - tabbed_container_identifier - a unique identifier for the entire tabbed container that will be appended to the tab and panel IDs.
+ #   - title: The title to be displayed inside the tab.
+ #   - content: The full content to be displayed in the tab panel.
+ #   - use_search_panel: Flag for showing the content in a search panel. Will be true when the search panel should be used.
+ #
+ # - tabbed_container_identifier - a unique identifier for the entire tabbed container that will be appended to the tab and panel IDs.
+ # - tabbed_container__description - a description for the tabbed container.
  #}
 {{ attach_library("tampere/tabbed-container") }}
 
@@ -62,6 +64,7 @@
         aria-labelledby="tabbed-container-tab-{{ loop.index }}-{{ tabbed_container_identifier }}"
         {% if not loop.last %} hidden {% endif %}
       >
+      {% if tab.use_search_panel %}
         {% embed "@organisms/search-panel/search-panel.twig" with {
           "use_accordion": tab.use_accordion,
           "search_panel_identifier": tab.panel_id,
@@ -69,15 +72,15 @@
           "search_panel_accordion_list": tab.content,
           "search_panel_popup_content": tab.popup_content,
           "search_panel__description": tabbed_container__description,
+          "add_popup_content_placeholder": true
         } %}
           {% block search_panel_results %}
-            {% if tab.use_accordion %}
-              {{ parent() }}
-            {% else %}
               {{ tab.content }}
-            {% endif %}
           {% endblock %}
         {% endembed %}
+      {% else %}
+        {{ tab.content }}
+      {% endif %}
       </section>
     {% endfor %}
   </div>

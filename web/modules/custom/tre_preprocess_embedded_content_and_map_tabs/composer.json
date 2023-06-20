@@ -1,0 +1,11 @@
+{
+    "name": "tampere/tre_preprocess_embedded_content_and_map_tabs",
+    "type": "drupal-drush",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "^10|^11"
+            }
+        }
+    }
+}

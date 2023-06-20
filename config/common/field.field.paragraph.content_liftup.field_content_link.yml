@@ -16,7 +16,7 @@ entity_type: paragraph
 bundle: content_liftup
 label: 'Linkki sisältöön'
 description: ''
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
@@ -29,17 +29,29 @@ settings:
       login_link: login_link
     negate: 0
     target_bundles_drag_drop:
-      accessibility_information:
-        weight: 25
-        enabled: false
       accordion_item:
         weight: 27
+        enabled: false
+      accordion_text_content:
+        weight: 88
         enabled: false
       accordions:
         weight: 26
         enabled: false
+      anchor_link:
+        weight: 89
+        enabled: false
+      anchor_list:
+        weight: 90
+        enabled: false
       attachment:
         weight: 28
+        enabled: false
+      automatic_anchor_list:
+        weight: 92
+        enabled: false
+      back_to_top_link:
+        weight: 93
         enabled: false
       balanced_content_liftup:
         weight: 53
@@ -62,14 +74,26 @@ settings:
       content_liftup:
         weight: 24
         enabled: false
+      course_listing:
+        weight: 101
+        enabled: false
+      course_listing_sports:
+        weight: 102
+        enabled: false
       current_liftup:
         weight: 78
         enabled: false
       current_listing:
         weight: 79
         enabled: false
+      downloadable_material:
+        weight: 105
+        enabled: false
       embedded_content_and_map_tabs:
         weight: 59
+        enabled: false
+      embederator_embed:
+        weight: 107
         enabled: false
       event_and_hobby_listing:
         weight: 60
@@ -82,6 +106,9 @@ settings:
         enabled: false
       feedback_section:
         weight: 84
+        enabled: false
+      generic_listing:
+        weight: 112
         enabled: false
       grouped_content_liftup:
         weight: 68
@@ -119,6 +146,12 @@ settings:
       internal_link_with_link_text:
         weight: 75
         enabled: false
+      involvement_opportunity_card:
+        weight: 125
+        enabled: false
+      involvement_opportunity_cards:
+        weight: 126
+        enabled: false
       link_list:
         weight: 76
         enabled: false
@@ -131,11 +164,20 @@ settings:
       login_link_with_text:
         weight: 105
         enabled: false
+      logo:
+        weight: 131
+        enabled: false
+      logo_wall:
+        weight: 132
+        enabled: false
       mailing_list_information:
         weight: 106
         enabled: false
       map_embed:
         weight: 107
+        enabled: false
+      material_download_list:
+        weight: 135
         enabled: false
       metadata_attachment_list:
         weight: 78
@@ -152,6 +194,9 @@ settings:
       person_liftups:
         weight: 82
         enabled: false
+      persons_contact_information_list:
+        weight: 139
+        enabled: false
       picture_mosaic:
         weight: 83
         enabled: false
@@ -160,6 +205,12 @@ settings:
         enabled: false
       place_of_business_liftup:
         weight: 85
+        enabled: false
+      portfolio_content_listing:
+        weight: 145
+        enabled: false
+      positioned_image:
+        weight: 146
         enabled: false
       process_accordion_item:
         weight: 117
@@ -172,6 +223,9 @@ settings:
         enabled: false
       project_or_organization_card:
         weight: 39
+        enabled: false
+      ptv_service_liftup:
+        weight: 151
         enabled: false
       rss_feed:
         weight: 41
@@ -191,11 +245,29 @@ settings:
       social_media_link:
         weight: 44
         enabled: false
+      social_media_link_list:
+        weight: 158
+        enabled: false
+      social_media_link_list_item:
+        weight: 159
+        enabled: false
       table:
         weight: 93
         enabled: false
+      table_with_row_and_col_headers:
+        weight: 161
+        enabled: false
+      table_with_row_headers:
+        weight: 162
+        enabled: false
       text:
         weight: 45
+        enabled: false
+      text_and_images:
+        weight: 164
+        enabled: false
+      text_with_bgcolor:
+        weight: 165
         enabled: false
       two_column_liftup:
         weight: 95

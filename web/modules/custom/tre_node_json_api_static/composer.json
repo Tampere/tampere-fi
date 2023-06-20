@@ -1,0 +1,11 @@
+{
+    "name": "tampere/tre_node_json_api_static",
+    "type": "drupal-drush",
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": ">=10"
+            }
+        }
+    }
+}

@@ -307,7 +307,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Käytä
           reset_button: true
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele
@@ -374,7 +374,7 @@ display:
           field: actions_permission
           relationship: none
           group_type: group
-          admin_label: Permission
+          admin_label: Käyttöoikeus
           entity_type: role_change_log
           entity_field: actions
           plugin_id: string
@@ -384,7 +384,7 @@ display:
           exposed: true
           expose:
             operator_id: actions_permission_op
-            label: Permission
+            label: Käyttöoikeus
             description: ''
             use_operator: false
             operator: actions_permission_op
@@ -442,7 +442,7 @@ display:
             placeholder: null
           is_grouped: true
           group_info:
-            label: Action
+            label: Toiminto
             description: ''
             identifier: action
             optional: true

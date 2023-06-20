@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.place.field_geographical_areas
     - field.field.node.place.field_help_text
     - field.field.node.place.field_keywords
+    - field.field.node.place.field_listing_search_content
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
     - field.field.node.place.field_paragraphs
@@ -123,6 +124,7 @@ hidden:
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
   field_help_text: true
+  field_listing_search_content: true
   field_location: true
   field_main_image: true
   langcode: true

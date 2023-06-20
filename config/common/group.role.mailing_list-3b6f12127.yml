@@ -1,0 +1,17 @@
+uuid: ce210ada-b301-4324-9713-6a4a7a23c07f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.basic_content_page_author
+id: mailing_list-3b6f12127
+label: Perussisältösivutoimittaja
+weight: 2
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions: {  }

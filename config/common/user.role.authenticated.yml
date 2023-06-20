@@ -27,6 +27,7 @@ dependencies:
     - search_api_autocomplete
     - system
     - toolbar
+    - tre_preprocess_embedded_content_and_map_tabs
 _core:
   default_config_hash: d_KQifzyNj19PRtlwHHYN-KTG-t4yLUYnd0STLE6dYA
 id: authenticated
@@ -37,6 +38,7 @@ permissions:
   - 'access comments'
   - 'access content'
   - 'access environment indicator'
+  - 'access map data endpoint'
   - 'access openapi api docs'
   - 'access toolbar'
   - 'post comments'

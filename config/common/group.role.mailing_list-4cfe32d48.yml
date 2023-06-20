@@ -1,0 +1,17 @@
+uuid: cb0cb320-c2e1-48db-92ec-64d358208977
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.front_page_author
+id: mailing_list-4cfe32d48
+label: Etusivutoimittaja
+weight: 4
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions: {  }

@@ -1,0 +1,6 @@
+tre_preprocess_embedded_content_and_map_tabs.map_node_path:
+  path: 'map-data-from-node/{node_id}'
+  defaults:
+    _controller: '\Drupal\tre_preprocess_embedded_content_and_map_tabs\Controller\EmbeddedContentAndMapTabsController::render'
+  requirements:
+    _permission: 'access map data endpoint'

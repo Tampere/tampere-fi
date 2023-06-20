@@ -128,6 +128,13 @@ search-panel:
     - core/drupal
     - core/once
 
+search-panel-for-view:
+  js:
+    dist/js/03-organisms/search-panel-for-view/search-panel-for-view.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
 responsive-table:
   js:
     theme-libraries/responsive-table/responsive-table.js: {}

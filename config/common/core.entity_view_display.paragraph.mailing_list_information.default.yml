@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.mailing_list_information.field_mailing_list
+    - field.field.paragraph.mailing_list_information.field_mailing_list_group
     - field.field.paragraph.mailing_list_information.field_media_contact_person
     - field.field.paragraph.mailing_list_information.field_media_images
     - paragraphs.paragraphs_type.mailing_list_information
@@ -14,7 +15,7 @@ targetEntityType: paragraph
 bundle: mailing_list_information
 mode: default
 content:
-  field_mailing_list:
+  field_mailing_list_group:
     type: entity_reference_label
     label: above
     settings:
@@ -43,4 +44,5 @@ content:
     weight: 2
     region: content
 hidden:
+  field_mailing_list: true
   search_api_excerpt: true

@@ -1,0 +1,26 @@
+uuid: db21716c-7b0b-4e3a-821e-0e64b79ef000
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_liftup_link_help
+    - paragraphs.paragraphs_type.content_liftup
+  module:
+    - markup
+id: paragraph.content_liftup.field_content_liftup_link_help
+field_name: field_content_liftup_link_help
+entity_type: paragraph
+bundle: content_liftup
+label: 'Sisältönoston linkkien aputeksti'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    markup: null
+default_value_callback: ''
+settings:
+  markup:
+    value: "<h5><strong>Huom!</strong> Seuraava linkki-kenttä ollaan poistamassa. Siirräthän siihen asetetut linkit tätä edeltävään linkki-kenttään.</h5>\r\n"
+    format: basic_html
+field_type: markup

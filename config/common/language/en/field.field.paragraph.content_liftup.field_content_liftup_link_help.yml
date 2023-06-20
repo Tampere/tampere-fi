@@ -1,0 +1,5 @@
+label: 'Content liftup link help text'
+settings:
+  markup:
+    value: "<h5><strong>Note!</strong> The following link field is being removed. Please move its links to the link field that precedes this notice.</h5>\r\n"
+    format: basic_html

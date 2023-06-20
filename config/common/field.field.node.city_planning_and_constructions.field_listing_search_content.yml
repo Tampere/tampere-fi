@@ -1,0 +1,19 @@
+uuid: d0df4041-9ef0-4b1c-87d7-e749170712b8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_search_content
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_listing_search_content
+field_name: field_listing_search_content
+entity_type: node
+bundle: city_planning_and_constructions
+label: Listaushakusisältö
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

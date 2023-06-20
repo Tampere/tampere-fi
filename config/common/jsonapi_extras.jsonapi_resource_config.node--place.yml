@@ -134,6 +134,12 @@ resourceFields:
     publicName: moderation_state
     enhancer:
       id: ''
+  entitygroupfield:
+    disabled: false
+    fieldName: entitygroupfield
+    publicName: entitygroupfield
+    enhancer:
+      id: ''
   metatag:
     disabled: true
     fieldName: metatag
@@ -188,6 +194,12 @@ resourceFields:
     publicName: content_translation_outdated
     enhancer:
       id: ''
+  published_at:
+    disabled: false
+    fieldName: published_at
+    publicName: published_at
+    enhancer:
+      id: ''
   field_additional_information:
     disabled: false
     fieldName: field_additional_information
@@ -228,6 +240,12 @@ resourceFields:
     disabled: false
     fieldName: field_geographical_areas
     publicName: field_geographical_areas
+    enhancer:
+      id: ''
+  field_help_text:
+    disabled: false
+    fieldName: field_help_text
+    publicName: field_help_text
     enhancer:
       id: ''
   field_keywords:

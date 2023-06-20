@@ -1,0 +1,17 @@
+uuid: 3601eeb8-85c5-49fc-8eb8-6a8c02ab15b7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.emergency_notice_author
+id: mailing_list-c36d2ea4d
+label: Häiriöilmoitustoimittaja
+weight: -7
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions: {  }

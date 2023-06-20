@@ -28,6 +28,14 @@ $search-panel-results-restricted-height--mobile: 321px;
     }
   }
 
+  &__loading-text {
+    padding-left: $space-s;
+
+    @include large {
+      padding-left: $space-l;
+    }
+  }
+
   &__filters {
     color: clr(primary);
   }

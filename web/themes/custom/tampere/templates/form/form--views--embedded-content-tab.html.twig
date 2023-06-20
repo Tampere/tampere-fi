@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override for a 'form' element.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+
+{% set search_bar_input_label = "Search the list by keyword"|t %}
+
+{% embed "@molecules/search-bar/search-bar-with-label.twig" with {
+  "search_bar__modifiers": [ "no-border" ],
+  "search_bar_input_label": search_bar_input_label,
+  "use_form": true,
+  "use_exposed_block": true
+} %}
+  {% block search_fields %}
+    {{ children }}
+  {% endblock %}
+{% endembed %}

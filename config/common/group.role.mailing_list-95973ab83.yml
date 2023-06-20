@@ -1,0 +1,30 @@
+uuid: 3c8ccdaa-cb3a-43c9-ad6b-ff1bcbbcdbaa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.super_user
+id: mailing_list-95973ab83
+label: Pääkäyttäjä
+weight: 8
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions:
+  - 'access content overview'
+  - 'administer group'
+  - 'administer members'
+  - 'delete group'
+  - 'delete group revisions'
+  - 'edit group'
+  - 'revert group revisions'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view group revisions'
+  - 'view group_membership content'
+  - 'view latest group version'
+  - 'view own unpublished group'

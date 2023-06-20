@@ -9,7 +9,6 @@ display:
           action_title: Action
       pager:
         options:
-          tags: {  }
           expose:
             items_per_page_label: 'Items per page'
             items_per_page_options_all_label: '- All -'
@@ -24,10 +23,6 @@ display:
         created:
           expose:
             label: 'Newest first'
-        name:
-          expose: {  }
-        name_1:
-          expose: {  }
       filters:
         status:
           expose:
@@ -49,10 +44,21 @@ display:
           group_info:
             label: 'Media type'
             description: ''
+        populate:
+          expose:
+            label: Name
+            description: 'Search for image by name or file name or both.'
+        filename:
+          expose:
+            label: 'File name'
   page:
     display_title: Page
     display_options:
       filters:
+        populate:
+          expose:
+            label: Name
+            description: 'Search for image by name or file name or both.'
         status:
           expose:
             description: ''
@@ -70,6 +76,10 @@ display:
         name:
           expose:
             label: Name
+        populate:
+          expose:
+            label: Name
+            description: 'Search for image by name or file name or both.'
       header:
         display_link_grid:
           label: Grid
@@ -94,6 +104,10 @@ display:
         name:
           expose:
             label: Name
+        populate:
+          expose:
+            label: Name
+            description: 'Search for image by name or file name or both.'
       header:
         display_link_grid:
           label: Grid

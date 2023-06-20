@@ -10,10 +10,10 @@
 <div {{ bem(sidebar_menu_container__base_class, (sidebar_menu_container__modifiers|default([])), sidebar_menu_container__blockname) }}>
   <div {{ bem("heading-container", (sidebar_menu_container__heading__modifiers|default([])), sidebar_menu_container__base_class) }}>
     {% if "is-heading" not in sidebar_menu_container__modifiers %}
-      {% if sidebar_menu_container_heading %}
+      {% if sidebar_menu_container__heading %}
         {% include "@organisms/sidebar-menu-container/_sidebar-menu-container-title.twig" with {
-          "sidebar_menu_container_heading": group_front_page_title,
-          "sidebar_menu_container_heading_url": group_front_page_url,
+          "sidebar_menu_container__heading": sidebar_menu_container__heading,
+          "sidebar_menu_container_heading__url": sidebar_menu_container_heading__url,
           "sidebar_menu_container__extra_classes": group_front_page_link_extra_classes,
           "attributes": []
         } %}

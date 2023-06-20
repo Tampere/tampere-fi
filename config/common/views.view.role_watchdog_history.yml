@@ -19,7 +19,7 @@ base_field: id
 display:
   default:
     id: default
-    display_title: Master
+    display_title: Isäntä
     display_plugin: default
     position: 0
     display_options:
@@ -232,7 +232,7 @@ display:
           entity_type: role_watchdog
           entity_field: created
           plugin_id: field
-          label: Created
+          label: Luotu
           exclude: false
           alter:
             alter_text: false
@@ -547,7 +547,7 @@ display:
           entity_type: user
           entity_field: roles
           plugin_id: user_roles
-          label: Roles
+          label: Käyttäjäroolit
           exclude: false
           alter:
             alter_text: false
@@ -611,7 +611,7 @@ display:
       exposed_form:
         type: basic
         options:
-          submit_button: Apply
+          submit_button: Käytä
           reset_button: false
           reset_button_label: Palauta
           exposed_sorts_label: Lajittele

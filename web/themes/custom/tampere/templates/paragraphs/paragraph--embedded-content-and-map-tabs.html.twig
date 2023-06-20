@@ -30,10 +30,7 @@
  *   current user is a logged-in member.
  * - is_admin: Flag for admin user status. Will be true when the current user
  *   is an administrator.
- * - tab_list_content: Available content as an array. Each item contains:
- *   - id: A unique ID for the item.
- *   - dl_heading: The item heading as a string.
- *   - dl_content: The item content as a render array.
+ * - content_listing_block: Content listing block.
  * - tab_map_nodes: Optional. An array of content to display in the map tab for individual locations.
  *   Each item contains:
  *   - nid: The node ID.
@@ -46,15 +43,14 @@
  */
 #}
 
-{% if tab_list_content %}
+{% if content_listing_block %}
   {% set tabs = {
     list: {
       title: "List view"|t,
-      content: tab_list_content,
+      content: content_listing_block,
       panel_id: paragraph.id.value ~ "list",
-      search_heading: "Search the list by keyword"|t,
-      use_accordion: TRUE,
-    },
+      search_heading: "Search the list by keyword"|t
+  },
   } %}
 
   {% if tab_map_content %}
@@ -65,6 +61,7 @@
         panel_id: paragraph.id.value ~ "map",
         search_heading: "Search the map by address"|t,
         popup_content: tab_map_nodes,
+        use_search_panel: true
       },
     } %}
 

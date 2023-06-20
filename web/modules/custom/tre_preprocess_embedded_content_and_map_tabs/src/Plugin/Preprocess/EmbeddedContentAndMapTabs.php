@@ -6,7 +6,7 @@ use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\Core\Site\Settings;
-use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
+use Drupal\views\Views;
 
 /**
  * Embedded content and map tabs paragraph type preprocessing.
@@ -82,120 +82,59 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
         return $variables;
       }
 
-      $tab_list_nodes = $this->entityTypeManager->getStorage('node')->loadMultiple($tab_list_node_ids);
-      foreach ($selected_content_types as $content_type) {
-        $variables['#cache']['tags'][] = "node_list:{$content_type}";
-      }
+      $query = $this->db->select('node__field_addresses', 'nfa');
+      $query->join('node__field_epsg_3067_easting', 'nfe', 'nfe.entity_id = nfa.field_addresses_target_id');
+      $query->join('node__field_epsg_3067_northing', 'nfn', 'nfn.entity_id = nfa.field_addresses_target_id');
 
-      $all_locations = [];
-      $tab_list_content = [];
-      $tab_map_nodes = [];
-      $item_counter = 1;
-      foreach ($tab_list_nodes as $node_id => $tab_list_node) {
-        if (!($tab_list_node instanceof NodeInterface)) {
-          return $variables;
-        }
+      $query->fields('nfa', ['entity_id'])
+        ->fields('nfe', ['field_epsg_3067_easting_value'])
+        ->fields('nfn', ['field_epsg_3067_northing_value'])
+        ->condition('nfa.entity_id', $tab_list_node_ids, 'IN');
 
-        /** @var \Drupal\node\NodeInterface $translated_node */
-        $translated_node = $this->entityRepository->getTranslationFromContext($tab_list_node);
-        $translated_node_title = $translated_node->getTitle();
-        $translated_node_content = $this->entityTypeManager->getViewBuilder('node')->view($translated_node, self::DEFAULT_LIST_ITEM_VIEW_MODE);
+      $result1 = $query->execute()->fetchAll();
 
-        $locations_for_node = $this->getLocations($translated_node);
-        if (!empty($locations_for_node)) {
-          $all_locations = array_merge($all_locations, $locations_for_node);
+      $locations = [];
 
-          $map_node_content = $this->entityTypeManager->getViewBuilder('node')->view($translated_node, self::DEFAULT_MAP_ITEM_VIEW_MODE);
-          $tab_map_nodes[] = [
-            'nid' => $node_id,
-            'content' => $map_node_content,
-          ];
-        }
-
-        $tab_list_content_item_id = $container_paragraph_id . $node_id . $item_counter;
-
-        $tab_list_content[] = [
-          'id' => $tab_list_content_item_id,
-          'dl_heading' => $translated_node_title,
-          'dl_content' => $translated_node_content,
+      foreach ($result1 as $location) {
+        $locations[] = [
+          'nid' => $location->entity_id,
+          'latitude' => $location->field_epsg_3067_northing_value,
+          'longitude' => $location->field_epsg_3067_easting_value,
         ];
-
-        $item_counter++;
       }
 
-      if (!empty($tab_map_nodes)) {
-        $variables['tab_map_nodes'] = $tab_map_nodes;
-        $variables['tab_map_content'] = $this->getMap($translated_paragraph);
+      $query = $this->db->select('node__field_epsg_3067_easting', 'nfe');
+      $query->join('node__field_epsg_3067_northing', 'nfn', 'nfn.entity_id = nfe.entity_id');
 
-        $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['locations'][$container_paragraph_id] = $all_locations;
-        $variables['#attached']['drupalSettings']['tampere']['mmlMapIframeDomain'] = Settings::get('mml_map_iframe_domain');
+      $query->fields('nfe', ['entity_id'])
+        ->fields('nfe', ['field_epsg_3067_easting_value'])
+        ->fields('nfn', ['field_epsg_3067_northing_value'])
+        ->condition('nfe.entity_id', $tab_list_node_ids, 'IN');
+
+      $result2 = $query->execute()->fetchAll();
+
+      foreach ($result2 as $location) {
+        $locations[] = [
+          'nid' => $location->entity_id,
+          'latitude' => $location->field_epsg_3067_northing_value,
+          'longitude' => $location->field_epsg_3067_easting_value,
+        ];
       }
 
-      $variables['tab_list_content'] = $tab_list_content;
+      $content_listing_block = $this->getRenderedView($paragraph);
+      if (empty($content_listing_block)) {
+        return $variables;
+      }
+      $variables['content_listing_block'] = $content_listing_block;
+      $variables['tab_map_content'] = $this->getMap($translated_paragraph);
+
+      $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['locations'][$container_paragraph_id] = $locations;
+      $variables['#attached']['drupalSettings']['tampere']['currentLanguage'] = $this->languageManager->getCurrentLanguage()->getId();
+      $variables['#attached']['drupalSettings']['tampere']['mmlMapIframeDomain'] = Settings::get('mml_map_iframe_domain');
+
+      $this->renderer->addCacheableDependency($variables['content_listing_block'], $variables['paragraph']);
     }
     return $variables;
-  }
-
-  /**
-   * Returns an array of location coordinates for the given node.
-   *
-   * @param \Drupal\node\NodeInterface $node
-   *   The node to get the locations for.
-   *
-   * @return array
-   *   The location coordinates as an array when they exist,
-   *   empty array otherwise.
-   */
-  protected function getLocations(NodeInterface $node) {
-    $locations = [];
-
-    if (!($node instanceof NodeInterface)) {
-      return $locations;
-    }
-
-    if (!$node->hasField('field_addresses') && !$node->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME) && !$node->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)) {
-      return $locations;
-    }
-
-    $node_id = $node->id();
-    $node_references_content_with_location_data = $node->hasField('field_addresses') && !$node->get('field_addresses')->isEmpty();
-    $node_has_latitude_value = $node->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME) && !$node->get(HelperFunctionsInterface::LATITUDE_FIELD_NAME)->isEmpty();
-    $node_has_longitude_value = $node->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME) && !$node->get(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)->isEmpty();
-    $node_has_location_data = $node_has_latitude_value && $node_has_longitude_value;
-    if ($node_references_content_with_location_data) {
-      // The 'field_addresses' field holds references to 'map_point' content
-      // that store information about locations.
-      $location_nodes = $node->get('field_addresses')->referencedEntities();
-
-      foreach ($location_nodes as $location_node) {
-        if ($location_node instanceof NodeInterface) {
-          $location_node_has_latitude_value = $location_node->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME) && !$location_node->get(HelperFunctionsInterface::LATITUDE_FIELD_NAME)->isEmpty();
-          $location_node_has_longitude_value = $location_node->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME) && !$location_node->get(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)->isEmpty();
-          if ($location_node_has_latitude_value && $location_node_has_longitude_value) {
-            $longitude = $location_node->get(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)->getString();
-            $latitude = $location_node->get(HelperFunctionsInterface::LATITUDE_FIELD_NAME)->getString();
-
-            $locations[] = [
-              'nid' => $node_id,
-              'latitude' => $latitude,
-              'longitude' => $longitude,
-            ];
-          }
-        }
-      }
-    }
-    elseif ($node_has_location_data) {
-      $longitude = $node->get(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)->getString();
-      $latitude = $node->get(HelperFunctionsInterface::LATITUDE_FIELD_NAME)->getString();
-
-      $locations[] = [
-        'nid' => $node_id,
-        'latitude' => $latitude,
-        'longitude' => $longitude,
-      ];
-    }
-
-    return $locations;
   }
 
   /**
@@ -338,6 +277,57 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
     }
 
     return $node_query->execute();
+  }
+
+  /**
+   * Renders a certain view based on paragraph values.
+   *
+   * @param \Drupal\paragraphs\ParagraphInterface $paragraph
+   *   The paragraph entity to base the view on.
+   *
+   * @return array|null
+   *   The view as a renderable array if successful. Null if unsuccessful.
+   */
+  protected function getRenderedView(ParagraphInterface $paragraph) {
+    $view = Views::getView('embedded_content_tab');
+    $block_machine_name = 'content_listing_block';
+
+    if (empty($view) || !$view->access($block_machine_name)) {
+      return NULL;
+    }
+
+    $view->setDisplay($block_machine_name);
+
+    $paragraph_displayed_content_types_field_values = $paragraph->get('field_tabs_displayed_content_tps')->getValue();
+    $selected_content_types = $this->helperFunctions->getListFieldValues($paragraph_displayed_content_types_field_values);
+
+    // '+' for OR, ',' for AND
+    $content_type_argument = implode('+', $selected_content_types);
+
+    $selected_taxonomy_values = $this->helperFunctions->getParagraphTaxonomyTerms($paragraph, self::AVAILABLE_TAXONOMY_VOCABULARIES);
+    $selected_taxonomy_condition_group = $paragraph->get('field_taxonomy_combination')->getString();
+
+    $combined_taxonomy_values = [];
+    foreach ($selected_taxonomy_values as $list) {
+      foreach ($list as $tid) {
+        $combined_taxonomy_values[$tid] = $tid;
+      }
+    }
+
+    $taxonomy_argument_glue = $selected_taxonomy_condition_group == 'or' ? '+' : ',';
+    $taxonomy_argument = empty($combined_taxonomy_values) ? 'all' : implode($taxonomy_argument_glue, $combined_taxonomy_values);
+    $view->setArguments([$content_type_argument, $taxonomy_argument]);
+
+    $view->preExecute();
+    $view->execute();
+    $view->postExecute();
+    $renderable = $view->buildRenderable();
+
+    if ($renderable) {
+      $this->renderer->addCacheableDependency($renderable, $view);
+    }
+
+    return $renderable;
   }
 
 }

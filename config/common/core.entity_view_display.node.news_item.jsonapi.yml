@@ -47,10 +47,6 @@ third_party_settings:
           field_templates: default
           variant: default
     regions:
-      main_image_tag:
-        - 'bundle_field:node'
-      publication_date:
-        - published_at
       main_image:
         - field_main_image
       main_image_caption:
@@ -65,11 +61,6 @@ third_party_settings:
         - field_author
         - field_photographer
     fields:
-      'bundle_field:node':
-        plugin_id: 'bundle_field:node'
-        weight: 0
-        label: hidden
-        formatter: default
       node_title:
         plugin_id: node_title
         weight: 4
@@ -228,25 +219,9 @@ content:
             suffix: ''
     weight: 11
     region: main_content
-  published_at:
-    type: timestamp
-    label: hidden
-    settings:
-      date_format: date_only
-      custom_date_format: ''
-      timezone: ''
-    third_party_settings:
-      ds:
-        ft:
-          id: default
-          settings:
-            lb: ''
-            lb-col: false
-            classes: {  }
-    weight: 1
-    region: publication_date
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_additional_info_for_media: true
   field_archive_search_content: true
   field_cross_site_publications: true
@@ -265,4 +240,5 @@ hidden:
   field_topics: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

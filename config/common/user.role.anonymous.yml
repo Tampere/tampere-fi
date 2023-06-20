@@ -12,6 +12,7 @@ dependencies:
     - paragraphs_type_permissions
     - search_api_autocomplete
     - system
+    - tre_preprocess_embedded_content_and_map_tabs
 _core:
   default_config_hash: PRgsXScWElXgDAlO9iSG4jEIe-1s92TA_Sxb6D2nR6w
 id: anonymous
@@ -21,6 +22,7 @@ is_admin: false
 permissions:
   - 'access comments'
   - 'access content'
+  - 'access map data endpoint'
   - 'access openapi api docs'
   - 'post comments'
   - 'use search_api_autocomplete for search'

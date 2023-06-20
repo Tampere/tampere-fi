@@ -18,6 +18,9 @@ third_party_settings:
       - field_keywords
       - field_topics
       - field_geographical_areas
+    default_filter:
+      'filter:published#condition#path': status
+      'filter:published#condition#value': '1'
     page_limit: 50
 id: node--news_item
 disabled: false
@@ -138,6 +141,12 @@ resourceFields:
     publicName: moderation_state
     enhancer:
       id: ''
+  entitygroupfield:
+    disabled: false
+    fieldName: entitygroupfield
+    publicName: entitygroupfield
+    enhancer:
+      id: ''
   metatag:
     disabled: false
     fieldName: metatag
@@ -192,6 +201,24 @@ resourceFields:
     publicName: content_translation_outdated
     enhancer:
       id: ''
+  published_at:
+    disabled: false
+    fieldName: published_at
+    publicName: published_at
+    enhancer:
+      id: ''
+  field_additional_info_for_media:
+    disabled: false
+    fieldName: field_additional_info_for_media
+    publicName: field_additional_info_for_media
+    enhancer:
+      id: ''
+  field_archive_search_content:
+    disabled: false
+    fieldName: field_archive_search_content
+    publicName: field_archive_search_content
+    enhancer:
+      id: ''
   field_author:
     disabled: false
     fieldName: field_author
@@ -226,6 +253,12 @@ resourceFields:
     disabled: false
     fieldName: field_geographical_areas
     publicName: field_geographical_areas
+    enhancer:
+      id: ''
+  field_help_text:
+    disabled: false
+    fieldName: field_help_text
+    publicName: field_help_text
     enhancer:
       id: ''
   field_keywords:

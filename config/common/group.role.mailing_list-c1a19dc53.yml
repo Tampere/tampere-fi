@@ -1,0 +1,17 @@
+uuid: 0e22f84a-9ba1-4025-8f41-99e5414db6ff
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.media_editor
+id: mailing_list-c1a19dc53
+label: Mediatoimittaja
+weight: 3
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions: {  }

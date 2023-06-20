@@ -1,0 +1,85 @@
+{#
+ # Available variables:
+ # - search_panel__base_class - base classname of the wrapper.
+ # - search_panel__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - search_panel__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - search_panel__panel_wrapper__modifiers - array of modifiers to add to the base classname of the panel wrapper.
+ #
+ # - search_panel__search_section__modifiers - array of modifiers to add to the base classname of the search section.
+ # - search_panel__heading - main heading content for the component.
+ #
+ # - search_panel_identifier - a unique identifier for the search panel to be appended to the input ID.
+ #
+ # - search_panel__text - text content for the component.
+ #
+ # - search_panel__results_section__modifiers - array of modifiers to add to the base classname of the results section.
+ #
+ # - search_panel__popup_content__modifiers - array of modifiers to add to add to the base classname of the popup content.
+ #
+ # - search_panel__popup_item__modifiers - array of modifiers to add to the base classname of the popup item.
+ #}
+{% set search_panel__base_class = "search-panel" %}
+
+{% set search_bar__base_class = "search-bar" %}
+{% if not search_bar__modifiers %}
+  {% set search_bar__modifiers = [] %}
+{% endif %}
+{% set search_bar__modifiers = search_bar__modifiers|merge([ "with-label", "no-border" ]) %}
+
+{{ attach_library("tampere/search-panel") }}
+
+{% if not search_panel__modifiers %}
+  {% set search_panel__modifiers = [] %}
+{% endif %}
+
+{% if not search_panel__extra_classes %}
+  {% set search_panel__extra_classes = [] %}
+{% endif %}
+
+{% set search_panel__extra_classes = search_panel__extra_classes|merge([ "js-search-panel-list" ]) %}
+
+<div {{ bem(search_panel__base_class, search_panel__modifiers|default([]), search_panel__blockname, search_panel__extra_classes) }}>
+  <div {{ bem("panel-wrapper", search_panel__panel_wrapper__modifiers|default([]), search_panel__base_class) }}>
+    <div {{ bem("search-section", search_panel__search_section__modifiers|default([]), search_panel__base_class) }}>
+      <div {{ bem(search_bar__base_class, search_bar__modifiers|default([])) }}>
+        {% block exposed %}
+        {% endblock %}
+      </div>
+
+      <div {{ bem("filters", search_panel__filters__modifiers|default([]), search_panel__base_class) }}>
+        {% if total_rows > 0 %}
+          {% set all_results_description = all_results_description|default("Showing locations"|t ({}, { "context" : "Embedded content and map tabs description for showing all results" })) %}
+          <p {{ bem("no-filters-applied", search_panel__reset_wrapper__modifiers|default([]), search_panel__base_class) }}>
+            {{ all_results_description ~ ": " }} <span class="js-total-count"> {{ total_rows }} </span>
+          </p>
+        {% else %}
+          <p {{ bem("text", [ "no-results" ], search_panel__base_class) }}>
+              {{ no_results_description|default("No results"|t ({}, { "context" : "Embedded content and map tabs description for showing no results" })) }}
+          </p>
+        {% endif %}
+
+        <div {{ bem("reset-wrapper", search_panel__reset_wrapper__modifiers|default([]), search_panel__base_class) }}>
+          {% include "@atoms/06-buttons/01-button.twig" with {
+            "button_content": "Show all"|t ({}, { "context" : "Embedded content and map tabs reset filter text" }),
+            "button_base_class": "filter-reset",
+            "button_blockname": search_panel__base_class,
+          } %}
+        </div>
+      </div>
+
+      {% if search_panel__description %}
+        <p {{ bem("description", [], search_panel__base_class) }}>
+          {{ search_panel__description }}
+        </p>
+      {% endif %}
+    </div>
+    <div {{ bem("results-section", search_panel__results_section__modifiers|default([]), search_panel__base_class) }}>
+      {% block search_panel_results %}
+      {% endblock %}
+
+      {% block pager %}
+      {% endblock %}
+    </div>
+  </div>
+</div>

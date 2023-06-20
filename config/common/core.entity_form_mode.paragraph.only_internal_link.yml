@@ -1,0 +1,10 @@
+uuid: 57b73288-817e-4daa-be3c-452bf577f63b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.only_internal_link
+label: 'Vain sisäisellä linkillä'
+targetEntityType: paragraph
+cache: true

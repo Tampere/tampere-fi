@@ -32,7 +32,7 @@ class GroupedContentLiftup extends TrePreProcessPluginBase {
     $liftups = [];
     foreach ($liftup_paragraphs as $liftup_paragraph) {
       if (!($liftup_paragraph instanceof ParagraphInterface)) {
-        return $variables;
+        continue;
       }
 
       /** @var \Drupal\paragraphs\ParagraphInterface $translated_liftup_paragraph */
@@ -40,6 +40,12 @@ class GroupedContentLiftup extends TrePreProcessPluginBase {
 
       $liftup_title = $translated_liftup_paragraph->get('field_liftup_title')->getString();
       $liftup_summary = $translated_liftup_paragraph->get('field_summary')->getString();
+
+      if (!$translated_liftup_paragraph->hasField('field_content_link') ||
+           $translated_liftup_paragraph->get('field_content_link')->isEmpty()) {
+        continue;
+      }
+
       $link_paragraph = $translated_liftup_paragraph->get('field_content_link')->entity;
 
       if (!($link_paragraph instanceof ParagraphInterface)) {

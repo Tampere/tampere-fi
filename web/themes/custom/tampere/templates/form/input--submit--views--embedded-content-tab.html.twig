@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{% set search_bar__base_class = "search-bar" %}
+
+{% set search_button_attributes = {
+  "type": "button",
+  "aria-label": "Search from list"|t ({}, { "context" : "Embedded content and map tabs search button description for screenreaders in list view" }),
+} %}
+
+{% include "@atoms/06-buttons/01-button.twig" with {
+  "button_blockname": search_bar__base_class,
+  "button_attributes": search_button_attributes,
+  "button_icon_name": "search",
+  "button_icon_blockname": search_bar__base_class,
+} %}

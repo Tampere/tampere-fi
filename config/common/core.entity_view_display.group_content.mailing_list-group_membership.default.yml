@@ -1,0 +1,25 @@
+uuid: 009afd4e-af9d-4bbf-aa9c-0b98631f7a1e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group_content.mailing_list-group_membership.group_roles
+    - group.content_type.mailing_list-group_membership
+id: group_content.mailing_list-group_membership.default
+targetEntityType: group_content
+bundle: mailing_list-group_membership
+mode: default
+content:
+  group_roles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: -4
+    region: content
+hidden:
+  entity_id: true
+  langcode: true
+  search_api_excerpt: true
+  uid: true

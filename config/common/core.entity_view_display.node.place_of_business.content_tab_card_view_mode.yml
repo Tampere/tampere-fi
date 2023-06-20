@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.place_of_business.field_keywords
     - field.field.node.place_of_business.field_life_situations
     - field.field.node.place_of_business.field_links
+    - field.field.node.place_of_business.field_listing_search_content
     - field.field.node.place_of_business.field_opening_hours
     - field.field.node.place_of_business.field_opening_hours_2
     - field.field.node.place_of_business.field_opening_hours_3
@@ -230,6 +231,7 @@ content:
     weight: 0
     region: pre_columns_content
 hidden:
+  entitygroupfield: true
   field_accessibility_and_services: true
   field_accessibility_info_title: true
   field_additional_information: true
@@ -241,6 +243,7 @@ hidden:
   field_hr_organizational_unit: true
   field_keywords: true
   field_life_situations: true
+  field_listing_search_content: true
   field_opening_hours: true
   field_opening_hours_2: true
   field_opening_hours_3: true
@@ -252,4 +255,5 @@ hidden:
   langcode: true
   links: true
   migrate_override_data: true
+  published_at: true
   search_api_excerpt: true

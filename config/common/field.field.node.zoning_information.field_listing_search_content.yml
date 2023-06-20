@@ -1,0 +1,19 @@
+uuid: 06123fac-9aae-42c2-87e1-29cde8174c8d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_search_content
+    - node.type.zoning_information
+id: node.zoning_information.field_listing_search_content
+field_name: field_listing_search_content
+entity_type: node
+bundle: zoning_information
+label: Listaushakusisältö
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

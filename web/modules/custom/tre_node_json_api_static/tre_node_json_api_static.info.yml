@@ -1,0 +1,5 @@
+name: 'TRE Static JSON API Replacement for Nodes'
+type: module
+description: 'Creates static files for nodes to replace the JSON:API resource URLs.'
+core_version_requirement: '>=9.3'
+package: 'TRE'

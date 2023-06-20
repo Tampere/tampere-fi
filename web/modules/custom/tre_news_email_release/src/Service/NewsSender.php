@@ -5,10 +5,10 @@ namespace Drupal\tre_news_email_release\Service;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\group\Entity\GroupInterface;
 use Drupal\message\Entity\Message;
 use Drupal\message_notify\MessageNotifier;
 use Drupal\node\NodeInterface;
-use Drupal\taxonomy\TermInterface;
 use Drupal\tre_jsonapi_custom\EntityRendererInterface;
 
 /**
@@ -93,10 +93,10 @@ final class NewsSender {
       $message->save();
       $messages_created[] = $message;
 
-      $address_lists = $list->get('field_mailing_list')->referencedEntities();
+      $address_lists = $list->get('field_mailing_list_group')->referencedEntities();
       $address_list = reset($address_lists);
 
-      if ($address_list instanceof TermInterface && $address_list->hasField('field_emails')) {
+      if ($address_list instanceof GroupInterface && $address_list->hasField('field_emails')) {
         /** @var \Drupal\Core\Field\FieldItemInterface $email_value */
         foreach ($address_list->get('field_emails') as $email_value) {
           $mail = $email_value->getString();

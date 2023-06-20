@@ -233,12 +233,15 @@ interface HelperFunctionsInterface {
    * @param int|null $group_id
    *   The group id to fetch the front page details. Defaults to NULL, which
    *   means to use the 'current group' instead.
+   * @param \Drupal\group\Entity\GroupInterface|null $group
+   *   Optionally the group entity to get the front page details for.
+   *   Defaults to NULL.
    *
    * @return array|null
    *   An array containing the group's front page URL as a string, the front
    *   page node ID, and the front page title. Null otherwise.
    */
-  public function getGroupFrontPageDetails($group_id = NULL);
+  public function getGroupFrontPageDetails($group_id = NULL, $group = NULL);
 
   /**
    * Gets the URL, entity ID, and link text from an internal link paragraph.

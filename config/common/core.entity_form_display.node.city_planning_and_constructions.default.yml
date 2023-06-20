@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_geographical_areas
     - field.field.node.city_planning_and_constructions.field_help_text
     - field.field.node.city_planning_and_constructions.field_keywords
+    - field.field.node.city_planning_and_constructions.field_listing_search_content
     - field.field.node.city_planning_and_constructions.field_location
     - field.field.node.city_planning_and_constructions.field_main_image
     - field.field.node.city_planning_and_constructions.field_paragraphs
@@ -260,7 +261,7 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 13
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -311,7 +312,9 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_listing_search_content: true
   promote: true
   sticky: true

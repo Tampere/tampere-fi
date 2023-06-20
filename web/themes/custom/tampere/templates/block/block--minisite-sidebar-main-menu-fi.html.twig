@@ -21,16 +21,18 @@
  *   displayed in front of the main title tag that appears in the template.
  * - title_suffix: Additional output populated by modules, intended to be
  *   displayed after the main title tag that appears in the template.
- * - group_front_page_title: The title for the group's front page if not on Minisite content.
- * - group_front_page_url: The URL for the group's front page if not on Minisite content.
- * - group_front_page_link_extra_classes: The extra classes for the group's
- *   front page link if not on Minisite content.
+ * - minisite_sidebar_heading_title: The text content for the menu container
+ *   heading link as a string.
+ * - minisite_sidebar_heading_url: The URL for the menu container heading link
+ *   as a string.
  *
  * @see template_preprocess_block()
  */
 #}
 
 {% embed "@organisms/sidebar-menu-container/sidebar-menu-container.twig" with {
+  "sidebar_menu_container__heading": minisite_sidebar_heading_title,
+  "sidebar_menu_container_heading__url": minisite_sidebar_heading_url,
   "attributes": []
 } %}
   {% block sidebar_menu_container_menu %}

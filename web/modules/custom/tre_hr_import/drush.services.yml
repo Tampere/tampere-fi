@@ -3,5 +3,6 @@ services:
     class: \Drupal\tre_hr_import\Commands\TreHrImportCommands
     arguments:
       - '@entity_type.manager'
+      - '@database'
     tags:
       - { name: drush.command }

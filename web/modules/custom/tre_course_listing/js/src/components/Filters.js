@@ -62,6 +62,11 @@ export default function Filters({
   const filterGroupRefs = filterTypes.map(() => createRef());
   const filtersTitleId = `filters-title-${useId()}`;
   const filterTypeIds = useRef(null);
+  // The following line is intentionally left long. The translations stopped
+  // working after the string was split into multiple lines.
+  const filterHelpText = Drupal.t("When you select a filter, the search results are automatically narrowed down to your selection.",
+    {}, { context: "Course listing filters help text" }
+  );
   const hasActiveFilters = Boolean(activeFilters && activeFilters.length);
   const headingRef = useRef(null);
   const lastFilterRefIndex = filterGroupRefs.length - 1;
@@ -179,6 +184,7 @@ export default function Filters({
 
   return (
     <StyledFilters>
+      <p>{ filterHelpText }</p>
       <FiltersTitle id={filtersTitleId} tabIndex="-1" ref={headingRef}>
         { Drupal.t("Filter courses") }
       </FiltersTitle>

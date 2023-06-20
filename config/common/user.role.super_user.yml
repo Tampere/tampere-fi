@@ -167,6 +167,7 @@ permissions:
   - 'create front_page content'
   - 'create image media'
   - 'create life_situation group'
+  - 'create mailing_list group'
   - 'create media'
   - 'create minisite group'
   - 'create news_item content'

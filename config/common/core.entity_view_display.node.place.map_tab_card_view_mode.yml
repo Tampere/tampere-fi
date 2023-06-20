@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.place.field_geographical_areas
     - field.field.node.place.field_help_text
     - field.field.node.place.field_keywords
+    - field.field.node.place.field_listing_search_content
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
     - field.field.node.place.field_paragraphs
@@ -120,6 +121,7 @@ hidden:
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_listing_search_content: true
   field_location: true
   field_main_image: true
   field_paragraphs: true

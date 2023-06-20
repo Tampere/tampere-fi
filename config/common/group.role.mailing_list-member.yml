@@ -1,0 +1,20 @@
+uuid: 3c355dbe-80a3-46a6-ae19-6eb9a321ff76
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+id: mailing_list-member
+label: Jäsen
+weight: -100
+internal: true
+audience: member
+group_type: mailing_list
+permissions_ui: true
+permissions:
+  - 'edit group'
+  - 'leave group'
+  - 'view any unpublished group'
+  - 'view group'
+  - 'view latest group version'
+  - 'view own unpublished group'

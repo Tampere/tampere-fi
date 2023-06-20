@@ -2,8 +2,10 @@
 
 namespace Drupal\tre_hr_import\Commands;
 
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\node\NodeInterface;
 use Drush\Commands\DrushCommands;
 
 /**
@@ -19,10 +21,18 @@ class TreHrImportCommands extends DrushCommands {
   protected EntityStorageInterface $nodeStorage;
 
   /**
+   * The database connection.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected Connection $db;
+
+  /**
    * Constructs the commands object.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, Connection $database) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');
+    $this->db = $database;
   }
 
   /**
@@ -50,6 +60,39 @@ class TreHrImportCommands extends DrushCommands {
     $percentage = floor(100 * $number_of_lines_in_import_csv / $person_count);
 
     $this->io()->writeln($percentage);
+  }
+
+  /**
+   * Deleting all person nodes that are not referrenced anywhere.
+   *
+   * @usage tre_hr_import-remove_all_unused_person_nodes
+   *   Deleting all person nodes that are not referrenced anywhere.
+   *
+   * @command tre_hr_import:remove_all_unused_person_nodes
+   * @aliases hr_rm_person_nodes
+   */
+  public function removeAllUnusedPersonNodes() {
+    $query = $this->db->select('node', 'n');
+
+    // Get ids of all person nodes that are not referrenced anywhere.
+    $query->leftJoin('paragraph__field_person_liftup', 'pfpl', 'pfpl.field_person_liftup_target_id = n.nid');
+    $query->leftJoin('paragraph__field_media_contact_person', 'pfmcp', 'pfmcp.field_media_contact_person_target_id = n.nid');
+    $query->leftJoin('paragraph__field_internal_link', 'pfil', 'pfil.field_internal_link_target_id = n.nid');
+    $query->fields('n', ['nid'])
+      ->condition('n.type', 'person', '=')
+      ->condition('pfpl.field_person_liftup_target_id', NULL, 'IS NULL')
+      ->condition('pfmcp.field_media_contact_person_target_id', NULL, 'IS NULL')
+      ->condition('pfil.field_internal_link_target_id', NULL, 'IS NULL');
+
+    $result = $query->execute()->fetchAll();
+    foreach ($result as $row) {
+      $node = $this->nodeStorage->load($row->nid);
+      if ($node instanceof NodeInterface) {
+        $node->delete();
+        $this->io()->writeln(sprintf('Node %u is deleted.', $row->nid));
+      }
+    }
+    $this->io()->writeln('Finish!');
   }
 
 }

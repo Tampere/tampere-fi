@@ -1,0 +1,18 @@
+uuid: 77800b3f-6a53-4730-8366-47bf5a4a4baf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+id: group.mailing_list.label
+field_name: label
+entity_type: group
+bundle: mailing_list
+label: Nimi
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

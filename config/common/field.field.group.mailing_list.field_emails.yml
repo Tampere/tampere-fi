@@ -1,0 +1,19 @@
+uuid: 68be663b-8a6b-4775-a8b1-0a3bc08dbca3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_emails
+    - group.type.mailing_list
+id: group.mailing_list.field_emails
+field_name: field_emails
+entity_type: group
+bundle: mailing_list
+label: Sähköpostiosoitteet
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

@@ -10,7 +10,7 @@ id: paragraph.embedded_content_and_map_tabs.field_keywords
 field_name: field_keywords
 entity_type: paragraph
 bundle: embedded_content_and_map_tabs
-label: Asiasanat
+label: Ohjaukset
 description: ''
 required: false
 translatable: true

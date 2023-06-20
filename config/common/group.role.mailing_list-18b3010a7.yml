@@ -1,0 +1,17 @@
+uuid: a0d98632-5489-4510-8ae2-32d048ba5856
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  enforced:
+    config:
+      - user.role.notice_author
+id: mailing_list-18b3010a7
+label: Ilmoitustoimittaja
+weight: -3
+internal: true
+audience: outsider
+group_type: mailing_list
+permissions_ui: false
+permissions: {  }

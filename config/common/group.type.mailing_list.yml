@@ -1,0 +1,11 @@
+uuid: 83ff9ce9-136c-476a-9812-1b3d1a3b7df9
+langcode: fi
+status: true
+dependencies: {  }
+id: mailing_list
+label: Postituslista
+description: ''
+new_revision: true
+creator_membership: false
+creator_wizard: false
+creator_roles: {  }

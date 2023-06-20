@@ -1,0 +1,33 @@
+uuid: 77dff63c-c551-44d7-8888-3130b2bc594b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.group.mailing_list.field_emails
+    - group.type.mailing_list
+id: group.mailing_list.default
+targetEntityType: group
+bundle: mailing_list
+mode: default
+content:
+  field_emails:
+    type: email_default
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  langcode: true
+  path: true
+  status: true
+  uid: true

@@ -169,6 +169,7 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_additional_info_for_media: true
   field_archive_search_content: true
   field_cross_site_publications: true
