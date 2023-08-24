@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+<property>
+  <name>http.agent.name</name>
+  <value>Tampere.fi Nutch Spider (Staging, EN)</value>
+</property>
+<property>
+  <name>plugin.includes</name>
+  <value>protocol-http|urlfilter-(regex|validator)|parse-html|index-(basic|anchor|static)|language-identifier|indexer-solr|scoring-opic|urlnormalizer-(pass|regex|basic)</value>
+  <description>Compared to defaults in 1.19: disabled parse-tika, enabled language-identifier, index-static</description>
+</property>
+<!-- web db properties -->
+<property>
+  <name>db.fetch.interval.default</name>
+  <value>86000</value>
+  <description>The number of seconds between re-fetches of a page (just under 1 day).
+  </description>
+</property>
+<property>
+  <name>db.update.purge.404</name>
+  <value>true</value>
+  <description>If true, updatedb will add purge records with status DB_GONE
+  from the CrawlDB.
+  </description>
+</property>
+
+<!-- AnchorIndexing filter plugin properties -->
+<property>
+  <name>anchorIndexingFilter.deduplicate</name>
+  <value>true</value>
+  <description>With this enabled the indexer will case-insensitive deduplicate anchors
+  before indexing. This prevents possible hundreds or thousands of identical anchors for
+  a given page to be indexed but will affect the search scoring (i.e. tf=1.0f).
+  </description>
+</property>
+
+<!-- indexingfilter plugin properties -->
+<property>
+  <name>indexer.max.title.length</name>
+  <value>-1</value>
+  <description>The maximum number of characters of a title that are indexed. A value of -1 disables this check.
+  </description>
+</property>
+
+<property>
+  <name>indexer.delete.robots.noindex</name>
+  <value>true</value>
+  <description>Whether the indexer will delete documents marked by robots=noindex
+  </description>
+</property>
+
+<!-- parser properties -->
+<property>
+  <name>parser.html.outlinks.ignore_tags</name>
+  <value>img,script,link</value>
+  <description>Comma separated list of HTML tags, from which outlinks
+  shouldn't be extracted. Nutch takes links from: a, area, form, frame,
+  iframe, script, link, img. If you add any of those tags here, it
+  won't be taken. Default is empty list. Probably reasonable value
+  for most people would be "img,script,link".</description>
+</property>
+
+<!-- language-identifier plugin properties -->
+<property>
+  <name>lang.index.languages</name>
+  <value>en</value>
+</property>
+
+<!-- linkrank scoring properties -->
+<property>
+  <name>link.delete.gone</name>
+  <value>true</value>
+  <description>Whether to delete gone pages from the web graph.</description>
+</property>
+
+<!-- index-static plugin properties -->
+<property>
+  <name>index.static</name>
+  <value>bs_status:1,index_id:content</value>
+  <description>
+  Used by plugin index-static to adds fields with static data at indexing time.
+  You can specify a comma-separated list of fieldname:fieldcontent per Nutch job.
+  Each fieldcontent can have multiple values separated by space, e.g.,
+    field1:value1.1 value1.2 value1.3,field2:value2.1 value2.2 ...
+  It can be useful when collections can't be created by URL patterns,
+  like in subcollection, but on a job-basis.
+  </description>
+</property>
+
+</configuration>

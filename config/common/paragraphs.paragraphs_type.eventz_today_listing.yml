@@ -1,0 +1,10 @@
+uuid: 686ef43d-7ce7-4080-a99b-83878c376d27
+langcode: fi
+status: true
+dependencies: {  }
+id: eventz_today_listing
+label: 'Eventz Today -listaus'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

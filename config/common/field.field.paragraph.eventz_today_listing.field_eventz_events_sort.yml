@@ -1,0 +1,23 @@
+uuid: ecf5f187-d6c5-42a4-9c16-1be5b6483917
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_events_sort
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - options
+id: paragraph.eventz_today_listing.field_eventz_events_sort
+field_name: field_eventz_events_sort
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Tapahtumien listausjärjestys'
+description: 'Oletusjärjestys: ensimmäisenä näytetään tänään, sitten huomenna, sitten ylihuomenna, sitten yliylihuomenna alkavat tapahtumat.<br>'
+required: true
+translatable: false
+default_value:
+  -
+    value: default
+default_value_callback: ''
+settings: {  }
+field_type: list_string

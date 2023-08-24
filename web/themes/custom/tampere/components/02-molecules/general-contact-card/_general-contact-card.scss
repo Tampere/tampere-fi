@@ -60,4 +60,8 @@
   &__main-content {
     max-width: var(--text-content-max-width);
   }
+
+  &--background-secondary {
+    background-color: clr(accent-quaternary);
+  }
 }

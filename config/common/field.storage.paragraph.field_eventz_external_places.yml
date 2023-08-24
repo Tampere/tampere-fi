@@ -1,0 +1,24 @@
+uuid: e390cab5-f5c0-4108-a0fe-b035d9eb6d03
+langcode: fi
+status: true
+dependencies:
+  module:
+    - external_data_source
+    - paragraphs
+id: paragraph.field_eventz_external_places
+field_name: field_eventz_external_places
+entity_type: paragraph
+type: external_data_source
+settings:
+  ws: eventz_today_external_data_source_places
+  count: '30'
+  max_length: '255'
+  is_ascii: false
+  case_sensitive: false
+module: external_data_source
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

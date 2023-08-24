@@ -1,0 +1,21 @@
+uuid: 34ab3ac4-0b2b-4a15-bf70-aec2ecb63a26
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_external_org_class
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - external_data_source
+id: paragraph.eventz_today_listing.field_eventz_external_org_class
+field_name: field_eventz_external_org_class
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Muut sivuston aiheet -luokat'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: external_data_source

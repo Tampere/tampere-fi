@@ -11,7 +11,6 @@ dependencies:
     - link
     - node
     - text
-    - ui_patterns_views
     - user
 id: rss_list
 label: RSS-listaus
@@ -489,6 +488,27 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 3
       style:
         type: default
         options:
@@ -496,42 +516,17 @@ display:
           row_class: ''
           default_row_class: false
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          default_field_elements: 0
-          inline:
-            title: 0
-            created: 0
-            field_link_single: 0
-          separator: ''
-          hide_empty: 0
-          pattern: rss_card
-          variants:
-            figure: large
-            listing_item: default
-            topical_card: default
-            topical_content: default
-            topics_and_life_situations: default
-          pattern_mapping:
-            'views_row:title':
-              destination: rss_card__heading
-              weight: 0
-              plugin: views_row
-              source: title
-            'views_row:field_link_single':
-              destination: rss_card__link__url
-              weight: 1
-              plugin: views_row
-              source: field_link_single
-            'views_row:created':
-              destination: rss_card__date
-              weight: 2
-              plugin: views_row
-              source: created
+          relationship: none
+          view_mode: default
       defaults:
+        use_ajax: false
+        pager: false
         style: false
         row: false
         fields: false
+      use_ajax: true
       display_description: ''
       display_extenders:
         metatag_display_extender:
@@ -543,6 +538,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -753,6 +749,27 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 3
       sorts:
         title:
           id: title
@@ -776,43 +793,18 @@ display:
           row_class: ''
           default_row_class: false
       row:
-        type: ui_patterns
+        type: 'entity:node'
         options:
-          default_field_elements: 0
-          inline:
-            title: 0
-            created: 0
-            field_link_single: 0
-          separator: ''
-          hide_empty: 0
-          pattern: rss_card
-          variants:
-            figure: large
-            listing_item: default
-            topical_card: default
-            topical_content: default
-            topics_and_life_situations: default
-          pattern_mapping:
-            'views_row:title':
-              destination: rss_card__heading
-              weight: 0
-              plugin: views_row
-              source: title
-            'views_row:field_link_single':
-              destination: rss_card__link__url
-              weight: 1
-              plugin: views_row
-              source: field_link_single
-            'views_row:created':
-              destination: rss_card__date
-              weight: 2
-              plugin: views_row
-              source: created
+          relationship: none
+          view_mode: default
       defaults:
+        use_ajax: false
+        pager: false
         style: false
         row: false
         fields: false
         sorts: false
+      use_ajax: true
       display_description: ''
       display_extenders:
         metatag_display_extender:
@@ -824,6 +816,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:

@@ -1,0 +1,21 @@
+uuid: 7089c2af-581b-41fa-875c-f1682e8cc9b6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_external_organizers
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - external_data_source
+id: paragraph.eventz_today_listing.field_eventz_external_organizers
+field_name: field_eventz_external_organizers
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Tapahtuman järjestäjät'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: external_data_source

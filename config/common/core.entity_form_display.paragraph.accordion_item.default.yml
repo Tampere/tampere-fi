@@ -11,13 +11,11 @@ dependencies:
     - field_group
     - field_states_ui
     - limited_field_widgets
-    - markup
     - paragraphs
 third_party_settings:
   field_group:
     group_content_help_text:
       children:
-        - field_content_help
         - field_accordion_content
       label: 'Sisällön aputeksti'
       region: content
@@ -68,12 +66,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_content_help:
-    type: markup
-    weight: 4
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   translation:
     weight: 1
     region: content
@@ -81,4 +73,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_content_help: true
   status: true

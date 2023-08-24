@@ -1,0 +1,47 @@
+uuid: 30e71a5a-6f15-47f0-ab73-bd93752ec576
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.eventz_today_listing.field_eventz_display_amount
+    - field.field.paragraph.eventz_today_listing.field_eventz_event_end
+    - field.field.paragraph.eventz_today_listing.field_eventz_event_start
+    - field.field.paragraph.eventz_today_listing.field_eventz_events_sort
+    - field.field.paragraph.eventz_today_listing.field_eventz_excluded_events
+    - field.field.paragraph.eventz_today_listing.field_eventz_external_areas
+    - field.field.paragraph.eventz_today_listing.field_eventz_external_audience
+    - field.field.paragraph.eventz_today_listing.field_eventz_external_category
+    - field.field.paragraph.eventz_today_listing.field_eventz_external_org_class
+    - field.field.paragraph.eventz_today_listing.field_eventz_external_organizers
+    - field.field.paragraph.eventz_today_listing.field_eventz_external_places
+    - field.field.paragraph.eventz_today_listing.field_eventz_featured_event_id
+    - field.field.paragraph.eventz_today_listing.field_summary
+    - field.field.paragraph.eventz_today_listing.field_title
+    - paragraphs.paragraphs_type.eventz_today_listing
+id: paragraph.eventz_today_listing.default
+targetEntityType: paragraph
+bundle: eventz_today_listing
+mode: default
+content:
+  field_summary:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_eventz_display_amount: true
+  field_eventz_event_end: true
+  field_eventz_event_start: true
+  field_eventz_events_sort: true
+  field_eventz_excluded_events: true
+  field_eventz_external_areas: true
+  field_eventz_external_audience: true
+  field_eventz_external_category: true
+  field_eventz_external_org_class: true
+  field_eventz_external_organizers: true
+  field_eventz_external_places: true
+  field_eventz_featured_event_id: true
+  field_title: true
+  search_api_excerpt: true

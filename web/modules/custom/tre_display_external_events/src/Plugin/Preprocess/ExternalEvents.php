@@ -194,7 +194,7 @@ class ExternalEvents extends TrePreProcessPluginBase {
             'location' => $desired_featured_event->location_extra_info->{$desired_language} ?? $desired_featured_event->location->name->{$desired_language} ?? '',
             'name' => $desired_featured_event->name->{$desired_language},
             'summary' => $desired_featured_event->short_description->{$desired_language} ?? '',
-            'url' => "https://tapahtumat.tampere.fi/event/" . $desired_featured_event->id,
+            'url' => "https://pirkanmaaevents.fi/event/" . $desired_featured_event->id,
           ]);
         }
       }
@@ -231,7 +231,7 @@ class ExternalEvents extends TrePreProcessPluginBase {
         ];
       }
       $location = $item->location_extra_info->{$desired_language} ?? $item->location->name->{$desired_language} ?? '';
-      $info_url = "https://tapahtumat.tampere.fi/event/" . $item->id . '?lang=' . $desired_language;
+      $info_url = "https://pirkanmaaevents.fi/event/" . $item->id . '?lang=' . $desired_language;
       $event_time = $this->getEventTimeString($item);
 
       // Filter out empty elements from the variables going to the template.

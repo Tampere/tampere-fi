@@ -1,0 +1,21 @@
+uuid: 0238ce18-15b0-48f6-97b6-c4ee0a96e78c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_external_areas
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - external_data_source
+id: paragraph.eventz_today_listing.field_eventz_external_areas
+field_name: field_eventz_external_areas
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Tapahtumat alueilla'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: external_data_source

@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.embedded_content_and_map_tabs.field_geographical_areas
     - field.field.paragraph.embedded_content_and_map_tabs.field_keywords
     - field.field.paragraph.embedded_content_and_map_tabs.field_life_situations
+    - field.field.paragraph.embedded_content_and_map_tabs.field_search_zoom_level
     - field.field.paragraph.embedded_content_and_map_tabs.field_tabs_displayed_content_tps
     - field.field.paragraph.embedded_content_and_map_tabs.field_taxonomy_combination
     - field.field.paragraph.embedded_content_and_map_tabs.field_title
@@ -23,6 +24,7 @@ hidden:
   field_geographical_areas: true
   field_keywords: true
   field_life_situations: true
+  field_search_zoom_level: true
   field_tabs_displayed_content_tps: true
   field_taxonomy_combination: true
   field_title: true

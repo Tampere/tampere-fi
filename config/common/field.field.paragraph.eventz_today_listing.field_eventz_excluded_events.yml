@@ -1,0 +1,19 @@
+uuid: c04b4cf0-70be-4ccf-877d-4cbf9e4638ec
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_excluded_events
+    - paragraphs.paragraphs_type.eventz_today_listing
+id: paragraph.eventz_today_listing.field_eventz_excluded_events
+field_name: field_eventz_excluded_events
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Poisjätettävät tapahtumat'
+description: 'Jos haluat poistaa listauksesta tiettyjä tapahtumia, lisää niiden ID:t tämän kentän arvoiksi.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

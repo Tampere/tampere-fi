@@ -45,6 +45,7 @@
         {% for item in rss_feed__items %}
           {% include "@molecules/rss-card/rss-card.twig" with {
             "rss_card__link__url": item.url,
+            "rss_card__icon_name": item.icon_name,
             "rss_card__date": item.date,
             "rss_card__heading": item.heading,
           } %}

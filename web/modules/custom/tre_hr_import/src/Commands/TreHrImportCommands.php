@@ -49,8 +49,14 @@ class TreHrImportCommands extends DrushCommands {
    * @aliases hr_import_pct,hr_import_percentage
    */
   public function calculatePersonsPercentageToImport(int $number_of_lines_in_import_csv) {
-    $query = $this->nodeStorage->getQuery()->accessCheck(FALSE);
-    $query = $query->condition('type', 'person');
+    // Any person node imported from CSV will have the field_hr_id field
+    // populated. The import always imports the content in Finnish, so checking
+    // only Finnish content.
+    $query = $this->nodeStorage->getQuery()->accessCheck(FALSE)
+      ->condition('type', 'person')
+      ->condition('langcode', 'fi')
+      ->condition('default_langcode', 1)
+      ->exists('field_hr_id', 'fi');
     $person_count = $query->count()->execute();
 
     if ($person_count == 0) {

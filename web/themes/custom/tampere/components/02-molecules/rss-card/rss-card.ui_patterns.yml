@@ -12,4 +12,6 @@ rss_card:
       label: Date
     rss_card__heading:
       label: Heading
+    rss_card__icon_name:
+      label: Icon name
   use: "@molecules/rss-card/rss-card.twig"

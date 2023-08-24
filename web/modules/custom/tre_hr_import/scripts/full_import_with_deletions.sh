@@ -39,8 +39,9 @@ else
   # This will leave the stderr free for mailing through cron's standard handling of output from commands.
   echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to reset migration just in case it has gotten stuck previously..."
   sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:reset ipaas_import_csv || true
-  echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to import new and updated lines, and delete the ones missing, from CSV..."
-  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --sync --update --skip-progress-bar ipaas_import_csv || true
+  echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to import new and updated lines, and NOT delete (for the summer 2023) the ones missing, from CSV..."
+  # Temporarily disabled the --sync option for summer 2023 until we get to fixing the underlying issue.
+  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --update --skip-progress-bar ipaas_import_csv || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') Drush command run."
 fi
 

@@ -47,3 +47,19 @@
   font-size: 1.2rem;
   margin-bottom: 0;
 }
+
+/*
+  This is meant for hiding the "This value should not be null." notices that
+  sometimes appear (and disappear on their own) when a required field has been
+  hidden from the form display for "content_liftup" paragraphs. This notice
+  doesn't seem to be used to display any other type of information for the
+  content liftups currently, but if this is to change the style should be
+  removed and replaced with another solution.
+
+  The attribute selectors are chained, because Drupal adds multiple
+  sequence numbers within a single attribute value, for example:
+  "edit-field-paragraphs-3-subform-field-grouped-content-liftups-0-info-validation-error".
+*/
+[data-drupal-selector*="edit-field-paragraphs"][data-drupal-selector*="subform-field"][data-drupal-selector*="content-liftups"][data-drupal-selector*="info-validation-error"] {
+  display: none;
+}

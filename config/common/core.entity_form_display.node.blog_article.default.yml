@@ -206,10 +206,17 @@ content:
     region: content
     settings:
       match_operator: CONTAINS
-      match_limit: 10
+      match_limit: 15
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_lead:
     type: string_textarea
     weight: 5

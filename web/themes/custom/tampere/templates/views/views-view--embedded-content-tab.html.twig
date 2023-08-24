@@ -8,7 +8,7 @@
  * - css_name: A css-safe version of the view name.
  * - css_class: The user-specified classes names, if any.
  * - header: The optional header.
- * - footer: The optional footer.
+ * - footer: The paragraph description as a string. Optional.
  * - rows: The results of the view query, if any.
  * - empty: The content to display if there are no rows.
  * - pager: The optional pager next/prev links to display.
@@ -42,10 +42,12 @@
   ]
 %}
 
-<section{{ bem('', '', '', classes) }}>
+<section{{ attributes.addClass(classes) }}>
   {% embed "@organisms/search-panel/search-panel-for-view.twig" with {
     "total_rows": total_rows,
-    "current_page_rows": current_page_rows
+    "current_page_rows": current_page_rows,
+    "search_panel__description": footer,
+    "attributes": [],
   } %}
 
     {% block exposed %}
@@ -53,14 +55,6 @@
         <div class="view-filters">
           {{ exposed }}
         </div>
-      {% endif %}
-    {% endblock %}
-
-    {% block header %}
-      {% if header %}
-        <header class="view-header">
-          {{ header }}
-        </header>
       {% endif %}
     {% endblock %}
 
@@ -84,4 +78,3 @@
 
   {% endembed %}
 </section>
-

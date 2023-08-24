@@ -2,6 +2,7 @@
 
 namespace Drupal\tre_preprocess;
 
+use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
@@ -38,6 +39,13 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
    * @var \Symfony\Component\HttpFoundation\Request
    */
   protected $currentRequest;
+
+  /**
+   * The Date Formatter service.
+   *
+   * @var \Drupal\Core\Datetime\DateFormatter
+   */
+  protected $dateFormatter;
 
   /**
    * The File Url Generator service.
@@ -132,6 +140,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
     $plugin_definition,
     FileUrlGeneratorInterface $file_url_generator,
     CurrentPathStack $current_path,
+    DateFormatter $date_formatter,
     EntityRepositoryInterface $entity_repository,
     EntityTypeManagerInterface $entity_type_manager,
     HelperFunctionsInterface $helper_functions,
@@ -148,6 +157,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->fileUrlGenerator = $file_url_generator;
     $this->currentPath = $current_path;
+    $this->dateFormatter = $date_formatter;
     $this->entityRepository = $entity_repository;
     $this->entityTypeManager = $entity_type_manager;
     $this->helperFunctions = $helper_functions;
@@ -172,6 +182,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
       $plugin_definition,
       $container->get('file_url_generator'),
       $container->get('path.current'),
+      $container->get('date.formatter'),
       $container->get('entity.repository'),
       $container->get('entity_type.manager'),
       $container->get('tre_preprocess_utility_functions.helper_functions'),

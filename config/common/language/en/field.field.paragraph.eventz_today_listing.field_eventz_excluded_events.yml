@@ -1,0 +1,2 @@
+label: 'Excluded Events'
+description: 'If you want to remove certain events from the list, add their IDs to the values of this field.'

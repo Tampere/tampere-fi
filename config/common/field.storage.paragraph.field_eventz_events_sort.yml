@@ -1,0 +1,30 @@
+uuid: f71a447b-4451-43c4-affc-c4b9ab0e1f0c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_eventz_events_sort
+field_name: field_eventz_events_sort
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: default
+      label: Default
+    -
+      value: startDate
+      label: 'Start Date'
+    -
+      value: creationDate
+      label: 'Creation Date'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

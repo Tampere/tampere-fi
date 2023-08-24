@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.embedded_content_and_map_tabs.field_geographical_areas
     - field.field.paragraph.embedded_content_and_map_tabs.field_keywords
     - field.field.paragraph.embedded_content_and_map_tabs.field_life_situations
+    - field.field.paragraph.embedded_content_and_map_tabs.field_search_zoom_level
     - field.field.paragraph.embedded_content_and_map_tabs.field_tabs_displayed_content_tps
     - field.field.paragraph.embedded_content_and_map_tabs.field_taxonomy_combination
     - field.field.paragraph.embedded_content_and_map_tabs.field_title
@@ -105,6 +106,13 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_search_zoom_level:
+    type: number
+    weight: 22
+    region: content
+    settings:
       placeholder: ''
     third_party_settings: {  }
   field_tabs_displayed_content_tps:

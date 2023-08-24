@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.liftup_wo_summary_form
-    - field.field.paragraph.content_liftup.field_content_liftup_link_help
     - field.field.paragraph.content_liftup.field_content_link
     - field.field.paragraph.content_liftup.field_internal_content_link
     - field.field.paragraph.content_liftup.field_liftup_title
@@ -44,7 +43,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_content_liftup_link_help: true
   field_internal_content_link: true
   field_summary: true
   status: true

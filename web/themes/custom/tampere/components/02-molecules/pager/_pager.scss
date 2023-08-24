@@ -80,13 +80,10 @@ $pager-item-padding--desktop: 0 $space-xs;
   }
 
   &__link {
+    display: block;
     padding: $pager-item-padding;
     text-transform: uppercase;
-  
-    @include small-down {
-      display: block;
-    }
-  
+
     @include xs {
       padding: $pager-item-padding--xs;
     }
@@ -165,6 +162,43 @@ $pager-item-padding--desktop: 0 $space-xs;
     #{$base_class}__link--next,
     #{$base_class}__link--prev {
       font-size: $font-18;
+    }
+  }
+
+  &--minimal {
+    #{$base_class}__direction {
+      @include visually-hidden;
+    }
+
+    #{$base_class}__link--prev,
+    #{$base_class}__link--next {
+      position: relative;
+
+      @include large {
+        &::after {
+          background-color: clr(primary);
+          width: $icon-xs-plus;
+          height: 1px;
+          position: absolute;
+          bottom: -4px;
+        }
+
+        &:hover::after {
+          content: "";
+        }
+      }
+    }
+
+    #{$base_class}__link--prev {
+      #{$base_class}__icon {
+        margin-right: 0;
+      }
+    }
+
+    #{$base_class}__link--next {
+      #{$base_class}__icon {
+        margin-left: 0;
+      }
     }
   }
 }

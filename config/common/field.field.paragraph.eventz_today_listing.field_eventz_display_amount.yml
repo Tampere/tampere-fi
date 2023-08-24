@@ -1,0 +1,23 @@
+uuid: 06842619-ca5a-4433-b3cd-a3ab278a6ad4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_display_amount
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - options
+id: paragraph.eventz_today_listing.field_eventz_display_amount
+field_name: field_eventz_display_amount
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Näytettävien tapahtumien määrä'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

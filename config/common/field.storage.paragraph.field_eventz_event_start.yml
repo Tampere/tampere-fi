@@ -1,0 +1,20 @@
+uuid: 92160721-f834-4f57-874a-baa2fc686de3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_eventz_event_start
+field_name: field_eventz_event_start
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,25 @@
+uuid: 98878bf8-e6d3-4c91-ace7-f1a41023b375
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_search_zoom_level
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+id: paragraph.embedded_content_and_map_tabs.field_search_zoom_level
+field_name: field_search_zoom_level
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: 'Karttahaun zoomaustaso'
+description: 'Zoomaustaso voi olla kokonaisluku 5 ja 14 väliltä.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 8
+default_value_callback: ''
+settings:
+  min: 5
+  max: 14
+  prefix: ''
+  suffix: ''
+field_type: integer

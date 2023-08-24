@@ -1,0 +1,21 @@
+uuid: 99c05149-0249-468f-8e4d-8f366bf3b07a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_event_start
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - datetime
+id: paragraph.eventz_today_listing.field_eventz_event_start
+field_name: field_eventz_event_start
+entity_type: paragraph
+bundle: eventz_today_listing
+label: Alkupäivämäärä
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

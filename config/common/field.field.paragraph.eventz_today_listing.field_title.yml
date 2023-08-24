@@ -1,0 +1,19 @@
+uuid: 5b84e1c2-202d-4bdb-97e1-46047891a9c2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.eventz_today_listing
+id: paragraph.eventz_today_listing.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: eventz_today_listing
+label: Otsikko
+description: 'Lisää otsikko listaukselle'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

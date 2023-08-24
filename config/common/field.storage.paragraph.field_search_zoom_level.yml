@@ -1,0 +1,20 @@
+uuid: 46a19273-2ea2-4b11-b5d7-29f98e2c04b0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_search_zoom_level
+field_name: field_search_zoom_level
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

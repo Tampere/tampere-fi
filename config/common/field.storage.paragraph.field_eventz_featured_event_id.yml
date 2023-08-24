@@ -1,0 +1,21 @@
+uuid: da6d58d6-7d6e-48c3-aba1-2bfb9f53227b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_eventz_featured_event_id
+field_name: field_eventz_featured_event_id
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

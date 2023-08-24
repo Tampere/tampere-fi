@@ -54,6 +54,7 @@ permissions:
   - 'view paragraph content embedded_content_and_map_tabs'
   - 'view paragraph content embederator_embed'
   - 'view paragraph content event_and_hobby_listing'
+  - 'view paragraph content eventz_today_listing'
   - 'view paragraph content external_link'
   - 'view paragraph content external_link_with_link_text'
   - 'view paragraph content feedback_section'

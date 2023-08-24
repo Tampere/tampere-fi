@@ -65,6 +65,7 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
       $selected_content_types = $this->helperFunctions->getListFieldValues($paragraph_displayed_content_types_field_values);
 
       $selected_taxonomy_condition_group = $translated_paragraph->get('field_taxonomy_combination')->getString();
+      $zoom_level = intval($this->helperFunctions->getFieldValueString($translated_paragraph, 'field_search_zoom_level'));
 
       $selected_taxonomy_values = $this->helperFunctions->getParagraphTaxonomyTerms($translated_paragraph, self::AVAILABLE_TAXONOMY_VOCABULARIES);
       $selected_content_type_specific_taxonomy_values = $this->helperFunctions->getParagraphTaxonomyTerms($translated_paragraph, array_keys(self::CONTENT_TYPE_SPECIFIC_TAXONOMY_VOCABULARIES));
@@ -121,13 +122,13 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
         ];
       }
 
-      $content_listing_block = $this->getRenderedView($paragraph);
+      $content_listing_block = $this->getRenderedView($translated_paragraph);
       if (empty($content_listing_block)) {
         return $variables;
       }
       $variables['content_listing_block'] = $content_listing_block;
       $variables['tab_map_content'] = $this->getMap($translated_paragraph);
-
+      $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['zoomLevels'][$container_paragraph_id] = $zoom_level;
       $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['locations'][$container_paragraph_id] = $locations;
       $variables['#attached']['drupalSettings']['tampere']['currentLanguage'] = $this->languageManager->getCurrentLanguage()->getId();
       $variables['#attached']['drupalSettings']['tampere']['mmlMapIframeDomain'] = Settings::get('mml_map_iframe_domain');
@@ -317,6 +318,25 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
     $taxonomy_argument_glue = $selected_taxonomy_condition_group == 'or' ? '+' : ',';
     $taxonomy_argument = empty($combined_taxonomy_values) ? 'all' : implode($taxonomy_argument_glue, $combined_taxonomy_values);
     $view->setArguments([$content_type_argument, $taxonomy_argument]);
+
+    if ($paragraph->hasField('field_description_text') && !$paragraph->get('field_description_text')->isEmpty()) {
+      $paragraph_description = $paragraph->get('field_description_text')->getString();
+
+      $options = [
+        'id' => 'area_text_custom',
+        'table' => 'views',
+        'field' => 'area_text_custom',
+        'relationship' => 'none',
+        'group_type' => 'none',
+        'admin_label' => '',
+        'empty' => TRUE,
+        'tokenize' => FALSE,
+        'content' => $paragraph_description,
+        'plugin_id' => 'text_custom',
+      ];
+
+      $view->setHandler($block_machine_name, 'footer', 'area_text_custom', $options);
+    }
 
     $view->preExecute();
     $view->execute();

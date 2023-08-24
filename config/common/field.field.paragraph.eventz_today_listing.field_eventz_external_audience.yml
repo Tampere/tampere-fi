@@ -1,0 +1,21 @@
+uuid: 9c5df993-4a28-4ca2-a4d0-c1135cc57f61
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_external_audience
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - external_data_source
+id: paragraph.eventz_today_listing.field_eventz_external_audience
+field_name: field_eventz_external_audience
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Tapahtumien kohderyhmä'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: external_data_source

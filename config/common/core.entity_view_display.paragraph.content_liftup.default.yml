@@ -3,7 +3,6 @@ langcode: fi
 status: true
 dependencies:
   config:
-    - field.field.paragraph.content_liftup.field_content_liftup_link_help
     - field.field.paragraph.content_liftup.field_content_link
     - field.field.paragraph.content_liftup.field_internal_content_link
     - field.field.paragraph.content_liftup.field_liftup_title
@@ -11,19 +10,11 @@ dependencies:
     - paragraphs.paragraphs_type.content_liftup
   module:
     - entity_reference_revisions
-    - markup
 id: paragraph.content_liftup.default
 targetEntityType: paragraph
 bundle: content_liftup
 mode: default
 content:
-  field_content_liftup_link_help:
-    type: markup
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_content_link:
     type: entity_reference_revisions_entity_view
     label: hidden

@@ -15,7 +15,7 @@ mode: default
 content:
   field_feed_block:
     type: options_select
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -27,15 +27,9 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_number_of_items_to_show:
-    type: options_select
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_sort_order:
     type: options_select
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -46,4 +40,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_number_of_items_to_show: true
   status: true

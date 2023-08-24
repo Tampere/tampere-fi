@@ -274,6 +274,7 @@ permissions:
   - 'update paragraph content downloadable_material'
   - 'update paragraph content embederator_embed'
   - 'update paragraph content event_and_hobby_listing'
+  - 'update paragraph content eventz_today_listing'
   - 'update paragraph content external_link'
   - 'update paragraph content external_link_with_link_text'
   - 'update paragraph content feedback_section'

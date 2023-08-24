@@ -21,6 +21,7 @@ Drupal.behaviors.mapTabsContent = {
     const LOCATION_PIN_OFFSET_Y = 4;
     const LOCATION_PIN_SIZE = 5;
     const MAX_ZOOM_LEVEL = 10;
+    const SEARCH_ZOOM_LEVELS = drupalSettings.tampere.embeddedContentAndMapTabs.zoomLevels;
     const PREFERRED_SEARCH_RESULT_REGION = 'Tampere';
     const getVectorLayerId = (baseName) => (id) => `${baseName}_${id}`;
     const mapElements = once('embedded-content-and-map-tabs-map-elements', '[id^="map-"]', context);
@@ -176,6 +177,7 @@ Drupal.behaviors.mapTabsContent = {
         const vectorLayerId = getVectorLayerId(SEARCH_VECTOR_LAYER_ID_BASE)(id);
         let result;
 
+        const zoomLevelForCurrentMap = SEARCH_ZOOM_LEVELS[id] || 10;
         const keys = Object.keys(event.result.locations);
         for (const item of keys) {
           const { region } = event.result.locations[item];
@@ -233,7 +235,7 @@ Drupal.behaviors.mapTabsContent = {
               centerTo: true,
               clearPrevious: true,
               featureStyle,
-              maxZoomLevel: MAX_ZOOM_LEVEL,
+              maxZoomLevel: zoomLevelForCurrentMap,
             },
           ];
 

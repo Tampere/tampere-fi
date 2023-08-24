@@ -18,6 +18,7 @@ dependencies:
     - paragraphs.paragraphs_type.embedded_content_and_map_tabs
     - paragraphs.paragraphs_type.embederator_embed
     - paragraphs.paragraphs_type.event_and_hobby_listing
+    - paragraphs.paragraphs_type.eventz_today_listing
     - paragraphs.paragraphs_type.generic_listing
     - paragraphs.paragraphs_type.highlighted_content_liftup_w_img
     - paragraphs.paragraphs_type.image
@@ -92,6 +93,7 @@ settings:
       picture_mosaic: picture_mosaic
       list_of_attachments: list_of_attachments
       link_list: link_list
+      logo_wall: logo_wall
       material_download_list: material_download_list
       metadata_attachment_list: metadata_attachment_list
       involvement_opportunity_cards: involvement_opportunity_cards
@@ -116,7 +118,7 @@ settings:
       video_embed: video_embed
       colorful_content_liftup: colorful_content_liftup
       contact_information_liftups: contact_information_liftups
-      logo_wall: logo_wall
+      eventz_today_listing: eventz_today_listing
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -187,6 +189,9 @@ settings:
         enabled: true
       event_and_hobby_listing:
         weight: 44
+        enabled: true
+      eventz_today_listing:
+        weight: 87
         enabled: true
       external_link:
         weight: 52

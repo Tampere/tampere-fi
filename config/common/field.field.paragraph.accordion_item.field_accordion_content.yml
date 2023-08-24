@@ -15,7 +15,6 @@ dependencies:
     - paragraphs.paragraphs_type.ptv_service_liftup
     - paragraphs.paragraphs_type.service_highlight
     - paragraphs.paragraphs_type.social_media_link_list
-    - paragraphs.paragraphs_type.text
   module:
     - entity_reference_revisions
 id: paragraph.accordion_item.field_accordion_content
@@ -40,9 +39,8 @@ settings:
       metadata_attachment_list: metadata_attachment_list
       ptv_service_liftup: ptv_service_liftup
       place_liftup: place_liftup
-      contact_information_liftups: contact_information_liftups
-      text: text
       social_media_link_list: social_media_link_list
+      contact_information_liftups: contact_information_liftups
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -180,6 +178,12 @@ settings:
       login_link_with_text:
         weight: 73
         enabled: false
+      logo:
+        weight: 131
+        enabled: false
+      logo_wall:
+        weight: 132
+        enabled: false
       mailing_list_information:
         weight: 74
         enabled: false
@@ -272,7 +276,7 @@ settings:
         enabled: false
       text:
         weight: 20
-        enabled: true
+        enabled: false
       text_and_images:
         weight: 140
         enabled: false

@@ -152,7 +152,6 @@ module:
   permission_watchdog: 0
   preprocess: 0
   quick_node_clone: 0
-  quicklink: 0
   rabbit_hole: 0
   redirect: 0
   responsive_image: 0
@@ -197,6 +196,7 @@ module:
   tre_custom_document_titles: 0
   tre_custom_paths: 0
   tre_display_external_events: 0
+  tre_display_external_eventz_today: 0
   tre_external_publish_permissions: 0
   tre_group_admin_fixes: 0
   tre_group_module_custom: 0

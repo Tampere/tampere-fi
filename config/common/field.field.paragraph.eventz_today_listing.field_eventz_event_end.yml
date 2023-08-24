@@ -1,0 +1,21 @@
+uuid: 8e0327e2-8664-464f-9903-891dc2088588
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_event_end
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - datetime
+id: paragraph.eventz_today_listing.field_eventz_event_end
+field_name: field_eventz_event_end
+entity_type: paragraph
+bundle: eventz_today_listing
+label: Loppupäivämäärä
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

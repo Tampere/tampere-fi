@@ -14,7 +14,7 @@ entity_type: paragraph
 bundle: content_liftup
 label: 'Linkki sisältöön (uusi)'
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
@@ -93,6 +93,9 @@ settings:
         enabled: false
       event_and_hobby_listing:
         weight: 108
+        enabled: false
+      eventz_today_listing:
+        weight: 109
         enabled: false
       external_link:
         weight: 109
