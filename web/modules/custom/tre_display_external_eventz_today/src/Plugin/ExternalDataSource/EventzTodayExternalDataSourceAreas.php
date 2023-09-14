@@ -3,7 +3,7 @@
 namespace Drupal\tre_display_external_eventz_today\Plugin\ExternalDataSource;
 
 use Drupal\tre_display_external_eventz_today\Config;
-use Geniem\Eventz\EventzClient;
+use Drupal\tre_display_external_eventz_today\Plugin\EventzClientCustomized;
 
 /**
  * Class for getting areas from Eventz.Today Events API.
@@ -64,13 +64,12 @@ class EventzTodayExternalDataSourceAreas extends EventzTodayExternalDataSourcePl
    *   Options to be rendered.
    */
   private function getKeywords(string $base_url, string $api_key): array {
-    $client = new EventzClient($base_url, $api_key);
+    $client = new EventzClientCustomized($base_url, $api_key);
 
-    $areas = $client->get_areas();
+    $areas = $client->getAllAreas();
 
     $choices = [];
     foreach ($areas as $result) {
-      $result = json_decode(json_encode($result), TRUE);
       if (in_array($result["_id"], self::CUSTOM_AREAS_FILTER_LIST)) {
         $choices[] = ["value" => $result["_id"], "label" => $result["name"]];
       }

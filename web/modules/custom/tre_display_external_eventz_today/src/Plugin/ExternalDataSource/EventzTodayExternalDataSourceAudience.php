@@ -3,7 +3,7 @@
 namespace Drupal\tre_display_external_eventz_today\Plugin\ExternalDataSource;
 
 use Drupal\tre_display_external_eventz_today\Config;
-use Geniem\Eventz\EventzClient;
+use Drupal\tre_display_external_eventz_today\Plugin\EventzClientCustomized;
 
 /**
  * Class for getting audience data from Eventz.Today Events API.
@@ -55,15 +55,12 @@ class EventzTodayExternalDataSourceAudience extends EventzTodayExternalDataSourc
    *   Options to be rendered.
    */
   private function getKeywords(string $base_url, string $api_key): array {
-    $client = new EventzClient($base_url, $api_key);
+    $client = new EventzClientCustomized($base_url, $api_key);
 
-    $results = $client->get_targets();
-    if (!$results) {
-      throw new \Exception("tre_display_external_eventz_today: Unable to get any results");
-    }
+    $results = $client->getAllTargets();
+
     $choices = [];
     foreach ($results as $result) {
-      $result = json_decode(json_encode($result), TRUE);
       $choices[] = ["value" => $result["_id"], "label" => $result["name"]];
     }
     return $choices;

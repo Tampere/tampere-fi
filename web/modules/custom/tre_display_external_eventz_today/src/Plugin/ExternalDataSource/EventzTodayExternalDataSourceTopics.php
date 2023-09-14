@@ -3,7 +3,7 @@
 namespace Drupal\tre_display_external_eventz_today\Plugin\ExternalDataSource;
 
 use Drupal\tre_display_external_eventz_today\Config;
-use Geniem\Eventz\EventzClient;
+use Drupal\tre_display_external_eventz_today\Plugin\EventzClientCustomized;
 
 /**
  * Class for getting topics / subcategories from Eventz.Today Events API.
@@ -55,13 +55,12 @@ class EventzTodayExternalDataSourceTopics extends EventzTodayExternalDataSourceP
    *   Options to be rendered.
    */
   private function getKeywords(string $base_url, string $api_key): array {
-    $client = new EventzClient($base_url, $api_key);
+    $client = new EventzClientCustomized($base_url, $api_key);
 
-    $categories = $client->get_categories();
+    $categories = $client->getAllCategories();
 
     $choices = [];
     foreach ($categories as $result) {
-      $result = json_decode(json_encode($result), TRUE);
       if ($result["type"] == "child") {
         $choices[] = ["value" => $result["_id"], "label" => $result["name"]];
       }

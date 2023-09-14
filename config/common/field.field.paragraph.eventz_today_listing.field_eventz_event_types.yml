@@ -1,0 +1,21 @@
+uuid: 3d9c64d4-6346-49f9-9b33-efad482e4357
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_event_types
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - options
+id: paragraph.eventz_today_listing.field_eventz_event_types
+field_name: field_eventz_event_types
+entity_type: paragraph
+bundle: eventz_today_listing
+label: Tapahtumatyyppi
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

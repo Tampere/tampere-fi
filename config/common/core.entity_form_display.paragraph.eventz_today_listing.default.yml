@@ -6,7 +6,10 @@ dependencies:
     - field.field.paragraph.eventz_today_listing.field_eventz_display_amount
     - field.field.paragraph.eventz_today_listing.field_eventz_event_end
     - field.field.paragraph.eventz_today_listing.field_eventz_event_start
+    - field.field.paragraph.eventz_today_listing.field_eventz_event_types
     - field.field.paragraph.eventz_today_listing.field_eventz_events_sort
+    - field.field.paragraph.eventz_today_listing.field_eventz_excl_category
+    - field.field.paragraph.eventz_today_listing.field_eventz_excl_org_class
     - field.field.paragraph.eventz_today_listing.field_eventz_excluded_events
     - field.field.paragraph.eventz_today_listing.field_eventz_external_areas
     - field.field.paragraph.eventz_today_listing.field_eventz_external_audience
@@ -33,13 +36,28 @@ third_party_settings:
       label: Ajankohdat
       region: content
       parent_name: ''
-      weight: 3
+      weight: 4
       format_type: fieldset
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
         description: 'Jos jätät ajankohtakentät tyhjiksi, päivämääräehtona listauksessa käytetään ehtoa "alkupäivämäärä tänään".'
+        required_fields: true
+    group_exclusion_filters:
+      children:
+        - field_eventz_excl_category
+        - field_eventz_excl_org_class
+      label: 'exclusion filters'
+      region: content
+      parent_name: ''
+      weight: 14
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
         required_fields: true
 id: paragraph.eventz_today_listing.default
 targetEntityType: paragraph
@@ -48,7 +66,7 @@ mode: default
 content:
   field_eventz_display_amount:
     type: options_select
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -64,15 +82,37 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_eventz_events_sort:
-    type: options_select
-    weight: 2
+  field_eventz_event_types:
+    type: options_buttons
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_eventz_events_sort:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_eventz_excl_category:
+    type: external_data_source_checkboxes_widget
+    weight: 14
+    region: content
+    settings:
+      size: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_eventz_excl_org_class:
+    type: external_data_source_checkboxes_widget
+    weight: 15
+    region: content
+    settings:
+      size: 1
+      placeholder: ''
+    third_party_settings: {  }
   field_eventz_excluded_events:
     type: string_textfield
-    weight: 12
+    weight: 13
     region: content
     settings:
       size: 60
@@ -80,7 +120,7 @@ content:
     third_party_settings: {  }
   field_eventz_external_areas:
     type: external_data_source_checkboxes_widget
-    weight: 9
+    weight: 10
     region: content
     settings:
       size: 1
@@ -88,7 +128,7 @@ content:
     third_party_settings: {  }
   field_eventz_external_audience:
     type: external_data_source_checkboxes_widget
-    weight: 6
+    weight: 7
     region: content
     settings:
       size: 1
@@ -96,7 +136,7 @@ content:
     third_party_settings: {  }
   field_eventz_external_category:
     type: external_data_source_checkboxes_widget
-    weight: 7
+    weight: 8
     region: content
     settings:
       size: 1
@@ -104,7 +144,7 @@ content:
     third_party_settings: {  }
   field_eventz_external_org_class:
     type: external_data_source_checkboxes_widget
-    weight: 8
+    weight: 9
     region: content
     settings:
       size: 1
@@ -112,7 +152,7 @@ content:
     third_party_settings: {  }
   field_eventz_external_organizers:
     type: external_data_source_auto_complete_widget
-    weight: 4
+    weight: 5
     region: content
     settings:
       size: '30'
@@ -127,7 +167,7 @@ content:
           add: Add
   field_eventz_external_places:
     type: external_data_source_checkboxes_widget
-    weight: 5
+    weight: 6
     region: content
     settings:
       size: 1
@@ -135,7 +175,7 @@ content:
     third_party_settings: {  }
   field_eventz_featured_event_id:
     type: string_textfield
-    weight: 11
+    weight: 12
     region: content
     settings:
       size: 60
@@ -143,7 +183,7 @@ content:
     third_party_settings: {  }
   field_summary:
     type: string_textarea
-    weight: 10
+    weight: 1
     region: content
     settings:
       rows: 5

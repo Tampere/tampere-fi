@@ -12,7 +12,7 @@
  * @ingroup themeable
  */
 #}
-<div{{ attributes }}>
+<div{{ attributes.addClass("rs_skip") }}>
   {{ title_suffix.contextual_links }}
   {% if content %}
     {{ content }}

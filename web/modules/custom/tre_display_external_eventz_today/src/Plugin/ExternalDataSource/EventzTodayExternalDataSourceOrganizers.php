@@ -3,8 +3,8 @@
 namespace Drupal\tre_display_external_eventz_today\Plugin\ExternalDataSource;
 
 use Drupal\tre_display_external_eventz_today\Config;
+use Drupal\tre_display_external_eventz_today\Plugin\EventzClientCustomized;
 use Symfony\Component\HttpFoundation\Request;
-use Geniem\Eventz\EventzClient;
 
 /**
  * Class for getting organizers from Eventz.Today Events API.
@@ -73,32 +73,15 @@ class EventzTodayExternalDataSourceOrganizers extends EventzTodayExternalDataSou
    * @return array
    *   Options to be rendered.
    */
-  private function getKeywords(string $base_url, string $api_key): array {
-    $client = new EventzClient($base_url, $api_key);
+  public function getKeywords(string $base_url, string $api_key): array {
+    $client = new EventzClientCustomized($base_url, $api_key);
 
-    $organizers = $client->search_organizers();
-
-    $all_tags = $client->get_tags();
-    $result = json_decode(json_encode($all_tags), TRUE);
-    $tampere_places = $result["tampere-fi-places"];
-    $places_ids = [];
-    foreach ($tampere_places as $place) {
-      $places_ids[] = $place["_id"];
-    }
+    $organizers = $client->getAllOrganizers();
 
     $choices = [];
     foreach ($organizers as $result) {
-      $result = json_decode(json_encode($result), TRUE);
-      if (!in_array($result["_id"], $places_ids)) {
-        $choices[] = ["value" => $result["_id"], "label" => $result["name"]];
-      }
+      $choices[] = ["value" => $result["_id"], "label" => $result["name"]];
     }
-
-    $collator = new \Collator('fi_FI');
-
-    usort($choices, function ($item1, $item2) use ($collator) {
-      return $collator->compare($item1['label'], $item2['label']);
-    });
 
     return $choices;
   }

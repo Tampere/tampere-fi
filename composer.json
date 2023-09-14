@@ -165,6 +165,7 @@
         "drupal/feeds": "^3.0@beta",
         "drupal/field_delimiter": "^1.1",
         "drupal/field_group": "^3.1",
+        "drupal/field_permissions": "^1.2",
         "drupal/field_states_ui": "^3.0",
         "drupal/file_delete": "^2.0",
         "drupal/focal_point": "^1.5",
@@ -388,6 +389,9 @@
             "drupal/dblog_filter": {
                 "3342635 - Get log values (type and level) for syslog like the input box for dblog" : "https://www.drupal.org/files/issues/2023-02-23/add-log-values-input-box-for-syslog-filter-3342635.patch"
             },
+            "drupal/dropzonejs": {
+                "3341846 REVERT - Media library form breaking getFormId() function": "patches/dropzonejs-remove-media-library-form-breaking-getFormId-function-added-in-issue-3341846.patch"
+            },
             "drupal/external_data_source": {
                 "3259684 - ExternalDataSource widgets break Dependency Injection - fix-5": "https://www.drupal.org/files/issues/2023-08-22/3259684_dependency_injection_fix-5.patch",
                 "3371626 - Can't add new elements with autocomplete widget": "https://www.drupal.org/files/issues/2023-08-22/3371626_multiple_value_auto_complete_fix.patch"
@@ -428,8 +432,7 @@
                 "#2996615: Transaction support for cache (tags) invalidation": "https://www.drupal.org/files/issues/2022-10-25/2996615-revised-woth-hooks--rerolled-against-2.5.patch"
             },
             "drupal/office_hours": {
-                "Prevent displaying adjacent commas with empty values": "patches/office_hours_remove_empty_values_from_comments_to_prevent_displaying_adjacent_commas.diff",
-                "3363780 - TypeError: uasort(): Argument #2 ($callback) must be a valid callback": "https://www.drupal.org/files/issues/2023-05-31/office-hours-typo-fix-for-class-name-given-to-uasort-3363780.patch"
+                "Prevent displaying adjacent commas with empty values": "patches/office_hours_remove_empty_values_from_comments_to_prevent_displaying_adjacent_commas.diff"
             },
             "drupal/path_guard": {
                 "#3192503 Invalid translation language (en) specified": "https://www.drupal.org/files/issues/2021-01-13/3192503-2.patch"
@@ -452,7 +455,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "drupal/coder": "^8.3",
         "drupal/coffee": "^1.2",
-        "drupal/stage_file_proxy": "^1.1",
+        "drupal/stage_file_proxy": "^2.1",
         "mglaman/phpstan-drupal": "^1.1",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^1.4",

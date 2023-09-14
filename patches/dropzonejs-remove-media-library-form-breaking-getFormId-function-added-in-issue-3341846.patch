@@ -1,0 +1,18 @@
+diff --git a/src/Form/DropzoneJsUploadForm.php b/src/Form/DropzoneJsUploadForm.php
+index f813f8e..f7546d1 100644
+--- a/src/Form/DropzoneJsUploadForm.php
++++ b/src/Form/DropzoneJsUploadForm.php
+@@ -32,13 +32,6 @@ class DropzoneJsUploadForm extends FileUploadForm {
+     return $form;
+   }
+ 
+-  /**
+-   * {@inheritdoc}
+-   */
+-  public function getFormId() {
+-    return $this->getBaseFormId() . '_dropzonejs';
+-  }
+-
+   /**
+    * Set the upload service.
+    *

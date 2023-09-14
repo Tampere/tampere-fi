@@ -30,7 +30,7 @@
   href="{{ link_url }}"
   >
   {% block link_content %}
-    {{ link_content }}{% if external %}<span class="visually-hidden">{{ "Opens in new window"|t }}</span>{% endif %}
+    {{ link_content }}{% if external %}<span class="visually-hidden rs_skip">{{ "Opens in new window"|t }}</span>{% endif %}
   {% endblock %}
   </a>
 {% else %}

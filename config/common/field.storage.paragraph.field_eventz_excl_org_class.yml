@@ -1,0 +1,28 @@
+uuid: 28227025-8560-4a25-a6d5-13bb1c1d4deb
+langcode: fi
+status: true
+dependencies:
+  module:
+    - external_data_source
+    - field_permissions
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: paragraph.field_eventz_excl_org_class
+field_name: field_eventz_excl_org_class
+entity_type: paragraph
+type: external_data_source
+settings:
+  ws: eventz_today_external_data_source_organizations
+  count: '10'
+  max_length: '255'
+  is_ascii: false
+  case_sensitive: false
+module: external_data_source
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

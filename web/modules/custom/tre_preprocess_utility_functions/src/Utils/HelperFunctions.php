@@ -656,6 +656,9 @@ class HelperFunctions implements HelperFunctionsInterface {
     $node_id = $node->id();
     $node_title = $node->getTitle();
 
+    // Skip map iframes with ReadSpeaker.
+    $map_class = "{$map_class} rs_skip";
+
     $iframe_url = Settings::get('mml_map_base_url');
     $map = [
       'frame' => [

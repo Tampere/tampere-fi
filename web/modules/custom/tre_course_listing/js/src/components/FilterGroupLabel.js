@@ -90,7 +90,7 @@ const FilterGroupLabel = forwardRef((props, ref) => {
       tabIndex={index === currentActiveIndex ? null : -1}
       ref={ref}
     >
-      <StyledAlternativeDescription className="visually-hidden">
+      <StyledAlternativeDescription className="visually-hidden rs_skip">
         { isActive ?
           Drupal.t("Hide filters", {}, { context: "Course listing assistive text for filter buttons" }) :
           Drupal.t("Show filters", {}, { context: "Course listing assistive text for filter buttons" })
@@ -103,7 +103,7 @@ const FilterGroupLabel = forwardRef((props, ref) => {
 
       { hasActiveFilters &&
         <Count>
-          <span className="visually-hidden">{ Drupal.t("Active filters", {}, { context: "Course listing assistive text for active filters count" }) }: </span>
+          <span className="visually-hidden rs_skip">{ Drupal.t("Active filters", {}, { context: "Course listing assistive text for active filters count" }) }: </span>
           { activeFilterAmount }
         </Count>
       }

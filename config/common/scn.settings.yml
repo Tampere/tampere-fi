@@ -1,11 +1,23 @@
 scn_admin: 0
 scn_roles:
-  editor: editor
   super_user: super_user
   authenticated: 0
-  content_author: 0
+  mailing_list_admin: 0
+  emergency_notice_author: 0
+  service_author: 0
+  contact_info_author: 0
+  blog_article_author: 0
+  notice_author: 0
+  zoning_information_author: 0
+  small_news_item_author: 0
+  news_item_author: 0
+  rich_article_author: 0
+  basic_content_page_author: 0
+  media_editor: 0
+  front_page_author: 0
   author: 0
   section_editor: 0
+  participation_section_editor: 0
   administrator: 0
 scn_maillist: ''
 scn_telegram: 0
@@ -15,3 +27,6 @@ scn_telegram_proxy: 0
 scn_telegram_proxy_server: ''
 scn_telegram_proxy_login: ''
 scn_telegram_proxy_password: ''
+scn_node_author: 0
+scn_add_admin_overview_link: 0
+scn_add_admin_comment_link: 0

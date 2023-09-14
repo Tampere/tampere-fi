@@ -72,8 +72,9 @@ Drupal.behaviors.imageGallery = {
 
         imageGalleryImages.forEach((galleryImg) => {
           const itemName = getItemName(galleryImg);
+          galleryImg.classList.add('rs_skip');
           parentLink = galleryImg.parentNode;
-          parentLink.classList.add('lightbox');
+          parentLink.classList.add('lightbox', 'rs_skip');
           parentLink.dataset.group = gallery.id;
           parentLink.setAttribute('aria-label', Drupal.t('Show image @name in a larger size', { '@name': itemName }));
         });

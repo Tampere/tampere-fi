@@ -1,0 +1,28 @@
+uuid: 25661a6d-5782-4c24-9a14-0d1e37e6101d
+langcode: fi
+status: true
+dependencies:
+  module:
+    - external_data_source
+    - field_permissions
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: paragraph.field_eventz_excl_category
+field_name: field_eventz_excl_category
+entity_type: paragraph
+type: external_data_source
+settings:
+  ws: eventz_today_external_data_source_topics
+  count: '10'
+  max_length: '255'
+  is_ascii: false
+  case_sensitive: false
+module: external_data_source
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

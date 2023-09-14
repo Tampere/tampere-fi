@@ -3,7 +3,7 @@
 namespace Drupal\tre_display_external_eventz_today\Plugin\ExternalDataSource;
 
 use Drupal\tre_display_external_eventz_today\Config;
-use Geniem\Eventz\EventzClient;
+use Drupal\tre_display_external_eventz_today\Plugin\EventzClientCustomized;
 
 /**
  * Class for getting places data from Eventz.Today Events API.
@@ -55,11 +55,9 @@ class EventzTodayExternalDataSourcePlaces extends EventzTodayExternalDataSourceP
    *   Options to be rendered.
    */
   private function getKeywords(string $base_url, string $api_key): array {
-    $client = new EventzClient($base_url, $api_key);
+    $client = new EventzClientCustomized($base_url, $api_key);
 
-    $all_tags = $client->get_tags();
-    $result = json_decode(json_encode($all_tags), TRUE);
-    $tampere_places = $result["tampere-fi-places"];
+    $tampere_places = $client->getAllPlaces();
 
     $choices = [];
     foreach ($tampere_places as $tampere_place) {

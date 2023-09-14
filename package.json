@@ -1,8 +1,8 @@
 {
-  "name": "codebase",
+  "name": "tampere.fi-dev",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.exove.net/projects/EXOVE/repos/codebase"
+    "url": "https://github.com/Tampere/tampere-fi"
   },
   "license": "UNLICENSED",
   "private": true,

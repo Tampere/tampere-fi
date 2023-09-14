@@ -26,6 +26,12 @@
   {% set icon_aria_label = external_icon_description %}
 {% endif %}
 
+{% if not icon_extra_class %}
+  {% set icon_extra_class = [] %}
+{% endif %}
+
+{% set icon_extra_class = icon_extra_class|merge(["rs_skip"]) %}
+
 <svg {{ bem(icon_base_class, icon_modifiers, icon_blockname, icon_extra_class) }}
   {% if icon_aria_label %}
     role="img" aria-label="{{ icon_aria_label }}"

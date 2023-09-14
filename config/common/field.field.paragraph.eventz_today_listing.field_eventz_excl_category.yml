@@ -1,0 +1,21 @@
+uuid: 9cd6ed5f-509c-4e46-8580-ef135775f1d8
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_excl_category
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - external_data_source
+id: paragraph.eventz_today_listing.field_eventz_excl_category
+field_name: field_eventz_excl_category
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Älä näytä tämän kategorian tapahtumia'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: external_data_source

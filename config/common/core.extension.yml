@@ -66,6 +66,7 @@ module:
   field: 0
   field_delimiter: 0
   field_group: 0
+  field_permissions: 0
   field_ui: 0
   file: 0
   file_delete: 0
@@ -80,7 +81,6 @@ module:
   heading: 0
   help: 0
   image: 0
-  image_style_warmer: 0
   imagecache_external: 0
   jquery_ui: 0
   jquery_ui_datepicker: 0
@@ -260,6 +260,7 @@ module:
   pathauto: 1
   content_translation: 10
   formdazzle: 10
+  image_style_warmer: 10
   views: 10
   paragraphs: 11
   publication_date: 99

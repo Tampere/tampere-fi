@@ -20,7 +20,7 @@
     {% block content_image %}
       {# Image link opening tag #}
       {% if content_img__img__url %}
-        <a {{ bem("link", content_img__link__modifiers, content_img__base_class, [ "lightbox" ]) }}
+        <a {{ bem("link", content_img__link__modifiers, content_img__base_class, [ "lightbox", "rs_skip" ]) }}
           href="{{ content_img__img__url }}"
           aria-label="{{ content_img__img__link_alt }}"
           data-zoom="false"

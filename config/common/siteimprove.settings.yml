@@ -53,4 +53,5 @@ enabled_taxonomies:
   service_classes: '0'
   topics: '0'
   zoning_information_types: '0'
-overlay_default_collapse: 1
+overlay_default_collapse: true
+use_latest_experience: true

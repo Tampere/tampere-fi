@@ -35,6 +35,8 @@ field_type:
           catenateAll: 0
           catenateWords: 1
         -
+          class: solr.FlattenGraphFilterFactory
+        -
           class: solr.LengthFilterFactory
           min: 2
           max: 100
@@ -125,6 +127,8 @@ unstemmed_field_type:
           preserveOriginal: 1
           catenateAll: 0
           catenateWords: 1
+        -
+          class: solr.FlattenGraphFilterFactory
         -
           class: solr.LengthFilterFactory
           min: 2

@@ -4,4 +4,6 @@
  * @see \Drupal\tre_preprocess\Plugin\Preprocess\EmbederatorField
 #}
 
-{% include "field.html.twig" %}
+{% include "field.html.twig" with {
+  "custom_classes": "rs_skip",
+} %}

@@ -28,7 +28,7 @@
         <div role="alert">
             {% endif %}
             {% if type %}
-                <h2 class="visually-hidden">{{ type }}</h2>
+                <h2 class="visually-hidden rs_skip">{{ type }}</h2>
             {% endif %}
             <ul {{ bem("list", [], status__base_class)}}>
                 {% for message in messages %}

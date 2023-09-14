@@ -16,6 +16,8 @@ Install with npm.
 
 ### Local development
 
+This is generally recommended for local development not only because it speeds up the process, but also because it unobscures the component class names when inspecting the elements in the browser.
+
 ```bash
   npm run watch
 ```

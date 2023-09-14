@@ -18,7 +18,7 @@
 >
   {% if img_url %}
     <a
-      {{ bem(image_link_base_class, (image_link_modifiers), image_link_blockname|default(image_figure_base_class)) }}
+      {{ bem(image_link_base_class, (image_link_modifiers), image_link_blockname|default(image_figure_base_class), [ "rs_skip" ]) }}
       href="{{ img_url }}"
       {% if img_link_aria_label %}aria-label="{{ img_link_aria_label }}"{% endif %}
       {% if img_link_target %}target="{{ img_link_target }}"{% endif %}

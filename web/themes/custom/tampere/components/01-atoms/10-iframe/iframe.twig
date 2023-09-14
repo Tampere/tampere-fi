@@ -26,7 +26,7 @@
   {% endif %}
   <div {{ bem("content", iframe_wrapper__content__modifiers|default([]), iframe_wrapper___base_class) }}>
     <iframe
-      {{ bem("iframe", iframe__modifiers|default([]), iframe_wrapper___base_class, [ "lazyload" ]) }}
+      {{ bem("iframe", iframe__modifiers|default([]), iframe_wrapper___base_class, [ "lazyload", "rs_skip" ]) }}
       loading="lazy"
       data-src={{ iframe__src }}
       {% if iframe__title %}

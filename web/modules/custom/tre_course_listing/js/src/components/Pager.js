@@ -188,7 +188,7 @@ export default function Pager({
           onClick={() => paginate(value)}
           isActive={ value === currentPage }
         >
-          <span className="visually-hidden">{ Drupal.t("Page") }</span>
+          <span className="visually-hidden rs_skip">{ Drupal.t("Page") }</span>
           {value}
         </PageNumberButton>
       );

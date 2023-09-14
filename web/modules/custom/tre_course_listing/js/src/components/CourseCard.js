@@ -140,7 +140,7 @@ export default function CourseCard({
       </Availability>
       <PageLink href={courseUrl} target="_blank">
         <LinkText>{ Drupal.t("Additional information and registration") }</LinkText>
-        <span className="visually-hidden">{ Drupal.t("Opens in new window") }</span>
+        <span className="visually-hidden rs_skip">{ Drupal.t("Opens in new window") }</span>
         <LinkIcon aria-hidden="true" role="presentation" />
       </PageLink>
     </StyledCourseCard>

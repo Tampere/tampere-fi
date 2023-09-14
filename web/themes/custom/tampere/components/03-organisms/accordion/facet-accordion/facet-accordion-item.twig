@@ -10,7 +10,7 @@
     aria-expanded="false"
     id="accordion-control-{{ id }}"
   >
-    <span class="visually-hidden">{{ accordion_item_aria_label }}</span>
+    <span class="visually-hidden rs_skip">{{ accordion_item_aria_label }}</span>
     {% include "@atoms/02-text/00-headings/_heading.twig" with {
       "heading_level": 3,
       "heading": facet_accordion_item__title,
@@ -19,7 +19,7 @@
     } %}
 
     {# Assistive text for active facet count #}
-    <span {{ bem("count-desc", (facet_accordion_item__count_desc__modifiers), facet_accordion_item__base_class, [ 'visually-hidden' ]) }}>
+    <span {{ bem("count-desc", (facet_accordion_item__count_desc__modifiers), facet_accordion_item__base_class, [ 'visually-hidden', 'rs_skip' ]) }}>
       {{ "Active filters"|t({}, { "context": "Course listing assistive text for active filters count" }) }}: </span>
 
     {# Active facet count updated with JS #}
