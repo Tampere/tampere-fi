@@ -1,0 +1,21 @@
+uuid: 06ce051b-f619-4417-a7a5-e42fa17ccc47
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_featured_start
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - datetime
+id: paragraph.eventz_today_listing.field_eventz_featured_start
+field_name: field_eventz_featured_start
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Korostetun alkupäivämäärä'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

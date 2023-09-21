@@ -1,20 +1,21 @@
-uuid: 4e2c622e-ec27-4386-aec3-176fd8dc89fc
+uuid: 948830a8-a8de-4671-bff6-18ad4c15dab5
 langcode: fi
 status: true
 dependencies:
   module:
+    - datetime
     - field_permissions
     - paragraphs
-    - text
 third_party_settings:
   field_permissions:
-    permission_type: public
-id: paragraph.field_text
-field_name: field_text
+    permission_type: custom
+id: paragraph.field_eventz_featured_start
+field_name: field_eventz_featured_start
 entity_type: paragraph
-type: text_long
-settings: {  }
-module: text
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
 locked: false
 cardinality: 1
 translatable: true

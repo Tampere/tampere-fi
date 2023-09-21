@@ -104,6 +104,9 @@ Tampere's `yarn develop` perform css and js linting, as well as accessibility ch
 
 ## Tampere specific theme features
 
+### Icons
+See [icons.md](components/01-atoms/04-images/icons/icons.md).
+
 ### UI Patterns and Display Suite
 In the project, all nodes are displayed with the help of either [UI Patterns](https://ui-patterns.readthedocs.io/) or Display Suite layouts.
 Display Suite layouts are usually enabled for view modes that are used in preprocess functions that render the fields elsewhere. For example, there are a lot of paragraph types (e.g. Person liftup) that allow users to select what fields to show from a referenced node of their choice. These content types will usually use Display Suite layouts to set the displayed fields correctly so that the preprocess function needs only to display the selected field using the correct view mode (see `admin/structure/types/manage/person/display/contact_information_liftup_view_mode` and `modules/custom/tre_preprocess/src/Plugin/Preprocess/PersonLiftup.php`).

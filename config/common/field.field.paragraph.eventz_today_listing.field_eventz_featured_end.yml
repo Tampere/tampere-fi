@@ -1,0 +1,21 @@
+uuid: 71e550bf-2393-4474-b16b-b9ba4d87ddee
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_eventz_featured_end
+    - paragraphs.paragraphs_type.eventz_today_listing
+  module:
+    - datetime
+id: paragraph.eventz_today_listing.field_eventz_featured_end
+field_name: field_eventz_featured_end
+entity_type: paragraph
+bundle: eventz_today_listing
+label: 'Korostetun loppupäivämäärä'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -129,6 +129,9 @@ class EventzTodayListing extends TrePreProcessPluginBase {
     $events_to_exclude = $translated_paragraph->get('field_eventz_excluded_events')->getValue();
     $events_to_exclude_list = $this->helperFunctions->getListFieldValues($events_to_exclude);
 
+    $featured_start = new DrupalDateTime($translated_paragraph->get('field_eventz_featured_start')->getString(), 'UTC');
+    $featured_end = new DrupalDateTime($translated_paragraph->get('field_eventz_featured_end')->getString(), 'UTC');
+
     $this->desiredLanguage = $translated_paragraph->get('langcode')->getString();
 
     if ($this->desiredLanguage == 'fi') {
@@ -202,9 +205,11 @@ class EventzTodayListing extends TrePreProcessPluginBase {
 
     if (isset($desired_featured_event["_id"]) &&
         $desired_featured_event["language"] == $this->desiredLanguage &&
-        $this->isEventHappening($desired_featured_event)) {
+        !$this->isEventExpired($desired_featured_event, $current_date) &&
+        $featured_start->getTimestamp() <= $current_date->getTimestamp() &&
+        $featured_end->getTimestamp() >= $current_date->getTimestamp()
+      ) {
       $events_to_exclude_list[] = $desired_featured_event["_id"];
-
       $variables['featured_liftup'] = $this->makeFeaturedLiftupFromEvent($desired_featured_event);
       $variables['featured_liftup_exists'] = TRUE;
     }
@@ -303,37 +308,22 @@ class EventzTodayListing extends TrePreProcessPluginBase {
   }
 
   /**
-   * Checks if the event is happening at the moment.
+   * Checks if the event is ended based on the general end time.
    *
    * @param array $event
    *   Event object.
+   * @param \Drupal\Core\Datetime\DrupalDateTime $current_date
+   *   Current Date.
    *
    * @return bool
-   *   Returns TRUE if the event is happening at the moment.
+   *   Returns TRUE if the event is expired already.
    */
-  private function isEventHappening(array $event) {
-    if (!array_key_exists("dates", $event["event"]) || empty($event["event"]["dates"])) {
-      $event_dates = [$event["event"]];
-    }
-    else {
-      $event_dates = $event["event"]["dates"];
-    }
+  private function isEventExpired(array $event, DrupalDateTime $current_date): bool {
+    $end_date = new DrupalDateTime($event["event"]["end"]);
+    $end_date_timestamp = $end_date->getTimestamp();
+    $current_date_timestamp = $current_date->getTimestamp();
 
-    $current_date = new DrupalDateTime('now', 'Europe/Helsinki');
-    $current_timestamp = $current_date->getTimestamp();
-    foreach ($event_dates as $event_date) {
-      $start_date = new DrupalDateTime($event_date["start"]);
-      $event_start_timestamp = $start_date->getTimestamp();
-
-      $end_date = new DrupalDateTime($event_date["end"]);
-      $event_end_timestamp = $end_date->getTimestamp();
-
-      if ($event_start_timestamp < $current_timestamp &&
-          $event_end_timestamp > $current_timestamp) {
-        return TRUE;
-      }
-    }
-    return FALSE;
+    return $end_date_timestamp < $current_date_timestamp;
   }
 
   /**
@@ -347,7 +337,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    *   default sort to happen, the API expects that no sort parameter is used
    *   so on default an empty array is returned.
    */
-  private function getSort(FieldItemListInterface $sort_order_field_items) {
+  private function getSort(FieldItemListInterface $sort_order_field_items): array {
     $sort_param = [];
     if (!$sort_order_field_items->isEmpty() &&
         $sort_order_field_items->getString() !== self::DEFAULT_SORT_ORDER
@@ -403,7 +393,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    * @return array
    *   List of events.
    */
-  private function fetchEvents(array $api_parameters) {
+  private function fetchEvents(array $api_parameters): array {
     $api_parameters = array_filter($api_parameters);
     try {
       // API for getting events based on organizer/host ids is different
@@ -434,7 +424,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    * @return array
    *   Final list of events after the exclusion.
    */
-  private function excludeEventsByCategory(array $events, array $excl_categories) {
+  private function excludeEventsByCategory(array $events, array $excl_categories): array {
     if (empty($excl_categories)) {
       return $events;
     }
@@ -466,7 +456,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    * @return array
    *   Final list of events after the exclusion.
    */
-  private function includeEventsByTypes(array $events, array $type_list) {
+  private function includeEventsByTypes(array $events, array $type_list): array {
     if (empty($type_list)) {
       return $events;
     }
@@ -493,7 +483,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    * @return array
    *   Liftup object with fields needed for rendering the featured liftup.
    */
-  private function makeFeaturedLiftupFromEvent(array $event) {
+  private function makeFeaturedLiftupFromEvent(array $event): array {
     // Handle image logic: use image style render array for external
     // images, but in case there is no image in the API response, use the
     // default SVG image.
@@ -536,7 +526,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    * @return array
    *   List of liftup objects with fields needed for rendering the cards.
    */
-  private function makeLiftupsFromEvents(array $events) {
+  private function makeLiftupsFromEvents(array $events): array {
     $results = [];
     foreach ($events as $item) {
       // Handle image logic: use image style render array for external images,
@@ -585,7 +575,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    * @return string
    *   Final text containing the full sentences.
    */
-  private function extractFullSentences(string $text) {
+  private function extractFullSentences(string $text): string {
     $pattern = "/[.!?]+/";
     $result = preg_match_all($pattern, $text, $matches, PREG_OFFSET_CAPTURE);
     if ($result > 0) {

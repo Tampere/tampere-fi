@@ -31,7 +31,8 @@
  * - is_admin: Flag for admin user status. Will be true when the current user
  *   is an administrator.
  * - textbox_modifiers: Array of strings (order and width)
- * - textbox_contents: Contents of the text paragraphs
+ * - textbox_contents: Array of Type and Content pairs. 
+ *   Type can be image or text, and so Content can contain image or text data. 
  *
  * @see template_preprocess_paragraph()
  *
@@ -41,7 +42,7 @@
 
 {% embed "@organisms/_paragraph.twig" %}
   {% block paragraph_content %}
-    {% include "@molecules/text-with-bgcolor/text-with-bgcolor.twig" with {
+    {% include "@molecules/text-with-bgcolor/text-or-image-with-bgcolor.twig" with {
       "text_with_bgcolor__modifiers": textbox_modifiers,
       "textbox__contents": textbox_contents,
       "attributes": [],

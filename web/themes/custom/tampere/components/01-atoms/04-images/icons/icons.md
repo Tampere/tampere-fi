@@ -6,7 +6,7 @@ title: Icons
 
 We are using an SVG sprite generator (details [here](https://www.npmjs.com/package/svg-sprite-loader)), which automatically takes individual SVGs from `/images/icon-sets/` and generates a sprite for each directory (e.g. `/dist/icons.svg`). Webpack will automatically add your individual SVGs to the sprites.
 
-New icons should be added to `main-site-icons` unless they should be available as icon options in the icon fields on the site (these should go into `icons`).
+New icons should be added to `main-site-icons` unless they should be available as icon options in the icon fields on the site (these should go into `icons`). When adding new icons, avoid hard-coding the color directly into the `svg` files and instead use the `currentColor` value (e.g. instead of `stroke="#fff"` use `stroke="currentColor"`). The icon colors can differ based on the active color palette and they are changed in styles.
 
 **Usage**
 

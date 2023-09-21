@@ -1,0 +1,29 @@
+uuid: 11194004-b23e-4cb8-a934-cc292796ed02
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_without_background
+    - media.type.image
+    - paragraphs.paragraphs_type.text_with_bgcolor
+id: paragraph.text_with_bgcolor.field_image_without_background
+field_name: field_image_without_background
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: 'Kuva ilman taustaväriä'
+description: 'Valitse kuva Teksti tai kuva -valikosta näyttääksesi tämän kuvan. Ei näytetä, jos taustavärillinen teksti vie koko palstan leveyden.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

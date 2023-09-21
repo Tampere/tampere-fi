@@ -56,11 +56,13 @@ function _tre_language_switcher_links_modify_language_titles(array $links) {
 }
 
 /**
- * Helper function to modify ministe language switcher links.
+ * Alters the language switcher link destinations for minisite content.
  *
- * For minisite nodes, set minisite's front page as the translation link
- * if there is no translation. Set the translation of minisite's front page
- * if translation exists; otherwise put the front page in FI.
+ * Language switcher links for minisite content should point to the minisite's
+ * own front page (as opposed to the main site front page) when no translation
+ * is available for a node in a given language. However, the links should not
+ * get altered if the minisite does not have a front page or it lacks the
+ * appropriate translation.
  *
  * @param array $links
  *   The language switcher links.
@@ -91,12 +93,11 @@ function _tre_language_switcher_links_modify_minisite_language_links(array $link
       continue;
     }
 
-    if ($group_front_page->hasTranslation($lang_id)) {
-      $translated_front_page = $group_front_page->getTranslation($lang_id);
+    if (!$group_front_page->hasTranslation($lang_id)) {
+      continue;
     }
-    else {
-      $translated_front_page = $group_front_page->getTranslation('fi');
-    }
+
+    $translated_front_page = $group_front_page->getTranslation($lang_id);
 
     $links[$lang_id]['url'] = $translated_front_page->toUrl();
 

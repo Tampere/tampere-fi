@@ -1,0 +1,2 @@
+label: 'Image without background color'
+description: 'Select image in the Text or image field to display this image. It is not displayed if the text with the background color takes up the entire width of the column.'

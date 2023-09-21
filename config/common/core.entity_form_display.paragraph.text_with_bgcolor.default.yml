@@ -5,13 +5,16 @@ dependencies:
   config:
     - field.field.paragraph.text_with_bgcolor.field_color_textbox_alignment
     - field.field.paragraph.text_with_bgcolor.field_columns
+    - field.field.paragraph.text_with_bgcolor.field_image_without_background
     - field.field.paragraph.text_with_bgcolor.field_text
     - field.field.paragraph.text_with_bgcolor.field_text_bgcolor
+    - field.field.paragraph.text_with_bgcolor.field_text_or_image
     - paragraphs.paragraphs_type.text_with_bgcolor
   module:
     - allowed_formats
     - field_states_ui
     - maxlength
+    - media_library
     - text
 id: paragraph.text_with_bgcolor.default
 targetEntityType: paragraph
@@ -20,11 +23,20 @@ mode: default
 content:
   field_color_textbox_alignment:
     type: options_select
-    weight: 3
+    weight: 7
     region: content
     settings: {  }
     third_party_settings:
       field_states_ui:
+        field_states:
+          b8184a35-f97c-47f9-87a6-eaf649a46253:
+            id: invisible
+            data:
+              target: field_columns
+              comparison: value
+              value: full
+              submit: 'Lisää Peruuta'
+            uuid: b8184a35-f97c-47f9-87a6-eaf649a46253
         form:
           type: ''
           list:
@@ -33,24 +45,58 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states:
-          b8184a35-f97c-47f9-87a6-eaf649a46253:
-            uuid: b8184a35-f97c-47f9-87a6-eaf649a46253
-            id: invisible
-            data:
-              target: field_columns
-              comparison: value
-              value: full
-              submit: 'Lisää Peruuta'
   field_columns:
     type: options_select
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_image_without_background:
+    type: media_library_widget
+    weight: 6
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          0:
+            uuid: ''
+          1:
+            id: invisible
+          2:
+            data:
+              target: field_columns
+          3:
+            data:
+              comparison: value
+          4:
+            data:
+              value: full
+          5:
+            data:
+              submit: 'Lisää Peruuta'
+          '':
+            id: invisible
+            data:
+              target: field_columns
+              comparison: value
+              value: full
+              submit:
+                save: Lisää
+                cancel: Peruuta
+            uuid: ''
+        form:
+          type: ''
+          list:
+            '':
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   field_text:
     type: text_textarea
-    weight: 2
+    weight: 4
     region: content
     settings:
       rows: 5
@@ -60,6 +106,15 @@ content:
         hide_help: '1'
         hide_guidelines: '1'
       field_states_ui:
+        field_states:
+          7c1a9f4f-d297-49d1-abd5-876b3f619fc0:
+            id: invisible
+            data:
+              target: field_columns
+              comparison: value
+              value: full
+              submit: 'Lisää Peruuta'
+            uuid: 7c1a9f4f-d297-49d1-abd5-876b3f619fc0
         form:
           type: ''
           list:
@@ -68,15 +123,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states:
-          7c1a9f4f-d297-49d1-abd5-876b3f619fc0:
-            uuid: 7c1a9f4f-d297-49d1-abd5-876b3f619fc0
-            id: invisible
-            data:
-              target: field_columns
-              comparison: value
-              value: full
-              submit: 'Lisää Peruuta'
       maxlength:
         maxlength_js: null
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
@@ -103,8 +149,50 @@ content:
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
         maxlength_js_truncate_html: false
+  field_text_or_image:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          0:
+            uuid: ''
+          1:
+            id: invisible
+          2:
+            data:
+              target: field_columns
+          3:
+            data:
+              comparison: value
+          4:
+            data:
+              value: full
+          5:
+            data:
+              submit: 'Lisää Peruuta'
+          '':
+            id: invisible
+            data:
+              target: field_columns
+              comparison: value
+              value: full
+              submit:
+                save: Lisää
+                cancel: Peruuta
+            uuid: ''
+        form:
+          type: ''
+          list:
+            '':
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   translation:
-    weight: 10
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -17,7 +17,9 @@ dependencies:
     - field.field.paragraph.eventz_today_listing.field_eventz_external_org_class
     - field.field.paragraph.eventz_today_listing.field_eventz_external_organizers
     - field.field.paragraph.eventz_today_listing.field_eventz_external_places
+    - field.field.paragraph.eventz_today_listing.field_eventz_featured_end
     - field.field.paragraph.eventz_today_listing.field_eventz_featured_event_id
+    - field.field.paragraph.eventz_today_listing.field_eventz_featured_start
     - field.field.paragraph.eventz_today_listing.field_summary
     - field.field.paragraph.eventz_today_listing.field_title
     - paragraphs.paragraphs_type.eventz_today_listing
@@ -48,6 +50,8 @@ hidden:
   field_eventz_external_org_class: true
   field_eventz_external_organizers: true
   field_eventz_external_places: true
+  field_eventz_featured_end: true
   field_eventz_featured_event_id: true
+  field_eventz_featured_start: true
   field_title: true
   search_api_excerpt: true

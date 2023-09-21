@@ -17,7 +17,9 @@ dependencies:
     - field.field.paragraph.eventz_today_listing.field_eventz_external_org_class
     - field.field.paragraph.eventz_today_listing.field_eventz_external_organizers
     - field.field.paragraph.eventz_today_listing.field_eventz_external_places
+    - field.field.paragraph.eventz_today_listing.field_eventz_featured_end
     - field.field.paragraph.eventz_today_listing.field_eventz_featured_event_id
+    - field.field.paragraph.eventz_today_listing.field_eventz_featured_start
     - field.field.paragraph.eventz_today_listing.field_summary
     - field.field.paragraph.eventz_today_listing.field_title
     - paragraphs.paragraphs_type.eventz_today_listing
@@ -48,10 +50,25 @@ third_party_settings:
       children:
         - field_eventz_excl_category
         - field_eventz_excl_org_class
-      label: 'exclusion filters'
+      label: 'Pois jättävät suodattimet'
       region: content
       parent_name: ''
-      weight: 14
+      weight: 17
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_featured_times:
+      children:
+        - field_eventz_featured_start
+        - field_eventz_featured_end
+      label: 'Korostetun Ajankohdat'
+      region: content
+      parent_name: ''
+      weight: 13
       format_type: fieldset
       format_settings:
         classes: ''
@@ -112,7 +129,7 @@ content:
     third_party_settings: {  }
   field_eventz_excluded_events:
     type: string_textfield
-    weight: 13
+    weight: 16
     region: content
     settings:
       size: 60
@@ -173,6 +190,12 @@ content:
       size: 1
       placeholder: ''
     third_party_settings: {  }
+  field_eventz_featured_end:
+    type: datetime_default
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_eventz_featured_event_id:
     type: string_textfield
     weight: 12
@@ -180,6 +203,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_eventz_featured_start:
+    type: datetime_default
+    weight: 18
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_summary:
     type: string_textarea

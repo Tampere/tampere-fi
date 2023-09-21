@@ -1,0 +1,31 @@
+uuid: 7aa77bf5-9c6b-4174-a5f3-19d150ceddc0
+langcode: fi
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - options
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.field_text_or_image
+field_name: field_text_or_image
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: text
+      label: Teksti
+    -
+      value: image
+      label: Kuva
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

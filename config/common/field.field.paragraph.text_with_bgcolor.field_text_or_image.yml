@@ -1,0 +1,23 @@
+uuid: 9bba1ba8-fd79-408d-963c-725dc9f29740
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_or_image
+    - paragraphs.paragraphs_type.text_with_bgcolor
+  module:
+    - options
+id: paragraph.text_with_bgcolor.field_text_or_image
+field_name: field_text_or_image
+entity_type: paragraph
+bundle: text_with_bgcolor
+label: 'Teksti tai kuva'
+description: 'Vain jompikumpi voidaan näyttää taustavärillisen tekstin rinnalla.'
+required: false
+translatable: true
+default_value:
+  -
+    value: text
+default_value_callback: ''
+settings: {  }
+field_type: list_string
