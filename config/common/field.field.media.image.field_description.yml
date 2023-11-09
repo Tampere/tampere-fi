@@ -17,10 +17,11 @@ field_name: field_description
 entity_type: media
 bundle: image
 label: Description
-description: 'A short description, or captions for the image.'
+description: 'A short description, or captions for the image. Please use the key combination CTRL+SHIFT + V to paste from an external source.'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

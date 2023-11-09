@@ -4,6 +4,9 @@ status: true
 dependencies:
   module:
     - blazy
+    - lazy
+    - linkit
+    - media
 name: 'Sivua ei löydetty teksti'
 format: page_not_found_content
 weight: 0
@@ -12,7 +15,7 @@ filters:
     id: blazy_filter
     provider: blazy
     status: false
-    weight: 3
+    weight: 9
     settings:
       media_switch: ''
       hybrid_style: ''
@@ -26,8 +29,56 @@ filters:
     id: filter_html
     provider: filter
     status: true
-    weight: -10
+    weight: -15
     settings:
-      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h1 id> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <img src alt data-entity-type data-entity-uuid> <s> <sup> <sub> <p>'
+      allowed_html: '<br> <p class="text-align-left text-align-center text-align-right"> <h1 class="text-align-left text-align-center text-align-right"> <h2 class="text-align-left text-align-center text-align-right"> <h3 class="text-align-left text-align-center text-align-right"> <h4 class="text-align-left text-align-center text-align-right"> <h5 class="text-align-left text-align-center text-align-right"> <h6 class="text-align-left text-align-center text-align-right"> <strong> <em> <s> <sub> <sup> <a href data-entity-type data-entity-uuid data-entity-substitution> <ul> <ol start> <li>'
       filter_html_help: true
       filter_html_nofollow: false
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: 10
+    settings: {  }
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: 0
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: 15
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: false
+    weight: 20
+    settings: {  }
+  lazy_filter:
+    id: lazy_filter
+    provider: lazy
+    status: false
+    weight: -50
+    settings:
+      image: true
+      iframe: true
+  linkit:
+    id: linkit
+    provider: linkit
+    status: false
+    weight: 3
+    settings:
+      title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: false
+    weight: -50
+    settings:
+      default_view_mode: default
+      allowed_view_modes: {  }
+      allowed_media_types: {  }

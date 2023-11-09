@@ -99,7 +99,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: field_search_keywords
     type: solr_text_unstemmed
-    boost: !!float 8
+    boost: 8.0
     dependencies:
       config:
         - field.storage.node.field_search_keywords
@@ -175,7 +175,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 5
+    boost: 5.0
     dependencies:
       module:
         - node
@@ -253,7 +253,7 @@ processor_settings:
       preprocess_query: 0
     boosts:
       changed:
-        boost: !!float 3
+        boost: 3.0
         resolution: NOW/MINUTE
         m: '3.16e-11'
         a: 0.1
@@ -266,22 +266,22 @@ processor_settings:
       preprocess_index: 0
     boosts:
       'entity:node':
-        datasource_boost: !!float 1
+        datasource_boost: 1.0
         bundle_boosts:
-          basic_content_page: !!float 2
-          blog_article: !!float 1
-          city_planning_and_constructions: !!float 2
-          collection_page: !!float 2
-          front_page: !!float 1
-          involvement_opportunity: !!float 0
-          moderated_page: !!float 2
-          news_item: !!float 1
-          notice: !!float 1
-          organization: !!float 2
-          place: !!float 2
-          project: !!float 2
-          rich_article: !!float 1
-          zoning_information: !!float 2
+          basic_content_page: 2.0
+          blog_article: 1.0
+          city_planning_and_constructions: 2.0
+          collection_page: 2.0
+          front_page: 1.0
+          involvement_opportunity: 0.0
+          moderated_page: 2.0
+          news_item: 1.0
+          notice: 1.0
+          organization: 2.0
+          place: 2.0
+          project: 2.0
+          rich_article: 1.0
+          zoning_information: 2.0
 tracker_settings:
   default:
     indexing_order: fifo

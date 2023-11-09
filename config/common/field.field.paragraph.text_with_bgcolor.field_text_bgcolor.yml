@@ -17,10 +17,11 @@ field_name: field_text_bgcolor
 entity_type: paragraph
 bundle: text_with_bgcolor
 label: 'Teksti taustavärillä'
-description: ''
+description: 'Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
 required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

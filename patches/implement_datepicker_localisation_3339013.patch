@@ -1,0 +1,97 @@
+diff --git a/jquery_ui.libraries.data.json b/jquery_ui.libraries.data.json
+index 108cd31..b467106 100644
+--- a/jquery_ui.libraries.data.json
++++ b/jquery_ui.libraries.data.json
+@@ -1285,4 +1285,4 @@
+       }
+     }
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/jquery_ui.libraries.yml b/jquery_ui.libraries.yml
+index bb9b634..a01a1e2 100644
+--- a/jquery_ui.libraries.yml
++++ b/jquery_ui.libraries.yml
+@@ -12,3 +12,13 @@ mouse:
+ position:
+   js: {}
+ 
++# For functionality related to setting regions with datepicker.
++locale:
++  js:
++    js/locale.js: { }
++  dependencies:
++    - core/drupal
++    - core/drupalSettings
++
++
++
+diff --git a/jquery_ui.module b/jquery_ui.module
+index 29a7c96..2aa0bc6 100644
+--- a/jquery_ui.module
++++ b/jquery_ui.module
+@@ -6,6 +6,10 @@
+  */
+ 
+ use Drupal\Core\Routing\RouteMatchInterface;
++use Drupal\Core\Asset\AttachedAssetsInterface;
++use Drupal\Core\Language\LanguageInterface;
++
++
+ 
+ /**
+  * Implements hook_help().
+@@ -50,4 +54,25 @@ function jquery_ui_library_info_alter(array &$libraries, string $module): void {
+     }
+     $libraries = array_merge($libraries, $module_libraries);
+   }
++
++  if ($module === 'jquery_ui_datepicker' && isset($libraries['datepicker']) && \Drupal::moduleHandler()->moduleExists('locale')) {
++    $libraries['datepicker']['dependencies'][] = 'jquery_ui/locale';
++    $libraries['datepicker']['drupalSettings']['jquery']['ui']['datepicker'] = [
++      'isRTL' => NULL,
++      'firstDay' => NULL,
++    ];
++  }
++}
++
++/**
++ * Implements hook_js_settings_alter().
++ *
++ * Generates the values for the altered jquery_ui_datepicker/datepicker library.
++ */
++function jquery_ui_js_settings_alter(&$settings, AttachedAssetsInterface $assets) {
++  if (isset($settings['jquery']['ui']['datepicker'])) {
++    $language_interface = \Drupal::languageManager()->getCurrentLanguage();
++    $settings['jquery']['ui']['datepicker']['isRTL'] = $language_interface->getDirection() == LanguageInterface::DIRECTION_RTL;
++    $settings['jquery']['ui']['datepicker']['firstDay'] = \Drupal::config('system.date')->get('first_day');
++  }
+ }
+diff --git a/js/locale.js b/js/locale.js
+new file mode 100644
+index 0000000..5e38c34
+--- /dev/null
++++ b/js/locale.js
+@@ -0,0 +1,21 @@
++(function ($, Drupal, drupalSettings) {
++  Drupal.behaviors.jqueryUiDatepickerLocale = {
++    attach: function attach(context, settings) {
++      $.datepicker.regional['drupal-locale'] = $.extend({
++        closeText: Drupal.t('Done'),
++        prevText: Drupal.t('Prev'),
++        nextText: Drupal.t('Next'),
++        currentText: Drupal.t('Today'),
++        monthNames: [Drupal.t('January', {}, { context: 'Datepicker widget' }), Drupal.t('February', {}, { context: 'Datepicker widget' }), Drupal.t('March', {}, { context: 'Datepicker widget' }), Drupal.t('April', {}, { context: 'Datepicker widget' }), Drupal.t('May', {}, { context: 'Datepicker widget' }), Drupal.t('June', {}, { context: 'Datepicker widget' }), Drupal.t('July', {}, { context: 'Datepicker widget' }), Drupal.t('August', {}, { context: 'Datepicker widget' }), Drupal.t('September', {}, { context: 'Datepicker widget' }), Drupal.t('October', {}, { context: 'Datepicker widget' }), Drupal.t('November', {}, { context: 'Datepicker widget' }), Drupal.t('December', {}, { context: 'Datepicker widget' })],
++        monthNamesShort: [Drupal.t('Jan', {}, { context: 'Datepicker widget' }), Drupal.t('Feb', {}, { context: 'Datepicker widget' }), Drupal.t('Mar', {}, { context: 'Datepicker widget' }), Drupal.t('Apr', {}, { context: 'Datepicker widget' }), Drupal.t('May', {}, { context: 'Datepicker widget' }), Drupal.t('Jun', {}, { context: 'Datepicker widget' }), Drupal.t('Jul', {}, { context: 'Datepicker widget' }), Drupal.t('Aug', {}, { context: 'Datepicker widget' }), Drupal.t('Sep', {}, { context: 'Datepicker widget' }), Drupal.t('Oct', {}, { context: 'Datepicker widget' }), Drupal.t('Nov', {}, { context: 'Datepicker widget' }), Drupal.t('Dec', {}, { context: 'Datepicker widget' })],
++        dayNames: [Drupal.t('Sunday', {}, { context: 'Datepicker widget' }), Drupal.t('Monday', {}, { context: 'Datepicker widget' }), Drupal.t('Tuesday', {}, { context: 'Datepicker widget' }), Drupal.t('Wednesday', {}, { context: 'Datepicker widget' }), Drupal.t('Thursday', {}, { context: 'Datepicker widget' }), Drupal.t('Friday', {}, { context: 'Datepicker widget' }), Drupal.t('Saturday', {}, { context: 'Datepicker widget' })],
++        dayNamesShort: [Drupal.t('Sun', {}, { context: 'Datepicker widget' }), Drupal.t('Mon', {}, { context: 'Datepicker widget' }), Drupal.t('Tue', {}, { context: 'Datepicker widget' }), Drupal.t('Wed', {}, { context: 'Datepicker widget' }), Drupal.t('Thu', {}, { context: 'Datepicker widget' }), Drupal.t('Fri', {}, { context: 'Datepicker widget' }), Drupal.t('Sat', {}, { context: 'Datepicker widget' })],
++        dayNamesMin: [Drupal.t('Su', {}, { context: 'Datepicker widget' }), Drupal.t('Mo', {}, { context: 'Datepicker widget' }), Drupal.t('Tu', {}, { context: 'Datepicker widget' }), Drupal.t('We', {}, { context: 'Datepicker widget' }), Drupal.t('Th', {}, { context: 'Datepicker widget' }), Drupal.t('Fr', {}, { context: 'Datepicker widget' }), Drupal.t('Sa', {}, { context: 'Datepicker widget' })],
++        dateFormat: Drupal.t('mm/dd/yy'),
++        firstDay: 0,
++        isRTL: 0
++      }, drupalSettings.jquery.ui.datepicker);
++      $.datepicker.setDefaults($.datepicker.regional['drupal-locale']);
++    }
++  };
++})(jQuery, Drupal, drupalSettings);

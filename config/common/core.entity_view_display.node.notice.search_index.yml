@@ -163,6 +163,7 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_date_of_publication: true
   field_display_period: true
   field_event_time: true

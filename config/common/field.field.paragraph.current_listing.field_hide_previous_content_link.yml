@@ -9,8 +9,8 @@ id: paragraph.current_listing.field_hide_previous_content_link
 field_name: field_hide_previous_content_link
 entity_type: paragraph
 bundle: current_listing
-label: 'Piilota aiemmat sisällöt -linkki'
-description: 'Valitse tämä, jollet halua näyttää Aiemmat sisällöt -linkkiä paragraafissa.'
+label: 'Piilota kaikki sisällöt -linkki'
+description: 'Valitse tämä, jollet halua näyttää Kaikki sisällöt -linkkiä paragraafissa.'
 required: false
 translatable: true
 default_value:

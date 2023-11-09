@@ -17,10 +17,11 @@ field_name: field_second_text_column
 entity_type: config_pages
 bundle: footer_information
 label: 'Toinen tekstisarake'
-description: 'Kentän sisältö näytetään alatunnisteen toisessa sarakkeessa isoilla näytöillä.'
+description: 'Kentän sisältö näytetään alatunnisteen toisessa sarakkeessa isoilla näytöillä. Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

@@ -17,10 +17,11 @@ field_name: field_page_content
 entity_type: config_pages
 bundle: 404_page_content
 label: 'Sivun sisältö'
-description: 'Lisää tähän 404-sivun sisältö, joka näytetään kävijälle, kun sivua ei löydy.'
+description: 'Lisää tähän 404-sivun sisältö, joka näytetään kävijälle, kun sivua ei löydy. Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
 required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

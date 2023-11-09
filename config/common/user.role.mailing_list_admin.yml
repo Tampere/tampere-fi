@@ -7,6 +7,7 @@ dependencies:
   module:
     - content_moderation
     - content_translation
+    - file
     - system
     - taxonomy
 id: mailing_list_admin
@@ -17,6 +18,7 @@ permissions:
   - 'access administration pages'
   - 'access taxonomy overview'
   - 'create terms in mailing_lists'
+  - 'delete own files'
   - 'delete terms in mailing_lists'
   - 'edit terms in mailing_lists'
   - 'translate editable entities'

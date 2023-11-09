@@ -1,8 +1,7 @@
 name: Exove Codebase
 type: profile
 description: 'An installation profile intended to be used as a starting point for new projects at Exove.'
-core: 8.x
-core_version_requirement: '^8 || ^9'
+core_version_requirement: '>=9'
 # dependencies:
 #   - system
 #   - big_pipe

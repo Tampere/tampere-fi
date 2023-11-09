@@ -254,7 +254,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
               $path_to_root = _tre_custom_paths_get_group_menu_parents_for_node($current_group_content_menu, $node);
 
               /** @var \Drupal\Core\Menu\MenuTreeStorageInterface $menu_tree_storage */
-              $menu_tree_storage = \Drupal::service('menu.tree_storage');
+              $menu_tree_storage = \Drupal::service('tre_custom_paths.menu.tree_storage');
 
               /** @var \Drupal\pathauto\AliasCleanerInterface $alias_cleaner */
               $alias_cleaner = \Drupal::service('pathauto.alias_cleaner');

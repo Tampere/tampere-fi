@@ -71,7 +71,7 @@
       <div {{ bem("information", person_contact__information__modifiers, person_contact__base_class) }}>
 
         {% if person_contact__legend or person_contact__preheading or person_contact__name or person_contact__name %}
-          <span {{ bem("name-wrapper", person_contact__name_wrapper__modifiers, person_contact__base_class)}}>
+          <div {{ bem("name-wrapper", person_contact__name_wrapper__modifiers, person_contact__base_class)}}>
             {% if person_contact__name %}
               {% include "@atoms/02-text/00-headings/_heading.twig" with {
                 "heading_base_class": "name",
@@ -92,7 +92,7 @@
                 {{ person_contact__preheading }}
               </span>
             {% endif %}
-          </span>
+          </div>
         {% endif %}
 
         {% if person_contact__phone_number %}

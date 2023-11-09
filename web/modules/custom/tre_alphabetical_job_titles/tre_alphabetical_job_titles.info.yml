@@ -1,0 +1,5 @@
+name: 'TRE Alphabetical Job Titles'
+type: module
+description: 'Putting job titles taxonomy in alphabetical order.'
+package: 'TRE'
+core_version_requirement: '>=9.3'

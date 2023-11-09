@@ -35,7 +35,7 @@
 {% if not use_exposed_block %}
   <div {{ bem(search_bar__base_class, search_bar__modifiers|default([]), search_bar__blockname) }}>
 {% endif %}
-  <{{ search_bar_wrapper_element }} {{ bem("search-form", search_bar__search_form__modifiers|default([]), search_bar__base_class) }} {% if use_form %}action="{{ search_bar_form_action }}" method="{{ search_bar_form_method }}"{% endif %}>
+  <{{ search_bar_wrapper_element }} {{ bem("search-form", search_bar__search_form__modifiers|default([]), search_bar__base_class) }} {% if search_bar_form_action %}action="{{ search_bar_form_action }}"{% endif %} {% if search_bar_form_method %}method="{{ search_bar_form_method }}"{% endif %}>
     <label
       for="{{ search_bar_input_id }}"
       {{ bem(search_bar__label__base_class|default("label"), search_bar__label__modifiers|default([]), search_bar__label__blockname|default(search_bar__base_class), [ "hyphenate" ]) }}

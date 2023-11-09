@@ -4,4 +4,4 @@ description: 'Custom module for the Course listing paragraph that loads React li
 core_version_requirement: '>=9.3'
 package: 'TRE'
 dependencies:
-  - paragraphs
+  - paragraphs:paragraphs

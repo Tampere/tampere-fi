@@ -62,7 +62,7 @@ class GenericListing extends TrePreProcessPluginBase {
     $view = Views::getView('generic_listing');
 
     $sort_order_field = $paragraph->get('field_sort_order');
-    if (!empty($sort_order_field)) {
+    if (!$sort_order_field->isEmpty()) {
       $sort_order_field_value = $sort_order_field->value;
       if ($sort_order_field_value == 'date') {
         $block_machine_name = 'generic_listing_block_date';
@@ -72,7 +72,7 @@ class GenericListing extends TrePreProcessPluginBase {
       }
     }
 
-    if (empty($view) || !$view->access($block_machine_name)) {
+    if (empty($view) || !isset($block_machine_name) || !$view->access($block_machine_name)) {
       return NULL;
     }
 
@@ -82,7 +82,7 @@ class GenericListing extends TrePreProcessPluginBase {
     $selected_content_types = $this->helperFunctions->getListFieldValues($paragraph_displayed_content_types_field_values);
 
     // '+' for OR, ',' for AND
-    $content_type_argument = implode('+', $selected_content_types);
+    $content_type_argument = empty($selected_content_types) ? 'all' : implode('+', $selected_content_types);
 
     $selected_taxonomy_values = $this->helperFunctions->getParagraphTaxonomyTerms($paragraph, self::AVAILABLE_TAXONOMY_VOCABULARIES);
     $selected_taxonomy_condition_group = $paragraph->get('field_taxonomy_combination')->getString();

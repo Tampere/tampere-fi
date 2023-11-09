@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - blazy
+    - lazy
+    - linkit
     - media
 name: 'Alatunnisteen teksti'
 format: footer_text
@@ -13,16 +15,16 @@ filters:
     id: filter_html
     provider: filter
     status: true
-    weight: -10
+    weight: -15
     settings:
-      allowed_html: '<em> <strong> <br> <a href hreflang> <p class="phone-icon-prefix">'
+      allowed_html: '<br> <p class="phone-icon-prefix"> <a hreflang href data-entity-type data-entity-uuid data-entity-substitution> <strong> <em>'
       filter_html_help: true
       filter_html_nofollow: false
   blazy_filter:
     id: blazy_filter
     provider: blazy
     status: false
-    weight: 3
+    weight: 9
     settings:
       media_switch: ''
       hybrid_style: ''
@@ -32,3 +34,51 @@ filters:
         img: img
         iframe: iframe
       use_data_uri: '0'
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: 10
+    settings: {  }
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: 0
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: 15
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: false
+    weight: 20
+    settings: {  }
+  lazy_filter:
+    id: lazy_filter
+    provider: lazy
+    status: false
+    weight: -50
+    settings:
+      image: true
+      iframe: true
+  linkit:
+    id: linkit
+    provider: linkit
+    status: false
+    weight: 3
+    settings:
+      title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: false
+    weight: -50
+    settings:
+      default_view_mode: default
+      allowed_view_modes: {  }
+      allowed_media_types: {  }

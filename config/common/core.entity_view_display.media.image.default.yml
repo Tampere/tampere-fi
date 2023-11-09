@@ -17,7 +17,7 @@ dependencies:
     - field.field.media.image.field_topics
     - media.type.image
   module:
-    - blazy
+    - image
 _core:
   default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
 id: media.image.default
@@ -26,38 +26,13 @@ bundle: image
 mode: default
 content:
   field_media_image:
-    type: blazy
+    type: image
     label: hidden
     settings:
-      caption:
-        title: '0'
-        alt: '0'
-      layout: ''
-      view_mode: ''
-      cache: 0
-      skin: ''
-      lazy: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_media_style: ''
-      loading: lazy
-      preload: false
-      responsive_image_style: ''
-      box_style: ''
+      image_link: ''
       image_style: ''
-      media_switch: ''
-      ratio: ''
-      thumbnail_style: ''
-      grid: ''
-      grid_medium: ''
-      grid_small: ''
-      current_view_mode: default
-      fx: ''
-      grid_header: ''
-      _item: ''
-      _uri: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content

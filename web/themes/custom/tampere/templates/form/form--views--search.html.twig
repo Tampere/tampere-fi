@@ -10,6 +10,7 @@
  * @see template_preprocess_form()
  */
 #}
-<form{{ attributes.addClass("search-bar__search-form") }}>
+
+<form{{ attributes.addClass("search-bar__search-form").removeAttribute("region", "block") }}>
   {{ children }}
 </form>

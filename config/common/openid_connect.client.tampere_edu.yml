@@ -1,0 +1,28 @@
+uuid: ee189bfc-033a-4911-b14c-566ff633e4aa
+langcode: fi
+status: true
+dependencies:
+  module:
+    - openid_connect_windows_aad
+id: tampere_edu
+label: 'Edu.tampere.fi AD Account'
+plugin: windows_aad
+settings:
+  client_id: replaced-by-config-override
+  client_secret: tre_aad_edu
+  authorization_endpoint_wa: 'https://example.com/replaced-by-config-override'
+  token_endpoint_wa: 'https://example.com/replaced-by-config-override'
+  userinfo_endpoint_wa: ''
+  map_ad_groups_to_roles: false
+  group_mapping:
+    method: 0
+    mappings: ''
+    strict: false
+  userinfo_graph_api_wa: 1
+  userinfo_graph_api_use_other_mails: false
+  userinfo_update_email: false
+  hide_email_address_warning: true
+  subject_key: sub
+  end_session_endpoint: ''
+  iss_allowed_domains: ''
+  front_channel_logout_url: ''

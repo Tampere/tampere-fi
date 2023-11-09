@@ -302,8 +302,11 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
     $paragraph_displayed_content_types_field_values = $paragraph->get('field_tabs_displayed_content_tps')->getValue();
     $selected_content_types = $this->helperFunctions->getListFieldValues($paragraph_displayed_content_types_field_values);
 
-    // '+' for OR, ',' for AND
-    $content_type_argument = implode('+', $selected_content_types);
+    // '+' for OR, ',' for AND.
+    // In principle $selected_content_types is never empty unless the preceding
+    // code is changed but making sure not to pass an empty string as the
+    // argument value anyway for safety reasons.
+    $content_type_argument = empty($selected_content_types) ? 'all' : implode('+', $selected_content_types);
 
     $selected_taxonomy_values = $this->helperFunctions->getParagraphTaxonomyTerms($paragraph, self::AVAILABLE_TAXONOMY_VOCABULARIES);
     $selected_taxonomy_condition_group = $paragraph->get('field_taxonomy_combination')->getString();

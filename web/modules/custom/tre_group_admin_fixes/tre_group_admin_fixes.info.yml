@@ -2,8 +2,7 @@ name: TRE Group Admin Fixes
 type: module
 description: Adjusts group admin views routes so that they are marked as admin paths.
 package: TRE
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: '>=9'
 dependencies:
   - group:group
   - drupal:views

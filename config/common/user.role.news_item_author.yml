@@ -16,6 +16,7 @@ dependencies:
     - entity_browser
     - entity_usage
     - feeds
+    - file
     - filter
     - media
     - node
@@ -49,7 +50,6 @@ permissions:
   - 'create image media'
   - 'create media'
   - 'create news_item content'
-  - 'create paragraph content accessibility_information'
   - 'create paragraph content accordion_item'
   - 'create paragraph content accordion_text_content'
   - 'create paragraph content accordions'
@@ -119,7 +119,7 @@ permissions:
   - 'create remote_video media'
   - 'delete any news_item content'
   - 'delete media'
-  - 'delete paragraph content accessibility_information'
+  - 'delete own files'
   - 'delete paragraph content accordion_item'
   - 'delete paragraph content accordion_text_content'
   - 'delete paragraph content accordions'
@@ -193,7 +193,6 @@ permissions:
   - 'revert news_item revisions'
   - 'translate editable entities'
   - 'update any media'
-  - 'update paragraph content accessibility_information'
   - 'update paragraph content accordion_item'
   - 'update paragraph content accordion_text_content'
   - 'update paragraph content accordions'
@@ -261,10 +260,8 @@ permissions:
   - 'update paragraph content zoning_project_card'
   - 'update paragraph content zoning_project_cards'
   - 'use scheduled_transitions transition archive'
-  - 'use scheduled_transitions transition create_new_draft'
   - 'use scheduled_transitions transition publish'
   - 'use scheduled_transitions transition restore_draft'
-  - 'use scheduled_transitions transition restore_to_draft'
   - 'use siteimprove'
   - 'use siteimprove prepublish'
   - 'use text format notice_html'

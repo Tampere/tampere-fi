@@ -16,11 +16,12 @@ dependencies:
     - field.field.media.image.field_plan_numbers
     - field.field.media.image.field_record_numbers
     - field.field.media.image.field_topics
-    - image.style.current_listing_highlighted_liftup_xs_view_mode
     - media.type.image
     - responsive_image.styles.large_listing_liftup_responsive_image_style
   module:
-    - blazy
+    - ds
+    - lazy
+    - responsive_image
 _core:
   default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
 id: media.image.large_listing_liftup_view_mode
@@ -29,38 +30,25 @@ bundle: image
 mode: large_listing_liftup_view_mode
 content:
   field_media_image:
-    type: blazy
+    type: responsive_image
     label: hidden
     settings:
-      caption:
-        title: '0'
-        alt: '0'
-      icon: ''
-      layout: ''
-      view_mode: ''
-      cache: 0
-      current_view_mode: large_listing_liftup_view_mode
-      skin: ''
-      fx: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_media_style: ''
       responsive_image_style: large_listing_liftup_responsive_image_style
-      box_style: ''
-      image_style: current_listing_highlighted_liftup_xs_view_mode
-      media_switch: ''
-      ratio: fluid
-      thumbnail_style: ''
-      _uri: ''
-      breakpoints: {  }
-      sizes: ''
-      grid_header: ''
-      grid: ''
-      grid_medium: ''
-      grid_small: ''
-    third_party_settings: {  }
+      image_link: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     weight: 0
     region: content
 hidden:

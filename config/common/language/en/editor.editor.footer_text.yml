@@ -1,4 +1,6 @@
 settings:
   plugins:
-    stylescombo:
-      styles: 'p.phone-icon-prefix|Phone number'
+    ckeditor5_style:
+      styles:
+        -
+          label: 'Phone number'

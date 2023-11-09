@@ -2,28 +2,30 @@
 
 {% set horizontal_accordion__base_class = "horizontal-accordion" %}
 
+{% set horizontal_accordion__heading_level = horizontal_accordion__heading_level|default(3) %}
+
 <div {{ bem(horizontal_accordion__base_class, horizontal_accordion__modifiers, horizontal_accordion__blockname) }}>
   <div {{ bem("item-container", horizontal_accordion__item_container__modifiers, horizontal_accordion__base_class) }}>
     {% for tab in available_tabs %}
-      <button
-        aria-controls="horizontal-accordion-content-section-{{ horizontal_accordion__paragraph_id }}-{{ loop.index }}"
-        aria-expanded="false"
-        {{ bem("button", horizontal_accordion__button__modifiers, horizontal_accordion__base_class, [ 'accordion-heading' ]) }}
-        id="horizontal-accordion-button-{{ horizontal_accordion__paragraph_id}}-{{ loop.index }}"
-      >
-        {% include "@atoms/02-text/00-headings/_heading.twig" with {
-          heading_base_class: "title",
-          heading_blockname: horizontal_accordion__base_class,
-          heading_level: 3,
-          heading: tab.title,
-        } %}
-        {% include "@atoms/04-images/icons/_icon.twig" with {
-          icon_blockname: horizontal_accordion__base_class,
-          icon_base_class: "icon",
-          icon_name: "arrow-plain-new",
-          icon_decorative: true,
-        } %}
-      </button>
+      <h{{ horizontal_accordion__heading_level }} {{ bem(horizontal_accordion__title_wrapper__base_class|default("title-wrapper"), horizontal_accordion__title_wrapper__modifiers, horizontal_accordion__base_class)}}>
+        <button
+          aria-controls="horizontal-accordion-content-section-{{ horizontal_accordion__paragraph_id }}-{{ loop.index }}"
+          aria-expanded="false"
+          {{ bem("button", horizontal_accordion__button__modifiers, horizontal_accordion__base_class, [ 'accordion-heading' ]) }}
+          id="horizontal-accordion-button-{{ horizontal_accordion__paragraph_id}}-{{ loop.index }}"
+        >
+          <span {{ bem(horizontal_accordion__title__base_class|default("title"), horizontal_accordion__title__modifiers, horizontal_accordion__base_class, [ "hyphenate" ]) }}>
+            {{ tab.title }}
+          </span>
+
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_blockname: horizontal_accordion__base_class,
+            icon_base_class: "icon",
+            icon_name: "arrow-plain-new",
+            icon_decorative: true,
+          } %}
+        </button>
+      </h{{ horizontal_accordion__heading_level }}>
     {% endfor %}
   </div>
 
@@ -32,13 +34,13 @@
       {% set horizontal_accordion__content__modifiers = tab.accordion_content_modifiers %}
     {% endif %}
 
-    <section
+    <div
       id="horizontal-accordion-content-section-{{ horizontal_accordion__paragraph_id }}-{{ loop.index }}"
       {{ bem("content", horizontal_accordion__content__modifiers, horizontal_accordion__base_class, [ 'accordion-content-section' ]) }}
       aria-labelledby="horizontal-accordion-button-{{ horizontal_accordion__paragraph_id }}-{{ loop.index }}"
       aria-hidden="true"
     >
       {{ tab.content }}
-    </section>
+    </div>
   {% endfor %}
 </div>

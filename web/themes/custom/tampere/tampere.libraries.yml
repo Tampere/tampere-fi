@@ -6,7 +6,10 @@ global:
 
 sprite:
   js:
-    components/01-atoms/04-images/icons/svgxuse.min.js: { attributes: { defer: true } }
+    components/01-atoms/04-images/icons/svgxuse.min.js:
+      attributes:
+        defer: true
+      minified: true
 
 accordion:
   js:
@@ -47,9 +50,11 @@ back-to-top:
 lightbox:
   css:
     component:
-      /libraries/tobii/dist/tobii.min.css: {}
+      /libraries/tobii/dist/tobii.min.css:
+        minified: true
   js:
-    /libraries/tobii/dist/tobii.min.js: {}
+    /libraries/tobii/dist/tobii.min.js:
+      minified: true
 
 image-gallery:
   js:

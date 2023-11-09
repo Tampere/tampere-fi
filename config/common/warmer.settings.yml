@@ -327,7 +327,7 @@ warmers:
     id: sitemap
     frequency: 900
     batchSize: 10
-    minPriority: !!float 0
+    minPriority: 0.0
     sitemaps: {  }
     headers: {  }
     verify: true

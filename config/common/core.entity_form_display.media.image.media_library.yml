@@ -92,7 +92,7 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
-        description: 'Select a focal point by clicking on the most important part of the image. This ensures that the selected area won''t get cropped when the image is scaled to different sizes.'
+        description: "Select a focal point by clicking on the most important part of the image. This ensures that the selected area won't get cropped when the image is scaled to different sizes."
         required_fields: true
 _core:
   default_config_hash: 31CmUGarCsq0Q4GQgRjxr3npPCsk6M5sVrAo8E06Y7w

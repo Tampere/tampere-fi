@@ -424,6 +424,7 @@ content:
     weight: 7
     region: place_contact__left_column_content
 hidden:
+  entitygroupfield: true
   field_accessibility_links: true
   field_electronic_id_required: true
   field_electronic_signature_rqd: true

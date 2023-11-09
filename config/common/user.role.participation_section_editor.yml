@@ -7,6 +7,7 @@ dependencies:
     - workflows.workflow.chance_for_participation_moderation
   module:
     - content_moderation
+    - file
     - node
     - paragraphs_type_permissions
     - quick_node_clone
@@ -26,6 +27,7 @@ permissions:
   - 'create paragraph content person_liftups'
   - 'delete any involvement_opportunity content'
   - 'delete involvement_opportunity revisions'
+  - 'delete own files'
   - 'delete paragraph content person_liftup'
   - 'delete paragraph content person_liftups'
   - 'edit any involvement_opportunity content'
@@ -35,10 +37,8 @@ permissions:
   - 'update paragraph content person_liftups'
   - 'use chance_for_participation_moderation transition archive'
   - 'use chance_for_participation_moderation transition create_draft'
-  - 'use chance_for_participation_moderation transition create_new_draft'
   - 'use chance_for_participation_moderation transition julkaise'
   - 'use chance_for_participation_moderation transition restore_draft'
-  - 'use chance_for_participation_moderation transition restore_to_draft'
   - 'use chance_for_participation_moderation transition send_for_review'
   - 'view any unpublished content'
   - 'view involvement_opportunity revisions'

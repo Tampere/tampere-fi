@@ -1,7 +1,7 @@
 name: 'Language Switcher Links'
 type: module
 description: 'Modifies the Language Switcher links and titles'
-core_version_requirement: ^8 || ^9
+core_version_requirement: '>=9'
 package: 'TRE'
 dependencies:
   - tre_preprocess_utility_functions:tre_preprocess_utility_functions

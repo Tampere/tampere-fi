@@ -33,6 +33,8 @@ content:
     settings:
       responsive_image_style: hero_widescreen_responsive_image_style
       image_link: ''
+      image_loading:
+        attribute: eager
     third_party_settings:
       lazy:
         lazy_image: '0'

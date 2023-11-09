@@ -106,8 +106,10 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_help_text: true
   field_main_image: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

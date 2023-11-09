@@ -41,14 +41,14 @@
     </div>
   {% endif %}
 
-  <section {{ bem(main_base_class, (main_modifiers), main_blockname) }} aria-label="{{ main_section_aria_label }}">
+  <main {{ bem(main_base_class, (main_modifiers), main_blockname) }} aria-label="{{ main_section_aria_label }}">
     {% if sidebar %}
-      <aside class="main-sidebar" role="complementary">
+      <aside class="main-sidebar">
         {% block page_sidebar %}{% endblock %}
       </aside>
     {% endif %}
 
-    <main {{ bem(main_content_base_class, (main_content_modifiers), main_content_blockname) }} id="main-content" tabindex="-1">
+    <div {{ bem(main_content_base_class, (main_content_modifiers), main_content_blockname) }} id="main-content" tabindex="-1">
       {% if sidebar %}
         <a href="#sidebar-heading" class="visually-hidden focusable link skip-to-content-link rs_skip">
           {{ "Skip to sidebar"|t }}
@@ -57,9 +57,8 @@
 
       {% block page_content %}{% endblock %}
       {% block page_content_footer %}{% endblock %}
-    </main>
-
-  </section>
+    </div>
+  </main>
 
   {% if page.post_content %}
     <div id="post-content">

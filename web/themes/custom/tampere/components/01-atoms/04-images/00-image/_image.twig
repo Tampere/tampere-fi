@@ -5,7 +5,7 @@
 {% if img_url %}
   <a {{ bem("link", image_link_modifiers, image_link_blockname) }} href="{{ img_url }}">
 {% endif %}
-  <img {{ attributes }}
+  <img
     {{ bem(image_base_class, (image_modifiers), image_blockname, image_custom_classes) }}
     {% if img_srcset %}
       srcset="{{ img_srcset }}"
@@ -14,7 +14,6 @@
       sizes="{{ img_sizes }}"
     {% endif %}
     src="{{ img_src }}"
-    data-src="{{ img_src }}"
     {% if img_alt %}
       alt="{{ img_alt|replace({'""':''}) }}"
     {% else %}

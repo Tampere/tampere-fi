@@ -15,17 +15,17 @@
 {# Drupal Specific #}
 {% if primary %}
   <h2 class="visually-hidden">{{ "Primary tabs"|t }}</h2>
-  <ul class="tabs__nav tabs__nav--local-tasks" role="tablist">{{ primary }}</ul>
+  <ul class="tabs__nav tabs__nav--local-tasks">{{ primary }}</ul>
 {% endif %}
 {% if secondary %}
   <h2 class="visually-hidden">{{ "Secondary tabs"|t }}</h2>
-  <ul role="tablist">{{ secondary }}</ul>
+  <ul>{{ secondary }}</ul>
 {% endif %}
 
 {# Storybook Specific #}
 {% if not primary %}
   <div id="tabs" class="tabs no-js">
-    <ul class="tabs__nav" role="tablist">
+    <ul class="tabs__nav">
       {% for key, tab in tabs %}
         {% set tab_id = "tab-" ~ random(10000) %}
 

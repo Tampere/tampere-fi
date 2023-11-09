@@ -40,7 +40,14 @@
     'view--' ~ css_name
   ]
 %}
-<section{{ attributes.addClass(classes).setAttribute('role', 'presentation') }}>
+
+{% if title %}
+  {% set view_element_tag = "section" %}
+{% else %}
+  {% set view_element_tag = "div" %}
+{% endif %}
+
+<{{ view_element_tag }} {{ attributes.addClass(classes) }}>
     {{ title_prefix }}
     {% if title %}
         {{ title }}
@@ -96,4 +103,4 @@
             {{ feed_icons }}
         </div>
     {% endif %}
-</section>
+</{{ view_element_tag }}>

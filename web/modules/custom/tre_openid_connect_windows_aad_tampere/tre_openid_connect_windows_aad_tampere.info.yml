@@ -1,8 +1,0 @@
-name: 'TRE OpenID Connect Windows Azure Active Directory (tampere.fi)'
-type: module
-description: 'This is a copy of the openid_connect_windows_aad module modified for the Windows Azure AD tampere.fi directory.'
-core: 8.x
-core_version_requirement: ^8 || ^9
-package: 'TRE'
-dependencies:
-  - openid_connect:openid_connect

@@ -31,7 +31,12 @@ content:
     label: hidden
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
     weight: 0
     region: in_page_menu__heading
 hidden:

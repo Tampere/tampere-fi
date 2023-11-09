@@ -1,8 +1,0 @@
-services:
-  tre_content_migration.commands:
-    class: \Drupal\tre_content_migration\Commands\TreContentMigrationCommands
-    arguments:
-      - '@entity_type.manager'
-      - '@plugin.manager.migration'
-    tags:
-      - { name: drush.command }

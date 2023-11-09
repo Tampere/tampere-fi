@@ -1,0 +1,275 @@
+diff --git a/components.services.yml b/components.services.yml
+index 88c85dde9a7b0ea9ba95c8311379f60d3c5584da..ddfc06ecb3eac146eb46457d6100ae2bac985595 100644
+--- a/components.services.yml
++++ b/components.services.yml
+@@ -1,7 +1,7 @@
+ services:
+   components.registry:
+     class: Drupal\components\Template\ComponentsRegistry
+-    arguments: ['@extension.list.module', '@extension.list.theme', '@module_handler', '@theme.manager', '@cache.default', '@file_system']
++    arguments: ['@extension.list.module', '@extension.list.theme', '@module_handler', '@theme.manager', '@cache.default', '@file_system', '@config.factory']
+ 
+   components.twig.loader:
+     class: Drupal\components\Template\Loader\ComponentsLoader
+diff --git a/src/Template/ComponentsRegistry.php b/src/Template/ComponentsRegistry.php
+index d1bf7aea27b9852bcf5f2ffcbc8f03a29d7434df..0ae0097495ade776eaa530de0d77ce9c3fbe1f44 100644
+--- a/src/Template/ComponentsRegistry.php
++++ b/src/Template/ComponentsRegistry.php
+@@ -4,6 +4,7 @@ namespace Drupal\components\Template;
+ 
+ use Drupal\Core\Cache\Cache;
+ use Drupal\Core\Cache\CacheBackendInterface;
++use Drupal\Core\Config\ConfigFactoryInterface;
+ use Drupal\Core\Extension\ExtensionList;
+ use Drupal\Core\Extension\ModuleExtensionList;
+ use Drupal\Core\Extension\ModuleHandlerInterface;
+@@ -70,6 +71,13 @@ class ComponentsRegistry {
+    */
+   protected $fileSystem;
+ 
++  /**
++   * The config factory service.
++   *
++   * @var \Drupal\Core\Config\ConfigFactoryInterface
++   */
++  protected $configFactory;
++
+   /**
+    * Constructs a new ComponentsRegistry object.
+    *
+@@ -85,6 +93,8 @@ class ComponentsRegistry {
+    *   Cache backend for storing the components registry info.
+    * @param \Drupal\Core\File\FileSystemInterface $fileSystem
+    *   The file system service.
++   * @param \Drupal\Core\Config\ConfigFactoryInterface
++   *   The config factory service.
+    */
+   public function __construct(
+     ModuleExtensionList $moduleExtensionList,
+@@ -92,7 +102,8 @@ class ComponentsRegistry {
+     ModuleHandlerInterface $moduleHandler,
+     ThemeManagerInterface $themeManager,
+     CacheBackendInterface $cache,
+-    FileSystemInterface $fileSystem
++    FileSystemInterface $fileSystem,
++    ConfigFactoryInterface $configFactory
+   ) {
+     $this->moduleExtensionList = $moduleExtensionList;
+     $this->themeExtensionList = $themeExtensionList;
+@@ -100,6 +111,20 @@ class ComponentsRegistry {
+     $this->themeManager = $themeManager;
+     $this->cache = $cache;
+     $this->fileSystem = $fileSystem;
++    $this->configFactory = $configFactory;
++  }
++
++  /**
++   * Retrieves a configuration object.
++   *
++   * @param string $name
++   *   The name of the configuration object to retrieve.
++   *
++   * @return \Drupal\Core\Config\ImmutableConfig
++   *   A configuration object.
++   */
++  protected function config($name) {
++    return $this->configFactory->get($name);
+   }
+ 
+   /**
+@@ -117,7 +142,23 @@ class ComponentsRegistry {
+       $this->load($themeName);
+     }
+ 
+-    return $this->registry[$themeName][$name] ?? NULL;
++    if (!empty($this->registry[$themeName][$name])) {
++      return $this->registry[$themeName][$name];
++    }
++
++    // If the template was not found in the active theme, and the active theme
++    // is not the same as the default theme, load the default theme and check
++    // there too. We may be dealing with the admin theme.
++    $defaultThemeName = $this->config('system.theme')->get('default');
++    if (empty($defaultThemeName) || $defaultThemeName == $themeName) {
++      return NULL;
++    }
++
++    if (!isset($this->registry[$defaultThemeName])) {
++      $this->load($defaultThemeName);
++    }
++
++    return $this->registry[$defaultThemeName][$name] ?? NULL;
+   }
+ 
+   /**
+diff --git a/tests/src/Unit/ComponentsRegistryTest.php b/tests/src/Unit/ComponentsRegistryTest.php
+index 430e2dd7377dec076b945d9d49e0533952f7742a..9d0f997b3c2eff07f60ccb0c69fecf4cf761e0d5 100644
+--- a/tests/src/Unit/ComponentsRegistryTest.php
++++ b/tests/src/Unit/ComponentsRegistryTest.php
+@@ -4,8 +4,15 @@ namespace Drupal\Tests\components\Unit;
+ 
+ use Drupal\components\Template\ComponentsRegistry;
+ use Drupal\Core\Cache\Cache;
++use Drupal\Core\Cache\CacheBackendInterface;
++use Drupal\Core\Config\ConfigFactoryInterface;
+ use Drupal\Core\DependencyInjection\ContainerBuilder;
++use Drupal\Core\Extension\ModuleExtensionList;
++use Drupal\Core\Extension\ModuleHandlerInterface;
++use Drupal\Core\Extension\ThemeExtensionList;
+ use Drupal\Core\File\Exception\NotRegularDirectoryException;
++use Drupal\Core\File\FileSystemInterface;
++use Drupal\Core\Theme\ThemeManagerInterface;
+ use Drupal\Tests\UnitTestCase;
+ 
+ /**
+@@ -131,17 +138,20 @@ class ComponentsRegistryTest extends UnitTestCase {
+    *   The mocked caching service.
+    * @param null|\Drupal\Core\File\FileSystemInterface|\PHPUnit\Framework\MockObject\MockObject $fileSystem
+    *   The mocked file system service.
++   * @param null|\Drupal\Core\Config\ConfigFactoryInterface|\PHPUnit\Framework\MockObject\MockObject $configFactory
++   *   The mocked config factory service.
+    *
+    * @return \Drupal\components\Template\ComponentsRegistry
+    *   A new ComponentsRegistry object.
+    */
+   public function newSystemUnderTest(
+-    $moduleExtensionList = NULL,
+-    $themeExtensionList = NULL,
+-    $moduleHandler = NULL,
+-    $themeManager = NULL,
+-    $cacheBackend = NULL,
+-    $fileSystem = NULL
++    ModuleExtensionList $moduleExtensionList = NULL,
++    ThemeExtensionList $themeExtensionList = NULL,
++    ModuleHandlerInterface $moduleHandler = NULL,
++    ThemeManagerInterface $themeManager = NULL,
++    CacheBackendInterface $cacheBackend = NULL,
++    FileSystemInterface $fileSystem = NULL,
++    ConfigFactoryInterface $configFactory = NULL
+   ): ComponentsRegistry {
+     // Generate mock objects with the minimum mocking to run the constructor.
+     if (is_null($moduleExtensionList)) {
+@@ -167,14 +177,17 @@ class ComponentsRegistryTest extends UnitTestCase {
+       $fileSystem = $this->createMock('\Drupal\Core\File\FileSystemInterface');
+       $fileSystem->method('scanDirectory')->willReturn([]);
+     }
+-
++    if (is_null($configFactory)) {
++      $configFactory = $this->createMock('\Drupal\Core\Config\ConfigFactoryInterface');
++    }
+     return new ComponentsRegistry(
+       $moduleExtensionList,
+       $themeExtensionList,
+       $moduleHandler,
+       $themeManager,
+       $cacheBackend,
+-      $fileSystem
++      $fileSystem,
++      $configFactory
+     );
+   }
+ 
+@@ -195,6 +208,15 @@ class ComponentsRegistryTest extends UnitTestCase {
+         ->willReturnOnConsecutiveCalls((object) ['data' => $registry]);
+     }
+ 
++    $configObject = $this->createMock('\Drupal\Core\Config\ImmutableConfig');
++    $configObject
++      ->method('get')
++      ->willReturn($activeTheme);
++    $configFactory = $this->createMock('\Drupal\Core\Config\ConfigFactoryInterface');
++    $configFactory
++      ->method('get')
++      ->with('system.theme')
++      ->willReturn($configObject);
+     $themeManager = $this->createMock('\Drupal\Core\Theme\ThemeManagerInterface');
+     $activeThemeObject = $this->createMock('\Drupal\Core\Theme\ActiveTheme');
+     $activeThemeObject
+@@ -204,7 +226,7 @@ class ComponentsRegistryTest extends UnitTestCase {
+       ->method('getActiveTheme')
+       ->willReturn($activeThemeObject);
+ 
+-    $this->systemUnderTest = $this->newSystemUnderTest(NULL, NULL, NULL, $themeManager, $cacheBackend, NULL);
++    $this->systemUnderTest = $this->newSystemUnderTest(NULL, NULL, NULL, $themeManager, $cacheBackend, NULL, $configFactory);
+ 
+     if (!$needsLoad) {
+       $this->setProtectedProperty($this->systemUnderTest, 'registry', [$activeTheme => $registry]);
+@@ -1557,4 +1579,78 @@ class ComponentsRegistryTest extends UnitTestCase {
+     ];
+   }
+ 
++
++  /**
++   * Test getting a template from the default theme when it's not active.
++   *
++   * This covers the use case where we need a template from the default theme,
++   * but we're looking at content in the admin theme. Such configuration is
++   * possible, e.g. when using a views preview of rendered content.
++   *
++   * @throws \ReflectionException
++   *
++   * @covers ::getTemplate
++   *
++   * @dataProvider providerTestGetTemplateFromDefaultNonActiveTheme
++   */
++  public function testGetTemplateFromDefaultNonActiveTheme(string $name, string $activeTheme, string $defaultTheme, array $registry, bool $needsLoad, ?string $expected): void {
++    $cacheBackend = $this->createMock('\Drupal\Core\Cache\CacheBackendInterface');
++    if ($needsLoad) {
++      $cacheBackend
++        ->method('get')
++        ->willReturnOnConsecutiveCalls((object) ['data' => $registry]);
++    }
++
++    $configObject = $this->createMock('\Drupal\Core\Config\ImmutableConfig');
++    $configObject
++      ->method('get')
++      ->willReturn($defaultTheme);
++    $configFactory = $this->createMock('\Drupal\Core\Config\ConfigFactoryInterface');
++    $configFactory
++      ->method('get')
++      ->with('system.theme')
++      ->willReturn($configObject);
++    $themeManager = $this->createMock('\Drupal\Core\Theme\ThemeManagerInterface');
++    $activeThemeObject = $this->createMock('\Drupal\Core\Theme\ActiveTheme');
++    $activeThemeObject
++      ->method('getName')
++      ->willReturn($activeTheme);
++    $themeManager
++      ->method('getActiveTheme')
++      ->willReturn($activeThemeObject);
++
++    $this->systemUnderTest = $this->newSystemUnderTest(NULL, NULL, NULL, $themeManager, $cacheBackend, NULL, $configFactory);
++
++    if (!$needsLoad) {
++      $this->setProtectedProperty($this->systemUnderTest, 'registry', $registry);
++    }
++
++    $result = $this->systemUnderTest->getTemplate($name);
++    $this->assertEquals($expected, $result, $this->getName());
++  }
++
++  /**
++   * Provides test data to ::testGetTemplate().
++   *
++   * @see testGetTemplate()
++   */
++  public function providerTestGetTemplateFromDefaultNonActiveTheme(): array {
++    return [
++      'gets the template from registry' => [
++        'name' => '@components/tubman.twig',
++        'activeTheme' => 'activeTheme',
++        'defaultTheme' => 'defaultTheme',
++        'registry' => [
++          'activeTheme' => [],
++          'defaultTheme' => [
++            '@components/tubman.twig' => 'themes/defaultTheme/components/tubman.twig',
++          ]
++        ],
++        'needsLoad' => FALSE,
++        'expected' => 'themes/defaultTheme/components/tubman.twig',
++      ],
++    ];
++  }
++
++
+ }

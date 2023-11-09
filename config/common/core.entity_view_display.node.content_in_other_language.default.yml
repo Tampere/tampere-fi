@@ -88,6 +88,7 @@ content:
     weight: 2
     region: main_content
 hidden:
+  entitygroupfield: true
   field_geographical_areas: true
   field_keywords: true
   field_language: true
@@ -98,4 +99,5 @@ hidden:
   field_topics: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

@@ -10,6 +10,7 @@ dependencies:
     - content_moderation
     - content_translation
     - entity_browser
+    - file
     - group
     - node
     - override_node_options
@@ -74,6 +75,7 @@ permissions:
   - 'create place_of_business content'
   - 'delete any person content'
   - 'delete any place_of_business content'
+  - 'delete own files'
   - 'delete paragraph content accordion_item'
   - 'delete paragraph content accordion_text_content'
   - 'delete paragraph content accordions'
@@ -160,10 +162,8 @@ permissions:
   - 'update paragraph content zoning_project_card'
   - 'update paragraph content zoning_project_cards'
   - 'use scheduled_transitions transition archive'
-  - 'use scheduled_transitions transition create_new_draft'
   - 'use scheduled_transitions transition publish'
   - 'use scheduled_transitions transition restore_draft'
-  - 'use scheduled_transitions transition restore_to_draft'
   - 'view any unpublished content'
   - 'view latest version'
   - 'view person revisions'

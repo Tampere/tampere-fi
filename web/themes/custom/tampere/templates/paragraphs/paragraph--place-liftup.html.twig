@@ -50,6 +50,7 @@
 
 {% if (view_mode == 'accordion_content_view_mode') or inside_accordion %}
   {% set heading_level = 4 %}
+  {% set accordion_heading_level = 5 %}
 {% endif %}
 
 {% if place_map_markup|trim %}
@@ -81,6 +82,7 @@
         "place_contact__heading_level": heading_level,
         "place_contact__map": accordion_tabs,
         "place_contact__paragraph_id": paragraph.id.value,
+        "place_contact__accordion_heading_level": accordion_heading_level,
         "attributes": [],
       } %}
         {% block left_column %}

@@ -19,8 +19,9 @@ dependencies:
     - image.style.logo_wall_image_style
     - media.type.image
   module:
-    - blazy
     - ds
+    - image
+    - lazy
 _core:
   default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
 id: media.image.logo_wall_view_mode
@@ -29,34 +30,18 @@ bundle: image
 mode: logo_wall_view_mode
 content:
   field_media_image:
-    type: blazy
+    type: image
     label: hidden
     settings:
-      caption:
-        title: '0'
-        alt: '0'
-      layout: ''
-      view_mode: ''
-      cache: 0
-      skin: ''
-      lazy: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_media_style: ''
-      loading: ''
-      preload: false
-      responsive_image_style: ''
-      box_style: ''
+      image_link: ''
       image_style: logo_wall_image_style
-      media_switch: ''
-      ratio: ''
-      thumbnail_style: ''
-      grid: ''
-      grid_medium: ''
-      grid_small: ''
+      image_loading:
+        attribute: lazy
     third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
       ds:
         ft:
           id: default

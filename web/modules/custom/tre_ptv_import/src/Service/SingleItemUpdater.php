@@ -109,7 +109,7 @@ final class SingleItemUpdater implements SingleItemUpdaterInterface {
     $migration = $this->migrationPluginManager->createInstance($migration_id);
 
     $id_map = $migration->getIdMap();
-    $map_row = $id_map->getRowByDestination(['nid' => ['destid1' => $node->id()]]);
+    $map_row = $id_map->getRowByDestination(['nid' => $node->id()]);
 
     return empty($map_row) ? NULL : $map_row;
   }

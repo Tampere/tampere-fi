@@ -6,4 +6,4 @@ type_label: 'Twig field'
 entities:
   node: node
 properties:
-  content: '{{ path(''entity.node.canonical'', {''node'': node.id}) }}'
+  content: "{{ path('entity.node.canonical', {'node': node.id}) }}"

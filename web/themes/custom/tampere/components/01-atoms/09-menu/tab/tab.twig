@@ -23,14 +23,14 @@
 
 {# if Storybook atoms example, add ul wrapper #}
 {% if example %}
-<ul class="tabs__nav" role="tablist">
+<ul class="tabs__nav">
   {% endif %}
-  <li{{ attributes }} role="presentation">
+  <li{{ attributes }}>
     {# Detect if Drupal #}
     {% if attributes %}
-      {{ link(link["#title"], link["#url"], { "class" : link_classes, "id": tab_id, "aria-selected": is_active ? "true": "false" }) }}
+      {{ link(link["#title"], link["#url"], { "class" : link_classes, "id": tab_id }) }}
     {% else %}
-      <a href="{{ tab_link }}" id="{{ tab_id }}" class="tabs__link tabs__link--local-tasks{% if key == 0 %} is-active{% endif %}" {% if key == 0 %}aria-selected="true"{% else %}aria-selected="false"{% endif %} role="tab">{{ tab_text }}</a>
+      <a href="{{ tab_link }}" id="{{ tab_id }}" class="tabs__link tabs__link--local-tasks{% if key == 0 %} is-active{% endif %}">{{ tab_text }}</a>
     {% endif %}
   </li>
   {% if example %}

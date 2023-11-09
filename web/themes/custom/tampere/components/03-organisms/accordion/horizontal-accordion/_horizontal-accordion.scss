@@ -20,23 +20,7 @@
     padding: $space-m $space-xl;
     text-align: left;
     text-decoration: none;
-
-    @include medium-down {
-      width: 100%;
-    }
-
-    @include medium {
-      flex-grow: 1;
-    }
-
-    + #{$base_class}__button {
-      border-top: 2px solid clr(background);
-
-      @include medium {
-        border-top: 0;
-        border-left: 2px solid clr(background);
-      }
-    }
+    width: 100%;
 
     &:hover {
       background-color: clr(accent-tertiary-transparent);
@@ -51,7 +35,26 @@
     }
   }
 
+  &__title-wrapper {
+    margin: 0;
+
+    @include medium {
+      flex-grow: 1;
+    }
+
+    + #{$base_class}__title-wrapper {
+      border-top: 2px solid clr(background);
+
+      @include medium {
+        border-top: 0;
+        border-left: 2px solid clr(background);
+      }
+    }
+  }
+
   &__title {
+    @include heading-medium;
+
     font-size: $font-16;
     margin: 0;
 

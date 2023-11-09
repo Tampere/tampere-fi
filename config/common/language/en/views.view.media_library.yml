@@ -1,33 +1,17 @@
-label: 'Media library'
-description: 'Find and manage media.'
 display:
   default:
-    display_title: Default
     display_options:
-      fields:
-        media_bulk_form:
-          action_title: Action
-      pager:
-        options:
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-      exposed_form:
-        options:
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-      empty:
-        area_text_custom:
-          content: 'No media available.'
-      sorts:
-        created:
-          expose:
-            label: 'Newest first'
       filters:
+        populate:
+          expose:
+            label: Name
+            description: 'Search for image by name or file name or both.'
+        filename:
+          expose:
+            label: 'File name'
         status:
           expose:
             label: 'Publishing status'
-            description: ''
           group_info:
             label: Published
             group_items:
@@ -43,50 +27,78 @@ display:
             label: 'Media type'
           group_info:
             label: 'Media type'
-            description: ''
-        populate:
+      title: Media
+      fields:
+        media_bulk_form:
+          action_title: Action
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
           expose:
-            label: Name
-            description: 'Search for image by name or file name or both.'
-        filename:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: 'Apply filters'
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'No media available.'
+      sorts:
+        created:
           expose:
-            label: 'File name'
+            label: 'Newest first'
+        name:
+          expose:
+            label: 'Name (A-Z)'
+        name_1:
+          expose:
+            label: 'Name (Z-A)'
+    display_title: Default
   page:
-    display_title: Page
     display_options:
       filters:
         populate:
           expose:
             label: Name
             description: 'Search for image by name or file name or both.'
-        status:
-          expose:
-            description: ''
-        bundle:
-          group_info:
-            description: ''
+    display_title: Page
   widget:
-    display_title: Widget
     display_options:
+      filters:
+        populate:
+          expose:
+            label: Name
+            description: 'Search for image by name or file name or both.'
+        name:
+          expose:
+            label: Name
       arguments:
         bundle:
           exception:
             title: All
-      filters:
-        name:
-          expose:
-            label: Name
-        populate:
-          expose:
-            label: Name
-            description: 'Search for image by name or file name or both.'
       header:
         display_link_grid:
           label: Grid
         display_link_table:
-          label: List
+          label: Table
+    display_title: Widget
   widget_table:
     display_options:
+      filters:
+        populate:
+          expose:
+            label: Name
+            description: 'Search for image by name or file name or both.'
+        name:
+          expose:
+            label: Name
       fields:
         thumbnail__target_id:
           label: Thumbnail
@@ -100,16 +112,11 @@ display:
         bundle:
           exception:
             title: All
-      filters:
-        name:
-          expose:
-            label: Name
-        populate:
-          expose:
-            label: Name
-            description: 'Search for image by name or file name or both.'
       header:
         display_link_grid:
           label: Grid
         display_link_table:
-          label: List
+          label: Table
+    display_title: 'Widget (table)'
+label: 'Media library'
+description: 'Find and manage media.'

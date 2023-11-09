@@ -22,6 +22,25 @@ function tampere_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       $form['author']['name']['#title'] = $name_field_label;
     }
   }
+
+  // Force the login buttons on /user/login to be in the correct order.
+  if ($form_id == 'openid_connect_login_form') {
+    $weights = [
+      'tampere_fi' => 0,
+      'tampere_edu' => 1,
+      'tampere_opetus' => 2,
+    ];
+    $elements = $weights;
+    array_walk($elements, function (&$value, $key) {
+      $value = "openid_connect_client_{$key}_login";
+    });
+
+    foreach ($elements as $plugin_id => $form_element) {
+      if (isset($form[$form_element])) {
+        $form[$form_element]['#weight'] = $weights[$plugin_id];
+      }
+    }
+  }
 }
 
 /**

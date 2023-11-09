@@ -19,8 +19,9 @@ dependencies:
     - image.style.contact_information_liftup_image_style
     - media.type.image
   module:
-    - blazy
     - ds
+    - image
+    - lazy
 _core:
   default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
 id: media.image.contact_information_liftup_view_mode
@@ -29,38 +30,18 @@ bundle: image
 mode: contact_information_liftup_view_mode
 content:
   field_media_image:
-    type: blazy
+    type: image
     label: hidden
     settings:
-      caption:
-        title: '0'
-        alt: '0'
-      icon: ''
-      layout: ''
-      view_mode: ''
-      cache: 0
-      current_view_mode: contact_information_liftup_view_mode
-      skin: ''
-      fx: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_media_style: ''
-      responsive_image_style: ''
-      box_style: ''
+      image_link: ''
       image_style: contact_information_liftup_image_style
-      media_switch: ''
-      ratio: '1:1'
-      thumbnail_style: ''
-      _uri: ''
-      breakpoints: {  }
-      sizes: ''
-      grid_header: ''
-      grid: ''
-      grid_medium: ''
-      grid_small: ''
+      image_loading:
+        attribute: lazy
     third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
       ds:
         ft:
           id: default

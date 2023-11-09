@@ -1,4 +1,4 @@
 label: 'Display archive link'
 settings:
   on_label: Display
-  off_label: 'Don''t display'
+  off_label: "Don't display"

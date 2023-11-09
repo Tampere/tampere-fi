@@ -65,6 +65,7 @@
 
 {% if inside_accordion %}
   {% set heading_level = 4 %}
+  {% set accordion_heading_level = 5 %}
 {% endif %}
 
 {% set place_of_business_organisation_markup = place_of_business_organisation|render %}
@@ -145,6 +146,7 @@
         "place_of_business_contact__accordion_tabs": accordion_tabs,
         "place_of_business_contact__heading_level": heading_level,
         "place_of_business_contact__paragraph_id": paragraph.id.value,
+        "place_of_business_contact__accordion_heading_level": accordion_heading_level,
         "attributes": [],
       } %}
         {% block links_block %}

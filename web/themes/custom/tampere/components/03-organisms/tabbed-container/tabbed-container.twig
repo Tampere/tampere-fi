@@ -57,7 +57,7 @@
     </div>
 
     {% for tab in tabbed_container_tabs %}
-      <section
+      <div
         {{ bem("tab-panel", "", tabbed_container__base_class) }}
         role="tabpanel"
         id="tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
@@ -81,7 +81,7 @@
       {% else %}
         {{ tab.content }}
       {% endif %}
-      </section>
+      </div>
     {% endfor %}
   </div>
 </div>

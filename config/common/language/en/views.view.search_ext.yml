@@ -1,0 +1,13 @@
+display:
+  page_1:
+    display_options:
+      title: 'Search results from other sites of the city'
+      footer:
+        area:
+          content:
+            value: "<p>When you select a filter, the search results are automatically narrowed down to your selection.</p>\r\n"
+            format: footer_text
+          admin_label: 'Help text for automatic changes for page'
+      header:
+        result:
+          content: 'Total @total results'

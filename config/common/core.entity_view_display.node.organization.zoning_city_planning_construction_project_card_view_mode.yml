@@ -57,6 +57,7 @@ content:
     region: ds_content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_contact_info_paragraph: true
   field_geographical_areas: true
   field_help_text: true
@@ -67,4 +68,5 @@ hidden:
   field_topics: true
   langcode: true
   links: true
+  published_at: true
   search_api_excerpt: true

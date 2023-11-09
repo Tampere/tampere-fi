@@ -11,12 +11,10 @@
     id="accordion-control-{{ id }}"
   >
     <span class="visually-hidden rs_skip">{{ accordion_item_aria_label }}</span>
-    {% include "@atoms/02-text/00-headings/_heading.twig" with {
-      "heading_level": 3,
-      "heading": facet_accordion_item__title,
-      "heading_blockname": facet_accordion_item__base_class,
-      "heading_base_class": "title",
-    } %}
+
+    <span {{ bem("title", (facet_accordion_item__title__modifiers), facet_accordion_item__base_class) }}>
+      {{ facet_accordion_item__title }}
+    </span>
 
     {# Assistive text for active facet count #}
     <span {{ bem("count-desc", (facet_accordion_item__count_desc__modifiers), facet_accordion_item__base_class, [ 'visually-hidden', 'rs_skip' ]) }}>

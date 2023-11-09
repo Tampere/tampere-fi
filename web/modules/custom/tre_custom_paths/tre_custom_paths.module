@@ -467,7 +467,7 @@ function _tre_custom_paths_get_group_menu_parents_for_node(GroupContentMenuInter
   $menu_name = GroupContentMenuInterface::MENU_PREFIX . $menu->id();
 
   /** @var \Drupal\Core\Menu\MenuTreeStorageInterface $menu_tree_storage */
-  $menu_tree_storage = \Drupal::service('menu.tree_storage');
+  $menu_tree_storage = \Drupal::service('tre_custom_paths.menu.tree_storage');
 
   $node_route_name = $node->toUrl()->getRouteName();
   $node_route_params = $node->toUrl()->getRouteParameters();

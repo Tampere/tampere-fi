@@ -91,7 +91,7 @@ class PortfolioContentListing extends TrePreProcessPluginBase {
       }
 
       $previous_content_link = [
-        'text' => $this->t('All contents', [], ['context' => 'Portfolio content listing paragraph']),
+        'text' => $this->t('All contents in this section', [], ['context' => 'Portfolio content listing paragraph']),
         'url' => $listing_node->toUrl()->toString(TRUE)->getGeneratedUrl(),
       ];
 
@@ -216,7 +216,8 @@ class PortfolioContentListing extends TrePreProcessPluginBase {
       $omitted_node_ids = empty($omitted_node_ids) ? $highlighted_node_id : "{$omitted_node_ids},{$highlighted_node_id}";
     }
 
-    $omitted_nodes_argument = empty($omitted_node_ids) ? '' : $omitted_node_ids;
+    // Skip omitting by setting the argument value to null.
+    $omitted_nodes_argument = empty($omitted_node_ids) ? NULL : $omitted_node_ids;
 
     $view->setArguments([$taxonomy_argument, $omitted_nodes_argument]);
 

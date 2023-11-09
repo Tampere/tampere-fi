@@ -23,7 +23,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Kaikki sisällöt'
+      title: 'Kaikki osion sisällöt'
       fields:
         title:
           id: title

@@ -42,7 +42,7 @@
   ]
 %}
 
-<section{{ attributes.addClass(classes) }}>
+<div {{ attributes.addClass(classes) }}>
   {% embed "@organisms/search-panel/search-panel-for-view.twig" with {
     "total_rows": total_rows,
     "current_page_rows": current_page_rows,
@@ -77,4 +77,4 @@
     {% endblock %}
 
   {% endembed %}
-</section>
+</div>

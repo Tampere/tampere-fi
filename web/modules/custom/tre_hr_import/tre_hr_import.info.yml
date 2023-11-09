@@ -1,7 +1,7 @@
 name: 'TRE HR Data Import'
 type: module
 description: 'Handles imports from HR data in CSVs.'
-core_version_requirement: ^9
+core_version_requirement: '>=9'
 package: 'TRE Integrations'
 dependencies:
   - migrate_plus:migrate_plus

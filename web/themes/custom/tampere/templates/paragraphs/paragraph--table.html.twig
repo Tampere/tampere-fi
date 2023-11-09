@@ -37,10 +37,22 @@
  */
 #}
 
-{% if paragraph.field_display_table_caption.0.value == '0' %}
-  {% set attributes = attributes.addClass('visually-hidden-table-caption') %}
-{% endif %}
+{% block content %}
+  {% set table_caption = content.field_tablefield[0].tablefield["#caption"]|lower %}
+  {% set table_caption_anchor_link_url = "#" ~ table_caption %}
 
-{% include "@organisms/_paragraph.twig" with {
-  "attributes": attributes,
-} %}
+  {% if paragraph.field_display_table_caption.0.value == '0' %}
+    {% set attributes = attributes.addClass('visually-hidden-table-caption') %}
+  {% else %}
+    <h2 id="{{ table_caption|replace({' ': '-'}) }}" {{ bem('caption', ['anchor-link'], 'table') }}>
+      {% include "@atoms/anchor-link/anchor-link.twig" with {
+        "anchor_link__url": table_caption_anchor_link_url,
+      } %}
+      {{ table_caption|capitalize }}
+    </h2>
+  {% endif %}
+
+  {% include "@organisms/_paragraph.twig" with {
+    "attributes": attributes,
+  } %}
+{% endblock %}

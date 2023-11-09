@@ -32,7 +32,7 @@ On the server environments it is probably wiser to separate the indexing step fr
 Consider an example where the Nutch configuration has been installed under `/opt` directory:
 ```bash
 # This command injects the seeds into the crawldb, only has to be run once unless reseeding is needed. The urls_fi content from this repo has been copied to /opt/nutch/urls/dev_fi.
-NUTCH_CONF_DIR=/opt/nutch/conf/dev_fi bin/nutch inject /opt/nutch/crawls/dev_fi/crawldb /opt/nutch/urls/dev_fi
+NUTCH_CONF_DIR=/opt/nutch/conf/dev_fi bin/nutch inject /opt/nutch/crawls/dev_fi/crawldb /opt/nutch/urls/fi
 # This command crawls 5 rounds of links and stores the results in the local file system.
 NUTCH_CONF_DIR=/opt/nutch/conf/dev_fi bin/crawl /opt/nutch/crawls/dev_fi 5
 # This command indexes into Solr the results of the crawls, removing pages no longer in the crawldb.

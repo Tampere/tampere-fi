@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for tre_alphabetical_job_titles module.
+ */
+
+/**
+ * Implements hook_options_list_alter().
+ */
+function tre_alphabetical_job_titles_options_list_alter(array &$options, array $context) {
+  if ($context['fieldDefinition']->getName() == 'field_hr_title') {
+    // Take care to not remove or reorder the 'empty' option.
+    $none_option = isset($options['_none']) ? $options['_none'] : NULL;
+
+    $options_copy = $options;
+
+    uasort($options_copy, function ($a, $b) {
+      return strcasecmp(trim($a), trim($b));
+    });
+
+    // Set the empty option as the first one.
+    if (!empty($none_option)) {
+      // Previously used array_merge just to note later that the function cannot
+      // preserve numerical keys but instead resets them. And as numeric keys are
+      // vital for entity references, using this tip from
+      // https://www.php.net/manual/en/function.array-merge.php#Hcom92602 to use
+      // the union operator instead.
+      $options = $options_copy + ['_none' => $none_option];
+    }
+    else {
+      $options = $options_copy;
+    }
+  }
+}

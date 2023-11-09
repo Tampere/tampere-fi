@@ -6,7 +6,6 @@ use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
-use Drupal\Core\Http\RequestStack;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Menu\MenuActiveTrail;
 use Drupal\Core\Menu\MenuLinkTree;
@@ -19,6 +18,7 @@ use Drupal\Core\Utility\Token;
 use Drupal\preprocess\PreprocessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Drupal\Core\Database\Connection;
 
 /**

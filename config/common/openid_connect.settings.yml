@@ -10,3 +10,6 @@ userinfo_mappings:
   metatag: '0'
   role_change: '0'
   path: '0'
+redirect_login: user
+redirect_logout: ''
+end_session_enabled: true

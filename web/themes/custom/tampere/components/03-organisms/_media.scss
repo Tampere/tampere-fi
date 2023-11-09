@@ -25,15 +25,24 @@ iframe {
 }
 
 // Tobii lightbox
-.tobii__btn--close {
-  height: $icon-medium-plus;
-  width: fit-content;
-  display: flex;
-  white-space: nowrap;
-  align-items: center;
-  gap: $gutter-small;
+.tobii {
+  &__btn--close {
+    height: $icon-medium-plus;
+    width: fit-content;
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    gap: $gutter-small;
 
-  svg {
-    width: auto;
+    svg {
+      width: auto;
+    }
+  }
+
+  // Using element selectors because the image elements that come from the Tobii module don't have classes
+  &__slide figure > figcaption {
+    @include large-down {
+      position: relative;
+    }
   }
 }

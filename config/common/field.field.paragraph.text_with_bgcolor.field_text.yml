@@ -17,10 +17,11 @@ field_name: field_text
 entity_type: paragraph
 bundle: text_with_bgcolor
 label: 'Teksti ilman taustaväriä'
-description: 'Valitse teksti Teksti tai kuva -valikosta näyttääksesi tämän tekstin. Tähän voit lisätä tekstiä, jos taustavärillisen tekstin leveys on kolmasosan tai puoli palstaa. Ei näytetä, jos taustavärillinen teksti vie koko palstan leveyden.'
+description: 'Valitse teksti Teksti tai kuva -valikosta näyttääksesi tämän tekstin. Tähän voit lisätä tekstiä, jos taustavärillisen tekstin leveys on kolmasosan tai puoli palstaa. Ei näytetä, jos taustavärillinen teksti vie koko palstan leveyden. Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

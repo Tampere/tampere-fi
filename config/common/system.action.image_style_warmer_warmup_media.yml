@@ -1,4 +1,5 @@
-langcode: en
+uuid: null
+langcode: fi
 status: true
 dependencies:
   module:

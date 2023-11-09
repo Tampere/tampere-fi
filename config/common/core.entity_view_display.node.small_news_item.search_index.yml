@@ -177,6 +177,7 @@ content:
     region: content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_date_of_publication: true
   field_help_text: true
   field_minisites: true

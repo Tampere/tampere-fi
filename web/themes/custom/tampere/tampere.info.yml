@@ -1,8 +1,8 @@
 name: Tampere
 type: theme
 description: Drupal 8+ base theme based on <a href="http://emulsify.info">Emulsify</a>.
-base theme: stable
-core_version_requirement: ^8 || ^9
+base theme: stable9
+core_version_requirement: '>=9'
 'interface translation project': tampere
 'interface translation server pattern': themes/custom/tampere/translations/%language.po
 
@@ -21,8 +21,7 @@ libraries:
 #         css/chosen-drupal.css: false
 
 # CKEditor stylesheet loads in wysiwyg to give content editors a better experience
-ckeditor_stylesheets:
-  - dist/style.css
+ckeditor5-stylesheets: false
 
 regions:
   pre_header: 'Pre header'

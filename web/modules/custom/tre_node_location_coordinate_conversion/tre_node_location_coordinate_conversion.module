@@ -44,7 +44,9 @@ function tre_node_location_coordinate_conversion_node_presave(NodeInterface $nod
 
   if ($longitude_field_is_not_empty && $latitude_field_is_not_empty) {
     $original_node = $node->original;
-    if (!$original_node->get('field_location')->isEmpty()) {
+    // The $node->original does not exist when a node has been cloned and the
+    // clone is being saved.
+    if ($original_node instanceof NodeInterface && !$original_node->get('field_location')->isEmpty()) {
       // @phpstan-ignore-next-line
       $original_longitude = $original_node->get('field_location')->lon;
       // @phpstan-ignore-next-line

@@ -1,0 +1,28 @@
+uuid: 66bd51a5-6bcf-4e4d-bf33-19ef868dd868
+langcode: fi
+status: true
+dependencies:
+  module:
+    - openid_connect_windows_aad
+id: tampere_opetus
+label: 'Opetus.tampere.fi AD Account'
+plugin: windows_aad
+settings:
+  client_id: replaced-by-config-override
+  client_secret: tre_aad_opetus
+  authorization_endpoint_wa: 'https://example.com/replaced-by-config-override'
+  token_endpoint_wa: 'https://example.com/replaced-by-config-override'
+  userinfo_endpoint_wa: ''
+  map_ad_groups_to_roles: false
+  group_mapping:
+    method: 0
+    mappings: ''
+    strict: false
+  userinfo_graph_api_wa: 1
+  userinfo_graph_api_use_other_mails: false
+  userinfo_update_email: false
+  hide_email_address_warning: true
+  subject_key: sub
+  end_session_endpoint: ''
+  iss_allowed_domains: ''
+  front_channel_logout_url: ''

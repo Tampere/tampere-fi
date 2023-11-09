@@ -1,8 +1,0 @@
-_core:
-  default_config_hash: 7F1ngE9fiONEo0Nk1cfez_GTGzhHBLuPaHlrDqYI_hg
-langcode: fi
-enabled: false
-settings:
-  client_id: null
-  client_secret: null
-  okta_domain: null

@@ -1,3 +1,0 @@
-debug: 0
-base_urls: ''
-processor: drush_purge_queue_work

@@ -34,7 +34,7 @@ body {
   @include participate-summary;
 }
 
-// CKEditor custom styles
+// Places a phone icon prefix to text with the 'phonenumber' format, seen e.g. in the footer.
 p.phone-icon-prefix {
   background-image: url('/themes/custom/tampere/images/phone-white.svg');
   background-position: left;

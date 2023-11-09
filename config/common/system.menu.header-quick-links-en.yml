@@ -4,5 +4,5 @@ status: true
 dependencies: {  }
 id: header-quick-links-en
 label: 'Header quick links'
-description: 'Links to information about the city''s attraction services.'
+description: "Links to information about the city's attraction services."
 locked: false

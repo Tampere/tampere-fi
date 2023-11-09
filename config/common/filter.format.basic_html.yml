@@ -8,6 +8,7 @@ dependencies:
   module:
     - blazy
     - editor
+    - lazy
     - linkit
     - media
 _core:
@@ -20,41 +21,41 @@ filters:
     id: filter_html
     provider: filter
     status: true
-    weight: -10
+    weight: 11
     settings:
-      allowed_html: '<em> <strong> <ul type> <li> <h2 id> <h3 id> <h4 id> <h5 id> <p> <br> <a href hreflang !href accesskey id rel target title data-entity-type data-entity-uuid data-entity-substitution> <drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title> <s> <sup> <sub> <ol> <span lang dir class="sr-only rs_skip">'
+      allowed_html: '<br> <p class="text-align-center text-align-justify"> <h2 id class="text-align-center text-align-justify"> <h3 id class="text-align-center text-align-justify"> <h4 id class="text-align-center text-align-justify"> <h5 id class="text-align-center text-align-justify"> <ul type> <a hreflang accesskey id rel target title data-entity-type data-entity-uuid data-entity-substitution href> <drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title> <span class="sr-only rs_skip" dir> <strong> <em> <s> <sub> <sup> <ol> <li>'
       filter_html_help: false
       filter_html_nofollow: false
   filter_align:
     id: filter_align
     provider: filter
     status: false
-    weight: 7
+    weight: 8
     settings: {  }
   filter_caption:
     id: filter_caption
     provider: filter
     status: false
-    weight: 8
+    weight: 9
     settings: {  }
   editor_file_reference:
     id: editor_file_reference
     provider: editor
     status: true
-    weight: 11
+    weight: 12
     settings: {  }
   linkit:
     id: linkit
     provider: linkit
     status: true
-    weight: -11
+    weight: -10
     settings:
       title: true
   media_embed:
     id: media_embed
     provider: media
     status: false
-    weight: 100
+    weight: -50
     settings:
       default_view_mode: default
       allowed_view_modes:
@@ -66,7 +67,7 @@ filters:
     id: blazy_filter
     provider: blazy
     status: false
-    weight: 3
+    weight: 7
     settings:
       media_switch: ''
       hybrid_style: ''
@@ -76,3 +77,42 @@ filters:
         img: img
         iframe: iframe
       use_data_uri: '0'
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: -15
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: 10
+    settings: {  }
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: 0
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: 20
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: false
+    weight: 3
+    settings:
+      filter_url_length: 72
+  lazy_filter:
+    id: lazy_filter
+    provider: lazy
+    status: false
+    weight: -50
+    settings:
+      image: true
+      iframe: true

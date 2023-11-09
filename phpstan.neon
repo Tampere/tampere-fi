@@ -45,3 +45,8 @@ parameters:
 			message: "#^Parameter \\#1 \\$messages of method Symfony\\\\Component\\\\Console\\\\Style\\\\SymfonyStyle\\:\\:writeln\\(\\) expects iterable\\|string, float given\\.$#"
 			count: 1
 			path: web/modules/custom/tre_hr_import/src/Commands/TreHrImportCommands.php
+		# Phpstan complains about overriding @internal classes but this is done on purpose.
+		-
+			message: "#^Class Drupal\\\\tre_lazyload_field_formatters\\\\Plugin\\\\Field\\\\FieldFormatter\\\\LazyOEmbedFormatter extends @internal class Drupal\\\\media\\\\Plugin\\\\Field\\\\FieldFormatter\\\\OEmbedFormatter\\.$#"
+			count: 1
+			path: web/modules/custom/tre_lazyload_field_formatters/src/Plugin/Field/FieldFormatter/LazyOEmbedFormatter.php

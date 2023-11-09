@@ -5,6 +5,7 @@ namespace Drupal\tre_display_external_eventz_today\Plugin\Preprocess;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_display_external_eventz_today\Config;
 use Drupal\tre_display_external_eventz_today\Plugin\EventzClientCustomized;
@@ -36,10 +37,16 @@ class EventzTodayListing extends TrePreProcessPluginBase {
 
   const SUMMARY_LENGTH = 200;
 
-  const TYPES_EN_TO_FI_LOOKUP = [
+  const TYPES_LOOKUP_FI = [
     "virtual" => "virtuaali",
     "free" => "maksuton",
     "accessible" => "esteetön",
+  ];
+
+  const TYPES_LOOKUP_EN = [
+    "virtual" => "virtual",
+    "free" => "free of charge",
+    "accessible" => "accessible",
   ];
 
   /**
@@ -129,14 +136,30 @@ class EventzTodayListing extends TrePreProcessPluginBase {
     $events_to_exclude = $translated_paragraph->get('field_eventz_excluded_events')->getValue();
     $events_to_exclude_list = $this->helperFunctions->getListFieldValues($events_to_exclude);
 
-    $featured_start = new DrupalDateTime($translated_paragraph->get('field_eventz_featured_start')->getString(), 'UTC');
-    $featured_end = new DrupalDateTime($translated_paragraph->get('field_eventz_featured_end')->getString(), 'UTC');
+    $featured_start_field = $translated_paragraph->get('field_eventz_featured_start');
+    $featured_start = NULL;
+    if ($featured_start_field->first() instanceof DateTimeItem) {
+      // @phpstan-ignore-next-line
+      $featured_start = $featured_start_field->first()->date;
+    }
+
+    $featured_end_field = $translated_paragraph->get('field_eventz_featured_end');
+    $featured_end = NULL;
+    if ($featured_end_field->first() instanceof DateTimeItem) {
+      // @phpstan-ignore-next-line
+      $featured_end = $featured_end_field->first()->date;
+    }
 
     $this->desiredLanguage = $translated_paragraph->get('langcode')->getString();
 
     if ($this->desiredLanguage == 'fi') {
       $type_list = array_map(function ($item) {
-        return self::TYPES_EN_TO_FI_LOOKUP[$item];
+        return self::TYPES_LOOKUP_FI[$item];
+      }, $type_list);
+    }
+    else {
+      $type_list = array_map(function ($item) {
+        return self::TYPES_LOOKUP_EN[$item];
       }, $type_list);
     }
 
@@ -206,10 +229,12 @@ class EventzTodayListing extends TrePreProcessPluginBase {
     if (isset($desired_featured_event["_id"]) &&
         $desired_featured_event["language"] == $this->desiredLanguage &&
         !$this->isEventExpired($desired_featured_event, $current_date) &&
+        !empty($featured_start) && !empty($featured_end) &&
         $featured_start->getTimestamp() <= $current_date->getTimestamp() &&
         $featured_end->getTimestamp() >= $current_date->getTimestamp()
       ) {
       $events_to_exclude_list[] = $desired_featured_event["_id"];
+      $desired_featured_event = $this->removeExpiredEventDates($desired_featured_event, $featured_start);
       $variables['featured_liftup'] = $this->makeFeaturedLiftupFromEvent($desired_featured_event);
       $variables['featured_liftup_exists'] = TRUE;
     }
@@ -382,6 +407,31 @@ class EventzTodayListing extends TrePreProcessPluginBase {
       $event_time = empty($event_date["start"]) ? '' : (new DrupalDateTime($event_date["start"]))->format('j.n.Y H.i', ['timezone' => 'Europe/Helsinki']);
     }
     return $event_time;
+  }
+
+  /**
+   * Remove expired event dates based on the input start date.
+   *
+   * @param array $item
+   *   The event object from Eventz Today API.
+   * @param \Drupal\Core\Datetime\DrupalDateTime $start_date
+   *   The start date based which old event dates get removed.
+   *
+   * @return array
+   *   Updated event object with the old event dates removed.
+   */
+  private function removeExpiredEventDates(array $item, DrupalDateTime $start_date): array {
+    if (array_key_exists("dates", $item["event"]) && !empty($item["event"]["dates"])) {
+      $new_dates = [];
+      foreach ($item["event"]["dates"] as $event_date) {
+        $start_date_formatted = new DrupalDateTime($event_date["start"]);
+        if ($start_date_formatted->getTimestamp() > $start_date->getTimestamp()) {
+          $new_dates[] = $event_date;
+        }
+      }
+      $item["event"]["dates"] = $new_dates;
+    }
+    return $item;
   }
 
   /**

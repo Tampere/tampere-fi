@@ -3,6 +3,8 @@ langcode: fi
 status: true
 dependencies:
   module:
+    - blazy
+    - lazy
     - linkit
     - media
 name: 'Linkit HTML'
@@ -13,24 +15,77 @@ filters:
     id: filter_html
     provider: filter
     status: true
-    weight: -10
+    weight: 0
     settings:
-      allowed_html: '<a href hreflang data-entity-substitution data-entity-type data-entity-uuid title>'
+      allowed_html: '<br> <p> <a hreflang data-entity-substitution data-entity-type data-entity-uuid title href>'
       filter_html_help: true
       filter_html_nofollow: false
   linkit:
     id: linkit
     provider: linkit
     status: true
-    weight: 0
+    weight: -15
     settings:
       title: true
   media_embed:
     id: media_embed
     provider: media
     status: false
-    weight: 100
+    weight: -50
     settings:
       default_view_mode: default
       allowed_view_modes: {  }
       allowed_media_types: {  }
+  blazy_filter:
+    id: blazy_filter
+    provider: blazy
+    status: false
+    weight: 9
+    settings:
+      media_switch: ''
+      hybrid_style: ''
+      box_style: ''
+      box_caption: ''
+      filter_tags:
+        img: img
+        iframe: iframe
+      use_data_uri: '0'
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: 10
+    settings: {  }
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: 0
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: 15
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: false
+    weight: 20
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: false
+    weight: 3
+    settings:
+      filter_url_length: 72
+  lazy_filter:
+    id: lazy_filter
+    provider: lazy
+    status: false
+    weight: -50
+    settings:
+      image: true
+      iframe: true

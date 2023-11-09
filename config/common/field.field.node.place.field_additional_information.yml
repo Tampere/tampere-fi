@@ -17,10 +17,11 @@ field_name: field_additional_information
 entity_type: node
 bundle: place
 label: Lisätiedot
-description: ''
+description: 'Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

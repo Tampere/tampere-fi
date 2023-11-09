@@ -18,7 +18,7 @@
 {% if breadcrumb %}
   <nav aria-label="{{ 'Breadcrumb'|t }}">
     <ol {{ bem(breadcrumb__base_class, (breadcrumb__modifiers|default([])), breadcrumb__blockname) }}>
-    {% spaceless %}
+    {% apply spaceless %}
     {% for item in breadcrumb %}
       <li
         {{ bem("item", (breadcrumb__item__modifiers|default([])), breadcrumb__base_class, [ "hyphenate" ]) }}
@@ -37,22 +37,23 @@
                 icon_decorative: TRUE,
               } %}
             {% endif %}
-            {{ item.text }}
+            {{- item.text -}}
           </a>
         {% else %}
           {{ item.text }}
         {% endif %}
+
+        {% if loop.index != breadcrumb|length %}
+          {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_base_class: "separator-icon",
+            icon_blockname: breadcrumb__base_class,
+            icon_name: "chevron-right",
+            icon_decorative: TRUE,
+          } %}
+        {% endif %}
       </li>
-      {% if loop.index != breadcrumb|length %}
-        {% include "@atoms/04-images/icons/_icon.twig" with {
-          icon_base_class: "separator-icon",
-          icon_blockname: breadcrumb__base_class,
-          icon_name: "chevron-right",
-          icon_decorative: TRUE,
-        } %}
-      {% endif %}
     {% endfor %}
-    {% endspaceless %}
+    {% endapply %}
     </ol>
   </nav>
 {% endif %}

@@ -1,6 +1,6 @@
 uuid: 36d33fa8-8dba-4ccd-b641-ae669c447802
 langcode: fi
-status: true
+status: false
 dependencies:
   module:
     - language

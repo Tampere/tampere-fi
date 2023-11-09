@@ -1,7 +1,7 @@
 name: 'TRE WP Sites Import'
 type: module
 description: 'Imports the WP sites available for cross-publishing news.'
-core_version_requirement: ^9
+core_version_requirement: '>=9'
 package: 'TRE Integrations'
 dependencies:
   - migrate_plus:migrate_plus

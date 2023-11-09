@@ -17,10 +17,11 @@ field_name: field_service_text
 entity_type: paragraph
 bundle: service_highlight
 label: Asiointiteksti
-description: 'Yleinen kuvausteksti asiointipalvelusta'
+description: 'Yleinen kuvausteksti asiointipalvelusta. Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

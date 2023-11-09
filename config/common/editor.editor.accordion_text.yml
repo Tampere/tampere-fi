@@ -1,65 +1,127 @@
-uuid: 32a72eaa-8367-4e54-be5e-c187b72c3ce0
+uuid: db31b613-88a4-4107-8b4a-59a5742c4923
 langcode: fi
 status: true
 dependencies:
   config:
     - filter.format.accordion_text
   module:
-    - ckeditor
+    - ckeditor5
 format: accordion_text
-editor: ckeditor
+editor: ckeditor5
 settings:
   toolbar:
-    rows:
-      -
-        -
-          name: Muotoilu
-          items:
-            - Bold
-            - Italic
-            - Strike
-            - Superscript
-            - Subscript
-            - RemoveFormat
-        -
-          name: Linkit
-          items:
-            - DrupalLink
-            - DrupalUnlink
-        -
-          name: Listat
-          items:
-            - BulletedList
-            - NumberedList
-            - Outdent
-            - Indent
-        -
-          name: Formatointi
-          items:
-            - Format
-            - JustifyCenter
-            - JustifyBlock
-        -
-          name: Työkalut
-          items:
-            - Source
-        -
-          name: 'Kopioi ja liitä'
-          items:
-            - Copy
-            - Cut
-            - Paste
-            - PasteText
-            - PasteFromWord
+    items:
+      - bold
+      - italic
+      - strikethrough
+      - superscript
+      - subscript
+      - removeFormat
+      - '|'
+      - link
+      - '|'
+      - bulletedList
+      - numberedList
+      - outdent
+      - indent
+      - '|'
+      - heading
+      - alignment
+      - '|'
+      - sourceEditing
   plugins:
-    drupallink:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+    ckeditor5_heading:
+      enabled_headings:
+        - heading4
+        - heading5
+    ckeditor5_list:
+      reversed: false
+      startIndex: false
+    ckeditor5_paste_filter_pasteFilter:
+      enabled: true
+      filters:
+        -
+          enabled: true
+          weight: -10
+          search: '<o:p><\/o:p>'
+          replace: ''
+        -
+          enabled: true
+          weight: -9
+          search: '(<[^>]*) (style="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -8
+          search: '(<[^>]*) (face="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -7
+          search: '(<[^>]*) (class="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -6
+          search: '(<[^>]*) (valign="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -5
+          search: '<font[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -4
+          search: '<\/font>'
+          replace: ''
+        -
+          enabled: true
+          weight: -3
+          search: '<span[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -2
+          search: '<\/span>'
+          replace: ''
+        -
+          enabled: true
+          weight: -1
+          search: '<p>&nbsp;<\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 0
+          search: '<p><\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 1
+          search: '<b><\/b>'
+          replace: ''
+        -
+          enabled: true
+          weight: 2
+          search: '<i><\/i>'
+          replace: ''
+        -
+          enabled: true
+          weight: 3
+          search: '<a name="OLE_LINK[^"]*">(.*?)<\/a>'
+          replace: $1
+    ckeditor5_sourceEditing:
+      allowed_tags:
+        - '<ul type>'
+        - '<a hreflang accesskey id rel target title data-entity-type data-entity-uuid data-entity-substitution>'
+        - '<drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title>'
+        - '<h4 id>'
+        - '<h5 id>'
+    linkit_extension:
       linkit_enabled: true
       linkit_profile: linkit_wysiwyg
-image_upload:
-  status: false
-  scheme: public
-  directory: inline-images
-  max_size: ''
-  max_dimensions:
-    width: null
-    height: null
+image_upload: {  }

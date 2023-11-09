@@ -494,6 +494,7 @@ content:
     region: main_content
 hidden:
   content_moderation_control: true
+  entitygroupfield: true
   field_geographical_areas: true
   field_keywords: true
   field_life_situations: true
@@ -501,4 +502,5 @@ hidden:
   langcode: true
   links: true
   migrate_override_data: true
+  published_at: true
   search_api_excerpt: true

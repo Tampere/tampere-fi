@@ -9,6 +9,7 @@ dependencies:
   module:
     - content_translation
     - entity_browser
+    - file
     - filter
     - node
     - override_node_options
@@ -23,6 +24,7 @@ permissions:
   - 'access all_places_entity_browser entity browser pages'
   - 'access content overview'
   - 'access persons_entity_browser entity browser pages'
+  - 'delete own files'
   - 'edit any ptv_service content'
   - 'edit any service_channel content'
   - 'override all published option'

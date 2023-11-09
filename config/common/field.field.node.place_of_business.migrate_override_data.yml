@@ -12,7 +12,7 @@ field_name: migrate_override_data
 entity_type: node
 bundle: place_of_business
 label: 'Select fields to override:'
-description: 'The fields to override in this place''s data. If you elect to override a field here, it won''t be updated on subsequent automated update runs.'
+description: "The fields to override in this place's data. If you elect to override a field here, it won't be updated on subsequent automated update runs."
 required: false
 translatable: true
 default_value:
