@@ -12,7 +12,7 @@ dependencies:
 id: secondary_menu_large_hamburger_menu_en
 theme: tampere
 region: header
-weight: -17
+weight: -18
 provider: null
 plugin: 'system_menu_block:secondary-menu-en'
 settings:

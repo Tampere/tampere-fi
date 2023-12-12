@@ -1,0 +1,28 @@
+uuid: 80bfb1d6-afc0-41ca-8401-6919a911849d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.search_ext
+  module:
+    - system
+    - views
+  theme:
+    - tampere
+id: search_ext_form
+theme: tampere
+region: header
+weight: -14
+provider: null
+plugin: 'views_exposed_filter_block:search_ext-page_1'
+settings:
+  id: 'views_exposed_filter_block:search_ext-page_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: Etsi
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search-external

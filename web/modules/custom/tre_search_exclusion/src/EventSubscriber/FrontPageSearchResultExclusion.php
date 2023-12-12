@@ -43,7 +43,9 @@ class FrontPageSearchResultExclusion implements EventSubscriberInterface {
     $site_config = $config_factory->get('system.site');
     $front_page = $site_config->get('page')['front'];
     $front_page_nid = str_replace('/node/', '', $front_page);
-    if (ctype_digit($front_page_nid)) {
+    $index = $query->getIndex();
+    $fields = $index->getFields();
+    if (array_key_exists('nid', $fields) && ctype_digit($front_page_nid)) {
       $query->addCondition('nid', $front_page_nid, '<>');
     }
   }

@@ -1,0 +1,16 @@
+uuid: 9b60b65c-59b2-495f-949d-d8bbb2647d6d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - image.style.thumbnail_embed_image_style
+id: small_image_embed_responsive_image_style
+label: 'Responsiivinen pikkukuva-upotus'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: thumbnail_embed_image_style
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: thumbnail_embed_image_style

@@ -16,12 +16,12 @@ dependencies:
     - field.field.media.image.field_plan_numbers
     - field.field.media.image.field_record_numbers
     - field.field.media.image.field_topics
-    - image.style.contact_information_liftup_image_style
     - media.type.image
+    - responsive_image.styles.contact_information_liftup_responsive_image_style
   module:
     - ds
-    - image
     - lazy
+    - responsive_image
 _core:
   default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
 id: media.image.contact_information_liftup_view_mode
@@ -30,11 +30,11 @@ bundle: image
 mode: contact_information_liftup_view_mode
 content:
   field_media_image:
-    type: image
+    type: responsive_image
     label: hidden
     settings:
+      responsive_image_style: contact_information_liftup_responsive_image_style
       image_link: ''
-      image_style: contact_information_liftup_image_style
       image_loading:
         attribute: lazy
     third_party_settings:

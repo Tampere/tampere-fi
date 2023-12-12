@@ -4,10 +4,13 @@
   &__headings {
     display: flex;
     flex-wrap: wrap;
+    gap: $space-s;
+
+    @include large {
+      gap: 0;
+    }
 
     .accordion-heading:not(:last-child) {
-      margin-right: $space-s;
-  
       @include large {
         margin-right: -2px;
       }
@@ -21,10 +24,9 @@
   &__heading {
     @include button-default;
     @include button;
-    
+
     text-decoration: none;
-    margin-bottom: $space-s;
-      
+
     &.is-active {
       background-color: clr(primary);
       color: clr(text-inverse);
@@ -34,6 +36,7 @@
         text-underline-position: under;
       }
     }
+
     &:hover, &:focus {
       text-decoration: none;
 
@@ -85,6 +88,7 @@
 
     display: flex;
     flex-wrap: wrap;
+    margin-top: $space-m;
   }
 
   &__list-item {

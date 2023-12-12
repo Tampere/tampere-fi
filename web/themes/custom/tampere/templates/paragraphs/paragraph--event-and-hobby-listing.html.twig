@@ -32,6 +32,7 @@
  *   is an administrator.
  * - liftups: Event liftups provided by tre_display_external_events and selections made on
  *   the node edit page.
+ * - message_list: List of messages to be displayed, grouped by type.
  *
  * @see template_preprocess_paragraph()
  *
@@ -61,6 +62,7 @@
       "topical_listing__modifiers": [ "events" ],
       "topical_listing__summary": paragraph.field_summary.value,
       "has_highlighted_liftup": featured_liftup_exists or content_not_empty,
+      "topical_listing__message_list": message_list,
     } %}
       {% block highlighed_liftup %}
         {{ content|without("field_summary") }}

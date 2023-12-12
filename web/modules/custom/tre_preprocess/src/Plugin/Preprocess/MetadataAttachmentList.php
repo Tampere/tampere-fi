@@ -91,9 +91,8 @@ class MetadataAttachmentList extends TrePreProcessPluginBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getAttachmentListMediaFileIds(string $current_language_id, array $taxonomy_values): ?array {
-    $media_file_query = $this->entityTypeManager->getStorage('media')->getQuery();
+    $media_file_query = $this->entityTypeManager->getStorage('media')->getQuery()->accessCheck(TRUE);
     $media_file_query
-      ->accessCheck(TRUE)
       ->condition('bundle', 'file')
       ->condition('status', 1)
       ->condition('langcode', $current_language_id)

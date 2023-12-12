@@ -40,7 +40,6 @@ dependencies:
     - taxonomy.vocabulary.geographical_areas
     - taxonomy.vocabulary.keywords
     - taxonomy.vocabulary.life_situations
-    - taxonomy.vocabulary.mailing_lists
     - taxonomy.vocabulary.media_folders
     - taxonomy.vocabulary.minisites
     - taxonomy.vocabulary.notice_types
@@ -289,7 +288,6 @@ permissions:
   - 'create terms in geographical_areas'
   - 'create terms in keywords'
   - 'create terms in life_situations'
-  - 'create terms in mailing_lists'
   - 'create terms in media_folders'
   - 'create terms in minisites'
   - 'create terms in notice_types'
@@ -442,7 +440,6 @@ permissions:
   - 'delete terms in geographical_areas'
   - 'delete terms in keywords'
   - 'delete terms in life_situations'
-  - 'delete terms in mailing_lists'
   - 'delete terms in media_folders'
   - 'delete terms in minisites'
   - 'delete terms in notice_types'
@@ -519,7 +516,6 @@ permissions:
   - 'edit terms in geographical_areas'
   - 'edit terms in keywords'
   - 'edit terms in life_situations'
-  - 'edit terms in mailing_lists'
   - 'edit terms in media_folders'
   - 'edit terms in minisites'
   - 'edit terms in notice_types'

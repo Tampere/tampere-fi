@@ -1,0 +1,24 @@
+uuid: 6f53ec13-06f5-4892-9755-4ed4b5e369cf
+langcode: fi
+status: false
+dependencies:
+  config:
+    - facets.facet.site_domain
+  module:
+    - facets
+  theme:
+    - tampere
+id: site_domain_facet
+theme: tampere
+region: content
+weight: 0
+provider: null
+plugin: 'facet_block:site_domain'
+settings:
+  id: 'facet_block:site_domain'
+  label: 'Sivuston domain'
+  label_display: '0'
+  provider: facets
+  context_mapping: {  }
+  block_id: site_domain_facet
+visibility: {  }

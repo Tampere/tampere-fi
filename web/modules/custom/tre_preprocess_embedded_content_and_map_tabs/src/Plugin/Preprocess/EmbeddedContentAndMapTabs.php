@@ -212,7 +212,7 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
       return NULL;
     }
 
-    $node_query = $this->entityTypeManager->getStorage('node')->getQuery();
+    $node_query = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(TRUE);
 
     $has_content_type_specific_taxonomy_values_selected = !(count($content_type_specific_taxonomy_values, COUNT_RECURSIVE) <= count(array_keys($content_type_specific_taxonomy_values)));
     if ($has_content_type_specific_taxonomy_values_selected) {
@@ -243,10 +243,9 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
     }
 
     $node_query
-      ->accessCheck(TRUE)
       ->condition('status', NodeInterface::PUBLISHED)
       ->condition('langcode', $current_language_id)
-      ->range(0, 100)
+      ->range(0, 400)
       ->sort('title', 'ASC');
 
     $no_taxonomy_terms_selected = (count($taxonomy_values, COUNT_RECURSIVE) <= count(array_keys($taxonomy_values)));

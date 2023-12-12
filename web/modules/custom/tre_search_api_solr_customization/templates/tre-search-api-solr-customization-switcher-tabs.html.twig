@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the tre-search-api-solr-customization-switcher-tabs element.
+ *
+ * Available variables:
+ * - tabs: The tabs as an array. Each item includes:
+ *     - title: The title for the tab.
+ *   Each item can optionally include:
+ *     - url: The url the tab should link to.
+ *     - count: The result count for the search page.
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="search-api-switcher-tabs">
+  {% for tab in tabs %}
+    {% if tab.url %}
+      <a href="{{ tab.url }}">{{ tab.title }} {{ tab.count }}</a>
+    {% else %}
+      <span>{{ tab.title }}</span>
+    {% endif %}
+  {% endfor %}
+</div>

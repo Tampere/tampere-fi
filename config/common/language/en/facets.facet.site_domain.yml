@@ -1,0 +1,4 @@
+name: Site
+widget:
+  config:
+    reset_text: 'Show all'

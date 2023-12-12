@@ -17,9 +17,8 @@ function tre_preprocess_deploy_0001_balanced_content_liftup_new_link_field_autom
   $link_paragraph_type = 'internal_link';
 
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
-  $node_query = $node_storage->getQuery();
+  $node_query = $node_storage->getQuery()->accessCheck(FALSE);
   $node_query
-    ->accessCheck(FALSE)
     ->condition('field_paragraphs.entity.type', $liftup_paragraph_type);
   $node_ids = $node_query->execute();
   $node_id_chunks = array_chunk($node_ids, 50);

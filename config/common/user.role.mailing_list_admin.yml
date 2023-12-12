@@ -2,25 +2,21 @@ uuid: c328855b-d440-419e-9d42-fd41b7b58389
 langcode: fi
 status: true
 dependencies:
-  config:
-    - taxonomy.vocabulary.mailing_lists
   module:
     - content_moderation
     - content_translation
     - file
+    - group
     - system
-    - taxonomy
 id: mailing_list_admin
 label: 'Mediajakelulistojen ylläpitäjä'
 weight: -8
 is_admin: null
 permissions:
   - 'access administration pages'
-  - 'access taxonomy overview'
-  - 'create terms in mailing_lists'
+  - 'access group overview'
+  - 'create mailing_list group'
   - 'delete own files'
-  - 'delete terms in mailing_lists'
-  - 'edit terms in mailing_lists'
   - 'translate editable entities'
   - 'view any unpublished content'
   - 'view latest version'

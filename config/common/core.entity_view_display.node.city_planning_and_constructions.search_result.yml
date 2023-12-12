@@ -35,12 +35,12 @@ third_party_settings:
           field_templates: default
           variant: default-search
     regions:
-      listing_item__main_content:
+      listing_item__heading:
         - node_title
     fields:
       node_title:
         plugin_id: node_title
-        weight: 1
+        weight: 0
         label: hidden
         formatter: default
         settings:
@@ -49,11 +49,9 @@ third_party_settings:
           wrapper: ''
           class: ''
         ft:
-          id: default
+          id: reset
           settings:
             lb: ''
-            lb-col: false
-            classes: {  }
 id: node.city_planning_and_constructions.search_result
 targetEntityType: node
 bundle: city_planning_and_constructions

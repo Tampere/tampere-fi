@@ -111,9 +111,8 @@ class ContactInformationList extends TrePreProcessPluginBase {
       return NULL;
     }
 
-    $node_query = $this->entityTypeManager->getStorage('node')->getQuery();
+    $node_query = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(TRUE);
     $node_query
-      ->accessCheck(TRUE)
       ->condition('type', $content_types, 'IN')
       ->condition('status', 1)
       ->condition('langcode', $current_language_id)

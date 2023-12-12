@@ -13,9 +13,9 @@
     "lint-staged": "^13.1.0"
   },
   "lint-staged": {
-    "web/modules/custom/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --level 5"],
-    "web/themes/custom/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --level 5"],
-    "web/profiles/codebase/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --level 5"]
+    "web/modules/custom/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --memory-limit=2048M --level 5"],
+    "web/themes/custom/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --memory-limit=2048M --level 5"],
+    "web/profiles/codebase/**/*": ["vendor/bin/phpcs --standard=.phpcs.xml", "php vendor/bin/phpstan analyze --memory-limit=2048M --level 5"]
   },
   "scripts": {
     "prepare": "husky install"

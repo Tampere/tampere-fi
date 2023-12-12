@@ -31,12 +31,26 @@ class EventzClientCustomized extends EventzClient {
    *   List of all hosts.
    */
   public function getAllHosts() {
-    $result = json_decode(json_encode($this->search_organizers()), TRUE);
+    $all_results = [];
+    $results = [];
 
-    usort($result, function ($item1, $item2) {
+    $params = [
+      'size' => 500,
+      'skip' => 0,
+    ];
+
+    do {
+      $all_results = array_merge($all_results, $results);
+      $params['skip'] = count($all_results);
+      $results = json_decode(json_encode($this->search_organizers($params)), TRUE);
+
+    } while (!empty($results));
+
+    usort($all_results, function ($item1, $item2) {
       return $this->collatorFi->compare($item1['name'], $item2['name']);
     });
-    return $result;
+
+    return $all_results;
   }
 
   /**

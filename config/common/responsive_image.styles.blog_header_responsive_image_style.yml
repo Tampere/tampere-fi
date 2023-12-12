@@ -1,0 +1,16 @@
+uuid: e411c5e9-e4c9-4ebe-a92e-589ac985d7e6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - image.style.blog_header_large_view_mode
+id: blog_header_responsive_image_style
+label: 'Responsiivinen blogin ylätunniste'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: blog_header_large_view_mode
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: blog_header_large_view_mode

@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.search
   module:
+    - system
     - views
   theme:
     - tampere
@@ -20,4 +21,8 @@ settings:
   label_display: '0'
   provider: views
   views_label: ''
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /search-external

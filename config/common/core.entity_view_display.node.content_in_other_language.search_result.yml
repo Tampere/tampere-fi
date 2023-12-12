@@ -30,7 +30,7 @@ third_party_settings:
           field_templates: default
           variant: default
     regions:
-      listing_item__main_content:
+      listing_item__heading:
         - node_title
     fields:
       node_title:
@@ -38,6 +38,15 @@ third_party_settings:
         weight: 0
         label: hidden
         formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
 id: node.content_in_other_language.search_result
 targetEntityType: node
 bundle: content_in_other_language

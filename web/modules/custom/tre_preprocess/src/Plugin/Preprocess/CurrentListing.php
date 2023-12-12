@@ -287,9 +287,8 @@ class CurrentListing extends TrePreProcessPluginBase {
     $minisite_group_content_inclusion,
     array $nids_to_ignore = []
   ): ?array {
-    $node_query = $this->entityTypeManager->getStorage('node')->getQuery();
+    $node_query = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(TRUE);
     $node_query
-      ->accessCheck(TRUE)
       ->condition('type', $content_types, 'IN')
       ->condition('status', 1)
       ->condition('langcode', $current_language_id)

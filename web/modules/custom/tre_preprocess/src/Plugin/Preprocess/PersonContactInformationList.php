@@ -131,9 +131,8 @@ class PersonContactInformationList extends TrePreProcessPluginBase {
     string $condition_group = 'or'
   ): ?array {
 
-    $node_query = $this->entityTypeManager->getStorage('node')->getQuery();
+    $node_query = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(TRUE);
     $node_query
-      ->accessCheck(TRUE)
       ->condition('type', 'person')
       ->condition('status', 1)
       ->condition('langcode', $current_language_id)

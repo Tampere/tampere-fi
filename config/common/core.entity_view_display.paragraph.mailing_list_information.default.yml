@@ -3,7 +3,6 @@ langcode: fi
 status: true
 dependencies:
   config:
-    - field.field.paragraph.mailing_list_information.field_mailing_list
     - field.field.paragraph.mailing_list_information.field_mailing_list_group
     - field.field.paragraph.mailing_list_information.field_media_contact_person
     - field.field.paragraph.mailing_list_information.field_media_images
@@ -44,5 +43,4 @@ content:
     weight: 2
     region: content
 hidden:
-  field_mailing_list: true
   search_api_excerpt: true

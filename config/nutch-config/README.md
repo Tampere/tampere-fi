@@ -179,3 +179,11 @@ An example of an indexing command that will honor the URL filter changes:
 ```bash
 NUTCH_CONF="dev_fi" /opt/nutch/bin/nutch index "/opt/nutch/crawls/${NUTCH_CONF}/crawldb" -linkdb "/opt/nutch/crawls/${NUTCH_CONF}/linkdb" "/opt/nutch/crawls/${NUTCH_CONF}/segments"/* -deleteGone -filter
 ```
+
+## What happens when a URL that is in the search index starts giving a 4xx error (e.g. 404 Not Found)?
+
+We have a script, `remove-stale-solr-content.sh`, that can be used to remove 'stale' content (content that results in HTTP 4xx codes when accessed) from the search index. An example on how to run this script, if `/opt/nutch/conf` represents the directory where this script resides:
+
+```
+/opt/nutch/conf/remove-stale-solr-content.sh 'http://tamperetest.l:8985/solr/external'
+```

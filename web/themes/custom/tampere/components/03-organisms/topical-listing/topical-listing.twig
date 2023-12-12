@@ -34,6 +34,8 @@
  # - topical_listing__link__text - the link text for the topical listing link.
  # - topical_listing__link_icon__modifiers - array of modifiers to add to the base classname of the link icon.
  # - topical_listing__link__icon - the name of the icon to use on the link. Defaults to "arrow".
+ #
+ # - topical_listing__message_list - List of messages to be displayed, grouped by type.
  #}
 {% set topical_listing__base_class = "topical-listing" %}
 
@@ -111,6 +113,10 @@
         {% endfor %}
       {% endblock %}
     </{{ liftups_wrapper_element }}>
+    {# Error messages #}
+    {% include "@molecules/status/status.twig" with {
+      "message_list": topical_listing__message_list,
+    }%}
     {# Links #}
     {% if link_list__items %}
       {% include "@atoms/link-list/link-list.twig" with {

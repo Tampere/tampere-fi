@@ -26,7 +26,7 @@ display:
   page_1:
     display_title: Page
     display_options:
-      title: 'Search results'
+      title: 'Search results from Tampere.fi'
       exposed_form:
         options:
           submit_button: Search

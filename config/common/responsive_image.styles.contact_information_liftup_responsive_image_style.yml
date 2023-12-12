@@ -1,0 +1,16 @@
+uuid: 8886f78d-dc1f-41fd-939b-118dda926e73
+langcode: fi
+status: true
+dependencies:
+  config:
+    - image.style.contact_information_liftup_image_style
+id: contact_information_liftup_responsive_image_style
+label: 'Responsiivinen Yhteystietonosto'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: contact_information_liftup_image_style
+    breakpoint_id: responsive_image.viewport_sizing
+    multiplier: 1x
+breakpoint_group: responsive_image
+fallback_image_style: contact_information_liftup_image_style

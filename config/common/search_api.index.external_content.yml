@@ -1,0 +1,154 @@
+uuid: 393e9442-7f14-456e-96a2-dd618d5c5e95
+langcode: fi
+status: true
+dependencies:
+  config:
+    - search_api.server.solr_ext
+  module:
+    - search_api_solr
+    - search_api
+    - search_api_mapping
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    debug_finalize: false
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 1
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+      use_language_undefined_as_fallback_language: false
+      specific_languages:
+        fi: '0'
+        en: '0'
+      use_universal_collation: false
+id: external_content
+name: 'Ulkoinen sisältö'
+description: ''
+read_only: true
+field_settings:
+  external_doc_title:
+    label: 'External document title to use in Views'
+    datasource_id: solr_document
+    property_path: external_doc_title
+    type: solr_string_storage
+  external_doc_uri:
+    label: 'External doc uri'
+    datasource_id: solr_document
+    property_path: external_doc_uri
+    type: solr_string_storage
+  sm_mapped_content_type:
+    label: 'Site domain'
+    datasource_id: solr_document
+    property_path: sm_mapped_content_type
+    type: string
+  timestamp:
+    label: Timestamp
+    datasource_id: solr_document
+    property_path: timestamp
+    type: date
+  tm_x3b_en_rendered_item:
+    label: 'External document content (en)'
+    datasource_id: solr_document
+    property_path: tm_X3b_en_rendered_item
+    type: text
+  tm_x3b_en_title:
+    label: 'External document title (en)'
+    datasource_id: solr_document
+    property_path: tm_X3b_en_title
+    type: text
+  tm_x3b_fi_rendered_item:
+    label: 'External document content (fi)'
+    datasource_id: solr_document
+    property_path: tm_X3b_fi_rendered_item
+    type: text
+  tm_x3b_fi_title:
+    label: 'External document title (fi)'
+    datasource_id: solr_document
+    property_path: tm_X3b_fi_title
+    type: text
+datasource_settings:
+  solr_document:
+    id_field: id
+    request_handler: ''
+    default_query: 'external_doc_uri:*'
+    label_field: external_doc_title
+    language_field: ss_search_api_language
+    url_field: external_doc_uri
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  double_quote_workaround:
+    weights:
+      postprocess_query: 0
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: true
+    fields:
+      - external_doc_title
+      - external_doc_uri
+      - sm_mapped_content_type
+      - tm_x3b_en_rendered_item
+      - tm_x3b_en_title
+      - tm_x3b_fi_rendered_item
+      - tm_x3b_fi_title
+    replacement: '|9999999998|'
+  entity_type: {  }
+  language_with_fallback: {  }
+  mapped_field: {  }
+  rendered_item: {  }
+  solr_boost_more_recent:
+    weights:
+      preprocess_query: 0
+    boosts:
+      timestamp:
+        boost: 1.0
+        resolution: NOW/DAY
+        m: '3.16e-11'
+        a: 0.1
+        b: 0.05
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  index_directly: false
+  track_changes_in_references: false
+server: solr_ext

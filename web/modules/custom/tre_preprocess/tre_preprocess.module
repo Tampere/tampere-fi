@@ -6,8 +6,10 @@
  */
 
 use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Entity\RevisionableStorageInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
@@ -18,12 +20,63 @@ use Drupal\views\ViewExecutable;
  */
 function tre_preprocess_views_pre_build(ViewExecutable $view) {
   $view_name = $view->id();
-  if ($view_name !== 'current_content_archive') {
-    // If we're not dealing with the correct view or any of the displays, no
-    // modification in the view is desired.
-    return;
+
+  switch ($view_name) {
+    case 'current_content_archive':
+      return _tre_preprocess_views_pre_build_current_content_archive($view);
+
+    case 'search':
+      return _tre_preprocess_views_pre_build_search($view);
+
   }
 
+}
+
+/**
+ * Helper for hook_views_pre_view().
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ *   The view to alter.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _tre_preprocess_views_pre_build_search(ViewExecutable $view) {
+  if (isset($view->args[0]) && $view->args[0] !== 'all') {
+    $title = _tre_preprocess_minisite_search_title();
+    $view->getDisplay()->setOption('title', $title);
+    $view->setTitle($title);
+    $route = \Drupal::service('current_route_match')->getRouteObject();
+    // Sets <head><title>.
+    $route->setDefault('_title_callback', function () use ($title) {
+      return $title;
+    });
+
+  }
+  return TRUE;
+}
+
+/**
+ * Helper for the title of the minisite search page.
+ *
+ * @return \Drupal\Core\StringTranslation\TranslatableMarkup
+ *   The translated title for the minisite search page.
+ */
+function _tre_preprocess_minisite_search_title(): TranslatableMarkup {
+  $title = new TranslatableMarkup('Search results');
+  return $title;
+}
+
+/**
+ * Helper for hook_views_pre_view().
+ *
+ * @param \Drupal\views\ViewExecutable $view
+ *   The view to alter.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _tre_preprocess_views_pre_build_current_content_archive(ViewExecutable $view) {
   if (!isset($view->args[0])) {
     return _tre_preprocess_reset_views_args($view);
   }
@@ -33,7 +86,7 @@ function tre_preprocess_views_pre_build(ViewExecutable $view) {
     return _tre_preprocess_reset_views_args($view);
   }
 
-  $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph_revision_id);
+  $paragraph = _tre_preprocess_get_paragraph_by_revision($paragraph_revision_id);
   if (!($paragraph instanceof ParagraphInterface)) {
     return _tre_preprocess_reset_views_args($view);
   }
@@ -52,6 +105,28 @@ function tre_preprocess_views_pre_build(ViewExecutable $view) {
   }
 
   $view->setArguments([implode('+', $node_ids)]);
+}
+
+/**
+ * Gets a paragraph based on its revision ID.
+ *
+ * @param int $paragraph_revision_id
+ *   The revision ID.
+ *
+ * @return \Drupal\paragraphs\ParagraphInterface|null
+ *   The paragraph or null if not found.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _tre_preprocess_get_paragraph_by_revision(int $paragraph_revision_id): ?ParagraphInterface {
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $paragraph = NULL;
+  if ($paragraph_storage instanceof RevisionableStorageInterface) {
+    $paragraph = $paragraph_storage->loadRevision($paragraph_revision_id);
+  }
+
+  return $paragraph instanceof ParagraphInterface ? $paragraph : NULL;
 }
 
 /**
@@ -119,6 +194,24 @@ function _tre_preprocess_get_current_archive_routes(): array {
  * @see \Drupal\tre_preprocess\Plugin\Preprocess\CurrentListing::preprocess()
  */
 function tre_preprocess_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
+  // Handle minisite search breadcrumb. For some reason altering the view's
+  // title (even in hook_views_pre_view) has no effect on breadcrumb, only on
+  // the title of the page. The 'search' view has a contextual filter
+  // ('argument') named %group which can be accessed by name as a route
+  // parameter.
+  $view_id = $route_match->getParameter('view_id');
+  $group = $route_match->getParameter('group');
+
+  if ($view_id === 'search' && $group !== 'all') {
+    foreach ($breadcrumb->getLinks() as $link) {
+      if ($link->getText() === 'Hakutulokset Tampere.fi:stä' || $link->getText() === 'Search results from Tampere.fi') {
+        $link->setText(_tre_preprocess_minisite_search_title());
+      }
+    }
+    return;
+  }
+
+  // Handle current_archive view breadcrumbs.
   $text = NULL;
   $url = NULL;
   // Because the original breadcrumb's links cannot be switched, we need to
@@ -131,7 +224,7 @@ function tre_preprocess_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMa
     // page URL with a paragraph ID set.
     $paragraph_revision_id = $route_match->getParameter('arg_0');
     if (!empty($paragraph_revision_id)) {
-      $paragraph = \Drupal::entityTypeManager()->getStorage('paragraph')->loadRevision($paragraph_revision_id);
+      $paragraph = _tre_preprocess_get_paragraph_by_revision($paragraph_revision_id);
       if ($paragraph instanceof ParagraphInterface) {
         $host_entity = $paragraph->getParentEntity();
         if ($host_entity instanceof NodeInterface) {

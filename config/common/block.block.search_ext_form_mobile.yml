@@ -1,0 +1,28 @@
+uuid: 8335cacd-8311-4a13-b127-a60cef9b7690
+langcode: fi
+status: true
+dependencies:
+  config:
+    - views.view.search_ext
+  module:
+    - system
+    - views
+  theme:
+    - tampere
+id: search_ext_form_mobile
+theme: tampere
+region: header
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:search_ext-page_1'
+settings:
+  id: 'views_exposed_filter_block:search_ext-page_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search-external

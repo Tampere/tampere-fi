@@ -6,7 +6,7 @@ mirror_operations:
   'add scheduled transition': update
   'reschedule scheduled transitions': update
 automation:
-  cron_create_queue_items: true
+  cron_create_queue_items: false
 bundles:
   -
     entity_type: node

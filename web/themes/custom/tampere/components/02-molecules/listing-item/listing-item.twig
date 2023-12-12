@@ -1,3 +1,36 @@
+{#
+/**
+ * Available variables:
+ * - listing_item__base_class - base classname of the wrapper.
+ * - listing_item__modifiers - array of modifiers to add to the base classname of the wrapper.
+ * - listing_item__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ * - listing_item__extra_classes - array of extra classes to add to the wrapper.
+ * - listing_item__attributes - array of attributes to add to the wrapper.
+ *
+ * - variant - pattern variant name as a string if used in pattern context.
+ *
+ * - listing_item__url - the URL the link should point to.
+ * - listing_item__palette - name of the color palette as a string for the component color identifier.
+ * - listing_item__element - element to use for the wrapper component. Defaults to "div".
+ * - listing_item__type - content for the type container.
+ *
+ * - listing_item__heading - heading content for the component.
+ * - listing_item__main_content - main content for the component.
+ * - listing_item__breadcrumbs - breadcrumb items for the component.
+ * - listing_item__additional_information - additional information content for the component.
+ *
+ * - listing_item__link__modifiers - array of modifier to add to the base classname of the link element.
+ *
+ * - listing_item__icon_name - name of the link icon to use in the component when displayed as a link. Defaults to "arrow".
+ *
+ * - listing_item__email_address - email address for the component.
+ * - listing_item__email_address__modifiers - array of modifiers to add to the email address component.
+ * - listing_item__contact__link_text - link text to use for email address link. Defaults to "Contact us".
+ *
+ * - listing_item__link__aria_label - alternative description for link component without link text.
+ */
+#}
+
 {% set listing_item__base_class = "listing-item" %}
 
 {% if not listing_item__modifiers %}
@@ -12,6 +45,10 @@
 
   {% if is_search_result %}
     {% set listing_item__modifiers = listing_item__modifiers|merge([ "link-wrapper" ]) %}
+  {% endif %}
+
+  {% if variant == "external-search" %}
+    {% set listing_item__icon_name = "external" %}
   {% endif %}
 {% endif %}
 
@@ -60,6 +97,15 @@
 
   <div {{ bem("content-wrapper", listing_item__content_wrapper__modifiers|default([]), listing_item__base_class) }}>
     <div {{ bem("main-content", listing_item__main_content__modifiers|default([]), listing_item__base_class, [ "hyphenate" ]) }}>
+      {% if listing_item__heading %}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          "heading_blockname": listing_item__base_class,
+          "heading_level": 3,
+          "heading_modifiers": listing_item__heading__modifiers,
+          "heading": listing_item__heading,
+        } %}
+      {% endif %}
+
       {{ listing_item__main_content }}
 
       {% if is_search_result and listing_item__breadcrumbs %}
@@ -108,6 +154,6 @@
     {% if "person" in listing_item__modifiers %}
       </div>
     {% endif %}
-    
+
   </div>
 </{{ listing_item__element }}>

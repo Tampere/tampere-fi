@@ -3,7 +3,6 @@ langcode: fi
 status: true
 dependencies:
   config:
-    - field.field.paragraph.mailing_list_information.field_mailing_list
     - field.field.paragraph.mailing_list_information.field_mailing_list_group
     - field.field.paragraph.mailing_list_information.field_media_contact_person
     - field.field.paragraph.mailing_list_information.field_media_images
@@ -50,5 +49,4 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
-  field_mailing_list: true
   status: true

@@ -16,10 +16,12 @@ dependencies:
     - field.field.media.image.field_plan_numbers
     - field.field.media.image.field_record_numbers
     - field.field.media.image.field_topics
-    - image.style.thumbnail_embed_image_style
     - media.type.image
+    - responsive_image.styles.small_image_embed_responsive_image_style
   module:
-    - image
+    - ds
+    - lazy
+    - responsive_image
 _core:
   default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
 id: media.image.small_image_embed_view_mode
@@ -28,14 +30,25 @@ bundle: image
 mode: small_image_embed_view_mode
 content:
   field_media_image:
-    type: image
+    type: responsive_image
     label: hidden
     settings:
+      responsive_image_style: small_image_embed_responsive_image_style
       image_link: ''
-      image_style: thumbnail_embed_image_style
       image_loading:
         attribute: lazy
-    third_party_settings: {  }
+    third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
     weight: 0
     region: content
 hidden:

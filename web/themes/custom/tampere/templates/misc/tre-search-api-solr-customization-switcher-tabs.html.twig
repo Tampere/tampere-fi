@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the tre-search-api-solr-customization-switcher-tabs element.
+ *
+ * Available variables:
+ * - tabs: The tabs as an array. Each item includes:
+ *     - title: The title for the tab.
+ *   Each item can optionally include:
+ *     - url: The url the tab should link to.
+ *     - count: The result count for the search page.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% include "@molecules/search-switcher/_search-switcher-tabs.twig" with {
+  "search_switcher_tabs": tabs,
+} %}

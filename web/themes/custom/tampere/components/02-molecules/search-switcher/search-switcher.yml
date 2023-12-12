@@ -1,0 +1,6 @@
+search_switcher_tabs:
+  - title: "Search results from Tampere.fi"
+  - title: "Search results from other sites of the city"
+    url: "#"
+    count: 120
+search_switcher_content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"

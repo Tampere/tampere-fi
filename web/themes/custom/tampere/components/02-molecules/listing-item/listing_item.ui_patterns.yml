@@ -11,11 +11,19 @@ listing_item:
       label: Default search result
     contact-search:
       label: Contact search result
+    external-search:
+      label: External search result
   fields:
     listing_item__type:
       label: Content type
+    listing_item__heading:
+      label: Heading
     listing_item__main_content:
       label: Main content
+    listing_item__breadcrumbs:
+      label: Breadcrumbs
     listing_item__additional_information:
       label: Additional information
+    listing_item__url:
+      label: Link URL
   use: "@molecules/listing-item/listing-item.twig"

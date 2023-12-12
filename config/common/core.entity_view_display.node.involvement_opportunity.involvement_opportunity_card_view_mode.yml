@@ -79,52 +79,52 @@ content:
       address_display:
         organization:
           glue: ''
-          weight: '-10'
-          display: 0
+          weight: -10
+          display: false
         address_line1:
-          display: '1'
           glue: ''
-          weight: '-9'
+          weight: -9
+          display: true
         address_line2:
-          display: '1'
           glue: ','
-          weight: '-8'
+          weight: -8
+          display: true
         postal_code:
-          display: '1'
           glue: ''
-          weight: '-7'
+          weight: -7
+          display: true
         locality:
-          display: '1'
           glue: ''
-          weight: '-6'
+          weight: -6
+          display: true
         country_code:
           glue: ''
-          weight: '-5'
-          display: 0
+          weight: -5
+          display: false
         langcode:
           glue: ','
-          weight: '-4'
-          display: 0
+          weight: -4
+          display: false
         administrative_area:
           glue: ','
-          weight: '-3'
-          display: 0
+          weight: -3
+          display: false
         dependent_locality:
           glue: ','
-          weight: '-2'
-          display: 0
+          weight: -2
+          display: false
         sorting_code:
           glue: ','
-          weight: '-1'
-          display: 0
+          weight: -1
+          display: false
         given_name:
           glue: ''
-          weight: '0'
-          display: 0
+          weight: 0
+          display: false
         family_name:
           glue: ','
-          weight: '1'
-          display: 0
+          weight: 1
+          display: false
     third_party_settings:
       ds:
         ft:

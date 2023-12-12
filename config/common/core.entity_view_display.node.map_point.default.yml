@@ -34,53 +34,53 @@ content:
     settings:
       address_display:
         organization:
-          display: '1'
           glue: ''
-          weight: '-1'
+          weight: -1
+          display: true
         address_line1:
-          display: '1'
           glue: ''
-          weight: '0'
+          weight: 0
+          display: true
         address_line2:
-          display: '1'
           glue: ','
-          weight: '1'
+          weight: 1
+          display: true
         locality:
-          display: '1'
           glue: ','
-          weight: '2'
+          weight: 2
+          display: true
         postal_code:
-          display: '1'
           glue: ''
-          weight: '3'
+          weight: 3
+          display: true
         country_code:
           glue: ''
-          weight: '4'
-          display: 0
+          weight: 4
+          display: false
         langcode:
           glue: ','
-          weight: '100'
-          display: 0
+          weight: 100
+          display: false
         administrative_area:
           glue: ','
-          weight: '100'
-          display: 0
+          weight: 100
+          display: false
         dependent_locality:
           glue: ','
-          weight: '100'
-          display: 0
+          weight: 100
+          display: false
         sorting_code:
           glue: ','
-          weight: '100'
-          display: 0
+          weight: 100
+          display: false
         given_name:
-          display: '1'
           glue: ''
-          weight: '100'
+          weight: 100
+          display: true
         family_name:
-          display: '1'
           glue: ','
-          weight: '100'
+          weight: 100
+          display: true
     third_party_settings:
       ds:
         ft:

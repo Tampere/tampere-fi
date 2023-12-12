@@ -60,5 +60,21 @@
 #     172.16.0.0/12
 #-^https?://(?:172\.(?:1[6789]|2[0-9]|3[01])(?:\.(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))){2})(?::\d+)?(?:/|$)
 
-# accept domain valoviikot.tampere.fi, tampereenpaiva.tampere.fi, www.muumimuseo.fi, www.tredu.fi, www.vapriikki.fi
-+^https?://(valoviikot\.tampere\.fi|tampereenpaiva\.tampere\.fi|www\.muumimuseo\.fi|www\.tredu\.fi|www\.vapriikki\.fi)/
+# accept domains listed in urls_fi/seed.txt
++^https://www\.muumimuseo\.fi/
++^https://www\.tamperefilharmonia\.fi/
++^https://www\.operaatiopirkanmaa\.fi/
++^https://www\.sarahildenintaidemuseo\.fi/
++^https://www\.tampereentaidemuseo\.fi/
++^https://www\.tredu\.fi/
++^https://www\.amurinmuseokortteli\.fi/
++^https://www\.vapriikki\.fi/
++^https://www\.museomilavida\.fi/
++^https://kiekonkoti\.tampere\.fi/
++^https://tampereenpaiva\.tampere\.fi/
++^https://puistokonsertit\.tampere\.fi/
++^https://valoviikot\.tampere\.fi/
++^https://seutumuseo\.tampere\.fi/
++^https://kesakeidas\.tampere\.fi/
++^https://puistofiesta\.tampere\.fi/
++^https://internationalhouse\.tampere\.fi/

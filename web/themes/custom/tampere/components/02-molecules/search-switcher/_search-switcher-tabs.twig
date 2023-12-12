@@ -1,0 +1,37 @@
+{% set search_switcher__base_class = search_switcher_base_class|default("search-switcher") %}
+
+{% for tab in search_switcher_tabs %}
+  {% set search_switcher__tab__modifiers = [] %}
+  {% set search_switcher__tab_title__modifiers = [] %}
+
+  {% if not tab.url %}
+    {% set search_switcher__tab__modifiers = search_switcher__tab__modifiers|merge([ "current" ]) %}
+  {% endif %}
+
+  {% if tab.count is not null %}
+    {% set search_switcher__tab_title__modifiers = search_switcher__tab_title__modifiers|merge([ "with-count" ]) %}
+  {% endif %}
+
+  <div {{ bem("tab", search_switcher__tab__modifiers, search_switcher__base_class) }}>
+    {% if tab.url %}
+      <a
+        href="{{ tab.url }}"
+        {{ bem("link", search_switcher__link__modifiers|default([]), search_switcher__base_class) }}
+      >
+    {% endif %}
+
+    <span {{ bem("tab-title", search_switcher__tab_title__modifiers, search_switcher__base_class) }}>
+      {{ tab.title }}
+    </span>
+
+    {% if tab.count is not null %}
+      <span {{ bem("count", search_switcher__count__modifiers|default([]), search_switcher__base_class) }}>
+        {{ tab.count }}
+      </span>
+    {% endif %}
+
+    {% if tab.url %}
+      </a>
+    {% endif %}
+  </div>
+{% endfor %}

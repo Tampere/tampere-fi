@@ -1,0 +1,17 @@
+{% set search_switcher__base_class = search_switcher_base_class|default("search-switcher") %}
+
+<div {{ bem(search_switcher__base_class, search_switcher__modifiers|default([]), search_switcher__blockname) }}>
+  <div {{ bem("tabs", search_switcher__tabs__modifiers|default([]), search_switcher__base_class) }}>
+    {% block search_switcher_tabs %}
+      {% include "@molecules/search-switcher/_search-switcher-tabs.twig" with {
+        "search_switcher_tabs": search_switcher_tabs,
+      } %}
+    {% endblock %}
+  </div>
+
+  <div {{ bem("content", search_switcher__content__modifiers|default([]), search_switcher__base_class) }}>
+    {% block search_switcher_content %}
+      {{ search_switcher_content }}
+    {% endblock %}
+  </div>
+</div>

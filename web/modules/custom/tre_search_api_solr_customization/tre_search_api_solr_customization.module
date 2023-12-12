@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for tre_search_api_solr_customizations module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function tre_search_api_solr_customization_theme($existing, $type, $theme, $path) {
+  return [
+    'tre_search_api_solr_customization_switcher_tabs' => [
+      'variables' => [
+        'tabs' => NULL,
+      ],
+    ],
+  ];
+}

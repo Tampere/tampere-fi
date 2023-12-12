@@ -208,6 +208,7 @@ final class JsonApiReplacementBatch extends DrushCommands {
       'field_first_names' => $node->get('field_first_names')->getString(),
       'field_last_name' => $node->get('field_last_name')->getString(),
       'field_hr_title' => ['name' => $this->getReferenceLabel($node, 'field_hr_title')],
+      'field_email' => $node->get('field_email')->getString(),
       // See https://github.com/mglaman/phpstan-drupal/issues/147
       // @phpstan-ignore-next-line
       'field_additional_information' => $node->get('field_additional_information')->processed,
@@ -216,6 +217,9 @@ final class JsonApiReplacementBatch extends DrushCommands {
       'field_hr_cost_center' => ['name' => $this->getReferenceLabel($node, 'field_hr_cost_center')],
       'field_hr_organizational_unit' => ['name' => $this->getReferenceLabel($node, 'field_hr_organizational_unit')],
       'field_place' => ['title' => $this->getReferenceLabel($node, 'field_place')],
+      'field_phone' => $node->get('field_phone')->getString(),
+      'field_phone_supplementary' => $node->get('field_phone_supplementary')->isEmpty() ? NULL : $node->get('field_phone_supplementary')->getString(),
+      'field_additional_phones' => $node->get('field_additional_phones')->isEmpty() ? NULL : $node->get('field_additional_phones')->getValue(),
     ];
   }
 

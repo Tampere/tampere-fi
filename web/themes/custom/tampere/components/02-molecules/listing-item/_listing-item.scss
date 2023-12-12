@@ -211,8 +211,9 @@ $listing-item-person-link-column-min-width: 295px;
 
   }
 
+  &--contact-search,
   &--default-search,
-  &--contact-search {
+  &--external-search {
     position: relative;
 
     @include large-down {
@@ -259,20 +260,6 @@ $listing-item-person-link-column-min-width: 295px;
     }
   }
 
-  &--default-search {
-    --border-color: #{clr(primary)};
-
-    &:hover,
-    &:focus {
-      @include large {
-        #{$base_class}__type {
-          color: clr(text-inverse);
-          background-color: clr(primary);
-        }
-      }
-    }
-  }
-
   &--contact-search {
     --border-color: #{clr(accent-tertiary)};
 
@@ -281,6 +268,21 @@ $listing-item-person-link-column-min-width: 295px;
       @include large {
         #{$base_class}__type {
           background-color: clr(accent-tertiary);
+        }
+      }
+    }
+  }
+
+  &--default-search,
+  &--external-search {
+    --border-color: #{clr(primary)};
+
+    &:hover,
+    &:focus {
+      @include large {
+        #{$base_class}__type {
+          color: clr(text-inverse);
+          background-color: clr(primary);
         }
       }
     }
@@ -296,7 +298,7 @@ $listing-item-person-link-column-min-width: 295px;
     &--palette-#{$i} {
       $color: map-get($palette, "secondary");
       $primary-color: map-get($palette, "primary");
-      
+
       --border-color: #{$color};
 
       &:hover,

@@ -70,14 +70,16 @@
           {{ parent() }}
         {% endif %}
       {% endblock %}
-    
+
 
     {% block header_search %}
       {{ elements.search_form }}
+      {{ elements.search_ext_form }}
     {% endblock %}
 
     {% block header_mobile_search %}
       {{ elements.search_form_mobile }}
+      {{ elements.search_ext_form_mobile }}
     {% endblock %}
 
     {% block header_mobile_language_switcher %}
@@ -149,6 +151,7 @@
 
     {% block header_search %}
       {{ elements.search_form }}
+      {{ elements.search_ext_form }}
     {% endblock %}
 
     {% block header_mobile_language_switcher %}
@@ -157,6 +160,7 @@
 
     {% block header_search_mobile %}
       {{ elements.search_form_mobile }}
+      {{ elements.search_ext_form_mobile }}
     {% endblock %}
   {% endembed %}
 {% endif %}

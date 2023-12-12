@@ -74,7 +74,7 @@ final class ZoningInformationController extends ControllerBase {
       // number. One plan number should only be attached to one node, but the
       // most recent one should be selected in case there are multiple.
       $node_storage = $this->entityTypeManager->getStorage('node');
-      $node_ids = $node_storage->getQuery()
+      $node_ids = $node_storage->getQuery()->accessCheck(TRUE)
         ->condition('field_plan_number.entity.name', $plan_number)
         ->condition('status', 1)
         ->condition('type', 'zoning_information')

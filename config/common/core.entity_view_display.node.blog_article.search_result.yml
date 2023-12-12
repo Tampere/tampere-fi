@@ -41,8 +41,9 @@ third_party_settings:
           field_templates: default
           variant: default-search
     regions:
-      listing_item__main_content:
+      listing_item__heading:
         - node_title
+      listing_item__main_content:
         - published_at
     fields:
       node_title:
@@ -56,11 +57,9 @@ third_party_settings:
           wrapper: ''
           class: ''
         ft:
-          id: default
+          id: reset
           settings:
             lb: ''
-            lb-col: false
-            classes: {  }
 id: node.blog_article.search_result
 targetEntityType: node
 bundle: blog_article

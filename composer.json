@@ -269,7 +269,7 @@
         "drupal/imagecache_external": "^3.0",
         "drupal/jquery_ui_slider": "^2.0.0",
         "drupal/jsonapi_boost": "^2.0",
-        "drupal/jsonapi_extras": "^3.21",
+        "drupal/jsonapi_extras": "^3.24",
         "drupal/jsonapi_image_styles": "^3.0",
         "drupal/jsonapi_include": "^1.5",
         "drupal/language_switcher_extended": "^1.0@beta",
@@ -532,7 +532,8 @@
                 "Prevent displaying adjacent commas with empty values": "patches/office_hours_remove_empty_values_from_comments_to_prevent_displaying_adjacent_commas.diff"
             },
             "drupal/paragraphs": {
-                "3027525: Show the paragraph and field label of fields that fail validation": "https://www.drupal.org/files/issues/2023-10-03/3027525_22.patch"
+                "3027525: Show the paragraph and field label of fields that fail validation": "https://www.drupal.org/files/issues/2023-10-03/3027525_22.patch",
+                "3179817: Use label instead of key in paragraph summary for List (text) fields": "https://www.drupal.org/files/issues/2023-09-27/paragraphs-use_label_instead_key_in_summary_for_string_list_fields-3179817-9_0.patch"
             },
             "drupal/paragraphs_asymmetric_translation_widgets": {
                 "#3358805: EntityStorageException on paragraphs_asymmetric_translation_widgets_entity_translation_delete entityQuery": "https://www.drupal.org/files/issues/2023-05-08/paragraphs_asymmetric_translation_widgets-entity-query-access-3358805-2.patch"

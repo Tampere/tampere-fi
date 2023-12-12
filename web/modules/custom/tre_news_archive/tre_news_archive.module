@@ -47,7 +47,7 @@ function _tre_news_archive_archive_news(DrupalDateTime $now) {
   $archive_date_range_start_string = sprintf('%s-01-01T00:00:00', (string) $the_year_before_last);
   $archive_date_range_start = new DrupalDateTime($archive_date_range_start_string, 'UTC');
 
-  $nids_to_archive_fi = _tre_news_archive_get_news_nids_by_date_range('fi' ,$archive_date_range_start, $archive_date_range_end);
+  $nids_to_archive_fi = _tre_news_archive_get_news_nids_by_date_range('fi', $archive_date_range_start, $archive_date_range_end);
 
   if ($nids_to_archive_fi) {
     foreach ($nids_to_archive_fi as $nid) {
@@ -56,7 +56,7 @@ function _tre_news_archive_archive_news(DrupalDateTime $now) {
     }
   }
 
-  $nids_to_archive_en = _tre_news_archive_get_news_nids_by_date_range('en' ,$archive_date_range_start, $archive_date_range_end);
+  $nids_to_archive_en = _tre_news_archive_get_news_nids_by_date_range('en', $archive_date_range_start, $archive_date_range_end);
 
   if ($nids_to_archive_en) {
     foreach ($nids_to_archive_en as $nid) {
@@ -118,7 +118,7 @@ function _tre_news_archive_news_to_pdf(DrupalDateTime $now, bool $save_last_year
     $date_range_start_string = sprintf('%s-01-01T00:00:00', $current_year);
     $date_range_start = new DrupalDateTime($date_range_start_string, 'UTC');
 
-    $nids_to_save_fi = _tre_news_archive_get_news_nids_by_date_range('fi' ,$date_range_start, $date_range_end);
+    $nids_to_save_fi = _tre_news_archive_get_news_nids_by_date_range('fi', $date_range_start, $date_range_end);
     $nids_to_save_en = _tre_news_archive_get_news_nids_by_date_range('en', $date_range_start, $date_range_end);
     $filename = '';
     $new_date = new DrupalDateTime('now');
@@ -150,7 +150,7 @@ function _tre_news_archive_news_to_pdf(DrupalDateTime $now, bool $save_last_year
  *   Name of the file.
  * @param string $directory
  *   Name of the directory.
- * @param bool $nids_to_save
+ * @param array $nids_to_save
  *   Node id's that are wanted to save.
  * @param string $lang_code
  *   Language code which node language version is supposed to be saved.
@@ -174,7 +174,7 @@ function _tre_news_archive_nids_to_mpdf(string $filename, string $directory, arr
   $stylesheet = file_get_contents('modules/custom/tre_news_archive/css/pdf.css');
   $mpdf->WriteHTML($stylesheet, 1);
 
-  if ($nids_to_save) {
+  if (is_array($nids_to_save)) {
     foreach ($nids_to_save as $key => $nid) {
       $news_item = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
@@ -190,7 +190,7 @@ function _tre_news_archive_nids_to_mpdf(string $filename, string $directory, arr
           // Add actual html.
           $markup = \Drupal::service('tre_jsonapi_custom.entity_renderer')->renderEntity($translation, 'pdf', $lang_code);
           $html_string = str_replace("<svg", "<img", $markup);
-          $mpdf->WriteHtml($html_string , 2);
+          $mpdf->WriteHtml($html_string, 2);
         }
       }
     }
@@ -218,14 +218,13 @@ function _tre_news_archive_nids_to_mpdf(string $filename, string $directory, arr
 function _tre_news_archive_get_news_nids_by_date_range(string $lang_code, DrupalDateTime $date_range_start, DrupalDateTime $date_range_end): array {
   $content_type = 'news_item';
 
-  $query = \Drupal::entityQuery('node');
+  $query = \Drupal::entityQuery('node')->accessCheck(FALSE);
   $query->condition('type', $content_type, '=');
   $query->condition('langcode', $lang_code);
   $query->condition('published_at', $date_range_end->format('U'), '<', $lang_code);
   $query->condition('published_at', $date_range_start->format('U'), '>=', $lang_code);
   $query->condition('status', NodeInterface::PUBLISHED, '=', $lang_code);
   $query->sort('published_at', 'DESC', $lang_code);
-  $query->accessCheck(FALSE);
   return $query->execute();
 }
 

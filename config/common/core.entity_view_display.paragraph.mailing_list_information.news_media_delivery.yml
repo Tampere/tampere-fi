@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.paragraph.news_media_delivery
-    - field.field.paragraph.mailing_list_information.field_mailing_list
     - field.field.paragraph.mailing_list_information.field_mailing_list_group
     - field.field.paragraph.mailing_list_information.field_media_contact_person
     - field.field.paragraph.mailing_list_information.field_media_images
@@ -79,6 +78,5 @@ content:
     weight: 1
     region: ds_content
 hidden:
-  field_mailing_list: true
   field_mailing_list_group: true
   search_api_excerpt: true

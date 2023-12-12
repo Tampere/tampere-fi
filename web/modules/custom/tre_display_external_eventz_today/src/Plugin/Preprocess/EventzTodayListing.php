@@ -37,16 +37,22 @@ class EventzTodayListing extends TrePreProcessPluginBase {
 
   const SUMMARY_LENGTH = 200;
 
-  const TYPES_LOOKUP_FI = [
-    "virtual" => "virtuaali",
-    "free" => "maksuton",
-    "accessible" => "esteetön",
+  const TYPES_LOOKUP = [
+    'fi' => [
+      "virtual" => "virtuaali",
+      "free" => "maksuton",
+      "accessible" => "esteetön",
+    ],
+    'en' => [
+      "virtual" => "virtual",
+      "free" => "free of charge",
+      "accessible" => "accessible",
+    ],
   ];
 
-  const TYPES_LOOKUP_EN = [
-    "virtual" => "virtual",
-    "free" => "free of charge",
-    "accessible" => "accessible",
+  const CUSTOM_ERROR_MESSAGE = [
+    'en' => 'Problems in fetching events.',
+    'fi' => 'Virhetilanne: Tapahtumia ei voida hakea.',
   ];
 
   /**
@@ -152,16 +158,9 @@ class EventzTodayListing extends TrePreProcessPluginBase {
 
     $this->desiredLanguage = $translated_paragraph->get('langcode')->getString();
 
-    if ($this->desiredLanguage == 'fi') {
-      $type_list = array_map(function ($item) {
-        return self::TYPES_LOOKUP_FI[$item];
-      }, $type_list);
-    }
-    else {
-      $type_list = array_map(function ($item) {
-        return self::TYPES_LOOKUP_EN[$item];
-      }, $type_list);
-    }
+    $type_list = array_map(function ($item) {
+      return self::TYPES_LOOKUP[$this->desiredLanguage][$item];
+    }, $type_list);
 
     $variables['featured_liftup_exists'] = !$translated_paragraph->get('field_eventz_featured_event_id')->isEmpty();
     $desired_featured_event = NULL;
@@ -239,26 +238,32 @@ class EventzTodayListing extends TrePreProcessPluginBase {
       $variables['featured_liftup_exists'] = TRUE;
     }
 
-    $previous_total_events = 0;
-    $results = [];
+    $all_results = [];
+    $show_error = FALSE;
+    $number_of_fetched_events = 0;
 
     // Continue fetching more events until the total number of
-    // events left after the exclusion is enough.
-    while (count($results) < $max_num_events) {
-      $all_results = $this->fetchEvents($api_parameters);
+    // events left after the exclusion and inclusion is enough.
+    while (count($all_results) < $max_num_events) {
+      // To improve the performance, in every interation only fetch new data,
+      // and add it to the old result.
+      $api_parameters["skip"] = $number_of_fetched_events;
+      $response = $this->fetchEvents($api_parameters);
 
-      // If the total number of events from API equals the previous
-      // number, it means there is no more events available and an early
-      // exit is needed.
-      if (count($all_results) == $previous_total_events) {
+      if ($response["error"]) {
+        $show_error = TRUE;
         break;
       }
 
-      $previous_total_events = count($all_results);
+      $results = $response["result"];
+      $number_of_fetched_events += count($results);
 
-      $results = $this->excludeEventsByCategory($all_results, $excl_topics_list);
+      if (!count($results)) {
+        break;
+      }
 
-      $results = $this->includeEventsByTypes($results, $type_list);
+      $results = $this->excludeEventsByCategory($results, $excl_topics_list);
+      $results = $this->includeEventsBy($results, $type_list, $organizer_list, $location_list);
 
       // Filter out events which are in the exclusion list.
       $results = array_filter($results, function ($item) use ($events_to_exclude_list) {
@@ -268,13 +273,18 @@ class EventzTodayListing extends TrePreProcessPluginBase {
       // Filter out events which have an end date that has already passed.
       $results = array_filter($results, $event_start_time_validator);
 
+      $all_results = array_merge($all_results, $results);
+
       // Fetch more events. e.g. 2x, in the next iteration.
       $api_parameters["size"] *= 2;
+    }
 
+    if (empty($all_results) && $show_error) {
+      $variables['message_list'] = ['error' => [self::CUSTOM_ERROR_MESSAGE[$this->desiredLanguage]]];
     }
 
     // Respect the setting available on paragraph edit form.
-    $at_most_max_num_event_results = array_slice($results, 0, $max_num_events);
+    $at_most_max_num_event_results = array_slice($all_results, 0, $max_num_events);
     $variables["liftups"] = $this->makeLiftupsFromEvents($at_most_max_num_event_results);
 
     $variables["topical_listing__heading"] = $translated_paragraph->get('field_title')->getString();
@@ -441,25 +451,23 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    *   List of parameters needed for fetching.
    *
    * @return array
-   *   List of events.
+   *   Result object containing the events and error flag.
    */
   private function fetchEvents(array $api_parameters): array {
     $api_parameters = array_filter($api_parameters);
     try {
-      // API for getting events based on organizer/host ids is different
-      // from the API for getting events based on other filters.
-      if (!array_key_exists("host_ids", $api_parameters)) {
-        $results = $this->eventzClient->search_events($api_parameters, $this->desiredLanguage);
-      }
-      else {
-        $results = $this->eventzClient->search_events_by_host($api_parameters, $this->desiredLanguage);
-      }
-      return json_decode(json_encode($results), TRUE);
+      $results = $this->eventzClient->search_events($api_parameters, $this->desiredLanguage);
+
+      return [
+        'result' => json_decode(json_encode($results), TRUE),
+        'error' => FALSE,
+      ];
     }
     catch (\Exception $e) {
-      $this->messenger()->addMessage($e->getMessage(), "error");
-      $this->messenger()->addMessage($this->t('Fetching events failed.'), 'error');
-      return [];
+      return [
+        'result' => [],
+        'error' => TRUE,
+      ];
     }
   }
 
@@ -486,7 +494,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
         // If the event includes at least one of
         // the excluded topics, it must be removed.
         if (array_key_exists($topic, $topics_name_id_pairs) &&
-          in_array($topics_name_id_pairs[$topic], $excl_categories)) {
+          in_array($topics_name_id_pairs[$topic], $excl_categories, TRUE)) {
           return FALSE;
         }
       }
@@ -502,24 +510,50 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    *   List of events.
    * @param array $type_list
    *   List of included types.
+   * @param array $organizer_list
+   *   List of IDs of included organizers.
+   * @param array $location_list
+   *   List of IDs of included locations.
    *
    * @return array
-   *   Final list of events after the exclusion.
+   *   Final list of events after the inclusion.
    */
-  private function includeEventsByTypes(array $events, array $type_list): array {
-    if (empty($type_list)) {
-      return $events;
-    }
+  private function includeEventsBy(array $events, array $type_list, array $organizer_list, array $location_list): array {
 
-    return array_filter($events, function ($item) use ($type_list) {
-      foreach ($item["tags"] as $tag) {
-        // If the event includes at least one of
-        // the included types, it must be kept.
-        if (in_array(mb_strtolower($tag), $type_list)) {
-          return TRUE;
+    return array_filter($events, function ($item) use ($type_list, $organizer_list, $location_list) {
+      $has_type = TRUE;
+      $has_organizer = TRUE;
+      $has_location = TRUE;
+
+      if (!empty($type_list)) {
+        $matches = array_intersect(array_map('mb_strtolower', $item['tags']), $type_list);
+        $has_type = !empty($matches);
+      }
+
+      if (!empty($organizer_list)) {
+        $has_organizer = FALSE;
+        if (array_key_exists("owner_id", $item) && in_array($item["owner_id"], $organizer_list, TRUE)) {
+          $has_organizer = TRUE;
         }
       }
-      return FALSE;
+
+      if (!empty($location_list)) {
+        $has_location = FALSE;
+        if (array_key_exists("locations", $item)) {
+          foreach ($item["locations"] as $location) {
+            // If the event includes at least one of
+            // the included locations, it must be kept.
+            if (array_key_exists("page_id", $location) && in_array($location["page_id"], $location_list, TRUE)) {
+              $has_location = TRUE;
+              break;
+            }
+          }
+        }
+      }
+
+      // Since this is an AND filtering between different parameters,
+      // We keep the item if all conditions is true.
+      return $has_type && $has_organizer && $has_location;
     });
 
   }

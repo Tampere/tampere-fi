@@ -1,0 +1,28 @@
+uuid: 15052e3d-7d6e-4d2c-94d9-99b7b58faa51
+langcode: fi
+status: false
+dependencies:
+  config:
+    - views.view.search_ext
+  module:
+    - system
+    - tre_search_api_solr_customization
+  theme:
+    - tampere
+id: searchswitcherblocksearch_extpage_1
+theme: tampere
+region: pre_content
+weight: 0
+provider: null
+plugin: 'tre_search_switcher_block:search_ext-page_1'
+settings:
+  id: 'tre_search_switcher_block:search_ext-page_1'
+  label: ''
+  label_display: '0'
+  provider: tre_search_api_solr_customization
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search-external
