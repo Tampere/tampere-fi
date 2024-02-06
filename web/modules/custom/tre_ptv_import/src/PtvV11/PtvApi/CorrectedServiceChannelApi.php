@@ -1,7 +1,10 @@
 <?php
 
+// phpcs:ignoreFile
+
 namespace Drupal\tre_ptv_import\PtvV11\PtvApi;
 
+use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use Tampere\PtvV11\ApiException;
 use Tampere\PtvV11\ObjectSerializer;
@@ -13,103 +16,158 @@ use Tampere\PtvV11\PtvApi\ServiceChannelApi;
 class CorrectedServiceChannelApi extends ServiceChannelApi {
 
   /**
-   * Operation apiV11ServiceChannelIdGetWithHttpInfo.
-   *
-   * Fetches all the information related to a single service channel.
-   *
-   * @param string $id
-   *   Guid (required)
-   * @param bool $showHeader
-   *   Whether to include headers in data (optional, default to false).
-   *
-   * @return array
-   *   of \Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels, HTTP status
-   *   code, HTTP response headers (array of strings)
-   *
-   * @throws \Tampere\PtvV11\ApiException
-   *   On non-2xx response.
+   * {@inheritdoc}
    */
-  public function apiV11ServiceChannelIdGetWithHttpInfo($id, $showHeader = 'false') {
-    $returnType = '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels';
-    $request = $this->apiV11ServiceChannelIdGetRequest($id, $showHeader);
+  public function apiV11ServiceChannelIdGetWithHttpInfo($id, $showHeader = false, string $contentType = self::contentTypes['apiV11ServiceChannelIdGet'][0]) {
+    $request = $this->apiV11ServiceChannelIdGetRequest($id, $showHeader, $contentType);
 
     try {
       $options = $this->createHttpClientOption();
       try {
         $response = $this->client->send($request, $options);
-      }
-      catch (RequestException $e) {
+      } catch (RequestException $e) {
         throw new ApiException(
-              "[{$e->getCode()}] {$e->getMessage()}",
-              $e->getCode(),
-              $e->getResponse() ? $e->getResponse()->getHeaders() : NULL,
-              $e->getResponse() ? $e->getResponse()->getBody()->getContents() : NULL
-                );
+          "[{$e->getCode()}] {$e->getMessage()}",
+          (int) $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+        );
+      } catch (ConnectException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          (int) $e->getCode(),
+          null,
+          null
+        );
       }
 
       $statusCode = $response->getStatusCode();
 
       if ($statusCode < 200 || $statusCode > 299) {
         throw new ApiException(
-              sprintf(
-                  '[%d] Error connecting to the API (%s)',
-                  $statusCode,
-                  $request->getUri()
-              ),
-              $statusCode,
-              $response->getHeaders(),
-              $response->getBody()
-          );
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            (string) $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          (string) $response->getBody()
+        );
       }
 
-      $responseBody = $response->getBody();
-      $content = $responseBody->getContents();
-      $content = json_decode($content);
+      switch($statusCode) {
+        case 200:
+          if ('\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels' !== 'string') {
+              $content = json_decode($content);
+              $content = $this->mapServicesTypeObjectFromSingleServiceChannelObject($content);
+            }
+          }
 
-      $content = $this->mapServicesTypeObjectFromSingleServiceChannelObject($content);
+          return [
+            ObjectSerializer::deserialize($content, '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        case 400:
+          if ('array<string,string[]>' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('array<string,string[]>' !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, 'array<string,string[]>', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        case 404:
+          if ('\Tampere\PtvV11\PtvModel\IVmError' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('\Tampere\PtvV11\PtvModel\IVmError' !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, '\Tampere\PtvV11\PtvModel\IVmError', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        case 500:
+          if ('\Tampere\PtvV11\PtvModel\IVmError' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('\Tampere\PtvV11\PtvModel\IVmError' !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, '\Tampere\PtvV11\PtvModel\IVmError', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+      }
+
+      $returnType = '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels';
+      if ($returnType === '\SplFileObject') {
+        $content = $response->getBody(); //stream goes to serializer
+      } else {
+        $content = (string) $response->getBody();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
 
       return [
         ObjectSerializer::deserialize($content, $returnType, []),
         $response->getStatusCode(),
-        $response->getHeaders(),
+        $response->getHeaders()
       ];
 
-    }
-    catch (ApiException $e) {
+    } catch (ApiException $e) {
       switch ($e->getCode()) {
         case 200:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
-
         case 400:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                'map[string,string[]]',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            'array<string,string[]>',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
-
         case 404:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\Tampere\PtvV11\PtvModel\IVmError',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            '\Tampere\PtvV11\PtvModel\IVmError',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
-
         case 500:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\Tampere\PtvV11\PtvModel\IVmError',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            '\Tampere\PtvV11\PtvModel\IVmError',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
       }
@@ -120,97 +178,166 @@ class CorrectedServiceChannelApi extends ServiceChannelApi {
   /**
    * {@inheritdoc}
    */
-  public function apiV11ServiceChannelListGetWithHttpInfo($guids = NULL, $showHeader = 'false') {
-    $returnType = '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels[]';
-    $request = $this->apiV11ServiceChannelListGetRequest($guids, $showHeader);
+  public function apiV11ServiceChannelListGetWithHttpInfo($guids = NULL, $showHeader = FALSE, string $contentType = self::contentTypes['apiV11ServiceChannelListGet'][0]) {
+    $request = $this->apiV11ServiceChannelListGetRequest($guids, $showHeader, $contentType);
 
     try {
       $options = $this->createHttpClientOption();
       try {
         $response = $this->client->send($request, $options);
-      }
-      catch (RequestException $e) {
+      } catch (RequestException $e) {
         throw new ApiException(
-              "[{$e->getCode()}] {$e->getMessage()}",
-              $e->getCode(),
-              $e->getResponse() ? $e->getResponse()->getHeaders() : NULL,
-              $e->getResponse() ? $e->getResponse()->getBody()->getContents() : NULL
-                );
+          "[{$e->getCode()}] {$e->getMessage()}",
+          (int) $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+        );
+      } catch (ConnectException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          (int) $e->getCode(),
+          null,
+          null
+        );
       }
 
       $statusCode = $response->getStatusCode();
 
       if ($statusCode < 200 || $statusCode > 299) {
         throw new ApiException(
-              sprintf(
-                  '[%d] Error connecting to the API (%s)',
-                  $statusCode,
-                  $request->getUri()
-              ),
-              $statusCode,
-              $response->getHeaders(),
-              $response->getBody()
-          );
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            (string) $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          (string) $response->getBody()
+        );
       }
 
-      $responseBody = $response->getBody();
+      switch($statusCode) {
+        case 200:
+          if ('\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels[]' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels[]' !== 'string') {
+              $content = json_decode($content);
+              $replacement_content = [];
+              foreach ($content as $key => $value) {
+                $replacement_content[$key] = $this->mapServicesTypeObjectFromSingleServiceChannelObject($value);
+              }
+              $content = $replacement_content;
+            }
+          }
 
-      $content = $responseBody->getContents();
-      $content = json_decode($content);
-      $replacement_content = [];
-      foreach ($content as $key => $value) {
-        $replacement_content[$key] = $this->mapServicesTypeObjectFromSingleServiceChannelObject($value);
+          return [
+            ObjectSerializer::deserialize($content, '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels[]', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        case 400:
+          if ('array<string,string[]>' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('array<string,string[]>' !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, 'array<string,string[]>', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        case 404:
+          if ('\Tampere\PtvV11\PtvModel\IVmError' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('\Tampere\PtvV11\PtvModel\IVmError' !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, '\Tampere\PtvV11\PtvModel\IVmError', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        case 500:
+          if ('\Tampere\PtvV11\PtvModel\IVmError' === '\SplFileObject') {
+            $content = $response->getBody(); //stream goes to serializer
+          } else {
+            $content = (string) $response->getBody();
+            if ('\Tampere\PtvV11\PtvModel\IVmError' !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, '\Tampere\PtvV11\PtvModel\IVmError', []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
       }
-      $content = $replacement_content;
+
+      $returnType = '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels[]';
+      if ($returnType === '\SplFileObject') {
+        $content = $response->getBody(); //stream goes to serializer
+      } else {
+        $content = (string) $response->getBody();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
 
       return [
         ObjectSerializer::deserialize($content, $returnType, []),
         $response->getStatusCode(),
-        $response->getHeaders(),
+        $response->getHeaders()
       ];
 
-    }
-    catch (ApiException $e) {
+    } catch (ApiException $e) {
       switch ($e->getCode()) {
         case 200:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels[]',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            '\Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels[]',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
-
         case 400:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                'map[string,string[]]',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            'array<string,string[]>',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
-
         case 404:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\Tampere\PtvV11\PtvModel\IVmError',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            '\Tampere\PtvV11\PtvModel\IVmError',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
-
         case 500:
           $data = ObjectSerializer::deserialize(
-                $e->getResponseBody(),
-                '\Tampere\PtvV11\PtvModel\IVmError',
-                $e->getResponseHeaders()
-            );
+            $e->getResponseBody(),
+            '\Tampere\PtvV11\PtvModel\IVmError',
+            $e->getResponseHeaders()
+          );
           $e->setResponseObject($data);
           break;
       }
       throw $e;
     }
-  }
+    }
 
   /**
    * Wraps the response in an object for ObjectSerializer::deserialize to use.

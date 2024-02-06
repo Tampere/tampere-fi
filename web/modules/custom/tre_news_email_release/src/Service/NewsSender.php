@@ -33,13 +33,6 @@ final class NewsSender {
   private EntityStorageInterface $messageStorage;
 
   /**
-   * Paragraph storage.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
-   */
-  private EntityStorageInterface $paragraphStorage;
-
-  /**
    * TRE custom entity renderer service.
    *
    * @var \Drupal\tre_jsonapi_custom\EntityRendererInterface
@@ -52,7 +45,6 @@ final class NewsSender {
   public function __construct(MessageNotifier $message_notifier, EntityTypeManagerInterface $entity_type_manager, EntityRendererInterface $entity_renderer) {
     $this->notifier = $message_notifier;
     $this->messageStorage = $entity_type_manager->getStorage('message');
-    $this->paragraphStorage = $entity_type_manager->getStorage('paragraph');
     $this->entityRenderer = $entity_renderer;
   }
 
@@ -70,16 +62,11 @@ final class NewsSender {
   public function sendMailForNewsNode(NodeInterface $node, array $delivery_lists) {
     // Create a message with node author as message creator.
     $messages_created = [];
-    $paragraphs_created = [];
 
     foreach ($delivery_lists as $list) {
       $message = Message::create(['template' => 'news_item_to_media']);
       $news_item_title = $this->t('News release: @label', ['@label' => $node->label()], ['context' => 'Tampere.fi news email releases']);
       $message->set('field_news_item_title', $news_item_title);
-      $cloned_list = $list->createDuplicate();
-      $cloned_list->save();
-      $paragraphs_created[] = $cloned_list;
-      $message->set('field_delivery_info', $cloned_list);
 
       $node_url = $node->toUrl('canonical', ['absolute' => TRUE])->toString();
       // @todo Add and acquire here translation of configuration.
@@ -108,7 +95,6 @@ final class NewsSender {
     }
 
     $this->messageStorage->delete($messages_created);
-    $this->paragraphStorage->delete($paragraphs_created);
   }
 
 }

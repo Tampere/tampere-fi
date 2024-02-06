@@ -1,7 +1,8 @@
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
 langcode: fi
+mode: simple
 ignored_config_entities:
-  - 'webform.webform.*'
-  - 'siteimprove.settings:api_username'
   - 'siteimprove.settings:api_key'
+  - 'siteimprove.settings:api_username'
+  - 'webform.webform.*'

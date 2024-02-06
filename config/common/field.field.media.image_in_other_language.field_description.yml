@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.media.field_description
+    - filter.format.plain_html
     - media.type.image_in_other_language
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - plain_html
 id: media.image_in_other_language.field_description
 field_name: field_description
 entity_type: media
@@ -23,5 +19,6 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - plain_html
 field_type: text_long

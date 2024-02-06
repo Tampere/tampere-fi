@@ -13,7 +13,7 @@
   "author": "Heikki Ylipaavalniemi <heikki@exove.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.12.3",
+    "@babel/core": "^7.23.2",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.13.13",
     "autoprefixer": "^10.1.0",

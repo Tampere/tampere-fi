@@ -7,6 +7,7 @@ label: 'Staging split'
 description: "Set of configurations that should run in a staging environment.\r\nIt is disabled by default and you can activate it in settings.php by adding this:\r\n$config['config_split.config_split.staging_split']['status'] = TRUE;"
 weight: 0
 stackable: false
+no_patching: false
 storage: folder
 folder: ../config/staging
 module: {  }

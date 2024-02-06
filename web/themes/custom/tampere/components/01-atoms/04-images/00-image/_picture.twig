@@ -1,6 +1,7 @@
 {% set picture_base_class = picture_base_class|default("picture") %}
 
 <picture
+  {{ attributes.removeAttribute('loading') }}
   {{ bem(picture_base_class, (picture_modifiers), picture_blockname) }}
 >
   {% if sources %}

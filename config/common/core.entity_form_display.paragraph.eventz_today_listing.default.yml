@@ -10,6 +10,8 @@ dependencies:
     - field.field.paragraph.eventz_today_listing.field_eventz_events_sort
     - field.field.paragraph.eventz_today_listing.field_eventz_excl_category
     - field.field.paragraph.eventz_today_listing.field_eventz_excl_org_class
+    - field.field.paragraph.eventz_today_listing.field_eventz_excl_organizers
+    - field.field.paragraph.eventz_today_listing.field_eventz_excl_places
     - field.field.paragraph.eventz_today_listing.field_eventz_excluded_events
     - field.field.paragraph.eventz_today_listing.field_eventz_external_areas
     - field.field.paragraph.eventz_today_listing.field_eventz_external_audience
@@ -48,6 +50,8 @@ third_party_settings:
         required_fields: true
     group_exclusion_filters:
       children:
+        - field_eventz_excl_organizers
+        - field_eventz_excl_places
         - field_eventz_excl_category
         - field_eventz_excl_org_class
       label: 'Pois jättävät suodattimet'
@@ -113,7 +117,7 @@ content:
     third_party_settings: {  }
   field_eventz_excl_category:
     type: external_data_source_checkboxes_widget
-    weight: 14
+    weight: 18
     region: content
     settings:
       size: 1
@@ -121,7 +125,30 @@ content:
     third_party_settings: {  }
   field_eventz_excl_org_class:
     type: external_data_source_checkboxes_widget
-    weight: 15
+    weight: 19
+    region: content
+    settings:
+      size: 1
+      placeholder: ''
+    third_party_settings: {  }
+  field_eventz_excl_organizers:
+    type: external_data_source_auto_complete_widget
+    weight: 16
+    region: content
+    settings:
+      size: '30'
+      placeholder: 'Syötä vähintään kaksi kirjainta...'
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_eventz_excl_places:
+    type: external_data_source_checkboxes_widget
+    weight: 17
     region: content
     settings:
       size: 1

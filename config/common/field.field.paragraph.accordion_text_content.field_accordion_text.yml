@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_accordion_text
+    - filter.format.accordion_text
     - paragraphs.paragraphs_type.accordion_text_content
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - accordion_text
 id: paragraph.accordion_text_content.field_accordion_text
 field_name: field_accordion_text
 entity_type: paragraph
@@ -23,5 +19,6 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - accordion_text
 field_type: text_long

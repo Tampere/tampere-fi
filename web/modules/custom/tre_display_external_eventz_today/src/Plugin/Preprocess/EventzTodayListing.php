@@ -6,9 +6,9 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItem;
-use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_display_external_eventz_today\Config;
 use Drupal\tre_display_external_eventz_today\Plugin\EventzClientCustomized;
+use Drupal\tre_preprocess\TrePreProcessPluginBase;
 
 /**
  * List of attachments paragraph preprocessing.
@@ -115,8 +115,14 @@ class EventzTodayListing extends TrePreProcessPluginBase {
     $ext_organizer = $translated_paragraph->get('field_eventz_external_organizers')->getValue();
     $organizer_list = $this->helperFunctions->getListFieldValues($ext_organizer);
 
+    $excl_organizer = $translated_paragraph->get('field_eventz_excl_organizers')->getValue();
+    $excl_organizer_list = $this->helperFunctions->getListFieldValues($excl_organizer);
+
     $ext_location = $translated_paragraph->get('field_eventz_external_places')->getValue();
     $location_list = $this->helperFunctions->getListFieldValues($ext_location);
+
+    $excl_location = $translated_paragraph->get('field_eventz_excl_places')->getValue();
+    $excl_location_list = $this->helperFunctions->getListFieldValues($excl_location);
 
     $ext_audience = $translated_paragraph->get('field_eventz_external_audience')->getValue();
     $audience_list = $this->helperFunctions->getListFieldValues($ext_audience);
@@ -262,7 +268,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
         break;
       }
 
-      $results = $this->excludeEventsByCategory($results, $excl_topics_list);
+      $results = $this->excludeEventsBy($results, $excl_topics_list, $excl_organizer_list, $excl_location_list);
       $results = $this->includeEventsBy($results, $type_list, $organizer_list, $location_list);
 
       // Filter out events which are in the exclusion list.
@@ -472,39 +478,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
   }
 
   /**
-   * Returns events that don't belong to the list of categories.
-   *
-   * @param array $events
-   *   List of events.
-   * @param array $excl_categories
-   *   List of excluded categories.
-   *
-   * @return array
-   *   Final list of events after the exclusion.
-   */
-  private function excludeEventsByCategory(array $events, array $excl_categories): array {
-    if (empty($excl_categories)) {
-      return $events;
-    }
-
-    $topics_name_id_pairs = $this->eventzClient->getAllCategoriesByNameIdPair($this->desiredLanguage);
-
-    return array_filter($events, function ($item) use ($topics_name_id_pairs, $excl_categories) {
-      foreach ($item["topics"] as $topic) {
-        // If the event includes at least one of
-        // the excluded topics, it must be removed.
-        if (array_key_exists($topic, $topics_name_id_pairs) &&
-          in_array($topics_name_id_pairs[$topic], $excl_categories, TRUE)) {
-          return FALSE;
-        }
-      }
-      return TRUE;
-    });
-
-  }
-
-  /**
-   * Returns events that belong to the list of types.
+   * Returns events that belong to all Non-empty lists.
    *
    * @param array $events
    *   List of events.
@@ -519,32 +493,36 @@ class EventzTodayListing extends TrePreProcessPluginBase {
    *   Final list of events after the inclusion.
    */
   private function includeEventsBy(array $events, array $type_list, array $organizer_list, array $location_list): array {
+    if (empty($type_list) && empty($organizer_list) && empty($location_list)) {
+      return $events;
+    }
 
     return array_filter($events, function ($item) use ($type_list, $organizer_list, $location_list) {
-      $has_type = TRUE;
-      $has_organizer = TRUE;
-      $has_location = TRUE;
+      // By default, the item is in all the inclusion lists.
+      $is_in_types = TRUE;
+      $is_in_organizers = TRUE;
+      $is_in_locations = TRUE;
 
       if (!empty($type_list)) {
         $matches = array_intersect(array_map('mb_strtolower', $item['tags']), $type_list);
-        $has_type = !empty($matches);
+        $is_in_types = !empty($matches);
       }
 
       if (!empty($organizer_list)) {
-        $has_organizer = FALSE;
+        $is_in_organizers = FALSE;
         if (array_key_exists("owner_id", $item) && in_array($item["owner_id"], $organizer_list, TRUE)) {
-          $has_organizer = TRUE;
+          $is_in_organizers = TRUE;
         }
       }
 
       if (!empty($location_list)) {
-        $has_location = FALSE;
+        $is_in_locations = FALSE;
         if (array_key_exists("locations", $item)) {
           foreach ($item["locations"] as $location) {
             // If the event includes at least one of
             // the included locations, it must be kept.
             if (array_key_exists("page_id", $location) && in_array($location["page_id"], $location_list, TRUE)) {
-              $has_location = TRUE;
+              $is_in_locations = TRUE;
               break;
             }
           }
@@ -552,10 +530,75 @@ class EventzTodayListing extends TrePreProcessPluginBase {
       }
 
       // Since this is an AND filtering between different parameters,
-      // We keep the item if all conditions is true.
-      return $has_type && $has_organizer && $has_location;
+      // We keep the item only if it is in all lists.
+      return $is_in_types && $is_in_organizers && $is_in_locations;
     });
 
+  }
+
+  /**
+   * Returns events that do not belong to any of the Non-empty lists.
+   *
+   * @param array $events
+   *   List of events.
+   * @param array $excl_categories
+   *   List of excluded categories.
+   * @param array $excl_organizer_list
+   *   List of excluded organizers.
+   * @param array $excl_location_list
+   *   List of excluded locations.
+   *
+   * @return array
+   *   Final list of events after the exclusion.
+   */
+  private function excludeEventsBy(array $events, array $excl_categories, array $excl_organizer_list, array $excl_location_list): array {
+    if (empty($excl_categories) && empty($excl_organizer_list) && empty($excl_location_list)) {
+      return $events;
+    }
+
+    $topics_name_id_pairs = $this->eventzClient->getAllCategoriesByNameIdPair($this->desiredLanguage);
+
+    return array_filter($events, function ($item) use ($topics_name_id_pairs, $excl_categories, $excl_organizer_list, $excl_location_list) {
+      // By default, the item is not in any of the exclusion lists.
+      $is_in_topics = FALSE;
+      $is_in_organizers = FALSE;
+      $is_in_locations = FALSE;
+
+      if (!empty($excl_categories)) {
+        foreach ($item["topics"] as $topic) {
+          // If the event includes at least one of
+          // the excluded topics, it must be removed.
+          if (array_key_exists($topic, $topics_name_id_pairs) &&
+            in_array($topics_name_id_pairs[$topic], $excl_categories, TRUE)) {
+              $is_in_topics = TRUE;
+          }
+        }
+      }
+
+      if (!empty($excl_organizer_list)) {
+        if (array_key_exists("owner_id", $item) && in_array($item["owner_id"], $excl_organizer_list, TRUE)) {
+          $is_in_organizers = TRUE;
+        }
+      }
+
+      if (!empty($excl_location_list)) {
+        if (array_key_exists("locations", $item)) {
+          foreach ($item["locations"] as $location) {
+            // If the event includes at least one of
+            // the excluded locations, it must be removed.
+            if (array_key_exists("page_id", $location) && in_array($location["page_id"], $excl_location_list, TRUE)) {
+              $is_in_locations = TRUE;
+              break;
+            }
+          }
+        }
+      }
+
+      // Since this is an OR filtering between different parameters,
+      // We keep the item only if it is not in any list.
+      return !$is_in_topics && !$is_in_organizers && !$is_in_locations;
+
+    });
   }
 
   /**

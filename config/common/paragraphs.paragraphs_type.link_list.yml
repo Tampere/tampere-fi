@@ -3,7 +3,7 @@ langcode: fi
 status: true
 dependencies: {  }
 id: link_list
-label: Linkkilista
+label: 'Linkki tai linkkilista'
 icon_uuid: null
 icon_default: null
 description: 'Voidaan käyttää esittämään useita linkkejä tiiviillä, yhdenmukaisella tavalla.'

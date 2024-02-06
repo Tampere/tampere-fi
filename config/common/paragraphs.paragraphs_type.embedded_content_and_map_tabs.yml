@@ -3,7 +3,7 @@ langcode: fi
 status: true
 dependencies: {  }
 id: embedded_content_and_map_tabs
-label: 'Sisältö- ja karttaupotusvälilehdet'
+label: 'Lista ja kartta'
 icon_uuid: null
 icon_default: null
 description: 'Esittelee paikkoihin liittyviä sisältöjä kahdessa välilehdessä. Ensimmäisessä välilehdessä näytetään listana paikkojen tiiviit yhteystietokortit ja toisessa välilehdessä samat paikat näytetään karttanäkymässä.'

@@ -10,7 +10,6 @@ dependencies:
 third_party_settings:
   allowed_formats:
     basic_html: basic_html
-    full_html: full_html
     plain_text: plain_text
     footer_text: '0'
     plain_html: '0'
@@ -24,5 +23,6 @@ required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: string

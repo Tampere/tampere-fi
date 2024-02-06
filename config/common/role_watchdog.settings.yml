@@ -22,3 +22,4 @@ role_watchdog_monitor_roles:
   super_user: super_user
   administrator: administrator
 role_watchdog_notify_email: ''
+role_watchdog_use_watchdog: true

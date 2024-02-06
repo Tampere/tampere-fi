@@ -31,6 +31,13 @@ class SubsiteBreadcrumb extends TrePreProcessPluginBase {
       return $variables;
     }
 
+    $node_type = $node->bundle();
+
+    // Return if the node type is portfolio or portfolio listing.
+    if ($node_type == "portfolio" || $node_type == "portfolio_listing") {
+      return $variables;
+    }
+
     // Check that group exists and if it does not, return.
     $group = $this->helperFunctions->getNodeGroup($node);
 

@@ -3,9 +3,6 @@ _core:
 langcode: fi
 disabled: false
 field_template: true
-ft-default: default
-ft-show-colon: false
-ft-layout-builder: false
 classes:
   region:
     - 'text-with-bgcolor|Elementti tekstille taustavärillä'
@@ -13,3 +10,13 @@ classes:
     - 'text-with-bgcolor__plain-textbox|Tekstilaatikko ilman taustaväriä'
   field: {  }
 use_field_names: true
+ft_bc: true
+exclude_layout_builder_blocks_on_block_field: false
+ft_expert_prefix_suffix_textarea: false
+ft_default: default
+ft_show_colon: false
+ft_layout_builder: false
+exclude_ds_layout_layout_builder: false
+layout_icon_image_bc: true
+ft_default_bc: true
+layout_suggestion_bc: true

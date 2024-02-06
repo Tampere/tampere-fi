@@ -7,6 +7,7 @@ label: 'Local split'
 description: "Set of configurations that should run in a local environment.\r\nIt is actived by default but you can disable it by adding this to settings.php:\r\n$config['config_split.config_split.local_split']['status'] = FALSE;"
 weight: 0
 stackable: false
+no_patching: false
 storage: folder
 folder: ../config/local
 module:

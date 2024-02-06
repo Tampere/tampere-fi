@@ -11,7 +11,6 @@ dependencies:
     - message.template.news_item_to_media
   module:
     - ds
-    - entity_reference_revisions
     - link
     - markup_field
 third_party_settings:
@@ -36,15 +35,8 @@ third_party_settings:
       ds_content:
         - field_news_markup
         - 'dynamic_twig_field:message-br_tag'
-        - field_delivery_info
-        - 'dynamic_copy_field:message-br_tag_2'
         - field_link_to_content
     fields:
-      'dynamic_copy_field:message-br_tag_2':
-        plugin_id: 'dynamic_copy_field:message-br_tag_2'
-        weight: 3
-        label: hidden
-        formatter: default
       'dynamic_twig_field:message-br_tag':
         plugin_id: 'dynamic_twig_field:message-br_tag'
         weight: 1
@@ -55,22 +47,6 @@ targetEntityType: message
 bundle: news_item_to_media
 mode: mail_body
 content:
-  field_delivery_info:
-    type: entity_reference_revisions_entity_view
-    label: hidden
-    settings:
-      view_mode: news_media_delivery
-      link: ''
-    third_party_settings:
-      ds:
-        ft:
-          id: minimal
-          settings:
-            lb: ''
-            lb-col: false
-            classes: {  }
-    weight: 2
-    region: ds_content
   field_link_to_content:
     type: link
     label: hidden
@@ -88,7 +64,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 4
+    weight: 2
     region: ds_content
   field_news_markup:
     type: markup_field_rendered_markup
@@ -101,6 +77,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_delivery_info: true
   field_news_item_title: true
   partial_0: true
   search_api_excerpt: true

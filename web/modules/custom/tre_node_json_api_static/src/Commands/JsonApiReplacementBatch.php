@@ -3,6 +3,7 @@
 namespace Drupal\tre_node_json_api_static\Commands;
 
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\TranslatableInterface;
@@ -92,6 +93,8 @@ final class JsonApiReplacementBatch extends DrushCommands {
    * @param string|null $basepath
    *   The base path for the result file, optional.
    *   Defaults to public://api_json.
+   * @param array $options
+   *   The options for the command.
    *
    * @command tre_node_json_api_static:writefile
    *
@@ -104,15 +107,28 @@ final class JsonApiReplacementBatch extends DrushCommands {
    *
    * @aliases write_jsonapi_file
    */
-  public function writeFileForContent(string $content_type, string $langcode, ?string $basepath = NULL) {
-    assert(in_array($content_type, ['person', 'place', 'place_of_business'], TRUE), dt("Only person, place, or place_of_business content supported."));
+  public function writeFileForContent(string $content_type, string $langcode, ?string $basepath = NULL, array $options = ['orderby' => 'changed:DESC']) {
+    $content_types = [
+      'person',
+      'place',
+      'place_of_business',
+      'ptv_service',
+      'service_channel',
+      'map_point',
+    ];
+    assert(in_array($content_type, $content_types, TRUE), dt("Only person, place, or place_of_business content supported."));
     assert(in_array($langcode, ['fi', 'en'], TRUE), "Only fi or en language supported");
+
+    assert(str_contains($options['orderby'], ':'), "The --orderby options is malformatted. The correct format is <column>:<DIRECTION>.");
+    [$orderby_column, $orderby_direction] = explode(':', $options['orderby']);
+    assert(in_array($orderby_direction, ['ASC', 'DESC'], TRUE), "Only ASC or DESC directions allowed for orderby parameter!");
+    assert(in_array($orderby_column, ['title', 'changed', 'uuid'], TRUE), "Only uuid, title,com or changed columns allowed for orderby parameter!");
 
     $node_query = $this->nodeStorage->getQuery()->accessCheck(FALSE);
     $node_query->condition('type', $content_type)
       ->condition('status', NodeInterface::PUBLISHED, '=', $langcode)
       ->condition('langcode', $langcode)
-      ->sort('changed', 'DESC');
+      ->sort($orderby_column, $orderby_direction);
     $result = $node_query->execute();
     $count = count($result);
 
@@ -156,6 +172,9 @@ final class JsonApiReplacementBatch extends DrushCommands {
           'person' => $this->getDataForPerson($translation),
           'place_of_business' => $this->getDataForPlaceOfBusiness($translation),
           'place' => $this->getDataForPlace($translation),
+          'ptv_service' => $this->getDataForService($translation),
+          'service_channel' => $this->getDataForServiceChannel($translation),
+          'map_point' => $this->getDataForMapPoint($translation),
           default => [],
         };
         fwrite($handle, Json::encode($jsonapi_result));
@@ -277,6 +296,131 @@ final class JsonApiReplacementBatch extends DrushCommands {
       'field_address' => $node->get('field_address')->getString(),
       'field_main_image' => $this->getImageApiUrlFromMediaField($node, 'field_main_image'),
     ];
+  }
+
+  /**
+   * Helper to get serializable data for a ptv_service node.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   The place node.
+   *
+   * @return array
+   *   The data in a format similar to JSON:API's serialized format.
+   *
+   * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+   */
+  private function getDataForService(NodeInterface $node): array {
+    assert($node->bundle() == 'ptv_service', "Node must be of type 'ptv_service'");
+
+    return [
+      'id' => $node->get('uuid')->getString(),
+      'langcode' => $node->language()->getId(),
+      'title' => $node->label(),
+      'field_form_service_channels' => array_map([$this, 'entityLabel'], $node->get('field_form_service_channels')->referencedEntities()),
+      'field_phone_service_channels' => array_map([$this, 'entityLabel'], $node->get('field_phone_service_channels')->referencedEntities()),
+      'field_eservice_channels' => array_map([$this, 'entityLabel'], $node->get('field_eservice_channels')->referencedEntities()),
+      'field_web_page_channels' => array_map([$this, 'entityLabel'], $node->get('field_web_page_channels')->referencedEntities()),
+      // See https://github.com/mglaman/phpstan-drupal/issues/147
+      // @phpstan-ignore-next-line
+      'field_user_instruction_md' => $node->get('field_user_instruction_md')->processed,
+      // See https://github.com/mglaman/phpstan-drupal/issues/147
+      // @phpstan-ignore-next-line
+      'field_chargeability_info_md' => $node->get('field_chargeability_info_md')->processed,
+      // See https://github.com/mglaman/phpstan-drupal/issues/147
+      // @phpstan-ignore-next-line
+      'field_body_md' => $node->get('field_body_md')->processed,
+      // See https://github.com/mglaman/phpstan-drupal/issues/147
+      // @phpstan-ignore-next-line
+      'field_requirements_md' => $node->get('field_requirements_md')->processed,
+      'field_area_text' => $node->get('field_area_text')->getString(),
+      'field_service_vouchers_in_use' => $node->get('field_service_vouchers_in_use')->getString(),
+      'field_service_voucher_links' => $node->get('field_service_voucher_links')->getString(),
+      'field_service_responsible' => $node->get('field_service_responsible')->getString(),
+      'field_service_other_responsible' => $node->get('field_service_other_responsible')->getString(),
+      'field_service_charge_type' => $node->get('field_service_charge_type')->getString(),
+      'field_available_languages' => $node->get('field_available_languages')->getString(),
+    ];
+  }
+
+  /**
+   * Helper to get serializable data for a service_channel node.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   The place node.
+   *
+   * @return array
+   *   The data in a format similar to JSON:API's serialized format.
+   *
+   * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+   */
+  private function getDataForServiceChannel(NodeInterface $node): array {
+    assert($node->bundle() == 'service_channel', "Node must be of type 'service_channel'");
+
+    return [
+      'id' => $node->get('uuid')->getString(),
+      'langcode' => $node->language()->getId(),
+      'title' => $node->label(),
+      'field_area_text' => $node->get('field_area_text')->getString(),
+      'field_service_channel_type' => $node->get('field_service_channel_type')->getString(),
+      // See https://github.com/mglaman/phpstan-drupal/issues/147
+      // @phpstan-ignore-next-line
+      'field_body_md' => $node->get('field_body_md')->processed,
+      'field_service_attachments' => $node->get('field_service_attachments')->getString(),
+      'field_form_links' => $node->get('field_form_links')->getString(),
+      'field_form_receiver' => $node->get('field_form_receiver')->getString(),
+      'field_service_hours_daily' => $node->get('field_service_hours_daily')->getString(),
+      'field_service_hours_overnight' => $node->get('field_service_hours_overnight')->getString(),
+      'field_available_languages' => $node->get('field_available_languages')->getString(),
+      'field_exception_hours' => $node->get('field_exception_hours')->getString(),
+      'field_address_postal' => $node->get('field_address_postal')->getString(),
+      'field_additional_phones' => $node->get('field_additional_phones')->getString(),
+      'field_accessibility_links' => $node->get('field_accessibility_links')->getString(),
+      'field_summary' => $node->get('field_summary')->getString(),
+      'field_delivery_details' => $node->get('field_delivery_details')->getString(),
+      'field_support_phones' => $node->get('field_support_phones')->getString(),
+      'field_support_emails' => $node->get('field_support_emails')->getString(),
+      'field_electronic_signature_rqd' => $node->get('field_electronic_signature_rqd')->getString(),
+      'field_electronic_id_required' => $node->get('field_electronic_id_required')->getString(),
+      'field_organization' => $node->get('field_organization')->getString(),
+      'field_links' => $node->get('field_links')->getString(),
+    ];
+  }
+
+  /**
+   * Helper to get serializable data for a map_point node.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   The place node.
+   *
+   * @return array
+   *   The data in a format similar to JSON:API's serialized format.
+   *
+   * @throws \Drupal\Core\TypedData\Exception\MissingDataException
+   */
+  private function getDataForMapPoint(NodeInterface $node): array {
+    assert($node->bundle() == 'map_point', "Node must be of type 'map_point'");
+
+    return [
+      'id' => $node->get('uuid')->getString(),
+      'langcode' => $node->language()->getId(),
+      'title' => $node->label(),
+      'field_address_street' => $node->get('field_address_street')->getString(),
+      'field_description' => $node->get('field_description')->getString(),
+      'field_address_hash' => $node->get('field_address_hash')->getString(),
+    ];
+  }
+
+  /**
+   * Simple callback to return the label of a content entity.
+   *
+   * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+   *   The entity whose label is needed.
+   *
+   * @return string
+   *   The label of the entity.
+   */
+  private function entityLabel(ContentEntityInterface $entity): string {
+    return $entity->label();
   }
 
   /**

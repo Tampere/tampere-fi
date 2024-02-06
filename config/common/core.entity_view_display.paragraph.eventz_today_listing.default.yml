@@ -10,6 +10,8 @@ dependencies:
     - field.field.paragraph.eventz_today_listing.field_eventz_events_sort
     - field.field.paragraph.eventz_today_listing.field_eventz_excl_category
     - field.field.paragraph.eventz_today_listing.field_eventz_excl_org_class
+    - field.field.paragraph.eventz_today_listing.field_eventz_excl_organizers
+    - field.field.paragraph.eventz_today_listing.field_eventz_excl_places
     - field.field.paragraph.eventz_today_listing.field_eventz_excluded_events
     - field.field.paragraph.eventz_today_listing.field_eventz_external_areas
     - field.field.paragraph.eventz_today_listing.field_eventz_external_audience
@@ -43,6 +45,8 @@ hidden:
   field_eventz_events_sort: true
   field_eventz_excl_category: true
   field_eventz_excl_org_class: true
+  field_eventz_excl_organizers: true
+  field_eventz_excl_places: true
   field_eventz_excluded_events: true
   field_eventz_external_areas: true
   field_eventz_external_audience: true

@@ -5,13 +5,9 @@ dependencies:
   config:
     - config_pages.type.404_page_content
     - field.storage.config_pages.field_page_content
+    - filter.format.page_not_found_content
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - page_not_found_content
 id: config_pages.404_page_content.field_page_content
 field_name: field_page_content
 entity_type: config_pages
@@ -23,5 +19,6 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - page_not_found_content
 field_type: text_long

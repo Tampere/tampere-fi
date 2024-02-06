@@ -9,7 +9,6 @@ dependencies:
     - field.field.message.news_item_to_media.field_news_markup
     - message.template.news_item_to_media
   module:
-    - entity_reference_revisions
     - link
     - markup_field
 id: message.news_item_to_media.default
@@ -17,15 +16,6 @@ targetEntityType: message
 bundle: news_item_to_media
 mode: default
 content:
-  field_delivery_info:
-    type: entity_reference_revisions_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 1
-    region: content
   field_link_to_content:
     type: link
     label: above
@@ -36,7 +26,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 5
+    weight: 1
     region: content
   field_news_item_title:
     type: string
@@ -51,7 +41,8 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 2
     region: content
 hidden:
+  field_delivery_info: true
   search_api_excerpt: true

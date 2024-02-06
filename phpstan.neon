@@ -50,3 +50,24 @@ parameters:
 			message: "#^Class Drupal\\\\tre_lazyload_field_formatters\\\\Plugin\\\\Field\\\\FieldFormatter\\\\LazyOEmbedFormatter extends @internal class Drupal\\\\media\\\\Plugin\\\\Field\\\\FieldFormatter\\\\OEmbedFormatter\\.$#"
 			count: 1
 			path: web/modules/custom/tre_lazyload_field_formatters/src/Plugin/Field/FieldFormatter/LazyOEmbedFormatter.php
+
+		# The following 4 items are baseline errors from CorrectedServiceChannelApi which mostly consists of code copied from a library.
+		-
+			message: "#^Parameter \\#3 \\$responseHeaders of class Tampere\\\\PtvV11\\\\ApiException constructor expects array\\<string\\>\\|null, array\\<array\\<string\\>\\> given\\.$#"
+			count: 2
+			path: web/modules/custom/tre_ptv_import/src/PtvV11/PtvApi/CorrectedServiceChannelApi.php
+
+		-
+			message: "#^Parameter \\#3 \\$responseHeaders of class Tampere\\\\PtvV11\\\\ApiException constructor expects array\\<string\\>\\|null, array\\<array\\<string\\>\\>\\|null given\\.$#"
+			count: 2
+			path: web/modules/custom/tre_ptv_import/src/PtvV11/PtvApi/CorrectedServiceChannelApi.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between '\\\\\\\\Tampere\\\\\\\\PtvV11…' and '\\\\\\\\SplFileObject' will always evaluate to false\\.$#"
+			count: 8
+			path: web/modules/custom/tre_ptv_import/src/PtvV11/PtvApi/CorrectedServiceChannelApi.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between 'array\\<string,string…' and '\\\\\\\\SplFileObject' will always evaluate to false\\.$#"
+			count: 2
+			path: web/modules/custom/tre_ptv_import/src/PtvV11/PtvApi/CorrectedServiceChannelApi.php

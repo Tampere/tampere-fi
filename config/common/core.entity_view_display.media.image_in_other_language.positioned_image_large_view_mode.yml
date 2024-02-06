@@ -17,48 +17,29 @@ dependencies:
     - field.field.media.image_in_other_language.field_record_numbers
     - field.field.media.image_in_other_language.field_topics
     - media.type.image_in_other_language
+    - responsive_image.styles.positioned_image_large_responsive_image_style
   module:
-    - blazy
     - ds
+    - lazy
+    - responsive_image
 id: media.image_in_other_language.positioned_image_large_view_mode
 targetEntityType: media
 bundle: image_in_other_language
 mode: positioned_image_large_view_mode
 content:
   field_media_image:
-    type: blazy
+    type: responsive_image
     label: hidden
     settings:
-      caption:
-        title: '0'
-        alt: '0'
-      layout: ''
-      view_mode: ''
-      cache: 0
-      skin: ''
-      lazy: ''
-      style: ''
-      background: false
-      box_caption: ''
-      box_caption_custom: ''
-      box_media_style: ''
-      loading: ''
-      preload: false
-      responsive_image_style: ''
-      box_style: ''
-      image_style: ''
-      media_switch: ''
-      ratio: ''
-      thumbnail_style: ''
-      grid: ''
-      grid_medium: ''
-      grid_small: ''
-      current_view_mode: default
-      fx: ''
-      grid_header: ''
-      _item: ''
-      _uri: ''
+      responsive_image_style: positioned_image_large_responsive_image_style
+      image_link: ''
+      image_loading:
+        attribute: lazy
     third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
       ds:
         ft:
           id: default
@@ -66,7 +47,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   created: true

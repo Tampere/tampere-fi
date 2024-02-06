@@ -5,13 +5,9 @@ dependencies:
   config:
     - config_pages.type.footer_information
     - field.storage.config_pages.field_second_text_column
+    - filter.format.footer_text
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - footer_text
 id: config_pages.footer_information.field_second_text_column
 field_name: field_second_text_column
 entity_type: config_pages
@@ -23,5 +19,6 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - footer_text
 field_type: text_long

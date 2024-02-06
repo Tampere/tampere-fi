@@ -146,7 +146,8 @@ class PtvServiceChannelListIterator implements PtvServiceChannelListIteratorInte
    *   If the API request fails.
    */
   protected function getPageItems(): void {
-    $this->items = $this->apiConnection->apiV11ServiceChannelListGet($this->guids, $this->includeHeaders);
+    $guids = implode(',', $this->guids);
+    $this->items = $this->apiConnection->apiV11ServiceChannelListGet($guids, $this->includeHeaders);
   }
 
 }

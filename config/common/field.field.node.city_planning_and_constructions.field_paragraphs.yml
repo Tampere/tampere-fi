@@ -90,6 +90,7 @@ settings:
       picture_mosaic: picture_mosaic
       list_of_attachments: list_of_attachments
       link_list: link_list
+      embedded_content_and_map_tabs: embedded_content_and_map_tabs
       logo_wall: logo_wall
       material_download_list: material_download_list
       metadata_attachment_list: metadata_attachment_list
@@ -99,7 +100,6 @@ settings:
       portfolio_content_listing: portfolio_content_listing
       project_and_organization_cards: project_and_organization_cards
       rss_feed: rss_feed
-      embedded_content_and_map_tabs: embedded_content_and_map_tabs
       social_media_link_list: social_media_link_list
       social_media_feed_embed: social_media_feed_embed
       event_and_hobby_listing: event_and_hobby_listing
@@ -178,7 +178,7 @@ settings:
         weight: 44
         enabled: false
       embedded_content_and_map_tabs:
-        weight: 40
+        weight: 31
         enabled: true
       embederator_embed:
         weight: 60
@@ -241,7 +241,7 @@ settings:
         weight: 50
         enabled: false
       involvement_opportunity_cards:
-        weight: 34
+        weight: 35
         enabled: true
       link_list:
         weight: 30
@@ -259,7 +259,7 @@ settings:
         weight: 93
         enabled: false
       logo_wall:
-        weight: 31
+        weight: 32
         enabled: true
       mailing_list_information:
         weight: 90
@@ -268,10 +268,10 @@ settings:
         weight: 23
         enabled: true
       material_download_list:
-        weight: 32
+        weight: 33
         enabled: true
       metadata_attachment_list:
-        weight: 33
+        weight: 34
         enabled: true
       mosaic_liftup:
         weight: 80
@@ -292,13 +292,13 @@ settings:
         weight: 28
         enabled: true
       place_liftup:
-        weight: 36
+        weight: 37
         enabled: true
       place_of_business_liftup:
         weight: 84
         enabled: false
       portfolio_content_listing:
-        weight: 37
+        weight: 38
         enabled: true
       positioned_image:
         weight: 68
@@ -310,16 +310,16 @@ settings:
         weight: 62
         enabled: true
       project_and_organization_cards:
-        weight: 38
+        weight: 39
         enabled: true
       project_or_organization_card:
         weight: 85
         enabled: false
       ptv_service_liftup:
-        weight: 35
+        weight: 36
         enabled: true
       rss_feed:
-        weight: 39
+        weight: 40
         enabled: true
       separator:
         weight: 14

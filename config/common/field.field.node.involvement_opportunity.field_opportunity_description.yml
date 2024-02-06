@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_opportunity_description
+    - filter.format.plain_html
     - node.type.involvement_opportunity
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - plain_html
 id: node.involvement_opportunity.field_opportunity_description
 field_name: field_opportunity_description
 entity_type: node
@@ -23,5 +19,6 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - plain_html
 field_type: text_long

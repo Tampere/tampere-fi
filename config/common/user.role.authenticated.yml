@@ -9,6 +9,7 @@ dependencies:
     - filter.format.footer_text
     - filter.format.linkit_html
     - filter.format.plain_html
+    - filter.format.webform_default
     - workflows.workflow.content_moderation
     - workflows.workflow.scheduled_transitions
   module:
@@ -57,6 +58,7 @@ permissions:
   - 'use text format footer_text'
   - 'use text format linkit_html'
   - 'use text format plain_html'
+  - 'use text format webform_default'
   - 'view 404_page_content config page entity'
   - 'view embederator entity'
   - 'view footer_information config page entity'

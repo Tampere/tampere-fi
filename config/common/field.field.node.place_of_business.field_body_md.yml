@@ -4,14 +4,10 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_body_md
+    - filter.format.ptv_markdown
     - node.type.place_of_business
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - ptv_markdown
 id: node.place_of_business.field_body_md
 field_name: field_body_md
 entity_type: node
@@ -23,5 +19,6 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  allowed_formats: {  }
+  allowed_formats:
+    - ptv_markdown
 field_type: text_long

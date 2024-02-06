@@ -4,16 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
+    - filter.format.basic_html
+    - filter.format.plain_text
     - node.type.rss_item
   module:
-    - allowed_formats
     - text
-third_party_settings:
-  allowed_formats:
-    allowed_formats:
-      - basic_html
-      - full_html
-      - plain_text
 id: node.rss_item.body
 field_name: body
 entity_type: node
@@ -27,4 +22,7 @@ default_value_callback: ''
 settings:
   display_summary: true
   required_summary: false
+  allowed_formats:
+    - basic_html
+    - plain_text
 field_type: text_with_summary
