@@ -46,21 +46,30 @@ class SettingsForm extends ConfigFormBase {
     $form['general']['admin-pages'] = [
       '#title' => $this->t('Display Matomo Tag Manager on admin pages (if MTM enabled)'),
       '#description' => $this->t('Add MTM script on admin pages'),
+      '#states' => [
+        'visible' => [
+          ':input[name="enable"]' => ['checked' => TRUE],
+        ],
+      ],
       '#type' => 'checkbox',
       '#maxlength' => 20,
       '#required' => FALSE,
       '#size' => 15,
       '#default_value' => $config->get('admin-pages'),
     ];
-    $form['general']['matomo-tag'] = [
-      '#title' => $this->t('Container URL'),
-      '#default_value' => $config->get('matomo-tag'),
-      '#maxlength' => 150,
-      '#size' => 80,
-      '#type' => 'textfield',
-      '#description' => $this->t(
-        "You can add site to Matomo Tag Manager and add the CDN source here from the script.",
-      ),
+    $form['general']['container_urls'] = [
+      '#title' => $this->t('Container URL(s)'),
+      '#states' => [
+        'visible' => [
+          ':input[name="enable"]' => ['checked' => TRUE],
+        ],
+        'required' => [
+          ':input[name="enable"]' => ['checked' => TRUE],
+        ],
+      ],
+      '#type' => 'textarea',
+      '#description' => $this->t('The container URLs, one per line.'),
+      '#default_value' => implode("\n", $config->get('container_urls')),
     ];
     return parent::buildForm($form, $form_state);
   }
@@ -73,10 +82,28 @@ class SettingsForm extends ConfigFormBase {
     $config
       ->set('enable', $form_state->getValue('enable'))
       ->set('admin-pages', $form_state->getValue('admin-pages'))
-      ->set('matomo-tag', $form_state->getValue('matomo-tag'))
+      ->set('container_urls', self::extractFormValue($form_state->getValue('container_urls')))
       ->save();
 
     parent::submitForm($form, $form_state);
+  }
+
+  /**
+   * Extract the array from the textarea input.
+   *
+   * @param string $input
+   *   The form input.
+   *
+   * @return string[]
+   *   The cleaned up values.
+   */
+  private static function extractFormValue(string $input): array {
+    return array_values(
+      array_filter(
+        array_map(fn($l) => trim($l),
+          explode("\n", str_replace("\r", "\n", $input)))
+      )
+    );
   }
 
 }

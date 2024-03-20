@@ -35,7 +35,7 @@ _core:
   default_config_hash: d_KQifzyNj19PRtlwHHYN-KTG-t4yLUYnd0STLE6dYA
 id: authenticated
 label: 'Sisäänkirjautunut käyttäjä'
-weight: -9
+weight: -10
 is_admin: false
 permissions:
   - 'access comments'

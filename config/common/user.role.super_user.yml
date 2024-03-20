@@ -82,7 +82,6 @@ dependencies:
     - robotstxt
     - role_delegation
     - scheduled_transitions
-    - siteimprove
     - system
     - tablefield
     - taxonomy
@@ -137,6 +136,7 @@ permissions:
   - 'assign rich_article_author role'
   - 'assign section_editor role'
   - 'assign service_author role'
+  - 'assign siteimprove_user role'
   - 'assign small_news_item_author role'
   - 'assign super_user role'
   - 'assign zoning_information_author role'
@@ -686,8 +686,6 @@ permissions:
   - 'use content_moderation transition submit_for_review'
   - 'use download_files bulk upload form'
   - 'use download_images bulk upload form'
-  - 'use siteimprove'
-  - 'use siteimprove prepublish'
   - 'use text format notice_html'
   - 'use text format page_not_found_content'
   - 'use text format ptv_markdown'

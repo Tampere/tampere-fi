@@ -1,0 +1,14 @@
+uuid: 22708a4f-c958-4ba2-8e08-e97b8b510ec4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.siteimprove_user
+  module:
+    - user
+id: user_add_role_action.siteimprove_user
+label: 'Add the Siteimprove-käyttäjä role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: siteimprove_user

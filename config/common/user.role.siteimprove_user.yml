@@ -1,0 +1,13 @@
+uuid: 3290b07c-6347-4a0f-9438-144327b05d7c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - siteimprove
+id: siteimprove_user
+label: Siteimprove-käyttäjä
+weight: -9
+is_admin: null
+permissions:
+  - 'use siteimprove'
+  - 'use siteimprove prepublish'

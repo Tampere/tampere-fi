@@ -264,6 +264,7 @@
         "drupal/pathauto": "^1.6",
         "drupal/permission_watchdog": "^2.0",
         "drupal/preprocess": "^2.0",
+        "drupal/prevent_homepage_deletion": "^2.0",
         "drupal/publication_date": "^2.0@beta",
         "drupal/purge": "^3.2",
         "drupal/purge_file": "^1.1",
@@ -294,6 +295,7 @@
         "drupal/ui_patterns_settings": "^2.0",
         "drupal/username_enumeration_prevention": "^1.1",
         "drupal/varnish_purge": "^2.2",
+        "drupal/views_contextual_filters_or": "^1.4",
         "drupal/views_custom_cache_tag": "^1.2",
         "drupal/views_filters_populate": "^2.1",
         "drupal/webform": "^6.2@RC",
@@ -307,7 +309,7 @@
         "mpdf/mpdf": "^8.2",
         "oskariorg/rpc-client": "^2.1",
         "proj4php/proj4php": "^2.0",
-        "tampere/ptv-php-client-v11": "2.0.0"
+        "tampere/ptv-php-client-v11": "^2.0.2"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -449,6 +451,9 @@
             },
             "drupal/field_group": {
                 "2969051 - HTML5 Validation Prevents Submission in Tabs": "https://www.drupal.org/files/issues/2023-04-24/2969051-99.patch"
+            },
+            "drupal/field_permissions": {
+                "3411976 - 500 error with JSONAPI on Base Entity Fields": "patches/field_permissions_3411976_mr.patch"
             },
             "drupal/field_states_ui": {
                 "3166929 - Ajax error for trying to access array offset on value of type null": "https://www.drupal.org/files/issues/2022-02-07/3166929-7.patch"

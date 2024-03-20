@@ -47,7 +47,6 @@ dependencies:
     - node
     - paragraphs_type_permissions
     - scheduled_transitions
-    - siteimprove
     - system
     - tablefield
     - taxonomy
@@ -334,8 +333,6 @@ permissions:
   - 'use content_moderation transition archive'
   - 'use content_moderation transition restore_draft'
   - 'use content_moderation transition submit_for_review'
-  - 'use siteimprove'
-  - 'use siteimprove prepublish'
   - 'use text format notice_html'
   - 'view all media revisions'
   - 'view any unpublished content'

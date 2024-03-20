@@ -78,3 +78,6 @@ msgstr "Lisää kalenteriin"
 
 msgid "Add to Google calendar"
 msgstr "Lisää Google-kalenteriin"
+
+msgid "By pressing enter you will get to the search results page and can open the links for the results. Unfortunately pressing the arrow keys doesn't allow you to navigate the search result page."
+msgstr "Enteriä painamalla pääset hakutulossivulle ja avaamaan hakutulosten linkit. Nuolinäppäimillä liikkumalla ei valitettavasti pääse navigoimaan hakutulossivuille."

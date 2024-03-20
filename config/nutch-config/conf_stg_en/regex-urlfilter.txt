@@ -61,19 +61,20 @@
 #-^https?://(?:172\.(?:1[6789]|2[0-9]|3[01])(?:\.(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))){2})(?::\d+)?(?:/|$)
 
 # accept domains listed in urls_en/seed.txt
-^https://www\.muumimuseo\.fi/en/
-^https://www\.tamperefilharmonia\.fi/en/
-^https://www\.operaatiopirkanmaa\.fi/en/
-^https://www\.sarahildenintaidemuseo\.fi/en/
-^https://www\.tampereentaidemuseo\.fi/en/
-^https://www\.tredu\.fi/en/
-^https://www\.amurinmuseokortteli\.fi/en/
-^https://www\.vapriikki\.fi/en/
-^https://www\.museomilavida\.fi/en/
-^https://kiekonkoti\.tampere\.fi/en/
-^https://tampereenpaiva\.tampere\.fi/en/
-^https://valoviikot\.tampere\.fi/en/
-^https://kesakeidas\.tampere\.fi/en/
-^https://puistofiesta\.tampere\.fi/en/
-^https://internationalhouse\.tampere\.fi/en/
-^https://puistokonsertit\.tampere\.fi/en/
++^https://www\.muumimuseo\.fi/en/
++^https://www\.tamperefilharmonia\.fi/en/
++^https://www\.operaatiopirkanmaa\.fi/en/
++^https://www\.sarahildenintaidemuseo\.fi/en/
++^https://www\.tampereentaidemuseo\.fi/en/
++^https://www\.tredu\.fi/en/
++^https://www\.amurinmuseokortteli\.fi/en/
++^https://www\.vapriikki\.fi/en/
++^https://www\.museomilavida\.fi/en/
++^https://kiekonkoti\.tampere\.fi/en/
++^https://tampereenpaiva\.tampere\.fi/en/
++^https://valoviikot\.tampere\.fi/en/
++^https://kesakeidas\.tampere\.fi/en/
++^https://puistofiesta\.tampere\.fi/en/
++^https://internationalhouse\.tampere\.fi/en/
++^https://puistokonsertit\.tampere\.fi/en/
++^https://kauppahalli\.tampere\.fi/en/

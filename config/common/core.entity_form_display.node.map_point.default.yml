@@ -13,7 +13,7 @@ dependencies:
   module:
     - address
     - content_moderation
-    - geofield
+    - tre_geofield_customization
 id: node.map_point.default
 targetEntityType: node
 bundle: map_point
@@ -48,7 +48,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_location:
-    type: geofield_latlon
+    type: tre_geofield_latlon
     weight: 3
     region: content
     settings:
@@ -104,6 +104,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  entitygroupfield: true
   field_address_hash: true
   path: true
   promote: true

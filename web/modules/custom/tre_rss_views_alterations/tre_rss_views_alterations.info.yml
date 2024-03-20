@@ -1,0 +1,5 @@
+name: 'TRE RSS Views alterations'
+type: module
+description: 'Module used to alter the RSS Views'
+core_version_requirement: '>=9.3'
+package: 'TRE'

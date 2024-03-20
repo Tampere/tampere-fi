@@ -11,4 +11,6 @@
  */
 #}
 
-{% include "@atoms/05-forms/_input.twig" with { "attributes": attributes.addClass("search-bar__input")} %}
+{% set technical_note = "By pressing enter you will get to the search results page and can open the links for the results. Unfortunately pressing the arrow keys doesn't allow you to navigate the search result page."|t %}
+
+{% include "@atoms/05-forms/_input.twig" with { "attributes": attributes.addClass("search-bar__input").setAttribute('aria-description', technical_note)} %}

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Module mtm.module.
+ * Module tre_mtm.module.
  */
 
 /**
@@ -13,25 +13,35 @@ function tre_mtm_page_attachments(array &$page) {
   $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
 
   $admin_pages = ($config->get('admin-pages') || !$is_admin);
-  if ($config->get('enable') && $config->get('matomo-tag') && $admin_pages) {
-    $matomo_tag = $config->get('matomo-tag');
+
+  /** @var \Drupal\Core\Render\RendererInterface $renderer */
+  $renderer = \Drupal::service('renderer');
+  $renderer->addCacheableDependency($page, $config);
+
+  $container_urls_value = array_filter($config->get('container_urls'));
+  if (empty($container_urls_value)) {
+    return;
+  }
+
+  if ($config->get('enable') && $admin_pages) {
+    $container_string = '["' . implode('", "', $container_urls_value) . '"]';
+    // Instead of insertBefore() on the first script, let's insert after the
+    // first script which is the Cookieinformation consent mode script which
+    // should remain the first script at all times.
     $script = <<<END
-function mtm_cacheParam() {
-  var now = new Date();
-  return (
-    now.getUTCFullYear() +
-    '-' +
-    (now.getUTCMonth() + 1).toString().padStart(2, 0) +
-    '-' +
-    now.getUTCDate().toString().padStart(2, 0) +
-    '-' +
-    (now.getUTCHours() + 1).toString().padStart(2, 0)
-    );
-}
-var _mtm = window._mtm = window._mtm || [];
-    _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='{$matomo_tag}?c='+mtm_cacheParam(); s.parentNode.insertBefore(g,s);
+    var mtm = window._mtm = window._mtm || [];
+    mtm.push({ 'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start' });
+    (
+      function () {
+        var d = document, s = d.getElementsByTagName('script')[0];
+        var scripts = $container_string;
+        scripts.forEach(function (src) {
+          var g = d.createElement('script');
+          g.type = 'text/javascript'; g.async = true; g.src = src;
+          s.parentNode.insertBefore(g, s.nextSibling);
+        });
+      }
+    )();
 END;
 
     $page['#attached']['html_head'][] = [
@@ -40,4 +50,3 @@ END;
     ];
   }
 }
-

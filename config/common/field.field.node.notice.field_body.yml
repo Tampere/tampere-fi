@@ -13,7 +13,7 @@ field_name: field_body
 entity_type: node
 bundle: notice
 label: Päätekstikenttä
-description: ''
+description: 'Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
 required: true
 translatable: true
 default_value: {  }

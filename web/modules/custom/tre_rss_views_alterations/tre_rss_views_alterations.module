@@ -1,0 +1,266 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_rss_views_alterations module.
+ */
+
+use Drupal\Core\Site\Settings;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_alter_views_pre_build().
+ */
+function tre_rss_views_alterations_views_pre_view(ViewExecutable $view) {
+
+  if ($view->id() == 'rss_feeds') {
+
+    // Set min and max time View filters.
+    // Get time of day and amount of days from Settings.
+    $display = $view->getDisplay();
+    $options = $display->getOption('filters');
+
+    $time_max = new DateTime('today ' . Settings::get('newsletter_fetch_time', '15:00'), new DateTimeZone('Europe/Helsinki'));
+    $time_max = $time_max->format('Y-m-d H:m:s');
+
+    $time_min = new DateTime('today ' . Settings::get('newsletter_fetch_time', '15:00'), new DateTimeZone('Europe/Helsinki'));
+    $time_min->modify('-' . Settings::get('newsletter_fetch_day_amount', '1 day'));
+    $time_min = $time_min->format('Y-m-d H:m:s');
+
+    $options['published_at']['value']['min'] = $time_min;
+    $options['published_at']['value']['max'] = $time_max;
+    $display->overrideOption('filters', $options);
+
+    $term_storage = \Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term');
+
+    // Feeds might have up to three contextual filters.
+    $filter_terms = $filter_terms_secondary = $filter_terms_tertiary = [];
+
+    // Apply correct taxonomy term filters to correct Views display.
+    switch ($view->getDisplay()->display['id']) {
+
+      case 'asuminen_ja_rakentaminen_feed':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Asuminen',
+            'Jätehuolto',
+            'Kiinteistöt',
+            'Maankäyttö, kaavoitus ja tontit',
+            'Rakentaminen',
+            'Vesihuolto',
+          ],
+        ]);
+        break;
+
+      case 'hyvinvointi':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Hyvinvointi',
+          ],
+        ]);
+        break;
+
+      case 'kaupunkiymparisto_ja_liikenne':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Kaupunkisuunnittelu',
+            'Kiinteistöt',
+            'Maankäyttö, kaavoitus ja tontit',
+            'Liikenne',
+            'Tien- ja kadunpito',
+          ],
+        ]);
+        break;
+
+      case 'koulutus':
+
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Koulutus',
+            'Perusopetus',
+            'Lukiokoulutus',
+            'Toisen asteen ammatillinen koulutus',
+          ],
+        ]);
+
+        $filter_terms_secondary = $term_storage->loadByProperties([
+          'vid' => 'life_situations',
+          'name' => [
+            'Opiskelijat',
+          ],
+        ]);
+        break;
+
+      case 'kulttuuri_ja_vapaa_aika':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Kirjastot',
+            'Kulttuuri',
+            'Liikunta ja ulkoilu',
+            'Vapaa-ajan palvelut',
+            'Vapaa sivistystyö ja taidekasvatus',
+          ],
+        ]);
+        break;
+
+      case 'osallistuminen':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Kansalaisvaikuttaminen',
+          ],
+        ]);
+        break;
+
+      case 'tyo_ja_yrittaminen':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Työ ja työttömyys',
+            'Elinkeinot',
+          ],
+        ]);
+
+        $filter_terms_secondary = $term_storage->loadByProperties([
+          'vid' => 'life_situations',
+          'name' => [
+            'Työnhakijat',
+          ],
+        ]);
+        break;
+
+      case 'ymparisto':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Ympäristö',
+            'Ympäristövalvonta ja -terveydenhuolto',
+          ],
+        ]);
+        break;
+
+      case 'lapsiperheille':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Varhaiskasvatus',
+            'Esiopetus',
+            'Perusopetus',
+          ],
+        ]);
+
+        $filter_terms_secondary = $term_storage->loadByProperties([
+          'vid' => 'life_situations',
+          'name' => [
+            'Lapset ja lapsiperheet',
+          ],
+        ]);
+        break;
+
+      case 'nuorille':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Nuorisopalvelut',
+          ],
+        ]);
+
+        $filter_terms_secondary = $term_storage->loadByProperties([
+          'vid' => 'life_situations',
+          'name' => [
+            'Nuoret',
+          ],
+        ]);
+        break;
+
+      case 'ikaantyneille':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'life_situations',
+          'name' => [
+            'Ikääntyneet',
+          ],
+        ]);
+        break;
+
+      case 'etela':
+        $filter_terms_tertiary = $term_storage->loadByProperties([
+          'vid' => 'geographical_areas',
+          'name' => [
+            'Etelä',
+          ],
+        ]);
+        break;
+
+      case 'ita':
+        $filter_terms_tertiary = $term_storage->loadByProperties([
+          'vid' => 'geographical_areas',
+          'name' => [
+            'Itä',
+          ],
+        ]);
+        break;
+
+      case 'keskusta':
+        $filter_terms_tertiary = $term_storage->loadByProperties([
+          'vid' => 'geographical_areas',
+          'name' => [
+            'Keskusta',
+          ],
+        ]);
+        break;
+
+      case 'lansi':
+        $filter_terms_tertiary = $term_storage->loadByProperties([
+          'vid' => 'geographical_areas',
+          'name' => [
+            'Länsi',
+          ],
+        ]);
+        break;
+
+      case 'pohjoinen':
+        $filter_terms_tertiary = $term_storage->loadByProperties([
+          'vid' => 'geographical_areas',
+          'name' => [
+            'Pohjoinen',
+          ],
+        ]);
+        break;
+    }
+
+    // View contextual filters provided as string separated with '+' symbol.
+    // Each of the 3 filters has to be treated separately.
+    // Filters using OR logic thanks to views_contextual_filters_or module.
+    if (!empty($filter_terms)) {
+      $filter_terms_string = implode('+', array_keys($filter_terms));
+      $view->args[0] = $filter_terms_string;
+    }
+    else {
+      // Empty string or NULL invalidates the whole query so we're passing 0.
+      // Probably caused by https://www.drupal.org/project/drupal/issues/3027640
+      $view->args[0] = 0;
+    }
+
+    if (!empty($filter_terms_secondary)) {
+      $filter_terms_secondary_string = implode('+', array_keys($filter_terms_secondary));
+      $view->args[1] = $filter_terms_secondary_string;
+    }
+    else {
+      $view->args[1] = 0;
+    }
+
+    if (!empty($filter_terms_tertiary)) {
+      $filter_terms_tertiary_string = implode('+', array_keys($filter_terms_tertiary));
+      $view->args[2] = $filter_terms_tertiary_string;
+    }
+    else {
+      $view->args[2] = 0;
+    }
+  }
+}

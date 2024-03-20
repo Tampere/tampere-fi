@@ -1,0 +1,17 @@
+uuid: 953e62c6-4f65-4fe1-a9d6-9d4b2bcb1f3a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.theme
+  enforced:
+    config:
+      - user.role.siteimprove_user
+id: theme-184d187b6
+label: Siteimprove-käyttäjä
+weight: 10
+internal: true
+audience: outsider
+group_type: theme
+permissions_ui: false
+permissions: {  }

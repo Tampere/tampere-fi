@@ -1,0 +1,17 @@
+uuid: 5d3767b5-781a-4b99-b6ed-3c9d39a18ba9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+  enforced:
+    config:
+      - user.role.siteimprove_user
+id: topic-184d187b6
+label: Siteimprove-käyttäjä
+weight: 10
+internal: true
+audience: outsider
+group_type: topic
+permissions_ui: false
+permissions: {  }

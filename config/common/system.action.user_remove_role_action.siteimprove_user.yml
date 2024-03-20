@@ -1,0 +1,14 @@
+uuid: a844ebbb-737a-42cc-b51d-fcaf6be48e42
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.siteimprove_user
+  module:
+    - user
+id: user_remove_role_action.siteimprove_user
+label: 'Remove the Siteimprove-käyttäjä role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: siteimprove_user

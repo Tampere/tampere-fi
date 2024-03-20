@@ -23,7 +23,6 @@ dependencies:
     - paragraphs_type_permissions
     - quick_node_clone
     - scheduled_transitions
-    - siteimprove
     - system
     - tablefield
     - taxonomy
@@ -252,8 +251,6 @@ permissions:
   - 'use scheduled_transitions transition archive'
   - 'use scheduled_transitions transition publish'
   - 'use scheduled_transitions transition restore_draft'
-  - 'use siteimprove'
-  - 'use siteimprove prepublish'
   - 'use text format notice_html'
   - 'view all media revisions'
   - 'view any unpublished content'

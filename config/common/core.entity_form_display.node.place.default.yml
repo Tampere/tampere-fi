@@ -25,7 +25,6 @@ dependencies:
     - content_moderation
     - field_group
     - field_states_ui
-    - geofield
     - limited_field_widgets
     - markup
     - maxlength
@@ -33,6 +32,7 @@ dependencies:
     - paragraphs_asymmetric_translation_widgets
     - path
     - text
+    - tre_geofield_customization
 third_party_settings:
   field_group:
     group_categorization:
@@ -179,7 +179,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_location:
-    type: geofield_latlon
+    type: tre_geofield_latlon
     weight: 7
     region: content
     settings:

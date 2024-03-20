@@ -1,0 +1,17 @@
+uuid: 29e529b4-84c6-4269-aa99-bb9cc48c7323
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.subsite
+  enforced:
+    config:
+      - user.role.siteimprove_user
+id: subsite-184d187b6
+label: Siteimprove-käyttäjä
+weight: 10
+internal: true
+audience: outsider
+group_type: subsite
+permissions_ui: false
+permissions: {  }

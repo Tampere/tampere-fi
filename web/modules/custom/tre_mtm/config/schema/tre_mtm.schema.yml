@@ -1,0 +1,15 @@
+tre_mtm.settings:
+  type: config_object
+  label: 'Tampere MTM Settings'
+  mapping:
+    enable:
+      type: boolean
+      label: 'Enable Matomo Tag Manager'
+    admin-pages:
+      type: boolean
+      label: 'Display Matomo Tag Manager on admin pages (if MTM enabled)'
+    container_urls:
+      type: sequence
+      label: 'Container URL(s)'
+      sequence:
+        type: url

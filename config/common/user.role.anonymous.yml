@@ -19,7 +19,7 @@ _core:
   default_config_hash: PRgsXScWElXgDAlO9iSG4jEIe-1s92TA_Sxb6D2nR6w
 id: anonymous
 label: 'Anonyymi käyttäjä'
-weight: -10
+weight: -11
 is_admin: false
 permissions:
   - 'access comments'

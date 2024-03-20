@@ -1,0 +1,7 @@
+name: 'TRE Geofield Customizations'
+type: module
+description: 'Customizations for geofield module.'
+core_version_requirement: '>=10'
+package: 'TRE'
+dependencies:
+  - geofield:geofield

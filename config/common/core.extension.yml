@@ -150,6 +150,7 @@ module:
   permission_watchdog: 0
   phpass: 0
   preprocess: 0
+  prevent_homepage_deletion: 0
   purge: 0
   purge_drush: 0
   purge_file: 0
@@ -204,6 +205,7 @@ module:
   tre_display_external_events: 0
   tre_display_external_eventz_today: 0
   tre_external_publish_permissions: 0
+  tre_geofield_customization: 0
   tre_group_admin_fixes: 0
   tre_group_module_custom: 0
   tre_hr_import: 0
@@ -228,6 +230,7 @@ module:
   tre_ptv_import: 0
   tre_react_and_share: 0
   tre_related_news_group_check: 0
+  tre_rss_views_alterations: 0
   tre_search_api_solr_customization: 0
   tre_search_exclusion: 0
   tre_tablefield_column_drag: 0
@@ -251,6 +254,7 @@ module:
   varnish_image_purge: 0
   varnish_purge_tags: 0
   varnish_purger: 0
+  views_contextual_filters_or: 0
   views_custom_cache_tag: 0
   views_filters_populate: 0
   views_ui: 0
