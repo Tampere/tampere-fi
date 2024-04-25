@@ -85,6 +85,7 @@ dependencies:
     - system
     - tablefield
     - taxonomy
+    - tre_delete_users
     - tre_mtm
     - tre_node_logger
     - webform
@@ -120,6 +121,7 @@ permissions:
   - 'administer publication date'
   - 'administer redirects'
   - 'administer robots.txt'
+  - 'administer tre_delete_users'
   - 'administer tre_mtm'
   - 'administer users'
   - 'assign author role'
@@ -183,6 +185,7 @@ permissions:
   - 'create field_eventz_featured_end'
   - 'create field_eventz_featured_event_id'
   - 'create field_eventz_featured_start'
+  - 'create field_search_keywords'
   - 'create file media'
   - 'create front_page content'
   - 'create image media'
@@ -495,6 +498,7 @@ permissions:
   - 'edit field_eventz_featured_end'
   - 'edit field_eventz_featured_event_id'
   - 'edit field_eventz_featured_start'
+  - 'edit field_search_keywords'
   - 'edit footer_information config page entity'
   - 'edit own comments'
   - 'edit own field_eventz_display_amount'

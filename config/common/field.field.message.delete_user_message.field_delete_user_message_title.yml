@@ -1,0 +1,19 @@
+uuid: bc0afece-7a01-4a22-9a72-560bf52031f7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_delete_user_message_title
+    - message.template.delete_user_message
+id: message.delete_user_message.field_delete_user_message_title
+field_name: field_delete_user_message_title
+entity_type: message
+bundle: delete_user_message
+label: delete_user_message_title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -9,6 +9,7 @@ dependencies:
     - config_pages
     - embederator
     - feeds
+    - field_permissions
     - media
     - openapi
     - paragraphs_type_permissions
@@ -30,6 +31,7 @@ permissions:
   - 'use search_api_autocomplete for search'
   - 'view 404_page_content config page entity'
   - 'view embederator entity'
+  - 'view field_search_keywords'
   - 'view footer_information config page entity'
   - 'view media'
   - 'view paragraph content accordion_item'

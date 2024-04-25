@@ -29,8 +29,7 @@ $button-default-line-height: 1.2;
   }
 }
 
-@mixin button(
-  $bg: transparent,
+@mixin button($bg: transparent,
   $color: clr(primary),
   $hoverBg: transparent,
   $hoverColor: clr(primary),
@@ -69,22 +68,18 @@ $button-default-line-height: 1.2;
 }
 
 @mixin button-dark {
-  @include button(
-    $bg: clr(dark-button-background),
+  @include button($bg: clr(dark-button-background),
     $color: clr(text-inverse),
     $hoverBg: clr(dark-button-background),
-    $hoverColor: clr(text-inverse)
-  );
+    $hoverColor: clr(text-inverse));
 
   @include dynamic-color(dark-button-background, $set-focus-color: false);
 }
 
 @mixin button-transparent {
-  @include button(
-    $bg: transparent,
+  @include button($bg: transparent,
     $color: clr(text-inverse),
-    $hoverColor: clr(text-inverse)
-  );
+    $hoverColor: clr(text-inverse));
 
   @include link-inherit;
 
@@ -92,34 +87,42 @@ $button-default-line-height: 1.2;
 }
 
 @mixin button-ghost {
-  @include button(
-    $color: clr(text),
-    $hoverColor: clr(text)
-  );
+  @include button($color: clr(text),
+    $hoverColor: clr(text));
 
   padding: 0;
   border-style: none;
 }
 
 @mixin button-secondary {
-  @include button(
-    $bg: clr(alternative-secondary, #{clr(secondary)}),
+  @include button($bg: clr(alternative-secondary, #{clr(secondary)}),
     $color: clr(text-inverse),
     $hoverBg: clr(alternative-secondary, #{clr(secondary)}),
-    $hoverColor: clr(text-inverse)
-  );
+    $hoverColor: clr(text-inverse));
 
   @include dynamic-color(secondary, $set-focus-color: false);
 }
 
 @mixin button-back {
-  @include button(
-    $color: clr(text),
-    $hoverColor: clr(text)
-  );
+  @include button($color: clr(text),
+    $hoverColor: clr(text));
 
   padding: 0;
   border-style: none;
+}
+
+@mixin button-minimal {
+  @include button;
+
+  padding: 0;
+  background-color: transparent;
+  border-style: none;
+  text-transform: none;
+
+  .button__icon {
+    width: $icon-xs;
+    height: $icon-xs;
+  }
 }
 
 .button {
@@ -216,5 +219,9 @@ $button-default-line-height: 1.2;
     text-transform: none;
     flex-direction: row-reverse;
     margin-top: $space-m;
+  }
+
+  &--minimal {
+    @include button-minimal;
   }
 }

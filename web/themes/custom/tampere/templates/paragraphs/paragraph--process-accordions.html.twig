@@ -43,6 +43,7 @@
       "process_accordion_heading": paragraph.field_accordion_main_title.value,
       "accordion_description": paragraph.field_description_text.value,
       "attributes": [],
+      "accordion_toggle_all_buttons": true,
     } %}
       {% block accordion_items %}
         {{ content|without("field_accordion_main_title", "field_description_text") }}

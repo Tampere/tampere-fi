@@ -1,0 +1,14 @@
+uuid: 044b36c2-d9bd-46c4-8456-431461f14fd7
+langcode: fi
+status: true
+dependencies: {  }
+template: delete_user_message
+label: delete_user_message
+description: 'The message that gets sent when a user gets deleted.'
+text: {  }
+settings:
+  'token options':
+    clear: false
+    'token replace': false
+  purge_override: false
+  purge_methods: {  }

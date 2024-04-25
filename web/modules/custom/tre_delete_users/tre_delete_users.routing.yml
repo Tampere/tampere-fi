@@ -1,0 +1,7 @@
+tre_delete_users.settings:
+  path: '/admin/config/tre_delete_users'
+  defaults:
+    _form: '\Drupal\tre_delete_users\Form\SettingsForm'
+    _title: "TRE Delete Users Settings"
+  requirements:
+    _permission: 'administer tre_delete_users'

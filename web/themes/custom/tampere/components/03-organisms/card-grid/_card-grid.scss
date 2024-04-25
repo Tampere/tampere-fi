@@ -6,10 +6,18 @@
     gap: $gutter-mobile;
     margin: 0;
     padding: 0;
+    grid-auto-rows: auto;
+
+    @include small {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include medium {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     @include large {
-      grid-auto-rows: 1fr;
-      grid-template-columns: repeat(auto-fill, minmax(calc(var(--basic-content-max-width) / 2), 1fr));
+      grid-template-columns: repeat(3, minmax(calc(var(--basic-content-max-width) / 3), 1fr)); // 3 columns for xl
     }
   }
 
@@ -46,10 +54,6 @@
   &--3-col-expand {
     #{$base_class}__wrapper {
       gap: $gutter-small;
-
-      @include large {
-        grid-auto-rows: 1fr;
-      }
     }
   }
 
@@ -94,7 +98,6 @@
       gap: $gutter-medium;
 
       @include large {
-        grid-auto-rows: 1fr;
         grid-template-columns: repeat(auto-fill, minmax(calc((var(--basic-component-max-width) / 5)), 1fr));
       }
     }

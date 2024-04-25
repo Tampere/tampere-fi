@@ -1,0 +1,7 @@
+services:
+  tre_delete_users.notification_sender:
+    class: Drupal\tre_delete_users\Service\NotificationSender
+    arguments:
+      - '@message_notify.sender'
+      - '@entity_type.manager'
+      - '@state'

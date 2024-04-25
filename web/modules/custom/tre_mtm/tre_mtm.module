@@ -18,7 +18,9 @@ function tre_mtm_page_attachments(array &$page) {
   $renderer = \Drupal::service('renderer');
   $renderer->addCacheableDependency($page, $config);
 
-  $container_urls_value = array_filter($config->get('container_urls'));
+  $container_urls_config = $config->get('container_urls') ?? [];
+  $container_urls_config = is_array($container_urls_config) ? $container_urls_config : [];
+  $container_urls_value = array_filter($container_urls_config);
   if (empty($container_urls_value)) {
     return;
   }

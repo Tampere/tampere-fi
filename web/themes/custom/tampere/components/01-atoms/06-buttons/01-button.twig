@@ -29,7 +29,9 @@
   {% endfor %}
 >
   {% block button_content %}
-    {{ button_content }}
+    <span class="button__text">
+      {{ button_content }}
+    </span>
     {% if button_icon_name %}
       {% include "@atoms/04-images/icons/_icon.twig" with {
         icon_base_class: "icon",

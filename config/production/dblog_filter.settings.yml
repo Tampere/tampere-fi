@@ -1,4 +1,4 @@
-log_values: ''
+log_values: "tre_hr_import|info\r\nopenid_connect|emergency,alert,critical,error,warning,notice,info,debug"
 severity_levels:
   emergency: 0
   alert: 0

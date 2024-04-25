@@ -192,10 +192,14 @@ process:
     to_format: 'Y-m-d'
     source: contract_begin_date
   field_contract_ends:
-    plugin: format_date
-    from_format: Ymd
-    to_format: 'Y-m-d'
-    source: contract_end_date
+    -
+      source: contract_end_date
+      plugin: contract_end_date_check
+      key: id
+    -
+      plugin: format_date
+      from_format: Ymd
+      to_format: 'Y-m-d'
   # Importing phone numbers as of 2022-05-28.
   field_phone:
     plugin: get

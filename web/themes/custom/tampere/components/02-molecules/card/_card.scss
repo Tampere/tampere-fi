@@ -3,11 +3,11 @@ $card-heading-underline-distance: 5px;
 $colorful-card-body-max-width: 75%;
 $colorful-card-body-max-width--with-sidebar: 65%;
 
-$colorful-card-min-height: 395px;
-$colorful-card-min-height--desktop: 305px;
-$colorful-card-two-column-min-height--desktop: 670px;
-$colorful-card-two-column-min-height--with-sidebar: 600px;
-$colorful-card-multi-column-min-height--desktop: 495px;
+$colorful-card-min-height: auto;
+$colorful-card-min-height--desktop: auto;
+$colorful-card-two-column-min-height--desktop: auto;
+$colorful-card-two-column-min-height--with-sidebar: auto;
+$colorful-card-multi-column-min-height--desktop: auto;
 
 $colorful-card-two-column-icon-bottom-min-distance: 180px;
 $colorful-card-multi-column-icon-bottom-min-distance: 80px;
@@ -84,7 +84,7 @@ $grouped-card-background-position: bottom -305px right -10px;
   // Variations
   &--colorful {
     background-color: transparent;
-    background-image: url('../images/waves-transparent-new.svg');
+    background-image: url('../images/waves-transparent-small.svg');
     background-repeat: no-repeat;
     position: relative;
 
@@ -110,7 +110,7 @@ $grouped-card-background-position: bottom -305px right -10px;
     &::before {
       @include transition(opacity, 0.2s, ease-in-out);
 
-      background-image: url('../images/waves-transparent-hover.svg');
+      background-image: url('../images/waves-transparent-small-hover.svg');
       background-repeat: no-repeat;
       opacity: 0;
     }
@@ -164,7 +164,7 @@ $grouped-card-background-position: bottom -305px right -10px;
 
     #{$base_class}__icon {
       margin-top: 0;
-      margin-bottom: $space-xxl;
+      margin-bottom: 0;
   
       @include large {
         margin-bottom: $space-l;
@@ -394,12 +394,12 @@ $grouped-card-background-position: bottom -305px right -10px;
       }
 
       &::before {
-        background-image: url('../images/waves-transparent-new.svg');
+        background-image: url('../images/waves-transparent-small.svg');
         opacity: 1;
       }
 
       &::after {
-        background-image: url('../images/waves-transparent-hover.svg');
+        background-image: url('../images/waves-transparent-small-hover.svg');
         opacity: 0;
       }
 

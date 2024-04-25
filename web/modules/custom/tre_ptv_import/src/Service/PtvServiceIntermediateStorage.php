@@ -223,14 +223,10 @@ class PtvServiceIntermediateStorage implements PtvServiceIntermediateStorageInte
    */
   public function getServicesFromApi(bool $refresh_cache = FALSE): array {
     $services = [];
-    $services_cache = $this->serviceCache->get('tre_ptv_import_service_list_iterator');
-    if ($refresh_cache || !$services_cache || !isset($services_cache->data) || !is_array($services_cache->data)) {
-      foreach ($this->serviceListIterator as $service) {
-        $services[] = $service;
-      }
-
-      $this->serviceCache->set('tre_ptv_import_service_list_iterator', $services);
+    foreach ($this->serviceListIterator as $service) {
+      $services[] = $service;
     }
+
     return $services;
   }
 
@@ -255,18 +251,21 @@ class PtvServiceIntermediateStorage implements PtvServiceIntermediateStorageInte
    * {@inheritdoc}
    */
   public function insertServices(array $services) {
-    $upsert_service_query = $this->db->upsert('tre_ptv_import_service');
-    $upsert_service_query->fields(['uuid', 'data']);
-    $upsert_service_query->key('uuid');
-    foreach ($services as $service) {
-      $service_record = [
-        $service->getId(),
-        $this->serialization::encode($service),
-      ];
+    $chunks = array_chunk($services, 50);
+    foreach ($chunks as $chunk) {
+      $upsert_service_query = $this->db->upsert('tre_ptv_import_service');
+      $upsert_service_query->fields(['uuid', 'data']);
+      $upsert_service_query->key('uuid');
+      foreach ($chunk as $service) {
+        $service_record = [
+          $service->getId(),
+          $this->serialization::encode($service),
+        ];
 
-      $upsert_service_query->values($service_record);
+        $upsert_service_query->values($service_record);
+      }
+      $upsert_service_query->execute();
     }
-    $upsert_service_query->execute();
   }
 
   /**
@@ -338,23 +337,14 @@ class PtvServiceIntermediateStorage implements PtvServiceIntermediateStorageInte
 
     foreach ($channel_chunks as $chunk) {
       $actual_channels = [];
-      $chunk_hash = sha1($this->serialization::encode($chunk));
-      $cid = 'tre_ptv_import.service_channel_list.' . $chunk_hash;
-      $channels_chunk_cache = $this->serviceChannelCache->get($cid);
 
-      if ($refresh_cache || !$channels_chunk_cache || !isset($channels_chunk_cache->data) || !is_array($channels_chunk_cache->data)) {
-        $this->serviceChannelIterator->setGuids($chunk);
+      $this->serviceChannelIterator->setGuids($chunk);
 
-        foreach ($this->serviceChannelIterator as $service_channel_channels_object) {
-          $channel_model = $this->dataHelpers::getServiceChannelObjectFromServiceChannelsObject($service_channel_channels_object);
-          $actual_channels[$channel_model->getId()] = $channel_model;
-        }
-
-        $this->serviceChannelCache->set($cid, $actual_channels);
+      foreach ($this->serviceChannelIterator as $service_channel_channels_object) {
+        $channel_model = $this->dataHelpers::getServiceChannelObjectFromServiceChannelsObject($service_channel_channels_object);
+        $actual_channels[$channel_model->getId()] = $channel_model;
       }
-      else {
-        $actual_channels = $channels_chunk_cache->data;
-      }
+
       $all_channels = array_merge($all_channels, $actual_channels);
     }
     return $all_channels;

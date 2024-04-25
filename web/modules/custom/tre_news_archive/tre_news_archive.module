@@ -170,6 +170,7 @@ function _tre_news_archive_nids_to_mpdf(string $filename, string $directory, arr
   }
 
   $mpdf = new Mpdf($config);
+  $mpdf->useSubstitutions = TRUE;
   // Create and add styles as external css.
   $stylesheet = file_get_contents('modules/custom/tre_news_archive/css/pdf.css');
   $mpdf->WriteHTML($stylesheet, 1);

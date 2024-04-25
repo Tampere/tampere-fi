@@ -38,17 +38,18 @@
 #}
 
 {% block content %}
-  {% set table_caption = content.field_tablefield[0].tablefield["#caption"]|lower %}
-  {% set table_caption_anchor_link_url = "#" ~ table_caption %}
+  {% set table_caption = content.field_tablefield[0].tablefield["#caption"] %}
+  {% set table_caption_id = table_caption|clean_unique_id %}
+  {% set table_caption_anchor_link_url = "#" ~ table_caption_id %}
 
   {% if paragraph.field_display_table_caption.0.value == '0' %}
     {% set attributes = attributes.addClass('visually-hidden-table-caption') %}
   {% else %}
-    <h2 id="{{ table_caption|replace({' ': '-'}) }}" {{ bem('caption', ['anchor-link'], 'table') }}>
+    <h2 id="{{ table_caption_id }}" {{ bem('caption', ['anchor-link'], 'table') }}>
       {% include "@atoms/anchor-link/anchor-link.twig" with {
         "anchor_link__url": table_caption_anchor_link_url,
       } %}
-      {{ table_caption|capitalize }}
+      {{ table_caption }}
     </h2>
   {% endif %}
 

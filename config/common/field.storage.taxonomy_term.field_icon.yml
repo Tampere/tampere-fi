@@ -15,6 +15,15 @@ settings:
       value: assistant
       label: Avustaja
     -
+      value: accessible_parking
+      label: 'Esteetön pysäköinti'
+    -
+      value: accessible_entrance
+      label: 'Esteetön sisäänkäynti'
+    -
+      value: accessible_wc
+      label: 'Esteetön wc'
+    -
       value: lift
       label: Hissi
     -
@@ -26,9 +35,6 @@ settings:
     -
       value: internet
       label: Internet
-    -
-      value: isa
-      label: ISA
     -
       value: coffee_shop
       label: Kahvila
@@ -85,7 +91,7 @@ settings:
       label: 'Suuri teksti'
     -
       value: cloakroom
-      label: 'Vaate säilytys'
+      label: Vaatesäilytys
     -
       value: signed_services
       label: 'Viittomakielinen palvelu'
@@ -101,6 +107,9 @@ settings:
     -
       value: sound_guidance
       label: Ääniopastus
+    -
+      value: isa
+      label: 'ISA (vanhentunut, älä käytä)'
   allowed_values_function: null
 module: options
 locked: false

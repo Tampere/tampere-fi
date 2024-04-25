@@ -1,0 +1,30 @@
+uuid: 841794f4-cbb2-400a-80b0-0ce480d739d2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_body
+    - field.field.message.delete_user_message.field_delete_user_message_body
+    - field.field.message.delete_user_message.field_delete_user_message_title
+    - message.template.delete_user_message
+  module:
+    - markup_field
+id: message.delete_user_message.mail_body
+targetEntityType: message
+bundle: delete_user_message
+mode: mail_body
+content:
+  field_delete_user_message_body:
+    type: markup_field_rendered_markup
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  partial_1:
+    weight: 0
+    region: content
+hidden:
+  field_delete_user_message_title: true
+  partial_0: true
+  search_api_excerpt: true

@@ -1,0 +1,5 @@
+tre_delete_users.settings:
+  title: 'Delete Users'
+  parent: system.admin_config_system
+  description: 'Delete users using queues'
+  route_name: tre_delete_users.settings

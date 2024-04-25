@@ -166,6 +166,12 @@ class PtvServiceListIterator implements PtvServiceSingleFetcherInterface {
     $counter = 0;
 
     $page = 1;
+    // Note: the API is very unstable and suffers foremost of timeouts.
+    // Sometimes the timeouts are cut off at the server which is something we
+    // can do nothing about. But at other times it is possible to make use of a
+    // longer timeout at our end. Consider increasing the timeout from the
+    // default of 30 sec by setting
+    // $settings['http_client_config']['timeout'] in settings.php.
     while ($page == 1 || $this->model->getPageNumber() < $this->model->getPageCount()) {
       $this->model = $this->apiConnection->apiV11ServiceListAreaAreaCodeCodeGet($this->areaType,
         $this->areaCode,

@@ -1,0 +1,4 @@
+administer tre_delete_users:
+  title: 'Perform Delete Users'
+  description: 'Access to delete users.'
+  restrict access: true

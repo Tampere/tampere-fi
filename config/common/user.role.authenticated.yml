@@ -20,6 +20,7 @@ dependencies:
     - embederator
     - environment_indicator
     - feeds
+    - field_permissions
     - file
     - filter
     - media
@@ -61,6 +62,7 @@ permissions:
   - 'use text format webform_default'
   - 'view 404_page_content config page entity'
   - 'view embederator entity'
+  - 'view field_search_keywords'
   - 'view footer_information config page entity'
   - 'view media'
   - 'view own unpublished content'

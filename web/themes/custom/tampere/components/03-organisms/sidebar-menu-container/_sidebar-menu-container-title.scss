@@ -3,10 +3,10 @@
 
   font-size: $font-16;
   font-weight: $font-weight-bold;
-  margin-right: calc((#{$space-xl} - #{$sidebar-menu-icon-size}) + #{$sidebar-menu-icon-size});
+  margin-right: $space-xl;
   margin-bottom: 0;
-  padding-top: $space-xs;
-  padding-bottom: $space-xs;
+  padding-top: $space-xs-plus;
+  padding-bottom: $space-xs-plus;
 
   @include large {
     font-size: $font-22;
@@ -21,6 +21,7 @@
     text-decoration: none;
     position: relative;
     padding-left: $sidebar-menu-link-left-padding;
+    letter-spacing: $sidebar-menu-link-letter-spacing;
 
     &.is-active,
     &:hover,

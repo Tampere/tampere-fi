@@ -112,12 +112,6 @@ $process-accordion-heading-line-left-distance: calc((var(--process-accordion-lef
     }
   }
 
-  &__icon {
-    @include large-down {
-      margin-right: $space-m;
-    }
-  }
-
   &__process-icon {
     color: var(--process-accordion-line-color);
     position: absolute;

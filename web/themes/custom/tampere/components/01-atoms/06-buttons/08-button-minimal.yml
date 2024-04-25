@@ -1,0 +1,8 @@
+button_url:
+  "#"
+button_content:
+  "Minimal Button"
+button_modifiers:
+  - "minimal"
+button_icon_name:
+  "chevron-down"

@@ -3,52 +3,60 @@ settings:
     0:
       label: Assistant
     1:
-      label: Lift
+      label: 'Accessible parking'
     2:
+      label: 'Accessible entrance'
+    3:
+      label: 'Accessible WC'
+    4:
+      label: Lift
+    5:
       label: 'Induction loop'
-    6:
-      label: 'Coffee shop'
-    7:
-      label: Store
     8:
-      label: 'Conference room'
+      label: 'Coffee shop'
     9:
-      label: 'Lend items'
+      label: Store
     10:
-      label: 'Childcare room'
+      label: 'Conference room'
     11:
-      label: 'Charging spot'
+      label: 'Equipment on loan'
     12:
-      label: 'Ticket sales'
+      label: 'Childcare room'
     13:
-      label: Ramp
+      label: 'Charging spot'
     14:
-      label: 'Services helping visually impared'
+      label: 'Ticket sales'
     15:
-      label: 'Guide dogs allowed'
+      label: Ramp
     16:
-      label: Braille
+      label: 'Services helping visually impared'
     17:
-      label: 'Stair lift'
+      label: 'Guide dogs allowed'
     18:
-      label: Stairs
+      label: Braille
     19:
-      label: 'Wheelchair lift'
+      label: 'Stair lift'
     20:
-      label: Rollator
+      label: Stairs
     21:
-      label: 'Skooter park'
+      label: 'Wheelchair lift'
     22:
-      label: Locker
+      label: Rollator
     23:
-      label: 'Large text'
+      label: 'Electric moped park'
     24:
-      label: Cloakroom
+      label: Locker
     25:
-      label: 'Signed services'
+      label: 'Large text'
+    26:
+      label: Cloakroom
     27:
-      label: 'Accessible WC, one-sidedly usable left'
-    28:
-      label: 'Esteetön wc, one-sidedly usable right'
+      label: 'Services in sign language'
     29:
+      label: 'Accessible WC, one-sidedly usable left'
+    30:
+      label: 'Accessible WC, one-sidedly usable right'
+    31:
       label: 'Sound guidance'
+    32:
+      label: 'ISA (deprecated, do not use)'

@@ -1,0 +1,21 @@
+uuid: 11a1f257-0c18-4d25-86f4-e50da458f516
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.message.field_delete_user_message_body
+    - message.template.delete_user_message
+  module:
+    - markup_field
+id: message.delete_user_message.field_delete_user_message_body
+field_name: field_delete_user_message_body
+entity_type: message
+bundle: delete_user_message
+label: delete_user_message_body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: markup_field

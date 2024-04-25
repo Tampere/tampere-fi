@@ -1,5 +1,9 @@
 {{ attach_library("tampere/accordion") }}
 
+{% if not accordion_toggle_all_buttons is defined %}
+  {% set accordion_toggle_all_buttons = false %}
+{% endif %} 
+
 {% set ac_base_class = ac_base_class|default("accordion") %}
 <div {{ bem(ac_base_class, (ac_modifiers), ac_blockname) }}>
   {% if accordion_heading %}
@@ -16,6 +20,22 @@
       paragraph_base_class: "description",
       paragraph_blockname: ac_base_class,
       paragraph_content: accordion_description,
+    } %}
+  {% endif %}
+
+  {% if accordion_toggle_all_buttons %}
+    {% include "@atoms/06-buttons/01-button.twig" with {
+      button_base_class: "button",
+      button_content: "Expand all sections"|t({}, {'context': 'accordion'}),
+      button_icon_name: "chevron-down",
+      custom_classes: ["accordion__open-all-button"]
+    } %}
+
+    {% include "@atoms/06-buttons/01-button.twig" with {
+      button_base_class: "button",
+      button_content: "Collapse all sections"|t({}, {'context': 'accordion'}),
+      button_icon_name: "chevron-up",
+      custom_classes: ["accordion__close-all-button hidden"]
     } %}
   {% endif %}
   

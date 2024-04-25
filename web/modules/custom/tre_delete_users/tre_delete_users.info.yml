@@ -1,0 +1,8 @@
+name: 'TRE Delete Users'
+type: module
+description: 'Delete users using a queue'
+package: 'TRE'
+core_version_requirement: '>=10'
+dependencies:
+  - tre_preprocess:tre_preprocess
+  - message_notify:message_notify

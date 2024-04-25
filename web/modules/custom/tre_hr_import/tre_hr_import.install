@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for tre_hr_import module.
+ */
+
+/**
+ * Creates or deletes a database table to temporarily store contract data.
+ */
+function tre_hr_import_schema() {
+  $schema['hr_import_temp_data'] = [
+    'fields' => [
+      'user_id' => [
+        'description' => 'User ID',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'start_time' => [
+        'description' => 'start time.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'end_time' => [
+        'description' => 'end time.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['user_id'],
+  ];
+
+  return $schema;
+}
+
+/**
+ * On module update, create database a table to temporarily store contract data.
+ */
+function tre_hr_import_update_10001() {
+
+  $database = \Drupal::database();
+  $schema = $database->schema();
+  $table_name = 'hr_import_temp_data';
+
+  $table_schema = [
+    'fields' => [
+      'user_id' => [
+        'description' => 'User ID',
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'start_time' => [
+        'description' => 'start time.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'end_time' => [
+        'description' => 'end time.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['user_id'],
+  ];
+
+  $schema->createTable($table_name, $table_schema);
+}

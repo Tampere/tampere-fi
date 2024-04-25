@@ -25,9 +25,13 @@
 
         {% include "@molecules/involvement-card/involvement-card.twig" %}
 
-        {% include "@organisms/accordion/accordion.twig" %}
+        {% include "@organisms/accordion/accordion.twig" with {
+            "accordion_toggle_all_buttons": false,
+          } %}
 
-        {% include "@organisms/accordion/process-accordion/process-accordion.twig" %}
+        {% include "@organisms/accordion/process-accordion/process-accordion.twig" with {
+            "accordion_toggle_all_buttons": false,
+        } %}
 
         {% include "@molecules/cta/cta.twig" %}
 

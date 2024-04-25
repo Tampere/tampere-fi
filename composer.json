@@ -301,7 +301,7 @@
         "drupal/webform": "^6.2@RC",
         "drupal/webform_paragraphs": "^1.2",
         "drupal/webform_translation_permissions": "^2.0",
-        "drush/drush": "^11.0",
+        "drush/drush": "^12.5",
         "gaambo/slick": "^1.8",
         "league/commonmark": "^1",
         "midzer/tobii": "^2.3",
@@ -503,6 +503,9 @@
             },
             "drupal/publication_date": {
                 "3074373 - Publication date is required for completing the form": "https://www.drupal.org/files/issues/2022-12-20/publication_date_is_required_for_completing_the_form-3074373-11.patch"
+            },
+            "drupal/purge": {
+                "#3440974: Drush 12 compatibility": "patches/purge__drush_12_compatibility__3440974.patch"
             },
             "drupal/quick_node_clone": {
                 "3075889 - Add option to have cloned node publish status default to unpublished": "https://www.drupal.org/files/issues/2022-05-07/quick_node_clone-unpublish-clone-option-3075889-11.patch"

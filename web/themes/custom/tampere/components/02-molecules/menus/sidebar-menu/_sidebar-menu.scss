@@ -1,6 +1,8 @@
 $sidebar-menu-link-left-padding: $space-l;
+$sidebar-menu-link-right-padding: $space-xs;
 $sidebar-menu-link-left-padding--desktop: $gutter-default;
 $sidebar-menu-link-left-padding--minisite: $space-xxxl;
+$sidebar-menu-link-letter-spacing: 0.0415rem; // ~0.5pt
 
 .sidebar-menu {
   $base_class: &;
@@ -10,6 +12,7 @@ $sidebar-menu-link-left-padding--minisite: $space-xxxl;
   --sidebar-menu-accent-color: #{clr(secondary)};
   --sidebar-menu-border-color: #{clr(secondary)};
   --sidebar-menu-link-left-padding: #{$sidebar-menu-link-left-padding};
+  --sidebar-menu-link-right-padding: #{$sidebar-menu-link-right-padding};
 
   font-family: $font-heading;
   font-size: $font-16;
@@ -48,11 +51,14 @@ $sidebar-menu-link-left-padding--minisite: $space-xxxl;
     padding-top: $space-s;
     padding-bottom: $space-s;
     padding-left: var(--sidebar-menu-link-left-padding);
+    padding-right: var(--sidebar-menu-link-right-padding);
     position: relative;
     text-decoration: none;
+    letter-spacing: $sidebar-menu-link-letter-spacing;
 
     @include large-plus {
       --sidebar-menu-link-left-padding: #{$sidebar-menu-link-left-padding--desktop};
+      --sidebar-menu-link-right-padding: 0;
 
       overflow-wrap: anywhere;
     }
@@ -120,7 +126,7 @@ $sidebar-menu-link-left-padding--minisite: $space-xxxl;
     width: $space-xl;
 
     &.is-closed {
-      + #{$base_class} {
+      +#{$base_class} {
         display: none;
       }
 

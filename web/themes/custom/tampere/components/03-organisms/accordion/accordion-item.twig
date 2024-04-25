@@ -18,12 +18,16 @@
       </span>
 
       {# Icon #}
-      {% include "@atoms/04-images/icons/_icon.twig" with {
-        icon_base_class: "icon",
-        icon_blockname: ac__base_class,
-        icon_name: accordion__icon_name|default("arrow-plain-new"),
-        icon_decorative: true,
-      } %}
+      <span {{ bem("icon-wrapper", [], ac__base_class) }}>
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+            icon_base_class: "icon",
+            icon_blockname: ac__base_class,
+            icon_name: accordion__icon_name|default("arrow-plain-new"),
+            icon_decorative: true,
+          } %}
+        <span {{ bem("icon-text", ['open'], ac__base_class, [ "hyphenate", "icon-text", "icon-text--open" ]) }} aria-hidden="false">{{ "Expand"|t({}, {'context': 'accordion'}) }}</span>
+        <span {{ bem("icon-text", ['close'], ac__base_class, [ "hyphenate", "icon-text", "icon-text--close" ]) }} aria-hidden="true">{{ "Collapse"|t({}, {'context': 'accordion'}) }}</span>
+      </span>
     </button>
   </{{ h_element }}>
 

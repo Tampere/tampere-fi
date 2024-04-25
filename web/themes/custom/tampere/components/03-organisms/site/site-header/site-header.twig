@@ -135,6 +135,7 @@
       <div {{ bem("main-navigation", [ "mobile" ], header__base_class)}}>
         {% embed "@organisms/accordion/accordion.twig" with {
           "ac_modifiers": [ "navigation" ],
+          "accordion_toggle_all_buttons": false,
         } %}
           {% block accordion_items %}
             {% embed "@organisms/accordion/accordion-item.twig" with {

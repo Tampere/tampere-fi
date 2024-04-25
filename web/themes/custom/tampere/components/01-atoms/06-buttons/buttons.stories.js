@@ -11,6 +11,7 @@ import buttonGhostData from './03-button-ghost.yml';
 import buttonSecondaryData from './04-button-secondary.yml';
 import buttonLinkData from './06-button-link.yml';
 import buttonBackData from './07-button-back.yml';
+import buttonMinimalData from './08-button-minimal.yml';
 
 /**
  * Storybook Definition.
@@ -48,4 +49,8 @@ export const link = () => (
 
 export const back = () => (
   <div dangerouslySetInnerHTML={{ __html: button(buttonBackData) }} />
+);
+
+export const minimal = () => (
+  <div dangerouslySetInnerHTML={{ __html: button(buttonMinimalData) }} />
 );

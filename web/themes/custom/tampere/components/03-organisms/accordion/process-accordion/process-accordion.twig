@@ -23,6 +23,24 @@
     } %}
   {% endif %}
   
+  {% if accordion_toggle_all_buttons %}
+
+    {% include "@atoms/06-buttons/01-button.twig" with {
+  button_base_class: "button",
+  button_content: "Expand all sections"|t({}, {'context': 'accordion'}),
+  button_icon_name: "chevron-down",
+  custom_classes: ["accordion__open-all-button"]
+} %}
+
+    {% include "@atoms/06-buttons/01-button.twig" with {
+    button_base_class: "button",
+    button_content: "Collapse all sections"|t({}, {'context': 'accordion'}),
+    button_icon_name: "chevron-up",
+    custom_classes: ["accordion__close-all-button hidden"]
+  } %}
+
+  {% endif %}
+  
   {% block accordion_items %}
     {% for ac_item in accordion_list %}
       {% include "@organisms/accordion/accordion-item.twig" with {

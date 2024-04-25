@@ -1,0 +1,420 @@
+diff --git a/composer.json b/composer.json
+index 81b168b..3d2a947 100644
+--- a/composer.json
++++ b/composer.json
+@@ -12,11 +12,6 @@
+     "extra": {
+         "branch-alias": {
+             "dev-8.x-3.x": "3.x-dev"
+-        },
+-        "drush": {
+-            "services": {
+-                "drush.services.yml": ">=9"
+-            }
+         }
+     }
+ }
+diff --git a/drush.services.yml b/drush.services.yml
+deleted file mode 100644
+index 5e03135..0000000
+--- a/drush.services.yml
++++ /dev/null
+@@ -1,41 +0,0 @@
+-services:
+-  purge_drush.debug_commands:
+-    class: Drupal\purge\Commands\DebugCommands
+-    arguments: ['@purge.logger']
+-    tags:
+-      - { name: drush.command }
+-  purge_drush.diagnostics_command:
+-    class: Drupal\purge\Commands\DiagnosticsCommand
+-    arguments: ['@purge.diagnostics']
+-    tags:
+-      - { name: drush.command }
+-  purge_drush.invalidate_command:
+-    class: Drupal\purge\Commands\InvalidateCommand
+-    arguments: ['@purge.invalidation.factory', '@purge.processors', '@purge.purgers']
+-    tags:
+-      - { name: drush.command }
+-  purge_drush.processor_commands:
+-    class: Drupal\purge\Commands\ProcessorCommands
+-    arguments: ['@purge.processors']
+-    tags:
+-      - { name: drush.command }
+-  purge_drush.purger_commands:
+-    class: Drupal\purge\Commands\PurgerCommands
+-    arguments: ['@purge.purgers']
+-    tags:
+-      - { name: drush.command }
+-  purge_drush.queue_commands:
+-    class: Drupal\purge\Commands\QueueCommands
+-    arguments: ['@purge.processors', '@purge.purgers', '@purge.invalidation.factory', '@purge.queue', '@purge.queue.stats', '@purge.queuers']
+-    tags:
+-      - { name: drush.command }
+-  purge_drush.queuer_commands:
+-    class: Drupal\purge\Commands\QueuerCommands
+-    arguments: ['@purge.queuers']
+-    tags:
+-      - { name: drush.command }
+-  purge_drush.types_command:
+-    class: Drupal\purge\Commands\TypesCommand
+-    arguments: ['@purge.invalidation.factory', '@purge.purgers']
+-    tags:
+-      - { name: drush.command }
+diff --git a/purge.services.yml b/purge.services.yml
+index b203d21..75ddea4 100644
+--- a/purge.services.yml
++++ b/purge.services.yml
+@@ -140,3 +140,45 @@ services:
+     class: Drupal\purge\Plugin\Purge\TagsHeader\PluginManager
+     parent: default_plugin_manager
+     public: false
++
++  # PURGE_DRUSH services. Moved over from drush.services.yml for Drush 12 compatibility.
++  purge_drush.debug_commands:
++    class: Drupal\purge\Drush\Commands\DebugCommands
++    arguments: ['@purge.logger']
++    tags:
++      - { name: drush.command }
++  purge_drush.diagnostics_command:
++    class: Drupal\purge\Drush\Commands\DiagnosticsCommand
++    arguments: ['@purge.diagnostics']
++    tags:
++      - { name: drush.command }
++  purge_drush.invalidate_command:
++    class: Drupal\purge\Drush\Commands\InvalidateCommand
++    arguments: ['@purge.invalidation.factory', '@purge.processors', '@purge.purgers']
++    tags:
++      - { name: drush.command }
++  purge_drush.processor_commands:
++    class: Drupal\purge\Drush\Commands\ProcessorCommands
++    arguments: ['@purge.processors']
++    tags:
++      - { name: drush.command }
++  purge_drush.purger_commands:
++    class: Drupal\purge\Drush\Commands\PurgerCommands
++    arguments: ['@purge.purgers']
++    tags:
++      - { name: drush.command }
++  purge_drush.queue_commands:
++    class: Drupal\purge\Drush\Commands\QueueCommands
++    arguments: ['@purge.processors', '@purge.purgers', '@purge.invalidation.factory', '@purge.queue', '@purge.queue.stats', '@purge.queuers']
++    tags:
++      - { name: drush.command }
++  purge_drush.queuer_commands:
++    class: Drupal\purge\Drush\Commands\QueuerCommands
++    arguments: ['@purge.queuers']
++    tags:
++      - { name: drush.command }
++  purge_drush.types_command:
++    class: Drupal\purge\Drush\Commands\TypesCommand
++    arguments: ['@purge.invalidation.factory', '@purge.purgers']
++    tags:
++      - { name: drush.command }
+diff --git a/src/Commands/DebugCommands.php b/src/Drush/Commands/DebugCommands.php
+similarity index 95%
+rename from src/Commands/DebugCommands.php
+rename to src/Drush/Commands/DebugCommands.php
+index dd2bfbe..1910f26 100644
+--- a/src/Commands/DebugCommands.php
++++ b/src/Drush/Commands/DebugCommands.php
+@@ -1,11 +1,12 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Drupal\Core\Logger\RfcLogLevel;
+ use Drupal\purge\Logger\LoggerServiceInterface;
+ use Drush\Commands\DrushCommands;
+ use Drush\Exceptions\UserAbortException;
++use Psr\Container\ContainerInterface;
+ 
+ /**
+  * Commands to help debugging caching and Purge.
+@@ -30,6 +31,10 @@ class DebugCommands extends DrushCommands {
+     $this->purgeLogger = $purge_logger;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static($container->get('purge.logger'));
++  }
++
+   /**
+    * Disable debugging for all of Purge's log channels.
+    *
+diff --git a/src/Commands/DiagnosticsCommand.php b/src/Drush/Commands/DiagnosticsCommand.php
+similarity index 93%
+rename from src/Commands/DiagnosticsCommand.php
+rename to src/Drush/Commands/DiagnosticsCommand.php
+index bc4a83c..775e036 100644
+--- a/src/Commands/DiagnosticsCommand.php
++++ b/src/Drush/Commands/DiagnosticsCommand.php
+@@ -1,12 +1,13 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Consolidation\AnnotatedCommand\AnnotationData;
+ use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
+ use Drupal\purge\Plugin\Purge\DiagnosticCheck\DiagnosticCheckInterface;
+ use Drupal\purge\Plugin\Purge\DiagnosticCheck\DiagnosticsServiceInterface;
+ use Drush\Commands\DrushCommands;
++use Psr\Container\ContainerInterface;
+ use Symfony\Component\Console\Input\InputInterface;
+ 
+ /**
+@@ -32,6 +33,9 @@ class DiagnosticsCommand extends DrushCommands {
+     $this->purgeDiagnostics = $purge_diagnostics;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static($container->get('purge.diagnostics'));
++  }
+   /**
+    * Only add @default-fields for the table format.
+    *
+diff --git a/src/Commands/InvalidateCommand.php b/src/Drush/Commands/InvalidateCommand.php
+similarity index 94%
+rename from src/Commands/InvalidateCommand.php
+rename to src/Drush/Commands/InvalidateCommand.php
+index 03575ec..4081fd1 100644
+--- a/src/Commands/InvalidateCommand.php
++++ b/src/Drush/Commands/InvalidateCommand.php
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+ use Drupal\purge\Plugin\Purge\Invalidation\Exception\InvalidExpressionException;
+@@ -15,6 +15,7 @@ use Drupal\purge\Plugin\Purge\Purger\Exception\LockException;
+ use Drupal\purge\Plugin\Purge\Purger\PurgersServiceInterface;
+ use Drush\Commands\DrushCommands;
+ use Drush\Exceptions\UserAbortException;
++use Psr\Container\ContainerInterface;
+ 
+ /**
+  * Directly invalidate an item without going through the queue.
+@@ -59,6 +60,14 @@ class InvalidateCommand extends DrushCommands {
+     $this->purgePurgers = $purge_purgers;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static(
++      $container->get('purge.invalidation.factory'),
++      $container->get('purge.processors'),
++      $container->get('purge.purgers')
++    );
++  }
++
+   /**
+    * Directly invalidate an item without going through the queue.
+    *
+diff --git a/src/Commands/ProcessorCommands.php b/src/Drush/Commands/ProcessorCommands.php
+similarity index 96%
+rename from src/Commands/ProcessorCommands.php
+rename to src/Drush/Commands/ProcessorCommands.php
+index 842a0aa..f811baa 100644
+--- a/src/Commands/ProcessorCommands.php
++++ b/src/Drush/Commands/ProcessorCommands.php
+@@ -1,10 +1,11 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
+ use Drupal\purge\Plugin\Purge\Processor\ProcessorsServiceInterface;
+ use Drush\Commands\DrushCommands;
++use Psr\Container\ContainerInterface;
+ 
+ /**
+  * Configure Purge processors from the command line.
+@@ -29,6 +30,10 @@ class ProcessorCommands extends DrushCommands {
+     $this->purgeProcessors = $purge_processors;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static($container->get('purge.processors'));
++  }
++
+   /**
+    * Add a new processor.
+    *
+diff --git a/src/Commands/PurgerCommands.php b/src/Drush/Commands/PurgerCommands.php
+similarity index 97%
+rename from src/Commands/PurgerCommands.php
+rename to src/Drush/Commands/PurgerCommands.php
+index 33c4396..aacfa92 100644
+--- a/src/Commands/PurgerCommands.php
++++ b/src/Drush/Commands/PurgerCommands.php
+@@ -1,8 +1,9 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
++use Drupal\Component\DependencyInjection\ContainerInterface;
+ use Drupal\purge\Plugin\Purge\Purger\PurgersServiceInterface;
+ use Drush\Commands\DrushCommands;
+ 
+@@ -29,6 +30,10 @@ class PurgerCommands extends DrushCommands {
+     $this->purgePurgers = $purge_purgers;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static($container->get('purge.purgers'));
++  }
++
+   /**
+    * Create a new purger instance.
+    *
+diff --git a/src/Commands/QueueCommands.php b/src/Drush/Commands/QueueCommands.php
+similarity index 98%
+rename from src/Commands/QueueCommands.php
+rename to src/Drush/Commands/QueueCommands.php
+index 696a07c..fcbe80d 100644
+--- a/src/Commands/QueueCommands.php
++++ b/src/Drush/Commands/QueueCommands.php
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Consolidation\AnnotatedCommand\AnnotationData;
+ use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
+@@ -22,6 +22,7 @@ use Drupal\purge\Plugin\Purge\Queuer\QueuersServiceInterface;
+ use Drush\Commands\DrushCommands;
+ use Drush\Drush;
+ use Drush\Exceptions\UserAbortException;
++use Psr\Container\ContainerInterface;
+ use Symfony\Component\Console\Helper\Table;
+ use Symfony\Component\Console\Helper\TableCell;
+ use Symfony\Component\Console\Helper\TableSeparator;
+@@ -102,6 +103,17 @@ class QueueCommands extends DrushCommands implements SiteAliasManagerAwareInterf
+     $this->purgeQueuers = $purge_queuers;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static(
++      $container->get('purge.processors'),
++      $container->get('purge.purgers'),
++      $container->get('purge.invalidation.factory'),
++      $container->get('purge.queue'),
++      $container->get('purge.queue.stats'),
++      $container->get('purge.queuers')
++    );
++  }
++
+   /**
+    * Transform the space-separated argument list into a usable array structure.
+    *
+diff --git a/src/Commands/QueuerCommands.php b/src/Drush/Commands/QueuerCommands.php
+similarity index 96%
+rename from src/Commands/QueuerCommands.php
+rename to src/Drush/Commands/QueuerCommands.php
+index 43f13af..c33249a 100644
+--- a/src/Commands/QueuerCommands.php
++++ b/src/Drush/Commands/QueuerCommands.php
+@@ -1,10 +1,11 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
+ use Drupal\purge\Plugin\Purge\Queuer\QueuersServiceInterface;
+ use Drush\Commands\DrushCommands;
++use Psr\Container\ContainerInterface;
+ 
+ /**
+  * Configure Purge queuers from the command line.
+@@ -29,6 +30,10 @@ class QueuerCommands extends DrushCommands {
+     $this->purgeQueuers = $purge_queuers;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static($container->get('purge.queuers'));
++  }
++
+   /**
+    * Add a new queuer.
+    *
+diff --git a/src/Commands/TypesCommand.php b/src/Drush/Commands/TypesCommand.php
+similarity index 93%
+rename from src/Commands/TypesCommand.php
+rename to src/Drush/Commands/TypesCommand.php
+index 2ae4586..27e3885 100644
+--- a/src/Commands/TypesCommand.php
++++ b/src/Drush/Commands/TypesCommand.php
+@@ -1,6 +1,6 @@
+ <?php
+ 
+-namespace Drupal\purge\Commands;
++namespace Drupal\purge\Drush\Commands;
+ 
+ use Consolidation\AnnotatedCommand\AnnotationData;
+ use Consolidation\OutputFormatters\Options\FormatterOptions;
+@@ -8,6 +8,7 @@ use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
+ use Drupal\purge\Plugin\Purge\Invalidation\InvalidationsServiceInterface;
+ use Drupal\purge\Plugin\Purge\Purger\PurgersServiceInterface;
+ use Drush\Commands\DrushCommands;
++use Psr\Container\ContainerInterface;
+ use Symfony\Component\Console\Input\InputInterface;
+ 
+ /**
+@@ -43,6 +44,13 @@ class TypesCommand extends DrushCommands {
+     $this->purgePurgers = $purge_purgers;
+   }
+ 
++  public static function create(ContainerInterface $container): self {
++    return new static(
++      $container->get('purge.invalidation.factory'),
++      $container->get('purge.purgers')
++    );
++  }
++
+   /**
+    * Dynamically add field labels for the purger columns.
+    *
+diff --git a/src/Plugin/Purge/Purger/PurgersService.php b/src/Plugin/Purge/Purger/PurgersService.php
+index 8b9167e..dcaf1d8 100644
+--- a/src/Plugin/Purge/Purger/PurgersService.php
++++ b/src/Plugin/Purge/Purger/PurgersService.php
+@@ -14,6 +14,7 @@ use Drupal\purge\Plugin\Purge\Purger\Exception\CapacityException;
+ use Drupal\purge\Plugin\Purge\Purger\Exception\DiagnosticsException;
+ use Drupal\purge\Plugin\Purge\Purger\Exception\LockException;
+ use Drupal\purge\ServiceBase;
++use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
+ 
+ /**
+  * Provides the service that distributes access to one or more purgers.
+@@ -396,10 +397,19 @@ class PurgersService extends ServiceBase implements PurgersServiceInterface {
+     // Iterate each purger plugin we should load and instantiate them.
+     $this->purgers = [];
+     foreach ($this->getPluginsEnabled() as $id => $plugin_id) {
+-      $this->purgers[$id] = $this->pluginManager->createInstance($plugin_id, ['id' => $id]);
+-      $this->purgers[$id]->setLogger($this->purgeLogger->get(sprintf(self::LOGGER_PURGERS_FORMAT, $plugin_id, $id)));
+-      $this->logger->debug("loading purger @id (@plugin_id).",
+-        ['@id' => $id, '@plugin_id' => $plugin_id]);
++      try {
++        $this->purgers[$id] = $this->pluginManager->createInstance($plugin_id, ['id' => $id]);
++        $this->purgers[$id]->setLogger($this->purgeLogger->get(sprintf(self::LOGGER_PURGERS_FORMAT, $plugin_id, $id)));
++        $this->logger->debug("loading purger @id (@plugin_id).",
++          ['@id' => $id, '@plugin_id' => $plugin_id]);
++      }
++      // When uninstalling modules providing purger plugins, instantiating
++      // purgers may result in the attempt to instantiate services that are no
++      // longer valid, in which case it is fine to just skip those.
++      catch (ServiceNotFoundException $e) {
++        $this->logger->error("Error loading purger @id (@plugin_id): @error",
++          ['@id' => $id, '@plugin_id' => $plugin_id, '@error' => $e]);
++      }
+     }
+ 
+     // Pass the purger instance onto depending objects.

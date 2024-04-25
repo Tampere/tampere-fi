@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Module for handling users deletion.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function tre_delete_users_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == "user_form") {
+    $form['actions']['delete']['#type'] = "hidden";
+  }
+}

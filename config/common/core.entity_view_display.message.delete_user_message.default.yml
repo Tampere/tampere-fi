@@ -1,0 +1,32 @@
+uuid: bbf99b1c-c48f-46d0-8436-dad93b68148e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.message.delete_user_message.field_delete_user_message_body
+    - field.field.message.delete_user_message.field_delete_user_message_title
+    - message.template.delete_user_message
+  module:
+    - markup_field
+id: message.delete_user_message.default
+targetEntityType: message
+bundle: delete_user_message
+mode: default
+content:
+  field_delete_user_message_body:
+    type: markup_field_rendered_markup
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_delete_user_message_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true
