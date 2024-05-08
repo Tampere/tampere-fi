@@ -1,0 +1,21 @@
+services:
+  logger.channel.tre_node_location_coordinate_conversion:
+    parent: logger.channel_base
+    arguments: [ 'tre_node_location_coordinate_conversion' ]
+
+  tre_node_location_coordinate_conversion.point_to_region_name:
+    class: Drupal\tre_node_location_coordinate_conversion\Service\PointToRegionName
+    arguments:
+      - '@database'
+
+  tre_node_location_coordinate_conversion.storage:
+    class: Drupal\tre_node_location_coordinate_conversion\Service\RegionRepository
+    arguments:
+      - '@database'
+    lazy: true
+
+  tre_node_location_coordinate_conversion.geo_area_manipulator:
+    class: Drupal\tre_node_location_coordinate_conversion\Service\NodeGeographicalAreaManipulator
+    arguments:
+      - '@entity_type.manager'
+      - '@logger.channel.tre_node_location_coordinate_conversion'

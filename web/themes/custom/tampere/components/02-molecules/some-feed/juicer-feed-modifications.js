@@ -10,6 +10,7 @@ Drupal.tampere.formatJuicerSocialMediaFeedDates = function (feed) {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
+    // eslint-disable-next-line
     postTime.textContent = `${day}.${month}.${year}`;
     postTime.classList.add('js-date-modified');
   });
@@ -17,7 +18,6 @@ Drupal.tampere.formatJuicerSocialMediaFeedDates = function (feed) {
 
 // Changes the default Juicer read more texts.
 Drupal.tampere.changeReadMoreText = function (feed) {
-
   /**
    * Replaces the read more texts in links given as parameter.
    *
@@ -27,6 +27,7 @@ Drupal.tampere.changeReadMoreText = function (feed) {
    */
   function replaceFeedReadMoreTexts(readMoreLinks, newText) {
     readMoreLinks.forEach((link) => {
+      // eslint-disable-next-line
       link.textContent = newText;
       link.classList.add('.js-read-more-modified');
     });
@@ -45,7 +46,7 @@ Drupal.tampere.changeReadMoreText = function (feed) {
 Drupal.tampere.changeJuicerMetaStructure = function (feed) {
   const metaElements = feed.querySelectorAll('.j-meta:not(.js-meta-modified)');
 
-  metaElements.forEach(metaElem => {
+  metaElements.forEach((metaElem) => {
     const navElement = metaElem.querySelector('nav');
 
     // Removing the unnecessary 'nav' wrapper.
@@ -57,7 +58,6 @@ Drupal.tampere.changeJuicerMetaStructure = function (feed) {
 };
 
 Drupal.tampere.changeSocialLinkAriaLabels = function (feed) {
-
   /**
    * Replaces the aria label for a social link.
    *
@@ -85,7 +85,7 @@ Drupal.tampere.changeSocialLinkAriaLabels = function (feed) {
 
   const socialLinks = feed.querySelectorAll('.j-social:not(.js-social-modified)');
 
-  socialLinks.forEach(socialLink => {
+  socialLinks.forEach((socialLink) => {
     replaceSocialLinkAriaLabel(socialLink);
     socialLink.classList.add('js-social-modified');
   });
@@ -96,7 +96,7 @@ Drupal.tampere.changeTwitterPostStructure = function (feed) {
   const tweets = feed.querySelectorAll('.feed-item.j-twitter:not(.js-twitter-feed-item-modified)');
 
   if (tweets.length) {
-    tweets.forEach(tweet => {
+    tweets.forEach((tweet) => {
       const image = tweet.querySelector('.j-image');
 
       if (image && image.previousElementSibling) {
@@ -141,6 +141,7 @@ Drupal.tampere.translateLoadMoreButton = function (feed) {
 
   if (loadMoreButtons.length && pageLanguage === 'fi') {
     loadMoreButtons.forEach((loadMoreButton) => {
+      // eslint-disable-next-line
       loadMoreButton.textContent = finnishText;
     });
   }

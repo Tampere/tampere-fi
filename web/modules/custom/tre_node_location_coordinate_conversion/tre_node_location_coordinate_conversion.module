@@ -10,12 +10,87 @@ use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
+ */
+function tre_node_location_coordinate_conversion_node_presave(NodeInterface $node) {
+  _tre_node_location_coordinate_conversion_convert_to_epsg_3067($node);
+
+  // Because a map_point node is actually a special-case node intended for
+  // storing address information in 1-to-many relationships in place_of_business
+  // nodes and since map_point nodes are created on the fly when migrating
+  // place_of_business content from PTV API, a hook_node_presave would act too
+  // early if this is a new map_point node. For already-saved map_point nodes,
+  // the pre_save hook is fine. The logic for the geographical area field in
+  // place_of_business nodes (and thereby, new map_point nodes) the logic is
+  // handled in the migration.
+  $node_is_map_point = $node->bundle() === 'map_point';
+  $node_is_new = $node->isNew();
+  if ($node_is_map_point && $node_is_new) {
+    return;
+  }
+
+  _tre_node_location_coordinate_conversion_store_geo_area_term_by_epsg_3067_coordinates($node);
+}
+
+/**
+ * Helper function attach a corresponding area term based on EPSG 3067 location.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node being modified.
+ */
+function _tre_node_location_coordinate_conversion_store_geo_area_term_by_epsg_3067_coordinates(NodeInterface $node) {
+  // Only try to attach area terms to nodes with coordinate fields in place.
+  if (
+    !$node->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)
+    || !$node->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME)) {
+    return;
+  }
+
+  // If any of the coordinate fields are empty, leave the node alone.
+  if ($node->get(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)->isEmpty()
+  || $node->get(HelperFunctionsInterface::LATITUDE_FIELD_NAME)->isEmpty()) {
+    return;
+  }
+
+  $logger = \Drupal::logger('tre_node_location_coordinate_conversion');
+  $replacements = [
+    '@title' => $node->label(),
+    '@nid' => $node->id(),
+    '@bundle' => $node->bundle(),
+  ];
+
+  /** @var \Drupal\tre_node_location_coordinate_conversion\Service\PointToRegionName $point_converter */
+  $point_converter = \Drupal::service('tre_node_location_coordinate_conversion.point_to_region_name');
+  $region_name = $point_converter->convertNodePointToName($node);
+
+  /** @var \Drupal\tre_node_location_coordinate_conversion\Service\NodeGeographicalAreaManipulator $manipulator */
+  $manipulator = \Drupal::service('tre_node_location_coordinate_conversion.geo_area_manipulator');
+
+  $node = $manipulator->getCorrectDestinationNode($node);
+
+  if (empty($node)) {
+    return;
+  }
+
+  if (empty($region_name)) {
+    $logger->debug("Attempted to find a region name for @title (@nid) (type @bundle) but failed. Area field cleared.", $replacements);
+    $manipulator->clearField($node);
+    return;
+  }
+
+  $manipulator->updateField($node, $region_name);
+}
+
+/**
+ * Helper function to convert location between coordinate fields.
  *
  * Converts location field coordinates in the targeted content types and stores
  * the resulting values in separate fields. If the node has a location field
  * value, the latitude and longitude fields should not be empty.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node to handle.
  */
-function tre_node_location_coordinate_conversion_node_presave(NodeInterface $node) {
+function _tre_node_location_coordinate_conversion_convert_to_epsg_3067(NodeInterface $node) {
   if (!$node->hasField('field_location') || !$node->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME) || !$node->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)) {
     return;
   }
@@ -34,37 +109,18 @@ function tre_node_location_coordinate_conversion_node_presave(NodeInterface $nod
     return;
   }
 
-  // @phpstan-ignore-next-line
-  $longitude = $node->get('field_location')->lon;
-  // @phpstan-ignore-next-line
-  $latitude = $node->get('field_location')->lat;
-
-  $longitude_field_is_not_empty = !$node->get(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)->isEmpty();
-  $latitude_field_is_not_empty = !$node->get(HelperFunctionsInterface::LATITUDE_FIELD_NAME)->isEmpty();
-
-  if ($longitude_field_is_not_empty && $latitude_field_is_not_empty) {
-    $original_node = $node->original;
-    // The $node->original does not exist when a node has been cloned and the
-    // clone is being saved.
-    if ($original_node instanceof NodeInterface && !$original_node->get('field_location')->isEmpty()) {
-      // @phpstan-ignore-next-line
-      $original_longitude = $original_node->get('field_location')->lon;
-      // @phpstan-ignore-next-line
-      $original_latitude = $original_node->get('field_location')->lat;
-
-      if ($longitude === $original_longitude && $latitude === $original_latitude) {
-        return;
-      }
-    }
+  if (_tre_node_location_coordinate_conversion_geofield_coordinates_unchanged($node)) {
+    return;
   }
 
   try {
-    $coordinates = \Drupal::service('tre_preprocess_utility_functions.helper_functions')->convertCoordinates(
-      // @phpstan-ignore-next-line
-      $node->get('field_location')->lon,
-      // @phpstan-ignore-next-line
-      $node->get('field_location')->lat
-    );
+    $location_field_items = $node->get('field_location');
+    /** @var \Drupal\geofield\Plugin\Field\FieldType\GeofieldItem $location_field_item */
+    $location_field_item = $location_field_items->first();
+    $geofield_longitude = $location_field_item->get('lon')->getValue();
+    $geofield_latitude = $location_field_item->get('lat')->getValue();
+
+    $coordinates = \Drupal::service('tre_preprocess_utility_functions.helper_functions')->convertCoordinates($geofield_longitude, $geofield_latitude);
   }
   catch (Exception $e) {
     \Drupal::messenger()->addWarning(t('Coordinate conversion unsuccesful. Try resaving the node. If the issue persists, contact the administrator.'));
@@ -77,4 +133,67 @@ function tre_node_location_coordinate_conversion_node_presave(NodeInterface $nod
 
   $node->set(HelperFunctionsInterface::LONGITUDE_FIELD_NAME, $longitude);
   $node->set(HelperFunctionsInterface::LATITUDE_FIELD_NAME, $latitude);
+}
+
+/**
+ * Checks whether a node being updated has changes in its geolocation field.
+ *
+ * Uses the geoPHP library through the geofield module to consider the equality
+ * of the two points.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node with coordinate fields to check.
+ *
+ * @return bool
+ *   TRUE if the coordinate fields in the node are unchanged from the original.
+ *   FALSE otherwise.
+ */
+function _tre_node_location_coordinate_conversion_geofield_coordinates_unchanged(NodeInterface $node): bool {
+
+  // On a new node, everything is changed.
+  if ($node->isNew()) {
+    return FALSE;
+  }
+
+  $geophp_service = \Drupal::service('geofield.geophp');
+
+  $location_field_items = $node->get('field_location');
+  if (!$location_field_items->isEmpty()) {
+    /** @var \Drupal\geofield\Plugin\Field\FieldType\GeofieldItem $location_field_item */
+    $location_field_item = $location_field_items->first();
+    $new_value = $location_field_item->get('value')->getString();
+    $new_point = $geophp_service->load($new_value);
+  }
+
+  // The $node->original does not exist when a node has been cloned and the
+  // clone is being saved.
+  if (!isset($node->original) || !($node->original instanceof NodeInterface)) {
+    // No change detected, because no 'original' node present.
+    return TRUE;
+  }
+
+  $original_node = $node->original;
+
+  if ($location_field_items->isEmpty() && $original_node->get('field_location')->isEmpty()) {
+    return TRUE;
+  }
+
+  if (!$original_node->get('field_location')->isEmpty()) {
+    if (!isset($new_point)) {
+      return FALSE;
+    }
+
+    $original_location_field_items = $original_node->get('field_location');
+    /** @var \Drupal\geofield\Plugin\Field\FieldType\GeofieldItem $original_location_field_item */
+    $original_location_field_item = $original_location_field_items->first();
+    $original_value = $original_location_field_item->get('value')->getString();
+    $original_point = $geophp_service->load($original_value);
+
+    // PhpStan can't recognise geoPHP library classes.
+    // @phpstan-ignore-next-line
+    if ($new_point->equals($original_point)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
 }

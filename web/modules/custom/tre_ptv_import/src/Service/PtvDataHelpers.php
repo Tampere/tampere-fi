@@ -44,7 +44,6 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
   public static function formatExceptionHourDatePart(V11VmOpenApiServiceHour $exception_hour) {
     $date_value = '';
 
-    // @phpstan-ignore-next-line
     if (!is_null($exception_hour->getValidFrom())) {
       $start_date_value = $exception_hour->getValidFrom()->format('j.n.Y');
       $sortable_date = (int) $exception_hour->getValidFrom()->format('Ymd');
@@ -56,7 +55,6 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
       $sortable_date = -1;
     }
 
-    // @phpstan-ignore-next-line
     if (!is_null($exception_hour->getValidTo())) {
       $end_date_value = $exception_hour->getValidTo()->format('j.n.Y');
     }
@@ -318,15 +316,8 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
     $closed_label = $closed_labels[$language] ?? 'suljettu';
     $is_closed = $hours_entry->getIsClosed() ? $closed_label : '';
 
-    // The documentation in the library states wrongly that the ::getValidFrom()
-    // method, for example, should always return a DateTime object. In fact when
-    // empty, it returns NULL.
-    // @phpstan-ignore-next-line
     $is_invalid = empty($hours_entry->getAdditionalInformation()) && empty($hours_entry->getValidFrom()) && empty($hours_entry->getValidForNow()) && empty($hours_entry->getOpeningHour());
 
-    // PHPstan says the next condition is always false but that's not true, see
-    // above.
-    // @phpstan-ignore-next-line
     if ($is_invalid) {
       $hours_entry = [];
       return;
@@ -350,9 +341,13 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
   public static function processLocationSingle(V9VmOpenApiAddressLocation &$address, $key, array $additional_data) {
     $coordinates = self::getCoordinatesForAddressLocation($address);
     if (is_array($coordinates)) {
+      /** @var \Drupal\tre_node_location_coordinate_conversion\Service\PointToRegionName $converter */
+      $converter = $additional_data['point_to_address_converter'];
+      $region_name = $converter->convertPointToName($coordinates['E'], $coordinates['N']);
       $coordinate_string = self::formatCoordinatesAsString($coordinates);
     }
     else {
+      $region_name = '';
       $coordinate_string = '(ei koordinaatteja)';
     }
     $address_item = $address->getStreetAddress();
@@ -377,6 +372,7 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
       'thoroughfare' => $street_name . ' ' . $address_item->getStreetNumber(),
       'postal_code' => $address_item->getPostalCode(),
       'locality' => $locality_name,
+      'region' => $region_name,
     ] + static::ADDRESS_FIELD_EMPTY_SOURCE;
 
     $address_hash = hash('sha512', serialize($address));
@@ -389,9 +385,13 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
   public static function processLocationOther(V9VmOpenApiAddressLocation &$address, $key, array $additional_data) {
     $coordinates = self::getCoordinatesForAddressLocation($address);
     if (is_array($coordinates)) {
+      /** @var \Drupal\tre_node_location_coordinate_conversion\Service\PointToRegionName $converter */
+      $converter = $additional_data['point_to_address_converter'];
+      $region_name = $converter->convertPointToName($coordinates['E'], $coordinates['N']);
       $coordinate_string = self::formatCoordinatesAsString($coordinates);
     }
     else {
+      $region_name = '';
       $coordinate_string = '(ei koordinaatteja)';
     }
     $address_item = $address->getOtherAddress();
@@ -413,6 +413,7 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
       'thoroughfare' => $street_name,
       'postal_code' => $address_item->getPostalCode(),
       'locality' => $locality_name,
+      'region' => $region_name,
     ] + static::ADDRESS_FIELD_EMPTY_SOURCE;
   }
 

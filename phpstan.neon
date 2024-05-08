@@ -16,16 +16,6 @@ parameters:
 			message: '#^Parameter \#[12] \$(guids|showHeader) of method Tampere\\PtvV11\\PtvApi\\ServiceChannelApi\:\:apiV11ServiceChannelListGet\(\) expects (bool|string\|null), (string|array<string>) given\.$#'
 			path: web/modules/custom/tre_ptv_import/src/Service/PtvServiceChannelListIterator.php
 
-		# PhpStan gets this wrong. The statement is reachable on line 246.
-		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			path: web/modules/custom/tre_ptv_import/src/Service/PtvDataHelpers.php
-
-		# The \Tampere\PtvV11\PtvModel\VmOpenApiAddressStreetWithCoordinates::getMunicipality code is documented incorrectly: it may return NULL.
-		-
-			message: '#^Call to function is_null\(\) with Tampere\\PtvV11\\PtvModel\\VmOpenApiMunicipality will always evaluate to false\.$#'
-			path: web/modules/custom/tre_ptv_import/src/Service/PtvDataHelpers.php
-
 		# The code before line 671 array_walks the data into another type and the value is in fact an array at that point and the 'hours' and 'info' keys are very useful there.
 		-
 			message: '#^Cannot assign offset ''(hours|info)'' to Tampere\\PtvV11\\PtvModel\\V11VmOpenApiServiceHour\.$#'
@@ -71,3 +61,8 @@ parameters:
 			message: "#^Strict comparison using \\=\\=\\= between 'array\\<string,string…' and '\\\\\\\\SplFileObject' will always evaluate to false\\.$#"
 			count: 2
 			path: web/modules/custom/tre_ptv_import/src/PtvV11/PtvApi/CorrectedServiceChannelApi.php
+
+		-
+			message: "#^Property Drupal\\\\tre_node_location_coordinate_conversion\\\\ProxyClass\\\\Service\\\\RegionRepository\\:\\:\\$service \\(Drupal\\\\tre_node_location_coordinate_conversion\\\\Service\\\\RegionRepository\\) in isset\\(\\) is not nullable\\.$#"
+			count: 1
+			path: web/modules/custom/tre_node_location_coordinate_conversion/src/ProxyClass/Service/RegionRepository.php

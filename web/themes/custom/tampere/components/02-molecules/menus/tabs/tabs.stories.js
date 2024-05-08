@@ -9,6 +9,4 @@ import tabData from './tabs.yml';
  */
 export default { title: 'Molecules/Menus/Tabs' };
 
-export const LocalTasksTabs = () => {
-  return <div dangerouslySetInnerHTML={{ __html: tabs(tabData) }} />;
-};
+export const LocalTasksTabs = () => <div dangerouslySetInnerHTML={{ __html: tabs(tabData) }} />;

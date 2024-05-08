@@ -30,14 +30,14 @@ Drupal.behaviors.wysiwygHeadingAnchors = {
       'wysiwyg-heading-anchors',
       document.querySelectorAll(
         '.text-long h2, .text-long h3, .text-long h4, .text-long h5',
-        context
-      )
+        context,
+      ),
     );
 
     if ('content' in document.createElement('template')) {
       anchorIconTemplate = document.querySelector(
         '#wysiwyg-field-anchor-link-template',
-        context
+        context,
       );
     }
 
@@ -46,14 +46,14 @@ Drupal.behaviors.wysiwygHeadingAnchors = {
         const headingPlainTextContent = heading.textContent.trim();
         let headingString = deScandify(headingPlainTextContent).replace(
           /\W+/g,
-          '-'
+          '-',
         );
 
         // Create a new heading string if heading string
         // is just a dash or it won't be unique id.
         if (
-          headingString === '-' ||
-          document.getElementById(headingString) !== null
+          headingString === '-'
+          || document.getElementById(headingString) !== null
         ) {
           do {
             headingString = `heading-${headingIdCounter}`;
@@ -65,7 +65,7 @@ Drupal.behaviors.wysiwygHeadingAnchors = {
 
         if (anchorIconTemplate) {
           const anchorIconClone = anchorIconTemplate.content.firstElementChild.cloneNode(
-            true
+            true,
           );
 
           anchorIconClone.href = `#${headingString}`;
@@ -83,8 +83,8 @@ Drupal.behaviors.h2HeadingAnchors = {
       'page-heading-anchors',
       document.querySelectorAll(
         '.main-content h2:not(.in-page-menu__heading, .visually-hidden)',
-        context
-      )
+        context,
+      ),
     );
 
     if (headings) {
@@ -93,7 +93,7 @@ Drupal.behaviors.h2HeadingAnchors = {
           const headingPlainTextContent = heading.textContent.trim();
           const headingString = deScandify(headingPlainTextContent).replace(
             /\W+/g,
-            '-'
+            '-',
           );
 
           heading.setAttribute('id', headingString);

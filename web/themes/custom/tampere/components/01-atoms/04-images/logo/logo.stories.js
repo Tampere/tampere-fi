@@ -15,7 +15,9 @@ export const logo = () => (
 );
 
 export const logoWithLink = () => (
-  <div dangerouslySetInnerHTML={{ __html: logoComponent(
-    { ...logoData, ...logoWithLinkData },
-  ) }} />
+  <div dangerouslySetInnerHTML={{
+    __html: logoComponent(
+      { ...logoData, ...logoWithLinkData },
+    ),
+  }} />
 );

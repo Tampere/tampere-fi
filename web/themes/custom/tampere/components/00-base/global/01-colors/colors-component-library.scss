@@ -25,7 +25,7 @@
 // Style default color swatches
 @each $name, $color in $defaultColors {
   .cl-colors__item--default {
-    &-#{$name} {
+    &-#{"" + $name} {
     background-color: clr($name);
     color: set-color($color);
     }
@@ -35,7 +35,7 @@
 // Style project palette color swatches
 @each $name, $color in $projectColors {
   .cl-colors__item--project {
-    &-#{$name} {
+    &-#{"" + $name} {
     background-color: $color;
     color: set-color($color);
     }

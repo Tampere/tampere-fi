@@ -10,18 +10,15 @@ import languageSwitcherDynamicData from './language-switcher-dynamic.yml';
  */
 export default { title: 'Molecules/Language switcher' };
 
-export const languageSwitcherExample = () => {
-  return (
+export const languageSwitcherExample = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: languageSwitcher(languageSwitcherData),
       }}
     />
-  );
-};
+);
 
-export const languageSwitcherInversedExample = () => {
-  return (
+export const languageSwitcherInversedExample = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: languageSwitcher({
@@ -30,5 +27,4 @@ export const languageSwitcherInversedExample = () => {
         }),
       }}
     />
-  );
-};
+);

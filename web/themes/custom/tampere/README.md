@@ -1,6 +1,6 @@
-# Tampere 2.0 (Emulsify Exove): Customizable style guide + Storybook Development + Drupal 8 theme
+# Tampere 3.0 (Emulsify Exove): Customizable style guide + Drupal theme
 
-Tampere 2.0 is a full Design System encompassing both a Storybook/Webpack development environment, a customizable Styleguide powered by GatsbyJS (coming soon), and a Drupal 8 starterkit theme.
+Tampere 3.0 is a full Design System encompassing both a Webpack development environment, a customizable Styleguide powered by GatsbyJS (coming soon), and a Drupal starterkit theme.
 
 This version was forked from the [beta1 version of Emulsify](https://github.com/emulsify-ds/emulsify-drupal/tree/v1.0.0-beta.1)(the hash of the latest commit taken: 8e59b0a)
 
@@ -8,13 +8,13 @@ This version was forked from the [beta1 version of Emulsify](https://github.com/
 
 ### Requirements
 
-1.  [PHP 7.1](http://www.php.net/)
+1.  [PHP 8.1](http://www.php.net/)
 2.  [Node (we recommend NVM)](https://github.com/creationix/nvm)
-    * Supported version nodejs 14. You can switch to the recommended version with `nvm use` after you have installed it.
-    * Prior to 2.0.1 supported version is nodejs 10.
+    * Supported version nodejs 18. You can switch to the recommended version with `nvm use` after you have installed it.
+    * Prior to 2.0.1 supported version is nodejs 10. Prior to version 3.x the supported version was 14.
 3.  [Webpack](https://webpack.js.org/)
 4.  [Composer](https://getcomposer.org/)
-5.  [Yarn](https://github.com/yarnpkg/yarn)
+5.  [NPM](https://www.npmjs.com/)
 #### Enabling Browser-sync
 
 Before you can use Browser-sync and hot reloading while developing, you need to change the project address in the file `webpack/webpack-dev.js`. Replace `PROJECT-DOMAIN.test` with the actual domain name of your local development environment, e.g `http://codebase.l.test`.
@@ -25,28 +25,19 @@ More information from [Browser-sync documentation](https://www.browsersync.io/do
 
 ### Starting development
 
-The `yarn develop` compiles everything and watches for changes.
+The `npm run develop` compiles everything and watches for changes.
 
-This combines 3 tasks which can be run independently as well:
-* `yarn webpack` (Sass/CSS compiling/minifying/linting, SVG Spriting)
-* `yarn babel` (ES6 transpiling, javascript minification)
-* `yarn storybook` (Storybook dev watch task)
+This combines 2 tasks which can be run independently as well:
+* `npm run webpack` (Sass/CSS compiling/minifying/linting, SVG Spriting)
+* `npm run babel` (ES6 transpiling, javascript minification)
 
-If you don't care about Storybook, you can use `yarn watch` (combination of `yarn webpack` and `yarn babel`)
+You can use `npm run watch` (combination of `npm run webpack` and `npm run babel`)
 
-For only compiling assets, run `yarn build`.
+For only compiling assets, run `npm run build`.
 
 ### Storybook
+Storybook has been removed from the project.
 
-You can compile a storybook with the command `yarn storybook`.
-
-This combines 3 tasks:
-* `yarn build-webpack` (same as `yarn webpack` but without watch task and using production webpack file)
-* `yarn build-babel` (same as `yarn babel` but without watch task)
-
-### Style guide
-
-TODO
 
 ## Custom features of Tampere
 
@@ -88,15 +79,7 @@ $font-custom: 'Custom-Font', Arial, helvetica, sans-serif;
 ```
 
 ### Always have watch task running
-Tampere's `yarn develop` perform css and js linting, as well as accessibility checks on a fly. Please, maske sure you correct all linting error before commiting your work.
-
-### Something's wrong?
-
-#### Your new component doesn't end up on the Storybook page
-
-  - rerun `yarn develop` for the theme to register your new component
-  - check that a name of the new component is not already in use. Rename it if that's the case.
-  - check for the twig file name. Underscore '_' at the beginning of the name tells Pattern lab not to display it. Files with `_` will be used only in Drupal templates.
+Tampere's `npm run develop` perform css and js linting, as well as accessibility checks on a fly. Please, maske sure you correct all linting error before commiting your work.
 
 ### Documentation
 

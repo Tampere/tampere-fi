@@ -1,0 +1,7 @@
+display:
+  content_listing_block:
+    display_options:
+      filters:
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'

@@ -1,5 +1,5 @@
 global:
-  version: 2.0
+  version: -1
   css:
     theme:
       dist/style.css: {}
@@ -38,8 +38,13 @@ emergency-notice:
 
 hyphenation:
   js:
+    /libraries/hyphenopoly/Hyphenopoly_Loader.js: {}
+  dependencies:
+    - tampere/hyphenation_config
+
+hyphenation_config:
+  js:
     js/hyphenation.js: {}
-    node_modules/hyphenopoly/Hyphenopoly_Loader.js: {}
 
 back-to-top:
   js:

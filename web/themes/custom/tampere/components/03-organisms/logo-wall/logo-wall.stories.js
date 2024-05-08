@@ -15,7 +15,9 @@ export const logoWall = () => (
 );
 
 export const logoWallWithBackground = () => (
-  <div dangerouslySetInnerHTML={{ __html: logoWallComponent(
-    { ...logoWallData, ...logoWallWBgData },
-  ) }} />
+  <div dangerouslySetInnerHTML={{
+    __html: logoWallComponent(
+      { ...logoWallData, ...logoWallWBgData },
+    ),
+  }} />
 );

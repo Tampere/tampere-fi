@@ -54,6 +54,19 @@ process:
       plugin: addressfield
       language: constants/LANGUAGE
 
+  field_geographical_areas:
+    plugin: sub_process
+    source: geographical_areas
+    process:
+      target_id:
+        plugin: entity_lookup
+        source: name
+        access_check: false
+        entity_type: taxonomy_term
+        bundle: geographical_areas
+        bundle_key: vid
+        value_key: name
+
   field_addresses:
     plugin: sub_process
     source: street_addresses

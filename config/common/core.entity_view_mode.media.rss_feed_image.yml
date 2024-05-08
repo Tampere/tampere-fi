@@ -1,0 +1,10 @@
+uuid: 59cd5ea1-d73a-4905-a11f-06471967cb16
+langcode: fi
+status: true
+dependencies:
+  module:
+    - media
+id: media.rss_feed_image
+label: 'RSS-syötteen kuva'
+targetEntityType: media
+cache: true

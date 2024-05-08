@@ -58,4 +58,27 @@
       margin-top: 0;
     }
   }
+
+  &--type-embedded-content-and-map-tabs {
+    // Applies only when the select list is not available
+    .search-bar__search-form {
+      .search-bar__input + .search-bar__button {
+        margin-top: $space-l-plus;
+      }
+
+      .search-bar__button {
+        @include medium-down {
+          padding: $gutter-mobile;
+        }
+
+        max-width: unset;
+        padding: $space-m-plus $space-l;
+        width: unset;
+
+        .button__text {
+          padding-right: $gutter-mobile;
+        }
+      }
+    }
+  }
 }

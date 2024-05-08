@@ -24,10 +24,5 @@ pipeline {
 				sh 'yarn build'
 			}
 		}
-		stage('Storybook') {
-			steps {
-				sh 'yarn build-storybook'
-			}
-		}
 	}
 }

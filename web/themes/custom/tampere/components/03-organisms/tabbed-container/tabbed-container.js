@@ -42,7 +42,7 @@ Drupal.behaviors.tabbedContainer = {
   attach(context) {
     const tabbedContainers = document.querySelectorAll(
       '.tabbed-container',
-      context
+      context,
     );
 
     if (tabbedContainers) {
@@ -51,7 +51,7 @@ Drupal.behaviors.tabbedContainer = {
 
         const tablist = tabbedContainer.querySelector(
           '.tabbed-container__tab-list',
-          context
+          context,
         );
 
         if (tablist) {
@@ -60,7 +60,7 @@ Drupal.behaviors.tabbedContainer = {
 
         const panels = tabbedContainer.querySelectorAll(
           '[id^="tabbed-container-tab-section-"]',
-          context
+          context,
         );
 
         if (tabs) {

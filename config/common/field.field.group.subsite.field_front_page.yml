@@ -8,6 +8,7 @@ dependencies:
     - node.type.basic_content_page
     - node.type.city_planning_and_constructions
     - node.type.organization
+    - node.type.place
     - node.type.project
     - node.type.zoning_information
 id: group.subsite.field_front_page
@@ -24,11 +25,12 @@ settings:
   handler: unpublished
   handler_settings:
     target_bundles:
-      basic_content_page: basic_content_page
+      zoning_information: zoning_information
       city_planning_and_constructions: city_planning_and_constructions
       organization: organization
+      place: place
+      basic_content_page: basic_content_page
       project: project
-      zoning_information: zoning_information
     sort:
       field: _none
       direction: ASC

@@ -10,18 +10,18 @@ Drupal.behaviors.automaticAnchorList = {
 
     const headings = once.filter(
       'page-heading-anchors',
-      document.querySelectorAll('h2')
+      document.querySelectorAll('h2'),
     );
 
     const automaticInPageMenuLists = once(
       'in-page-menu-list',
-      document.getElementsByClassName('in-page-menu__list--automatic')
+      document.getElementsByClassName('in-page-menu__list--automatic'),
     );
 
     if ('content' in document.createElement('template')) {
       anchorListItemTemplate = document.querySelector(
         '#automatic-anchor-list-template',
-        context
+        context,
       );
     }
 
@@ -31,7 +31,7 @@ Drupal.behaviors.automaticAnchorList = {
 
         if (anchorListItemTemplate) {
           const anchorListItemClone = anchorListItemTemplate.content.firstElementChild.cloneNode(
-            true
+            true,
           );
 
           const link = anchorListItemClone.querySelector('a');
@@ -46,7 +46,7 @@ Drupal.behaviors.automaticAnchorList = {
               if (langParent.getAttribute('dir')) {
                 listItemClone.setAttribute(
                   'dir',
-                  langParent.getAttribute('dir')
+                  langParent.getAttribute('dir'),
                 );
               }
               listItemClone.setAttribute('lang', langCode);

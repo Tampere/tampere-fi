@@ -15,8 +15,7 @@
   function handleContainerToggleInteraction(event) {
     const closedClass = 'is-closed-on-mobile';
     const containerToggle = event.currentTarget;
-    const isAriaExpanded =
-      containerToggle.getAttribute('aria-expanded') === 'true';
+    const isAriaExpanded = containerToggle.getAttribute('aria-expanded') === 'true';
     const controlledContainerId = containerToggle.getAttribute('aria-controls');
     const container = document.getElementById(controlledContainerId);
 
@@ -46,7 +45,7 @@
     containerToggle.classList.toggle(closedClass);
     containerToggle.setAttribute(
       'aria-expanded',
-      !isAriaExpanded ? 'true' : 'false'
+      !isAriaExpanded ? 'true' : 'false',
     );
     containerToggle.setAttribute('aria-label', ariaLabel);
 
@@ -57,7 +56,7 @@
     }
   }
 
-  Drupal.behaviors.sidebarMenuContainerContainer = {
+  Drupal.behaviors.sidebarMenuContainerContainer = { // eslint-disable-line no-param-reassign
     attach(context) {
       let sidebarMenuContainer;
       let containerToggle;
@@ -67,7 +66,7 @@
         sidebarMenuContainer = once('sidebar-menu-container', '.sidebar-menu-container', context).shift(); // eslint-disable-line
       } catch (e) {
         sidebarMenuContainer = document.querySelector(
-          '.sidebar-menu-container'
+          '.sidebar-menu-container',
         );
       }
 
@@ -76,19 +75,19 @@
           containerToggle = once('sidebar-menu-container-toggle', '.sidebar-menu-container__toggle', sidebarMenuContainer).shift(); // eslint-disable-line
         } catch (e) {
           containerToggle = sidebarMenuContainer.querySelector(
-            '.sidebar-menu-container__toggle'
+            '.sidebar-menu-container__toggle',
           );
         }
 
         containerToggle.addEventListener(
           'click',
-          handleContainerToggleInteraction
+          handleContainerToggleInteraction,
         );
         containerToggle.addEventListener(
           'tap',
-          handleContainerToggleInteraction
+          handleContainerToggleInteraction,
         );
       }
     },
   };
-})(Drupal);
+}(Drupal));

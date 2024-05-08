@@ -10,27 +10,25 @@ Drupal.behaviors.horizontalAccordion = {
       const selectedAccordionButtonId = selectedAccordionButton.getAttribute('id');
       const horizontalAccordion = selectedAccordionButton.closest('.horizontal-accordion');
       const horizontalAccordionButtons = horizontalAccordion?.querySelectorAll(
-        '.horizontal-accordion__button'
+        '.horizontal-accordion__button',
       );
 
-      horizontalAccordionButtons?.forEach(horizontalAccordionButton => {
+      horizontalAccordionButtons?.forEach((horizontalAccordionButton) => {
         const accordionButtonId = horizontalAccordionButton.getAttribute('id');
         const accordionContentId = horizontalAccordionButton.getAttribute('aria-controls');
         const accordionContent = document.querySelector(
-          `#${accordionContentId}`
+          `#${accordionContentId}`,
         );
 
         // Toggle state only for selected accordion button.
         if (selectedAccordionButtonId === accordionButtonId) {
-          const isExpanded =
-            horizontalAccordionButton.getAttribute('aria-expanded') === 'true' || false;
+          const isExpanded = horizontalAccordionButton.getAttribute('aria-expanded') === 'true' || false;
 
           horizontalAccordionButton?.setAttribute('aria-expanded', !isExpanded);
           horizontalAccordionButton?.classList.toggle('is-active');
           accordionContent?.setAttribute('aria-hidden', isExpanded);
           accordionContent?.classList.toggle('active');
-        }
-        else {
+        } else {
           horizontalAccordionButton?.setAttribute('aria-expanded', false);
           horizontalAccordionButton?.classList.remove('is-active');
           accordionContent?.setAttribute('aria-hidden', true);
@@ -56,7 +54,7 @@ Drupal.behaviors.horizontalAccordion = {
       accordionButtons = document.querySelectorAll('.horizontal-accordion__button');
     }
 
-    accordionButtons?.forEach(heading => {
+    accordionButtons?.forEach((heading) => {
       heading.addEventListener('click', handleHorizontalAccordionButtonClick);
     });
   },

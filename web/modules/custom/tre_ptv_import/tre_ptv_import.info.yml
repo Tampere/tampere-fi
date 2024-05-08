@@ -6,3 +6,4 @@ package: 'TRE Integrations'
 dependencies:
   - migrate_plus:migrate_plus
   - migrate_tools:migrate_tools
+  - tre_node_location_coordinate_conversion:tre_node_location_coordinate_conversion

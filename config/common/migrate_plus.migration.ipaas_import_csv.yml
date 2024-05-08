@@ -190,7 +190,7 @@ process:
     -
       plugin: format_date
       from_format: Ymd
-      to_format: 'Y-m-d'
+      to_format: Y-m-d
   field_phone:
     plugin: get
     source: work_mobile_phone_nbr

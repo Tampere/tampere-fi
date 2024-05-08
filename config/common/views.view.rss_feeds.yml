@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.node.field_author
     - field.storage.node.field_lead
+    - field.storage.node.field_main_image
     - node.type.news_item
     - node.type.rich_article
     - taxonomy.vocabulary.geographical_areas
@@ -180,7 +181,7 @@ display:
             external: false
             replace_spaces: false
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: true
             alt: ''
             rel: ''
             link_class: ''
@@ -482,6 +483,69 @@ display:
           settings:
             link_to_entity: false
           group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_main_image:
+          id: field_main_image
+          table: node__field_main_image
+          field: field_main_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_entity_view
+          settings:
+            view_mode: rss_feed_image
+          group_column: target_id
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -821,8 +885,8 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: false
-          distinct: false
-          disable_automatic_base_fields: false
+          distinct: true
+          disable_automatic_base_fields: true
           replica: false
           query_tags: {  }
           contextual_filters_or: true
@@ -830,7 +894,7 @@ display:
         filters: false
         filter_groups: false
       relationships: {  }
-      group_by: true
+      group_by: false
       header: {  }
       footer: {  }
       display_extenders:
@@ -849,6 +913,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   asuminen_ja_rakentaminen_feed:
     id: asuminen_ja_rakentaminen_feed
     display_title: 'Asuminen ja rakentaminen-syöte (FI)'
@@ -869,6 +934,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -893,6 +960,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   etela:
     id: etela
     display_title: 'Etelä-syöte (FI)'
@@ -913,6 +981,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -937,6 +1007,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   feed_1:
     id: feed_1
     display_title: 'Osallistuminen-syöte (FI)'
@@ -957,6 +1028,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -981,6 +1054,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   hyvinvointi:
     id: hyvinvointi
     display_title: 'Hyvinvointi-syöte (FI)'
@@ -1001,6 +1075,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1025,6 +1101,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   ikaantyneille:
     id: ikaantyneille
     display_title: 'Ikääntyneet-syöte (FI)'
@@ -1045,6 +1122,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1069,6 +1148,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   ita:
     id: ita
     display_title: 'Itä-syöte (FI)'
@@ -1089,6 +1169,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1113,6 +1195,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   kaikki_uutiset:
     id: kaikki_uutiset
     display_title: 'Kaikki uutiset (FI)'
@@ -1282,6 +1365,7 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1308,6 +1392,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   kaupunkiymparisto_ja_liikenne:
     id: kaupunkiymparisto_ja_liikenne
     display_title: 'Kaupunkiympäristö ja liikenne-syöte (FI)'
@@ -1328,6 +1413,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1352,6 +1439,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   keskusta:
     id: keskusta
     display_title: 'Keskusta-syöte (FI)'
@@ -1372,6 +1460,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1396,6 +1486,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   koulutus:
     id: koulutus
     display_title: 'Koulutus-syöte (FI)'
@@ -1416,6 +1507,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1441,6 +1534,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   kulttuuri_ja_vapaa_aika:
     id: kulttuuri_ja_vapaa_aika
     display_title: 'Kulttuuri ja vapaa-aika-syöte (FI)'
@@ -1461,6 +1555,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1485,6 +1581,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   lansi:
     id: lansi
     display_title: 'Länsi-syöte (FI)'
@@ -1505,6 +1602,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1529,6 +1628,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   lapsiperheille:
     id: lapsiperheille
     display_title: 'Lapsiperheille-syöte (FI)'
@@ -1632,6 +1732,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1668,6 +1770,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   nuorille:
     id: nuorille
     display_title: 'Nuorille-syöte (FI)'
@@ -1688,6 +1791,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1712,6 +1817,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   pohjoinen:
     id: pohjoinen
     display_title: 'Pohjoinen-syöte (FI)'
@@ -1732,6 +1838,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1756,6 +1864,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   tyo_ja_yrittaminen:
     id: tyo_ja_yrittaminen
     display_title: 'Työ ja yrittäminen-syöte (FI)'
@@ -1776,6 +1885,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1800,6 +1911,7 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'
   ymparisto:
     id: ymparisto
     display_title: 'Ympäristö-syöte (FI)'
@@ -1820,6 +1932,8 @@ display:
           description_field: field_lead
           creator_field: field_author
           date_field: published_at
+          enclosure_field: field_main_image
+          enclosure_field_alt: ''
           guid_field_options:
             guid_field: uuid
             guid_field_is_permalink: false
@@ -1844,3 +1958,4 @@ display:
       tags:
         - 'config:field.storage.node.field_author'
         - 'config:field.storage.node.field_lead'
+        - 'config:field.storage.node.field_main_image'

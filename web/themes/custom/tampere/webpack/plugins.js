@@ -26,6 +26,8 @@ module.exports = {
     cleanAfterEveryBuildPatterns: [
       'remove/**',
       '!js',
+      'css/*.js', // Remove all unwanted, auto generated JS files from dist/css folder.
+      'css/**/*.js', // Remove all unwanted, auto generated JS files from dist/css folder.
       '!*.{png,jpg,gif,svg,woff,woff2,eot,ttf,otf}',
     ],
   }),

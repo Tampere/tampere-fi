@@ -1,5 +1,7 @@
 /* Mixins */
 
+@use "sass:math";
+
 /**
  * Mixin - Clearfix.
  * Adds clearfix based on http://bourbon.io/docs/#clearfix
@@ -219,9 +221,9 @@
  */
 @mixin to-rem($property, $px-value) {
   $baseline_px: 16;
-  $baseline_rem: ($baseline_px / 1rem);
+  $baseline_rem: math.div($baseline_px, 1rem);
 
-  #{$property}: ($px_value / $baseline_rem);
+  #{$property}: math.div($px_value, $baseline_rem);
 }
 
 /* Adding hyphenation or word break when 'hypens' is not supported */
@@ -433,7 +435,7 @@
 
 // https://css-tricks.com/snippets/css/fluid-typography/
 @function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, $value * 0 + 1);
 }
 
 @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {

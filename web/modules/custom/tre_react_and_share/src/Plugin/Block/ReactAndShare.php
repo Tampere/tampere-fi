@@ -4,7 +4,7 @@ namespace Drupal\tre_react_and_share\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
-use Drupal\Core\Language\LanguageManager;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Site\Settings;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -27,7 +27,7 @@ final class ReactAndShare extends BlockBase implements ContainerFactoryPluginInt
   /**
    * The Language Manager service.
    *
-   * @var \Drupal\Core\Language\LanguageManager
+   * @var \Drupal\Core\Language\LanguageManagerInterface
    */
   protected $languageManager;
 
@@ -38,7 +38,7 @@ final class ReactAndShare extends BlockBase implements ContainerFactoryPluginInt
     array $configuration,
     $plugin_id,
     $plugin_definition,
-    LanguageManager $language_manager
+    LanguageManagerInterface $language_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->languageManager = $language_manager;
@@ -60,6 +60,7 @@ final class ReactAndShare extends BlockBase implements ContainerFactoryPluginInt
    * {@inheritdoc}
    */
   public function build() {
+    $build = [];
     $current_lang_code = $this->languageManager->getCurrentLanguage()->getId();
 
     $api_keys = Settings::get('react_and_share_api_keys');
@@ -69,18 +70,16 @@ final class ReactAndShare extends BlockBase implements ContainerFactoryPluginInt
       $api_key = $api_keys[$current_lang_code];
     }
 
-    $categories = Settings::get('react_and_share_categories');
-
-    $categories_for_language = [];
-    if (is_array($categories) && isset($categories[$current_lang_code])) {
-      $categories_for_language = $categories[$current_lang_code];
+    // Make it possible to disable the output completely by having an empty API
+    // key for the language in place.
+    if (empty($api_key)) {
+      return $build;
     }
 
     $build['#theme'] = 'react_and_share';
     // The API key is not revealed on the front-end side by accident.
     // See https://docs.reactandshare.com/#embed-code-install
     $build['#attached']['drupalSettings']['tampere']['react_and_share']['key'] = $api_key;
-    $build['#attached']['drupalSettings']['tampere']['react_and_share']['categories'] = $categories_for_language;
     $build['#attached']['library'][] = 'tre_react_and_share/react-and-share';
 
     return $build;

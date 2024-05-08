@@ -2,12 +2,11 @@
 
 namespace Drupal\tre_ptv_import\Plugin\migrate\source;
 
-use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\Component\Serialization\SerializationInterface;
-use Drupal\Component\Utility\Unicode;
 use Drupal\migrate\Plugin\migrate\source\SqlBase;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Row;
+use Drupal\tre_node_location_coordinate_conversion\Service\PointToRegionName;
 use Drupal\tre_ptv_import\PtvDataHelpersInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiServiceHour;
@@ -52,6 +51,13 @@ class PtvServiceLocations extends SqlBase {
    * @var \Drupal\tre_ptv_import\PtvDataHelpersInterface
    */
   public PtvDataHelpersInterface $dataHelpers;
+
+  /**
+   * The tre_node_location_coordinate_conversion.point_to_region_name service.
+   *
+   * @var \Drupal\tre_node_location_coordinate_conversion\Service\PointToRegionName
+   */
+  public PointToRegionName $pointToRegionNameConverter;
 
   /**
    * {@inheritdoc}
@@ -112,7 +118,12 @@ class PtvServiceLocations extends SqlBase {
       return FALSE;
     }
 
-    $values = self::mangleServiceLocationIntoSourceValues($service_location, $this->contentLanguage, $this->dataHelpers);
+    $values = self::mangleServiceLocationIntoSourceValues(
+      $service_location,
+      $this->contentLanguage,
+      $this->dataHelpers,
+      $this->pointToRegionNameConverter
+    );
 
     if (empty($values)) {
       return FALSE;
@@ -133,6 +144,7 @@ class PtvServiceLocations extends SqlBase {
     $instance->serialization = $container->get('serialization.phpserialize');
     $instance->contentLanguage = $configuration['language'];
     $instance->dataHelpers = $container->get('tre_ptv_import.ptv_data_helpers');
+    $instance->pointToRegionNameConverter = $container->get('tre_node_location_coordinate_conversion.point_to_region_name');
 
     return $instance;
   }
@@ -146,12 +158,14 @@ class PtvServiceLocations extends SqlBase {
    *   The language to use in requesting the data.
    * @param \Drupal\tre_ptv_import\PtvDataHelpersInterface $data_helpers
    *   The PtvDataHelpers service to use.
+   * @param \Drupal\tre_node_location_coordinate_conversion\Service\PointToRegionName $point_to_region_converter
+   *   The PointToRegionName service to use.
    *
    * @return array
    *   Associative array keyed by source field names, or an empty array to
    *   enable skipping the import for this particular row.
    */
-  public static function mangleServiceLocationIntoSourceValues(V11VmOpenApiServiceLocationChannel $service_location, string $language, PtvDataHelpersInterface $data_helpers): array {
+  public static function mangleServiceLocationIntoSourceValues(V11VmOpenApiServiceLocationChannel $service_location, string $language, PtvDataHelpersInterface $data_helpers, PointToRegionName $point_to_region_converter): array {
     $values = [
       'uuid' => $service_location->getId(),
     ];
@@ -173,6 +187,7 @@ class PtvServiceLocations extends SqlBase {
       });
     }
 
+    $geographical_areas = [];
     foreach ($addresses_by_type as $address_type => $addresses) {
       $values_key = $address_types_with_processors[$address_type]['value type'];
       if (!isset($values[$values_key])) {
@@ -186,10 +201,21 @@ class PtvServiceLocations extends SqlBase {
         'location_name' => $values['name'],
         'language' => $language,
         'data_helpers' => $data_helpers,
+        'point_to_address_converter' => $point_to_region_converter,
       ];
       array_walk($addresses, $processor_function, $processor_additional_data);
+      foreach ($addresses as $key => $address) {
+        if (!isset($address['region'])) {
+          continue;
+        }
+        if (!empty($address['region'])) {
+          $geographical_areas[$address['region']] = ['name' => $address['region']];
+        }
+        unset($addresses[$key]['region']);
+      }
       $values[$values_key] = array_merge($values[$values_key], $addresses);
     }
+    $values['geographical_areas'] = array_values($geographical_areas);
 
     $type = 'Description';
     $values['description'] = $data_helpers::getDescriptionStringByLanguageAndType($service_location->getServiceChannelDescriptions(), $language, $type);

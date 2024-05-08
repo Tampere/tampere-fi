@@ -17,7 +17,7 @@ function getEntries(pattern) {
   });
 
   entries.svgSprite = path.resolve(webpackDir, 'svgSprite.js');
-  entries.css = path.resolve(webpackDir, 'css.js');
+  entries.style = path.resolve(webpackDir, 'css/style.js');
 
   return entries;
 }

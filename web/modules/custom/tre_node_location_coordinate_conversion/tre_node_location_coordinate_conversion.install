@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function tre_node_location_coordinate_conversion_schema() {
+  $tables = [];
+
+  $tables['tre_node_location_geo_areas'] = _tre_node_location_coordinate_conversion_geographical_areas_table_schema();
+
+  return $tables;
+}
+
+/**
+ * Adds the tre_node_location_geo_areas table.
+ */
+function tre_node_location_coordinate_conversion_update_10001(&$sandbox) {
+  $table_schema = _tre_node_location_coordinate_conversion_geographical_areas_table_schema();
+  $database = \Drupal::database();
+  $schema = $database->schema();
+
+  $schema->createTable('tre_node_location_geo_areas', $table_schema);
+}
+
+/**
+ * The database schema definition for the module.
+ *
+ * @return array
+ *   The schema definition.
+ */
+function _tre_node_location_coordinate_conversion_geographical_areas_table_schema(): array {
+  return [
+    'description' => 'Stores the coordinates EPSG:3067 of the geographical areas.',
+    'fields' => [
+      'name' => [
+        'type' => 'char',
+        'length' => 30,
+        'not null' => TRUE,
+      ],
+      'region' => [
+        'mysql_type' => 'geometry SRID 3067',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => [
+      'name',
+    ],
+  ];
+}

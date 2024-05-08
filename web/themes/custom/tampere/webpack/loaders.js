@@ -49,10 +49,9 @@ const SVGSpriteLoader = {
   loader: 'svg-sprite-loader',
   options: {
     extract: true,
-    spriteFilename: (name) => {
+    spriteFilename: (name) =>
       // .../images/icon-sets/main-site-icons/arrow.svg (name) => main-site-icons.svg (sprite filename)
-      return `${/icon-sets([\\|/])(.*?)\1/gm.exec(name)[2]}.svg`;
-    },
+      `${/icon-sets([\\|/])(.*?)\1/gm.exec(name)[2]}.svg`,
     publicPath: '../dist/',
   },
 };
@@ -63,8 +62,8 @@ const FontsLoader = {
   include: [/fonts/],
   options: {
     name: '[hash].[ext]',
-    outputPath: 'fonts/'
-  }
+    outputPath: 'fonts/',
+  },
 };
 
 module.exports = {

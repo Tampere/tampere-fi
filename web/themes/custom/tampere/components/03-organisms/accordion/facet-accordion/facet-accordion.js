@@ -18,27 +18,25 @@ Drupal.behaviors.facetAccordion = {
     function toggleFacetAccordionButton(selectedAccordionButton) {
       const selectedAccordionButtonId = selectedAccordionButton.getAttribute('id');
       const facetAccordionButtons = document.querySelectorAll(
-        '.facet-accordion-item__heading'
+        '.facet-accordion-item__heading',
       );
 
-      facetAccordionButtons?.forEach(facetAccordionButton => {
+      facetAccordionButtons?.forEach((facetAccordionButton) => {
         const accordionButtonId = facetAccordionButton.getAttribute('id');
         const accordionContentId = facetAccordionButton.getAttribute('aria-controls');
         const accordionContent = document.querySelector(
-          `#${accordionContentId}`
+          `#${accordionContentId}`,
         );
 
         // Toggle state only for selected accordion button.
         if (selectedAccordionButtonId === accordionButtonId) {
-          const isExpanded =
-            facetAccordionButton.getAttribute('aria-expanded') === 'true' || false;
+          const isExpanded = facetAccordionButton.getAttribute('aria-expanded') === 'true' || false;
 
           facetAccordionButton?.setAttribute('aria-expanded', !isExpanded);
           facetAccordionButton?.classList.toggle('is-active');
           accordionContent?.setAttribute('aria-hidden', isExpanded);
           accordionContent?.classList.toggle('active');
-        }
-        else {
+        } else {
           facetAccordionButton?.setAttribute('aria-expanded', false);
           facetAccordionButton?.classList.remove('is-active');
           accordionContent?.setAttribute('aria-hidden', true);
@@ -67,15 +65,15 @@ Drupal.behaviors.facetAccordion = {
       const contentId = heading.getAttribute('aria-controls');
 
       const content = document.querySelector(
-        `#${contentId}`
+        `#${contentId}`,
       );
 
       const activeItems = content.querySelectorAll(
-        '.facet-accordion-item__list-item .is-active'
+        '.facet-accordion-item__list-item .is-active',
       );
 
       // Add 'is-active' class to all active item parents for styling.
-      activeItems.forEach(item => item.parentElement?.classList.add('is-active'));
+      activeItems.forEach((item) => item.parentElement?.classList.add('is-active'));
 
       if (activeItems.length > 0) {
         const headingFacetNumber = heading.querySelector('.facet-accordion-item__facet-number');
@@ -94,7 +92,7 @@ Drupal.behaviors.facetAccordion = {
       accordionHeadings = document.querySelectorAll('.facet-accordion-item__heading');
     }
 
-    accordionHeadings?.forEach(heading => {
+    accordionHeadings?.forEach((heading) => {
       // Move facet accordion headings inside 'facet-accordion__headings' class
       // in order to style them separately from facet accordion items.
       const facetAccordionHeadingsContainer = document.querySelector('.facet-accordion__headings');

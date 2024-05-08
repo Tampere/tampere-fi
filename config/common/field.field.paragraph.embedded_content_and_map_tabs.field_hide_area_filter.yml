@@ -1,0 +1,21 @@
+uuid: 3c728ab1-8eaf-45e7-9d79-199466367cc1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hide_area_filter
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+id: paragraph.embedded_content_and_map_tabs.field_hide_area_filter
+field_name: field_hide_area_filter
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: 'Piilota aluesuodatus'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Piilota
+  off_label: 'Älä piilota'
+field_type: boolean

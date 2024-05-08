@@ -264,7 +264,6 @@ $projectColors: (
 // This color function makes it easy for you to call a color by it's functional
 // name anywhere you need.
 // E.g. to use the `text` color, you type: `color: clr(text);`
-//
 // How it works:
 // This function works in conjunction with the dynamic css custom properties
 // declarations below. The item called in the function is prefixed with
@@ -308,7 +307,6 @@ $projectColors: (
 // This is what powers the built-in OS light/dark mode switching.
 // For each color variable above (e.g. `text` and `background`) a css custom
 // property will be created. (e.g. `--c-text:` and `--c-background:`).
-//
 // The first `@each` below will create a custom property for each item in the
 // `$defaultColors` map. So put all of your default colors there.
 :root {

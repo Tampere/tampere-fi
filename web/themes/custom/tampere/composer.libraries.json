@@ -1,0 +1,19 @@
+{
+  "require": {
+    "mnater/hyphenopoly": "~4.12.0"
+  },
+  "repositories": {
+    "mnater/hyphenopoly": {
+      "type": "package",
+      "package": {
+        "name": "mnater/hyphenopoly",
+        "version": "4.12.0",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/mnater/Hyphenopoly/archive/refs/tags/v4.12.0.zip",
+          "type": "zip"
+        }
+      }
+    }
+  }
+}

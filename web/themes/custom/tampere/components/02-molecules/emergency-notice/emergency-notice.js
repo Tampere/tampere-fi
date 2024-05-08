@@ -9,11 +9,11 @@ Drupal.behaviors.emergencyNotice = {
     const myStorage = window.localStorage;
     const emergencyNotices = document.querySelectorAll(
       '.emergency-notice',
-      context
+      context,
     );
     const closeButtons = document.querySelectorAll(
       '.emergency-notice__close-button',
-      context
+      context,
     );
 
     /**

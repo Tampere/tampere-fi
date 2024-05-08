@@ -15,7 +15,6 @@ dependencies:
     - paragraphs.paragraphs_type.current_listing
     - paragraphs.paragraphs_type.embedded_content_and_map_tabs
     - paragraphs.paragraphs_type.embederator_embed
-    - paragraphs.paragraphs_type.event_and_hobby_listing
     - paragraphs.paragraphs_type.eventz_today_listing
     - paragraphs.paragraphs_type.generic_listing
     - paragraphs.paragraphs_type.highlighted_content_liftup_w_img
@@ -101,7 +100,6 @@ settings:
       rss_feed: rss_feed
       social_media_link_list: social_media_link_list
       social_media_feed_embed: social_media_feed_embed
-      event_and_hobby_listing: event_and_hobby_listing
       table_with_row_and_col_headers: table_with_row_and_col_headers
       table_with_row_headers: table_with_row_headers
       table: table
@@ -183,7 +181,7 @@ settings:
         enabled: true
       event_and_hobby_listing:
         weight: 46
-        enabled: true
+        enabled: false
       eventz_today_listing:
         weight: 15
         enabled: true

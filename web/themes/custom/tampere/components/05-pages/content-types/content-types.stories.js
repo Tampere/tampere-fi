@@ -55,8 +55,7 @@ export default {
   },
 };
 
-export const newsItem = () => {
-  return (
+export const newsItem = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: newsItemTwig({
@@ -78,11 +77,9 @@ export const newsItem = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const newsItemWithSidebar = () => {
-  return (
+export const newsItemWithSidebar = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: newsItemWithSidebarTwig({
@@ -105,11 +102,9 @@ export const newsItemWithSidebar = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const notice = () => {
-  return (
+export const notice = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: noticeTwig({
@@ -130,11 +125,9 @@ export const notice = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const blogPost = () => {
-  return (
+export const blogPost = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: blogPostTwig({
@@ -155,11 +148,9 @@ export const blogPost = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const frontPage = () => {
-  return (
+export const frontPage = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: frontPageTwig({
@@ -186,11 +177,9 @@ export const frontPage = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const collectionPage = () => {
-  return (
+export const collectionPage = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: collectionPageTwig({
@@ -213,11 +202,9 @@ export const collectionPage = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const collectionPageWithSidebar = () => {
-  return (
+export const collectionPageWithSidebar = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: collectionPageWithSidebarTwig({
@@ -241,11 +228,9 @@ export const collectionPageWithSidebar = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const basicPage = () => {
-  return (
+export const basicPage = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: basicPageTwig({
@@ -269,11 +254,9 @@ export const basicPage = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const basicPageWithSidebar = () => {
-  return (
+export const basicPageWithSidebar = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: basicPageWithSidebarTwig({
@@ -298,11 +281,9 @@ export const basicPageWithSidebar = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const minisiteCollectionPage = () => {
-  return (
+export const minisiteCollectionPage = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: minisiteCollectionPageTwig({
@@ -324,11 +305,9 @@ export const minisiteCollectionPage = () => {
         }),
       }}
     />
-  );
-};
+);
 
-export const InvolvementOpportunity = () => {
-  return (
+export const InvolvementOpportunity = () => (
     <div
       dangerouslySetInnerHTML={{
         __html: involvementOpportunityPageTwig({
@@ -351,5 +330,4 @@ export const InvolvementOpportunity = () => {
         }),
       }}
     />
-  );
-};
+);

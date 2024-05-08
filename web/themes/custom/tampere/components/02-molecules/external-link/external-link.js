@@ -51,7 +51,7 @@ function getLinkHostname(hrefText, defaultHostname) {
 function appendIconToElement(anchorElement) {
   if ('content' in document.createElement('template')) {
     const externalLinkIndicatorTemplate = document.querySelector(
-      '#external-link-indicator-template'
+      '#external-link-indicator-template',
     );
 
     if (!externalLinkIndicatorTemplate) {
@@ -75,7 +75,7 @@ Drupal.behaviors.externalLinkContainer = {
     // eslint-disable-next-line no-undef
     const anchors = once(
       'external-link-processed',
-      document.querySelectorAll('.text-long a, .cta__content a, .field a', context)
+      document.querySelectorAll('.text-long a, .cta__content a, .field a', context),
     );
 
     // eslint-disable-next-line no-restricted-globals

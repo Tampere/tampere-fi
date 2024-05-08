@@ -75,7 +75,7 @@ Drupal.behaviors.backToTop = {
     window.addEventListener('keydown', handleKeyDown);
 
     if (backToTopElements) {
-      backToTopElements.forEach(element => {
+      backToTopElements.forEach((element) => {
         element.addEventListener('click', backToTop);
         element.addEventListener('click', switchFocus);
       });

@@ -61,7 +61,7 @@ function handleSearchToggleBodyInteraction(event) {
   const selectedSearchToggle = event.target.closest('.search-toggle');
 
   const expandedSearchToggleButtons = document.querySelectorAll(
-    '.search-toggle__button[aria-expanded=true]'
+    '.search-toggle__button[aria-expanded=true]',
   );
 
   if (!selectedSearchToggle && expandedSearchToggleButtons.length > 0) {
@@ -93,11 +93,11 @@ Drupal.behaviors.searchToggle = {
       searchToggles.forEach((searchToggle) => {
         searchToggle.addEventListener(
           'click',
-          handleSearchToggleButtonInteraction
+          handleSearchToggleButtonInteraction,
         );
         searchToggle.addEventListener(
           'tap',
-          handleSearchToggleButtonInteraction
+          handleSearchToggleButtonInteraction,
         );
       });
 

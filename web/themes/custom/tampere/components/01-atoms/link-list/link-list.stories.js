@@ -8,7 +8,6 @@ import linkListLargeIconsPrimaryData from './link-list-large-icons-primary.yml';
 import linkListCenteredData from './link-list-centered.yml';
 import linkListMoreSpaceData from './link-list-more-space.yml';
 
-
 /**
  * Storybook Definition.
  */

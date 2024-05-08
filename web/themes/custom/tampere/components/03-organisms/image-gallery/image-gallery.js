@@ -18,7 +18,7 @@
  */
 function getCaption(currentElement) {
   const galleryItem = currentElement.closest('.image-gallery__item');
-  let caption = "";
+  let caption = '';
 
   if (!galleryItem) {
     return caption;
@@ -41,9 +41,9 @@ function getCaption(currentElement) {
  *
  * @returns {string}
  */
- function getItemName(currentElement) {
+function getItemName(currentElement) {
   const galleryItem = currentElement.closest('.image-gallery__item');
-  let name = "";
+  let name = '';
 
   if (!galleryItem) {
     return name;
@@ -83,6 +83,7 @@ Drupal.behaviors.imageGallery = {
 
     let tobiiOnced = once.find(tobiiOnceId);
     if (tobiiOnced.length === 0) {
+      // eslint-disable-next-line
       const tobii = new Tobii({
         captionText: getCaption,
         navLabel: [Drupal.t('Previous image'), Drupal.t('Next image')],

@@ -9,7 +9,7 @@ use Drupal\tre_preprocess\TrePreProcessPluginBase;
  * Embedded content tab unformatted views view preprocessing.
  *
  * @Preprocess(
- *   id = "tre_preprocess.preprocess.views_view_unformatted__embedded_content_tab",
+ *   id = "tre_preprocess.preprocess.view__embedded_content_tab",
  *   hook = "views_view_unformatted__embedded_content_tab"
  * )
  */
@@ -20,11 +20,16 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
    */
   const DEFAULT_LIST_ITEM_VIEW_MODE = 'content_tab_card_view_mode';
 
+  protected const DISPLAY_IDS = [
+    "content_listing_block",
+    "content_listing_block_without_area_filter",
+  ];
+
   /**
    * {@inheritdoc}
    */
   public function preprocess(array $variables): array {
-    if ($variables['view']->current_display != "content_listing_block") {
+    if (!in_array($variables['view']->current_display, self::DISPLAY_IDS, TRUE)) {
       return $variables;
     }
     $tab_list_content = [];

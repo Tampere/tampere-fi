@@ -2,17 +2,10 @@ module.exports = (api) => {
   api.cache(true);
 
   const presets = [
-    '@babel/preset-react',
     [
-      '@babel/preset-env',
-      {
-        corejs: 3,
-        useBuiltIns: 'usage',
-      },
+      '@babel/preset-react',
     ],
-    ['minify', {
-      builtIns: false,
-    }],
+    ['minify', { builtIns: false }],
   ];
 
   const comments = false;

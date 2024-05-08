@@ -11,7 +11,7 @@
  */
 function closeNestedAccordions(accordionItem) {
   const openNestedAccordionButtons = accordionItem.querySelectorAll(
-    '.nested-accordion.is-active'
+    '.nested-accordion.is-active',
   );
 
   if (openNestedAccordionButtons && openNestedAccordionButtons.length > 0) {
@@ -32,7 +32,7 @@ function updateToggleAllButtons(accordionContainer, controlButton, state) {
 
   const buttonSiblingClass = state === 'open' ? 'close' : 'open';
   const buttonSibling = accordionContainer.querySelector(
-    `.accordion__${buttonSiblingClass}-all-button`
+    `.accordion__${buttonSiblingClass}-all-button`,
   );
 
   if (buttonSibling) {
@@ -60,26 +60,24 @@ function updateToggleAllButtons(accordionContainer, controlButton, state) {
  */
 function toggleAccordion(accordionButton, forceState) {
   // If forceState is defined, use it; otherwise, toggle based on current state
-  const shouldExpand =
-    forceState !== undefined
-      ? forceState
-      : !(accordionButton.getAttribute('aria-expanded') === 'true');
+  const shouldExpand = forceState !== undefined
+    ? forceState
+    : !(accordionButton.getAttribute('aria-expanded') === 'true');
 
   const accordionItem = accordionButton.closest('.accordion__item');
   const accordionContentId = accordionButton.getAttribute('aria-controls');
   const accordionContent = accordionItem.querySelector(
-    `#${accordionContentId}`
+    `#${accordionContentId}`,
   );
-  const accordionContainer =
-    accordionButton.closest('.paragraph--type-accordions') ||
-    accordionButton.closest('.paragraph') ||
-    accordionButton.closest('.accordion');
+  const accordionContainer = accordionButton.closest('.paragraph--type-accordions')
+    || accordionButton.closest('.paragraph')
+    || accordionButton.closest('.accordion');
 
   const closeAllButton = accordionContainer.querySelector(
-    '.accordion__close-all-button'
+    '.accordion__close-all-button',
   );
   const openAllButton = accordionContainer.querySelector(
-    '.accordion__open-all-button'
+    '.accordion__open-all-button',
   );
 
   if (!shouldExpand) {
@@ -114,10 +112,10 @@ function toggleAccordion(accordionButton, forceState) {
   }
 
   const allAccordionButtons = accordionContainer.querySelectorAll(
-    '.accordion__heading'
+    '.accordion__heading',
   );
   const allOpen = Array.from(allAccordionButtons).every(
-    (button) => button.getAttribute('aria-expanded') === 'true'
+    (button) => button.getAttribute('aria-expanded') === 'true',
   );
 
   if (allOpen) {
@@ -140,12 +138,11 @@ function handleAccordionClick(event) {
  * @param {HTMLElement} controlButton - The button that was clicked to trigger this action.
  */
 function closeAllAccordions(controlButton) {
-  const accordionContainer =
-    controlButton.closest('.paragraph--type-accordions') ||
-    controlButton.closest('.paragraph') ||
-    controlButton.closest('.accordion');
+  const accordionContainer = controlButton.closest('.paragraph--type-accordions')
+    || controlButton.closest('.paragraph')
+    || controlButton.closest('.accordion');
   const accordionButtons = accordionContainer.querySelectorAll(
-    '.accordion__heading[aria-expanded="true"]'
+    '.accordion__heading[aria-expanded="true"]',
   );
   accordionButtons.forEach((button) => toggleAccordion(button, false)); // Explicitly close each
 
@@ -157,12 +154,11 @@ function closeAllAccordions(controlButton) {
  * @param {HTMLElement} controlButton - The button that was clicked to trigger this action.
  */
 function openAllAccordions(controlButton) {
-  const accordionContainer =
-    controlButton.closest('.paragraph--type-accordions') ||
-    controlButton.closest('.paragraph') ||
-    controlButton.closest('.accordion');
+  const accordionContainer = controlButton.closest('.paragraph--type-accordions')
+    || controlButton.closest('.paragraph')
+    || controlButton.closest('.accordion');
   const accordionButtons = accordionContainer.querySelectorAll(
-    '.accordion__heading:not([aria-expanded="true"])'
+    '.accordion__heading:not([aria-expanded="true"])',
   );
   accordionButtons.forEach((button) => toggleAccordion(button, true)); // Explicitly open each
 
@@ -178,12 +174,12 @@ Drupal.behaviors.accordion = {
       accordionButtons = once(
         'accordion-buttons',
         '.accordion__heading',
-        context
+        context,
       );
     } catch (e) {
       accordionButtons = document.querySelectorAll(
         '.accordion__heading',
-        context
+        context,
       );
     }
 
@@ -195,7 +191,7 @@ Drupal.behaviors.accordion = {
 
     // Handle close all button
     const closeAllButtons = context.querySelectorAll(
-      '.accordion__close-all-button'
+      '.accordion__close-all-button',
     );
     if (closeAllButtons) {
       closeAllButtons.forEach((button) => {
@@ -205,7 +201,7 @@ Drupal.behaviors.accordion = {
 
     // Handle open all button
     const openAllButtons = context.querySelectorAll(
-      '.accordion__open-all-button'
+      '.accordion__open-all-button',
     );
     if (openAllButtons) {
       openAllButtons.forEach((button) => {

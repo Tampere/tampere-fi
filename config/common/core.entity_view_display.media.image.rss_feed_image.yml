@@ -1,0 +1,63 @@
+uuid: 2c52c0f7-ec46-4898-8b6e-86a6deda6525
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.rss_feed_image
+    - field.field.media.image.field_author
+    - field.field.media.image.field_category_instructions_bulk
+    - field.field.media.image.field_description
+    - field.field.media.image.field_geographical_areas
+    - field.field.media.image.field_keywords
+    - field.field.media.image.field_life_situations
+    - field.field.media.image.field_media_folder
+    - field.field.media.image.field_media_image
+    - field.field.media.image.field_other_identifiers
+    - field.field.media.image.field_plan_numbers
+    - field.field.media.image.field_record_numbers
+    - field.field.media.image.field_topics
+    - image.style.rss_feed_image_style
+    - media.type.image
+  module:
+    - image
+    - lazy
+_core:
+  default_config_hash: RtZanVkG-pi28uOs3DSlAs89IR_XQ4U1nxbC6vKsO-g
+id: media.image.rss_feed_image
+targetEntityType: media
+bundle: image
+mode: rss_feed_image
+content:
+  field_media_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: rss_feed_image_style
+      image_loading:
+        attribute: eager
+    third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_author: true
+  field_category_instructions_bulk: true
+  field_description: true
+  field_geographical_areas: true
+  field_keywords: true
+  field_life_situations: true
+  field_media_folder: true
+  field_other_identifiers: true
+  field_plan_numbers: true
+  field_record_numbers: true
+  field_topics: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

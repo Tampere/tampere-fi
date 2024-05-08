@@ -2,10 +2,11 @@
 
 namespace Drupal\tre_preprocess_embedded_content_and_map_tabs\Plugin\Preprocess;
 
+use Drupal\Core\Site\Settings;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
-use Drupal\Core\Site\Settings;
+use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 use Drupal\views\Views;
 
 /**
@@ -291,6 +292,12 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
   protected function getRenderedView(ParagraphInterface $paragraph) {
     $view = Views::getView('embedded_content_tab');
     $block_machine_name = 'content_listing_block';
+    $hide_area_filter_value = $this->helperFunctions->getFieldValueString($paragraph, 'field_hide_area_filter');
+    $hide_area_filter = $hide_area_filter_value == HelperFunctionsInterface::BOOLEAN_FIELD_TRUE;
+
+    if ($hide_area_filter) {
+      $block_machine_name = 'content_listing_block_without_area_filter';
+    }
 
     if (empty($view) || !$view->access($block_machine_name)) {
       return NULL;

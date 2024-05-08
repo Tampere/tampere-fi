@@ -42,7 +42,9 @@
     >
       {{ search_bar_input_label }}
     </label>
+    {% if skip_wrapper_span is not defined or not skip_wrapper_span %}
     <span {{ bem("input-wrapper", search_bar__input__modifiers|default([]), search_bar__base_class) }}>
+    {% endif %}
     {% block search_fields %}
       {% include "@atoms/05-forms/_input.twig" with {
         "custom_classes": search_bar__base_class ~ "__input",
@@ -54,8 +56,10 @@
         "button_icon_name": "search",
         "button_icon_blockname": search_bar__base_class,
       } %}
-    {% endblock %} 
+    {% endblock %}
+    {% if skip_wrapper_span is not defined or not skip_wrapper_span %}
     </span>
+    {% endif %}
   </{{ search_bar_wrapper_element }}>
 {% if not use_exposed_block %}
   </div>

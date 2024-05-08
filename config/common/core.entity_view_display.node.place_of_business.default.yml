@@ -33,6 +33,7 @@ dependencies:
   module:
     - address
     - ds
+    - field_delimiter
     - office_hours
     - options
     - telephone_plus
@@ -191,11 +192,12 @@ content:
     label: above
     settings:
       day_format: long
-      time_format: G
+      time_format: H
       compress: false
       grouped: false
-      show_closed: all
+      show_closed: open
       closed_format: kiinni
+      all_day_format: 'Auki koko päivän'
       separator:
         days: '<br />'
         grouped_days: ' - '
@@ -206,19 +208,18 @@ content:
         position: ''
         open_text: 'Currently open!'
         closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        all_day_format: 'Auki koko päivän'
       timezone_field: ''
       office_hours_first_day: '1'
       schema:
         enabled: false
     third_party_settings:
-      ds:
-        ds_limit: ''
-        ft:
-          id: default
-          settings:
-            lb: ''
-            lb-col: false
-            classes: {  }
+      field_delimiter:
+        delimiter: ''
     weight: 17
     region: content
   field_opening_hours_2:
@@ -226,11 +227,12 @@ content:
     label: above
     settings:
       day_format: long
-      time_format: G
+      time_format: H
       compress: false
       grouped: false
-      show_closed: all
+      show_closed: open
       closed_format: kiinni
+      all_day_format: 'Auki koko päivän'
       separator:
         days: '<br />'
         grouped_days: ' - '
@@ -241,19 +243,18 @@ content:
         position: ''
         open_text: 'Currently open!'
         closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        all_day_format: 'Auki koko päivän'
       timezone_field: ''
       office_hours_first_day: '1'
       schema:
         enabled: false
     third_party_settings:
-      ds:
-        ds_limit: ''
-        ft:
-          id: default
-          settings:
-            lb: ''
-            lb-col: false
-            classes: {  }
+      field_delimiter:
+        delimiter: ''
     weight: 19
     region: content
   field_opening_hours_3:
@@ -261,11 +262,12 @@ content:
     label: above
     settings:
       day_format: long
-      time_format: G
+      time_format: H
       compress: false
       grouped: false
-      show_closed: all
+      show_closed: open
       closed_format: kiinni
+      all_day_format: 'Auki koko päivän'
       separator:
         days: '<br />'
         grouped_days: ' - '
@@ -276,19 +278,18 @@ content:
         position: ''
         open_text: 'Currently open!'
         closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        all_day_format: 'Auki koko päivän'
       timezone_field: ''
       office_hours_first_day: '1'
       schema:
         enabled: false
     third_party_settings:
-      ds:
-        ds_limit: ''
-        ft:
-          id: default
-          settings:
-            lb: ''
-            lb-col: false
-            classes: {  }
+      field_delimiter:
+        delimiter: ''
     weight: 21
     region: content
   field_opening_hours_info:

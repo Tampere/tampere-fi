@@ -10,6 +10,7 @@ Drupal.behaviors.table = {
 
     tables?.forEach((table) => {
       const tableId = table.getAttribute('id');
+      // eslint-disable-next-line
       const responsiveTable = new ResponsiveTable(`#${tableId}`, 'stack', '800px');
     });
   },

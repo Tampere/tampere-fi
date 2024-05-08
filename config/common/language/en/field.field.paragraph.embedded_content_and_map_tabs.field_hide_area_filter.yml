@@ -1,0 +1,4 @@
+label: 'Hide geographical area filter'
+settings:
+  on_label: Hide
+  off_label: 'Do not hide'

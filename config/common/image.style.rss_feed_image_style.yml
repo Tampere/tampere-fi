@@ -1,0 +1,15 @@
+uuid: 3f077486-fbd8-4885-99a8-a113ec9e5fd5
+langcode: fi
+status: true
+dependencies: {  }
+name: rss_feed_image_style
+label: 'RSS-syötteen kuva'
+effects:
+  1e1f4013-60b5-4d4c-afe9-0d3b30e21b33:
+    uuid: 1e1f4013-60b5-4d4c-afe9-0d3b30e21b33
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false

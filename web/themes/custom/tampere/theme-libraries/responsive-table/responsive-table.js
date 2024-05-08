@@ -13,14 +13,14 @@
  * @author: Scott Vinkle <scott.vinkle@shopify.com>
  * @version: 0.4.1
  */
- var ResponsiveTable = (function(window, document, undefined) {
+const ResponsiveTable = (function (window, document, undefined) {
   'use strict';
 
   // Unique table identifier.
-  var tableId = 0;
+  let tableId = 0;
 
   // Lookup table of selectors, either id or element, no classes.
-  var selectors = {
+  const selectors = {
     tableList: 'table-list',
     selected: 'selected-list-item',
     tableRows: 'tbody tr',
@@ -34,11 +34,11 @@
     links: 'a',
     span: 'span',
     styleSheets: 'link[rel="stylesheet"]',
-    tableRowFocusElement: 'tableRowFocusElement'
+    tableRowFocusElement: 'tableRowFocusElement',
   };
 
   // Lookup table of classes, to apply styles only.
-  var classes = {
+  const classes = {
     table: 'responsive-table',
     caption: 'responsive-table__caption',
     tableList: 'responsive-table__list',
@@ -53,11 +53,11 @@
     headerContent: 'responsive-table__header-content',
     cellContent: 'responsive-table__cell-content',
     hidden: 'hidden',
-    visuallyHidden: 'visuallyhidden'
+    visuallyHidden: 'visuallyhidden',
   };
 
   // Lookup table of common, unique strings.
-  var strings = {
+  const strings = {
     tableMissing: 'Table selector missing from object.',
     tableNotFound: 'Table not found: ',
     tableTypeMissing:
@@ -65,9 +65,9 @@
     windowLinkStart: 'Open ',
     windowLinkEnd: ' table in a new window',
     windowIcon:
-      '<svg class="' +
-      classes.windowLinkIcon +
-      '" width="32" height="32" viewBox="0 0 32 32"><g transform="scale(0.03125 0.03125)"><path d="M192 64v768h768v-768h-768zM896 768h-640v-640h640v640zM128 896v-672l-64-64v800h800l-64-64h-672z"></path><path d="M352 256l160 160-192 192 96 96 192-192 160 160v-416z"></path></g></svg>',
+      `<svg class="${
+        classes.windowLinkIcon
+      }" width="32" height="32" viewBox="0 0 32 32"><g transform="scale(0.03125 0.03125)"><path d="M192 64v768h768v-768h-768zM896 768h-640v-640h640v640zM128 896v-672l-64-64v800h800l-64-64h-672z"></path><path d="M352 256l160 160-192 192 96 96 192-192 160 160v-416z"></path></g></svg>`,
     checkDom: 'Check document structure requirements: ',
     cellCount: 'Column/row cell count mismatch: ',
     selected: ', selected',
@@ -90,16 +90,16 @@
       httpEquiv:
         '<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">',
       viewport:
-        '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
-    }
+        '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+    },
   };
 
   // Class constructor.
-  var ResponsiveTable = function(table, type, breakPoint) {
-    var thisTable = null,
-      thisTableId = null,
-      tableList = null,
-      mediaQuery = null;
+  const ResponsiveTable = function (table, type, breakPoint) {
+    let thisTable = null;
+    let thisTableId = null;
+    let tableList = null;
+    let mediaQuery = null;
 
     // Check to see if the `table` param is present.
     // Then check to see if it exists in the DOM.
@@ -107,12 +107,11 @@
     if (!table) {
       console.error(strings.tableMissing);
       return;
-    } else if (!document.querySelector(table)) {
+    } if (!document.querySelector(table)) {
       console.error(strings.tableNotFound + table);
       return;
-    } else {
-      thisTable = document.querySelector(table);
     }
+    thisTable = document.querySelector(table);
 
     // Check to see if the `type` param is present.
     // If all good, assign the value to `tableType`.
@@ -126,14 +125,14 @@
      *
      * @return thisTable {Object} the `table` element.
      */
-    this.getTable = function() {
+    this.getTable = function () {
       return thisTable;
     };
 
     /**
      * Sets a unique identifier for the current `table`.
      */
-    this.setTableId = function() {
+    this.setTableId = function () {
       thisTableId = tableId;
     };
 
@@ -142,7 +141,7 @@
      *
      * @return thisTableId {number} index of the current `table`.
      */
-    this.getTableId = function() {
+    this.getTableId = function () {
       return thisTableId;
     };
 
@@ -151,14 +150,14 @@
      *
      * @return mediaQuery {Object} `matchMedia` window object.
      */
-    this.getMediaQuery = function() {
+    this.getMediaQuery = function () {
       return mediaQuery;
     };
 
     /**
      * For `list` type tables, sets the current list `ul` element.
      */
-    this.setTableList = function(list) {
+    this.setTableList = function (list) {
       tableList = list;
     };
 
@@ -167,7 +166,7 @@
      *
      * @return tableList {Object} the `ul` element.
      */
-    this.getTableList = function() {
+    this.getTableList = function () {
       return tableList;
     };
 
@@ -176,7 +175,7 @@
      *
      * @return type {String} the value of the desired table type.
      */
-    this.getTableType = function() {
+    this.getTableType = function () {
       return type;
     };
 
@@ -185,13 +184,13 @@
      *
      * @return table {String} the `id` attribute from the current `table`.
      */
-    this.getTableSelector = function() {
+    this.getTableSelector = function () {
       return table;
     };
 
     // Add classes to the table, etc, for styling puposes only.
     thisTable.classList.add(classes.table);
-    thisTable.classList.add(classes.table + '--' + type);
+    thisTable.classList.add(`${classes.table}--${type}`);
     thisTable.querySelector(selectors.caption)?.classList.add(classes.caption);
 
     // Set the unique identifier for the current table, then increment for
@@ -202,21 +201,20 @@
     // Call `checkStructure()` method to make sure everything's in the DOM
     // before continuing on.
     if (this.checkStructure()) {
-
       // Create the `matchMedia` object to test the desired `breakpoint`
       // value against.
       mediaQuery = window.matchMedia(
-        '(min-width: ' +
-          (!breakPoint
+        `(min-width: ${
+          !breakPoint
             ? window.getComputedStyle(thisTable, null).width
-            : breakPoint) +
-          ')'
+            : breakPoint
+        })`,
       );
 
       // Add the event listener to the `matchMedia` object, listen
       // for any window resizing or device orientation changes.
       mediaQuery.addListener(
-        ResponsiveTable.prototype.testMediaQuery.bind(this)
+        ResponsiveTable.prototype.testMediaQuery.bind(this),
       );
 
       // Test the media query on page load to adjust the `table` if
@@ -233,45 +231,43 @@
    * @method checkStructure
    * @return {Boolean} simply return `true` or `false`.
    */
-  ResponsiveTable.prototype.checkStructure = function() {
-    var thisTable = this.getTable(),
-      thisTableType = this.getTableType(),
-      columnHeaders = thisTable.querySelectorAll(selectors.columnHeaders),
-      columnHeadersLength = columnHeaders.length,
-      tableRows = thisTable.querySelectorAll(selectors.tableRows),
-      tableRowsLength = tableRows.length,
-      structureError = false,
-      errorMessage = '',
-      i = 0;
+  ResponsiveTable.prototype.checkStructure = function () {
+    const thisTable = this.getTable();
+    const thisTableType = this.getTableType();
+    const columnHeaders = thisTable.querySelectorAll(selectors.columnHeaders);
+    const columnHeadersLength = columnHeaders.length;
+    const tableRows = thisTable.querySelectorAll(selectors.tableRows);
+    const tableRowsLength = tableRows.length;
+    let structureError = false;
+    let errorMessage = '';
+    let i = 0;
 
     // The `list` style requires `scope="col"` and `scope="row"` headers.
     // The `stack` or `window` styles only require `scope="col"` headers.
     if (thisTableType === strings.list) {
       if (
-        !thisTable.querySelector(selectors.columnHeaders) ||
-        !thisTable.querySelector(selectors.rowHeaders)
+        !thisTable.querySelector(selectors.columnHeaders)
+        || !thisTable.querySelector(selectors.rowHeaders)
       ) {
         structureError = true;
         errorMessage = strings.checkDom;
       } else {
-
         // Check to make sure each row cell count matches the total
         // column count. Otherwise, `list` tables will output
         // mismatched data.
         for (; i < tableRowsLength; i++) {
           if (tableRows[i].children.length !== columnHeadersLength) {
             structureError = true;
-            errorMessage =
-              strings.cellCount +
-              '"' +
-              tableRows[i].children[0].textContent +
-              '": ';
+            errorMessage = `${strings.cellCount
+            }"${
+              tableRows[i].children[0].textContent
+            }": `;
           }
         }
       }
     } else if (
-      thisTableType === strings.stack ||
-      thisTableType === strings.window
+      thisTableType === strings.stack
+      || thisTableType === strings.window
     ) {
       if (
         !thisTable.querySelector(selectors.columnHeaders)
@@ -286,9 +282,8 @@
     if (structureError) {
       console.error(errorMessage + this.getTableSelector());
       return false;
-    } else {
-      return true;
     }
+    return true;
   };
 
   /**
@@ -297,7 +292,7 @@
    *
    * @method testMediaQuery
    */
-  ResponsiveTable.prototype.testMediaQuery = function() {
+  ResponsiveTable.prototype.testMediaQuery = function () {
     if (this.getMediaQuery().matches) {
       this.setupScreen(strings.large);
     } else {
@@ -312,11 +307,11 @@
    * @method setupScreen
    * @param size {String} the "size" of the current screen.
    */
-  ResponsiveTable.prototype.setupScreen = function(size) {
-    var thisTable = this.getTable(),
-      thisTableType = this.getTableType(),
-      tableContainer = thisTable.parentNode,
-      caption = thisTable.querySelector(selectors.caption);
+  ResponsiveTable.prototype.setupScreen = function (size) {
+    const thisTable = this.getTable();
+    const thisTableType = this.getTableType();
+    const tableContainer = thisTable.parentNode;
+    const caption = thisTable.querySelector(selectors.caption);
 
     // The `list` style needs to show/hide each row, and display an
     // "active" row. After, the link list is generated to click betweeen
@@ -349,17 +344,16 @@
     // The `window` types need to show/hide the link which opens the `table`
     // in its own window.
     if (thisTableType === strings.window) {
-
       // Need to add a heading before table so open link has context
       if (!tableContainer.querySelector('h2')) {
-        var tableHeading = document.createElement('h2');
-        tableHeading.id = selectors.tableHeading + '-' + tableId;
+        const tableHeading = document.createElement('h2');
+        tableHeading.id = `${selectors.tableHeading}-${tableId}`;
         tableHeading.textContent = caption.textContent;
         tableContainer.insertBefore(tableHeading, tableContainer.firstChild);
         caption.classList.add(classes.visuallyHidden);
       }
 
-      this.displayWindowLink(size === 'small' ? true : false);
+      this.displayWindowLink(size === 'small');
     }
   };
 
@@ -369,10 +363,10 @@
    * @method toggleActiveRow
    * @param toggle {String} determines the display of all or one row
    */
-  ResponsiveTable.prototype.toggleActiveRow = function(toggle) {
-    var tableRows = this.getTable().querySelectorAll(selectors.tableRows),
-      tableRowsLength = tableRows.length,
-      i = 0;
+  ResponsiveTable.prototype.toggleActiveRow = function (toggle) {
+    const tableRows = this.getTable().querySelectorAll(selectors.tableRows);
+    const tableRowsLength = tableRows.length;
+    let i = 0;
 
     // Hide or show all rows, depending on the `toggle` value.
     for (; i < tableRowsLength; i++) {
@@ -399,25 +393,24 @@
    *
    * @method generateList
    */
-  ResponsiveTable.prototype.generateList = function() {
-    var thisTable = this.getTable(),
-      tableList = this.getTableList(),
-      rowHeaders = thisTable.querySelectorAll(selectors.rowHeaders),
-      rowHeadersLength = rowHeaders.length,
-      newSpanWrapper = null,
-      rowHeader = null,
-      list = null,
-      listItem = null,
-      listLink = null,
-      i = 0,
-      j = 0;
+  ResponsiveTable.prototype.generateList = function () {
+    const thisTable = this.getTable();
+    const tableList = this.getTableList();
+    const rowHeaders = thisTable.querySelectorAll(selectors.rowHeaders);
+    const rowHeadersLength = rowHeaders.length;
+    let newSpanWrapper = null;
+    let rowHeader = null;
+    let list = null;
+    let listItem = null;
+    let listLink = null;
+    let i = 0;
+    let j = 0;
 
     // If the link list already exists in the DOM, show it. Otherwise,
     // create a new link list.
     if (tableList) {
       tableList.classList.remove(classes.hidden);
     } else {
-
       // Create the link list element and set attributes
       list = document.createElement('ul');
 
@@ -434,14 +427,14 @@
 
         listItem.classList.add(classes.tableListItem);
 
-        listLink.href = '#' + selectors.tableRowFocusElement + i;
+        listLink.href = `#${selectors.tableRowFocusElement}${i}`;
         listLink.textContent = rowHeader.textContent;
         listLink.classList.add(classes.tableListLink);
         listLink.setAttribute(strings.dataListLink, i);
         listLink.addEventListener(
           'click',
           ResponsiveTable.prototype.listLinkClick.bind(this),
-          false
+          false,
         );
 
         listItem.appendChild(listLink);
@@ -474,8 +467,8 @@
    *
    * @method removeList
    */
-  ResponsiveTable.prototype.removeList = function() {
-    var tableList = this.getTableList();
+  ResponsiveTable.prototype.removeList = function () {
+    const tableList = this.getTableList();
 
     // If the link list doesn't exist in the DOM, don't continue.
     if (!tableList) {
@@ -492,14 +485,14 @@
    * @method toggleHeaders
    * @param toggle {String} determines the display of `table` headers.
    */
-  ResponsiveTable.prototype.toggleHeaders = function(toggle) {
-    var columnHeaders = this.getTable().querySelectorAll(
-        selectors.columnHeaders
-      ),
-      columnHeadersLength = columnHeaders.length,
-      thisHeader = null,
-      headerRow = null,
-      i = 0;
+  ResponsiveTable.prototype.toggleHeaders = function (toggle) {
+    const columnHeaders = this.getTable().querySelectorAll(
+      selectors.columnHeaders,
+    );
+    const columnHeadersLength = columnHeaders.length;
+    let thisHeader = null;
+    let headerRow = null;
+    let i = 0;
 
     // Show/hide each `scope="col"` header and its parent `tr` element.
     for (; i < columnHeadersLength; i++) {
@@ -522,18 +515,18 @@
    *
    * @method moveContent
    */
-  ResponsiveTable.prototype.moveContent = function() {
-    var thisTable = this.getTable(),
-      tableCells = thisTable.querySelectorAll(selectors.tableCells),
-      tableCellsLength = tableCells.length,
-      colunmHeaders = thisTable.querySelectorAll(selectors.columnHeaders),
-      colunmHeadersLength = colunmHeaders.length - 1,
-      hasRowHeaders = thisTable.querySelectorAll(selectors.rowHeaders).length,
-      tableHeadingContent = null,
-      cellContent = null,
-      thisCell = null,
-      i = 0,
-      j = hasRowHeaders ? 1 : 0;
+  ResponsiveTable.prototype.moveContent = function () {
+    const thisTable = this.getTable();
+    const tableCells = thisTable.querySelectorAll(selectors.tableCells);
+    const tableCellsLength = tableCells.length;
+    const colunmHeaders = thisTable.querySelectorAll(selectors.columnHeaders);
+    const colunmHeadersLength = colunmHeaders.length - 1;
+    const hasRowHeaders = thisTable.querySelectorAll(selectors.rowHeaders).length;
+    let tableHeadingContent = null;
+    let cellContent = null;
+    let thisCell = null;
+    let i = 0;
+    let j = hasRowHeaders ? 1 : 0;
 
     for (; i < tableCellsLength; i++) {
       thisCell = tableCells[i];
@@ -551,29 +544,27 @@
       // Clear the cell content and insert the header text along side the
       // current cell content, per theme requirements.
       thisCell.innerHTML = '';
-      thisCell.innerHTML =
-        '<span id="' +
-        strings.headerContent +
-        i +
-        '" class="' +
-        classes.headerContent +
-        '">' +
-        tableHeadingContent +
-        '</span><span id="' +
-        strings.cellContent +
-        i +
-        '" class="' +
-        classes.cellContent +
-        '">' +
-        cellContent +
-        '</span>';
+      thisCell.innerHTML = `<span id="${
+        strings.headerContent
+      }${i
+      }" class="${
+        classes.headerContent
+      }">${
+        tableHeadingContent
+      }</span><span id="${
+        strings.cellContent
+      }${i
+      }" class="${
+        classes.cellContent
+      }">${
+        cellContent
+      }</span>`;
 
       // Increment the counter to grab the current cell's `scope="col"`
       // element content. Reset the counter when we've reached the
       // end of the row to grab the first column content and start again.
       j = j >= colunmHeadersLength ? (j = hasRowHeaders ? 1 : 0) : j + 1;
     }
-
   };
 
   /**
@@ -581,30 +572,29 @@
    *
    * @method resetContent
    */
-  ResponsiveTable.prototype.resetContent = function() {
-    var thisTable = this.getTable(),
-      tableId = this.getTableId(),
-      tableContainer = thisTable.parentNode,
-      tableCells = thisTable.querySelectorAll(selectors.tableCells),
-      tableCellsLength = tableCells.length,
-      thisCell = null,
-      thisCellContent = '',
-      i = 0;
+  ResponsiveTable.prototype.resetContent = function () {
+    const thisTable = this.getTable();
+    const tableId = this.getTableId();
+    const tableContainer = thisTable.parentNode;
+    const tableCells = thisTable.querySelectorAll(selectors.tableCells);
+    const tableCellsLength = tableCells.length;
+    let thisCell = null;
+    let thisCellContent = '';
+    let i = 0;
 
     for (; i < tableCellsLength; i++) {
       thisCell = tableCells[i];
 
       // Make sure the content we're looking to place back actually exists.
-      if (thisCell.querySelector('#' + strings.headerContent + i) !== null) {
-
+      if (thisCell.querySelector(`#${strings.headerContent}${i}`) !== null) {
         // Make a backup copy of the current cell content, minus the
         // header content.
-        thisCellContent = thisCell.querySelector('#' + strings.cellContent + i)
+        thisCellContent = thisCell.querySelector(`#${strings.cellContent}${i}`)
           .innerHTML;
 
         // Remove the header and cell content elements.
-        thisCell.querySelector('#' + strings.headerContent + i).remove();
-        thisCell.querySelector('#' + strings.cellContent + i).remove();
+        thisCell.querySelector(`#${strings.headerContent}${i}`).remove();
+        thisCell.querySelector(`#${strings.cellContent}${i}`).remove();
 
         // Place the cell content back in to the cell.
         thisCell.innerHTML = thisCellContent;
@@ -613,13 +603,12 @@
 
     // If it exists in the DOM, hide the `table` heading.
     if (
-      tableContainer.querySelector('#' + selectors.tableHeading + '-' + tableId)
+      tableContainer.querySelector(`#${selectors.tableHeading}-${tableId}`)
     ) {
       tableContainer
-        .querySelector('#' + selectors.tableHeading + '-' + tableId)
+        .querySelector(`#${selectors.tableHeading}-${tableId}`)
         .classList.add(classes.hidden);
     }
-
   };
 
   /**
@@ -628,28 +617,27 @@
    * @method listLinkClick
    * @param event {Object} click event information object.
    */
-  ResponsiveTable.prototype.listLinkClick = function(event) {
+  ResponsiveTable.prototype.listLinkClick = function (event) {
     event.preventDefault();
 
-    var thisTable = this.getTable(),
-      thisTableList = this.getTableList(),
-      thisLink = event.target,
-      listLinks = thisTableList.querySelectorAll(selectors.links),
-      listLinksLength = listLinks.length,
-      tableRows = thisTable.querySelectorAll(selectors.tableRows),
-      tableRowsLength = tableRows.length,
-      thisTableRow = parseInt(
-        event.target.getAttribute(strings.dataListLink),
-        10
-      ),
-      selectedText =
-        '<span class="' +
-        classes.visuallyHidden +
-        '">' +
-        strings.selected +
-        '</span>',
-      i = 0,
-      j = 0;
+    const thisTable = this.getTable();
+    const thisTableList = this.getTableList();
+    const thisLink = event.target;
+    const listLinks = thisTableList.querySelectorAll(selectors.links);
+    const listLinksLength = listLinks.length;
+    const tableRows = thisTable.querySelectorAll(selectors.tableRows);
+    const tableRowsLength = tableRows.length;
+    const thisTableRow = parseInt(
+      event.target.getAttribute(strings.dataListLink),
+      10,
+    );
+    const selectedText = `<span class="${
+      classes.visuallyHidden
+    }">${
+      strings.selected
+    }</span>`;
+    let i = 0;
+    let j = 0;
 
     // Remove the `active` class and hide each row.
     // Show the `table` row which index matches the clicked link's
@@ -675,8 +663,8 @@
     thisLink.innerHTML = thisLink.textContent + selectedText;
 
     // Get link href #value to know where to set focus
-    var visibleRowHeaderTarget = thisTable.querySelector(
-      '#' + thisLink.hash.substr(1)
+    const visibleRowHeaderTarget = thisTable.querySelector(
+      `#${thisLink.hash.substr(1)}`,
     );
 
     // Set the `table` heading to be focusable, then set focus.
@@ -690,32 +678,31 @@
    * @method windowLinkClick
    * @param event {Object} click event information object.
    */
-  ResponsiveTable.prototype.windowLinkClick = function(event) {
+  ResponsiveTable.prototype.windowLinkClick = function (event) {
     event.preventDefault();
 
-    var thisTable = this.getTable(),
-      tableWindow = window.open(),
-      tableWindowDocument = tableWindow.document,
-      tableContent = thisTable.outerHTML,
-      styleSheets = document.head.querySelectorAll(selectors.styleSheets),
-      styleSheetsLength = styleSheets.length,
-      tableWindowStyleSheets = null,
-      i = 0;
+    const thisTable = this.getTable();
+    const tableWindow = window.open();
+    const tableWindowDocument = tableWindow.document;
+    const tableContent = thisTable.outerHTML;
+    const styleSheets = document.head.querySelectorAll(selectors.styleSheets);
+    const styleSheetsLength = styleSheets.length;
+    let tableWindowStyleSheets = null;
+    let i = 0;
 
     // Set the language of the new window document.
     tableWindowDocument.documentElement.lang = strings.lang;
 
     // Set the character set, httpEquiv value, and viewport meta tags of the
     // new window document.
-    tableWindowDocument.head.innerHTML =
-      strings.pageSettings.charset +
-      strings.pageSettings.httpEquiv +
-      strings.pageSettings.viewport;
+    tableWindowDocument.head.innerHTML = strings.pageSettings.charset
+      + strings.pageSettings.httpEquiv
+      + strings.pageSettings.viewport;
 
     // Set the `title` element of the new window document to that of the
     // current `caption` value.
     tableWindowDocument.title = thisTable.querySelector(
-      selectors.caption
+      selectors.caption,
     ).textContent;
 
     // Dynamically create `link` elements in order to embed the current
@@ -734,7 +721,6 @@
     // that of the current `table` element content.
     tableWindowDocument.body.innerHTML = tableContent;
     tableWindowDocument.body.classList.add(classes.windowBody);
-
   };
 
   /**
@@ -743,10 +729,10 @@
    * @method displayWindowLink
    * @param display {Boolean} determines display mode of the "open window" link
    */
-  ResponsiveTable.prototype.displayWindowLink = function(display) {
-    var thisTable = this.getTable(),
-      tableHeader = thisTable.parentNode.querySelector(selectors.h2),
-      windowLink = document.querySelector('#' + selectors.windowLink);
+  ResponsiveTable.prototype.displayWindowLink = function (display) {
+    const thisTable = this.getTable();
+    const tableHeader = thisTable.parentNode.querySelector(selectors.h2);
+    let windowLink = document.querySelector(`#${selectors.windowLink}`);
 
     // On display, create the link and set its parameters and event
     // listener, the insert before the `table`. Otherwise, remove the link
@@ -757,28 +743,25 @@
       windowLink.id = selectors.windowLink;
       windowLink.href = '#';
       windowLink.classList.add(classes.windowLink);
-      windowLink.innerHTML =
-        '<span class="' +
-        classes.visuallyHidden +
-        '">' +
-        strings.windowLinkStart +
-        tableHeader.textContent +
-        strings.windowLinkEnd +
-        '</span>' +
-        strings.windowIcon;
+      windowLink.innerHTML = `<span class="${
+        classes.visuallyHidden
+      }">${
+        strings.windowLinkStart
+      }${tableHeader.textContent
+      }${strings.windowLinkEnd
+      }</span>${
+        strings.windowIcon}`;
       windowLink.addEventListener(
         'click',
         ResponsiveTable.prototype.windowLinkClick.bind(this),
-        false
+        false,
       );
 
       thisTable.parentNode.insertBefore(windowLink, tableHeader.nextSibling);
-    } else {
-      if (windowLink) {
-        windowLink.remove();
-      }
+    } else if (windowLink) {
+      windowLink.remove();
     }
   };
 
   return ResponsiveTable;
-})(window, document);
+}(window, document));

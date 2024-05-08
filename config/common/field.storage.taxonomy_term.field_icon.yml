@@ -109,7 +109,7 @@ settings:
       label: Ääniopastus
     -
       value: isa
-      label: 'ISA (vanhentunut, älä käytä)'
+      label: 'ISA yhdistelmä'
   allowed_values_function: null
 module: options
 locked: false

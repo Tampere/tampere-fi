@@ -42,6 +42,7 @@ function handleHeaderKeydown(event) {
   } else {
     // Otherwise, move to first focusable element if currently on the last
     // element.
+    // eslint-disable-next-line
     if (document.activeElement === lastFocusable) {
       firstFocusable.focus();
       event.preventDefault();
@@ -56,7 +57,7 @@ function handleHeaderKeydown(event) {
  *   The menu button that controls a container.
  */
 function toggleMenuContainer(button) {
-  const body = document.body;
+  const { body } = document;
   const header = document.getElementById('site-header');
   const isAriaExpanded = button.getAttribute('aria-expanded') === 'true';
   const controlledContainerId = button.getAttribute('aria-controls');
@@ -79,8 +80,7 @@ function toggleMenuContainer(button) {
       body.classList.remove('mobile-menu-open');
       header.classList.add('mobile-menu-closed');
       header.classList.remove('mobile-menu-open');
-    }
-    else {
+    } else {
       body.classList.add('mobile-menu-open');
       body.classList.remove('mobile-menu-closed');
       header.classList.add('mobile-menu-open');
@@ -119,13 +119,12 @@ function handleMenuButtonInteraction(event) {
  *   The event on body element.
  */
 function handleHeaderBodyInteraction(event) {
-  const selectedHeaderMenuContainer =
-    event.target.closest('.site-header__navigation-container') ||
-    event.target.closest('.site-header__menu') ||
-    event.target.closest('.minisite-header__navigation');
+  const selectedHeaderMenuContainer = event.target.closest('.site-header__navigation-container')
+    || event.target.closest('.site-header__menu')
+    || event.target.closest('.minisite-header__navigation');
 
   const expandedNavContainerButton = document.querySelector(
-    '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]'
+    '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]',
   );
 
   if (!selectedHeaderMenuContainer && expandedNavContainerButton) {
@@ -149,7 +148,7 @@ function handleHeaderFocusOut(event) {
   }
 
   const expandedNavContainerButton = header.querySelector(
-    '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]'
+    '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]',
   );
 
   if (expandedNavContainerButton) {
@@ -170,12 +169,12 @@ function handleResize() {
     return;
   }
 
-  const body = document.body;
+  const { body } = document;
   const header = document.getElementById('site-header');
 
   if (
-    body.classList.contains('mobile-menu-closed') &&
-    header.classList.contains('mobile-menu-closed')
+    body.classList.contains('mobile-menu-closed')
+    && header.classList.contains('mobile-menu-closed')
   ) {
     return;
   }

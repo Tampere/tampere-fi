@@ -1,19 +1,19 @@
 const Hyphenopoly = {
   require: {
-    'fi': 'suurtehokolmivaihekilowattituntimittari',
+    fi: 'suurtehokolmivaihekilowattituntimittari',
     'en-us': 'Supercalifragilisticexpialidocious',
-    'en-gb': 'Supercalifragilisticexpialidocious'
+    'en-gb': 'Supercalifragilisticexpialidocious',
   },
   paths: {
-    patterndir: '/themes/custom/tampere/node_modules/hyphenopoly/patterns/',
-    maindir: '/themes/custom/tampere/node_modules/hyphenopoly/'
+    patterndir: '/libraries/hyphenopoly/patterns/',
+    maindir: '/libraries/hyphenopoly/',
   },
   setup: {
     selectors: {
-      '.hyphenate': {},
+      '.hyphenate1': {},
       '.text-long h2': {},
       '.text-long h3': {},
       '.text-long h4': {},
-    }
-  }
+    },
+  },
 };

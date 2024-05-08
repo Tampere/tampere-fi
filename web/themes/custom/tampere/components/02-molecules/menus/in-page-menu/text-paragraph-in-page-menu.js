@@ -19,7 +19,7 @@ function getSubheadingListItem(subheading) {
   }
 
   const listItemTemplate = document.querySelector(
-    '#automatic-anchor-list-template'
+    '#automatic-anchor-list-template',
   );
   const clone = listItemTemplate.content.firstElementChild.cloneNode(true);
   const link = clone.querySelector('a');
@@ -35,7 +35,7 @@ Drupal.behaviors.textParagraphAutomaticAnchorList = {
     const inPageMenus = once(
       'text-paragraph-automatic-anchor-lists',
       '.in-page-menu--text-paragraph-specific',
-      context
+      context,
     );
 
     if (!inPageMenus || inPageMenus.length === 0) {
