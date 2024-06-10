@@ -2,10 +2,10 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
+use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
-use Drupal\Core\Breadcrumb\Breadcrumb;
 
 /**
  * Group content menu block preprocessing.

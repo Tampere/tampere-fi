@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.involvement_opp_sign_up_information_view_mode
 label: 'Osallistumismahdollisuuden ilmoittautumisen ajankohta'
+description: ''
 targetEntityType: node
 cache: true

@@ -7,8 +7,6 @@ dependencies:
   module:
     - user
 id: theme-group_membership
-label: 'Teema: Group membership'
-description: 'Adds users to groups as members.'
 group_type: theme
 content_plugin: group_membership
 plugin_config:

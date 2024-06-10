@@ -57,8 +57,9 @@
     </div>
 
     {% for tab in tabbed_container_tabs %}
+      {% set tab_panel_class = "tabbed-container-tab-section-" ~ loop.index %}
       <div
-        {{ bem("tab-panel", "", tabbed_container__base_class) }}
+        {{ bem("tab-panel", "", tabbed_container__base_class, tab_panel_class) }}
         role="tabpanel"
         id="tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
         aria-labelledby="tabbed-container-tab-{{ loop.index }}-{{ tabbed_container_identifier }}"

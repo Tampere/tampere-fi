@@ -4,24 +4,7 @@ display:
   default:
     display_title: Master
     display_options:
-      exposed_form:
-        options:
-          submit_button: Apply
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        options:
-          tags:
-            previous: ‹‹
-            next: ››
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page_label: 'Items per page'
-            items_per_page_options_all_label: '- All -'
-            offset_label: Offset
+      title: Nodes
       fields:
         title:
           label: Title
@@ -32,15 +15,15 @@ display:
         status:
           label: Status
           settings:
-            format_custom_true: Published
             format_custom_false: Unpublished
+            format_custom_true: Published
           separator: ', '
         changed:
           label: Updated
           separator: ', '
         delete_group_content:
           admin_label: 'Delete relation link'
-          label: 'Link to delete Group content'
+          label: 'Link to delete Group relationship'
           text: 'Delete relation'
         edit_node:
           admin_label: 'Edit node link'
@@ -52,6 +35,32 @@ display:
           text: 'Delete node'
         dropbutton:
           label: Operations
+      pager:
+        options:
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'No content available.'
+      arguments:
+        gid:
+          exception:
+            title: All
+          title: '{{ arguments.gid|placeholder }} nodes'
       filters:
         status:
           expose:
@@ -66,15 +75,6 @@ display:
         type:
           expose:
             label: Type
-      empty:
-        area_text_custom:
-          content: 'No content available.'
-      arguments:
-        gid:
-          exception:
-            title: All
-          title: '{{ arguments.gid|placeholder }} nodes'
-      title: Nodes
   page_1:
     display_title: Page
     display_options:

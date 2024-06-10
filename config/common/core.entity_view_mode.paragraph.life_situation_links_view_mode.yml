@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.life_situation_links_view_mode
 label: 'Elämäntilanteet linkit'
+description: ''
 targetEntityType: paragraph
 cache: true

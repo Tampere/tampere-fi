@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.contact_information_liftup_view_mode
 label: Yhteystietonosto
+description: ''
 targetEntityType: node
 cache: true

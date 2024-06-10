@@ -6,5 +6,6 @@ dependencies:
     - media
 id: media.search_widget_view_mode
 label: Hakuwidgetti
+description: ''
 targetEntityType: media
 cache: true

@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_54e72f3acfa68
-label: 'Alasivusto: Group node (Basic content page)'
-description: 'Adds <em class="placeholder">Basic content page</em> content to groups both publicly and privately.'
 group_type: subsite
 content_plugin: 'group_node:basic_content_page'
 plugin_config:

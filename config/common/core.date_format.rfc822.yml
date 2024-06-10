@@ -5,4 +5,4 @@ dependencies: {  }
 id: rfc822
 label: RFC822
 locked: false
-pattern: 'D, d M Y H:i:s O'
+pattern: r

@@ -7,10 +7,10 @@ dependencies:
 id: topic-member
 label: Member
 weight: -100
-internal: true
-audience: member
+admin: false
+scope: insider
+global_role: authenticated
 group_type: topic
-permissions_ui: true
 permissions:
   - 'access content overview'
   - 'access group_node overview'

@@ -9,5 +9,5 @@ _core:
 id: message_delete_action
 label: 'Poista valitut viestit'
 type: message
-plugin: message_delete_action
+plugin: 'entity:delete_action:message'
 configuration: {  }

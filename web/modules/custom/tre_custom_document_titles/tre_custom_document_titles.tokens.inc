@@ -6,8 +6,8 @@
  */
 
 use Drupal\Core\Render\BubbleableMetadata;
-use Drupal\node\NodeInterface;
 use Drupal\Core\Routing\RouteMatch;
+use Drupal\node\NodeInterface;
 
 /**
  * Implements hook_token_info().

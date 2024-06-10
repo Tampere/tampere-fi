@@ -1,6 +1,6 @@
 services:
   migrate_subscriber:
     class: Drupal\tre_hr_import\EventSubscriber\MigrateSubscriber
-    arguments: [ '@database', '@logger.factory']
+    arguments: [ '@database', '@logger.factory', '@entity_type.manager']
     tags:
       - { name: event_subscriber }

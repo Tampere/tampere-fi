@@ -7,10 +7,10 @@ dependencies:
 id: mailing_list-member
 label: Jäsen
 weight: -100
-internal: true
-audience: member
+admin: false
+scope: insider
+global_role: authenticated
 group_type: mailing_list
-permissions_ui: true
 permissions:
   - 'edit group'
   - 'leave group'

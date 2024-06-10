@@ -8,8 +8,6 @@ dependencies:
   module:
     - group_content_menu
 id: group_content_type_7ca5a062ed2e5
-label: 'Alasivusto: Group menu (Subsite main menu)'
-description: 'Adds <em class="placeholder">Subsite main menu</em> menu items to groups.'
 group_type: subsite
 content_plugin: 'group_content_menu:subsite_main_menu_en'
 plugin_config:

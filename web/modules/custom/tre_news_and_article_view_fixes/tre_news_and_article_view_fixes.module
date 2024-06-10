@@ -5,8 +5,8 @@
  * Contains tre_news_and_article_view_fixes module.
  */
 
-use Drupal\views\ViewExecutable;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_views_query_alter().

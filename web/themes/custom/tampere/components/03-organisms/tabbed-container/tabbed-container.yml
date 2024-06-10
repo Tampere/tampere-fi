@@ -1,7 +1,7 @@
 tabbed_container__heading: "Lorem ipsum dolor sit amet"
 tabbed_container__description: "Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui."
 tabbed_container_tabs:
-  - title: Show on map
+  - title: Map View
   - title: List view
     use_accordion: TRUE
     content:

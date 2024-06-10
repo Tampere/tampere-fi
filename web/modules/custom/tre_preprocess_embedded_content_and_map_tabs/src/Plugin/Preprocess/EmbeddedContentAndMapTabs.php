@@ -167,7 +167,7 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
             'tre_preprocess_embedded_content_and_map_tabs/rpc',
           ],
         ],
-        '#template' => '<iframe id="{{ iframe_id }}" data-paragraph="{{ paragraph_id }}" data-tampere-cookie-information="skip" title="{% trans %} Map: {{ title }} {% endtrans %}" src="{{ url }}" allow="geolocation" style="border: none; width: 100%; height: 100%;"></iframe>',
+        '#template' => '<iframe id="{{ iframe_id }}" data-paragraph="{{ paragraph_id }}" data-ignore-cookie-blocking="true" title="{% trans %} Map: {{ title }} {% endtrans %}" src="{{ url }}" allow="geolocation" style="border: none; width: 100%; height: 100%;"></iframe>',
         '#context' => [
           'iframe_id' => 'map-' . $paragraph_id,
           'paragraph_id' => $paragraph_id,
@@ -206,7 +206,7 @@ class EmbeddedContentAndMapTabs extends TrePreProcessPluginBase {
     array $taxonomy_values,
     array $content_type_specific_taxonomy_values,
     array $content_types,
-    string $condition_group = 'or'
+    string $condition_group = 'or',
   ): ?array {
 
     if (empty($content_types)) {

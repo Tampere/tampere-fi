@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_053a645f58df8
-label: 'Aihepiiri: Group node (Portfoliolistaus)'
-description: 'Adds <em class="placeholder">Portfoliolistaus</em> content to groups both publicly and privately.'
 group_type: topic
 content_plugin: 'group_node:portfolio_listing'
 plugin_config:

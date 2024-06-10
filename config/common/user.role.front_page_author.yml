@@ -19,6 +19,7 @@ dependencies:
     - field_permissions
     - file
     - filter
+    - help
     - media
     - node
     - paragraphs_type_permissions
@@ -38,6 +39,7 @@ permissions:
   - 'access content overview'
   - 'access entity usage statistics'
   - 'access feed overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access persons_entity_browser entity browser pages'
   - 'access taxonomy overview'

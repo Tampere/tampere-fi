@@ -7,8 +7,6 @@ dependencies:
   module:
     - user
 id: subsite-group_membership
-label: 'Subsite: Group membership'
-description: 'Adds users to groups as members.'
 group_type: subsite
 content_plugin: group_membership
 plugin_config:

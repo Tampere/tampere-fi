@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.phone_number_and_email_view_mode
 label: 'Puhelinnumero ja sähköposti'
+description: ''
 targetEntityType: node
 cache: true

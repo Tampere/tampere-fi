@@ -7,10 +7,10 @@ dependencies:
 id: minisite-news_item_author
 label: Uutistoimittaja
 weight: 33
-internal: false
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: minisite
-permissions_ui: true
 permissions:
   - 'access group_node overview'
   - 'create group_node:news_item entity'

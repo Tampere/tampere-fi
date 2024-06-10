@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.jsonapi
 label: 'JSON:API'
+description: ''
 targetEntityType: node
 cache: true

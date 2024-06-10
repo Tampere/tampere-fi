@@ -12,7 +12,7 @@
 
 <div {{ bem("item", ac__item__modifiers, ac__base_class, ["accordion__item"])}}>
   <{{ h_element }} {{ bem(ac__title_wrapper__blockname|default("title-wrapper"), ac__title_wrapper__modifiers, ac__base_class)}}>
-    <button {{ bem(ac__heading__blockname|default("heading"), (ac__heading__modifiers), ac__base_class, [ 'accordion__heading' ]) }} aria-controls="content-{{ id }}" aria-expanded="false" id="accordion-control-{{ id }}" {% if accordion_item_aria_label %}aria-label="{{ accordion_item_aria_label }}"{% endif %}>
+    <button {{ bem(ac__heading__blockname|default("heading"), (ac__heading__modifiers), ac__base_class, [ 'accordion__heading' ]) }} type="button" aria-controls="content-{{ id }}" aria-expanded="false" id="accordion-control-{{ id }}" {% if accordion_item_aria_label %}aria-label="{{ accordion_item_aria_label }}"{% endif %}>
       <span {{ bem(ac__title__blockname|default("title"), ac_title__modifiers, ac__base_class, [ "hyphenate" ]) }}>
         {{ accordion_heading }}
       </span>

@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.contact_information_list_content_view_mode
 label: 'Yhteystietolistan sisältö'
+description: ''
 targetEntityType: node
 cache: true

@@ -89,13 +89,29 @@ class TreHrImportCommands extends DrushCommands {
       ->condition('pfpl.field_person_liftup_target_id', NULL, 'IS NULL')
       ->condition('pfmcp.field_media_contact_person_target_id', NULL, 'IS NULL')
       ->condition('pfil.field_internal_link_target_id', NULL, 'IS NULL');
-
     $result = $query->execute()->fetchAll();
     foreach ($result as $row) {
       $node = $this->nodeStorage->load($row->nid);
       if ($node instanceof NodeInterface) {
-        $node->delete();
-        $this->io()->writeln(sprintf('Node %u is deleted.', $row->nid));
+        // The published status lives in different table (node_field_data)
+        // so we're doing the check here instead.
+        // If any of the translations is published, don't delete.
+        $isTranslationPublished = FALSE;
+        foreach ($node->getTranslationLanguages() as $langcode => $language) {
+          if ($node->hasTranslation($langcode)) {
+            $translation = $node->getTranslation($langcode);
+            if ($translation instanceof NodeInterface) {
+              if ($translation->isPublished()) {
+                $isTranslationPublished = TRUE;
+              }
+            }
+
+          }
+        }
+        if (!$isTranslationPublished) {
+          $node->delete();
+          $this->io()->writeln(sprintf('Node %u is deleted.', $row->nid));
+        }
       }
     }
     $this->io()->writeln('Finish!');

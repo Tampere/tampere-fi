@@ -1,5 +1,15 @@
 /* Styles related to Drupal views */
 
 .view {
-  /* add css here */
+  &--embedded-content-tab {
+    .views-ef-fieldset-root {
+      @include medium-down {
+        width: 100%;
+      }
+
+      .form-item__dropdown {
+        width: 100%;
+      }
+    }
+  }
 }

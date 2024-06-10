@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_node_logger\Service;
 
-use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Datetime\DrupalDateTime;
 
 /**
  * Service class to do logging via tre_node_logger.

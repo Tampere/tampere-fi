@@ -21,6 +21,7 @@ dependencies:
     - file
     - file_delete
     - filter
+    - help
     - media
     - node
     - paragraphs_type_permissions
@@ -41,6 +42,7 @@ permissions:
   - 'access entity usage statistics'
   - 'access feed overview'
   - 'access files overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access persons_entity_browser entity browser pages'
   - 'access taxonomy overview'

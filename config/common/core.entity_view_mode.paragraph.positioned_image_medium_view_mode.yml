@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.positioned_image_medium_view_mode
 label: 'Asemoitu kuva (keskikokoinen)'
+description: ''
 targetEntityType: paragraph
 cache: true

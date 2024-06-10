@@ -6,5 +6,6 @@ dependencies:
     - media
 id: media.downloadable_material_view_mode
 label: 'Ladattava materiaali'
+description: ''
 targetEntityType: media
 cache: true

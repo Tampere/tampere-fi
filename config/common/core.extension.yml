@@ -67,6 +67,7 @@ module:
   file: 0
   file_delete: 0
   filter: 0
+  flexible_permissions: 0
   focal_point: 0
   form_display_field_machine_name: 0
   geofield: 0
@@ -124,7 +125,6 @@ module:
   migrate_override: 0
   migrate_plus: 0
   migrate_source_csv: 0
-  migrate_tools: 0
   mimemail: 0
   mysql: 0
   node: 0
@@ -191,6 +191,7 @@ module:
   telephone_plus: 0
   term_reference_tree: 0
   text: 0
+  theme_breakpoints_js: 0
   timesup: 0
   token: 0
   toolbar: 0
@@ -257,6 +258,7 @@ module:
   varnish_purger: 0
   views_contextual_filters_or: 0
   views_custom_cache_tag: 0
+  views_ef_fieldset: 0
   views_filters_populate: 0
   views_ui: 0
   warmer: 0

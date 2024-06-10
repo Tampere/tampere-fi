@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
-use Drupal\node\NodeInterface;
 use Drupal\Core\Site\Settings;
+use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 

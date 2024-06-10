@@ -7,10 +7,10 @@ dependencies:
 id: minisite-section_editor
 label: Osiovastaava
 weight: -8
-internal: false
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: minisite
-permissions_ui: true
 permissions:
   - 'access group_node overview'
   - 'create group_node:basic_content_page entity'

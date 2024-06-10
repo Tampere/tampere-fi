@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.zoning_city_planning_construction_project_card_view_mode
 label: 'Kaavakortti tai kaupunkisuunnittelu- ja rakentamishankekortti'
+description: ''
 targetEntityType: node
 cache: true

@@ -8,8 +8,6 @@ dependencies:
   module:
     - group_content_menu
 id: group_content_type_e3adb31f025fd
-label: 'Alasivusto: Group menu (Alasivuston päävalikko)'
-description: 'Adds <em class="placeholder">Alasivuston päävalikko</em> menu items to groups.'
 group_type: subsite
 content_plugin: 'group_content_menu:subsite_main_menu_fi'
 plugin_config:

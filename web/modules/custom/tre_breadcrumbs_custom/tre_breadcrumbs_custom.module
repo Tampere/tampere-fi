@@ -5,9 +5,9 @@
  * Contains hook implementations for tre_breadcrumbs_custom module.
  */
 
-use Drupal\group\Entity\GroupContent;
 use Drupal\block\Entity\Block;
 use Drupal\Core\Access\AccessResult;
+use Drupal\group\Entity\GroupRelationship;
 use Drupal\node\NodeInterface;
 
 /**
@@ -40,7 +40,7 @@ function tre_breadcrumbs_custom_block_access(Block $block) {
       // Get node's ID.
       $node_id = $node->id();
       // Get current node's group name.
-      $group_contents = GroupContent::loadByEntity($node);
+      $group_contents = GroupRelationship::loadByEntity($node);
 
       foreach ($group_contents as $group_content) {
         $group = $group_content->getGroup();

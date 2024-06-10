@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: minisite-group_node-organization
-label: 'Minikotisivusto: Group node (Organisaatio)'
-description: 'Adds <em class="placeholder">Organisaatio</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:organization'
 plugin_config:

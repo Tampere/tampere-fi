@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
-use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_preprocess\Traits\ListingRowPatternTrait;
+use Drupal\tre_preprocess\TrePreProcessPluginBase;
 
 /**
  * RSS list unformatted views view preprocessing.

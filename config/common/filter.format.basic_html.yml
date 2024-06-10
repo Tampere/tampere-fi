@@ -6,25 +6,22 @@ dependencies:
     - core.entity_view_mode.media.full
     - core.entity_view_mode.media.media_library
   module:
-    1: editor
-    2: lazy
-    3: linkit
-    4: media
+    - editor
+    - lazy
+    - linkit
+    - media
 _core:
   default_config_hash: s_AlcPC0kKlMNpQ-7e2yKI-EIp7zl5AR-EP23xWtQFE
 name: 'Basic HTML'
 format: basic_html
 weight: 0
 filters:
-  filter_html:
-    id: filter_html
-    provider: filter
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
     status: true
-    weight: 11
-    settings:
-      allowed_html: '<br> <p class="text-align-center text-align-justify"> <h2 id class="text-align-center text-align-justify"> <h3 id class="text-align-center text-align-justify"> <h4 id class="text-align-center text-align-justify"> <h5 id class="text-align-center text-align-justify"> <ul type> <a hreflang accesskey id rel target title data-entity-type data-entity-uuid data-entity-substitution href> <drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title> <span class="sr-only rs_skip" dir> <strong> <em> <s> <sub> <sup> <ol> <li>'
-      filter_html_help: false
-      filter_html_nofollow: false
+    weight: 12
+    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
@@ -37,12 +34,54 @@ filters:
     status: false
     weight: 9
     settings: {  }
-  editor_file_reference:
-    id: editor_file_reference
-    provider: editor
+  filter_html:
+    id: filter_html
+    provider: filter
     status: true
-    weight: 12
+    weight: 11
+    settings:
+      allowed_html: '<br> <p class="text-align-center text-align-justify"> <h2 id class="text-align-center text-align-justify"> <h3 id class="text-align-center text-align-justify"> <h4 id class="text-align-center text-align-justify"> <h5 id class="text-align-center text-align-justify"> <ul type> <a hreflang accesskey id rel target title data-entity-type data-entity-uuid data-entity-substitution href> <drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title> <span class="sr-only rs_skip" dir> <strong> <em> <s> <sub> <sup> <ol> <li>'
+      filter_html_help: false
+      filter_html_nofollow: false
+  filter_html_escape:
+    id: filter_html_escape
+    provider: filter
+    status: false
+    weight: 0
     settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: false
+    weight: 10
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: 20
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: -15
+    settings: {  }
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: false
+    weight: 3
+    settings:
+      filter_url_length: 72
+  lazy_filter:
+    id: lazy_filter
+    provider: lazy
+    status: false
+    weight: -50
+    settings:
+      image: true
+      iframe: true
   linkit:
     id: linkit
     provider: linkit
@@ -62,42 +101,3 @@ filters:
         media_library: media_library
       allowed_media_types:
         file: file
-  filter_image_lazy_load:
-    id: filter_image_lazy_load
-    provider: filter
-    status: true
-    weight: -15
-    settings: {  }
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: false
-    weight: 20
-    settings: {  }
-  filter_html_escape:
-    id: filter_html_escape
-    provider: filter
-    status: false
-    weight: 0
-    settings: {  }
-  filter_html_image_secure:
-    id: filter_html_image_secure
-    provider: filter
-    status: false
-    weight: 10
-    settings: {  }
-  filter_url:
-    id: filter_url
-    provider: filter
-    status: false
-    weight: 3
-    settings:
-      filter_url_length: 72
-  lazy_filter:
-    id: lazy_filter
-    provider: lazy
-    status: false
-    weight: -50
-    settings:
-      image: true
-      iframe: true

@@ -1,0 +1,26 @@
+diff --git a/group.post_update.php b/group.post_update.php
+index 125f8160c44c8dc5a8855f1c170c9cf2d46d124e..9e1771913a7a918665e6f8db48c81442d562f8e7 100644
+--- a/group.post_update.php
++++ b/group.post_update.php
+@@ -4,3 +4,21 @@
+  * @file
+  * Post update functions for Group.
+  */
++
++use Drupal\Core\Field\Entity\BaseFieldOverride;
++
++/**
++ * Updates stale references to Drupal\group\Entity\Context in field overrides.
++ */
++function group_post_update_modify_base_field_author_override() {
++  $uid_fields = \Drupal::entityTypeManager()
++    ->getStorage('base_field_override')
++    ->getQuery()
++    ->condition('entity_type', 'group_content')
++    ->condition('field_name', 'uid')
++    ->condition('default_value_callback', 'GroupContent', 'CONTAINS')
++    ->execute();
++  foreach (BaseFieldOverride::loadMultiple($uid_fields) as $base_field_override) {
++    $base_field_override->setDefaultValueCallback('Drupal\group\Entity\GroupRelationship::getDefaultEntityOwner')->save();
++  }
++}

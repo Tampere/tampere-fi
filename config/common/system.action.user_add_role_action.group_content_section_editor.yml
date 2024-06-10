@@ -1,0 +1,14 @@
+uuid: 326d6864-7608-42bb-81bc-2ed502c48083
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.group_content_section_editor
+  module:
+    - user
+id: user_add_role_action.group_content_section_editor
+label: 'Add the Group Content Section Editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: group_content_section_editor

@@ -2,11 +2,11 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
+use Drupal\Core\Site\Settings;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
-use Drupal\Core\Site\Settings;
 
 /**
  * Place of business liftup paragraph preprocessing.

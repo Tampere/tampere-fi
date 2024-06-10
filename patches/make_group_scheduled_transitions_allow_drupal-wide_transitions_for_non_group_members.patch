@@ -8,7 +8,7 @@ index d77c28c..84e47c4 100644
  use Drupal\Core\Session\AccountInterface;
 +use Drupal\scheduled_transitions\ScheduledTransitionsPermissions;
  use Drupal\group\Access\GroupAccessResult;
- use Drupal\group\Entity\GroupContent;
+ use Drupal\group\Entity\GroupRelationship;
  use Symfony\Component\Routing\Route;
 @@ -51,6 +52,19 @@ class AddScheduledTransitions implements AccessInterface {
            }
@@ -40,7 +40,7 @@ index 54c2c16..fd79f04 100644
  use Drupal\Core\Session\AccountInterface;
 +use Drupal\scheduled_transitions\ScheduledTransitionsPermissions;
  use Drupal\group\Access\GroupAccessResult;
- use Drupal\group\Entity\GroupContent;
+ use Drupal\group\Entity\GroupRelationship;
  use Symfony\Component\Routing\Route;
 @@ -51,6 +52,19 @@ class ViewScheduledTransitions implements AccessInterface {
            }

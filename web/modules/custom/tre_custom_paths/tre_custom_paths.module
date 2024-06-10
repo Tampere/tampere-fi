@@ -7,9 +7,9 @@
 
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\EntityReferenceFieldItemListInterface;
-use Drupal\group\Entity\GroupContent;
-use Drupal\group\Entity\GroupContentInterface;
 use Drupal\group\Entity\GroupInterface;
+use Drupal\group\Entity\GroupRelationship;
+use Drupal\group\Entity\GroupRelationshipInterface;
 use Drupal\group_content_menu\GroupContentMenuInterface;
 use Drupal\node\NodeInterface;
 use Drupal\pathauto\PathautoPatternInterface;
@@ -102,7 +102,7 @@ function tre_custom_paths_pathauto_pattern_alter(PathautoPatternInterface $patte
   }
 
   // If not in a group, let configuration be: no need to change the pattern.
-  $group_contents = GroupContent::loadByEntity($node);
+  $group_contents = GroupRelationship::loadByEntity($node);
   if (count($group_contents) < 1) {
     return;
   }
@@ -144,7 +144,7 @@ function tre_custom_paths_pathauto_pattern_alter(PathautoPatternInterface $patte
  * In practice, the pattern is only given if a node has been attached to a group
  * which has a front page set.
  *
- * @param \Drupal\group\Entity\GroupContentInterface[] $group_contents
+ * @param \Drupal\group\Entity\GroupRelationshipInterface[] $group_contents
  *   The GroupContent entities tied to the node.
  * @param \Drupal\node\NodeInterface $node
  *   The node.
@@ -186,7 +186,7 @@ function _tre_custom_paths_get_pathauto_pattern_for_main_group_node(array $group
  * In practice, the pattern is only given if a node has been attached to a group
  * which has a front page set.
  *
- * @param \Drupal\group\Entity\GroupContentInterface[] $group_contents
+ * @param \Drupal\group\Entity\GroupRelationshipInterface[] $group_contents
  *   The GroupContent entities tied to the node.
  * @param \Drupal\node\NodeInterface $node
  *   The node.
@@ -506,7 +506,7 @@ function _tre_custom_paths_get_current_group_content_menu(GroupInterface $group,
   ];
 
   /** @var \Drupal\group_content_menu\GroupContentMenuInterface[] $all_group_content_menus_for_group */
-  $all_group_content_menus_for_group = array_map(static function (GroupContentInterface $group_content) {
+  $all_group_content_menus_for_group = array_map(static function (GroupRelationshipInterface $group_content) {
     return $group_content->getEntity();
   }, group_content_menu_get_menus_per_group($group));
 

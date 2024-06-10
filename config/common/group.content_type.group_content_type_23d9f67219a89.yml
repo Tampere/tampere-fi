@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_23d9f67219a89
-label: 'Teema: Group node (Muunkielinen sisältö)'
-description: 'Adds <em class="placeholder">Muunkielinen sisältö</em> content to groups both publicly and privately.'
 group_type: theme
 content_plugin: 'group_node:content_in_other_language'
 plugin_config:

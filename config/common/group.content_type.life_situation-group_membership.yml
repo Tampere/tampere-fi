@@ -7,8 +7,6 @@ dependencies:
   module:
     - user
 id: life_situation-group_membership
-label: 'Life situation: Group membership'
-description: 'Adds users to groups as members.'
 group_type: life_situation
 content_plugin: group_membership
 plugin_config:

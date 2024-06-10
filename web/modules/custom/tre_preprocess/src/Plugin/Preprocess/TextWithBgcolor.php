@@ -2,9 +2,9 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
+use Drupal\media\MediaInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
-use Drupal\media\MediaInterface;
 
 /**
  * Text with background color paragraph preprocessing.

@@ -3,9 +3,9 @@ langcode: fi
 status: true
 dependencies:
   module:
-    1: lazy
-    2: linkit
-    3: media
+    - lazy
+    - linkit
+    - media
 name: 'Yksinkertainen HTML'
 format: plain_html
 weight: 0
@@ -19,19 +19,6 @@ filters:
       allowed_html: '<br> <p> <a hreflang data-entity-substitution data-entity-type data-entity-uuid title href> <strong> <em> <u>'
       filter_html_help: true
       filter_html_nofollow: false
-  linkit:
-    id: linkit
-    provider: linkit
-    status: true
-    weight: -15
-    settings:
-      title: true
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: false
-    weight: 15
-    settings: {  }
   filter_html_escape:
     id: filter_html_escape
     provider: filter
@@ -43,6 +30,12 @@ filters:
     provider: filter
     status: false
     weight: 10
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: 15
     settings: {  }
   filter_image_lazy_load:
     id: filter_image_lazy_load
@@ -65,6 +58,13 @@ filters:
     settings:
       image: true
       iframe: true
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: -15
+    settings:
+      title: true
   media_embed:
     id: media_embed
     provider: media

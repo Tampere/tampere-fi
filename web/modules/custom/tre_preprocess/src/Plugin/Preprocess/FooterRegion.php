@@ -29,8 +29,9 @@ class FooterRegion extends TrePreProcessPluginBase {
     $variables['is_minisite'] = $this->helperFunctions->isMinisite($group_id_from_path);
 
     $footer_information_config_page = ConfigPages::config('footer_information');
+    $footer_social_links_en_config_page = ConfigPages::config('footer_social_links_en');
 
-    if (!is_null($footer_information_config_page)) {
+    if (!empty($footer_information_config_page)) {
       if (!$footer_information_config_page->get('field_first_text_column')->isEmpty()) {
         $variables['first_footer_text_column'] = $footer_information_config_page->get('field_first_text_column')->view('default');
       }
@@ -39,8 +40,18 @@ class FooterRegion extends TrePreProcessPluginBase {
         $variables['second_footer_text_column'] = $footer_information_config_page->get('field_second_text_column')->view('default');
       }
 
-      if (!$footer_information_config_page->get('field_social_media_links')->isEmpty()) {
-        $footer_social_media_links = $footer_information_config_page->get('field_social_media_links');
+      if ($current_language_id == 'en') {
+        if (!empty($footer_social_links_en_config_page) && !$footer_social_links_en_config_page->get('field_social_media_links')->isEmpty()) {
+          $footer_social_media_links = $footer_social_links_en_config_page->get('field_social_media_links');
+        }
+      }
+      else {
+        if (!$footer_information_config_page->get('field_social_media_links')->isEmpty()) {
+          $footer_social_media_links = $footer_information_config_page->get('field_social_media_links');
+        }
+      }
+
+      if (!empty($footer_social_media_links) && $footer_social_media_links instanceof EntityReferenceRevisionsFieldItemList) {
         $all_social_media_items = $this->getSocialMediaItems($footer_social_media_links);
         $variables['social_media_items'] = $all_social_media_items;
       }
@@ -56,6 +67,7 @@ class FooterRegion extends TrePreProcessPluginBase {
     }
 
     $this->renderer->addCacheableDependency($variables, $footer_information_config_page);
+    $this->renderer->addCacheableDependency($variables, $footer_social_links_en_config_page);
 
     return $variables;
   }

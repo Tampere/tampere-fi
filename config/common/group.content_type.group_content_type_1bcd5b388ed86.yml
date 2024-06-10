@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_1bcd5b388ed86
-label: 'Teema: Group node (Kaava)'
-description: 'Adds <em class="placeholder">Kaava</em> content to groups both publicly and privately.'
 group_type: theme
 content_plugin: 'group_node:zoning_information'
 plugin_config:

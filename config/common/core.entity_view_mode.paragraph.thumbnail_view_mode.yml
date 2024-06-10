@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.thumbnail_view_mode
 label: Pikkukuva
+description: ''
 targetEntityType: paragraph
 cache: true

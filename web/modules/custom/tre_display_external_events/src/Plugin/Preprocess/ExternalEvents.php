@@ -5,8 +5,8 @@ namespace Drupal\tre_display_external_events\Plugin\Preprocess;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Site\Settings;
-use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_display_external_events\Config;
+use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 use Geniem\LinkedEvents\LinkedEventsClient;
 

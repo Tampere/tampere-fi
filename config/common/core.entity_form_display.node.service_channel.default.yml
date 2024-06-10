@@ -189,7 +189,8 @@ content:
     type: address_default
     weight: 57
     region: content
-    settings: {  }
+    settings:
+      wrapper_type: details
     third_party_settings: {  }
   field_area_text:
     type: text_textarea
@@ -372,6 +373,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_channel_display_name: true
   path: true
   promote: true

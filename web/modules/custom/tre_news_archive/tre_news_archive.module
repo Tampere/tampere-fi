@@ -36,15 +36,21 @@ function tre_news_archive_cron() {
  *
  * @param \Drupal\Core\Datetime\DrupalDateTime $now
  *   Current time that the news are archived from.
+ * @param int $years_before_last
+ *   The number of years before last to include. The default value is 1.
  */
-function _tre_news_archive_archive_news(DrupalDateTime $now) {
+function _tre_news_archive_archive_news(DrupalDateTime $now, int $years_before_last = 1) {
+  if ($years_before_last < 1) {
+    $years_before_last = 1;
+  }
+
   $current_year = $now->format('Y');
   $last_year = intval($current_year) - 1;
-  $the_year_before_last = intval($current_year) - 2;
+  $start_year = intval($current_year) - (1 + $years_before_last);
 
   $archive_date_range_end_string = sprintf('%s-01-01T00:00:00', (string) $last_year);
   $archive_date_range_end = new DrupalDateTime($archive_date_range_end_string, 'UTC');
-  $archive_date_range_start_string = sprintf('%s-01-01T00:00:00', (string) $the_year_before_last);
+  $archive_date_range_start_string = sprintf('%s-01-01T00:00:00', (string) $start_year);
   $archive_date_range_start = new DrupalDateTime($archive_date_range_start_string, 'UTC');
 
   $nids_to_archive_fi = _tre_news_archive_get_news_nids_by_date_range('fi', $archive_date_range_start, $archive_date_range_end);
@@ -61,7 +67,9 @@ function _tre_news_archive_archive_news(DrupalDateTime $now) {
   if ($nids_to_archive_en) {
     foreach ($nids_to_archive_en as $nid) {
       $news_item = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-      _tre_news_archive_set_archived($news_item);
+      if ($news_item instanceof NodeInterface && $news_item->hasTranslation('en')) {
+        _tre_news_archive_set_archived($news_item->getTranslation('en'));
+      }
     }
   }
 }

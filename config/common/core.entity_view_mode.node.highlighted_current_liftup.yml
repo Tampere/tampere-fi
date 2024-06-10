@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.highlighted_current_liftup
 label: 'Korostettu ajankohtaisnosto'
+description: ''
 targetEntityType: node
 cache: true

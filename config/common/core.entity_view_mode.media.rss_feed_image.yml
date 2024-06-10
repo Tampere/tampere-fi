@@ -6,5 +6,6 @@ dependencies:
     - media
 id: media.rss_feed_image
 label: 'RSS-syötteen kuva'
+description: ''
 targetEntityType: media
 cache: true

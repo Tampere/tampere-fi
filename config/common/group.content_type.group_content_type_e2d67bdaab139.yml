@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_e2d67bdaab139
-label: 'Elämäntilanne: Group node (Projekti)'
-description: 'Adds <em class="placeholder">Projekti</em> content to groups both publicly and privately.'
 group_type: life_situation
 content_plugin: 'group_node:project'
 plugin_config:

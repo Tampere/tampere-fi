@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_636b622e9c5af
-label: 'Alasivusto: Group node (Zoning information)'
-description: 'Adds <em class="placeholder">Zoning information</em> content to groups both publicly and privately.'
 group_type: subsite
 content_plugin: 'group_node:zoning_information'
 plugin_config:

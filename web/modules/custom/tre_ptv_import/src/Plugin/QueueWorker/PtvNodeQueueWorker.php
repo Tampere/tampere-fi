@@ -8,9 +8,10 @@ use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\migrate\MigrateMessage;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManager;
-use Drupal\migrate_tools\MigrateExecutable;
 use Drupal\tre_ptv_import\PtvUpdateQueueItem;
 use Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface;
+use Drush\Drupal\Migrate\MigrateExecutable;
+use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -135,7 +136,7 @@ final class PtvNodeQueueWorker extends QueueWorkerBase implements ContainerFacto
       'idlist' => implode(',', $items),
     ];
 
-    $executable = new MigrateExecutable($migration, new MigrateMessage(), $options);
+    $executable = new MigrateExecutable($migration, new MigrateMessage(), new NullOutput(), $options);
     $this->logger->info("Starting import for items for {$migration_id}: " . implode(",", $items));
     $executable->import();
     $this->logger->info("Ended import for items for {$migration_id}: " . implode(",", $items));

@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: topic-group_node-organization
-label: 'Aihepiiri: Group node (Organisaatio)'
-description: 'Adds <em class="placeholder">Organisaatio</em> content to groups both publicly and privately.'
 group_type: topic
 content_plugin: 'group_node:organization'
 plugin_config:

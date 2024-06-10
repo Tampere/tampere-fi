@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: subsite-group_node-place
-label: 'Alasivusto: Group node (Paikka)'
-description: 'Adds <em class="placeholder">Paikka</em> content to groups both publicly and privately.'
 group_type: subsite
 content_plugin: 'group_node:place'
 plugin_config:

@@ -1,0 +1,28 @@
+uuid: 34d16f83-85da-435d-a6db-c0ad41026f16
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.footer_social_links_en
+    - field.field.config_pages.footer_social_links_en.field_social_media_links
+  module:
+    - paragraphs
+id: config_pages.footer_social_links_en.default
+targetEntityType: config_pages
+bundle: footer_social_links_en
+mode: default
+content:
+  field_social_media_links:
+    type: entity_reference_paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Linkki
+      title_plural: Linkit
+      edit_mode: closed
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+hidden:
+  label: true

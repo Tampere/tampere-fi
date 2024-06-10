@@ -2,8 +2,7 @@ _core:
   default_config_hash: 1xPBOM0JhuHh6ETge-IOL--Rx9akixMKw0Qe83sav4k
 langcode: fi
 display_extenders:
-  - metatag_display_extender
-skip_cache: false
+  - views_ef_fieldset
 sql_signature: false
 ui:
   show:

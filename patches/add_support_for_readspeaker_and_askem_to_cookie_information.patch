@@ -1,0 +1,146 @@
+diff --git a/js/iframes.js b/js/iframes.js
+index bcce008..08decc1 100644
+--- a/js/iframes.js
++++ b/js/iframes.js
+@@ -39,7 +39,7 @@
+                 { context: 'Cookie information' }
+               ) +
+               '</h2>' +
+-              '<p class="consent-placeholder__text">' +
++              '<p class="consent-placeholder__text rs_skip">' +
+               Drupal.t(
+                 "Unfortunately you are not able to view this content since you haven't accepted required cookie category @category.",
+                 { '@category': blocked_iframes_category_name },
+@@ -58,6 +58,132 @@
+           );
+         }
+       });
++
++      // Create a copy from ReadSpeaker buttons without the play link to prevent user from palying
++      // and create a consent button if there is at least one embed iframe.
++      $('iframe', context).each(function () {
++        var iframe_is_type_of_embed_iframes = $(this).parent().hasClass('embed-id') || $(this).hasClass('media-oembed-content');
++        if (iframe_is_type_of_embed_iframes) {
++          var consent_given = CookieInformation.getConsentGivenFor('cookie_cat_functional');
++          if (!consent_given) {
++            $('#readspeaker_button').after(
++              '<div'
++              + ' class="rsbtn rsbtn_text rs_preserve mega_toggle" id="readspeaker_button_copy" style="">'
++              + '<a class="rsbtn_play" href="#"></a></div>'
++              );
++            $('#readspeaker_button a').children().clone().appendTo('#readspeaker_button_copy a');
++
++            // Display the correct ReadSpeaker version
++            $('#readspeaker_button').css('display', consent_given ? 'block' : 'none');
++            $('#readspeaker_button_copy').css('display', consent_given ? 'none' : 'block');
++
++            $('#readspeaker_button_copy').parent().after(
++              '<div id="readspeaker_consent_placeholder" style="display: none;">'
++              + '<button '
++              + 'aria-label="' + Drupal.t(
++                "Accept cookies in order to listen to the page with ReadSpeaker",
++                {},
++                { context: 'Cookie information' },
++              ) + '" '
++              + 'style="outline-style: solid; outline-color: blue; outline-width: 0;" id="readspeaker_consent_button" class="consent-placeholder" data-category="cookie_cat_functional" onClick="CookieConsent.renew()">'
++              + Drupal.t('Accept cookies', {}, { context: 'Cookie information' })
++              + '</button>'
++              + '</div>'
++              + '<style type="text/css"> #readspeaker_consent_placeholder button:focus{ border-color: blue;} </style>'
++            );
++          }
++
++        // No need to repeat it for the rest of iframes
++        return false;
++        }
++      });
++
++      // Hide Juicer Feed blocks if the necessary cookies are not accepted,
++      // and add a consent message after each one.
++      $('.juicer-feed', context).each(function () {
++        var consent_given = CookieInformation.getConsentGivenFor('cookie_cat_functional');
++        if (!consent_given) {
++          var display_style = consent_given ? 'none' : 'none';
++          $(this).after(
++            '<div class="consent-placeholder" data-category="cookie_cat_functional" style="display: ' + display_style + '">'
++            + '<p class="consent-placeholder__text rs_skip">'
++            + Drupal.t(
++              "Unfortunately you are not able to view this content since you haven't accepted functional cookies. You can accept cookies by clicking the Renew consent icon at the bottom left corner of the website or on the Accept cookies button below.",
++              {},
++              { context: 'Cookie information' },
++            )
++            + '</p><button class="consent-placeholder__button" onClick="CookieConsent.renew()">'
++            + Drupal.t('Accept cookies', {}, { context: 'Cookie information' })
++            + '</button></div>',
++          );
++        }
++
++      });
++
++      // Hide Askem blocks if the necessary cookies are not accepted,
++      // and add a consent message after each one.
++      $('#block-react-and-share, #block-react-and-share-en', context).each(function () {
++        var consent_given = CookieInformation.getConsentGivenFor('cookie_cat_statistic');
++        if (!consent_given) {
++          $(this).css('display', 'none');
++          $(this).after(
++            '<div class="consent-placeholder" data-category="cookie_cat_statistic" style="display:block">'
++            + '<p class="consent-placeholder__text rs_skip">'
++            + Drupal.t(
++              "Unfortunately you are not able to provide feedback on this page since you haven't accepted statistics-related cookies. You can accept cookies by clicking the Renew consent icon at the bottom left corner of the website or on the Accept cookies button below.",
++              {},
++              { context: 'Cookie information' },
++            )
++            + '</p><button class="consent-placeholder__button" onClick="CookieConsent.renew()">'
++            + Drupal.t('Accept cookies', {}, { context: 'Cookie information' })
++            + '</button></div>'
++            + '<br>',
++          );
++        }
++      });
++
++      // Hide the fake ReadSpeaker buttons and show Juicer feeds as soon as
++      // the consent for functional cookies gets accepted.
++      $(window).on('CookieInformationConsentGiven', function (event) {
++        if (CookieInformation.getConsentGivenFor('cookie_cat_functional')){
++          $('#readspeaker_button').css('display', 'block');
++          $('#readspeaker_button_copy').css('display', 'none');
++
++          var $juicer_src = $('.juicer-feed').siblings('script').attr('src');
++          if ($juicer_src != undefined ) {
++            $.getScript($juicer_src);
++          }
++        }
++
++        // Show Askem buttons as soon as the consent for statistical cookies gets accepted.
++        if (CookieInformation.getConsentGivenFor('cookie_cat_statistic')) {
++          $('#block-react-and-share-en').css('display', 'block');
++          $('#block-react-and-share').css('display', 'block');
++        }
++      });
++
++      // When ReadSpeaker block gets clicked, show the consent
++      // button if the cookie consent is not accepted.
++      $('#readspeaker_button_copy').click(function (e) {
++        if (!CookieInformation.getConsentGivenFor('cookie_cat_functional')){
++          $('#readspeaker_consent_placeholder').css('display', 'block');
++          $('#readspeaker_button_copy').parent().css('float', 'right');
++          $("#readspeaker_consent_placeholder button").focus();
++        }
++
++        // Prevent unwanted actions from ReadSpeaker
++        return false;
++      });
++
++      // Clear data-rsevent-id created by ReadSpeaker plugin
++      $('#readspeaker_button_copy a').click(function (e) {
++        $('#readspeaker_button_copy a').attr('data-rsevent-id', '');
++      });
++
++      $("#readspeaker_button_copy").on("keyup", function(e) {
++        if(e.keyCode == 13)
++          $("#readspeaker_button_copy").click()
++      });
+     },
+   };
+ })(jQuery, Drupal, once);

@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: minisite-group_node-project
-label: 'Minikotisivusto: Group node (Projekti)'
-description: 'Adds <em class="placeholder">Projekti</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:project'
 plugin_config:

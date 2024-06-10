@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: theme-group_node-portfolio
-label: 'Teema: Group node (Portfolio)'
-description: 'Adds <em class="placeholder">Portfolio</em> content to groups both publicly and privately.'
 group_type: theme
 content_plugin: 'group_node:portfolio'
 plugin_config:

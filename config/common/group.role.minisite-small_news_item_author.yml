@@ -7,10 +7,10 @@ dependencies:
 id: minisite-small_news_item_author
 label: Pikku-uutistoimittaja
 weight: 34
-internal: false
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: minisite
-permissions_ui: true
 permissions:
   - 'access group_node overview'
   - 'create group_node:small_news_item entity'

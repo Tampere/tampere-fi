@@ -10,21 +10,8 @@ dependencies:
 id: mailing_list-a416e6833
 label: Ylläpitäjä
 weight: 9
-internal: true
-audience: outsider
+admin: true
+scope: outsider
+global_role: administrator
 group_type: mailing_list
-permissions_ui: false
-permissions:
-  - 'access content overview'
-  - 'administer group'
-  - 'administer members'
-  - 'delete group'
-  - 'delete group revisions'
-  - 'edit group'
-  - 'revert group revisions'
-  - 'view any unpublished group'
-  - 'view group'
-  - 'view group revisions'
-  - 'view group_membership content'
-  - 'view latest group version'
-  - 'view own unpublished group'
+permissions: {  }

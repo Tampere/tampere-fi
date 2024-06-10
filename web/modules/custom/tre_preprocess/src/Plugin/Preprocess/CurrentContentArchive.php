@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
-use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\Core\Url;
+use Drupal\tre_preprocess\TrePreProcessPluginBase;
 
 /**
  * Current content archive view preprocessing.

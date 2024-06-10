@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.without_date_view_mode
 label: 'Ilman päivämäärää'
+description: ''
 targetEntityType: paragraph
 cache: true

@@ -1,0 +1,63 @@
+uuid: 98237a7d-e119-4dc6-be20-9d4f5be7d959
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - user.role.group_content_section_editor
+id: minisite-content_editor
+label: 'Ryhmäsisältöjen osiovastaava'
+weight: 49
+admin: false
+scope: outsider
+global_role: group_content_section_editor
+group_type: minisite
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:basic_content_page entity'
+  - 'create group_node:city_planning_and_constructions entity'
+  - 'create group_node:collection_page entity'
+  - 'create group_node:content_in_other_language entity'
+  - 'create group_node:front_page entity'
+  - 'create group_node:moderated_page entity'
+  - 'create group_node:organization entity'
+  - 'create group_node:place entity'
+  - 'create group_node:portfolio entity'
+  - 'create group_node:project entity'
+  - 'create group_node:small_news_item entity'
+  - 'update any group_node:basic_content_page entity'
+  - 'update any group_node:city_planning_and_constructions entity'
+  - 'update any group_node:collection_page entity'
+  - 'update any group_node:content_in_other_language entity'
+  - 'update any group_node:front_page entity'
+  - 'update any group_node:front_page relationship'
+  - 'update any group_node:moderated_page entity'
+  - 'update any group_node:organization entity'
+  - 'update any group_node:place entity'
+  - 'update any group_node:portfolio entity'
+  - 'update any group_node:project entity'
+  - 'update any group_node:small_news_item entity'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:city_planning_and_constructions entity'
+  - 'view group_node:collection_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view group_node:front_page entity'
+  - 'view group_node:front_page relationship'
+  - 'view group_node:moderated_page entity'
+  - 'view group_node:organization entity'
+  - 'view group_node:place entity'
+  - 'view group_node:portfolio entity'
+  - 'view group_node:portfolio_listing entity'
+  - 'view group_node:project entity'
+  - 'view group_node:small_news_item entity'
+  - 'view unpublished group_node:basic_content_page entity'
+  - 'view unpublished group_node:city_planning_and_constructions entity'
+  - 'view unpublished group_node:collection_page entity'
+  - 'view unpublished group_node:content_in_other_language entity'
+  - 'view unpublished group_node:front_page entity'
+  - 'view unpublished group_node:moderated_page entity'
+  - 'view unpublished group_node:organization entity'
+  - 'view unpublished group_node:place entity'
+  - 'view unpublished group_node:portfolio entity'
+  - 'view unpublished group_node:project entity'
+  - 'view unpublished group_node:small_news_item entity'

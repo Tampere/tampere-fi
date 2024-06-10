@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.map_point.field_epsg_3067_northing
     - field.field.node.map_point.field_location
     - node.type.map_point
+    - workflows.workflow.scheduled_transitions
   module:
     - address
     - content_moderation
@@ -23,7 +24,8 @@ content:
     type: address_default
     weight: 2
     region: content
-    settings: {  }
+    settings:
+      wrapper_type: details
     third_party_settings: {  }
   field_description:
     type: string_textarea

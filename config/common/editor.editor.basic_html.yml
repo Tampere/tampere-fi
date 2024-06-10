@@ -44,8 +44,10 @@ settings:
     ckeditor5_language:
       language_list: all
     ckeditor5_list:
-      reversed: false
-      startIndex: false
+      properties:
+        reversed: false
+        startIndex: false
+      multiBlock: true
     ckeditor5_paste_filter_pasteFilter:
       enabled: true
       filters:

@@ -9,7 +9,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\group\Entity\GroupInterface;
-use Drupal\group\Entity\GroupContent;
+use Drupal\group\Entity\GroupRelationship;
 use Drupal\node\NodeInterface;
 
 /**
@@ -85,7 +85,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
       return $replacements;
     }
 
-    $group_contents = GroupContent::loadByEntity($node);
+    $group_contents = GroupRelationship::loadByEntity($node);
     if (count($group_contents) < 1) {
       return $replacements;
     }

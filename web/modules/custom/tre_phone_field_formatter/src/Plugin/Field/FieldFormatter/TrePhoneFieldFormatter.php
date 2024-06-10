@@ -21,7 +21,6 @@ use Drupal\telephone_plus\TelephonePlusFormatter;
  */
 class TrePhoneFieldFormatter extends TelephonePlusPlainFormatter {
 
-
   /**
    * {@inheritdoc}
    */
@@ -46,7 +45,7 @@ class TrePhoneFieldFormatter extends TelephonePlusPlainFormatter {
         '#description' => $this->t('The default is that TelephonePlus module formats the number respecting the field setting for international presentation.'),
         '#options' => $format_options,
         '#default_value' => $this->getSetting('force_format'),
-      ]
+      ],
     ] + parent::settingsForm($form, $form_state);
   }
 
@@ -59,6 +58,7 @@ class TrePhoneFieldFormatter extends TelephonePlusPlainFormatter {
       case 'as_is':
         $format_text = $this->t('Number output as is from field input');
         break;
+
       default:
         $format_text = $this->t('Number formatted by TelephonePlus');
     }
@@ -80,6 +80,7 @@ class TrePhoneFieldFormatter extends TelephonePlusPlainFormatter {
         case 'as_is':
           $telephone_text = $item->telephone_number;
           break;
+
         default:
           // TelephonePlus display text.
           $telephone = new TelephonePlusFormatter($item->telephone_number, $item->telephone_extension, $item->country_code);
@@ -114,7 +115,7 @@ class TrePhoneFieldFormatter extends TelephonePlusPlainFormatter {
           '#attributes' => ['class' => ['supplementary']],
           '#value' => $item->telephone_supplementary,
         ];
-        // Add extra class to phone
+        // Add extra class to phone.
         array_push($phone['#attributes']['class'], 'number--supplementary');
       }
 

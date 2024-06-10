@@ -2,12 +2,13 @@
 
 namespace Drupal\tre_preprocess;
 
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Language\LanguageManager;
-use Drupal\Core\Menu\MenuActiveTrail;
+use Drupal\Core\Menu\MenuActiveTrailInterface;
 use Drupal\Core\Menu\MenuLinkTree;
 use Drupal\Core\Pager\PagerManager;
 use Drupal\Core\Path\CurrentPathStack;
@@ -19,7 +20,6 @@ use Drupal\preprocess\PreprocessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Drupal\Core\Database\Connection;
 
 /**
  * Plugin base for preprocessing, with added injected dependencies.
@@ -85,7 +85,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
   /**
    * The Menu Active Trail service.
    *
-   * @var \Drupal\Core\Menu\MenuActiveTrail
+   * @var \Drupal\Core\Menu\MenuActiveTrailInterface
    */
   protected $menuActiveTrail;
 
@@ -145,14 +145,14 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
     EntityTypeManagerInterface $entity_type_manager,
     HelperFunctionsInterface $helper_functions,
     LanguageManager $language_manager,
-    MenuActiveTrail $menu_active_trail,
+    MenuActiveTrailInterface $menu_active_trail,
     MenuLinkTree $menu_link_tree,
     PagerManager $pager_manager,
     RendererInterface $renderer,
     RequestStack $request_stack,
     CurrentRouteMatch $route_match,
     Token $token,
-    Connection $database
+    Connection $database,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->fileUrlGenerator = $file_url_generator;

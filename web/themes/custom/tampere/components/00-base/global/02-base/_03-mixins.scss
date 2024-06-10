@@ -236,7 +236,7 @@
 
 /* Mixin - Border. */
 @mixin border($width: 1px, $style: solid, $border-color: $color-border) {
-  border-color: $color-border;
+  border-color: $border-color;
   border-style: $style;
   border-width: $width;
 }

@@ -2,10 +2,10 @@
 
 namespace Drupal\tre_search_exclusion\EventSubscriber;
 
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\search_api\Event\QueryPreExecuteEvent;
 use Drupal\search_api\Event\SearchApiEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
 
 /**
  * Provides the FrontPageSearchResultExclusion class.

@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_7d61b8d3b8736
-label: 'Teema: Group node (Perussisältösivu)'
-description: 'Adds <em class="placeholder">Perussisältösivu</em> content to groups both publicly and privately.'
 group_type: theme
 content_plugin: 'group_node:basic_content_page'
 plugin_config:

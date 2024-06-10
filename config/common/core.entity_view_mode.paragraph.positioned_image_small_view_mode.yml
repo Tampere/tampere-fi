@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.positioned_image_small_view_mode
 label: 'Asemoitu kuva (pieni)'
+description: ''
 targetEntityType: paragraph
 cache: true

@@ -177,7 +177,8 @@ content:
     type: address_default
     weight: 15
     region: content
-    settings: {  }
+    settings:
+      wrapper_type: details
     third_party_settings: {  }
   field_contact_info_paragraph:
     type: paragraphs_classic_asymmetric

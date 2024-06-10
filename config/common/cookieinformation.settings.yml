@@ -1,6 +1,7 @@
 enable_popup: true
-enable_google_consent_mode: true
+google_consent_mode: v2
 block_iframes: true
+block_iframes_category: functional
 enable_iab: false
 exclude_paths: "/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/*"
 exclude_admin: true

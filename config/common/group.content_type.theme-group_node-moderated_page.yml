@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: theme-group_node-moderated_page
-label: 'Teema: Group node (Moderoitu sivu)'
-description: 'Adds <em class="placeholder">Moderoitu sivu</em> content to groups both publicly and privately.'
 group_type: theme
 content_plugin: 'group_node:moderated_page'
 plugin_config:

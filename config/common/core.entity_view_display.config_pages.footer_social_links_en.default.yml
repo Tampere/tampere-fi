@@ -1,0 +1,25 @@
+uuid: b6b45b0b-b181-40c0-a701-9d60d003f479
+langcode: fi
+status: true
+dependencies:
+  config:
+    - config_pages.type.footer_social_links_en
+    - field.field.config_pages.footer_social_links_en.field_social_media_links
+  module:
+    - entity_reference_revisions
+id: config_pages.footer_social_links_en.default
+targetEntityType: config_pages
+bundle: footer_social_links_en
+mode: default
+content:
+  field_social_media_links:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

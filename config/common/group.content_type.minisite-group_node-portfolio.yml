@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: minisite-group_node-portfolio
-label: 'Minikotisivusto: Group node (Portfolio)'
-description: 'Adds <em class="placeholder">Portfolio</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:portfolio'
 plugin_config:

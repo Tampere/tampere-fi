@@ -220,7 +220,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty: {  }
       sorts:
@@ -619,7 +619,7 @@ display:
           text_input_required: ''
           text_input_required_format: basic_html
       cache:
-        type: none
+        type: search_api_none
       defaults:
         cache: false
         title: false

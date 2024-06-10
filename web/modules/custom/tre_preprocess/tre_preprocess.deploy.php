@@ -6,8 +6,8 @@
  */
 
 use Drupal\node\NodeInterface;
-use Drupal\paragraphs\ParagraphInterface;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\paragraphs\ParagraphInterface;
 
 /**
  * Moves old links to new link field in 'Balanced content liftup' paragraphs.

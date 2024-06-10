@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_node_logger\Controller;
 
-use Drupal\Core\Database\Connection;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Database\Connection;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

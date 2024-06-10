@@ -3,9 +3,9 @@
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
 use Drupal\Core\Menu\MenuTreeParameters;
-use Drupal\group\Entity\GroupContent;
-use Drupal\group\Entity\GroupContentInterface;
 use Drupal\group\Entity\GroupInterface;
+use Drupal\group\Entity\GroupRelationship;
+use Drupal\group\Entity\GroupRelationshipInterface;
 use Drupal\group_content_menu\Entity\GroupContentMenu;
 use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
@@ -109,17 +109,17 @@ class GroupContentMenuBlock extends TrePreProcessPluginBase {
    *   Otherwise null.
    */
   private function getMinisiteMenuBlockHeadingLinkInformation(NodeInterface $node): ?array {
-    $group_contents_for_node = GroupContent::loadByEntity($node);
+    $group_contents_for_node = GroupRelationship::loadByEntity($node);
     $node_belongs_to_group = count($group_contents_for_node) > 0;
 
     if (!$node_belongs_to_group) {
       return NULL;
     }
 
-    /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+    /** @var \Drupal\group\Entity\GroupRelationshipInterface $group_content */
     $group_content = reset($group_contents_for_node);
 
-    if (!($group_content instanceof GroupContentInterface)) {
+    if (!($group_content instanceof GroupRelationshipInterface)) {
       return NULL;
     }
 
@@ -129,7 +129,7 @@ class GroupContentMenuBlock extends TrePreProcessPluginBase {
       return NULL;
     }
 
-    $all_group_content_menus_for_group = array_map(static function (GroupContentInterface $group_content) {
+    $all_group_content_menus_for_group = array_map(static function (GroupRelationshipInterface $group_content) {
       return $group_content->getEntity();
     }, group_content_menu_get_menus_per_group($group));
 

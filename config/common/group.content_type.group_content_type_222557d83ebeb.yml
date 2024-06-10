@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_222557d83ebeb
-label: 'Teema: Group node (Portfoliolistaus)'
-description: 'Adds <em class="placeholder">Portfoliolistaus</em> content to groups both publicly and privately.'
 group_type: theme
 content_plugin: 'group_node:portfolio_listing'
 plugin_config:

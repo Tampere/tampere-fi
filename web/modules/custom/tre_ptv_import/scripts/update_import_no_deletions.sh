@@ -17,6 +17,6 @@ sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" tre_ptv_import:ptv_data
 echo "$(date '+%Y-%m-%d %H:%M:%S') Drush refresh command run."
 echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to import (but not delete) new and updated lines from PTV storage..."
 for MIGRATION in ${MIGRATIONS[@]}; do
-  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --skip-progress-bar $MIGRATION || true
+  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --no-progress $MIGRATION || true
 done
 echo "$(date '+%Y-%m-%d %H:%M:%S') Drush import command command run."

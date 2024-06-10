@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: minisite-group_node-news_item
-label: 'Minikotisivusto: Group node (Uutinen)'
-description: 'Adds <em class="placeholder">Uutinen</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:news_item'
 plugin_config:

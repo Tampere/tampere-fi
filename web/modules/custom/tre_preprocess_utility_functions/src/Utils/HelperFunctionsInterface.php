@@ -3,7 +3,7 @@
 namespace Drupal\tre_preprocess_utility_functions\Utils;
 
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\group\Entity\GroupInterface;
@@ -204,7 +204,7 @@ interface HelperFunctionsInterface {
   /**
    * Returns field value from the given entity as a string.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $entity
+   * @param \Drupal\Core\Entity\ContentEntityInterface $entity
    *   The entity to get the field value from.
    * @param string $field_name
    *   The name of the field to retrieve.
@@ -212,7 +212,7 @@ interface HelperFunctionsInterface {
    * @return string|null
    *   The field value as string if it exists. Null otherwise.
    */
-  public function getFieldValueString(EntityInterface $entity, $field_name);
+  public function getFieldValueString(ContentEntityInterface $entity, $field_name);
 
   /**
    * Returns the formatted date from start and end dates given as a parameter.

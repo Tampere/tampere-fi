@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: topic-group_node-project
-label: 'Aihepiiri: Group node (Projekti)'
-description: 'Adds <em class="placeholder">Projekti</em> content to groups both publicly and privately.'
 group_type: topic
 content_plugin: 'group_node:project'
 plugin_config:

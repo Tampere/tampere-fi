@@ -1,0 +1,17 @@
+uuid: 2055ceb1-bb7e-456a-bb1d-b59ce65704ac
+langcode: fi
+status: true
+dependencies: {  }
+id: footer_social_links_en
+label: 'Alatunnisteen sosiaalisen median linkit (en)'
+token: false
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/structure/footer-social-links-en
+  weight: 0
+  description: 'Hallinnoi alatunnisteessa näkyviä englanninkielisiä sosiaalisen median linkkejä.'

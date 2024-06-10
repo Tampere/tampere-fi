@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
-use Drupal\preprocess\PreprocessPluginBase;
 use Drupal\Core\Field\FieldItemList;
+use Drupal\preprocess\PreprocessPluginBase;
 
 /**
  * Emergency notice node preprocessing.

@@ -7,8 +7,6 @@ dependencies:
   module:
     - user
 id: minisite-group_membership
-label: 'Minisivusto: Group membership'
-description: 'Adds users to groups as members.'
 group_type: minisite
 content_plugin: group_membership
 plugin_config:

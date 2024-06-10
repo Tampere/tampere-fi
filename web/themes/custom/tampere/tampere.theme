@@ -1,14 +1,14 @@
 <?php
 
-use Drupal\Component\Utility\Crypt;
-use Drupal\block\BlockInterface;
-use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
-
 /**
  * @file
  * Functions to support theming.
  */
+
+use Drupal\block\BlockInterface;
+use Drupal\Component\Utility\Crypt;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 
 /**
  * Implements hook_form_alter().
@@ -52,7 +52,8 @@ function tampere_preprocess_html(&$variables) {
   // An exception might be thrown.
   try {
     $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
-  } catch (Exception $e) {
+  }
+  catch (Exception $e) {
     // If the database is not yet available, set the default value.
     $variables['is_front'] = FALSE;
   }
@@ -62,9 +63,10 @@ function tampere_preprocess_html(&$variables) {
  * Implements hook_preprocess_container().
  */
 function tampere_preprocess_container(&$variables) {
-  // when multiple exposed forms are added to a page there is an accessibility issue with
-  // non-unique ids, because drupal always adds `#edit-actions` id to a submit button container.
-  // This is a workaround for making id unique, found in https://www.drupal.org/project/drupal/issues/1852090#comment-13115760
+  // When multiple exposed forms are added to a page there is an accessibility
+  // issue with non-unique ids, because drupal always adds `#edit-actions` id to
+  // a submit button container. This is a workaround for making id unique, found
+  // in https://www.drupal.org/project/drupal/issues/1852090#comment-13115760.
   if (isset($variables['element']['#id'])) {
     $id = $variables['element']['#id'];
 
@@ -87,7 +89,7 @@ function tampere_preprocess_form(&$variables) {
 
     // str_pos() may return Boolean false, but may also return a
     // non-Boolean value which evaluates to false.
-    if (strpos($id, 'views-exposed-form-search') !== false) {
+    if (strpos($id, 'views-exposed-form-search') !== FALSE) {
       $id = tampere_build_unique_id($id);
       $variables['element']['#id'] = $id;
       $variables['attributes']['id'] = $id;
@@ -98,11 +100,11 @@ function tampere_preprocess_form(&$variables) {
 /**
  * Returns a new identifier as extended by a random number.
  *
- * @param $id
- *  Initial identifier
+ * @param string $id
+ *   Initial identifier.
  *
- * @return string $id
- *
+ * @return string
+ *   New identifier extended by a random number.
  */
 function tampere_build_unique_id($id) {
   $id .= '--' . Crypt::randomBytesBase64(8);

@@ -43,6 +43,7 @@ dependencies:
     - file_delete
     - filter
     - group
+    - help
     - media
     - node
     - paragraphs_type_permissions
@@ -63,6 +64,7 @@ permissions:
   - 'access feed overview'
   - 'access files overview'
   - 'access group overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access persons_entity_browser entity browser pages'
   - 'access taxonomy overview'

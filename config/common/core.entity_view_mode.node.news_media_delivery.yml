@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.news_media_delivery
 label: 'Uutisen mediajakelu'
+description: ''
 targetEntityType: node
 cache: true

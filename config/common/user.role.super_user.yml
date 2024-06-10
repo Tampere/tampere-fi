@@ -70,6 +70,7 @@ dependencies:
     - file_delete
     - filter
     - group
+    - help
     - locale
     - media
     - media_bulk_upload
@@ -105,6 +106,7 @@ permissions:
   - 'access feed overview'
   - 'access files overview'
   - 'access group overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access persons_entity_browser entity browser pages'
   - 'access taxonomy overview'
@@ -130,6 +132,7 @@ permissions:
   - 'assign contact_info_author role'
   - 'assign emergency_notice_author role'
   - 'assign front_page_author role'
+  - 'assign group_content_section_editor role'
   - 'assign mailing_list_admin role'
   - 'assign media_editor role'
   - 'assign news_item_author role'
@@ -500,6 +503,7 @@ permissions:
   - 'edit field_eventz_featured_start'
   - 'edit field_search_keywords'
   - 'edit footer_information config page entity'
+  - 'edit footer_social_links_en config page entity'
   - 'edit own comments'
   - 'edit own field_eventz_display_amount'
   - 'edit own field_eventz_event_end'
@@ -724,6 +728,7 @@ permissions:
   - 'view field_eventz_featured_event_id'
   - 'view field_eventz_featured_start'
   - 'view footer_information config page entity'
+  - 'view footer_social_links_en config page entity'
   - 'view front_page revisions'
   - 'view latest version'
   - 'view news_item revisions'

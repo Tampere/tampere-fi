@@ -3,8 +3,8 @@
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
 use Drupal\group\Entity\GroupInterface;
-use Drupal\group\Entity\GroupContentInterface;
-use Drupal\group\Entity\Storage\GroupContentStorageInterface;
+use Drupal\group\Entity\GroupRelationshipInterface;
+use Drupal\group\Entity\Storage\GroupRelationshipStorageInterface;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
@@ -144,7 +144,7 @@ class PortfolioContentListing extends TrePreProcessPluginBase {
 
     $group_content_storage = $this->entityTypeManager->getStorage('group_content');
 
-    if (!($group_content_storage instanceof GroupContentStorageInterface)) {
+    if (!($group_content_storage instanceof GroupRelationshipStorageInterface)) {
       return NULL;
     }
 
@@ -156,7 +156,7 @@ class PortfolioContentListing extends TrePreProcessPluginBase {
 
     $group_portfolio_listing_content = reset($group_portfolio_listing_contents);
 
-    if (!($group_portfolio_listing_content instanceof GroupContentInterface)) {
+    if (!($group_portfolio_listing_content instanceof GroupRelationshipInterface)) {
       return NULL;
     }
 

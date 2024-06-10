@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_df352bd5fd507
-label: 'Elämäntilanne: Group node (Perussisältösivu)'
-description: 'Adds <em class="placeholder">Perussisältösivu</em> content to groups both publicly and privately.'
 group_type: life_situation
 content_plugin: 'group_node:basic_content_page'
 plugin_config:

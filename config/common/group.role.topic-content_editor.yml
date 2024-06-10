@@ -1,0 +1,71 @@
+uuid: 10d9fb7f-a8b0-4d33-a68c-7c1002a745d5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - user.role.group_content_section_editor
+id: topic-content_editor
+label: 'Ryhmäsisältöjen osiovastaava'
+weight: 46
+admin: false
+scope: outsider
+global_role: group_content_section_editor
+group_type: topic
+permissions:
+  - 'access group_node overview'
+  - 'create group_node:basic_content_page entity'
+  - 'create group_node:city_planning_and_constructions entity'
+  - 'create group_node:collection_page entity'
+  - 'create group_node:content_in_other_language entity'
+  - 'create group_node:moderated_page entity'
+  - 'create group_node:organization entity'
+  - 'create group_node:place entity'
+  - 'create group_node:portfolio entity'
+  - 'create group_node:project entity'
+  - 'update any group_node:basic_content_page entity'
+  - 'update any group_node:city_planning_and_constructions entity'
+  - 'update any group_node:collection_page entity'
+  - 'update any group_node:content_in_other_language entity'
+  - 'update any group_node:moderated_page entity'
+  - 'update any group_node:organization entity'
+  - 'update any group_node:place entity'
+  - 'update any group_node:portfolio entity'
+  - 'update any group_node:project entity'
+  - 'update own group_node:basic_content_page entity'
+  - 'update own group_node:city_planning_and_constructions entity'
+  - 'update own group_node:collection_page entity'
+  - 'update own group_node:content_in_other_language entity'
+  - 'update own group_node:moderated_page entity'
+  - 'update own group_node:organization entity'
+  - 'update own group_node:place entity'
+  - 'update own group_node:portfolio entity'
+  - 'update own group_node:project entity'
+  - 'view group_node:basic_content_page entity'
+  - 'view group_node:city_planning_and_constructions entity'
+  - 'view group_node:collection_page entity'
+  - 'view group_node:content_in_other_language entity'
+  - 'view group_node:moderated_page entity'
+  - 'view group_node:organization entity'
+  - 'view group_node:place entity'
+  - 'view group_node:portfolio entity'
+  - 'view group_node:portfolio_listing entity'
+  - 'view group_node:project entity'
+  - 'view own unpublished group_node:basic_content_page entity'
+  - 'view own unpublished group_node:city_planning_and_constructions entity'
+  - 'view own unpublished group_node:collection_page entity'
+  - 'view own unpublished group_node:content_in_other_language entity'
+  - 'view own unpublished group_node:moderated_page entity'
+  - 'view own unpublished group_node:organization entity'
+  - 'view own unpublished group_node:place entity'
+  - 'view own unpublished group_node:portfolio entity'
+  - 'view own unpublished group_node:project entity'
+  - 'view unpublished group_node:basic_content_page entity'
+  - 'view unpublished group_node:city_planning_and_constructions entity'
+  - 'view unpublished group_node:collection_page entity'
+  - 'view unpublished group_node:content_in_other_language entity'
+  - 'view unpublished group_node:moderated_page entity'
+  - 'view unpublished group_node:organization entity'
+  - 'view unpublished group_node:place entity'
+  - 'view unpublished group_node:portfolio entity'
+  - 'view unpublished group_node:project entity'

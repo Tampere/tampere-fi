@@ -1,5 +1,7 @@
 <?php
+
 /**
+ * @file
  * Install, update and uninstall functions for the tre_node_logger module.
  */
 
@@ -54,4 +56,3 @@ function tre_node_logger_schema() {
 
   return $tables;
 }
-

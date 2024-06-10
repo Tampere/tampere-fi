@@ -7,10 +7,10 @@ dependencies:
 id: subsite-basic_page_author
 label: Perussisältösivutoimittaja
 weight: 27
-internal: false
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: subsite
-permissions_ui: true
 permissions:
   - 'access group_node overview'
   - 'create group_node:basic_content_page entity'

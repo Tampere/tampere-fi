@@ -2,12 +2,11 @@
 
 namespace Drupal\tre_news_email_release\Service;
 
-use Drupal\tre_node_logger\Service\NodeLogger;
 use Drupal\Core\State\StateInterface;
 use Drupal\node\NodeInterface;
+use Drupal\tre_node_logger\Service\NodeLogger;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 use Psr\Log\LoggerInterface;
-use Drupal\Core\Datetime\DrupalDateTime;
 
 /**
  * Service to implement node hooks utilising other services.
@@ -145,7 +144,7 @@ final class NodeHooks {
       try {
         $this->sender->sendMailForNewsNode($node, $mail_paragraphs);
 
-        // Log a message saying that the email is sent
+        // Log a message saying that the email is sent.
         $message = "The email for this news item has been sent";
         // $node_logger = new NodeLogger($message, $node->id());
         // $node_logger->saveLog();

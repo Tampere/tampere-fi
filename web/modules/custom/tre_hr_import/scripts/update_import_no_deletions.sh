@@ -25,7 +25,7 @@ cat $FILENAME_PATTERN > "$COMBINED_CSV_PATH"
 echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to reset migration just in case it has gotten stuck previously..."
 sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:reset ipaas_import_csv || true
 echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to import (but not delete) new and updated lines from CSV..."
-sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --skip-progress-bar ipaas_import_csv || true
+sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --no-progress ipaas_import_csv || true
 echo "$(date '+%Y-%m-%d %H:%M:%S') Drush command run."
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') Moving $FILENAME_PATTERN away from $CSV_INBOUND_DIR to $CSV_HANDLED_DIR..."

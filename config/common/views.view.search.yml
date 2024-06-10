@@ -128,7 +128,7 @@ display:
         type: none
         options: {  }
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty: {  }
       sorts:
@@ -164,7 +164,6 @@ display:
           default_argument_type: fixed
           default_argument_options:
             argument: ''
-          default_argument_skip_url: false
           summary_options: {  }
           summary:
             sort_order: asc
@@ -338,7 +337,7 @@ display:
           text_input_required: ''
           text_input_required_format: basic_html
       cache:
-        type: none
+        type: search_api_none
       defaults:
         cache: false
         title: false

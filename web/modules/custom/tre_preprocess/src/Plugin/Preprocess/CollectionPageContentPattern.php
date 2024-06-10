@@ -3,8 +3,8 @@
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\group\Entity\GroupContent;
-use Drupal\group\Entity\GroupContentInterface;
+use Drupal\group\Entity\GroupRelationship;
+use Drupal\group\Entity\GroupRelationshipInterface;
 use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 
@@ -39,16 +39,16 @@ class CollectionPageContentPattern extends TrePreProcessPluginBase {
       /** @var \Drupal\node\NodeInterface $translated_node */
       $translated_node = $this->entityRepository->getTranslationFromContext($node);
 
-      $group_contents_for_node = GroupContent::loadByEntity($translated_node);
+      $group_contents_for_node = GroupRelationship::loadByEntity($translated_node);
       $node_belongs_to_group = count($group_contents_for_node) > 0;
       if ($node_belongs_to_group) {
-        /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+        /** @var \Drupal\group\Entity\GroupRelationshipInterface $group_content */
         $group_content = reset($group_contents_for_node);
-        if ($group_content instanceof GroupContentInterface) {
+        if ($group_content instanceof GroupRelationshipInterface) {
           $group = $group_content->getGroup();
 
           if ($group instanceof EntityInterface) {
-            /** @var \Drupal\group\Entity\GroupContentInterface $translated_group */
+            /** @var \Drupal\group\Entity\GroupRelationshipInterface $translated_group */
             $translated_group = $this->entityRepository->getTranslationFromContext($group);
 
             foreach (self::AVAILABLE_ICON_FIELDS as $field_name) {

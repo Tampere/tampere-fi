@@ -19,6 +19,9 @@
 #}
 
 {% include "@molecules/menus/main-menu/main-menu.twig" with {
+  "main_menu_label_id": "minisite-main-menu-label",
+  "main_menu_aria_label": "Minisite main menu"|t,
   "main_menu_modifiers": [ "minisite" ],
   "menu_items": items,
+  "attributes": [],
 } %}

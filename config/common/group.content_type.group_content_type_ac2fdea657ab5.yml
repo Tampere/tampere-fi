@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_ac2fdea657ab5
-label: 'Alasivusto: Group node (Portfoliolistaus)'
-description: 'Adds <em class="placeholder">Portfoliolistaus</em> content to groups both publicly and privately.'
 group_type: subsite
 content_plugin: 'group_node:portfolio_listing'
 plugin_config:

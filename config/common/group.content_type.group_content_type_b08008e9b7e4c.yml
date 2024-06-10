@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_b08008e9b7e4c
-label: 'Minikotisivusto: Group node (Zoning information)'
-description: 'Adds <em class="placeholder">Zoning information</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:zoning_information'
 plugin_config:

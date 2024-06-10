@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: minisite-group_node-front_page
-label: 'Minikotisivusto: Group node (Etusivu)'
-description: 'Adds <em class="placeholder">Etusivu</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:front_page'
 plugin_config:

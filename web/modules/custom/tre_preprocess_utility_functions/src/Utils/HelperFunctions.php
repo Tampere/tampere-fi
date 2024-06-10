@@ -3,7 +3,7 @@
 namespace Drupal\tre_preprocess_utility_functions\Utils;
 
 use Drupal\Core\Datetime\DrupalDateTime;
-use Drupal\easy_breadcrumb\EasyBreadcrumbBuilder;
+use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -11,20 +11,21 @@ use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Routing\CurrentRouteMatch;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Drupal\file\Entity\File;
-use Drupal\group\Entity\GroupContent;
-use Drupal\group\Entity\GroupContentInterface;
-use Drupal\group\Entity\GroupInterface;
-use Drupal\media\MediaInterface;
-use Drupal\node\NodeInterface;
-use Drupal\paragraphs\ParagraphInterface;
-use proj4php\Proj4php;
-use proj4php\Proj;
-use proj4php\Point;
 use Drupal\Core\Routing\RouteMatch;
 use Drupal\Core\Routing\RouteProvider;
 use Drupal\Core\Site\Settings;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\easy_breadcrumb\EasyBreadcrumbBuilder;
+use Drupal\file\Entity\File;
+use Drupal\group\Entity\GroupInterface;
+use Drupal\group\Entity\GroupRelationship;
+use Drupal\group\Entity\GroupRelationshipInterface;
+use Drupal\media\MediaInterface;
+use Drupal\node\NodeInterface;
+use Drupal\paragraphs\ParagraphInterface;
+use proj4php\Point;
+use proj4php\Proj;
+use proj4php\Proj4php;
 
 /**
  * Provides internal helper methods.
@@ -84,7 +85,7 @@ class HelperFunctions implements HelperFunctionsInterface {
     CurrentRouteMatch $route_match,
     LanguageManager $language_manager,
     RouteProvider $routeProvider,
-    EasyBreadcrumbBuilder $easyBreadcrumb
+    EasyBreadcrumbBuilder $easyBreadcrumb,
   ) {
     $this->entityRepository = $entity_repository;
     $this->entityTypeManager = $entity_type_manager;
@@ -191,14 +192,14 @@ class HelperFunctions implements HelperFunctionsInterface {
   public function getNodeGroup(NodeInterface $current_node): ?GroupInterface {
     $group = NULL;
     if ($current_node instanceof NodeInterface && !$current_node->isNew()) {
-      $group_contents_for_node = GroupContent::loadByEntity($current_node);
+      $group_contents_for_node = GroupRelationship::loadByEntity($current_node);
       $node_belongs_to_group = count($group_contents_for_node) > 0;
       if ($node_belongs_to_group) {
         // The first group the node belongs to will be considered the current
         // group.
-        /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+        /** @var \Drupal\group\Entity\GroupRelationshipInterface $group_content */
         $group_content = reset($group_contents_for_node);
-        if ($group_content instanceof GroupContentInterface) {
+        if ($group_content instanceof GroupRelationshipInterface) {
           $group = $group_content->getGroup();
         }
       }
@@ -341,7 +342,7 @@ class HelperFunctions implements HelperFunctionsInterface {
   /**
    * {@inheritdoc}
    */
-  public function getFieldValueString(EntityInterface $entity, $field_name): ?string {
+  public function getFieldValueString(ContentEntityInterface $entity, $field_name): ?string {
     if (!$entity->hasField($field_name)) {
       return NULL;
     }
@@ -668,7 +669,7 @@ class HelperFunctions implements HelperFunctionsInterface {
             'tre_preprocess/liftup-map-rpc',
           ],
         ],
-        '#template' => '<iframe class="{{ map_classes }}" data-node-id="{{ node_id }}" data-tampere-cookie-information="skip" title="{% trans %} Map: {{ title }} {% endtrans %}" {% if use_lazyload %}loading="lazy"{% endif %} {{ src_attr }}="{{ url }}" allow="geolocation" style="border: none; display: block; width: 100%; height: 410px;"></iframe>',
+        '#template' => '<iframe class="{{ map_classes }}" data-node-id="{{ node_id }}" data-ignore-cookie-blocking="true" title="{% trans %} Map: {{ title }} {% endtrans %}" {% if use_lazyload %}loading="lazy"{% endif %} {{ src_attr }}="{{ url }}" allow="geolocation" style="border: none; display: block; width: 100%; height: 410px;"></iframe>',
         '#context' => [
           'use_lazyload' => $use_lazyload,
           'map_classes' => $use_lazyload ? "{$map_class} lazyload" : $map_class,

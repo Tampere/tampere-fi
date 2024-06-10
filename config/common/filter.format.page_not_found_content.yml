@@ -3,9 +3,9 @@ langcode: fi
 status: true
 dependencies:
   module:
-    1: lazy
-    2: linkit
-    3: media
+    - lazy
+    - linkit
+    - media
 name: 'Sivua ei löydetty teksti'
 format: page_not_found_content
 weight: 0
@@ -19,12 +19,6 @@ filters:
       allowed_html: '<br> <p class="text-align-left text-align-center text-align-right"> <h1 class="text-align-left text-align-center text-align-right"> <h2 class="text-align-left text-align-center text-align-right"> <h3 class="text-align-left text-align-center text-align-right"> <h4 class="text-align-left text-align-center text-align-right"> <h5 class="text-align-left text-align-center text-align-right"> <h6 class="text-align-left text-align-center text-align-right"> <strong> <em> <s> <sub> <sup> <a href data-entity-type data-entity-uuid data-entity-substitution> <ul> <ol start> <li>'
       filter_html_help: true
       filter_html_nofollow: false
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: false
-    weight: 15
-    settings: {  }
   filter_html_escape:
     id: filter_html_escape
     provider: filter
@@ -36,6 +30,12 @@ filters:
     provider: filter
     status: false
     weight: 10
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: false
+    weight: 15
     settings: {  }
   filter_image_lazy_load:
     id: filter_image_lazy_load

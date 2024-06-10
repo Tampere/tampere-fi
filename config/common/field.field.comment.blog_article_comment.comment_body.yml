@@ -13,7 +13,7 @@ field_name: comment_body
 entity_type: comment
 bundle: blog_article_comment
 label: Kommentti
-description: 'Liitä teksti muusta lähteestä näppäinyhdistelmällä CTRL+SHIFT + V.'
+description: ''
 required: false
 translatable: false
 default_value: {  }

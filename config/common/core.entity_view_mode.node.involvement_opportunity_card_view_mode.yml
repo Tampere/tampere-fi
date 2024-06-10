@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.involvement_opportunity_card_view_mode
 label: Osallistumismahdollisuuskortti
+description: ''
 targetEntityType: node
 cache: true

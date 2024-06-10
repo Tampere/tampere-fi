@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_display_external_events\Plugin\ExternalDataSource;
 
-use Geniem\LinkedEvents\LinkedEventsClient;
 use Drupal\tre_display_external_events\Config;
+use Geniem\LinkedEvents\LinkedEventsClient;
 
 /**
  * Plugin class for fetching audience data from Pirkanmaa Events API.

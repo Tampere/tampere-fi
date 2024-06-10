@@ -340,7 +340,7 @@ class CurrentListing extends TrePreProcessPluginBase {
       $minisite_nids = [];
       /** @var \Drupal\group\Entity\GroupInterface $minisite */
       foreach ($minisites as $minisite) {
-        $nodes = $minisite->getContentEntities();
+        $nodes = $minisite->getRelatedEntities();
         foreach ($nodes as $node) {
           if (in_array($node->bundle(), self::GROUP_FILTER_CONTENT_TYPES, TRUE)) {
             $minisite_nids[] = $node->id();

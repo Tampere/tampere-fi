@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_3e00eae0ddb57
-label: 'Minikotisivusto: Group node (Collection page)'
-description: 'Adds <em class="placeholder">Collection page</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:collection_page'
 plugin_config:

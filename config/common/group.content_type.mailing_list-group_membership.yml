@@ -7,8 +7,6 @@ dependencies:
   module:
     - user
 id: mailing_list-group_membership
-label: 'Postituslista: Ryhmän jäsenyys'
-description: 'Adds users to groups as members.'
 group_type: mailing_list
 content_plugin: group_membership
 plugin_config:

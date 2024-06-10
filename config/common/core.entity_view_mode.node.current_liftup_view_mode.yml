@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.current_liftup_view_mode
 label: Ajankohtaisnosto
+description: ''
 targetEntityType: node
 cache: true

@@ -2,8 +2,8 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
-use Drupal\user\UserInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
+use Drupal\user\UserInterface;
 
 /**
  * Blog article comment preprocessing.

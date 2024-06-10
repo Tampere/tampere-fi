@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.current_liftup_wo_date_view_mode
 label: 'Ajankohtaisnosto ilman päivämäärää'
+description: ''
 targetEntityType: node
 cache: true

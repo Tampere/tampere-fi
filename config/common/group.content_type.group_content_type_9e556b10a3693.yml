@@ -8,8 +8,6 @@ dependencies:
   module:
     - group_content_menu
 id: group_content_type_9e556b10a3693
-label: 'Minikotisivusto: Group menu (Minisite main menu)'
-description: 'Adds <em class="placeholder">Minisite main menu</em> menu items to groups.'
 group_type: minisite
 content_plugin: 'group_content_menu:minisite_main_menu_en'
 plugin_config:

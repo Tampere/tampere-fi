@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: subsite-group_node-portfolio
-label: 'Alasivusto: Group node (Portfolio)'
-description: 'Adds <em class="placeholder">Portfolio</em> content to groups both publicly and privately.'
 group_type: subsite
 content_plugin: 'group_node:portfolio'
 plugin_config:

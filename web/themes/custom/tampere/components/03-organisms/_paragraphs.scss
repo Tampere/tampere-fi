@@ -60,25 +60,79 @@
   }
 
   &--type-embedded-content-and-map-tabs {
-    // Applies only when the select list is not available
-    .search-bar__search-form {
-      .search-bar__input + .search-bar__button {
-        margin-top: $space-l-plus;
+    // Applies only when the select list is not available and for the last panel only.
+    .tabbed-container__content .tabbed-container-tab-section-2 {
+      .search-bar__search-form {
+        .search-bar__input + .search-bar__button {
+          margin-top: $space-l-plus;
+        }
+  
+        .search-bar__button {
+          @include medium-down {
+            padding: $gutter-mobile;
+          }
+  
+          max-width: unset;
+          padding: $space-m-plus $space-l;
+          width: unset;
+  
+          .button__text {
+            padding-right: $gutter-mobile;
+          }
+        }
       }
 
-      .search-bar__button {
-        @include medium-down {
-          padding: $gutter-mobile;
+      // Accordion mobile for exposed filter list
+      .embedded-content-tab-accordion {
+        .accordion__title-wrapper {
+          @include medium-down {
+            display: block;
+          }
+
+          display: none;
+
+          .accordion__heading {
+            border: none;
+            border-bottom: 2px solid $color-dark-blue;
+            padding-top: $space-l;
+            padding-bottom: $space-xxs;
+
+            &.is-active {
+              box-shadow: unset;
+              font-weight: unset;
+            }
+
+            .accordion__title {
+              margin: 0;
+              padding: 0;
+            }
+          }
+
+          .accordion__icon-wrapper {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            flex: 1;
+
+            .accordion__icon-text {
+                margin-left: 0;
+                color: $color-black;
+                font-family: $font-body;
+            }
+          }
         }
 
-        max-width: unset;
-        padding: $space-m-plus $space-l;
-        width: unset;
-
-        .button__text {
-          padding-right: $gutter-mobile;
+        .accordion__content.active {
+          margin-left: unset;
+          margin-right: unset;
         }
       }
     }
+
+    .search-bar__input,
+    .accordion__content .form-item__dropdown {
+      @include border(2px, solid, $color-dark-blue);
+    }
+
   }
 }

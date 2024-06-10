@@ -7,10 +7,10 @@ dependencies:
 id: topic-author
 label: Toimittaja
 weight: -9
-internal: false
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: topic
-permissions_ui: true
 permissions:
   - 'access group_node overview'
   - 'create group_node:basic_content_page entity'

@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: group_content_type_e82b99b0e3cc6
-label: 'Minikotisivusto: Group node (Muunkielinen sisältö)'
-description: 'Adds <em class="placeholder">Muunkielinen sisältö</em> content to groups both publicly and privately.'
 group_type: minisite
 content_plugin: 'group_node:content_in_other_language'
 plugin_config:

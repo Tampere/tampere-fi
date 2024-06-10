@@ -41,7 +41,7 @@ else
   sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:reset ipaas_import_csv || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to import new and updated lines, and NOT delete (for the summer 2023) the ones missing, from CSV..."
   # Temporarily disabled the --sync option for summer 2023 until we get to fixing the underlying issue.
-  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --update --skip-progress-bar ipaas_import_csv || true
+  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" --root="$DOCROOT" migrate:import --update --delete --no-progress ipaas_import_csv || true
   echo "$(date '+%Y-%m-%d %H:%M:%S') Drush command run."
 fi
 

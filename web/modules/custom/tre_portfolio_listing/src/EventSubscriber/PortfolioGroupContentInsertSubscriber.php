@@ -4,8 +4,8 @@ namespace Drupal\tre_portfolio_listing\EventSubscriber;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManager;
-use Drupal\group\Entity\GroupContent;
-use Drupal\group\Entity\GroupContentInterface;
+use Drupal\group\Entity\GroupRelationship;
+use Drupal\group\Entity\GroupRelationshipInterface;
 use Drupal\node\NodeInterface;
 use Drupal\tre_portfolio_listing\Event\PortfolioListingEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -86,7 +86,7 @@ class PortfolioGroupContentInsertSubscriber implements EventSubscriberInterface 
   public function onPortfolioGroupContentInsert(PortfolioListingEvent $event) {
     $group_content = $event->getEntity();
 
-    if (!($group_content instanceof GroupContentInterface)) {
+    if (!($group_content instanceof GroupRelationshipInterface)) {
       return;
     }
 
@@ -115,7 +115,7 @@ class PortfolioGroupContentInsertSubscriber implements EventSubscriberInterface 
     if (!empty($group_portfolio_listing_contents)) {
       $group_portfolio_listing_content = reset($group_portfolio_listing_contents);
 
-      if (!($group_portfolio_listing_content instanceof GroupContentInterface)) {
+      if (!($group_portfolio_listing_content instanceof GroupRelationshipInterface)) {
         return;
       }
 
@@ -142,7 +142,7 @@ class PortfolioGroupContentInsertSubscriber implements EventSubscriberInterface 
 
       $listing_node->save();
 
-      $group->addContent($listing_node, self::LISTING_PLUGIN_ID);
+      $group->addRelationship($listing_node, self::LISTING_PLUGIN_ID);
     }
   }
 
@@ -185,12 +185,12 @@ class PortfolioGroupContentInsertSubscriber implements EventSubscriberInterface 
       return;
     }
 
-    $group_contents_for_entity = GroupContent::loadByEntity($node);
+    $group_contents_for_entity = GroupRelationship::loadByEntity($node);
     if (count($group_contents_for_entity) < 1) {
       return;
     }
 
-    /** @var \Drupal\group\Entity\GroupContentInterface $group_content */
+    /** @var \Drupal\group\Entity\GroupRelationshipInterface $group_content */
     $group_content = reset($group_contents_for_entity);
 
     $group = $group_content->getGroup();
@@ -207,7 +207,7 @@ class PortfolioGroupContentInsertSubscriber implements EventSubscriberInterface 
 
     $group_portfolio_listing_content = reset($group_portfolio_listing_contents);
 
-    if (!($group_portfolio_listing_content instanceof GroupContentInterface)) {
+    if (!($group_portfolio_listing_content instanceof GroupRelationshipInterface)) {
       return;
     }
 

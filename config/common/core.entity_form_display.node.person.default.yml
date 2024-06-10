@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.person.field_topics
     - field.field.node.person.migrate_override_data
     - node.type.person
+    - workflows.workflow.scheduled_transitions
   module:
     - address
     - allowed_formats
@@ -196,13 +197,15 @@ content:
     type: address_default
     weight: 41
     region: content
-    settings: {  }
+    settings:
+      wrapper_type: details
     third_party_settings: {  }
   field_address_street:
     type: address_default
     weight: 40
     region: content
-    settings: {  }
+    settings:
+      wrapper_type: details
     third_party_settings: {  }
   field_email:
     type: email_default

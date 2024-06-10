@@ -1,0 +1,14 @@
+uuid: f1f47a74-0cdc-441e-ad14-c101e3950471
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.group_content_section_editor
+  module:
+    - user
+id: user_remove_role_action.group_content_section_editor
+label: 'Remove the Group Content Section Editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: group_content_section_editor

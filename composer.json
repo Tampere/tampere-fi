@@ -28,7 +28,9 @@
                 "drupal/path_guard",
                 "drupal/system_status",
                 "drupal/form_display_field_machine_name",
-                "drupal/cache_tags"
+                "drupal/cache_tags",
+                "drupal/quick_node_clone",
+                "drupal/address_display"
             ]
         },
         "2": {
@@ -106,6 +108,19 @@
                 }
             }
         },
+        "address_display": {
+            "type": "package",
+            "package": {
+                "name": "drupal/address_display",
+                "version": "dev-fork",
+                "type": "drupal-module",
+                "source": {
+                    "url": "https://git.drupalcode.org/issue/address_display-3411778.git",
+                    "type": "git",
+                    "reference": "315bacbce7a5d87674a38072a6aa0a68deae0963"
+                }
+            }
+        },
         "path_guard": {
             "type": "package",
             "package": {
@@ -145,6 +160,19 @@
                 }
             }
         },
+        "quick_node_clone": {
+            "type": "package",
+            "package": {
+                "name": "drupal/quick_node_clone",
+                "version": "dev-fork",
+                "type": "drupal-module",
+                "source": {
+                    "url": "https://git.drupalcode.org/issue/quick_node_clone-3306677.git",
+                    "type": "git",
+                    "reference": "821f82eb2788b49f1eb30fb761fa9c7cb1ed8fa1"
+                }
+            }
+        },
         "cache_tags": {
             "type": "package",
             "package": {
@@ -167,8 +195,8 @@
         "devgeniem/linkedevents-client": "dev-update_rmccue_requests#a82aabc",
         "dinbror/blazy": "^1.8",
         "dropzone/dropzone": "5.9.3",
-        "drupal/address": "^1.8",
-        "drupal/address_display": "^1.0@beta",
+        "drupal/address": "^2.0",
+        "drupal/address_display": "dev-fork",
         "drupal/admin_toolbar": "^3.0",
         "drupal/allowed_formats": "^3.0",
         "drupal/antibot": "^2.0",
@@ -185,9 +213,9 @@
         "drupal/config_split": "^2.0",
         "drupal/content_moderation_notifications": "^3.4",
         "drupal/cookieinformation": "^2.0",
-        "drupal/core-composer-scaffold": "~10.1.5",
-        "drupal/core-project-message": "~10.1.5",
-        "drupal/core-recommended": "~10.1.5",
+        "drupal/core-composer-scaffold": "~10.2.6",
+        "drupal/core-project-message": "~10.2.6",
+        "drupal/core-recommended": "~10.2.6",
         "drupal/dblog_filter": "^3.2",
         "drupal/decorative_image_widget": "^1.0",
         "drupal/diff": "^1.0",
@@ -196,12 +224,12 @@
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/elb": "^2.0",
         "drupal/embederator": "^4.0",
-        "drupal/emulsify_twig": "^4.0",
+        "drupal/emulsify_twig": "^5.0",
         "drupal/entity_browser": "^2.5",
         "drupal/entity_log": "^1.4",
         "drupal/entity_reference_unpublished": "^2.0",
         "drupal/entity_usage": "^2.0@beta",
-        "drupal/entitygroupfield": "^1.0@beta",
+        "drupal/entitygroupfield": "^2.0@alpha",
         "drupal/environment_indicator": "^4.0",
         "drupal/ex_icons": "^1.3",
         "drupal/external_data_source": "^3.0",
@@ -213,13 +241,14 @@
         "drupal/field_permissions": "^1.2",
         "drupal/field_states_ui": "^3.0",
         "drupal/file_delete": "^2.0",
+        "drupal/flexible_permissions": "^1.1",
         "drupal/focal_point": "^2.0",
         "drupal/form_display_field_machine_name": "dev-fork",
         "drupal/formdazzle": "^3.0",
         "drupal/geofield": "^1.34",
-        "drupal/group": "^1.4",
-        "drupal/group_content_menu": "^1.1",
-        "drupal/group_scheduled_transitions": "^1.0",
+        "drupal/group": "^2.2",
+        "drupal/group_content_menu": "^2.0",
+        "drupal/group_scheduled_transitions": "^2.0",
         "drupal/heading": "^1.6",
         "drupal/image_style_warmer": "^1.1",
         "drupal/imagecache_external": "^3.0",
@@ -242,7 +271,7 @@
         "drupal/memcache": "^2.3",
         "drupal/menu_item_extras": "^2.16",
         "drupal/message_notify": "^1.2",
-        "drupal/metatag": "^1.13",
+        "drupal/metatag": "^2.0",
         "drupal/migrate_override": "^2.0@alpha",
         "drupal/migrate_plus": "^6.0.0",
         "drupal/migrate_source_csv": "^3.4",
@@ -268,7 +297,7 @@
         "drupal/publication_date": "^2.0@beta",
         "drupal/purge": "^3.2",
         "drupal/purge_file": "^1.1",
-        "drupal/quick_node_clone": "^1.15",
+        "drupal/quick_node_clone": "dev-fork",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/redirect": "^1.5",
         "drupal/robotstxt": "^1.4",
@@ -289,6 +318,7 @@
         "drupal/tablefield": "^2.2",
         "drupal/telephone_plus": "^9.1",
         "drupal/term_reference_tree": "^2.0",
+        "drupal/theme_breakpoints_js": "^1.1",
         "drupal/timesup": "^1.0",
         "drupal/twig_tweak": "^3.1",
         "drupal/ui_patterns": "^1.2",
@@ -297,6 +327,7 @@
         "drupal/varnish_purge": "^2.2",
         "drupal/views_contextual_filters_or": "^1.4",
         "drupal/views_custom_cache_tag": "^1.2",
+        "drupal/views_ef_fieldset": "^1.7",
         "drupal/views_filters_populate": "^2.1",
         "drupal/webform": "^6.2@RC",
         "drupal/webform_paragraphs": "^1.2",
@@ -420,17 +451,16 @@
                 "3107993 - Template is not defined error on admin pages when using administration theme": "patches/components__template_is_not_defined_error_on_admin_pages_when_using_administration_theme__3107993.patch"
             },
             "drupal/cookieinformation": {
-                "3194494 - v2 compatible - Blocking iframes and Readspeaker buttons": "patches/add_support_for_blocking_iframes_and_readspeaker_3194494_v2_compatible.diff"
+                "Add support for readspeaker and Askem to cookie information": "patches/add_support_for_readspeaker_and_askem_to_cookie_information.patch"
             },
             "drupal/core": {
                 "#2546212: Entity view/form mode formatter/widget settings have no translation UI": "https://www.drupal.org/files/issues/2020-10-02/2546212-155.patch",
                 "2802371 - No active language in language switcher": "https://www.drupal.org/files/issues/2023-03-13/2802371-28.patch",
                 "2700667 - Notice: Undefined index: #type in drupal_process_states()": "https://www.drupal.org/files/issues/2021-05-12/2700667-133a.patch",
-                "2230909 - Simple decimals fail to pass validation": "https://www.drupal.org/files/issues/2021-10-07/drupal-simple-decimal-validation-ver_9.2.7-2230909-234.patch",
+                "2230909 - Simple decimals fail to pass validation for Drupal v10.2": "https://www.drupal.org/files/issues/2023-12-21/2230909-309.patch",
                 "2868014 - Views Date Filter Datetime Granularity Option": "https://www.drupal.org/files/issues/2021-04-26/2868014-110.patch",
                 "2993688 - Views relationships with multi-valued entity reference fields invalidate Distinct query option - 99": "https://www.drupal.org/files/issues/2022-06-16/2993688-99.patch",
-                "3171835 - Claro: Field Groups marked as required are missing red asterisk": "https://www.drupal.org/files/issues/2020-09-18/required-asterisk-missing--3171835--2.patch",
-                "3151534 - Claro: 'Add another item' field button is displayed as a modal action": "https://www.drupal.org/files/issues/2023-09-14/3151534-D10.1.x-based-on-77--81.patch",
+                "3171835 - Claro: Field Groups marked as required are missing red asterisk for Drupal v10.2": "https://www.drupal.org/files/issues/2023-10-09/3171835-79--D10.1.x.patch",
                 "2968207 - Allow multiple instances of the same exposed filter form on a single page": "https://www.drupal.org/files/issues/2023-04-11/2968207-39.patch",
                 "2511878 - Support enclosure field in Views RssFields row plugin - D10.2": "https://www.drupal.org/files/issues/2024-04-27/2511878-add-support-for-enclosure-field-10.2.x--acdd23c.patch"
             },
@@ -463,11 +493,9 @@
             },
             "drupal/group": {
                 "2815971 - More contexts": "https://www.drupal.org/files/issues/2021-02-19/2815971-28.patch",
-                "2881769 - group/<id>/node/create uses the permissions of group/<id>/node/add": "https://www.drupal.org/files/issues/2020-10-01/2881769-22.patch",
-                "GroupContentStorage exceptions": "patches/groupcontentstorage_exceptions.patch",
                 "Load group using group parameter - group 8.x-1.5": "patches/load_group_using_group_parameter.patch",
-                "3071489 - Incorrect Access Check on Media Library": "https://www.drupal.org/files/issues/2022-05-17/incorrect-access-check-on-media-library-3071489-27.patch",
-                "3256998 - Access to Revisions of Group Content is Broken": "https://www.drupal.org/files/issues/2022-03-30/group-3256998-35.patch"
+                "3322761 - Group module v2 base field override updates": "patches/group_module_v2_updates_3322761.patch",
+                "3330913 - Service is missing even though module is enabled": "https://www.drupal.org/files/issues/2023-10-20/service-is-missing-even-though-module-is-enabled--3330913--21.patch"
             },
             "drupal/group_content_menu": {
                 "3209011 - Active trail is cached incorrectly": "https://www.drupal.org/files/issues/2021-04-21/group_content_menu-active_trail_cache_problem-3209011-10.patch",
@@ -492,7 +520,7 @@
                 "#2996615: Transaction support for cache (tags) invalidation": "https://www.drupal.org/files/issues/2022-10-25/2996615-revised-woth-hooks--rerolled-against-2.5.patch"
             },
             "drupal/office_hours": {
-                "Prevent displaying adjacent commas with empty values": "patches/office_hours_remove_empty_values_from_comments_to_prevent_displaying_adjacent_commas.diff"
+                "Prevent displaying adjacent commas with empty values - updated to support v1.17": "patches/office_hours_remove_empty_values_from_comments_to_prevent_displaying_adjacent_commas.diff"
             },
             "drupal/paragraphs": {
                 "3027525: Show the paragraph and field label of fields that fail validation": "https://www.drupal.org/files/issues/2023-10-03/3027525_22.patch",
@@ -504,14 +532,15 @@
             "drupal/permission_watchdog": {
                 "3340219 - Log permission changes using Drupal logger as well": "https://www.drupal.org/files/issues/2023-02-09/log-using-drupal-logger-in-permission-watchdog-3340219.diff"
             },
-            "drupal/publication_date": {
-                "3074373 - Publication date is required for completing the form": "https://www.drupal.org/files/issues/2022-12-20/publication_date_is_required_for_completing_the_form-3074373-11.patch"
-            },
             "drupal/purge": {
                 "#3440974: Drush 12 compatibility": "patches/purge__drush_12_compatibility__3440974.patch"
             },
             "drupal/quick_node_clone": {
-                "3075889 - Add option to have cloned node publish status default to unpublished": "https://www.drupal.org/files/issues/2022-05-07/quick_node_clone-unpublish-clone-option-3075889-11.patch"
+                "3075889 - Add option to have cloned node publish status default to unpublished": "https://www.drupal.org/files/issues/2022-05-07/quick_node_clone-unpublish-clone-option-3075889-11.patch",
+                "3376504 - Incompatibility with Address module version 2.x": "https://www.drupal.org/files/issues/2023-08-08/3376504-6.patch"
+            },
+            "drupal/ui_patterns_settings": {
+                "3409221 - Fix TypeError: array_unshift(): Argument #1 ($array) must be of type array": "https://www.drupal.org/files/issues/2024-03-01/ui_patterns_settings-3409221-26.patch"
             }
         },
         "merge-plugin": {

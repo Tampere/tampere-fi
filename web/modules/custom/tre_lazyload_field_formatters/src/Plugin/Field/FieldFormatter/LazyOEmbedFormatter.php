@@ -35,12 +35,6 @@ class LazyOEmbedFormatter extends OEmbedFormatter {
       // Drupal 10, we opt to force all oembed iframes to lazy loading.
       $elements[$delta]['#attributes']['loading'] = 'lazy';
       $elements[$delta]['#attributes']['class'][] = 'lazyload';
-
-      // Removing the 'src' attribute from oembed iframes helps with cookie
-      // consent. The data-src attribute is used by the cookieinformation
-      // module.
-      $elements[$delta]['#attributes']['data-src'] = $elements[$delta]['#attributes']['src'];
-      unset($elements[$delta]['#attributes']['src']);
     }
 
     return $elements;

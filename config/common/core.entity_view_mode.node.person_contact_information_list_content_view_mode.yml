@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.person_contact_information_list_content_view_mode
 label: 'Henkilöyhteystietolistan sisältö'
+description: ''
 targetEntityType: node
 cache: true

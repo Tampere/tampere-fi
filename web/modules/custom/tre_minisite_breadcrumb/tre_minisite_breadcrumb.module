@@ -7,7 +7,6 @@
 
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\node\NodeInterface;
-use Drupal\Core\Cache\CacheableMetadata;
 
 /**
  * Implements hook_system_breadcrumb_alter().

@@ -1,4 +1,4 @@
-label: 'Group content'
+label: 'Group relationship'
 relationships:
   'group_content:langcode:language':
     label: Language

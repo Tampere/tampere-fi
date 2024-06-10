@@ -165,6 +165,29 @@ function openAllAccordions(controlButton) {
   updateToggleAllButtons(accordionContainer, controlButton, 'open');
 }
 
+/*
+* Handles embedded accordion behaviour
+*/
+function embeddedAccordion() {
+  const accordionTitle = document.querySelectorAll('.embedded-content-tab-accordion .accordion__title-wrapper');
+  const embededAccordion = document.getElementById('content-embedded-content-accordion');
+  const accordionButton = document.querySelectorAll('.embedded-content-tab-accordion .accordion__heading');
+  const mql = window.themeBreakpoints.Breakpoints[2].mediaQuery; // Medium breakpoint
+
+  // Until md breakpoint or min width < 720p then activates mobile accordion else desktop accordion
+  if (!window.matchMedia(mql).matches) {
+    accordionTitle[0].classList.remove('hidden');
+    accordionButton[0].classList.remove('is-active');
+    accordionButton[0].setAttribute('aria-expanded', 'false');
+  } else {
+    accordionTitle[0].classList.add('hidden');
+    embededAccordion.classList.add('active');
+    embededAccordion.setAttribute('aria-hidden', 'false');
+    accordionButton[0].classList.add('is-active');
+    accordionButton[0].setAttribute('aria-expanded', 'true');
+  }
+}
+
 Drupal.behaviors.accordion = {
   attach(context) {
     let accordionButtons;
@@ -208,5 +231,8 @@ Drupal.behaviors.accordion = {
         button.addEventListener('click', () => openAllAccordions(button));
       });
     }
+
+    // Handles embedded accordion behaviour
+    embeddedAccordion();
   },
 };

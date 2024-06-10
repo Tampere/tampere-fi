@@ -7,8 +7,6 @@ dependencies:
   module:
     - user
 id: topic-group_membership
-label: 'Topic: Group membership'
-description: 'Adds users to groups as members.'
 group_type: topic
 content_plugin: group_membership
 plugin_config:

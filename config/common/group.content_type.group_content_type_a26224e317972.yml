@@ -8,8 +8,6 @@ dependencies:
   module:
     - group_content_menu
 id: group_content_type_a26224e317972
-label: 'Minikotisivusto: Group menu (Minikotisivuston päävalikko)'
-description: 'Adds <em class="placeholder">Minikotisivuston päävalikko</em> menu items to groups.'
 group_type: minisite
 content_plugin: 'group_content_menu:minisite_main_menu_fi'
 plugin_config:

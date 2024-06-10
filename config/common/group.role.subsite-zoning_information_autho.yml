@@ -7,10 +7,10 @@ dependencies:
 id: subsite-zoning_information_autho
 label: Kaavatoimittaja
 weight: 19
-internal: false
-audience: member
+admin: false
+scope: individual
+global_role: null
 group_type: subsite
-permissions_ui: true
 permissions:
   - 'access group_node overview'
   - 'create group_node:zoning_information entity'

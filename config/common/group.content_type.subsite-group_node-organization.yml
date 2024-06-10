@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: subsite-group_node-organization
-label: 'Alasivusto: Group node (Organisaatio)'
-description: 'Adds <em class="placeholder">Organisaatio</em> content to groups both publicly and privately.'
 group_type: subsite
 content_plugin: 'group_node:organization'
 plugin_config:

@@ -3,8 +3,8 @@
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
 use Drupal\Core\Url;
-use Drupal\node\NodeInterface;
 use Drupal\group\Entity\GroupInterface;
+use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 
 /**

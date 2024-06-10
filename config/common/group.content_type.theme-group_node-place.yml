@@ -9,8 +9,6 @@ dependencies:
     - gnode
     - node
 id: theme-group_node-place
-label: 'Teema: Group node (Paikka)'
-description: 'Adds <em class="placeholder">Paikka</em> content to groups both publicly and privately.'
 group_type: theme
 content_plugin: 'group_node:place'
 plugin_config:

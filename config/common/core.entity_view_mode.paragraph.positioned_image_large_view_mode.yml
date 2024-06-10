@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.positioned_image_large_view_mode
 label: 'Asemoitu kuva (iso)'
+description: ''
 targetEntityType: paragraph
 cache: true
