@@ -16,6 +16,7 @@ dependencies:
     - field.field.paragraph.eventz_today_listing.field_eventz_external_areas
     - field.field.paragraph.eventz_today_listing.field_eventz_external_audience
     - field.field.paragraph.eventz_today_listing.field_eventz_external_category
+    - field.field.paragraph.eventz_today_listing.field_eventz_external_link
     - field.field.paragraph.eventz_today_listing.field_eventz_external_org_class
     - field.field.paragraph.eventz_today_listing.field_eventz_external_organizers
     - field.field.paragraph.eventz_today_listing.field_eventz_external_places
@@ -31,6 +32,7 @@ dependencies:
     - field_group
     - field_states_ui
     - limited_field_widgets
+    - link
 third_party_settings:
   field_group:
     group_ajankohdat:
@@ -185,6 +187,14 @@ content:
     settings:
       size: 1
       placeholder: ''
+    third_party_settings: {  }
+  field_eventz_external_link:
+    type: link_default
+    weight: 20
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   field_eventz_external_org_class:
     type: external_data_source_checkboxes_widget

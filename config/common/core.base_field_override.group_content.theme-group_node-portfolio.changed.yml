@@ -1,0 +1,18 @@
+uuid: 8061a8a2-e35d-428e-810e-5470c59ccbac
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.theme-group_node-portfolio
+id: group_content.theme-group_node-portfolio.changed
+field_name: changed
+entity_type: group_content
+bundle: theme-group_node-portfolio
+label: 'Changed on'
+description: 'The time that the group relationship was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

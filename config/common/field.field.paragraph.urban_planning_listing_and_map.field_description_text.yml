@@ -1,0 +1,19 @@
+uuid: 4fa13e07-fe04-4c43-999f-c37de7d635a5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description_text
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+id: paragraph.urban_planning_listing_and_map.field_description_text
+field_name: field_description_text
+entity_type: paragraph
+bundle: urban_planning_listing_and_map
+label: Kuvaus
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

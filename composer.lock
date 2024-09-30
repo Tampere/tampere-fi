@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7064fda9769f85c1d19986da42cb84f",
+    "content-hash": "058d50ab6e4a3896fdd73a56184e90a3",
     "packages": [
         {
             "name": "afarkas/lazysizes",
@@ -3536,17 +3536,17 @@
         },
         {
             "name": "drupal/elb",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/elb.git",
-                "reference": "2.1.0"
+                "reference": "2.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/elb-2.1.0.zip",
-                "reference": "2.1.0",
-                "shasum": "6253bcdf7d4c2dbcb4456aeafa7f3b1f243e3c13"
+                "url": "https://ftp.drupal.org/files/projects/elb-2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": "d7984d873d51feaa45f526e67f4b24328dfbefdf"
             },
             "require": {
                 "drupal/core": "^8 || ^9 || ^10"
@@ -3554,8 +3554,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "2.1.0",
-                    "datestamp": "1681739322",
+                    "version": "2.1.1",
+                    "datestamp": "1718713120",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Project has not opted into security advisory coverage!"
@@ -7332,6 +7332,57 @@
             }
         },
         {
+            "name": "drupal/oembed_providers",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/oembed_providers.git",
+                "reference": "2.2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/oembed_providers-2.2.0.zip",
+                "reference": "2.2.0",
+                "shasum": "318bafadd5e9b74a593f08e252dc5ea6dec98cd2"
+            },
+            "require": {
+                "drupal/core": "^10|^11"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.2.0",
+                    "datestamp": "1723853165",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Burge",
+                    "homepage": "https://www.drupal.org/u/chris-burge",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Allows site builders and developers to manage oEmbed providers.",
+            "homepage": "https://drupal.org/project/oembed_providers",
+            "keywords": [
+                "Drupal",
+                "Media",
+                "oEmbed"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/oembed_providers",
+                "issues": "https://www.drupal.org/project/issues/oembed_providers"
+            }
+        },
+        {
             "name": "drupal/office_hours",
             "version": "1.17.0",
             "source": {
@@ -9096,6 +9147,10 @@
                 {
                     "name": "HalfChem",
                     "homepage": "https://www.drupal.org/user/1608382"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
                 },
                 {
                     "name": "jhedstrom",

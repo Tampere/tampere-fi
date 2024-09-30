@@ -1,0 +1,17 @@
+uuid: b934fd15-aa62-4d24-b707-b74369f30b7e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.topic
+    - node.type.comprehensive_plan
+  module:
+    - gnode
+    - node
+id: group_content_type_2f1a11bd72b30
+group_type: topic
+content_plugin: 'group_node:comprehensive_plan'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

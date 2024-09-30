@@ -1,0 +1,14 @@
+uuid: 0b1bc03d-51e7-4375-979f-574935e3fbc6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.comprehensive_plan
+id: node_type_comprehensive_plan
+entity_type_id: node_type
+entity_id: comprehensive_plan
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

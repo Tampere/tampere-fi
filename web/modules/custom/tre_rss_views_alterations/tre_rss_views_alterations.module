@@ -6,7 +6,55 @@
  */
 
 use Drupal\Core\Site\Settings;
+use Drupal\image\Plugin\Field\FieldType\ImageItem;
+use Drupal\media\MediaInterface;
+use Drupal\views\Plugin\views\cache\CachePluginBase;
 use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_post_render().
+ */
+function tre_rss_views_alterations_views_post_render(ViewExecutable $view, array &$output, CachePluginBase $cache) {
+  if ($view->id() !== 'rss_feeds') {
+    return;
+  }
+
+  /** @var \Drupal\Core\Render\RendererInterface $renderer_service */
+  $renderer_service = \Drupal::service('renderer');
+
+  foreach ($output['#rows'] as $key => $row) {
+    /** @var \Drupal\views\ResultRow $result_row */
+    $result_row = $view->result[$key];
+
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $result_row->_entity;
+
+    $media = $node->get('field_main_image')->referencedEntities();
+    $media_entity = reset($media);
+    if (!($media_entity instanceof MediaInterface)) {
+      continue;
+    }
+
+    $renderer_service->addCacheableDependency($output, $media_entity);
+
+    if (!$media_entity->hasField('thumbnail')
+    || $media_entity->get('thumbnail')->isEmpty()) {
+      continue;
+    }
+    $thumbnail_first_value = $media_entity->get('thumbnail')->first();
+    if (!($thumbnail_first_value instanceof ImageItem)) {
+      continue;
+    }
+    $alt = $thumbnail_first_value->get('alt')->getString();
+
+    foreach ($row['#row']->elements as $element_key => $element) {
+      if ($element['key'] !== 'enclosure') {
+        continue;
+      }
+      $output['#rows'][$key]['#row']->elements[$element_key]['attributes']['alt'] = $alt;
+    }
+  }
+}
 
 /**
  * Implements hook_alter_views_pre_build().
@@ -141,6 +189,16 @@ function tre_rss_views_alterations_views_pre_view(ViewExecutable $view) {
           'name' => [
             'Ympäristö',
             'Ympäristövalvonta ja -terveydenhuolto',
+          ],
+        ]);
+        break;
+
+      case 'kaupunkiorganisaatio':
+        $filter_terms = $term_storage->loadByProperties([
+          'vid' => 'topics',
+          'name' => [
+            'Organisaatio',
+            'Talous',
           ],
         ]);
         break;

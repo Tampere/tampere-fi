@@ -1,0 +1,4 @@
+content:
+  field_phase_upcoming:
+    settings:
+      format_custom_true: 'Coming up'

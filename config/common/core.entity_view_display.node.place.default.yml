@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.place.field_display_location_on_map
     - field.field.node.place.field_epsg_3067_easting
     - field.field.node.place.field_epsg_3067_northing
+    - field.field.node.place.field_epsg_3067_point_strings
     - field.field.node.place.field_geographical_areas
     - field.field.node.place.field_help_text
     - field.field.node.place.field_keywords
@@ -48,11 +49,6 @@ third_party_settings:
       last_updated:
         - node_changed_date
     fields:
-      node_changed_date:
-        plugin_id: node_changed_date
-        weight: 6
-        label: hidden
-        formatter: ds_post_date_date_only
       node_title:
         plugin_id: node_title
         weight: 1
@@ -67,6 +63,11 @@ third_party_settings:
           id: reset
           settings:
             lb: ''
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 6
+        label: hidden
+        formatter: ds_post_date_date_only
 id: node.place.default
 targetEntityType: node
 bundle: place
@@ -86,13 +87,6 @@ content:
     third_party_settings: {  }
     weight: 2
     region: main_content
-  field_listing_search_content:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_location:
     type: geofield_latlon
     label: above
@@ -140,9 +134,11 @@ hidden:
   field_display_location_on_map: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_listing_search_content: true
   field_search_keywords: true
   field_topics: true
   langcode: true

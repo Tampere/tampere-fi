@@ -1,0 +1,11 @@
+uuid: 86190583-fd88-4a28-a7a3-f859fcd4361b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - message.template.news_item_to_media
+id: message.news_item_to_media
+target_entity_type_id: message
+target_bundle: news_item_to_media
+default_langcode: site_default
+language_alterable: false

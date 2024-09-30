@@ -1,0 +1,21 @@
+uuid: 5fa84c6a-757d-4f99-bbba-cd3983f71706
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_urban_planning_status
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+  module:
+    - options
+id: paragraph.urban_planning_listing_and_map.field_urban_planning_status
+field_name: field_urban_planning_status
+entity_type: paragraph
+bundle: urban_planning_listing_and_map
+label: 'Kaavan tilanne'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,4 @@
+label: 'Display phase on the page'
+settings:
+  on_label: 'Yes'
+  off_label: 'No'

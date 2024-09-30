@@ -1,0 +1,686 @@
+uuid: 81147fc3-31c2-4934-9bb4-d32d00054ae1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.comprehensive_plan.field_acceptance_phase
+    - field.field.node.comprehensive_plan.field_city_strategy
+    - field.field.node.comprehensive_plan.field_city_strategy_work_program
+    - field.field.node.comprehensive_plan.field_computed_status
+    - field.field.node.comprehensive_plan.field_computed_visibility
+    - field.field.node.comprehensive_plan.field_description
+    - field.field.node.comprehensive_plan.field_display_period
+    - field.field.node.comprehensive_plan.field_epsg_3067_point_strings
+    - field.field.node.comprehensive_plan.field_feedback_form
+    - field.field.node.comprehensive_plan.field_geographical_areas
+    - field.field.node.comprehensive_plan.field_keywords
+    - field.field.node.comprehensive_plan.field_legal_phase
+    - field.field.node.comprehensive_plan.field_listing_search_content
+    - field.field.node.comprehensive_plan.field_main_image
+    - field.field.node.comprehensive_plan.field_other_identifiers
+    - field.field.node.comprehensive_plan.field_paragraphs
+    - field.field.node.comprehensive_plan.field_partially_binding_phase
+    - field.field.node.comprehensive_plan.field_phase
+    - field.field.node.comprehensive_plan.field_plan_number
+    - field.field.node.comprehensive_plan.field_preparation_phase
+    - field.field.node.comprehensive_plan.field_processing_time
+    - field.field.node.comprehensive_plan.field_proposal_phase
+    - field.field.node.comprehensive_plan.field_record_number
+    - field.field.node.comprehensive_plan.field_revised_proposal
+    - field.field.node.comprehensive_plan.field_search_keywords
+    - field.field.node.comprehensive_plan.field_start_phase
+    - field.field.node.comprehensive_plan.field_start_preparation_phase
+    - field.field.node.comprehensive_plan.field_topics
+    - field.field.node.comprehensive_plan.field_work_programme
+    - node.type.comprehensive_plan
+    - workflows.workflow.scheduled_transitions
+  module:
+    - content_moderation
+    - field_group
+    - media_library
+    - paragraphs_asymmetric_translation_widgets
+    - path
+    - publication_date
+    - webform
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_general
+        - group_taxonomies_tab
+        - group_urb_planning_related_info
+      label: Välilehdet
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_general:
+      children:
+        - field_main_image
+        - title
+        - field_description
+        - langcode
+        - translation
+        - field_paragraphs
+        - field_feedback_form
+      label: Yleinen
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_taxonomies_tab:
+      children:
+        - field_topics
+        - field_keywords
+        - field_geographical_areas
+        - group_keywords_field_group
+        - field_other_identifiers
+      label: Luokittelut
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_keywords_field_group:
+      children:
+        - field_search_keywords
+      label: Avainsanat
+      region: content
+      parent_name: group_taxonomies_tab
+      weight: 7
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_urb_planning_related_info:
+      children:
+        - field_plan_number
+        - field_record_number
+        - group_phase
+        - group_city_strategy
+        - group_work_programme
+        - group_city_strategy_work_program
+        - group_start_phase
+        - group_preparation_phase
+        - group_start_preparation_phase
+        - group_proposal_phase
+        - group_validated_phase
+        - group_acceptance_phase
+        - group_partially_binding_phase
+        - group_legal_phase
+      label: 'Kaupunkisuunnittelukohteeseen liittyvät tiedot'
+      region: content
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_city_strategy:
+      children:
+        - field_city_strategy
+      label: Kaupunkistrategia
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 38
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_phase:
+      children:
+        - field_phase
+      label: Vaiheistus
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 37
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_work_programme:
+      children:
+        - field_work_programme
+      label: Työohjelma
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 39
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_city_strategy_work_program:
+      children:
+        - field_city_strategy_work_program
+      label: 'Kaupunkistrategia ja työohjelma'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 40
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_start_phase:
+      children:
+        - field_start_phase
+      label: Aloitusvaihe
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 41
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_preparation_phase:
+      children:
+        - field_preparation_phase
+      label: Valmisteluvaihe
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 42
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_start_preparation_phase:
+      children:
+        - field_start_preparation_phase
+      label: 'Aloitus- ja valmisteluvaihe'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 43
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_proposal_phase:
+      children:
+        - field_proposal_phase
+      label: Ehdotusvaihe
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 44
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_validated_phase:
+      children:
+        - field_revised_proposal
+      label: 'Tarkistettu ehdotus'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 45
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_acceptance_phase:
+      children:
+        - field_acceptance_phase
+      label: Hyväksyminen
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 46
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_partially_binding_phase:
+      children:
+        - field_partially_binding_phase
+      label: 'Osittain lainvoimainen'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 47
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_legal_phase:
+      children:
+        - field_legal_phase
+      label: Lainvoimainen
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 48
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+id: node.comprehensive_plan.default
+targetEntityType: node
+bundle: comprehensive_plan
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_acceptance_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 4
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_city_strategy:
+    type: paragraphs_classic_asymmetric
+    weight: 14
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_city_strategy_work_program:
+    type: paragraphs_classic_asymmetric
+    weight: 19
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_description:
+    type: string_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_feedback_form:
+    type: webform_entity_reference_select
+    weight: 24
+    region: content
+    settings:
+      default_data: true
+      webforms: {  }
+    third_party_settings: {  }
+  field_geographical_areas:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_keywords:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_legal_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 5
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_main_image:
+    type: media_library_widget
+    weight: 15
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_other_identifiers:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_paragraphs:
+    type: paragraphs_classic_asymmetric
+    weight: 22
+    region: content
+    settings:
+      title: Paragraafi
+      title_plural: Paragraafit
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+      limited_field_widgets:
+        limit_values: '0'
+  field_partially_binding_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 18
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_phase:
+    type: options_buttons
+    weight: 37
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_plan_number:
+    type: entity_reference_autocomplete
+    weight: 35
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_preparation_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 14
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_proposal_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 6
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_record_number:
+    type: entity_reference_autocomplete
+    weight: 36
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_revised_proposal:
+    type: paragraphs_classic_asymmetric
+    weight: 17
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_search_keywords:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_start_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 16
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_start_preparation_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 15
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_topics:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_work_programme:
+    type: paragraphs_classic_asymmetric
+    weight: 20
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 18
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  published_at:
+    type: publication_date_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 16
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  field_computed_status: true
+  field_computed_visibility: true
+  field_display_period: true
+  field_epsg_3067_point_strings: true
+  field_listing_search_content: true
+  field_processing_time: true

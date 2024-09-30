@@ -1,0 +1,23 @@
+uuid: 0da32300-8e04-4497-921c-c68578e245b9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_epsg_3067_northing
+    - taxonomy.vocabulary.geographical_areas
+id: taxonomy_term.geographical_areas.field_epsg_3067_northing
+field_name: field_epsg_3067_northing
+entity_type: taxonomy_term
+bundle: geographical_areas
+label: Pohjoisuus
+description: 'ETRS-TM35FIN-järjestelmän (EPSG:3067) mukainen pohjoisuus metreinä.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: 'N'
+field_type: decimal

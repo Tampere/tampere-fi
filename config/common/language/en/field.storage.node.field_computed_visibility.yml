@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Not on display now'
+    -
+      label: 'On display now'

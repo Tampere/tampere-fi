@@ -1,0 +1,21 @@
+uuid: 8b808160-560c-4d53-80b9-a4b3f5757bc6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_status
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - options
+id: paragraph.process_accordions_extended.field_status
+field_name: field_status
+entity_type: paragraph
+bundle: process_accordions_extended
+label: Tilanne
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,29 @@
+uuid: 65c7262e-1bf9-4d24-93e1-ec45eac327bf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_identifiers
+    - node.type.comprehensive_plan
+    - taxonomy.vocabulary.other_identifiers
+id: node.comprehensive_plan.field_other_identifiers
+field_name: field_other_identifiers
+entity_type: node
+bundle: comprehensive_plan
+label: 'Muut tunnisteet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      other_identifiers: other_identifiers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

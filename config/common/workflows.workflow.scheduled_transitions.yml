@@ -7,6 +7,7 @@ dependencies:
     - node.type.blog_article
     - node.type.city_planning_and_constructions
     - node.type.collection_page
+    - node.type.comprehensive_plan
     - node.type.front_page
     - node.type.news_item
     - node.type.notice
@@ -81,6 +82,7 @@ type_settings:
       - blog_article
       - city_planning_and_constructions
       - collection_page
+      - comprehensive_plan
       - front_page
       - news_item
       - notice

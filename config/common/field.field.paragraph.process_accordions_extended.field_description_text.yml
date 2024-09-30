@@ -1,0 +1,19 @@
+uuid: 7759591f-36e6-4f1c-a75c-151bba8d23f6
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description_text
+    - paragraphs.paragraphs_type.process_accordions_extended
+id: paragraph.process_accordions_extended.field_description_text
+field_name: field_description_text
+entity_type: paragraph
+bundle: process_accordions_extended
+label: '(computed) Kuvaus'
+description: 'Only used programmatically, so hidden in the edit form and only visible in the display, populated in preprocess.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: Approved
+    -
+      label: 'Partially legally binding'
+    -
+      label: 'Legally binding'

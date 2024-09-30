@@ -1,0 +1,21 @@
+uuid: deebeef6-ade6-45fc-aca1-abfd8a792aab
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_phase_display
+    - paragraphs.paragraphs_type.process_accordions_extended
+id: paragraph.process_accordions_extended.field_phase_display
+field_name: field_phase_display
+entity_type: paragraph
+bundle: process_accordions_extended
+label: 'Näytä vaihe sivulla'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Kyllä
+  off_label: Ei
+field_type: boolean

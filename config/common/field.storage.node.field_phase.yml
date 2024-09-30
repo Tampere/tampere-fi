@@ -1,0 +1,58 @@
+uuid: c956bed6-0754-45ed-8718-ffbe70f6f883
+langcode: fi
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_phase
+field_name: field_phase
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: city_strategy
+      label: Kaupunkistrategia
+    -
+      value: work_programme
+      label: Työohjelma
+    -
+      value: city_strategy_and_work_programme
+      label: 'Kaupunkistrategia ja työohjelma'
+    -
+      value: start_phase
+      label: Aloitusvaihe
+    -
+      value: ready_phase
+      label: Valmisteluvaihe
+    -
+      value: start_and_end_phase
+      label: 'Aloitus- ja valmisteluvaihe'
+    -
+      value: proposal_phase
+      label: Ehdotusvaihe
+    -
+      value: revised_proposal
+      label: 'Tarkistettu ehdotus'
+    -
+      value: acceptance
+      label: Hyväksyminen
+    -
+      value: partially_binding
+      label: 'Osittain lainvoimainen'
+    -
+      value: legal
+      label: Lainvoimainen
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,11 @@
+uuid: 2e63fdff-75a1-4ace-89fe-7b509fa09044
+langcode: fi
+status: true
+dependencies:
+  config:
+    - message.template.delete_user_message
+id: message.delete_user_message
+target_entity_type_id: message
+target_bundle: delete_user_message
+default_langcode: site_default
+language_alterable: false

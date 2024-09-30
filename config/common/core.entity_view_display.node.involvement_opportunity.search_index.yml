@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.involvement_opportunity.field_end_time
     - field.field.node.involvement_opportunity.field_epsg_3067_easting
     - field.field.node.involvement_opportunity.field_epsg_3067_northing
+    - field.field.node.involvement_opportunity.field_epsg_3067_point_strings
     - field.field.node.involvement_opportunity.field_geographical_areas
     - field.field.node.involvement_opportunity.field_help_text
     - field.field.node.involvement_opportunity.field_keywords
@@ -209,6 +210,7 @@ hidden:
   field_end_time: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
   field_help_text: true
   field_location: true
   field_participate_end_time: true

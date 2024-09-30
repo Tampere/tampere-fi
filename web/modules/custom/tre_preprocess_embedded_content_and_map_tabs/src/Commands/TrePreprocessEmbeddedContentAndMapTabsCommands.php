@@ -7,7 +7,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drush\Commands\DrushCommands;
 
 /**
- * Drush commandfile for the tre_preprocess_embedded_content_and_map_tabs module.
+ * Drush commands for the tre_preprocess_embedded_content_and_map_tabs module.
  */
 class TrePreprocessEmbeddedContentAndMapTabsCommands extends DrushCommands {
 
@@ -42,6 +42,7 @@ class TrePreprocessEmbeddedContentAndMapTabsCommands extends DrushCommands {
       'place_of_business',
       'city_planning_and_constructions',
       'zoning_information',
+      'comprehensive_plan',
     ];
     foreach ($content_types_has_listing_search_content_field as $content_type) {
       $nodes = $this->nodeStorage->loadByProperties([

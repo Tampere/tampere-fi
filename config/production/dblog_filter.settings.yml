@@ -19,4 +19,4 @@ syslog_severity_levels:
   info: 0
   debug: 0
 syslog_method: include
-syslog_log_values: "user|notice\r\npermission_watchdog|notice\r\nrole_watchdog|notice\r\nentity_log|info\r\ncontent|notice\r\nphp|error\r\ntre_ptv_import|warning,error\r\ntre_preprocess_migration|info,notice"
+syslog_log_values: "user|notice\r\npermission_watchdog|notice\r\nrole_watchdog|notice\r\nentity_log|info\r\ncontent|notice,info\r\nphp|error\r\ntre_ptv_import|warning,error\r\ntre_preprocess_migration|info,notice"

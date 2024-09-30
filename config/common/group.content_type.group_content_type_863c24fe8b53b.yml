@@ -1,0 +1,17 @@
+uuid: 1ad5ee04-f349-4a1f-9234-031e927c8595
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.minisite
+    - node.type.comprehensive_plan
+  module:
+    - gnode
+    - node
+id: group_content_type_863c24fe8b53b
+group_type: minisite
+content_plugin: 'group_node:comprehensive_plan'
+plugin_config:
+  group_cardinality: 1
+  entity_cardinality: 1
+  use_creation_wizard: false

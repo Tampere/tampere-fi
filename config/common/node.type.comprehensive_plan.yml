@@ -1,0 +1,17 @@
+uuid: f2c64a7a-1a83-4317-8924-650f7b671dd2
+langcode: fi
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Yleiskaava
+type: comprehensive_plan
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

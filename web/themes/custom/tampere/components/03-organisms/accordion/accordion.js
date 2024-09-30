@@ -169,22 +169,35 @@ function openAllAccordions(controlButton) {
 * Handles embedded accordion behaviour
 */
 function embeddedAccordion() {
-  const accordionTitle = document.querySelectorAll('.embedded-content-tab-accordion .accordion__title-wrapper');
-  const embededAccordion = document.getElementById('content-embedded-content-accordion');
-  const accordionButton = document.querySelectorAll('.embedded-content-tab-accordion .accordion__heading');
+  const accordionTitle = document.querySelectorAll('.view-urban-planning-embedded-content-tab .embedded-content-tab-accordion .accordion__title-wrapper');
+  const embededAccordion = document.querySelectorAll('.view-urban-planning-embedded-content-tab .embedded-content-tab-accordion .accordion__content');
+  const accordionButton = document.querySelectorAll('.view-urban-planning-embedded-content-tab .embedded-content-tab-accordion .accordion__heading');
   const mql = window.themeBreakpoints.Breakpoints[2].mediaQuery; // Medium breakpoint
 
   // Until md breakpoint or min width < 720p then activates mobile accordion else desktop accordion
   if (!window.matchMedia(mql).matches) {
-    accordionTitle[0].classList.remove('hidden');
-    accordionButton[0].classList.remove('is-active');
-    accordionButton[0].setAttribute('aria-expanded', 'false');
+    accordionTitle.forEach((title) => {
+      title.classList.remove('hidden');
+    });
+
+    accordionButton.forEach((button) => {
+      button.classList.remove('is-active');
+      button.setAttribute('aria-expanded', 'false');
+    });
   } else {
-    accordionTitle[0].classList.add('hidden');
-    embededAccordion.classList.add('active');
-    embededAccordion.setAttribute('aria-hidden', 'false');
-    accordionButton[0].classList.add('is-active');
-    accordionButton[0].setAttribute('aria-expanded', 'true');
+    accordionTitle.forEach((title) => {
+      title.classList.add('hidden');
+    });
+
+    accordionButton.forEach((button) => {
+      button.classList.add('is-active');
+      button.setAttribute('aria-expanded', 'true');
+    });
+
+    embededAccordion.forEach((accordion) => {
+      accordion.classList.add('active');
+      accordion.setAttribute('aria-hidden', 'false');
+    });
   }
 }
 

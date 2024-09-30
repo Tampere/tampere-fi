@@ -285,8 +285,6 @@
 
 @mixin summary {
   font-size: $font-20;
-  font-style: italic;
-  font-weight: $font-weight-semi-bold;
   max-width: var(--text-content-max-width);
 
   @include large {

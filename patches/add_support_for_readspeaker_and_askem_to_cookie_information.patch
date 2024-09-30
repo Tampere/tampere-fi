@@ -1,5 +1,5 @@
 diff --git a/js/iframes.js b/js/iframes.js
-index bcce008..08decc1 100644
+index bcce008..cf14916 100644
 --- a/js/iframes.js
 +++ b/js/iframes.js
 @@ -39,7 +39,7 @@
@@ -18,7 +18,7 @@ index bcce008..08decc1 100644
 +
 +      // Create a copy from ReadSpeaker buttons without the play link to prevent user from palying
 +      // and create a consent button if there is at least one embed iframe.
-+      $('iframe', context).each(function () {
++      $(once('cookieinformation-readspeaker', 'iframe', context)).each(function () {
 +        var iframe_is_type_of_embed_iframes = $(this).parent().hasClass('embed-id') || $(this).hasClass('media-oembed-content');
 +        if (iframe_is_type_of_embed_iframes) {
 +          var consent_given = CookieInformation.getConsentGivenFor('cookie_cat_functional');
@@ -57,7 +57,7 @@ index bcce008..08decc1 100644
 +
 +      // Hide Juicer Feed blocks if the necessary cookies are not accepted,
 +      // and add a consent message after each one.
-+      $('.juicer-feed', context).each(function () {
++      $(once('cookieinformation-juicer', '.juicer-feed', context)).each(function () {
 +        var consent_given = CookieInformation.getConsentGivenFor('cookie_cat_functional');
 +        if (!consent_given) {
 +          var display_style = consent_given ? 'none' : 'none';
@@ -79,7 +79,7 @@ index bcce008..08decc1 100644
 +
 +      // Hide Askem blocks if the necessary cookies are not accepted,
 +      // and add a consent message after each one.
-+      $('#block-react-and-share, #block-react-and-share-en', context).each(function () {
++      $(once('cookieinformation-askem', '#block-react-and-share, #block-react-and-share-en', context)).each(function () {
 +        var consent_given = CookieInformation.getConsentGivenFor('cookie_cat_statistic');
 +        if (!consent_given) {
 +          $(this).css('display', 'none');

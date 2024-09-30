@@ -1,0 +1,34 @@
+third_party_settings:
+  field_group:
+    group_tabs:
+      label: Tabs
+    group_general:
+      label: Common
+    group_taxonomies_tab:
+      label: Categorization
+    group_keywords_field_group:
+      label: 'Search keywords'
+    group_urb_planning_related_info:
+      label: 'Urban planning related information'
+    group_city_strategy:
+      label: 'City Strategy'
+    group_work_programme:
+      label: 'Work programme'
+    group_city_strategy_work_program:
+      label: 'City Strategy and work programme'
+    group_start_phase:
+      label: 'Initial phase'
+    group_preparation_phase:
+      label: 'Preparation phase'
+    group_start_preparation_phase:
+      label: 'Initial and preparation phase'
+    group_proposal_phase:
+      label: 'Proposal phase'
+    group_validated_phase:
+      label: 'Validated proposal'
+    group_acceptance_phase:
+      label: Approval
+    group_partially_binding_phase:
+      label: 'Partially legally binding'
+    group_legal_phase:
+      label: 'Legally binding'

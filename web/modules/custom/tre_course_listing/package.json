@@ -24,7 +24,7 @@
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6",
     "uuid": "^9.0.0",
-    "webpack": "^5.75.0",
+    "webpack": "^5.94.0",
     "webpack-cli": "^5.0.0"
   }
 }

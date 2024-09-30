@@ -1,0 +1,21 @@
+uuid: e1b130db-4891-4f0f-9f5c-c3d45ea0b893
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tabs_displayed_ct
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+  module:
+    - options
+id: paragraph.urban_planning_listing_and_map.field_tabs_displayed_ct
+field_name: field_tabs_displayed_ct
+entity_type: paragraph
+bundle: urban_planning_listing_and_map
+label: 'Näytettävät sisältötyypit'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

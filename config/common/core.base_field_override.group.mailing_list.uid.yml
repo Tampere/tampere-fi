@@ -1,0 +1,20 @@
+uuid: a46958ea-be77-437c-ab43-4f8d6db21f06
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+id: group.mailing_list.uid
+field_name: uid
+entity_type: group
+bundle: mailing_list
+label: 'Group creator'
+description: 'The username of the group creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\Group::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

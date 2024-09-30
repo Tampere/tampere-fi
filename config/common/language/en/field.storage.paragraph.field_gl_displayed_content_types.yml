@@ -3,7 +3,9 @@ settings:
     -
       label: 'Front page'
     -
-      label: 'Zoning information'
+      label: 'Local detailed plan'
+    -
+      label: 'Comprehensive plan'
     -
       label: 'City planning and construction project'
     -

@@ -86,7 +86,7 @@ $inline-menu-item-margin-right: $space-m;
 
   &--main-secondary {
     #{$base_class}__item {
-      justify-content: center;
+      justify-content: left;
     }
 
     #{$base-class}__link {
@@ -94,7 +94,7 @@ $inline-menu-item-margin-right: $space-m;
 
       @include large-down {
         margin-right: calc($icon-menu-item--small + $space-m) * (-1);
-        padding: $space-xs calc($icon-menu-item--small + $space-m) $space-xs $space-m;
+        padding: $space-xs calc($icon-menu-item--small + $space-m) $space-xs $space-xs;
       }
 
       @include large {

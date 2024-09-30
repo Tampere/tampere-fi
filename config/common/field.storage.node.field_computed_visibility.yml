@@ -1,0 +1,31 @@
+uuid: 58d2c537-516d-4186-b4c2-b8fe52517475
+langcode: fi
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - options
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_computed_visibility
+field_name: field_computed_visibility
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: not_visible
+      label: 'Ei nähtävillä nyt'
+    -
+      value: visible
+      label: 'Nähtävillä nyt'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

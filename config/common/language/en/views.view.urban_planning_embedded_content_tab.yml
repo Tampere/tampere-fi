@@ -1,0 +1,198 @@
+display:
+  default:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_status:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_status_visibility:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+  listing_without_visibility:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'
+  listing_without_status_type:
+    display_options:
+      filters:
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_status_type_visibility:
+    display_options:
+      filters:
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+  listing_without_type:
+    display_options:
+      filters:
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_type_visibility:
+    display_options:
+      filters:
+        field_geographical_areas_target_id:
+          expose:
+            label: 'Filter by area'
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'
+  listing_without_area:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_area_status:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_area_status_type:
+    display_options:
+      filters:
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_area_status_visibility:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+  listing_without_area_visibility:
+    display_options:
+      filters:
+        type:
+          group_info:
+            label: 'Filter by type'
+            group_items:
+              1:
+                title: 'Local detailed plan'
+              2:
+                title: 'Comprehensive plan'
+              3:
+                title: 'Other urban planning and building project'
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'
+  listing_without_area_type:
+    display_options:
+      filters:
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'
+        field_computed_visibility_value:
+          expose:
+            label: 'Filter by if on display'
+  listing_without_area_type_visibility:
+    display_options:
+      filters:
+        field_computed_status_value:
+          expose:
+            label: 'Filter by status'

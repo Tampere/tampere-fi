@@ -1,0 +1,24 @@
+uuid: 4ace375f-72c8-4200-b7ad-59334c1ad664
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fixed_phase_help_text
+    - node.type.zoning_information
+  module:
+    - markup
+id: node.zoning_information.field_fixed_phase_help_text
+field_name: field_fixed_phase_help_text
+entity_type: node
+bundle: zoning_information
+label: 'Fixed phase help text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: '<h3>Vaiheistushaitarin sisällöt</h3><p>Jos vaiheeseen ei lisätä sisältöä mutta se valitaan näytettäväksi sivulla, se näyttää oletussisällön "Vaihe tulossa".</p>'
+    format: basic_html
+field_type: markup

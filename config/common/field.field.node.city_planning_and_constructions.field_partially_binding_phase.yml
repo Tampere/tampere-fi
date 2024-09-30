@@ -1,0 +1,295 @@
+uuid: a8fb9e44-b696-4e07-81f9-5e5fcde74523
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_partially_binding_phase
+    - node.type.city_planning_and_constructions
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - entity_reference_revisions
+id: node.city_planning_and_constructions.field_partially_binding_phase
+field_name: field_partially_binding_phase
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Osittain lainvoimainen'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      process_accordions_extended: process_accordions_extended
+    negate: 0
+    target_bundles_drag_drop:
+      accordion_item:
+        weight: 89
+        enabled: false
+      accordion_text_content:
+        weight: 90
+        enabled: false
+      accordions:
+        weight: 88
+        enabled: false
+      anchor_link:
+        weight: 91
+        enabled: false
+      anchor_list:
+        weight: 92
+        enabled: false
+      attachment:
+        weight: 93
+        enabled: false
+      automatic_anchor_list:
+        weight: 94
+        enabled: false
+      automatic_phase_accordion:
+        weight: 97
+        enabled: false
+      back_to_top_link:
+        weight: 95
+        enabled: false
+      balanced_content_liftup:
+        weight: 96
+        enabled: false
+      city_construction_project_card:
+        weight: 97
+        enabled: false
+      city_construction_project_cards:
+        weight: 98
+        enabled: false
+      colorful_content_liftup:
+        weight: 99
+        enabled: false
+      contact_information_liftups:
+        weight: 100
+        enabled: false
+      contact_information_list:
+        weight: 101
+        enabled: false
+      content_liftup:
+        weight: 102
+        enabled: false
+      course_listing:
+        weight: 103
+        enabled: false
+      course_listing_sports:
+        weight: 104
+        enabled: false
+      current_liftup:
+        weight: 105
+        enabled: false
+      current_listing:
+        weight: 106
+        enabled: false
+      downloadable_material:
+        weight: 107
+        enabled: false
+      embedded_content_and_map_tabs:
+        weight: 108
+        enabled: false
+      embederator_embed:
+        weight: 109
+        enabled: false
+      event_and_hobby_listing:
+        weight: 111
+        enabled: false
+      eventz_today_listing:
+        weight: 110
+        enabled: false
+      external_link:
+        weight: 112
+        enabled: false
+      external_link_with_link_text:
+        weight: 113
+        enabled: false
+      feedback_section:
+        weight: 114
+        enabled: false
+      generic_listing:
+        weight: 115
+        enabled: false
+      grouped_content_liftup:
+        weight: 116
+        enabled: false
+      highlighted_content_liftup_w_img:
+        weight: 117
+        enabled: false
+      highlighted_link_list:
+        weight: 119
+        enabled: false
+      highlighted_links_with_feedback:
+        weight: 118
+        enabled: false
+      icon_and_text_link:
+        weight: 120
+        enabled: false
+      image:
+        weight: 121
+        enabled: false
+      image_gallery:
+        weight: 122
+        enabled: false
+      image_gallery_item:
+        weight: 123
+        enabled: false
+      infograph:
+        weight: 124
+        enabled: false
+      infographs:
+        weight: 125
+        enabled: false
+      internal_link:
+        weight: 126
+        enabled: false
+      internal_link_with_link_text:
+        weight: 127
+        enabled: false
+      involvement_opportunity_card:
+        weight: 128
+        enabled: false
+      involvement_opportunity_cards:
+        weight: 129
+        enabled: false
+      link_list:
+        weight: 130
+        enabled: false
+      list_of_attachments:
+        weight: 131
+        enabled: false
+      login_link:
+        weight: 132
+        enabled: false
+      login_link_with_text:
+        weight: 133
+        enabled: false
+      logo:
+        weight: 134
+        enabled: false
+      logo_wall:
+        weight: 135
+        enabled: false
+      mailing_list_information:
+        weight: 136
+        enabled: false
+      map_embed:
+        weight: 137
+        enabled: false
+      material_download_list:
+        weight: 138
+        enabled: false
+      metadata_attachment_list:
+        weight: 139
+        enabled: false
+      mosaic_liftup:
+        weight: 140
+        enabled: false
+      notice:
+        weight: 141
+        enabled: false
+      person_liftup:
+        weight: 143
+        enabled: false
+      person_liftups:
+        weight: 144
+        enabled: false
+      persons_contact_information_list:
+        weight: 142
+        enabled: false
+      picture_mosaic:
+        weight: 145
+        enabled: false
+      place_liftup:
+        weight: 146
+        enabled: false
+      place_of_business_liftup:
+        weight: 147
+        enabled: false
+      portfolio_content_listing:
+        weight: 148
+        enabled: false
+      positioned_image:
+        weight: 149
+        enabled: false
+      process_accordion_item:
+        weight: 152
+        enabled: false
+      process_accordions:
+        weight: 150
+        enabled: false
+      process_accordions_extended:
+        weight: 151
+        enabled: true
+      project_and_organization_cards:
+        weight: 153
+        enabled: false
+      project_or_organization_card:
+        weight: 154
+        enabled: false
+      ptv_service_liftup:
+        weight: 155
+        enabled: false
+      rss_feed:
+        weight: 156
+        enabled: false
+      separator:
+        weight: 157
+        enabled: false
+      service_highlight:
+        weight: 158
+        enabled: false
+      single_colorful_content_liftup:
+        weight: 159
+        enabled: false
+      social_media_feed_embed:
+        weight: 160
+        enabled: false
+      social_media_link:
+        weight: 161
+        enabled: false
+      social_media_link_list:
+        weight: 162
+        enabled: false
+      social_media_link_list_item:
+        weight: 163
+        enabled: false
+      table:
+        weight: 164
+        enabled: false
+      table_with_row_and_col_headers:
+        weight: 165
+        enabled: false
+      table_with_row_headers:
+        weight: 166
+        enabled: false
+      text:
+        weight: 167
+        enabled: false
+      text_and_images:
+        weight: 168
+        enabled: false
+      text_with_bgcolor:
+        weight: 169
+        enabled: false
+      two_column_liftup:
+        weight: 170
+        enabled: false
+      urban_planning_listing_and_map:
+        weight: 174
+        enabled: false
+      video_embed:
+        weight: 171
+        enabled: false
+      webform:
+        weight: 172
+        enabled: false
+      zoning_project_card:
+        weight: 173
+        enabled: false
+      zoning_project_cards:
+        weight: 174
+        enabled: false
+field_type: entity_reference_revisions

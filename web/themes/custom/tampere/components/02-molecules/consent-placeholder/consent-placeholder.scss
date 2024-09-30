@@ -1,0 +1,20 @@
+.consent-placeholder {
+  padding: $space-l-plus $gutter-medium;
+  background: clr(error);
+
+  &__title {
+    margin-top: unset;
+  }
+
+  &__text {
+    margin-top: unset;
+    margin-bottom: $gutter-medium;
+  }
+
+  &__button {
+    @include button-default;
+    @include button-dark;
+
+    border-color: transparent;
+  }
+}

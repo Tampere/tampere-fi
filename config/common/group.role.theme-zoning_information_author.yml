@@ -13,10 +13,15 @@ global_role: null
 group_type: theme
 permissions:
   - 'access group_node overview'
+  - 'create group_node:comprehensive_plan entity'
   - 'create group_node:zoning_information entity'
+  - 'delete any group_node:comprehensive_plan entity'
   - 'delete any group_node:zoning_information entity'
+  - 'update any group_node:comprehensive_plan entity'
   - 'update any group_node:zoning_information entity'
+  - 'view group_node:comprehensive_plan entity'
   - 'view group_node:portfolio entity'
   - 'view group_node:portfolio_listing entity'
   - 'view group_node:zoning_information entity'
+  - 'view unpublished group_node:comprehensive_plan entity'
   - 'view unpublished group_node:zoning_information entity'

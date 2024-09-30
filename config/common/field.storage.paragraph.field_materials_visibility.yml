@@ -1,0 +1,24 @@
+uuid: 465faf06-d2e7-4d41-9ac1-0e1f6f0dbd9c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - datetime_range
+    - field_permissions
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: paragraph.field_materials_visibility
+field_name: field_materials_visibility
+entity_type: paragraph
+type: daterange
+settings:
+  datetime_type: date
+module: datetime_range
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

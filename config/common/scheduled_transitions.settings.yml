@@ -22,10 +22,10 @@ bundles:
     bundle: collection_page
   -
     entity_type: node
-    bundle: front_page
+    bundle: comprehensive_plan
   -
     entity_type: node
-    bundle: involvement_opportunity
+    bundle: front_page
   -
     entity_type: node
     bundle: news_item
@@ -53,11 +53,14 @@ bundles:
   -
     entity_type: node
     bundle: zoning_information
+  -
+    entity_type: node
+    bundle: involvement_opportunity
 message_transition_latest: 'Scheduled transition: transitioning latest revision from [scheduled-transitions:from-state] to [scheduled-transitions:to-state]'
 message_transition_historical: 'Scheduled transition: copied revision #[scheduled-transitions:from-revision-id] and changed from [scheduled-transitions:from-state] to [scheduled-transitions:to-state]'
 message_transition_copy_latest_draft: 'Scheduled transition: reverted [scheduled-transitions:latest-state] revision #[scheduled-transitions:latest-revision-id] back to top'
 message_override: false
 retain_processed:
   enabled: false
-  duration: '2419200'
+  duration: 2419200
   link_template: revision

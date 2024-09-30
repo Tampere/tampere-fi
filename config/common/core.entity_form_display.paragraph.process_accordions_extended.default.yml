@@ -1,0 +1,145 @@
+uuid: c3497202-b030-49fb-9965-88ef788a9719
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.process_accordions_extended.field_accordion_content
+    - field.field.paragraph.process_accordions_extended.field_accordion_heading
+    - field.field.paragraph.process_accordions_extended.field_agency
+    - field.field.paragraph.process_accordions_extended.field_date
+    - field.field.paragraph.process_accordions_extended.field_description_text
+    - field.field.paragraph.process_accordions_extended.field_materials_visibility
+    - field.field.paragraph.process_accordions_extended.field_phase
+    - field.field.paragraph.process_accordions_extended.field_phase_display
+    - field.field.paragraph.process_accordions_extended.field_phase_upcoming
+    - field.field.paragraph.process_accordions_extended.field_process_phase_status
+    - field.field.paragraph.process_accordions_extended.field_status
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - datetime
+    - datetime_range
+    - field_group
+    - field_states_ui
+    - limited_field_widgets
+    - maxlength
+    - paragraphs_asymmetric_translation_widgets
+third_party_settings:
+  field_group:
+    group_phase_information:
+      children:
+        - field_status
+        - field_agency
+        - field_date
+      label: 'Vaiheen tiedot'
+      region: content
+      parent_name: ''
+      weight: 5
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+id: paragraph.process_accordions_extended.default
+targetEntityType: paragraph
+bundle: process_accordions_extended
+mode: default
+content:
+  field_accordion_content:
+    type: paragraphs_classic_asymmetric
+    weight: 3
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_agency:
+    type: options_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_date:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_materials_visibility:
+    type: daterange_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '2'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+  field_phase:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Vaiheen nimi jos se ei ole yllä lukeva oletusvaihe'
+    third_party_settings:
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+  field_phase_display:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_phase_upcoming:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_status:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  translation:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_accordion_heading: true
+  field_description_text: true
+  field_process_phase_status: true
+  status: true

@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.place_of_business.field_alternative_name
     - field.field.node.place_of_business.field_body_md
     - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_epsg_3067_point_strings
     - field.field.node.place_of_business.field_exception_hours
     - field.field.node.place_of_business.field_geographical_areas
     - field.field.node.place_of_business.field_hr_organizational_unit
@@ -271,11 +272,11 @@ content:
           glue: ','
           weight: 1
           display: true
-        locality:
+        postal_code:
           glue: ','
           weight: 2
           display: true
-        postal_code:
+        locality:
           glue: ''
           weight: 3
           display: true
@@ -605,6 +606,7 @@ hidden:
   entitygroupfield: true
   field_accessibility_and_services: true
   field_accessibility_info_title: true
+  field_epsg_3067_point_strings: true
   field_exception_hours: true
   field_keywords: true
   field_life_situations: true

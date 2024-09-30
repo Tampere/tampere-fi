@@ -4,7 +4,6 @@ namespace Drupal\tre_preprocess_utility_functions\Utils;
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\ContentEntityInterface;
-use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\node\NodeInterface;
@@ -67,6 +66,29 @@ interface HelperFunctionsInterface {
    * The machine name for the field containing a location's longitude.
    */
   const LONGITUDE_FIELD_NAME = 'field_epsg_3067_easting';
+
+  /**
+   * The machine name for the field containing a node's all coordinate points.
+   */
+  const EPSG_COORDINATE_POINT_FIELD_NAME = 'field_epsg_3067_point_strings';
+
+  /**
+   * Turns a pair of coordinates into a unique pair per map.
+   *
+   * If a map contains two identical coordinate pairs, this method guarantees to
+   * return a unique coordinate pair for each.
+   *
+   * @param string $longitude
+   *   The longitude.
+   * @param string $latitude
+   *   The latitude.
+   * @param string $map_id
+   *   The ID for the map.
+   *
+   * @return string[]
+   *   The longitude-latitude pair.
+   */
+  public static function getUniqueCoordinates(string $longitude, string $latitude, string $map_id): array;
 
   /**
    * Returns the breadcrumbs for the given node as a render array.
@@ -180,7 +202,7 @@ interface HelperFunctionsInterface {
   /**
    * Extracts the title from an external link field.
    *
-   * @param \Drupal\Core\Field\FieldItemList $link_field
+   * @param \Drupal\Core\Field\FieldItemListInterface $link_field
    *   The link field whose title is to be extracted.
    *
    * @return string|null
@@ -188,7 +210,7 @@ interface HelperFunctionsInterface {
    *
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  public function getExternalLinkFieldTitle(FieldItemList $link_field);
+  public function getExternalLinkFieldTitle(FieldItemListInterface $link_field);
 
   /**
    * Extracts the URL and link title from an external link paragraph.

@@ -10,7 +10,21 @@ dependencies:
   module:
     - ds
     - entity_reference_revisions
-    - options
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_accordion_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: process
+    regions:
+      accordion_content:
+        - field_accordion_heading
+        - field_accordion_content
 id: paragraph.process_accordion_item.default
 targetEntityType: paragraph
 bundle: process_accordion_item
@@ -32,7 +46,7 @@ content:
             lb-col: false
             classes: {  }
     weight: 1
-    region: content
+    region: accordion_content
   field_accordion_heading:
     type: string
     label: hidden
@@ -40,13 +54,7 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
-    region: content
-  field_process_phase_status:
-    type: list_default
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
-    region: content
+    region: accordion_content
 hidden:
+  field_process_phase_status: true
   search_api_excerpt: true

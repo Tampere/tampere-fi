@@ -3,8 +3,13 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.geographical_areas.field_epsg_3067_easting
+    - field.field.taxonomy_term.geographical_areas.field_epsg_3067_northing
+    - field.field.taxonomy_term.geographical_areas.field_epsg_3067_point_strings
+    - field.field.taxonomy_term.geographical_areas.field_location
     - taxonomy.vocabulary.geographical_areas
   module:
+    - geofield
     - path
     - text
 id: taxonomy_term.geographical_areas.default
@@ -19,6 +24,13 @@ content:
     settings:
       rows: 5
       placeholder: ''
+    third_party_settings: {  }
+  field_location:
+    type: geofield_latlon
+    weight: 4
+    region: content
+    settings:
+      html5_geolocation: false
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -37,20 +49,23 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 4
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 7
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   translation:
-    weight: 3
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true

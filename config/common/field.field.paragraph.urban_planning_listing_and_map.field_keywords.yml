@@ -1,0 +1,29 @@
+uuid: bb21c05b-605e-4d98-8177-84cbf00446c4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_keywords
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+    - taxonomy.vocabulary.keywords
+id: paragraph.urban_planning_listing_and_map.field_keywords
+field_name: field_keywords
+entity_type: paragraph
+bundle: urban_planning_listing_and_map
+label: Ohjaukset
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      keywords: keywords
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,25 @@
+uuid: 0480df50-9104-4baf-bef6-6e51f10dbaa3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feedback_form
+    - node.type.comprehensive_plan
+  module:
+    - webform
+id: node.comprehensive_plan.field_feedback_form
+field_name: field_feedback_form
+entity_type: node
+bundle: comprehensive_plan
+label: Palautekaavake
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform

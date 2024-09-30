@@ -5,8 +5,38 @@
  * Contains hook implementations for tre_node_location_coordinate_conversion.
  */
 
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Field\EntityReferenceFieldItemListInterface;
 use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function tre_node_location_coordinate_conversion_taxonomy_term_presave(TermInterface $term) {
+  _tre_node_location_coordinate_conversion_convert_to_epsg_3067($term);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function tre_node_location_coordinate_conversion_taxonomy_term_update(TermInterface $term) {
+  if ($term->bundle() !== 'geographical_areas') {
+    return;
+  }
+
+  $parent_nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties([
+    'field_geographical_areas' => $term->id(),
+    'type' => 'comprehensive_plan',
+  ]);
+
+  // Update the the field_epsg_3067_point_strings field of all parent nodes when
+  // a geographical_areas term gets updated.
+  foreach ($parent_nodes as $parent_node) {
+    $parent_node->save();
+  }
+}
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
@@ -28,7 +58,48 @@ function tre_node_location_coordinate_conversion_node_presave(NodeInterface $nod
     return;
   }
 
+  // Set comprehensive_plan node location strings field based on the
+  // geographical areas. Note that place_of_business nodes are still completely
+  // handled by the ptv_service_locations and ptv_service_locations_en
+  // migrations.
+  if ($node->bundle() === 'comprehensive_plan') {
+    _tre_node_location_coordinate_conversion_set_point_strings_from_areas($node);
+  }
+
   _tre_node_location_coordinate_conversion_store_geo_area_term_by_epsg_3067_coordinates($node);
+}
+
+/**
+ * Sets the EPSG:3067 point strings value for a node based on area terms.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node whose area terms are to be used for values in the point strings
+ *   field.
+ */
+function _tre_node_location_coordinate_conversion_set_point_strings_from_areas(NodeInterface $node) {
+  if (
+    !$node->hasField('field_geographical_areas')
+    || !$node->hasField(HelperFunctionsInterface::EPSG_COORDINATE_POINT_FIELD_NAME)
+  ) {
+    return;
+  }
+
+  if (!($node->get('field_geographical_areas') instanceof EntityReferenceFieldItemListInterface)) {
+    return;
+  }
+
+  $points = [];
+  foreach ($node->get('field_geographical_areas')->referencedEntities() as $term) {
+    if (
+      !($term instanceof TermInterface)
+      || $term->bundle() !== 'geographical_areas'
+    ) {
+      continue;
+    }
+    $points = array_merge($points, $term->get(HelperFunctionsInterface::EPSG_COORDINATE_POINT_FIELD_NAME)->getValue());
+  }
+
+  $node->set(HelperFunctionsInterface::EPSG_COORDINATE_POINT_FIELD_NAME, $points);
 }
 
 /**
@@ -84,37 +155,48 @@ function _tre_node_location_coordinate_conversion_store_geo_area_term_by_epsg_30
  * Helper function to convert location between coordinate fields.
  *
  * Converts location field coordinates in the targeted content types and stores
- * the resulting values in separate fields. If the node has a location field
+ * the resulting values in separate fields. If the entity has a location field
  * value, the latitude and longitude fields should not be empty.
  *
- * @param \Drupal\node\NodeInterface $node
- *   The node to handle.
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The entity to handle.
+ * @param bool $force_update
+ *   Whether to force the update regardless of whether the location field value
+ *   has changed.
  */
-function _tre_node_location_coordinate_conversion_convert_to_epsg_3067(NodeInterface $node) {
-  if (!$node->hasField('field_location') || !$node->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME) || !$node->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)) {
+function _tre_node_location_coordinate_conversion_convert_to_epsg_3067(ContentEntityInterface $entity, bool $force_update = FALSE) {
+  if (
+    !$entity->hasField('field_location')
+    || !$entity->hasField(HelperFunctionsInterface::LATITUDE_FIELD_NAME)
+    || !$entity->hasField(HelperFunctionsInterface::LONGITUDE_FIELD_NAME)
+    || !$entity->hasField(HelperFunctionsInterface::EPSG_COORDINATE_POINT_FIELD_NAME)
+  ) {
     return;
   }
 
-  if ($node->get('field_location')->isEmpty()) {
+  if ($entity->get('field_location')->isEmpty()) {
     // 'Map point' content type is the only content type where the longitude and
-    // latitude fields are visible on the node edit form. Content of this type
+    // latitude fields are visible on the entity edit form. Content of this type
     // is created both by automation and by content editors. Content created
     // by automation have empty 'Location' fields, but their coordinates should
     // never be emptied here.
-    if ($node->bundle() !== 'map_point') {
-      $node->set(HelperFunctionsInterface::LONGITUDE_FIELD_NAME, NULL);
-      $node->set(HelperFunctionsInterface::LATITUDE_FIELD_NAME, NULL);
+    if ($entity->bundle() !== 'map_point') {
+      $entity->set(HelperFunctionsInterface::LONGITUDE_FIELD_NAME, NULL);
+      $entity->set(HelperFunctionsInterface::LATITUDE_FIELD_NAME, NULL);
     }
 
     return;
   }
 
-  if (_tre_node_location_coordinate_conversion_geofield_coordinates_unchanged($node)) {
+  if (
+    !$force_update &&
+    _tre_node_location_coordinate_conversion_geofield_coordinates_unchanged($entity)
+  ) {
     return;
   }
 
   try {
-    $location_field_items = $node->get('field_location');
+    $location_field_items = $entity->get('field_location');
     /** @var \Drupal\geofield\Plugin\Field\FieldType\GeofieldItem $location_field_item */
     $location_field_item = $location_field_items->first();
     $geofield_longitude = $location_field_item->get('lon')->getValue();
@@ -123,7 +205,8 @@ function _tre_node_location_coordinate_conversion_convert_to_epsg_3067(NodeInter
     $coordinates = \Drupal::service('tre_preprocess_utility_functions.helper_functions')->convertCoordinates($geofield_longitude, $geofield_latitude);
   }
   catch (Exception $e) {
-    \Drupal::messenger()->addWarning(t('Coordinate conversion unsuccesful. Try resaving the node. If the issue persists, contact the administrator.'));
+    $entity_type = $entity->getEntityType()->id();
+    \Drupal::messenger()->addWarning(t('Coordinate conversion unsuccesful. Try resaving the @type entity. If the issue persists, contact the administrator.', ['@type' => $entity_type]));
     \Drupal::logger('tre_node_location_coordinate_conversion')->warning($e->getMessage());
     return;
   }
@@ -131,33 +214,34 @@ function _tre_node_location_coordinate_conversion_convert_to_epsg_3067(NodeInter
   $longitude = $coordinates[0];
   $latitude = $coordinates[1];
 
-  $node->set(HelperFunctionsInterface::LONGITUDE_FIELD_NAME, $longitude);
-  $node->set(HelperFunctionsInterface::LATITUDE_FIELD_NAME, $latitude);
+  $entity->set(HelperFunctionsInterface::LONGITUDE_FIELD_NAME, $longitude);
+  $entity->set(HelperFunctionsInterface::LATITUDE_FIELD_NAME, $latitude);
+  $entity->set(HelperFunctionsInterface::EPSG_COORDINATE_POINT_FIELD_NAME, sprintf("%s %s", $longitude, $latitude));
 }
 
 /**
- * Checks whether a node being updated has changes in its geolocation field.
+ * Checks whether a entity being updated has changes in its geolocation field.
  *
  * Uses the geoPHP library through the geofield module to consider the equality
  * of the two points.
  *
- * @param \Drupal\node\NodeInterface $node
- *   The node with coordinate fields to check.
+ * @param \Drupal\Core\Entity\ContentEntityInterface $entity
+ *   The entity with coordinate fields to check.
  *
  * @return bool
- *   TRUE if the coordinate fields in the node are unchanged from the original.
- *   FALSE otherwise.
+ *   TRUE if the coordinate fields in the entity are unchanged from the
+ *   original. FALSE otherwise.
  */
-function _tre_node_location_coordinate_conversion_geofield_coordinates_unchanged(NodeInterface $node): bool {
+function _tre_node_location_coordinate_conversion_geofield_coordinates_unchanged(ContentEntityInterface $entity): bool {
 
-  // On a new node, everything is changed.
-  if ($node->isNew()) {
+  // On a new entity, everything is changed.
+  if ($entity->isNew()) {
     return FALSE;
   }
 
   $geophp_service = \Drupal::service('geofield.geophp');
 
-  $location_field_items = $node->get('field_location');
+  $location_field_items = $entity->get('field_location');
   if (!$location_field_items->isEmpty()) {
     /** @var \Drupal\geofield\Plugin\Field\FieldType\GeofieldItem $location_field_item */
     $location_field_item = $location_field_items->first();
@@ -165,25 +249,25 @@ function _tre_node_location_coordinate_conversion_geofield_coordinates_unchanged
     $new_point = $geophp_service->load($new_value);
   }
 
-  // The $node->original does not exist when a node has been cloned and the
+  // The $entity->original does not exist when a entity has been cloned and the
   // clone is being saved.
-  if (!isset($node->original) || !($node->original instanceof NodeInterface)) {
-    // No change detected, because no 'original' node present.
+  if (!isset($entity->original) || !($entity->original instanceof ContentEntityInterface)) {
+    // No change detected, because no 'original' entity present.
     return TRUE;
   }
 
-  $original_node = $node->original;
+  $original_entity = $entity->original;
 
-  if ($location_field_items->isEmpty() && $original_node->get('field_location')->isEmpty()) {
+  if ($location_field_items->isEmpty() && $original_entity->get('field_location')->isEmpty()) {
     return TRUE;
   }
 
-  if (!$original_node->get('field_location')->isEmpty()) {
+  if (!$original_entity->get('field_location')->isEmpty()) {
     if (!isset($new_point)) {
       return FALSE;
     }
 
-    $original_location_field_items = $original_node->get('field_location');
+    $original_location_field_items = $original_entity->get('field_location');
     /** @var \Drupal\geofield\Plugin\Field\FieldType\GeofieldItem $original_location_field_item */
     $original_location_field_item = $original_location_field_items->first();
     $original_value = $original_location_field_item->get('value')->getString();

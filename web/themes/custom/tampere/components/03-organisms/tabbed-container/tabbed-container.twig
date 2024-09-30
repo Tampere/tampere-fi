@@ -37,9 +37,11 @@
       {% endif %}
       <ul {{ bem("tab-list", "", tabbed_container__base_class) }} role="tablist">
         {%- for tab in tabbed_container_tabs -%}
-          {%- if loop.last -%}
-            {% set tabbed_container__tab__extra_classes = [ "is-selected" ] %}
-          {%- endif -%}
+          {% set tabbed_container__tab__extra_classes = [] %}
+          {% set is_selected = tab.id == tabbed_default_tab_id or (not tabbed_default_tab_id and loop.last) %}
+          {% if is_selected %}
+            {% set tabbed_container__tab__extra_classes = ["is-selected"] %}
+          {% endif %}
           <li {{ bem("tab-list-item", "", tabbed_container__base_class) }} role="presentation">
             <a
               {{ bem("tab", "", tabbed_container__base_class, tabbed_container__tab__extra_classes) }}
@@ -47,7 +49,7 @@
               href="#tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
               id="tabbed-container-tab-{{ loop.index }}-{{ tabbed_container_identifier }}"
               aria-controls="tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
-              {% if loop.last %} aria-selected="true" {% else %} tabindex="-1" {% endif %}
+              {% if is_selected %} aria-selected="true" {% else %} tabindex="-1" {% endif %}
             >
               {{ tab.title }}
             </a>
@@ -58,12 +60,13 @@
 
     {% for tab in tabbed_container_tabs %}
       {% set tab_panel_class = "tabbed-container-tab-section-" ~ loop.index %}
+      {% set is_selected = tab.id == tabbed_default_tab_id or (not tabbed_default_tab_id and loop.last) %}
       <div
         {{ bem("tab-panel", "", tabbed_container__base_class, tab_panel_class) }}
         role="tabpanel"
         id="tabbed-container-tab-section-{{ loop.index }}-{{ tabbed_container_identifier }}"
         aria-labelledby="tabbed-container-tab-{{ loop.index }}-{{ tabbed_container_identifier }}"
-        {% if not loop.last %} hidden {% endif %}
+        {% if not is_selected %} hidden {% endif %}
       >
       {% if tab.use_search_panel %}
         {% embed "@organisms/search-panel/search-panel.twig" with {

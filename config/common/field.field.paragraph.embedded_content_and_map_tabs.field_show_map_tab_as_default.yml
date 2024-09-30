@@ -1,0 +1,23 @@
+uuid: 99dd6cfc-2653-4fc2-8a2f-99df6ac5b624
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_map_tab_as_default
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+id: paragraph.embedded_content_and_map_tabs.field_show_map_tab_as_default
+field_name: field_show_map_tab_as_default
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: 'Näytä Kartta-näkymä oletusarvoisena näkymänä'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

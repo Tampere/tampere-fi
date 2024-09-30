@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.place_of_business.field_alternative_name
     - field.field.node.place_of_business.field_body_md
     - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_epsg_3067_point_strings
     - field.field.node.place_of_business.field_exception_hours
     - field.field.node.place_of_business.field_geographical_areas
     - field.field.node.place_of_business.field_hr_organizational_unit
@@ -121,6 +122,16 @@ content:
     third_party_settings: {  }
     weight: 15
     region: content
+  field_epsg_3067_point_strings:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ';  '
+    weight: 26
+    region: content
   field_exception_hours:
     type: basic_string
     label: above
@@ -195,6 +206,7 @@ content:
       time_format: H
       compress: false
       grouped: false
+      show_empty: false
       show_closed: open
       closed_format: kiinni
       all_day_format: 'Auki koko päivän'
@@ -230,6 +242,7 @@ content:
       time_format: H
       compress: false
       grouped: false
+      show_empty: false
       show_closed: open
       closed_format: kiinni
       all_day_format: 'Auki koko päivän'
@@ -265,6 +278,7 @@ content:
       time_format: H
       compress: false
       grouped: false
+      show_empty: false
       show_closed: open
       closed_format: kiinni
       all_day_format: 'Auki koko päivän'

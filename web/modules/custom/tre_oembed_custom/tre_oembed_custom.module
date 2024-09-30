@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for TRE Oembed Customization module.
+ */
+
+/**
+ * Implements hook_oembed_providers_alter().
+ */
+function tre_oembed_custom_oembed_providers_alter(array &$providers) {
+  // For some reason, the YouTube provider in https://oembed.com/providers.json
+  // does not contain schemes for the YouTube URLs that contain '/live/'.
+  // However, they work just as fine as the other, already-accepted schemes when
+  // embedded via oEmbed, so adding them forcefully here.
+  // Sadly, the $providers array is not keyed by the provider_name at this point
+  // yet, so we need to find the correct provider to modify the old-fashioned
+  // way.
+  foreach ($providers as &$provider) {
+    if ($provider['provider_name'] === 'YouTube') {
+      $provider['endpoints'][0]['schemes'][] = 'https://youtube.com/live/*';
+      $provider['endpoints'][0]['schemes'][] = 'https://www.youtube.com/live/*';
+    }
+  }
+}

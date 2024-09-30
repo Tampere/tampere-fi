@@ -16,7 +16,10 @@ settings:
       label: Paikka
     -
       value: zoning_information
-      label: Kaava
+      label: Asemakaava
+    -
+      value: comprehensive_plan
+      label: Yleiskaava
     -
       value: city_planning_and_constructions
       label: 'Kaupunkisuunnittelu- ja rakentamishanke'

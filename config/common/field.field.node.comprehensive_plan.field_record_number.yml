@@ -1,0 +1,29 @@
+uuid: e78c0582-bb7a-4b3c-9635-3e057ec3bc36
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_record_number
+    - node.type.comprehensive_plan
+    - taxonomy.vocabulary.record_numbers
+id: node.comprehensive_plan.field_record_number
+field_name: field_record_number
+entity_type: node
+bundle: comprehensive_plan
+label: Diaarinumero
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      record_numbers: record_numbers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,18 @@
+uuid: 836c284b-564e-40cb-8e2f-ea7d99058645
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.mailing_list-group_membership
+id: group_content.mailing_list-group_membership.changed
+field_name: changed
+entity_type: group_content
+bundle: mailing_list-group_membership
+label: 'Changed on'
+description: 'The time that the group relationship was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -3,29 +3,45 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.node.city_planning_and_constructions.field_acceptance_phase
     - field.field.node.city_planning_and_constructions.field_additional_information
     - field.field.node.city_planning_and_constructions.field_address
+    - field.field.node.city_planning_and_constructions.field_city_strategy
+    - field.field.node.city_planning_and_constructions.field_city_strategy_work_program
+    - field.field.node.city_planning_and_constructions.field_computed_status
+    - field.field.node.city_planning_and_constructions.field_computed_visibility
     - field.field.node.city_planning_and_constructions.field_description
     - field.field.node.city_planning_and_constructions.field_display_location_on_map
     - field.field.node.city_planning_and_constructions.field_epsg_3067_easting
     - field.field.node.city_planning_and_constructions.field_epsg_3067_northing
+    - field.field.node.city_planning_and_constructions.field_epsg_3067_point_strings
+    - field.field.node.city_planning_and_constructions.field_fixed_phase_help_text
     - field.field.node.city_planning_and_constructions.field_geographical_areas
     - field.field.node.city_planning_and_constructions.field_help_text
     - field.field.node.city_planning_and_constructions.field_keywords
+    - field.field.node.city_planning_and_constructions.field_legal_phase
     - field.field.node.city_planning_and_constructions.field_listing_search_content
     - field.field.node.city_planning_and_constructions.field_location
     - field.field.node.city_planning_and_constructions.field_main_image
     - field.field.node.city_planning_and_constructions.field_paragraphs
+    - field.field.node.city_planning_and_constructions.field_partially_binding_phase
+    - field.field.node.city_planning_and_constructions.field_phase
+    - field.field.node.city_planning_and_constructions.field_plan_number
+    - field.field.node.city_planning_and_constructions.field_preparation_phase
+    - field.field.node.city_planning_and_constructions.field_proposal_phase
+    - field.field.node.city_planning_and_constructions.field_record_number
+    - field.field.node.city_planning_and_constructions.field_revised_proposal
     - field.field.node.city_planning_and_constructions.field_search_keywords
+    - field.field.node.city_planning_and_constructions.field_start_phase
+    - field.field.node.city_planning_and_constructions.field_start_preparation_phase
     - field.field.node.city_planning_and_constructions.field_topics
+    - field.field.node.city_planning_and_constructions.field_work_programme
     - node.type.city_planning_and_constructions
     - workflows.workflow.scheduled_transitions
   module:
     - allowed_formats
     - content_moderation
     - field_group
-    - field_states_ui
-    - limited_field_widgets
     - markup
     - maxlength
     - media_library
@@ -40,6 +56,7 @@ third_party_settings:
       children:
         - group_common
         - group_categorization
+        - group_urb_planning_related_info
       label: Välilehdet
       region: content
       parent_name: ''
@@ -99,12 +116,220 @@ third_party_settings:
       label: Avainsanat
       region: content
       parent_name: group_categorization
-      weight: 33
+      weight: 32
       format_type: fieldset
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
+        description: ''
+        required_fields: true
+    group_urb_planning_related_info:
+      children:
+        - field_plan_number
+        - field_record_number
+        - group_phase
+        - field_fixed_phase_help_text
+        - group_city_strategy
+        - group_work_programme
+        - group_city_strategy_work_program
+        - group_start_phase
+        - group_preparation_phase
+        - group_start_preparation_phase
+        - group_proposal_phase
+        - group_validated_proposal
+        - group_approval_phase
+        - group_partially_legally_binding
+        - group_legal_phase
+      label: 'Kaupunkisuunnittelukohteeseen liittyvät tiedot'
+      region: content
+      parent_name: group_tabs
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_phase:
+      children:
+        - field_phase
+      label: Vaiheistus
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 37
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_city_strategy:
+      children:
+        - field_city_strategy
+      label: Kaupunkistrategia
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 39
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_work_programme:
+      children:
+        - field_work_programme
+      label: Työohjelma
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 40
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_city_strategy_work_program:
+      children:
+        - field_city_strategy_work_program
+      label: 'Kaupunkistrategia ja työohjelma'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 41
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_start_phase:
+      children:
+        - field_start_phase
+      label: Aloitusvaihe
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 42
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_preparation_phase:
+      children:
+        - field_preparation_phase
+      label: Valmisteluvaihe
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 43
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_start_preparation_phase:
+      children:
+        - field_start_preparation_phase
+      label: 'Aloitus- ja valmisteluvaihe'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 44
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_proposal_phase:
+      children:
+        - field_proposal_phase
+      label: Ehdotusvaihe
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 45
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_validated_proposal:
+      children:
+        - field_revised_proposal
+      label: 'Tarkistettu ehdotus'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 46
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_approval_phase:
+      children:
+        - field_acceptance_phase
+      label: Hyväksyminen
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 47
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_partially_legally_binding:
+      children:
+        - field_partially_binding_phase
+      label: 'Osittain lainvoimainen'
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 48
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_legal_phase:
+      children:
+        - field_legal_phase
+      label: Lainvoimainen
+      region: content
+      parent_name: group_urb_planning_related_info
+      weight: 49
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
         description: ''
         required_fields: true
 id: node.city_planning_and_constructions.default
@@ -118,6 +343,23 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_acceptance_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 5
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_additional_information:
     type: text_textarea
     weight: 13
@@ -142,6 +384,35 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_city_strategy:
+    type: paragraphs_classic_asymmetric
+    weight: 14
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_city_strategy_work_program:
+    type: paragraphs_classic_asymmetric
+    weight: 20
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
   field_description:
     type: string_textarea
     weight: 10
@@ -156,6 +427,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_fixed_phase_help_text:
+    type: markup
+    weight: 38
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_geographical_areas:
     type: entity_reference_autocomplete
@@ -182,6 +459,18 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_legal_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 8
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
     third_party_settings: {  }
   field_location:
     type: tre_geofield_latlon
@@ -216,6 +505,80 @@ content:
           add: Lisää
       limited_field_widgets:
         limit_values: '0'
+  field_partially_binding_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 19
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_phase:
+    type: options_buttons
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_plan_number:
+    type: entity_reference_autocomplete
+    weight: 35
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_preparation_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 15
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_proposal_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 10
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
+  field_record_number:
+    type: entity_reference_autocomplete
+    weight: 36
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_revised_proposal:
+    type: paragraphs_classic_asymmetric
+    weight: 18
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings: {  }
   field_search_keywords:
     type: string_textfield
     weight: 32
@@ -223,6 +586,37 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_start_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 17
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  field_start_preparation_phase:
+    type: paragraphs_classic_asymmetric
+    weight: 16
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
     third_party_settings: {  }
   field_topics:
     type: entity_reference_autocomplete
@@ -233,6 +627,18 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_work_programme:
+    type: paragraphs_classic_asymmetric
+    weight: 21
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: process_accordions_extended
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -313,8 +719,11 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  field_computed_status: true
+  field_computed_visibility: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
   field_listing_search_content: true
   promote: true
   sticky: true

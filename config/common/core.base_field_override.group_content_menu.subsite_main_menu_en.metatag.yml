@@ -1,0 +1,20 @@
+uuid: 9a1c7861-1edc-44e5-8c4d-51dfa5c89851
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.subsite_main_menu_en
+  module:
+    - metatag
+id: group_content_menu.subsite_main_menu_en.metatag
+field_name: metatag
+entity_type: group_content_menu
+bundle: subsite_main_menu_en
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

@@ -1,0 +1,21 @@
+uuid: 34306082-bde0-4b38-8dd4-c0a685e024e5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_process_phase_status
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - options
+id: paragraph.process_accordions_extended.field_process_phase_status
+field_name: field_process_phase_status
+entity_type: paragraph
+bundle: process_accordions_extended
+label: '(computed) Vaiheen tila'
+description: 'Only used programmatically, so hidden in the edit form and only visible in the display, populated in preprocess.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

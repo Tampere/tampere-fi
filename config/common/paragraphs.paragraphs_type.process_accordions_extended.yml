@@ -1,0 +1,10 @@
+uuid: 68843682-bd55-4fed-b932-fe8471575961
+langcode: fi
+status: true
+dependencies: {  }
+id: process_accordions_extended
+label: 'Kaupunkisuunnittelun haitaripalje'
+icon_uuid: null
+icon_default: null
+description: 'Process accordion item for Zoning information and City planning and constructions content types.'
+behavior_plugins: {  }

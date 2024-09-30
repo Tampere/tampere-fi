@@ -7,7 +7,6 @@ use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Field\FieldItemList;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Routing\CurrentRouteMatch;
@@ -33,6 +32,13 @@ use proj4php\Proj4php;
 class HelperFunctions implements HelperFunctionsInterface {
 
   use StringTranslationTrait;
+
+  /**
+   * Static cache for location unique coordinates.
+   *
+   * @var array
+   */
+  private static $locationCoordinates = [];
 
   /**
    * The Entity Repository service.
@@ -218,23 +224,55 @@ class HelperFunctions implements HelperFunctionsInterface {
       return $location_coordinates;
     }
 
-    if (!$node->hasField(self::LONGITUDE_FIELD_NAME) || $node->get(self::LONGITUDE_FIELD_NAME)->isEmpty()) {
+    if (!$node->hasField(self::EPSG_COORDINATE_POINT_FIELD_NAME) || $node->get(self::EPSG_COORDINATE_POINT_FIELD_NAME)->isEmpty()) {
       return $location_coordinates;
     }
 
-    if (!$node->hasField(self::LATITUDE_FIELD_NAME) || $node->get(self::LATITUDE_FIELD_NAME)->isEmpty()) {
-      return $location_coordinates;
+    /** @var \Drupal\Core\Field\FieldItemInterface $point_value */
+    foreach ($node->get(self::EPSG_COORDINATE_POINT_FIELD_NAME) as $point_value) {
+      if (
+        $point_value->isEmpty()
+        || !is_string($point_value->getString())
+        || trim($point_value->getString()) === '') {
+        continue;
+      }
+
+      [$longitude, $latitude] = explode(' ', $point_value->getString());
+      $location_coordinates[] = [
+        'latitude' => $latitude,
+        'longitude' => $longitude,
+      ];
     }
-
-    $longitude = $node->get(self::LONGITUDE_FIELD_NAME)->getString();
-    $latitude = $node->get(self::LATITUDE_FIELD_NAME)->getString();
-
-    $location_coordinates[] = [
-      'latitude' => $latitude,
-      'longitude' => $longitude,
-    ];
 
     return $location_coordinates;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getUniqueCoordinates(string $longitude, string $latitude, string $map_id): array {
+    $match_string = sprintf('%s-%s-%s', $longitude, $latitude, $map_id);
+    $longitude_float = (float) $longitude;
+    $latitude_float = (float) $latitude;
+
+    $longitude_coefficient = (random_int(0, 1) === 1) ? -1 : 1;
+    $latitude_coefficient = (random_int(0, 1) === 1) ? -1 : 1;
+
+    while (array_key_exists($match_string, self::$locationCoordinates)) {
+      // Two duplicate points shift by 100-300 meters north/south and east/west.
+      // In practice, even 100 meters' difference requires zooming in quite far
+      // on the map to distinguish the markers from each other. However, taking
+      // the markers further than 300 meters away in either direction would
+      // cause quite serious issues with accuracy.
+      $step = random_int(100, 300);
+      $longitude_float += $longitude_coefficient * $step;
+      $latitude_float += $latitude_coefficient * $step;
+      $match_string = sprintf('%s-%s-%s', $longitude_float, $latitude_float, $map_id);
+    }
+
+    self::$locationCoordinates[$match_string] = [(string) $longitude_float, (string) $latitude_float];
+
+    return self::$locationCoordinates[$match_string];
   }
 
   /**
@@ -292,7 +330,7 @@ class HelperFunctions implements HelperFunctionsInterface {
   /**
    * {@inheritdoc}
    */
-  public function getExternalLinkFieldTitle(FieldItemList $link_field) {
+  public function getExternalLinkFieldTitle(FieldItemListInterface $link_field) {
     if ($link_field->isEmpty()) {
       return NULL;
     }
@@ -326,7 +364,6 @@ class HelperFunctions implements HelperFunctionsInterface {
 
     $link_text = '';
     if ($has_external_link_with_link_text) {
-      /** @var \Drupal\Core\Field\FieldItemList $link_field */
       $link_field = $link_paragraph->get('field_external_link_w_link_text');
       $link_text = $this->getExternalLinkFieldTitle($link_field);
     }

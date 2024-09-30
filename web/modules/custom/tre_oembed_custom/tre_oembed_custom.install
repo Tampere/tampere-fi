@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the tre_oembed_custom module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function tre_oembed_custom_install($is_syncing) {
+  // Delete stored oembed_providers to force a new discovery that makes the
+  // additions in this module available.
+  \Drupal::keyValue('media')->delete('oembed_providers');
+}

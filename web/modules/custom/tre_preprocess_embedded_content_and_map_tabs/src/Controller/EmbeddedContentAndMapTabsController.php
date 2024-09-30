@@ -72,6 +72,7 @@ class EmbeddedContentAndMapTabsController extends ControllerBase {
       'place_of_business',
       'city_planning_and_constructions',
       'zoning_information',
+      'comprehensive_plan',
     ];
 
     $node = $this->entityTypeManager()->getStorage('node')->load($node_id);

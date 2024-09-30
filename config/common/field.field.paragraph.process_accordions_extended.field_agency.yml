@@ -1,0 +1,21 @@
+uuid: a1ea6205-9693-4dda-a88d-da8c44ba1c6c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_agency
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - options
+id: paragraph.process_accordions_extended.field_agency
+field_name: field_agency
+entity_type: paragraph
+bundle: process_accordions_extended
+label: Toimielin
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

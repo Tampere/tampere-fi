@@ -10,7 +10,7 @@ field_name: field_link_to_place_content
 entity_type: paragraph
 bundle: zoning_project_card
 label: 'Linkitä sisältöön'
-description: 'Valitse tämä, kun haluat, että nosto toimii linkkinä viitattuun Kaava-sisältöön.'
+description: 'Valitse tämä, kun haluat, että nosto toimii linkkinä viitattuun kaavasisältöön.'
 required: false
 translatable: true
 default_value:

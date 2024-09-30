@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.embedded_content_and_map_tabs.field_keywords
     - field.field.paragraph.embedded_content_and_map_tabs.field_life_situations
     - field.field.paragraph.embedded_content_and_map_tabs.field_search_zoom_level
+    - field.field.paragraph.embedded_content_and_map_tabs.field_show_map_tab_as_default
     - field.field.paragraph.embedded_content_and_map_tabs.field_tabs_displayed_content_tps
     - field.field.paragraph.embedded_content_and_map_tabs.field_taxonomy_combination
     - field.field.paragraph.embedded_content_and_map_tabs.field_title
@@ -17,7 +18,6 @@ dependencies:
     - paragraphs.paragraphs_type.embedded_content_and_map_tabs
   module:
     - field_group
-    - field_states_ui
 third_party_settings:
   field_group:
     group_taxonomies:
@@ -36,35 +36,6 @@ third_party_settings:
         show_empty_fields: false
         id: ''
         open: false
-        description: ''
-        required_fields: true
-    group_content_type_taxonomies:
-      children:
-        - group_zoning_information
-      label: 'Sisältötyyppikohtaiset luokittelut'
-      region: content
-      parent_name: ''
-      weight: 7
-      format_type: details
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        open: false
-        description: ''
-        required_fields: true
-    group_zoning_information:
-      children:
-        - field_zoning_information_types
-      label: Kaava
-      region: content
-      parent_name: group_content_type_taxonomies
-      weight: 20
-      format_type: fieldset
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
         description: ''
         required_fields: true
 id: paragraph.embedded_content_and_map_tabs.default
@@ -124,10 +95,17 @@ content:
     third_party_settings: {  }
   field_search_zoom_level:
     type: number
-    weight: 8
+    weight: 7
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  field_show_map_tab_as_default:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_tabs_displayed_content_tps:
     type: options_buttons
@@ -159,12 +137,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_zoning_information_types:
-    type: options_buttons
-    weight: 21
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   translation:
     weight: 2
     region: content
@@ -172,4 +144,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_zoning_information_types: true
   status: true

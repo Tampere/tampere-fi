@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - group.type.topic
+    - user.role.authenticated
 id: topic-member
 label: Member
 weight: -100

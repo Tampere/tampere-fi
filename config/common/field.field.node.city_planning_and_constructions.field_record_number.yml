@@ -1,0 +1,29 @@
+uuid: a1c62ded-c19d-48ce-b623-ef7d40050aa3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_record_number
+    - node.type.city_planning_and_constructions
+    - taxonomy.vocabulary.record_numbers
+id: node.city_planning_and_constructions.field_record_number
+field_name: field_record_number
+entity_type: node
+bundle: city_planning_and_constructions
+label: Diaarinumero
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      record_numbers: record_numbers
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

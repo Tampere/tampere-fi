@@ -1,0 +1,29 @@
+uuid: 676554f2-e89b-4441-ab26-842ba90c0241
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_geographical_areas
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+    - taxonomy.vocabulary.geographical_areas
+id: paragraph.urban_planning_listing_and_map.field_geographical_areas
+field_name: field_geographical_areas
+entity_type: paragraph
+bundle: urban_planning_listing_and_map
+label: 'Maantieteelliset alueet'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      geographical_areas: geographical_areas
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

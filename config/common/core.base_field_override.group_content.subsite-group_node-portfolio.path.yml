@@ -1,0 +1,20 @@
+uuid: ee84977a-85dd-4a7a-a7e2-28cbaa6c54c3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.subsite-group_node-portfolio
+  module:
+    - path
+id: group_content.subsite-group_node-portfolio.path
+field_name: path
+entity_type: group_content
+bundle: subsite-group_node-portfolio
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,18 @@
+uuid: 2c5920ba-96c2-43f6-8273-57392819daca
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group.mailing_list
+target_entity_type_id: group
+target_bundle: mailing_list
+default_langcode: site_default
+language_alterable: false

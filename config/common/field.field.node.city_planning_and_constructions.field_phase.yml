@@ -1,0 +1,23 @@
+uuid: 6313f837-2235-4ccb-8e13-d8ee904b474f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phase
+    - node.type.city_planning_and_constructions
+  module:
+    - options
+id: node.city_planning_and_constructions.field_phase
+field_name: field_phase
+entity_type: node
+bundle: city_planning_and_constructions
+label: Vaihe
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: city_strategy
+default_value_callback: ''
+settings: {  }
+field_type: list_string

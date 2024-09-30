@@ -8,5 +8,5 @@
 {% set attributes = attributes.addClass("lazyload").setAttribute("loading", "lazy") %}
 
 <div class="dreambroker-iframe-container">
-  <iframe{{ attributes }}{% if url is not empty %} data-src="{{ url }}{% if query is not empty %}?{{ query | url_encode }}{% endif %}"{% endif %}></iframe>
+  <iframe{{ attributes }}{% if url is not empty %} src="{{ url }}{% if query is not empty %}?{{ query | url_encode }}{% endif %}"{% endif %}></iframe>
 </div>

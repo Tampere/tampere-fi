@@ -46,6 +46,7 @@
 {% if content_listing_block %}
   {% set tabs = {
     list: {
+      id: "list",
       title: "List view"|t,
       content: content_listing_block,
       panel_id: paragraph.id.value ~ "list",
@@ -56,6 +57,7 @@
   {% if tab_map_content %}
     {% set tabs_with_map = {
       map: {
+        id: "map",
         title: "Map View"|t,
         content: tab_map_content,
         panel_id: paragraph.id.value ~ "map",
@@ -68,6 +70,12 @@
     {% set tabs = tabs_with_map|merge(tabs) %}
   {% endif %}
 
+  {% if paragraph.field_show_map_tab_as_default.value %}
+    {% set tabbed_default_tab_id = "map" %}
+  {% else %}
+    {% set tabbed_default_tab_id = "list" %}
+  {% endif %}
+
   {% embed "@organisms/_paragraph.twig" %}
     {% block paragraph_content %}
       {% include "@organisms/tabbed-container/tabbed-container.twig" with {
@@ -75,6 +83,7 @@
         "tabbed_container__heading": paragraph.field_title.value,
         "tabbed_container_tabs": tabs,
         "tabbed_container__description": paragraph.field_description_text.value,
+        "tabbed_default_tab_id": tabbed_default_tab_id,
       } %}
     {% endblock %}
   {% endembed %}

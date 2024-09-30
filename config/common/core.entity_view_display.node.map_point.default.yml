@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.map_point.field_description
     - field.field.node.map_point.field_epsg_3067_easting
     - field.field.node.map_point.field_epsg_3067_northing
+    - field.field.node.map_point.field_epsg_3067_point_strings
     - field.field.node.map_point.field_location
     - node.type.map_point
   module:
@@ -26,7 +27,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 106
+    weight: 7
     region: content
   field_address_street:
     type: address_display_formatter
@@ -45,11 +46,11 @@ content:
           glue: ','
           weight: 1
           display: true
-        locality:
+        postal_code:
           glue: ','
           weight: 2
           display: true
-        postal_code:
+        locality:
           glue: ''
           weight: 3
           display: true
@@ -89,14 +90,14 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 101
+    weight: 1
     region: content
   field_description:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 105
+    weight: 6
     region: content
   field_epsg_3067_easting:
     type: number_decimal
@@ -107,7 +108,7 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 103
+    weight: 3
     region: content
   field_epsg_3067_northing:
     type: number_decimal
@@ -118,7 +119,15 @@ content:
       scale: 2
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 102
+    weight: 2
+    region: content
+  field_epsg_3067_point_strings:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
     region: content
   field_location:
     type: geofield_latlon
@@ -126,12 +135,12 @@ content:
     settings:
       output_format: dms
     third_party_settings: {  }
-    weight: 104
+    weight: 5
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   entitygroupfield: true

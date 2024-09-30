@@ -59,29 +59,45 @@
     }
   }
 
-  &--type-embedded-content-and-map-tabs {
+  &--type-embedded-content-and-map-tabs,
+  &--type-urban-planning-listing-and-map {
     // Applies only when the select list is not available and for the last panel only.
     .tabbed-container__content .tabbed-container-tab-section-2 {
       .search-bar__search-form {
         .search-bar__input + .search-bar__button {
           margin-top: $space-l-plus;
         }
-  
+
         .search-bar__button {
           @include medium-down {
             padding: $gutter-mobile;
           }
-  
+
           max-width: unset;
           padding: $space-m-plus $space-l;
           width: unset;
-  
+
           .button__text {
             padding-right: $gutter-mobile;
           }
         }
       }
+    }
 
+    .search-bar__input,
+    .accordion__content .form-item__dropdown {
+      @include border(2px, solid, $color-dark-blue);
+    }
+
+    .search-bar__search-form .form-item__dropdown {
+      @include border(2px, solid, $color-dark-blue);
+
+      width: 100%;
+    }
+  }
+
+  &--type-urban-planning-listing-and-map {
+    .tabbed-container__content .tabbed-container-tab-section-2 {
       // Accordion mobile for exposed filter list
       .embedded-content-tab-accordion {
         .accordion__title-wrapper {
@@ -128,11 +144,5 @@
         }
       }
     }
-
-    .search-bar__input,
-    .accordion__content .form-item__dropdown {
-      @include border(2px, solid, $color-dark-blue);
-    }
-
   }
 }

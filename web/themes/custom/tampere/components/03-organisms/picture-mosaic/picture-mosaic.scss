@@ -23,7 +23,6 @@ $picture-mosaic-item-min-height--large: 238px;
 
   &__item {
     height: 100%;
-    min-height: $picture-mosaic-item-min-height;
 
     @include large {
       min-height: $picture-mosaic-item-min-height--large;

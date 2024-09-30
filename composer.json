@@ -277,6 +277,7 @@
         "drupal/migrate_source_csv": "^3.4",
         "drupal/migrate_tools": "^6.0",
         "drupal/mimemail": "^1.0@alpha",
+        "drupal/oembed_providers": "^2.2",
         "drupal/office_hours": "^1.5",
         "drupal/open_readspeaker": "^1.9",
         "drupal/openapi_jsonapi": "^3.0",
@@ -511,7 +512,8 @@
                 "#2886455: Add support for multilanguage": "https://www.drupal.org/files/issues/2023-10-17/2886455-73-linkit-6.1.2-multilingual.patch"
             },
             "drupal/markdown": {
-                "3399837 - jquery.once still used in markdown.admin.js": "https://www.drupal.org/files/issues/2023-11-07/3399837-jquery.once-still-used-2.patch"
+                "3399837 - jquery.once still used in markdown.admin.js": "https://www.drupal.org/files/issues/2023-11-07/3399837-jquery.once-still-used-2.patch",
+                "3409277 - SubformState incorrect interface error": "patches/markdown_subform_state_incorrect_interface_error_3409277.patch"
             },
             "drupal/media_entity_dreambroker": {
                 "Add video title to iframe": "patches/media_entity_dreambroker_title_iframe.patch"
@@ -541,6 +543,12 @@
             },
             "drupal/ui_patterns_settings": {
                 "3409221 - Fix TypeError: array_unshift(): Argument #1 ($array) must be of type array": "https://www.drupal.org/files/issues/2024-03-01/ui_patterns_settings-3409221-26.patch"
+            },
+            "drupal/views_ef_fieldset": {
+                "#3446232: Warnings on ViewsEFFieldsetData": "https://www.drupal.org/files/issues/2024-05-09/warnings-on-viewseffieldsetdata-3446232-2_0.patch"
+            },
+            "drupal/webform": {
+                "3427662 - polyfill.io Library is no longer considered safe to use": "https://www.drupal.org/files/issues/2024-03-15/webform-remove-polyfill-mr-419.diff.patch"
             }
         },
         "merge-plugin": {

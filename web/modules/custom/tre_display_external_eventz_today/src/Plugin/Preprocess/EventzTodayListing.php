@@ -297,16 +297,26 @@ class EventzTodayListing extends TrePreProcessPluginBase {
 
     $link_list__items = [];
 
-    if ($this->desiredLanguage == 'en') {
-      $url = 'https://tapahtumat.tampere.fi/en-FI';
+    $external_link_field = $translated_paragraph->get('field_eventz_external_link');
+    $external_link_url = $this->helperFunctions->getExternalLinkFieldUrl($external_link_field);
+    $external_link_title = $this->helperFunctions->getExternalLinkFieldTitle($external_link_field);
+
+    if (empty($external_link_url)) {
+      if ($this->desiredLanguage == 'en') {
+        $external_link_url = 'https://tapahtumat.tampere.fi/en-FI';
+      }
+      else {
+        $external_link_url = 'https://tapahtumat.tampere.fi';
+      }
     }
-    else {
-      $url = 'https://tapahtumat.tampere.fi';
+
+    if (empty($external_link_title)) {
+      $external_link_title = 'tapahtumat.tampere.fi';
     }
 
     $topical_listing_link = [
-      'text' => 'tapahtumat.tampere.fi',
-      'url' => $url,
+      'text' => $external_link_title,
+      'url' => $external_link_url,
       'icon' => 'external',
     ];
     array_push($link_list__items, $topical_listing_link);

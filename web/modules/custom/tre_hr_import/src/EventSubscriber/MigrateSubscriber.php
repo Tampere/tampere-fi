@@ -89,6 +89,12 @@ class MigrateSubscriber implements EventSubscriberInterface {
       return;
     }
 
+    // If either there is no argument or --delete flag is not set in
+    // the Drush command, stop here.
+    if (!isset($_SERVER['argv']) || !in_array('--delete', $_SERVER['argv'])) {
+      return;
+    }
+
     $migration = $event->getMigration();
     $migration_name = $event->getMigration()->getBaseId();
     $id_map = $migration->getIdMap();

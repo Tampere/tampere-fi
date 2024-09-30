@@ -1,0 +1,21 @@
+uuid: b63e9d44-02a3-4bcc-adfe-20d3801bf5ba
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - datetime
+id: paragraph.process_accordions_extended.field_date
+field_name: field_date
+entity_type: paragraph
+bundle: process_accordions_extended
+label: Päiväys
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

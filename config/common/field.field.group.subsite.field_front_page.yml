@@ -7,6 +7,7 @@ dependencies:
     - group.type.subsite
     - node.type.basic_content_page
     - node.type.city_planning_and_constructions
+    - node.type.comprehensive_plan
     - node.type.organization
     - node.type.place
     - node.type.project
@@ -31,6 +32,7 @@ settings:
       place: place
       basic_content_page: basic_content_page
       project: project
+      comprehensive_plan: comprehensive_plan
     sort:
       field: _none
       direction: ASC

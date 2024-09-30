@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.involvement_opportunity.field_end_time
     - field.field.node.involvement_opportunity.field_epsg_3067_easting
     - field.field.node.involvement_opportunity.field_epsg_3067_northing
+    - field.field.node.involvement_opportunity.field_epsg_3067_point_strings
     - field.field.node.involvement_opportunity.field_geographical_areas
     - field.field.node.involvement_opportunity.field_help_text
     - field.field.node.involvement_opportunity.field_keywords
@@ -60,12 +61,12 @@ third_party_settings:
       main_content:
         - field_participate_summary
         - field_opportunity_description
-        - field_address_street
         - group_address
+        - field_address_street
         - field_location
         - field_link_single
-        - field_sign_up_title
         - group_sign_up
+        - field_sign_up_title
         - field_sign_up_summary
         - field_additional_information
         - field_sign_up_link
@@ -73,15 +74,6 @@ third_party_settings:
       paragraph_content:
         - field_paragraphs
     fields:
-      'dynamic_twig_field:node-involvement_opp_sign_up_info':
-        plugin_id: 'dynamic_twig_field:node-involvement_opp_sign_up_info'
-        weight: 1
-        label: hidden
-        formatter: default
-        ft:
-          id: reset
-          settings:
-            lb: ''
       node_title:
         plugin_id: node_title
         weight: 2
@@ -92,6 +84,15 @@ third_party_settings:
           'link class': ''
           wrapper: ''
           class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+      'dynamic_twig_field:node-involvement_opp_sign_up_info':
+        plugin_id: 'dynamic_twig_field:node-involvement_opp_sign_up_info'
+        weight: 1
+        label: hidden
+        formatter: default
         ft:
           id: reset
           settings:
@@ -384,6 +385,7 @@ hidden:
   field_end_time: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true

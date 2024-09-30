@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge');
-const _BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const _BrowserSyncPlugin = require('browser-sync-v3-webpack-plugin');
 const common = require('./webpack.common.js');
 
 const BrowserSyncPlugin = new _BrowserSyncPlugin({

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_zoning_information
+    - node.type.comprehensive_plan
     - node.type.zoning_information
     - paragraphs.paragraphs_type.zoning_project_card
 id: paragraph.zoning_project_card.field_zoning_information
@@ -21,9 +22,10 @@ settings:
   handler_settings:
     target_bundles:
       zoning_information: zoning_information
+      comprehensive_plan: comprehensive_plan
     sort:
-      field: _none
+      field: title
       direction: ASC
     auto_create: 0
-    auto_create_bundle: ''
+    auto_create_bundle: zoning_information
 field_type: entity_reference

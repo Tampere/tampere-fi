@@ -1,5 +1,10 @@
 parameters:
 	ignoreErrors:
+		# From Drupal core:
+		# new static() is a best practice in Drupal, so we cannot fix that.
+		- "#^Unsafe usage of new static#"
+
+		# Project specific:
 		# See getForm() documentation, it says multiple arguments are allowed.
 		-
 			message: '#^Method Drupal\\Core\\Form\\FormBuilderInterface\:\:getForm\(\) invoked with 2 parameters, 1 required\.$#'

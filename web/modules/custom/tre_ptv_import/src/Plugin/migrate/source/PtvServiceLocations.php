@@ -188,6 +188,7 @@ class PtvServiceLocations extends SqlBase {
     }
 
     $geographical_areas = [];
+    $epsg_points = [];
     foreach ($addresses_by_type as $address_type => $addresses) {
       $values_key = $address_types_with_processors[$address_type]['value type'];
       if (!isset($values[$values_key])) {
@@ -211,11 +212,16 @@ class PtvServiceLocations extends SqlBase {
         if (!empty($address['region'])) {
           $geographical_areas[$address['region']] = ['name' => $address['region']];
         }
+        if (!empty($address['easting']) && !empty($address['northing'])) {
+          $point = sprintf("%s %s", $address['easting'], $address['northing']);
+          $epsg_points[$point] = $point;
+        }
         unset($addresses[$key]['region']);
       }
       $values[$values_key] = array_merge($values[$values_key], $addresses);
     }
     $values['geographical_areas'] = array_values($geographical_areas);
+    $values['epsg_points'] = array_values($epsg_points);
 
     $type = 'Description';
     $values['description'] = $data_helpers::getDescriptionStringByLanguageAndType($service_location->getServiceChannelDescriptions(), $language, $type);

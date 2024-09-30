@@ -1,0 +1,22 @@
+uuid: 441ae651-83d9-4ebd-be4e-8f02c228faa3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.comprehensive_plan
+id: node.comprehensive_plan.promote
+field_name: promote
+entity_type: node
+bundle: comprehensive_plan
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

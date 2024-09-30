@@ -1,0 +1,23 @@
+uuid: 2fe7cc43-621f-4f9b-bf97-a1eb5373090f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_phase_upcoming
+    - paragraphs.paragraphs_type.process_accordions_extended
+id: paragraph.process_accordions_extended.field_phase_upcoming
+field_name: field_phase_upcoming
+entity_type: paragraph
+bundle: process_accordions_extended
+label: 'Vaihe tulossa'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

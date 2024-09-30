@@ -1,0 +1,24 @@
+settings:
+  allowed_values:
+    -
+      label: 'City Strategy'
+    -
+      label: 'Work programme'
+    -
+      label: 'City Strategy and work programme'
+    -
+      label: 'Initial phase'
+    -
+      label: 'Preparation phase'
+    -
+      label: 'Initial and preparation phase'
+    -
+      label: 'Proposal phase'
+    -
+      label: 'Validated proposal'
+    -
+      label: Approval
+    -
+      label: 'Partially legally binding'
+    -
+      label: 'Legally binding'

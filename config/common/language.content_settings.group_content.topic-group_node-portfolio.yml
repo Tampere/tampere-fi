@@ -1,0 +1,18 @@
+uuid: 2f906a9d-23be-47e3-8b8e-2f050f157353
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.topic-group_node-portfolio
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: group_content.topic-group_node-portfolio
+target_entity_type_id: group_content
+target_bundle: topic-group_node-portfolio
+default_langcode: site_default
+language_alterable: false

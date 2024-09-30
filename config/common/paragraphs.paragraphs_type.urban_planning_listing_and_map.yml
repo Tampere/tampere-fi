@@ -1,0 +1,10 @@
+uuid: 90839d96-2bee-4c8e-8fca-c4693a50109f
+langcode: fi
+status: true
+dependencies: {  }
+id: urban_planning_listing_and_map
+label: 'Kaupunkisuunnittelun lista ja kartta'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

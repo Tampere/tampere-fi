@@ -1,0 +1,21 @@
+uuid: f156a35b-a77b-4c94-8c3f-c7232d465dc4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_processing_time
+    - node.type.comprehensive_plan
+  module:
+    - datetime_range
+id: node.comprehensive_plan.field_processing_time
+field_name: field_processing_time
+entity_type: node
+bundle: comprehensive_plan
+label: Käsittelyaika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

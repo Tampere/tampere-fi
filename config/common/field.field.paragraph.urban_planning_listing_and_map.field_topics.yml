@@ -1,0 +1,29 @@
+uuid: 99c4e538-7cbf-4443-b5df-88badaeacd6d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topics
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+    - taxonomy.vocabulary.topics
+id: paragraph.urban_planning_listing_and_map.field_topics
+field_name: field_topics
+entity_type: paragraph
+bundle: urban_planning_listing_and_map
+label: Aihealueet
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topics: topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

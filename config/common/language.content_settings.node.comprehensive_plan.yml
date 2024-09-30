@@ -1,0 +1,16 @@
+uuid: 7cbe4b37-4fdd-44e7-ac0c-07067fc3b1d4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.comprehensive_plan
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.comprehensive_plan
+target_entity_type_id: node
+target_bundle: comprehensive_plan
+default_langcode: current_interface
+language_alterable: true

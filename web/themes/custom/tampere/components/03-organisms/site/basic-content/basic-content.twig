@@ -71,7 +71,7 @@
     {% block basic_content_main_content %}
       {{ main_content }}
     {% endblock %}
-    
+
     {% if has_last_updated_date %}
       <div {{ bem("last-updated", basic_content__last_updated__modifiers|default([]), basic_content_base_class) }}>
         {{ last_updated_markup }}

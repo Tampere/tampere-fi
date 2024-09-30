@@ -1,0 +1,21 @@
+uuid: 9516c0b3-5b4c-44dc-bb2b-614078348f40
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_computed_visibility
+    - node.type.city_planning_and_constructions
+  module:
+    - options
+id: node.city_planning_and_constructions.field_computed_visibility
+field_name: field_computed_visibility
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Computed visibility of materials'
+description: 'This field is computed-only so not visible on the form or the display. Only used in preprocessing / templates / filters.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

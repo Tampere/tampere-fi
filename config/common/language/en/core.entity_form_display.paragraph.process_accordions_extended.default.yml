@@ -1,0 +1,11 @@
+content:
+  field_phase:
+    settings:
+      placeholder: 'Phase name if it is not the default phase above'
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining:<strong>@remaining</strong>'
+third_party_settings:
+  field_group:
+    group_phase_information:
+      label: 'Phase information'

@@ -3,35 +3,52 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.node.zoning_information.field_acceptance_phase
     - field.field.node.zoning_information.field_address
+    - field.field.node.zoning_information.field_city_strategy
+    - field.field.node.zoning_information.field_city_strategy_work_program
+    - field.field.node.zoning_information.field_computed_status
+    - field.field.node.zoning_information.field_computed_visibility
     - field.field.node.zoning_information.field_description
     - field.field.node.zoning_information.field_display_location_on_map
     - field.field.node.zoning_information.field_display_period
     - field.field.node.zoning_information.field_epsg_3067_easting
     - field.field.node.zoning_information.field_epsg_3067_northing
+    - field.field.node.zoning_information.field_epsg_3067_point_strings
     - field.field.node.zoning_information.field_feedback_form
+    - field.field.node.zoning_information.field_fixed_phase_help_text
     - field.field.node.zoning_information.field_geographical_areas
     - field.field.node.zoning_information.field_help_text
     - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_legal_phase
     - field.field.node.zoning_information.field_listing_search_content
     - field.field.node.zoning_information.field_location
     - field.field.node.zoning_information.field_main_image
     - field.field.node.zoning_information.field_other_identifiers
     - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_partially_binding_phase
+    - field.field.node.zoning_information.field_phase
     - field.field.node.zoning_information.field_plan_number
     - field.field.node.zoning_information.field_plan_type
+    - field.field.node.zoning_information.field_preparation_phase
     - field.field.node.zoning_information.field_processing_time
+    - field.field.node.zoning_information.field_proposal_phase
     - field.field.node.zoning_information.field_record_number
+    - field.field.node.zoning_information.field_revised_proposal
     - field.field.node.zoning_information.field_search_keywords
+    - field.field.node.zoning_information.field_start_phase
+    - field.field.node.zoning_information.field_start_preparation_phase
     - field.field.node.zoning_information.field_topics
+    - field.field.node.zoning_information.field_work_programme
     - field.field.node.zoning_information.field_zoning_information_type
     - node.type.zoning_information
   module:
-    - datetime_range
     - ds
     - entity_reference_revisions
     - field_group
     - geofield
+    - options
+    - tre_preprocess
     - user
     - webform
 third_party_settings:
@@ -48,9 +65,8 @@ third_party_settings:
       main_image:
         - field_main_image
       pre_title_content:
-        - group_zoning_information_dates
-        - field_display_period
-        - field_processing_time
+        - field_phase
+        - field_computed_visibility
       main_title:
         - node_title
       main_content:
@@ -82,8 +98,8 @@ third_party_settings:
         - field_processing_time
       label: 'Zoning information dates'
       parent_name: ''
-      region: pre_title_content
-      weight: 1
+      region: hidden
+      weight: 47
       format_type: pattern_formatter
       format_settings:
         pattern: dates_field_group
@@ -148,20 +164,13 @@ content:
     third_party_settings: {  }
     weight: 4
     region: main_content
-  field_description:
-    type: basic_string
+  field_computed_visibility:
+    type: list_selected_options_values
     label: hidden
-    settings: {  }
-    third_party_settings: {  }
-    weight: 5
-    region: main_content
-  field_display_period:
-    type: daterange_default
-    label: inline
     settings:
-      timezone_override: Europe/Helsinki
-      format_type: date_only
-      separator: '-'
+      options_selected:
+        visible: visible
+        not_visible: 0
     third_party_settings:
       ds:
         ft:
@@ -170,23 +179,24 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 2
+    weight: 1
     region: pre_title_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
   field_feedback_form:
     type: webform_entity_reference_entity_view
     label: hidden
     settings:
       source_entity: true
+      lazy: false
     third_party_settings: {  }
     weight: 7
     region: main_content
-  field_listing_search_content:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 9
-    region: content
   field_location:
     type: geofield_latlon
     label: above
@@ -227,13 +237,10 @@ content:
     third_party_settings: {  }
     weight: 8
     region: main_content
-  field_processing_time:
-    type: daterange_default
-    label: inline
-    settings:
-      timezone_override: Europe/Helsinki
-      format_type: date_only
-      separator: '-'
+  field_phase:
+    type: list_default
+    label: hidden
+    settings: {  }
     third_party_settings:
       ds:
         ft:
@@ -242,22 +249,39 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 3
+    weight: 0
     region: pre_title_content
 hidden:
   entitygroupfield: true
+  field_acceptance_phase: true
+  field_city_strategy: true
+  field_city_strategy_work_program: true
+  field_computed_status: true
   field_display_location_on_map: true
+  field_display_period: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
+  field_fixed_phase_help_text: true
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_legal_phase: true
+  field_listing_search_content: true
   field_other_identifiers: true
+  field_partially_binding_phase: true
   field_plan_number: true
   field_plan_type: true
+  field_preparation_phase: true
+  field_processing_time: true
+  field_proposal_phase: true
   field_record_number: true
+  field_revised_proposal: true
   field_search_keywords: true
+  field_start_phase: true
+  field_start_preparation_phase: true
   field_topics: true
+  field_work_programme: true
   field_zoning_information_type: true
   langcode: true
   links: true

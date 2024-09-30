@@ -1,0 +1,33 @@
+uuid: 496d8774-ac87-425b-bafd-f7a1f43967af
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.urban_planning_listing_and_map.field_description_text
+    - field.field.paragraph.urban_planning_listing_and_map.field_geographical_areas
+    - field.field.paragraph.urban_planning_listing_and_map.field_keywords
+    - field.field.paragraph.urban_planning_listing_and_map.field_search_zoom_level
+    - field.field.paragraph.urban_planning_listing_and_map.field_tabs_displayed_ct
+    - field.field.paragraph.urban_planning_listing_and_map.field_taxonomy_combination
+    - field.field.paragraph.urban_planning_listing_and_map.field_title
+    - field.field.paragraph.urban_planning_listing_and_map.field_topics
+    - field.field.paragraph.urban_planning_listing_and_map.field_urban_planning_status
+    - field.field.paragraph.urban_planning_listing_and_map.field_visibility
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+id: paragraph.urban_planning_listing_and_map.default
+targetEntityType: paragraph
+bundle: urban_planning_listing_and_map
+mode: default
+content: {  }
+hidden:
+  field_description_text: true
+  field_geographical_areas: true
+  field_keywords: true
+  field_search_zoom_level: true
+  field_tabs_displayed_ct: true
+  field_taxonomy_combination: true
+  field_title: true
+  field_topics: true
+  field_urban_planning_status: true
+  field_visibility: true
+  search_api_excerpt: true

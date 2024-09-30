@@ -1,0 +1,19 @@
+uuid: b8aaca23-f92b-4786-885b-6c8e8bdc3b2b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description_text
+    - paragraphs.paragraphs_type.automatic_phase_accordion
+id: paragraph.automatic_phase_accordion.field_description_text
+field_name: field_description_text
+entity_type: paragraph
+bundle: automatic_phase_accordion
+label: Kuvaus
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

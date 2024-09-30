@@ -1,0 +1,23 @@
+uuid: 666d8d19-cc93-4ad2-a026-e83bb8fd737d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phase
+    - node.type.zoning_information
+  module:
+    - options
+id: node.zoning_information.field_phase
+field_name: field_phase
+entity_type: node
+bundle: zoning_information
+label: Vaihe
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: city_strategy
+default_value_callback: ''
+settings: {  }
+field_type: list_string

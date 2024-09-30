@@ -4,6 +4,7 @@ namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Site\Settings;
+use Drupal\datetime_range\Plugin\Field\FieldType\DateRangeItem;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
@@ -33,6 +34,7 @@ class ZoningProjectCard extends TrePreProcessPluginBase {
     // For some reason, the paragraph may be attached directly to a node
     // or it may be attached to a parent paragraph.
     $parent_node_candidate = $paragraph->getParentEntity();
+    $parent_node_id = NULL;
     if ($parent_node_candidate instanceof NodeInterface) {
       $parent_node_id = $parent_node_candidate->id();
     }
@@ -62,39 +64,29 @@ class ZoningProjectCard extends TrePreProcessPluginBase {
 
           $variables['zoning_project_title'] = $translated_zoning_information_node->getTitle();
 
-          if (!$translated_zoning_information_node->get('field_address')->isEmpty()) {
+          if ($translated_zoning_information_node->hasField('field_address') && !$translated_zoning_information_node->get('field_address')->isEmpty()) {
             $variables['zoning_project_address'] = $translated_zoning_information_node->get('field_address')->view(self::LIFTUP_VIEW_MODE);
           }
 
           $display_zoning_information_description = $this->helperFunctions->getFieldValueString($translated_card_paragraph, 'field_display_project_descr');
           if ($display_zoning_information_description == HelperFunctionsInterface::BOOLEAN_FIELD_TRUE) {
-            if (!$translated_zoning_information_node->get('field_display_period')->isEmpty()) {
+            if ($translated_zoning_information_node->hasField('field_display_period') && !$translated_zoning_information_node->get('field_display_period')->isEmpty()) {
               $display_label = $translated_zoning_information_node->field_display_period->getFieldDefinition()->getLabel();
               if (
-                $translated_zoning_information_node->get('field_display_period')->start_date instanceof DrupalDateTime
+                $translated_zoning_information_node->get('field_display_period')->first() instanceof DateRangeItem
+                && $translated_zoning_information_node->get('field_display_period')->first()->get('start_date')->getValue() instanceof DrupalDateTime
               ) {
-                $display_start_date = $translated_zoning_information_node->get('field_display_period')->start_date->format(HelperFunctionsInterface::DATE_ONLY_FORMAT);
+                $display_start_date = $translated_zoning_information_node->get('field_display_period')->first()->get('start_date')->getValue()->format(HelperFunctionsInterface::DATE_ONLY_FORMAT);
               }
-              if ($display_end_date = $translated_zoning_information_node->get('field_display_period')->end_date instanceof DrupalDateTime) {
-                $display_end_date = $translated_zoning_information_node->get('field_display_period')->end_date->format(HelperFunctionsInterface::DATE_ONLY_FORMAT);
+              if (
+                $translated_zoning_information_node->get('field_display_period')->first() instanceof DateRangeItem
+                && $translated_zoning_information_node->get('field_display_period')->first()->get('end_date')->getValue() instanceof DrupalDateTime
+              ) {
+                $display_end_date = $translated_zoning_information_node->get('field_display_period')->first()->get('end_date')->getValue()->format(HelperFunctionsInterface::DATE_ONLY_FORMAT);
               }
               if (isset($display_start_date) && isset($display_end_date)) {
                 $formatted_display_range = $display_label . ' ' . $display_start_date . ' - ' . $display_end_date;
                 $variables['zoning_project_dates'][] = $formatted_display_range;
-              }
-            }
-
-            if (!$translated_zoning_information_node->get('field_processing_time')->isEmpty()) {
-              $processing_label = $translated_zoning_information_node->field_processing_time->getFieldDefinition()->getLabel();
-              if ($translated_zoning_information_node->get('field_processing_time')->start_date instanceof DrupalDateTime) {
-                $processing_start_date = $translated_zoning_information_node->get('field_processing_time')->start_date->format(HelperFunctionsInterface::DATE_ONLY_FORMAT);
-              }
-              if ($translated_zoning_information_node->get('field_processing_time')->end_date instanceof DrupalDateTime) {
-                $processing_end_date = $translated_zoning_information_node->get('field_processing_time')->end_date->format(HelperFunctionsInterface::DATE_ONLY_FORMAT);
-              }
-              if (isset($processing_start_date) && isset($processing_end_date)) {
-                $formatted_processing_range = $processing_label . ' ' . $processing_start_date . ' - ' . $processing_end_date;
-                $variables['zoning_project_dates'][] = $formatted_processing_range;
               }
             }
 

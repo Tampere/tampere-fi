@@ -1,0 +1,19 @@
+uuid: 4925df79-b21c-4330-baba-74e6feb6943f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_phase
+    - paragraphs.paragraphs_type.process_accordions_extended
+id: paragraph.process_accordions_extended.field_phase
+field_name: field_phase
+entity_type: paragraph
+bundle: process_accordions_extended
+label: Nimi
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

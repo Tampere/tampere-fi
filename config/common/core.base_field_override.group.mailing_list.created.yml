@@ -1,0 +1,18 @@
+uuid: 8843e373-c9b5-497e-9d94-35ece344c9be
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+id: group.mailing_list.created
+field_name: created
+entity_type: group
+bundle: mailing_list
+label: Luotu
+description: 'The time that the group was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

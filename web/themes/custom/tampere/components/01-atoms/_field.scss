@@ -30,6 +30,9 @@ $field-sections-v-gutter-desktop: $space-xl;
     &.field--view-mode-full {
       @include page-element-spacer;
       @include summary;
+
+      font-style: italic;
+      font-weight: $font-weight-semi-bold;
     }
   }
 

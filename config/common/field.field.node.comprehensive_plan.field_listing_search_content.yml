@@ -1,0 +1,19 @@
+uuid: 7d7e419d-a40c-4148-8224-38b4daa741d0
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_search_content
+    - node.type.comprehensive_plan
+id: node.comprehensive_plan.field_listing_search_content
+field_name: field_listing_search_content
+entity_type: node
+bundle: comprehensive_plan
+label: Listaushakusisältö
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

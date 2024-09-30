@@ -1,0 +1,21 @@
+uuid: 3760b064-d31d-4c38-9050-bcd2f1bd4168
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_visibility
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+  module:
+    - options
+id: paragraph.urban_planning_listing_and_map.field_visibility
+field_name: field_visibility
+entity_type: paragraph
+bundle: urban_planning_listing_and_map
+label: 'Kaavan nähtävilläolo'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

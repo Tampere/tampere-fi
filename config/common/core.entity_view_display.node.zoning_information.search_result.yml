@@ -4,27 +4,43 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.search_result
+    - field.field.node.zoning_information.field_acceptance_phase
     - field.field.node.zoning_information.field_address
+    - field.field.node.zoning_information.field_city_strategy
+    - field.field.node.zoning_information.field_city_strategy_work_program
+    - field.field.node.zoning_information.field_computed_status
+    - field.field.node.zoning_information.field_computed_visibility
     - field.field.node.zoning_information.field_description
     - field.field.node.zoning_information.field_display_location_on_map
     - field.field.node.zoning_information.field_display_period
     - field.field.node.zoning_information.field_epsg_3067_easting
     - field.field.node.zoning_information.field_epsg_3067_northing
+    - field.field.node.zoning_information.field_epsg_3067_point_strings
     - field.field.node.zoning_information.field_feedback_form
+    - field.field.node.zoning_information.field_fixed_phase_help_text
     - field.field.node.zoning_information.field_geographical_areas
     - field.field.node.zoning_information.field_help_text
     - field.field.node.zoning_information.field_keywords
+    - field.field.node.zoning_information.field_legal_phase
     - field.field.node.zoning_information.field_listing_search_content
     - field.field.node.zoning_information.field_location
     - field.field.node.zoning_information.field_main_image
     - field.field.node.zoning_information.field_other_identifiers
     - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_partially_binding_phase
+    - field.field.node.zoning_information.field_phase
     - field.field.node.zoning_information.field_plan_number
     - field.field.node.zoning_information.field_plan_type
+    - field.field.node.zoning_information.field_preparation_phase
     - field.field.node.zoning_information.field_processing_time
+    - field.field.node.zoning_information.field_proposal_phase
     - field.field.node.zoning_information.field_record_number
+    - field.field.node.zoning_information.field_revised_proposal
     - field.field.node.zoning_information.field_search_keywords
+    - field.field.node.zoning_information.field_start_phase
+    - field.field.node.zoning_information.field_start_preparation_phase
     - field.field.node.zoning_information.field_topics
+    - field.field.node.zoning_information.field_work_programme
     - field.field.node.zoning_information.field_zoning_information_type
     - node.type.zoning_information
   module:
@@ -67,27 +83,43 @@ content: {  }
 hidden:
   content_moderation_control: true
   entitygroupfield: true
+  field_acceptance_phase: true
   field_address: true
+  field_city_strategy: true
+  field_city_strategy_work_program: true
+  field_computed_status: true
+  field_computed_visibility: true
   field_description: true
   field_display_location_on_map: true
   field_display_period: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
   field_feedback_form: true
+  field_fixed_phase_help_text: true
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_legal_phase: true
   field_listing_search_content: true
   field_location: true
   field_main_image: true
   field_other_identifiers: true
   field_paragraphs: true
+  field_partially_binding_phase: true
+  field_phase: true
   field_plan_number: true
   field_plan_type: true
+  field_preparation_phase: true
   field_processing_time: true
+  field_proposal_phase: true
   field_record_number: true
+  field_revised_proposal: true
   field_search_keywords: true
+  field_start_phase: true
+  field_start_preparation_phase: true
   field_topics: true
+  field_work_programme: true
   field_zoning_information_type: true
   langcode: true
   links: true

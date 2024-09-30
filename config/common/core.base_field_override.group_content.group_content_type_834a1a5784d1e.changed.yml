@@ -1,0 +1,18 @@
+uuid: af8c8fd1-c68f-49ba-97ff-de68f40a3ace
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_834a1a5784d1e
+id: group_content.group_content_type_834a1a5784d1e.changed
+field_name: changed
+entity_type: group_content
+bundle: group_content_type_834a1a5784d1e
+label: 'Changed on'
+description: 'The time that the group relationship was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

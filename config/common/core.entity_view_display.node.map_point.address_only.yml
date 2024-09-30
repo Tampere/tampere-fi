@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.map_point.field_description
     - field.field.node.map_point.field_epsg_3067_easting
     - field.field.node.map_point.field_epsg_3067_northing
+    - field.field.node.map_point.field_epsg_3067_point_strings
     - field.field.node.map_point.field_location
     - node.type.map_point
   module:
@@ -64,7 +65,7 @@ content:
           weight: -7
           display: true
         locality:
-          glue: ','
+          glue: ''
           weight: -6
           display: true
         country_code:
@@ -117,6 +118,7 @@ hidden:
   field_address_hash: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
   field_location: true
   langcode: true
   links: true

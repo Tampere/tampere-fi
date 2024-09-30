@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - group.type.minisite
+    - user.role.authenticated
 id: minisite-member
 label: Member
 weight: -100

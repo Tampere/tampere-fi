@@ -6,3 +6,4 @@ package: 'TRE'
 dependencies:
   - preprocess:preprocess
   - tre_preprocess_utility_functions:tre_preprocess_utility_functions
+  - drupal:datetime_range

@@ -1,0 +1,39 @@
+uuid: 744f2f89-8fa1-414b-8e9f-688ac12dbac4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.automatic_phase_accordion.field_accordion_main_title
+    - field.field.paragraph.automatic_phase_accordion.field_description_text
+    - field.field.paragraph.automatic_phase_accordion.field_process_accordions
+    - paragraphs.paragraphs_type.automatic_phase_accordion
+id: paragraph.automatic_phase_accordion.default
+targetEntityType: paragraph
+bundle: automatic_phase_accordion
+mode: default
+content:
+  field_accordion_main_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_description_text:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_process_accordions: true
+  status: true

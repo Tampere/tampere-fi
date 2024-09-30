@@ -8,3 +8,29 @@ third_party_settings:
       label: Categorization
     group_search_keywords:
       label: 'Search keywords'
+    group_kaupunkisuunnittelukohtees:
+      label: 'Urban planning related information'
+    group_vaiheistus:
+      label: Phasing
+    group_start_phase:
+      label: 'Initial phase'
+    group_preparation_phase:
+      label: 'Preparation phase'
+    group_start_and_preparation_phas:
+      label: 'Initial and preparation phase'
+    group_proposal_phase:
+      label: 'Proposal phase'
+    group_revised_proposal:
+      label: 'Validated proposal'
+    group_acceptance_phase:
+      label: Approval
+    group_partially_binding_phase:
+      label: 'Partially legally binding'
+    group_legal_phase:
+      label: 'Legally binding'
+    group_city_strategy:
+      label: 'City Strategy'
+    group_work_programme:
+      label: 'Work programme'
+    group_city_strategy_work_program:
+      label: 'City Strategy and work programme'

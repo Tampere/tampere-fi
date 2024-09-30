@@ -1,0 +1,18 @@
+uuid: ace7b6ff-4473-4320-995a-ab95ecd3a77b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.urban_planning_listing_and_map
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: paragraph.urban_planning_listing_and_map
+target_entity_type_id: paragraph
+target_bundle: urban_planning_listing_and_map
+default_langcode: current_interface
+language_alterable: true

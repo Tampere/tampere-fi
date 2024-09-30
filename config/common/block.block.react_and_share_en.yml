@@ -43,6 +43,7 @@ visibility:
       basic_content_page: basic_content_page
       city_planning_and_constructions: city_planning_and_constructions
       collection_page: collection_page
+      comprehensive_plan: comprehensive_plan
       content_in_other_language: content_in_other_language
       front_page: front_page
       moderated_page: moderated_page

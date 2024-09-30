@@ -1,0 +1,21 @@
+uuid: f4ccd9e9-434b-4959-861b-6175f4226f87
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_computed_status
+    - node.type.zoning_information
+  module:
+    - options
+id: node.zoning_information.field_computed_status
+field_name: field_computed_status
+entity_type: node
+bundle: zoning_information
+label: 'Computed status'
+description: 'This field is computed-only so not visible on the form or the display. Only used in preprocessing / templates / filters.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

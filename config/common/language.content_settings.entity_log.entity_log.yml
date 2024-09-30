@@ -1,0 +1,11 @@
+uuid: f1326e56-4876-4e48-9955-b3b3b7e3274a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - entity_log
+id: entity_log.entity_log
+target_entity_type_id: entity_log
+target_bundle: entity_log
+default_langcode: site_default
+language_alterable: false

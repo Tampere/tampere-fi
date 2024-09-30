@@ -1,0 +1,20 @@
+uuid: 8fd8a7cb-5bc2-40bd-ae03-52b222fa420c
+langcode: fi
+status: true
+dependencies:
+  module:
+    - role_watchdog
+id: role_watchdog.role_watchdog.uid
+field_name: uid
+entity_type: role_watchdog
+bundle: role_watchdog
+label: 'Authored by'
+description: 'The user ID of author of the Role Watchdog entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

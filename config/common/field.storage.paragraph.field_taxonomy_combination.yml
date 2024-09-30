@@ -3,8 +3,12 @@ langcode: fi
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: paragraph.field_taxonomy_combination
 field_name: field_taxonomy_combination
 entity_type: paragraph

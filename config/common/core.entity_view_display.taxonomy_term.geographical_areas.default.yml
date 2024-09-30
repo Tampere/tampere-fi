@@ -1,0 +1,31 @@
+uuid: 22e437aa-c7f1-4903-ba10-47ef57212140
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.geographical_areas.field_epsg_3067_easting
+    - field.field.taxonomy_term.geographical_areas.field_epsg_3067_northing
+    - field.field.taxonomy_term.geographical_areas.field_epsg_3067_point_strings
+    - field.field.taxonomy_term.geographical_areas.field_location
+    - taxonomy.vocabulary.geographical_areas
+  module:
+    - text
+id: taxonomy_term.geographical_areas.default
+targetEntityType: taxonomy_term
+bundle: geographical_areas
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
+  field_location: true
+  langcode: true
+  search_api_excerpt: true

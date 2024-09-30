@@ -1,0 +1,17 @@
+uuid: fddbe7ef-2c90-47f5-8656-821f95cce3bc
+langcode: fi
+status: true
+dependencies:
+  module:
+    - content_translation
+    - role_watchdog
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: role_watchdog.role_watchdog
+target_entity_type_id: role_watchdog
+target_bundle: role_watchdog
+default_langcode: site_default
+language_alterable: false

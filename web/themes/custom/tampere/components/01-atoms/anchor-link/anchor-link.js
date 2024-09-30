@@ -82,7 +82,7 @@ Drupal.behaviors.h2HeadingAnchors = {
     const headings = once(
       'page-heading-anchors',
       document.querySelectorAll(
-        '.main-content h2:not(.in-page-menu__heading, .visually-hidden)',
+        '.main-content h2:not(.in-page-menu__heading, .visually-hidden, .consent-placeholder__title)',
         context,
       ),
     );

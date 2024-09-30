@@ -1,0 +1,20 @@
+uuid: 82c56c11-d860-4d59-9e7b-17bdb23efb79
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.mailing_list-group_membership
+  module:
+    - metatag
+id: group_content.mailing_list-group_membership.metatag
+field_name: metatag
+entity_type: group_content
+bundle: mailing_list-group_membership
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

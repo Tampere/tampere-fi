@@ -5,13 +5,29 @@
  * Hook implementations for tre_preprocess_embedded_content_and_map_tabs module.
  */
 
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\datetime_range\Plugin\Field\FieldType\DateRangeItem;
 use Drupal\node\NodeInterface;
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\tre_preprocess\Plugin\Preprocess\AutomaticPhaseAccordionParagraph;
 
 /**
  * Implements hook_ENTITY_TYPE_presave().
  */
 function tre_preprocess_embedded_content_and_map_tabs_node_presave(NodeInterface $node) {
+  _tre_preprocess_embedded_content_and_map_tabs_update_field_listing_search_content($node);
+  _tre_preprocess_embedded_content_and_map_tabs_update_field_computed_visibility($node);
+  _tre_preprocess_embedded_content_and_map_tabs_update_field_computed_status($node);
+}
 
+/**
+ * Updates field_listing_search_content for nodes that have it.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node whose field_listing_search_content needs an update.
+ */
+function _tre_preprocess_embedded_content_and_map_tabs_update_field_listing_search_content(NodeInterface $node) {
   if (!$node->hasField('field_listing_search_content')) {
     return;
   }
@@ -30,7 +46,118 @@ function tre_preprocess_embedded_content_and_map_tabs_node_presave(NodeInterface
   $title = $node->getTitle();
 
   $node->set('field_listing_search_content', "{$title}\n{$text_without_tags}");
+}
 
+/**
+ * Updates field_computed_visibility for nodes that have it.
+ *
+ * @todo make this run on cron daily for each node (insert into update queue
+ * each day?) (check ->changed)
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node whose field_computed_visibility needs an update.
+ */
+function _tre_preprocess_embedded_content_and_map_tabs_update_field_computed_visibility(NodeInterface $node) {
+  if (!$node->hasField('field_computed_visibility')) {
+    return;
+  }
+
+  /** @var \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository */
+  $entity_repository = \Drupal::service('entity.repository');
+
+  /** @var \Drupal\node\NodeInterface $translated_node */
+  $translated_node = $entity_repository->getTranslationFromContext($node);
+
+  $current_date = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
+  $current_date_formatted = $current_date->format('Y-m-d');
+
+  $node_visible = FALSE;
+
+  // If any of the daterange fields match the current date, the computed
+  // visibility is 'visible'; otherwise 'invisible'.
+  foreach (array_keys(AutomaticPhaseAccordionParagraph::FIXED_PHASE_FIELDS) as $field_name) {
+    if (!$translated_node->hasField($field_name) || $translated_node->get($field_name)->isEmpty()) {
+      continue;
+    }
+
+    $phase_paragraphs = $translated_node->get($field_name)->referencedEntities();
+    $phase_paragraph = reset($phase_paragraphs);
+    if (!($phase_paragraph instanceof ParagraphInterface)) {
+      continue;
+    }
+
+    /** @var \Drupal\paragraphs\ParagraphInterface $translated_phase */
+    $translated_phase = $entity_repository->getTranslationFromContext($phase_paragraph);
+
+    if ($translated_phase->get('field_materials_visibility')->isEmpty()) {
+      continue;
+    }
+
+    $interval_value = $translated_phase->get('field_materials_visibility')->first();
+    // Note: DateRangeItem does not implement an interface that would guarantee
+    // the existence of the start_date and end_date properties so comparing
+    // against an implementation is necessary.
+    if (!($interval_value instanceof DateRangeItem)) {
+      continue;
+    }
+
+    $start_date = $interval_value->get('start_date')->getValue();
+    if (!$start_date instanceof DrupalDateTime) {
+      continue;
+    }
+    $start_date_formatted = $start_date->format('Y-m-d');
+
+    $end_date = $interval_value->get('end_date')->getValue();
+    if (!$end_date instanceof DrupalDateTime) {
+      continue;
+    }
+    $end_date_formatted = $end_date->format('Y-m-d');
+
+    $node_visible = $start_date_formatted <= $current_date_formatted && $current_date_formatted <= $end_date_formatted;
+
+    if ($node_visible) {
+      break;
+    }
+  }
+
+  if ($node_visible) {
+    $node->set('field_computed_visibility', 'visible');
+  }
+  else {
+    $node->set('field_computed_visibility', 'not_visible');
+  }
+}
+
+/**
+ * Updates field_computed_status for nodes that have it.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node whose field_computed_status needs an update.
+ */
+function _tre_preprocess_embedded_content_and_map_tabs_update_field_computed_status(NodeInterface $node) {
+  /** @var \Drupal\Core\Entity\EntityRepositoryInterface $entity_repository */
+  $entity_repository = \Drupal::service('entity.repository');
+
+  if (!$node->hasField('field_computed_status') || !$node->hasField('field_phase')) {
+    return;
+  }
+
+  /** @var \Drupal\node\NodeInterface $translated_node */
+  $translated_node = $entity_repository->getTranslationFromContext($node);
+
+  $phase_value = $translated_node->get('field_phase')->getString();
+  if ($phase_value === '') {
+    return;
+  }
+
+  $matching_phases = array_filter(AutomaticPhaseAccordionParagraph::FIXED_PHASE_FIELDS, function ($phase_data) use ($phase_value) {
+    return $phase_data['corresponding_phase'] === $phase_value;
+  });
+
+  if (count($matching_phases) === 1) {
+    $matching_phase = reset($matching_phases);
+    $translated_node->set('field_computed_status', $matching_phase['category']);
+  }
 }
 
 /**
@@ -40,7 +167,7 @@ function tre_preprocess_embedded_content_and_map_tabs_node_presave(NodeInterface
  * to update listing_search_content field in the parent nodes.
  */
 function tre_preprocess_embedded_content_and_map_tabs_node_update(NodeInterface $node) {
-  if (!$node->bundle() == 'map_point') {
+  if ($node->bundle() !== 'map_point') {
     return;
   }
 
@@ -48,9 +175,70 @@ function tre_preprocess_embedded_content_and_map_tabs_node_update(NodeInterface 
     'field_addresses' => $node->id(),
   ]);
 
-  // Update the search field of all parent nodes when a map_point node gets updated.
+  // Update the search field of all parent nodes when a map_point node gets
+  // updated.
   foreach ($parent_nodes as $parent_node) {
     $parent_node->save();
   }
 
+}
+
+/**
+ * Implements hook_cron().
+ */
+function tre_preprocess_embedded_content_and_map_tabs_cron() {
+  $last_update_date = \Drupal::state()->get('tre_list_and_map_update_field_computed_visibility', '');
+
+  // Only insert nodes into the automatic update queue that have not been
+  // updated today. This is to save resources, since the ones that have been
+  // updated already today already have the correct values in place for the
+  // metadata (field_computed_visibility).
+  $current_timestamp = new DrupalDateTime('today midnight', 'Europe/Helsinki');
+  $current_date = $current_timestamp->format('Y-m-d');
+
+  if ($last_update_date === $current_date) {
+    return;
+  }
+
+  _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue($current_timestamp);
+
+  \Drupal::state()->set('tre_list_and_map_update_field_computed_visibility', $current_date);
+}
+
+/**
+ * Inserts nodes into a queue for automated updates of time-dependent metadata.
+ *
+ * @param \Drupal\Core\Datetime\DrupalDateTime $until
+ *   The limit value for 'changed' in nodes; any nodes that have been updated
+ *   earlier than this time limit are included in the queue.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+ */
+function _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue(DrupalDateTime $until): void {
+  $until_utc = clone $until;
+  $until_utc->setTimezone(new \DateTimeZone(DateTimeItemInterface::STORAGE_TIMEZONE));
+
+  $content_types = [
+    'comprehensive_plan',
+    'city_planning_and_constructions',
+    'zoning_information',
+  ];
+
+  $node_query = \Drupal::entityTypeManager()
+    ->getStorage('node')
+    ->getQuery()
+    ->accessCheck(FALSE);
+  $node_query->condition('type', $content_types, 'IN');
+  $node_query->condition('changed', $until_utc->getTimestamp(), '<');
+  $nids = $node_query->execute();
+
+  if (count($nids) === 0) {
+    return;
+  }
+
+  $queue = \Drupal::queue('tre_list_and_map_update_field_computed_visibility', TRUE);
+  foreach ($nids as $nid) {
+    $queue->createItem(['nid' => $nid]);
+  }
 }

@@ -138,6 +138,7 @@ $header-secondary-inline-padding: 13px;
       display: flex;
       height: 100%;
       padding: $space-s;
+      padding-bottom: $space-xl;
       line-height: 1;
 
       @include large {

@@ -21,7 +21,28 @@
   }
 
   &__pre-title-content {
+    @include page-element-spacer;
+
     order: 2;
+
+    .field-phase,
+    .field-computed-visibility {
+      color: clr(primary);
+      padding: $space-xs $space-s;
+      margin-top: 0;
+      margin-bottom: $space-xs;
+      width: max-content;
+      font-weight: $font-weight-bold;
+      font-size: $font-18;
+    }
+
+    .field-phase {
+      background-color: $color-light-yellow;
+    }
+
+    .field-computed-visibility {
+      background-color: $color-yellow-heat;
+    }
   }
 
   &__main-image-wrapper {

@@ -25,6 +25,8 @@
 
 {% set cta__modifiers = cta__modifiers|default([]) %}
 
+{% set cta__extra_classes = bundle %}
+
 {% set has_heading = cta__heading|render|trim %}
 {% set has_content = cta__content|render|trim %}
 {% set has_links = cta__links__items|render|trim or cta__links|render|trim %}

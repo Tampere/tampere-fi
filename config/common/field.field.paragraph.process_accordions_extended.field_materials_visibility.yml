@@ -1,0 +1,21 @@
+uuid: dca0f1cc-e8c6-4d08-bfad-623fbb2520a7
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_materials_visibility
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - datetime_range
+id: paragraph.process_accordions_extended.field_materials_visibility
+field_name: field_materials_visibility
+entity_type: paragraph
+bundle: process_accordions_extended
+label: 'Aineistot nähtävillä'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

@@ -1,0 +1,9 @@
+third_party_settings:
+  ds:
+    fields:
+      node_link:
+        settings:
+          'link text': 'Read more'
+        ft:
+          settings:
+            lb: Website

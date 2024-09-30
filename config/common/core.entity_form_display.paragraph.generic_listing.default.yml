@@ -58,7 +58,6 @@ third_party_settings:
         - field_plan_numbers
         - field_record_numbers
         - field_other_identifiers
-        - field_zoning_information_types
       label: Kaavat
       region: content
       parent_name: group_content_type_taxonomies
@@ -70,7 +69,6 @@ third_party_settings:
         id: ''
         description: ''
         required_fields: true
-        open: false
 id: paragraph.generic_listing.default
 targetEntityType: paragraph
 bundle: generic_listing
@@ -172,13 +170,8 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_zoning_information_types:
-    type: options_buttons
-    weight: 11
-    region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden:
   created: true
+  field_zoning_information_types: true
   status: true
   translation: true

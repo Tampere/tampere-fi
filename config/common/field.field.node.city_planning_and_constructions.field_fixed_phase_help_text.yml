@@ -1,0 +1,24 @@
+uuid: ae40130a-6a6e-4294-bab1-5d56304ac712
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fixed_phase_help_text
+    - node.type.city_planning_and_constructions
+  module:
+    - markup
+id: node.city_planning_and_constructions.field_fixed_phase_help_text
+field_name: field_fixed_phase_help_text
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Fixed phase help text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: '<h3>Vaiheistushaitarin sisällöt</h3><p>Jos vaiheeseen ei lisätä sisältöä mutta se valitaan näytettäväksi sivulla, se näyttää oletussisällön "Vaihe tulossa".</p>'
+    format: basic_html
+field_type: markup

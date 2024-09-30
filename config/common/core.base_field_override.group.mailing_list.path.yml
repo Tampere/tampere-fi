@@ -1,0 +1,20 @@
+uuid: d674ea6c-3a5f-4adb-8468-e29800fd8239
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.type.mailing_list
+  module:
+    - path
+id: group.mailing_list.path
+field_name: path
+entity_type: group
+bundle: mailing_list
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

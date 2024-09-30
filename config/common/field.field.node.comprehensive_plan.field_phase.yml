@@ -1,0 +1,23 @@
+uuid: b4645820-0bfc-4588-bc80-38b7961baa5b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phase
+    - node.type.comprehensive_plan
+  module:
+    - options
+id: node.comprehensive_plan.field_phase
+field_name: field_phase
+entity_type: node
+bundle: comprehensive_plan
+label: Vaihe
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: city_strategy
+default_value_callback: ''
+settings: {  }
+field_type: list_string

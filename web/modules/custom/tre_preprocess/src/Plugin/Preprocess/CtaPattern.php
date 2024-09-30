@@ -30,6 +30,8 @@ class CtaPattern extends TrePreProcessPluginBase {
 
     $variables['entity_id'] = $pattern_context->getProperty('entity_id');
 
+    $variables['bundle'] = str_replace('_', '-', $pattern_context->getProperty('bundle'));
+
     return $variables;
   }
 

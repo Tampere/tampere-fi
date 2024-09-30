@@ -1,0 +1,14 @@
+id: urban_planning_status_and_agency
+label: 'Urban planning status and agency'
+ui_limit: process_accordions_extended|default
+type: token
+type_label: 'Token field'
+entities:
+  paragraph: paragraph
+properties:
+  content:
+    value: '[paragraph:field_status] [paragraph:field_agency] [paragraph:field_date:date:custom:j.n.Y]'
+    format: plain_text
+  force_global_entity: false
+  use_global_entity: false
+  use_global_view_token: false

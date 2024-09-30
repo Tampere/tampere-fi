@@ -1,0 +1,20 @@
+uuid: 04f97cc3-ae14-4efd-8e5f-cdb88ad527dc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-front_page
+  module:
+    - metatag
+id: group_content.minisite-group_node-front_page.metatag
+field_name: metatag
+entity_type: group_content
+bundle: minisite-group_node-front_page
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

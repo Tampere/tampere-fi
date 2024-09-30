@@ -118,6 +118,7 @@ class ListingItemPattern extends TrePreProcessPluginBase {
       'blog_article' => $this->t('Blog post', [], $context),
       'city_planning_and_constructions' => $this->t('Page', [], $context),
       'collection_page' => $this->t('Page', [], $context),
+      'comprehensive_plan' => $this->t('Page', [], $context),
       'front_page' => $this->t('Front page', [], $context),
       'involvement_opportunity' => $this->t('Page', [], $context),
       'moderated_page' => $this->t('Page', [], $context),

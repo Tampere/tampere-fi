@@ -4,6 +4,13 @@ status: true
 dependencies:
   config:
     - group_content_menu.group_content_menu_type.minisite_main_menu_fi
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
 id: group_content_menu.minisite_main_menu_fi
 target_entity_type_id: group_content_menu
 target_bundle: minisite_main_menu_fi

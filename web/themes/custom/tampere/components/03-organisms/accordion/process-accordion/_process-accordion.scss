@@ -124,7 +124,7 @@ $process-accordion-heading-line-left-distance: calc((var(--process-accordion-lef
 
   // Accordion item variations
   &__item--ready {
-    --process-accordion-line-color: #{clr(process-accordion-inactive-line)};
+    --process-accordion-line-color: #{clr(primary)};
 
     #{$base_class}__title-wrapper {
       &::before {

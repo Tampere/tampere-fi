@@ -128,6 +128,7 @@ module:
   mimemail: 0
   mysql: 0
   node: 0
+  oembed_providers: 0
   office_hours: 0
   open_readspeaker: 0
   openapi: 0
@@ -224,6 +225,7 @@ module:
   tre_node_json_api_static: 0
   tre_node_location_coordinate_conversion: 0
   tre_node_logger: 0
+  tre_oembed_custom: 0
   tre_phone_field_formatter: 0
   tre_portfolio_listing: 0
   tre_preprocess: 0

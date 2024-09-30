@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.place_of_business.field_alternative_name
     - field.field.node.place_of_business.field_body_md
     - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_epsg_3067_point_strings
     - field.field.node.place_of_business.field_exception_hours
     - field.field.node.place_of_business.field_geographical_areas
     - field.field.node.place_of_business.field_hr_organizational_unit
@@ -474,6 +475,7 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  field_epsg_3067_point_strings: true
   field_listing_search_content: true
   path: true
   promote: true

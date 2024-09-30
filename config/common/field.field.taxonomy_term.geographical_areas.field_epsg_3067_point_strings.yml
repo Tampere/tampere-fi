@@ -1,0 +1,19 @@
+uuid: 736a3d02-34e7-47a2-815c-a97e2f0a4a15
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_epsg_3067_point_strings
+    - taxonomy.vocabulary.geographical_areas
+id: taxonomy_term.geographical_areas.field_epsg_3067_point_strings
+field_name: field_epsg_3067_point_strings
+entity_type: taxonomy_term
+bundle: geographical_areas
+label: 'EPSG 3067 -piste merkkijonona'
+description: 'Parina "itäisyys pohjoisuus", jossa erottimena on välilyönti.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

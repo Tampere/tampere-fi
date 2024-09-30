@@ -13,6 +13,6 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<iframe allowfullscreen class data-src loading scrolling src title width height frameborder>'
+      allowed_html: '<iframe allowfullscreen class loading scrolling src title width height frameborder>'
       filter_html_help: false
       filter_html_nofollow: false

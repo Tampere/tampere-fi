@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_geographical_areas
-    - field.storage.node.field_life_situations
-    - field.storage.node.field_search_keywords
     - field.storage.node.field_topics
+    - field.storage.node.field_search_keywords
+    - field.storage.node.field_life_situations
+    - field.storage.node.field_geographical_areas
     - search_api.server.solr
     - core.entity_view_mode.node.search_index
   module:
@@ -126,8 +126,8 @@ field_settings:
     type: string
     configuration:
       field: 'entity:node/type'
-      mapping: "basic_content_page|page\r\ncollection_page|page\r\nmoderated_page|page\r\nproject|page\r\norganization|page\r\nzoning_information|page\r\nplace|page\r\ncity_planning_and_constructions|page\r\ninvolvement_opportunity|page\r\nportfolio|page\r\nsmall_news_item|news_item"
-      with_value: ''
+      mapping: "basic_content_page|page\r\ncollection_page|page\r\nmoderated_page|page\r\nproject|page\r\norganization|page\r\nzoning_information|page\r\ncomprehensive_plan|page\r\nplace|page\r\ncity_planning_and_constructions|page\r\ninvolvement_opportunity|page\r\nportfolio|page\r\nsmall_news_item|news_item"
+      with_value: page
       without_value: ''
   nid:
     label: ID
@@ -150,6 +150,7 @@ field_settings:
           blog_article: search_index
           city_planning_and_constructions: search_index
           collection_page: search_index
+          comprehensive_plan: search_index
           front_page: search_index
           involvement_opportunity: search_index
           moderated_page: search_index
@@ -216,6 +217,7 @@ processor_settings:
   add_url: {  }
   aggregated_field: {  }
   auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
   double_quote_workaround:
     weights:
       postprocess_query: 0

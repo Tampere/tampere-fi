@@ -67,6 +67,9 @@ process:
         bundle: geographical_areas
         bundle_key: vid
         value_key: name
+  field_epsg_3067_point_strings:
+    plugin: get
+    source: epsg_points
   field_addresses:
     plugin: sub_process
     source: street_addresses

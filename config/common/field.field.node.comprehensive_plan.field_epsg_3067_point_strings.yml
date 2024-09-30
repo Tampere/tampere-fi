@@ -1,0 +1,19 @@
+uuid: d4bfa761-068f-4d51-8863-b6685e9740aa
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_epsg_3067_point_strings
+    - node.type.comprehensive_plan
+id: node.comprehensive_plan.field_epsg_3067_point_strings
+field_name: field_epsg_3067_point_strings
+entity_type: node
+bundle: comprehensive_plan
+label: 'EPSG 3067 -pisteet merkkijonona'
+description: 'Pareina "itäisyys pohjoisuus", jossa erottimena on välilyönti.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

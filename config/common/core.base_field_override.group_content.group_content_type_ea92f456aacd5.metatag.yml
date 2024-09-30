@@ -1,0 +1,20 @@
+uuid: cad9ec70-34de-4e83-b5e1-29bd1d793cb1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_ea92f456aacd5
+  module:
+    - metatag
+id: group_content.group_content_type_ea92f456aacd5.metatag
+field_name: metatag
+entity_type: group_content
+bundle: group_content_type_ea92f456aacd5
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

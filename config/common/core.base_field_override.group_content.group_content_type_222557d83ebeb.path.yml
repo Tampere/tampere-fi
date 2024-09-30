@@ -1,0 +1,20 @@
+uuid: bdde9c81-8309-43f1-b1bb-46f40f3ee650
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_222557d83ebeb
+  module:
+    - path
+id: group_content.group_content_type_222557d83ebeb.path
+field_name: path
+entity_type: group_content
+bundle: group_content_type_222557d83ebeb
+label: Osoitealias
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,121 @@
+uuid: f595939c-609a-4acd-9c3a-27f5e19bab8d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.process_accordions_extended.field_accordion_content
+    - field.field.paragraph.process_accordions_extended.field_accordion_heading
+    - field.field.paragraph.process_accordions_extended.field_agency
+    - field.field.paragraph.process_accordions_extended.field_date
+    - field.field.paragraph.process_accordions_extended.field_description_text
+    - field.field.paragraph.process_accordions_extended.field_materials_visibility
+    - field.field.paragraph.process_accordions_extended.field_phase
+    - field.field.paragraph.process_accordions_extended.field_phase_display
+    - field.field.paragraph.process_accordions_extended.field_phase_upcoming
+    - field.field.paragraph.process_accordions_extended.field_process_phase_status
+    - field.field.paragraph.process_accordions_extended.field_status
+    - paragraphs.paragraphs_type.process_accordions_extended
+  module:
+    - datetime_range
+    - ds
+    - entity_reference_revisions
+    - field_delimiter
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_accordion_item
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: process
+    regions:
+      accordion_content:
+        - field_phase_upcoming
+        - field_description_text
+        - field_materials_visibility
+        - 'dynamic_token_field:paragraph-urban_planning_status_and_agency'
+        - field_accordion_content
+    fields:
+      'dynamic_token_field:paragraph-urban_planning_status_and_agency':
+        plugin_id: 'dynamic_token_field:paragraph-urban_planning_status_and_agency'
+        weight: 3
+        label: hidden
+        formatter: default
+id: paragraph.process_accordions_extended.default
+targetEntityType: paragraph
+bundle: process_accordions_extended
+mode: default
+content:
+  field_accordion_content:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: accordion_content_view_mode
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 4
+    region: accordion_content
+  field_description_text:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: accordion_content
+  field_materials_visibility:
+    type: daterange_custom
+    label: above
+    settings:
+      timezone_override: Europe/Helsinki
+      date_format: j.n.Y
+      separator: ' - '
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: accordion_content
+  field_phase_upcoming:
+    type: boolean
+    label: hidden
+    settings:
+      format: custom
+      format_custom_false: ''
+      format_custom_true: 'Vaihe tulossa'
+    third_party_settings:
+      ds:
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: accordion_content
+hidden:
+  field_accordion_heading: true
+  field_agency: true
+  field_date: true
+  field_phase: true
+  field_phase_display: true
+  field_process_phase_status: true
+  field_status: true
+  search_api_excerpt: true

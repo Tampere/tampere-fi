@@ -6,7 +6,7 @@ id: quickchannel_embed
 label: 'Quickchannel upotus'
 use_ssi: false
 embed_markup:
-  value: "<iframe allowfullscreen=\"\" class=\"lazyload\" loading=\"lazy\" frameborder=\"0\" height=\"360\" scrolling=\"no\" data-src=\"https://play.quickchannel.com/play/[embederator:embed_id]\" title=\"[embederator:field_quickchannel_title]\" width=\"640\"></iframe>\r\n"
+  value: "<iframe allowfullscreen=\"\" class=\"lazyload\" loading=\"lazy\" frameborder=\"0\" height=\"360\" scrolling=\"no\" src=\"https://play.quickchannel.com/play/[embederator:embed_id]\" title=\"[embederator:field_quickchannel_title]\" width=\"640\"></iframe>\r\n"
   format: embederator_html
 embed_url: ''
 wrapper_class: ''

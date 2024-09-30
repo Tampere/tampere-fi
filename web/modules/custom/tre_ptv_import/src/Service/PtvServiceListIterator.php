@@ -34,20 +34,6 @@ class PtvServiceListIterator implements PtvServiceSingleFetcherInterface {
   protected V11VmOpenApiServicesWithPaging $model;
 
   /**
-   * The area type to request.
-   *
-   * @var string
-   */
-  protected string $areaType;
-
-  /**
-   * The area code to request.
-   *
-   * @var string
-   */
-  protected string $areaCode;
-
-  /**
    * Whether to include services concerning the whole country.
    *
    * Bool as string, so 'true' = true and 'false' = false.
@@ -82,6 +68,14 @@ class PtvServiceListIterator implements PtvServiceSingleFetcherInterface {
   protected array $items = [];
 
   /**
+   * The organization guid to request.
+   *
+   * @var string
+   */
+  protected string $organizationGuid;
+
+
+  /**
    * Storage for the count of pages from the API query.
    *
    * @var int
@@ -98,14 +92,12 @@ class PtvServiceListIterator implements PtvServiceSingleFetcherInterface {
   /**
    * Constructs the PTV service iterator.
    */
-  public function __construct(ServiceApi $api_instance, string $area_type, string $area_code, string $include_whole_country, string $include_general_descriptions, string $include_headers) {
+  public function __construct(ServiceApi $api_instance, string $include_whole_country, string $include_general_descriptions, string $include_headers, string $organization_guid) {
     $this->apiConnection = $api_instance;
-
-    $this->areaType = $area_type;
-    $this->areaCode = $area_code;
     $this->includeWholeCountry = $include_whole_country;
     $this->includeGeneralDescriptions = $include_general_descriptions;
     $this->includeHeaders = $include_headers;
+    $this->organizationGuid = $organization_guid;
   }
 
   /**
@@ -172,13 +164,14 @@ class PtvServiceListIterator implements PtvServiceSingleFetcherInterface {
     // longer timeout at our end. Consider increasing the timeout from the
     // default of 30 sec by setting
     // $settings['http_client_config']['timeout'] in settings.php.
+    // XO-3501: the issues mentionned above will hopefully be alleviated by
+    // fetching services limited to the Tampere organization instead of the
+    // area, essentially decreasing the amount by a factor of about 4.
     while ($page == 1 || $this->model->getPageNumber() < $this->model->getPageCount()) {
-      $this->model = $this->apiConnection->apiV11ServiceListAreaAreaCodeCodeGet($this->areaType,
-        $this->areaCode,
-        $this->includeWholeCountry,
-        $this->includeGeneralDescriptions,
-        $page,
-        $this->includeHeaders);
+      $this->model = $this->apiConnection->apiV11ServiceListOrganizationGet(organizationId: $this->organizationGuid,
+        serviceWithGD: $this->includeGeneralDescriptions,
+        page: $page,
+        showHeader: $this->includeHeaders);
       foreach ($this->model->getItemList() as $item) {
         $this->items[$counter++] = $item;
       }

@@ -1,0 +1,18 @@
+uuid: 9fd54e56-4e85-4aed-919a-15bb0ce1a68b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.group_content_type_222557d83ebeb
+id: group_content.group_content_type_222557d83ebeb.created
+field_name: created
+entity_type: group_content
+bundle: group_content_type_222557d83ebeb
+label: Luotu
+description: 'The time that the group relationship was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

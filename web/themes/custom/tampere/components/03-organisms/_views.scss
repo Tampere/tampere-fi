@@ -1,7 +1,8 @@
 /* Styles related to Drupal views */
 
 .view {
-  &--embedded-content-tab {
+  &--embedded-content-tab,
+  &--urban-planning-embedded-content-tab {
     .views-ef-fieldset-root {
       @include medium-down {
         width: 100%;

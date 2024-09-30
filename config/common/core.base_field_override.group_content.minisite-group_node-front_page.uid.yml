@@ -1,0 +1,20 @@
+uuid: 15e5643e-a2b6-4ae7-ac99-1d8e459befa2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.minisite-group_node-front_page
+id: group_content.minisite-group_node-front_page.uid
+field_name: uid
+entity_type: group_content
+bundle: minisite-group_node-front_page
+label: 'Group relationship creator'
+description: 'The username of the group relationship creator.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\group\Entity\GroupRelationship::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

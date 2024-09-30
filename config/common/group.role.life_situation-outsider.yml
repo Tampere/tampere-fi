@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - group.type.life_situation
+    - user.role.authenticated
 id: life_situation-outsider
 label: Outsider
 weight: -101
@@ -16,6 +17,7 @@ permissions:
   - 'view group_node:basic_content_page entity'
   - 'view group_node:city_planning_and_constructions entity'
   - 'view group_node:collection_page entity'
+  - 'view group_node:comprehensive_plan entity'
   - 'view group_node:content_in_other_language entity'
   - 'view group_node:moderated_page entity'
   - 'view group_node:news_item entity'

@@ -43,11 +43,10 @@ services:
     class: Drupal\tre_ptv_import\Service\PtvServiceListIterator
     arguments:
       - '@tre_ptv_import.service_api'
-      - '%tre_ptv_import.area_type%'
-      - '%tre_ptv_import.area_code%'
       - '%tre_ptv_import.include_whole_country_data%'
       - '%tre_ptv_import.include_general_descriptions%'
       - '%tre_ptv_import.include_headers%'
+      - '%tre_ptv_import.organization_guid%'
   tre_ptv_import.servicechannel_iterator:
     class: Drupal\tre_ptv_import\Service\PtvServiceChannelListIterator
     arguments:
@@ -72,9 +71,8 @@ services:
     tags:
       - { name: event_subscriber }
 parameters:
-  tre_ptv_import.area_type: 'Municipality'
-  tre_ptv_import.area_code: '837'
   tre_ptv_import.include_whole_country_data: 'false'
   tre_ptv_import.include_general_descriptions: 'true'
   tre_ptv_import.include_headers: 'true'
   tre_ptv_import.api_host: 'https://api.palvelutietovaranto.suomi.fi'
+  tre_ptv_import.organization_guid: '9f86d069-d21b-4c5f-b901-8e2e4e9f9639'

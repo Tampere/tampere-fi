@@ -12,6 +12,7 @@ dependencies:
     - node.type.blog_article
     - node.type.city_planning_and_constructions
     - node.type.collection_page
+    - node.type.comprehensive_plan
     - node.type.content_in_other_language
     - node.type.emergency_notice
     - node.type.front_page
@@ -91,6 +92,7 @@ permissions:
   - 'create paragraph content anchor_list'
   - 'create paragraph content attachment'
   - 'create paragraph content automatic_anchor_list'
+  - 'create paragraph content automatic_phase_accordion'
   - 'create paragraph content back_to_top_link'
   - 'create paragraph content balanced_content_liftup'
   - 'create paragraph content city_construction_project_card'
@@ -137,6 +139,7 @@ permissions:
   - 'create paragraph content positioned_image'
   - 'create paragraph content process_accordion_item'
   - 'create paragraph content process_accordions'
+  - 'create paragraph content process_accordions_extended'
   - 'create paragraph content project_and_organization_cards'
   - 'create paragraph content project_or_organization_card'
   - 'create paragraph content ptv_service_liftup'
@@ -175,6 +178,7 @@ permissions:
   - 'delete paragraph content anchor_list'
   - 'delete paragraph content attachment'
   - 'delete paragraph content automatic_anchor_list'
+  - 'delete paragraph content automatic_phase_accordion'
   - 'delete paragraph content back_to_top_link'
   - 'delete paragraph content balanced_content_liftup'
   - 'delete paragraph content city_construction_project_card'
@@ -221,6 +225,7 @@ permissions:
   - 'delete paragraph content positioned_image'
   - 'delete paragraph content process_accordion_item'
   - 'delete paragraph content process_accordions'
+  - 'delete paragraph content process_accordions_extended'
   - 'delete paragraph content project_and_organization_cards'
   - 'delete paragraph content project_or_organization_card'
   - 'delete paragraph content ptv_service_liftup'
@@ -275,6 +280,7 @@ permissions:
   - 'update paragraph content anchor_list'
   - 'update paragraph content attachment'
   - 'update paragraph content automatic_anchor_list'
+  - 'update paragraph content automatic_phase_accordion'
   - 'update paragraph content back_to_top_link'
   - 'update paragraph content balanced_content_liftup'
   - 'update paragraph content city_construction_project_card'
@@ -327,6 +333,7 @@ permissions:
   - 'update paragraph content positioned_image'
   - 'update paragraph content process_accordion_item'
   - 'update paragraph content process_accordions'
+  - 'update paragraph content process_accordions_extended'
   - 'update paragraph content project_and_organization_cards'
   - 'update paragraph content project_or_organization_card'
   - 'update paragraph content ptv_service_liftup'
@@ -360,6 +367,7 @@ permissions:
   - 'view blog_article revisions'
   - 'view city_planning_and_constructions revisions'
   - 'view collection_page revisions'
+  - 'view comprehensive_plan revisions'
   - 'view content_in_other_language revisions'
   - 'view emergency_notice revisions'
   - 'view field_eventz_display_amount'

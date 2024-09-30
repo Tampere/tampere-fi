@@ -1,0 +1,2 @@
+label: 'EPSG 3067 points as string'
+description: 'As pairs of "easting northing", separated by a single space.'

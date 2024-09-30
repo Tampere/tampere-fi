@@ -1,0 +1,21 @@
+uuid: 41af0d8c-b099-4c80-a7e6-510255c38871
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_period
+    - node.type.comprehensive_plan
+  module:
+    - datetime_range
+id: node.comprehensive_plan.field_display_period
+field_name: field_display_period
+entity_type: node
+bundle: comprehensive_plan
+label: Nähtävilläoloaika
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

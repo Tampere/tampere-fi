@@ -6,6 +6,10 @@ $video-mediaserver-video-wide-content-two-column-breakpoint: 1112px;
 .embederator--quickchannel-embed,
 .embederator--mediaserver-live,
 .embederator--mediaserver-video {
+  @include small-down {
+    height: 100%;
+  }
+
   @include text-element-spacer;
 
   height: 0;
@@ -46,6 +50,10 @@ $video-mediaserver-video-wide-content-two-column-breakpoint: 1112px;
   @include large {
     padding-bottom: 80%;
   }
+}
+
+.dreambroker-iframe-container .consent-placeholder {
+  margin-top: -56.25%;
 }
 
 /**

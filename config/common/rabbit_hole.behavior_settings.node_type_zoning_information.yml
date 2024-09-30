@@ -1,0 +1,14 @@
+uuid: c66bc605-7563-41bf-8256-f3633aac67ff
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.zoning_information
+id: node_type_zoning_information
+entity_type_id: node_type
+entity_id: zoning_information
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -66,7 +66,7 @@ Since there now exists an update functionality for individual nodes, there shoul
 
 ```
 MAILTO=example@example.com
-25 0 * * * root /var/www/html/web/modules/custom/tre_ptv_import/scripts/update_import_no_deletions.sh >> /var/log/drupal/tre_ptv_import/daily_updates.log
+25 0 * * * root timeout 60m /var/www/html/web/modules/custom/tre_ptv_import/scripts/update_import_no_deletions.sh >> /var/log/drupal/tre_ptv_import/daily_updates.log 2>&1 && echo "Ok! Imported PTV data on $(date '+\%F \%T \%z')!" || echo "Error! Time ran out after 60 minutes for PTV daily updates on $(date '+\%F \%T \%z')."
 ```
 
 ### Suggestion for twice per hour update import

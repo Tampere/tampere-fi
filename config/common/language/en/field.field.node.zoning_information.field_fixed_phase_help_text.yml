@@ -1,0 +1,4 @@
+settings:
+  markup:
+    value: '<h3>Process accordion content</h3><p>If a phase has been marked to be displayed on the page but still left without content, a default text "Coming up" will be shown in that phase.</p>'
+    format: basic_html

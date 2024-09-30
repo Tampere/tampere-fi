@@ -86,7 +86,7 @@ function _tre_preprocess_views_pre_build_current_content_archive(ViewExecutable 
     return _tre_preprocess_reset_views_args($view);
   }
 
-  $paragraph = _tre_preprocess_get_paragraph_by_revision($paragraph_revision_id);
+  $paragraph = _tre_preprocess_get_paragraph_by_revision((int) $paragraph_revision_id);
   if (!($paragraph instanceof ParagraphInterface)) {
     return _tre_preprocess_reset_views_args($view);
   }
@@ -224,7 +224,7 @@ function tre_preprocess_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMa
     // page URL with a paragraph ID set.
     $paragraph_revision_id = $route_match->getParameter('arg_0');
     if (!empty($paragraph_revision_id)) {
-      $paragraph = _tre_preprocess_get_paragraph_by_revision($paragraph_revision_id);
+      $paragraph = _tre_preprocess_get_paragraph_by_revision((int) $paragraph_revision_id);
       if ($paragraph instanceof ParagraphInterface) {
         $host_entity = $paragraph->getParentEntity();
         if ($host_entity instanceof NodeInterface) {

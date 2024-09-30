@@ -27,7 +27,6 @@ class GenericListing extends TrePreProcessPluginBase {
     'plan_numbers',
     'other_identifiers',
     'record_numbers',
-    'zoning_information_types',
   ];
 
   /**

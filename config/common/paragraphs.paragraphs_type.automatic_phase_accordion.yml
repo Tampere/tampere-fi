@@ -1,0 +1,10 @@
+uuid: d2ea83df-6e82-4d9d-88cd-ce21cf17000e
+langcode: fi
+status: true
+dependencies: {  }
+id: automatic_phase_accordion
+label: 'Automaattinen kaupunkisuunnittelun vaiheistushaitari'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

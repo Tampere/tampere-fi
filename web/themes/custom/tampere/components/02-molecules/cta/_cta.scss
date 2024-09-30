@@ -210,3 +210,30 @@
     }
   }
 }
+
+// Styles for Asiontilinkki only
+.cta.service-highlight {
+  margin-left: unset;
+  margin-right: unset;
+
+  .cta__content-wrapper {
+    @include large {
+      display: block;
+    }
+
+    .cta__heading {
+      margin-top: unset;
+      margin-right: unset;
+      margin-bottom: $space-m;
+    }
+
+    .cta__content {
+      margin-bottom: $space-l;
+    }
+
+    .cta__links {
+      margin-left: unset;
+      padding-left: unset;
+    }
+  }
+}

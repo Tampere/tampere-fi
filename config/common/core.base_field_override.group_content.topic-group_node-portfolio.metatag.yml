@@ -1,0 +1,20 @@
+uuid: 0c6d992b-0373-4eee-b8ed-7443ea58ebdf
+langcode: fi
+status: true
+dependencies:
+  config:
+    - group.content_type.topic-group_node-portfolio
+  module:
+    - metatag
+id: group_content.topic-group_node-portfolio.metatag
+field_name: metatag
+entity_type: group_content
+bundle: topic-group_node-portfolio
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

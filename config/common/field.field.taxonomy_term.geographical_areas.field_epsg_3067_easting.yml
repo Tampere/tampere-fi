@@ -1,0 +1,23 @@
+uuid: 2dc67191-ce64-4fc5-a068-f2fc7b07d484
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_epsg_3067_easting
+    - taxonomy.vocabulary.geographical_areas
+id: taxonomy_term.geographical_areas.field_epsg_3067_easting
+field_name: field_epsg_3067_easting
+entity_type: taxonomy_term
+bundle: geographical_areas
+label: Itäisyys
+description: 'ETRS-TM35FIN-järjestelmän (EPSG:3067) mukainen itäisyys metreinä.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: E
+field_type: decimal

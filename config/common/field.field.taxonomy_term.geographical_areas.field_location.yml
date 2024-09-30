@@ -1,0 +1,21 @@
+uuid: 9b06ea43-bea6-4a31-b6c2-30acad36cd28
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_location
+    - taxonomy.vocabulary.geographical_areas
+  module:
+    - geofield
+id: taxonomy_term.geographical_areas.field_location
+field_name: field_location
+entity_type: taxonomy_term
+bundle: geographical_areas
+label: 'Maantieteellinen sijainti'
+description: 'Esimerkiksi alueen keskipiste.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

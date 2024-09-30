@@ -1,0 +1,5 @@
+name: 'TRE Oembed Customization'
+type: module
+description: 'Customizations for Oembed functionality'
+package: TRE
+core_version_requirement: ^10 || ^11

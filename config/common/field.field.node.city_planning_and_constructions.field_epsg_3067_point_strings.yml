@@ -1,0 +1,19 @@
+uuid: b98edf0f-d31f-4d16-a73c-8294242cef2c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_epsg_3067_point_strings
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_epsg_3067_point_strings
+field_name: field_epsg_3067_point_strings
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'EPSG 3067 -piste merkkijonona'
+description: 'Parina "itäisyys pohjoisuus", jossa erottimena on välilyönti.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
