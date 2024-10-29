@@ -1,11 +1,11 @@
 accordion_list:
   - dl_heading:
-      'Sisältö aihepiireittäin'
+      'Tietoa aiheittain'
     dl_content:
       'Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     id: 1
   - dl_heading:
-      'Palveluja eri elämäntilanteissa'
+      'Tietoa eri elämäntilanteissa'
     dl_content:
       'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
     id: 2

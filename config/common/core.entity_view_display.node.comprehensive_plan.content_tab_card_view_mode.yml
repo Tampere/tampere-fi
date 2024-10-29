@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.comprehensive_plan.field_legal_phase
     - field.field.node.comprehensive_plan.field_listing_search_content
     - field.field.node.comprehensive_plan.field_main_image
+    - field.field.node.comprehensive_plan.field_omit_from_listing_map
     - field.field.node.comprehensive_plan.field_other_identifiers
     - field.field.node.comprehensive_plan.field_paragraphs
     - field.field.node.comprehensive_plan.field_partially_binding_phase
@@ -146,6 +147,7 @@ hidden:
   field_legal_phase: true
   field_listing_search_content: true
   field_main_image: true
+  field_omit_from_listing_map: true
   field_other_identifiers: true
   field_paragraphs: true
   field_partially_binding_phase: true

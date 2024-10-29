@@ -274,6 +274,9 @@ $grouped-card-background-position: bottom -305px right -10px;
   }
 
   &--colorful-2 {
+    // XO-7359: Overwriting secondary (red) color with berry red in colorful card
+    --c-secondary: #{$color-red-berry}; 
+
     @include dynamic-color(#{$colorful-card-2-color-name}, $set-focus-color: false);
 
     &::after {

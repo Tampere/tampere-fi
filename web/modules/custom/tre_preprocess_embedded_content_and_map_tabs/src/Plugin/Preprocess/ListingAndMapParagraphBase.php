@@ -43,6 +43,9 @@ abstract class ListingAndMapParagraphBase extends TrePreProcessPluginBase {
    *   vocabulary.
    * @param array $content_types
    *   The content types to include in the results.
+   * @param bool $ignore_omit_checkbox
+   *   A boolean value to ignore or consider the omit checkbox in the nodes.
+   *   Default value is False.
    * @param string $condition_group
    *   The condition group to use for combining the taxonomy terms.
    * @param array $extra_conditions
@@ -68,6 +71,7 @@ abstract class ListingAndMapParagraphBase extends TrePreProcessPluginBase {
     array $taxonomy_values,
     array $content_type_specific_taxonomy_values,
     array $content_types,
+    bool $ignore_omit_checkbox = FALSE,
     string $condition_group = 'or',
     array $extra_conditions = [],
   ): ?array {
@@ -104,6 +108,16 @@ abstract class ListingAndMapParagraphBase extends TrePreProcessPluginBase {
     }
     else {
       $node_query->condition('type', $content_types, 'IN');
+    }
+
+    if (!$ignore_omit_checkbox) {
+      // If for the existing nodes field_omit_from_listing_map is NULL, it
+      // should be treated as False.
+      $omit_from_listing_map_condition = $node_query->orConditionGroup()
+        ->condition('field_omit_from_listing_map', NULL, 'IS NULL', $current_language_id)
+        ->condition('field_omit_from_listing_map', 0, '=', $current_language_id);
+
+      $node_query->condition($omit_from_listing_map_condition);
     }
 
     $node_query

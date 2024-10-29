@@ -19,19 +19,26 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
    * The view mode to use for the paragraph content in the list view by default.
    */
   const DEFAULT_LIST_ITEM_VIEW_MODE = 'content_tab_card_view_mode';
+  const LIST_ITEM_VIEW_MODE_WITH_HOURS = 'content_tab_card_with_hours_view_mode';
 
   protected const DISPLAY_IDS = [
     "content_listing_block",
     "content_listing_block_without_area_filter",
   ];
 
+  protected const DISPLAY_WITH_HOURS_IDS = [
+    "content_listing_block_with_hours",
+    "content_listing_block_without_area_filter_with_hours",
+  ];
+
   /**
    * {@inheritdoc}
    */
   public function preprocess(array $variables): array {
-    if (!in_array($variables['view']->current_display, static::DISPLAY_IDS, TRUE)) {
+    if (!in_array($variables['view']->current_display, array_merge(static::DISPLAY_IDS, static::DISPLAY_WITH_HOURS_IDS), TRUE)) {
       return $variables;
     }
+
     $tab_list_content = [];
     $item_counter = 1;
     $rows = $variables['rows'];
@@ -44,7 +51,20 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
       /** @var \Drupal\node\NodeInterface $translated_node */
       $translated_node = $this->entityRepository->getTranslationFromContext($node);
       $translated_node_title = $translated_node->getTitle();
-      $translated_node_content = $this->entityTypeManager->getViewBuilder('node')->view($translated_node, self::DEFAULT_LIST_ITEM_VIEW_MODE);
+
+      $content_type = $translated_node->bundle();
+      $node_available_view_modes = $this->entityDisplayRepository->getViewModeOptionsByBundle('node', $content_type);
+
+      $node_view_mode = self::DEFAULT_LIST_ITEM_VIEW_MODE;
+
+      // If the node does not have a List view with hours,
+      // it should fall back to the default List view.
+      if (in_array($variables['view']->current_display, static::DISPLAY_WITH_HOURS_IDS)
+          && array_key_exists(self::LIST_ITEM_VIEW_MODE_WITH_HOURS, $node_available_view_modes)) {
+        $node_view_mode = self::LIST_ITEM_VIEW_MODE_WITH_HOURS;
+      }
+
+      $translated_node_content = $this->entityTypeManager->getViewBuilder('node')->view($translated_node, $node_view_mode);
 
       $tab_list_content_item_id = $node_id . $item_counter;
 

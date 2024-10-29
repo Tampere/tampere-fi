@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.comprehensive_plan.field_legal_phase
     - field.field.node.comprehensive_plan.field_listing_search_content
     - field.field.node.comprehensive_plan.field_main_image
+    - field.field.node.comprehensive_plan.field_omit_from_listing_map
     - field.field.node.comprehensive_plan.field_other_identifiers
     - field.field.node.comprehensive_plan.field_paragraphs
     - field.field.node.comprehensive_plan.field_partially_binding_phase
@@ -69,6 +70,7 @@ third_party_settings:
         - translation
         - field_paragraphs
         - field_feedback_form
+        - field_omit_from_listing_map
       label: Yleinen
       region: content
       parent_name: group_tabs
@@ -388,7 +390,7 @@ content:
     third_party_settings: {  }
   field_feedback_form:
     type: webform_entity_reference_select
-    weight: 24
+    weight: 21
     region: content
     settings:
       default_data: true
@@ -433,6 +435,13 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_omit_from_listing_map:
+    type: boolean_checkbox
+    weight: 22
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_other_identifiers:
     type: entity_reference_autocomplete
     weight: 8
@@ -445,7 +454,7 @@ content:
     third_party_settings: {  }
   field_paragraphs:
     type: paragraphs_classic_asymmetric
-    weight: 22
+    weight: 20
     region: content
     settings:
       title: Paragraafi

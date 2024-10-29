@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.zoning_information.field_listing_search_content
     - field.field.node.zoning_information.field_location
     - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_omit_from_listing_map
     - field.field.node.zoning_information.field_other_identifiers
     - field.field.node.zoning_information.field_paragraphs
     - field.field.node.zoning_information.field_partially_binding_phase
@@ -122,6 +123,7 @@ hidden:
   field_listing_search_content: true
   field_location: true
   field_main_image: true
+  field_omit_from_listing_map: true
   field_other_identifiers: true
   field_paragraphs: true
   field_partially_binding_phase: true

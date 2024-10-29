@@ -19,13 +19,13 @@ $inline-menu-item-margin-right: $space-m;
   &__item {
     margin: 0 $inline-menu-item-margin-right $inline-menu-item-margin-bottom 0;
     display: inline;
-  
+
     &:last-child {
       margin-right: 0;
     }
   }
 
-  &__link {    
+  &__link {
     @include word-wrap;
 
     text-decoration: none;
@@ -40,7 +40,7 @@ $inline-menu-item-margin-right: $space-m;
 
 .inline-menu {
   $base_class: &;
-  
+
   @include inline-default;
 
   #{$base_class}__icon {
@@ -94,7 +94,8 @@ $inline-menu-item-margin-right: $space-m;
 
       @include large-down {
         margin-right: calc($icon-menu-item--small + $space-m) * (-1);
-        padding: $space-xs calc($icon-menu-item--small + $space-m) $space-xs $space-xs;
+        padding: $space-xs calc($icon-menu-item--small + $space-m) $space-xs
+          $space-xs;
       }
 
       @include large {
@@ -219,7 +220,7 @@ $inline-menu-item-margin-right: $space-m;
           text-decoration: none;
 
           &::after {
-            content: "";
+            content: '';
             display: block;
             position: absolute;
             height: 2px;
@@ -240,22 +241,39 @@ $inline-menu-item-margin-right: $space-m;
     font-size: $inline-menu-desktop-main-font-size;
     font-weight: $font-weight-semi-bold;
 
+    @include large {
+      display: flex;
+      flex-flow: column;
+    }
+
     #{$base-class}__item {
-      display: inline;
       margin-bottom: 0;
 
+      // XO-7359 @MAGIC: On devices where the hamburger menu is inside the main menu,
+      // the first child gets a fixed height and flex behavior to align the text with 
+      // the main menu column titles. We then use padding and margin to set the correct spacings.
+      &:nth-child(1) {
+        align-items: flex-end;
+        display: flex;
+        height: var(--main-menu-title-height);
+        margin-bottom: -11px;
+        padding-bottom: 11px;
+      }
+
       + #{$base-class}__item {
-        margin-top: $space-m;
+        margin-top: $space-l;
       }
     }
 
     #{$base-class}__link {
-      @include link(clr(text-inverse), clr(text-inverse));
+      @include link(clr(text), clr(text));
 
       display: inline-block;
 
       &:hover,
       &:focus {
+        text-decoration: underline;
+
         &::after {
           background-color: clr(background);
         }

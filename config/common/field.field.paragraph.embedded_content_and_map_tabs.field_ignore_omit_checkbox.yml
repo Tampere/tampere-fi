@@ -1,0 +1,23 @@
+uuid: 5b0894e8-2dc2-4cba-9dc9-cace48a3a72e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_ignore_omit_checkbox
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+id: paragraph.embedded_content_and_map_tabs.field_ignore_omit_checkbox
+field_name: field_ignore_omit_checkbox
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: 'Näytä nekin sisällöt, jotka ovat kieltäneet näyttämisensä Lista ja kartta -paragraafissa'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

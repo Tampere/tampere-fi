@@ -1,0 +1,34 @@
+uuid: 911fd541-b529-44ab-8b96-df5626e35fa9
+langcode: fi
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.life_situation_links_view_mode
+    - field.field.paragraph.highlighted_targeted_link_list.field_highlighted_link_list
+    - paragraphs.paragraphs_type.highlighted_targeted_link_list
+  module:
+    - ds
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_topics_and_life_situations
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: primary
+    regions:
+      heading:
+        - field_title
+      content:
+        - field_link_list_links
+id: paragraph.highlighted_targeted_link_list.life_situation_links_view_mode
+targetEntityType: paragraph
+bundle: highlighted_targeted_link_list
+mode: life_situation_links_view_mode
+content: {  }
+hidden:
+  field_highlighted_link_list: true
+  search_api_excerpt: true

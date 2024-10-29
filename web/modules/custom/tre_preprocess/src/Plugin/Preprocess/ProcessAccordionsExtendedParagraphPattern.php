@@ -52,7 +52,7 @@ class ProcessAccordionsExtendedParagraphPattern extends TrePreProcessPluginBase 
 
     $phase_status_label = $translated_paragraph->get('field_process_phase_status')->getFieldDefinition()->getLabel();
     $phase_label = $translated_paragraph->field_process_phase_status->getSetting('allowed_values')[$translated_paragraph->field_process_phase_status->value];
-    $variables['accordion_item_aria_label'] = "$accordion_heading, $phase_status_label: $phase_label";
+    $variables['accordion_item_phase_label'] = "$phase_status_label: $phase_label";
 
     return $variables;
   }

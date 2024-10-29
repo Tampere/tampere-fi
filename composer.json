@@ -463,7 +463,8 @@
                 "2993688 - Views relationships with multi-valued entity reference fields invalidate Distinct query option - 99": "https://www.drupal.org/files/issues/2022-06-16/2993688-99.patch",
                 "3171835 - Claro: Field Groups marked as required are missing red asterisk for Drupal v10.2": "https://www.drupal.org/files/issues/2023-10-09/3171835-79--D10.1.x.patch",
                 "2968207 - Allow multiple instances of the same exposed filter form on a single page": "https://www.drupal.org/files/issues/2023-04-11/2968207-39.patch",
-                "2511878 - Support enclosure field in Views RssFields row plugin - D10.2": "https://www.drupal.org/files/issues/2024-04-27/2511878-add-support-for-enclosure-field-10.2.x--acdd23c.patch"
+                "2511878 - Support enclosure field in Views RssFields row plugin - D10.2": "https://www.drupal.org/files/issues/2024-04-27/2511878-add-support-for-enclosure-field-10.2.x--acdd23c.patch",
+                "3444344 - Claro: Autocomplete dropdown bleeds through sticky table header": "https://www.drupal.org/files/issues/2024-09-12/3444344-65.patch"
             },
             "drupal/dblog_filter": {
                 "3342635 - Get log values (type and level) for syslog like the input box for dblog" : "https://www.drupal.org/files/issues/2023-02-23/add-log-values-input-box-for-syslog-filter-3342635.patch",

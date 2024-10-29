@@ -19,7 +19,7 @@
         } %}
         
         {% include "@atoms/06-buttons/01-button.twig" with {
-          "button_content": "Expand"|t({}, {"context": "Sidebar menu"}),
+          "button_content": "Subpages"|t({}, {"context": "Sidebar menu"}),
           "button_icon_name": "arrow-plain-new",
           "button_base_class": "toggle",
           "button_blockname": sidebar_menu_container__base_class,
@@ -29,7 +29,7 @@
             "aria-label": "Show subsite navigation"|t,
             "aria-controls": sidebar_menu_container_button_controls_id,
             "data-js-expanded-text": "Collapse"|t({}, {"context": "Sidebar menu"}),
-            "data-js-collapsed-text": "Expand"|t({}, {"context": "Sidebar menu"})
+            "data-js-collapsed-text": "Subpages"|t({}, {"context": "Sidebar menu"})
           },
           "custom_classes": [ "is-closed-on-mobile" ],
         } %}

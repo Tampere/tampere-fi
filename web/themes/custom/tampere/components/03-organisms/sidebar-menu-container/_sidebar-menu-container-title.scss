@@ -1,5 +1,12 @@
+$sidebar-menu-heading-link-left-padding: #{$space-s};
+$sidebar-menu-heading-link-left-padding-desktop: #{$space-l};
+
 .sidebar-menu-container-title {
   $base_class: &;
+
+  // NOTE XO-7347: In XO-2300 had text color set as text-inverse, however on dev env testing the text color was displayed wrong. Set back to text here.
+  // Any menus with darkly colored menu buttons should be checked for complications
+  --sidebar-menu-container-heading-link-color: #{clr(text)};
 
   font-size: $font-16;
   font-weight: $font-weight-bold;
@@ -15,27 +22,41 @@
   }
 
   &__heading-link {
+    // NOTE XO-7347: In XO-2300 had text color set as text-inverse, however on dev env testing the text color was displayed wrong. Set back to text here.
+    // Any menus with darkly colored menu buttons should be checked for complications
     @include link(clr(text), clr(text));
+
+    --sidebar-menu-heading-link-left-padding: #{$sidebar-menu-heading-link-left-padding};
 
     display: block;
     text-decoration: none;
     position: relative;
-    padding-left: $sidebar-menu-link-left-padding;
+    padding-left: var(--sidebar-menu-heading-link-left-padding);
     letter-spacing: $sidebar-menu-link-letter-spacing;
+
+    @include xl {
+      --sidebar-menu-heading-link-left-padding: #{$sidebar-menu-heading-link-left-padding-desktop};
+    }
 
     &.is-active,
     &:hover,
     &:focus {
-      @include left-border-accent($color: var(--sidebar-menu-container-accent-color));
+      text-decoration: underline;
 
       @include large {
+        @include left-border-accent(
+          $color: var(--sidebar-menu-container-accent-color)
+        );
+
+        text-decoration: none;
+
         &::before {
           --sidebar-menu-container-accent-color: #{clr(primary-light)};
         }
       }
     }
   }
-  
+
   &--is-heading {
     @include wrapper($h-padding: 0, $h-padding-large: 0);
 
@@ -43,7 +64,6 @@
 
     @include large {
       display: block;
-
     }
 
     #{$base_class}__heading-link {

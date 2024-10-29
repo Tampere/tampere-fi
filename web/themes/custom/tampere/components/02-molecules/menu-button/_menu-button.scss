@@ -2,7 +2,7 @@ $menu-button-height: 55px;
 
 .menu-button {
   $base_class: &;
-  
+
   cursor: pointer;
   border: $border-thick-secondary;
   background-color: clr(secondary);
@@ -27,7 +27,7 @@ $menu-button-height: 55px;
   &.is-open {
     background-color: clr(text-inverse);
     color: clr(secondary);
-    
+
     #{$base_class}__icon--closed {
       display: none;
     }
@@ -49,6 +49,25 @@ $menu-button-height: 55px;
         }
       }
     }
+
+    @include large {
+      position: relative;
+
+      &::after {
+        background-color: clr(background);
+        border-left: 2px solid var(--c-secondary);
+        border-right: 2px solid var(--c-secondary);
+        display: block;
+        content: '';
+        height: 20px;
+        left: -2px;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        width: calc(100% + 4px);
+        z-index: 16;
+      }
+    }
   }
 
   @include large {
@@ -56,7 +75,6 @@ $menu-button-height: 55px;
     font-size: $font-22;
     padding: $space-s $space-m;
   }
-
 
   &__icon {
     width: $icon-xs;

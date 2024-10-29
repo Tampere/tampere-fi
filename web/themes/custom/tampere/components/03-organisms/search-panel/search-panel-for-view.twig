@@ -61,7 +61,7 @@
 
         <div {{ bem("reset-wrapper", search_panel__reset_wrapper__modifiers|default([]), search_panel__base_class) }}>
           {% include "@atoms/06-buttons/01-button.twig" with {
-            "button_content": "Show all"|t ({}, { "context" : "Embedded content and map tabs reset filter text" }),
+            "button_content": "Reset filter"|t ({}, { "context" : "Embedded content and map tabs reset filter text" }),
             "button_base_class": "filter-reset",
             "button_blockname": search_panel__base_class,
           } %}

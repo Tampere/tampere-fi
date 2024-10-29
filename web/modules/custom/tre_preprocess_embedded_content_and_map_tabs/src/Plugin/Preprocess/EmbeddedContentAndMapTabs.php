@@ -61,12 +61,23 @@ class EmbeddedContentAndMapTabs extends ListingAndMapParagraphBase {
     $selected_taxonomy_values = $this->helperFunctions->getParagraphTaxonomyTerms($translated_paragraph, static::AVAILABLE_TAXONOMY_VOCABULARIES);
     $selected_content_type_specific_taxonomy_values = $this->helperFunctions->getParagraphTaxonomyTerms($translated_paragraph, array_keys(static::CONTENT_TYPE_SPECIFIC_TAXONOMY_VOCABULARIES));
 
+    $ignore_omit_checkbox = $this->helperFunctions->getFieldValueString($paragraph, 'field_ignore_omit_checkbox') === HelperFunctionsInterface::BOOLEAN_FIELD_TRUE;
+    $paragraph_show_hours = $this->helperFunctions->getFieldValueString($translated_paragraph, 'field_show_hours');
+    if ($paragraph_show_hours == HelperFunctionsInterface::BOOLEAN_FIELD_TRUE) {
+      $show_hours = 'true';
+    }
+    else {
+      $show_hours = 'false';
+    }
+
     $tab_list_node_ids = $this->getNodeIds(
       $current_language_id,
       $selected_taxonomy_values,
       $selected_content_type_specific_taxonomy_values,
       $selected_content_types,
+      $ignore_omit_checkbox,
       $selected_taxonomy_condition_group,
+      [],
     );
 
     // Prevent system from loading all nodes due to empty argument.
@@ -86,6 +97,7 @@ class EmbeddedContentAndMapTabs extends ListingAndMapParagraphBase {
     $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['locations'][$container_paragraph_id] = $locations;
     $variables['#attached']['drupalSettings']['tampere']['currentLanguage'] = $this->languageManager->getCurrentLanguage()->getId();
     $variables['#attached']['drupalSettings']['tampere']['mmlMapIframeDomain'] = Settings::get('mml_map_iframe_domain');
+    $variables['#attached']['drupalSettings']['tampere']['showHours'] = $show_hours;
 
     $this->renderer->addCacheableDependency($variables['content_listing_block'], $variables['paragraph']);
     return $variables;
@@ -102,6 +114,17 @@ class EmbeddedContentAndMapTabs extends ListingAndMapParagraphBase {
     if ($hide_area_filter) {
       $block_machine_name = 'content_listing_block_without_area_filter';
     }
+
+    $show_hours_value = $this->helperFunctions->getFieldValueString($paragraph, 'field_show_hours');
+    $show_hours = $show_hours_value == HelperFunctionsInterface::BOOLEAN_FIELD_TRUE;
+
+    if ($show_hours) {
+      $block_machine_name = 'content_listing_block_with_hours';
+      if ($hide_area_filter) {
+        $block_machine_name = 'content_listing_block_without_area_filter_with_hours';
+      }
+    }
+
     return $block_machine_name;
   }
 

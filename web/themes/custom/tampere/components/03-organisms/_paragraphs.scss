@@ -61,6 +61,57 @@
 
   &--type-embedded-content-and-map-tabs,
   &--type-urban-planning-listing-and-map {
+    .tabbed-container__tab-list-item {
+      .tabbed-container__tab {
+        text-transform: initial;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          background-image: url('/themes/custom/tampere/images/icon-sets/icons/map.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          content: '';
+          display: inline-block;
+          position: relative;
+          top: 0;
+          left: -5px;
+          height: $icon-small;
+          width: $icon-small;
+
+          @include medium-down {
+            width: $icon-menu-item;
+            height: $icon-menu-item;
+          }
+        }
+
+        &.is-selected {
+          text-decoration: underline;
+          border: 2px solid clr(tabbed-container-background);
+          border-bottom: none;
+        }
+
+        &:not(.is-selected) {
+          background: $color-white;
+          border: 2px solid clr(tabbed-container-background);
+          border-bottom: none;
+          color: $color-dark-blue;
+        }
+      }
+
+      &:nth-child(1) {
+        margin-right: $space-xxs;
+      }
+
+      // Set list icon.
+      &:nth-child(2) {
+        .tabbed-container__tab::before {
+          background-image: url('/themes/custom/tampere/images/icon-sets/icons/list.svg');
+        }
+      }
+    }
+
     // Applies only when the select list is not available and for the last panel only.
     .tabbed-container__content .tabbed-container-tab-section-2 {
       .search-bar__search-form {
@@ -92,7 +143,22 @@
     .search-bar__search-form .form-item__dropdown {
       @include border(2px, solid, $color-dark-blue);
 
+      background-color: $color-white;
       width: 100%;
+    }
+
+    .search-panel__filters {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .search-panel__no-filters-applied {
+        font-weight: bold;
+      }
+
+      button {
+        margin: 0;
+      }
     }
   }
 
@@ -143,6 +209,21 @@
           margin-right: unset;
         }
       }
+    }
+  }
+
+  // When the Colorful content liftup has one card, it is wrapped around div instead of ul element
+  &--type-colorful-content-liftup div.card-grid__wrapper {
+    @include small {
+      grid-template-columns: initial;
+    }
+  }
+  
+  &--type-highlighted-targeted-link-list {
+    @include page-element-spacer;
+    
+    .link-list--primary {
+      grid-template-columns: repeat(auto-fill, minmax(calc(var(--basic-component-max-width) / 5), 1fr));
     }
   }
 }

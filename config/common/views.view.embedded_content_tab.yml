@@ -641,6 +641,315 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
+  content_listing_block_with_hours:
+    id: content_listing_block_with_hours
+    display_title: 'Content Listing Block With Hours'
+    display_plugin: block
+    position: 1
+    display_options:
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_listing_search_content_value:
+          id: field_listing_search_content_value
+          table: node__field_listing_search_content
+          field: field_listing_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_search_content_value_op
+            label: Listaushakusisältö
+            description: ''
+            use_operator: false
+            operator: field_listing_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: listing_search_content
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: 'Rajaa alueen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: default
+      defaults:
+        use_ajax: false
+        exposed_form: false
+        style: false
+        row: false
+        fields: true
+        arguments: true
+        filters: false
+        filter_groups: false
+        header: false
+      use_ajax: true
+      display_description: ''
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '@total'
+      display_extenders:
+        views_ef_fieldset:
+          views_ef_fieldset:
+            enabled: false
+            options:
+              sort:
+                root:
+                  container_type: container
+                  depth: '0'
+                  description: ''
+                  id: root
+                  open: false
+                  pid: ''
+                  title: Filters
+                  type: container
+                  weight: '0'
+                container-0:
+                  container_type: container
+                  depth: '1'
+                  description: ''
+                  id: container-0
+                  open: false
+                  pid: root
+                  title: 'Container 0'
+                  type: container
+                  weight: '-9'
+                field_listing_search_content_value:
+                  depth: '2'
+                  id: field_listing_search_content_value
+                  pid: container-0
+                  type: filter
+                  weight: '-9'
+                container-1:
+                  container_type: container
+                  depth: '1'
+                  description: ''
+                  id: container-1
+                  open: false
+                  pid: root
+                  title: 'Container 1'
+                  type: container
+                  weight: '-8'
+                field_geographical_areas_target_id:
+                  depth: '2'
+                  id: field_geographical_areas_target_id
+                  pid: container-1
+                  type: filter
+                  weight: '-8'
+                container-2:
+                  container_type: container
+                  depth: '1'
+                  description: ''
+                  id: container-2
+                  open: false
+                  pid: root
+                  title: 'Container 2'
+                  type: container
+                  weight: '-7'
+                submit:
+                  depth: '2'
+                  id: submit
+                  pid: container-2
+                  type: buttons
+                  weight: '-9'
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
   content_listing_block_without_area_filter:
     id: content_listing_block_without_area_filter
     display_title: 'Content Listing Block without Area Filter'
@@ -796,6 +1105,176 @@ display:
           empty: false
           content: '@total'
       display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+  content_listing_block_without_area_filter_with_hours:
+    id: content_listing_block_without_area_filter_with_hours
+    display_title: 'Content Listing Block without Area Filter With Hours'
+    display_plugin: block
+    position: 1
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_listing_search_content_value:
+          id: field_listing_search_content_value
+          table: node__field_listing_search_content
+          field: field_listing_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_search_content_value_op
+            label: Listaushakusisältö
+            description: ''
+            use_operator: false
+            operator: field_listing_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: listing_search_content
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options: {  }
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: default
+      defaults:
+        use_ajax: false
+        style: false
+        row: false
+        fields: true
+        arguments: true
+        filters: false
+        filter_groups: false
+        header: false
+      use_ajax: true
+      display_description: ''
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: '@total'
+      display_extenders:
+        views_ef_fieldset: {  }
         metatag_display_extender:
           metatags: {  }
           tokenize: false

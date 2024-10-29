@@ -6,9 +6,11 @@ dependencies:
     - field.field.paragraph.embedded_content_and_map_tabs.field_description_text
     - field.field.paragraph.embedded_content_and_map_tabs.field_geographical_areas
     - field.field.paragraph.embedded_content_and_map_tabs.field_hide_area_filter
+    - field.field.paragraph.embedded_content_and_map_tabs.field_ignore_omit_checkbox
     - field.field.paragraph.embedded_content_and_map_tabs.field_keywords
     - field.field.paragraph.embedded_content_and_map_tabs.field_life_situations
     - field.field.paragraph.embedded_content_and_map_tabs.field_search_zoom_level
+    - field.field.paragraph.embedded_content_and_map_tabs.field_show_hours
     - field.field.paragraph.embedded_content_and_map_tabs.field_show_map_tab_as_default
     - field.field.paragraph.embedded_content_and_map_tabs.field_tabs_displayed_content_tps
     - field.field.paragraph.embedded_content_and_map_tabs.field_taxonomy_combination
@@ -73,6 +75,13 @@ content:
           type: ''
           list: ''
           add: Lisää
+  field_ignore_omit_checkbox:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
     weight: 6
@@ -99,6 +108,13 @@ content:
     region: content
     settings:
       placeholder: ''
+    third_party_settings: {  }
+  field_show_hours:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_show_map_tab_as_default:
     type: boolean_checkbox

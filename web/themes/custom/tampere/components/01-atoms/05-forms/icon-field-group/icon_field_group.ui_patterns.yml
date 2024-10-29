@@ -17,6 +17,8 @@ icon_field_group:
       label: Phone
     contact:
       label: Contact
+    no-icon:
+      label: No Icon
   fields:
     icon_field_group_content:
       label: Content

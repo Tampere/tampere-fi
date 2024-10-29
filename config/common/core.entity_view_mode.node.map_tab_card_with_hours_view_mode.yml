@@ -1,0 +1,11 @@
+uuid: 51bc0731-dc34-4646-9d4a-190a1706dde3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.map_tab_card_with_hours_view_mode
+label: 'Kartta-välilehtikortti tuntien kanssa'
+description: ''
+targetEntityType: node
+cache: true

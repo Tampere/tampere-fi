@@ -1,0 +1,23 @@
+uuid: 8aeb9080-033d-4e9b-81be-0bb8c8e09e53
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_omit_from_listing_map
+    - node.type.place
+id: node.place.field_omit_from_listing_map
+field_name: field_omit_from_listing_map
+entity_type: node
+bundle: place
+label: 'Älä näytä tätä sisältöä Lista ja kartta -paragraafeissa'
+description: 'Valitse, jos sisällön ei perustellusta syystä poikkeuksellisesti kuulu näkyä Lista ja kartta -paragraafeissa.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -30,6 +30,8 @@ Drupal.behaviors.mapTabsContent = {
     // One node can be connected to multiple locations.
     const locations = drupalSettings.tampere.embeddedContentAndMapTabs.locations;
 
+    const showHours = drupalSettings.tampere.showHours;
+    
     /**
      * Toggles given feature location pin styles.
      *
@@ -148,8 +150,12 @@ Drupal.behaviors.mapTabsContent = {
         if (CURRENT_LANGUAGE == 'en') {
           baseUrl = '/en/map-data-from-node/';
         }
-        jQuery(informationCard).load(`${baseUrl}${locationNid}`, function() {
+
+        jQuery(informationCard).load(`${baseUrl}${locationNid}/${showHours}`, function() {
           loadingText.hidden = true;
+          // Making sure the behavior of collapsing/expanding accordion
+          // item works properly for the dynamically-added item.
+          Drupal.attachBehaviors();
         });
       } else {
         loadingText.hidden = true;
@@ -311,11 +317,36 @@ Drupal.behaviors.mapTabsContent = {
 
     if (mapElements.length > 0 && IFRAME_DOMAIN) {
       mapElements.forEach((mapElement) => {
+        const mapTabPanel = mapElement.closest('.tabbed-container__tab-panel');
+        const mapTabIsHidden = mapTabPanel.getAttribute('hidden');
+
+        const mapContainer = mapElement.closest('.tabbed-container__content');
+        const mapTabButton = mapContainer.querySelector('.tabbed-container__tab-list-item');
+
+        // Only if the Map Tab is already hidden. i.e. it is not the default tab.
+        // In this case, we manually display the map,
+        // until the map connection is ready, then we will hide it again.
+        if (mapTabIsHidden !== null) {
+          mapTabPanel.removeAttribute('hidden');
+          // We can't hide the map, so place it out of the window.
+          mapTabPanel.style.position = 'absolute';
+          mapTabPanel.style.left = '-9999px';
+          mapTabButton.style.display = 'none';
+        }
+
         const containerParagraphId = mapElement.dataset.paragraph;
         const channel = OskariRPC.connect(mapElement, IFRAME_DOMAIN);
 
         // Called when the connection to the map has been established successfully.
         channel.onReady((info) => {
+          // Hide the map tab, only if the Map Tab is supposed to be hidden.
+          if (mapTabIsHidden !== null) {
+            mapTabPanel.setAttribute('hidden', 'true');
+            mapTabPanel.style.position = '';
+            mapTabPanel.style.left = '';
+            mapTabButton.style.display = '';
+          }
+
           const locationsForCurrentMap = locations[containerParagraphId];
           const locationsExistForMap =
             Object.keys(locationsForCurrentMap).length !== 0;

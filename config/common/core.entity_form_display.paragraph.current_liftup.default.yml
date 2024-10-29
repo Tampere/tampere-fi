@@ -26,7 +26,7 @@ content:
     weight: 11
     region: content
     settings:
-      default_colors: '#22437b,#c83e36,#0074a4'
+      default_colors: '#22437b,#ad3963,#0074a4'
     third_party_settings: {  }
   field_content_link:
     type: paragraphs_classic_asymmetric

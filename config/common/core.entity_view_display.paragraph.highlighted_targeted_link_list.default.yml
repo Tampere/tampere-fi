@@ -1,0 +1,28 @@
+uuid: 4136f17d-6410-482f-bc04-fa40e2abc89f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.highlighted_targeted_link_list.field_highlighted_link_list
+    - paragraphs.paragraphs_type.highlighted_targeted_link_list
+  module:
+    - entity_reference_revisions
+    - field_delimiter
+id: paragraph.highlighted_targeted_link_list.default
+targetEntityType: paragraph
+bundle: highlighted_targeted_link_list
+mode: default
+content:
+  field_highlighted_link_list:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: life_situation_links_view_mode
+      link: ''
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

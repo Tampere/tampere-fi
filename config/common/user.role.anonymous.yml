@@ -67,6 +67,7 @@ permissions:
   - 'view paragraph content highlighted_content_liftup_w_img'
   - 'view paragraph content highlighted_link_list'
   - 'view paragraph content highlighted_links_with_feedback'
+  - 'view paragraph content highlighted_targeted_link_list'
   - 'view paragraph content icon_and_text_link'
   - 'view paragraph content image'
   - 'view paragraph content image_gallery'

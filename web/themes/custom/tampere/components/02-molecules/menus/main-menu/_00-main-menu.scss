@@ -2,10 +2,6 @@
   background-color: clr(background);
 }
 
-.secondary-main-menu-container {
-  background-color: clr(primary-light);
-}
-
 .main-menu {
   $base_class: &;
 
@@ -14,40 +10,40 @@
   --main-menu-border-color: #{clr(secondary)};
 
   &__title {
-    color: clr(text-inverse);
+    --main-menu-title-border-color: #{clr(secondary)};
+
+    @include heading-small;
+
+    border-bottom: 4px solid var(--main-menu-title-border-color);
     display: block;
-    font-family: $font-heading;
-    font-size: $font-20;
-    font-weight: $font-weight-medium;
-    margin: 0;
-    padding: $space-l $space-m $space-s $space-m;
-    text-transform: uppercase;
+    padding-bottom: $space-xs;
 
     @include large {
-      margin: 0 $gutter-mobile $space-l $gutter-mobile;
-      padding: $space-l 0 0 0;
+      align-items: flex-start;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-end;
+      height: var(--main-menu-title-height);
     }
 
-    @include large-plus {
-      margin-right: $space-xl;
-      margin-left: $space-xl;
+    .secondary-main-menu-container & {
+      --main-menu-title-border-color: #{clr(primary)};
     }
   }
 
   &:not(#{$base_class}--sub):not(#{$base_class}--minisite) {
     @include large {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin: $space-l $gutter-mobile;
+      grid-template-columns: repeat(1, 1fr);
+      margin: $space-l 0;
 
       > #{$base_class}__item {
-        border-left: 1px solid var(--main-menu-border-color);
+        border-left: 2px solid var(--main-menu-border-color);
       }
     }
 
-    @include large-plus {
-      margin-right: $space-xl;
-      margin-left: $space-xl;
+    @include xl {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -110,29 +106,21 @@
   }
 
   &--secondary {
-    --c-focus: #{clr(text-inverse)};
-    --main-menu-border-color: #{clr(background)};
+    --c-focus: #{clr(text)};
+    --main-menu-border-color: #{clr(primary)};
 
     &:not(#{$base_class}--sub):not(#{$base_class}--minisite) {
-      padding-bottom: $space-l;
-
       @include large {
-        margin: $space-l $gutter-mobile 0 $gutter-mobile;
-        padding-bottom: $space-xl;
-      }
-
-      @include large-plus {
-        margin-right: $space-xl;
-        margin-left: $space-xl;
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: $space-l;
       }
     }
 
     #{$base_class}__link {
-      @include link(clr(text-inverse), clr(text-inverse));
+      @include link(clr(text), clr(text));
 
       border-bottom: 0;
       margin-right: 0;
-      padding: $space-s $space-l;
     }
 
     #{$base_class}__icon {
@@ -187,7 +175,7 @@
           &::after {
             background-color: clr(primary-light);
             bottom: 3px;
-            content: "";
+            content: '';
             display: block;
             position: absolute;
             height: 2px;

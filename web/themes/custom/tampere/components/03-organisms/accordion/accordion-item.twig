@@ -16,6 +16,9 @@
       <span {{ bem(ac__title__blockname|default("title"), ac_title__modifiers, ac__base_class, [ "hyphenate" ]) }}>
         {{ accordion_heading }}
       </span>
+      {% if accordion_item_phase_label %}
+        <span class="visually-hidden">{{ accordion_item_phase_label }}</span>
+      {% endif %}
 
       {# Icon #}
       <span {{ bem("icon-wrapper", [], ac__base_class) }}>

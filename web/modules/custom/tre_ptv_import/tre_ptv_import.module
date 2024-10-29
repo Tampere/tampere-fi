@@ -65,3 +65,21 @@ function _tre_ptv_import_has_refresh_permission(EntityInterface $entity) {
   // correct content type.
   return $correct_content_type && \Drupal::service('tre_ptv_import.single_item_updater')->checkMigrationSource($entity);
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ *
+ * We are deleting related map points when a place of business is deleted.
+ */
+function tre_ptv_import_entity_delete(EntityInterface $entity): void {
+  if ($entity->bundle() == 'place_of_business' && $entity instanceof NodeInterface) {
+    $map_point_refs = $entity->get(field_name: 'field_addresses')->referencedEntities();
+    foreach ($map_point_refs as $map_point_ref) {
+      $map_point = \Drupal::entityTypeManager()->getStorage(entity_type_id: 'node')->load($map_point_ref->id());
+      if ($map_point instanceof NodeInterface) {
+        $map_point->delete();
+      }
+    }
+  }
+
+}

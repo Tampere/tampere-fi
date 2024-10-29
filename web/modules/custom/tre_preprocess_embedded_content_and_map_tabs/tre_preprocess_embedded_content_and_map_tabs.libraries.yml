@@ -5,4 +5,5 @@ rpc:
   dependencies:
     - core/drupal
     - core/jquery
+    - office_hours/office_hours_widget
     - tre_preprocess/oskari-rpc-client

@@ -4,6 +4,7 @@ namespace Drupal\tre_preprocess;
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DateFormatter;
+use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\File\FileUrlGeneratorInterface;
@@ -132,6 +133,13 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
   protected $db;
 
   /**
+   * The Entity Display Repository service.
+   *
+   * @var \Drupal\Core\Entity\EntityDisplayRepositoryInterface
+   */
+  protected $entityDisplayRepository;
+
+  /**
    * Constructor.
    */
   final public function __construct(
@@ -153,6 +161,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
     CurrentRouteMatch $route_match,
     Token $token,
     Connection $database,
+    EntityDisplayRepositoryInterface $entity_display_repository,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->fileUrlGenerator = $file_url_generator;
@@ -170,6 +179,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
     $this->routeMatch = $route_match;
     $this->token = $token;
     $this->db = $database;
+    $this->entityDisplayRepository = $entity_display_repository;
   }
 
   /**
@@ -194,7 +204,8 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
       $container->get('request_stack'),
       $container->get('current_route_match'),
       $container->get('token'),
-      $container->get('database')
+      $container->get('database'),
+      $container->get('entity_display.repository')
     );
   }
 

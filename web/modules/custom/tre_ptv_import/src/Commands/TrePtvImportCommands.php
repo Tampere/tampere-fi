@@ -2,6 +2,7 @@
 
 namespace Drupal\tre_ptv_import\Commands;
 
+use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Site\Settings;
@@ -12,7 +13,7 @@ use Drush\Commands\DrushCommands;
 use Drush\Exceptions\CommandFailedException;
 
 /**
- * Drush commandfile for the tre_hr_import module.
+ * Drush commandfile for the tre_ptv_import module.
  */
 class TrePtvImportCommands extends DrushCommands {
 
@@ -38,12 +39,20 @@ class TrePtvImportCommands extends DrushCommands {
   private SingleItemUpdaterInterface $ptvUpdater;
 
   /**
+   * The database connection.
+   *
+   * @var \Drupal\Core\Database\Connection
+   */
+  protected Connection $db;
+
+  /**
    * Constructs the commands object.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, PtvServiceIntermediateStorageInterface $ptv_storage, SingleItemUpdaterInterface $ptv_updater) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, PtvServiceIntermediateStorageInterface $ptv_storage, SingleItemUpdaterInterface $ptv_updater, Connection $database) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');
     $this->ptvStorage = $ptv_storage;
     $this->ptvUpdater = $ptv_updater;
+    $this->db = $database;
   }
 
   /**
@@ -214,6 +223,77 @@ class TrePtvImportCommands extends DrushCommands {
     }
 
     $this->io()->text(print_r($channel, TRUE));
+  }
+
+  /**
+   * Deletes unused service nodes and map points (via delete hook).
+   *
+   * @param string $content_type
+   *   The content type to process.
+   * @param string $language
+   *   The language to process.
+   * @param bool $dry_run
+   *   Whether to perform a dry run (no deletion) (default: TRUE).
+   *
+   * @usage tre_ptv_import:delete_unused_service_nodes_and_map_points <content-type> <language> <dry-run>
+   *   Deleting all services not in the migrate map.
+   *   Defaults to dry-run, use '0' as third parameter to actually delete.
+   *
+   * @command tre_ptv_import:delete_unused_service_nodes_and_map_points
+   * @aliases ptv_rm_services
+   */
+  public function deleteUnusedServiceNodesAndMapPoints($content_type, $language, $dry_run = TRUE): void {
+
+    $service_node_deleted = 0;
+    // Let's exit the script if the content type is not supported.
+    switch ($content_type) {
+      case 'place_of_business':
+        $migrate_table = 'migrate_map_ptv_service_locations' . (($language === 'en') ? '_en' : '');
+        break;
+
+      case 'ptv_service':
+        $migrate_table = 'migrate_map_ptv_services' . (($language === 'en') ? '_en' : '');
+        break;
+
+      case 'service_channel':
+        $migrate_table = 'migrate_map_ptv_service_channels' . (($language === 'en') ? '_en' : '');
+        break;
+
+      default:
+        throw new \Exception(message: dt(string: 'This content type cannot be processed.'));
+    }
+
+    $query = $this->db->select(table: 'node', alias: 'n');
+
+    $query->fields(table_alias: 'n', fields: ['nid']);
+    $query->condition(field: 'n.type', value: $content_type, operator: '=');
+    $query->condition(field: 'n.langcode', value: $language, operator: '=');
+
+    $query->join(table: 'node_field_data', alias: 'nf', condition: 'n.nid = nf.nid');
+    $query->condition(field: 'nf.uid', value: 0, operator: '=');
+
+    $query->leftJoin(table: $migrate_table, alias: 'm', condition: 'n.nid = m.destid1');
+
+    // Find the non-matching set.
+    $query->isNull(field: 'm.destid1');
+
+    $results = $query->execute()->fetchAll();
+
+    // If we are not in a dry run, delete the nodes.
+    if (!$dry_run) {
+      foreach ($results as $result) {
+        $node_to_delete = $this->nodeStorage->load(id: $result->nid);
+        if ($node_to_delete instanceof NodeInterface) {
+          $node_to_delete->delete();
+          $service_node_deleted++;
+        }
+      }
+      $this->io()->success(message: "Deleted {$service_node_deleted} {$content_type} node(s).");
+    }
+    else {
+      $amount = count(value: $results);
+      $this->io()->writeln(messages: "{$amount} node(s) of type {$content_type} would be deleted.");
+    }
   }
 
 }

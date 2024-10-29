@@ -191,6 +191,9 @@ $card-with-icon-image-height-large: 365px;
   }
 
   &--colorful-2 {
+    // XO-7359: Overwriting secondary (red) color with berry red in colorful card
+    --c-secondary: #{$color-red-berry};
+
     @include dynamic-color(#{$colorful-card-2-color-name});
 
     background-color: clr('alternative-#{$colorful-card-2-color-name}', #{clr(#{$colorful-card-2-color-name})});

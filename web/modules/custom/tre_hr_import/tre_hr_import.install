@@ -13,7 +13,8 @@ function tre_hr_import_schema() {
     'fields' => [
       'user_id' => [
         'description' => 'User ID',
-        'type' => 'int',
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
       ],
       'start_time' => [
@@ -72,4 +73,22 @@ function tre_hr_import_update_10001() {
   ];
 
   $schema->createTable($table_name, $table_schema);
+}
+
+/**
+ * Alter user_id field in temp table to be varchar.
+ */
+function tre_hr_import_update_10002() {
+  $database = \Drupal::database();
+  $schema = $database->schema();
+  $schema->dropPrimaryKey('hr_import_temp_data');
+  $new_field_spec = [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+  ];
+  $new_primary_key = [
+    'primary key' => ['user_id'],
+  ];
+  $schema->changeField('hr_import_temp_data', 'user_id', 'user_id', $new_field_spec, $new_primary_key);
 }

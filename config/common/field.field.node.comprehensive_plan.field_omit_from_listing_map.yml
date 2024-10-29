@@ -1,0 +1,23 @@
+uuid: 493ceeb5-9c18-400e-80f9-55f25ab5c10e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_omit_from_listing_map
+    - node.type.comprehensive_plan
+id: node.comprehensive_plan.field_omit_from_listing_map
+field_name: field_omit_from_listing_map
+entity_type: node
+bundle: comprehensive_plan
+label: 'Älä näytä tätä sisältöä Lista ja kartta -paragraafeissa'
+description: 'Valitse, jos sisällön ei perustellusta syystä poikkeuksellisesti kuulu näkyä Lista ja kartta -paragraafeissa.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

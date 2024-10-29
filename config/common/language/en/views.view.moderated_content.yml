@@ -12,9 +12,6 @@ display:
         type:
           label: 'Content type'
           separator: ', '
-        name:
-          label: Author
-          separator: ', '
         moderation_state:
           label: 'Moderation state'
           separator: ', '
@@ -23,6 +20,8 @@ display:
           separator: ', '
         operations:
           label: Operations
+        revision_uid:
+          label: 'Latest editor'
       pager:
         options:
           tags:
@@ -57,5 +56,8 @@ display:
         langcode:
           expose:
             label: Language
+        revision_uid:
+          expose:
+            label: 'Latest editor'
   moderated_content:
     display_title: 'Moderated content'

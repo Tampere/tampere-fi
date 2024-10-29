@@ -96,9 +96,9 @@ class UrbanPlanningListingAndMapParagraph extends ListingAndMapParagraphBase {
     $tab_list_node_ids = $this->getNodeIds(
       $current_language_id,
       $selected_taxonomy_values,
-
       [],
       $selected_content_types,
+      FALSE,
       $selected_taxonomy_condition_group,
       $extra_conditions,
     );

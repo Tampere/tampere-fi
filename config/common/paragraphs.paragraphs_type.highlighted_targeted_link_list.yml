@@ -1,0 +1,10 @@
+uuid: 6921bf5a-f3b9-4e5c-b614-8b575879d28b
+langcode: fi
+status: true
+dependencies: {  }
+id: highlighted_targeted_link_list
+label: 'Korostettu kohderyhmälinkkilista'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

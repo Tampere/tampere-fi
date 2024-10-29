@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.place.field_listing_search_content
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
+    - field.field.node.place.field_omit_from_listing_map
     - field.field.node.place.field_paragraphs
     - field.field.node.place.field_search_keywords
     - field.field.node.place.field_topics
@@ -78,6 +79,7 @@ third_party_settings:
         - field_address
         - field_additional_information
         - field_paragraphs
+        - field_omit_from_listing_map
       label: Yleinen
       region: content
       parent_name: group_tabs
@@ -192,6 +194,13 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_omit_from_listing_map:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_paragraphs:
     type: paragraphs_classic_asymmetric

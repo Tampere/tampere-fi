@@ -1,0 +1,11 @@
+uuid: 85524012-9508-46af-af9f-f75ec4bb9268
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.content_tab_card_with_hours_view_mode
+label: 'Sisältö-välilehtikortti tuntien kanssa'
+description: ''
+targetEntityType: node
+cache: true

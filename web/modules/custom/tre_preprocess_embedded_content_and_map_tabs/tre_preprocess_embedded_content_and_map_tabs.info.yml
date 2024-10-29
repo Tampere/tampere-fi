@@ -5,3 +5,4 @@ core_version_requirement: '>=9.3'
 package: 'TRE'
 dependencies:
   - tre_preprocess:tre_preprocess
+  - office_hours:office_hours

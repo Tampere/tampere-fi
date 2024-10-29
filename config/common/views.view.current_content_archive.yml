@@ -466,7 +466,7 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      title: 'All contents in this section'
+      title: 'See all contents in this section'
       filters:
         status:
           id: status

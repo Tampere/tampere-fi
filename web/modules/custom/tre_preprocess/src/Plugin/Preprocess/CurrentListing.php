@@ -132,7 +132,7 @@ class CurrentListing extends TrePreProcessPluginBase {
       $hide_previous_content_link_value = $this->helperFunctions->getFieldValueString($translated_paragraph, 'field_hide_previous_content_link') === HelperFunctionsInterface::BOOLEAN_FIELD_TRUE;
       $link_list__items = [];
       $more_link = [
-        'text' => $this->t('All contents in this section'),
+        'text' => $this->t('See all contents in this section'),
         'url' => $more_link_url,
       ];
       $archive_link = [
@@ -285,7 +285,7 @@ class CurrentListing extends TrePreProcessPluginBase {
     array $content_type_specific_taxonomy_values,
     $node_amount,
     $minisite_group_content_inclusion,
-    array $nids_to_ignore = []
+    array $nids_to_ignore = [],
   ): ?array {
     $node_query = $this->entityTypeManager->getStorage('node')->getQuery()->accessCheck(TRUE);
     $node_query

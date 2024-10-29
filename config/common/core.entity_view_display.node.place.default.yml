@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.place.field_listing_search_content
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
+    - field.field.node.place.field_omit_from_listing_map
     - field.field.node.place.field_paragraphs
     - field.field.node.place.field_search_keywords
     - field.field.node.place.field_topics
@@ -49,6 +50,11 @@ third_party_settings:
       last_updated:
         - node_changed_date
     fields:
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 6
+        label: hidden
+        formatter: ds_post_date_date_only
       node_title:
         plugin_id: node_title
         weight: 1
@@ -63,11 +69,6 @@ third_party_settings:
           id: reset
           settings:
             lb: ''
-      node_changed_date:
-        plugin_id: node_changed_date
-        weight: 6
-        label: hidden
-        formatter: ds_post_date_date_only
 id: node.place.default
 targetEntityType: node
 bundle: place
@@ -139,6 +140,7 @@ hidden:
   field_help_text: true
   field_keywords: true
   field_listing_search_content: true
+  field_omit_from_listing_map: true
   field_search_keywords: true
   field_topics: true
   langcode: true

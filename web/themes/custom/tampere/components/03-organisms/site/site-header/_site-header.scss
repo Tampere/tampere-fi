@@ -177,7 +177,7 @@ $header-secondary-inline-padding: 13px;
     @include large {
       @include to-rem('width', 165);
       @include to-rem('height', 67);
-      
+
       margin-right: (-1) * $space-s;
     }
   }
@@ -222,9 +222,13 @@ $header-secondary-inline-padding: 13px;
     }
 
     &--hamburger-menu {
-      background-color: clr(primary);
+      background-color: clr(background);
       display: block;
-      padding: $space-l $gutter-mobile;
+      padding: $site-header-hamburger-menu-margin-top $gutter-mobile $space-l $gutter-mobile;
+
+      @include large {
+        order: 3;
+      }
 
       @include large-plus {
         padding-right: $space-xl;
@@ -237,46 +241,68 @@ $header-secondary-inline-padding: 13px;
     }
   }
 
-  &__navigation-container {
-    background-color: clr(background);
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 15;
+  &__navigation {
+    &-container {
+      --main-menu-title-height: #{$main-menu-title-height};
 
-    @include large-down {
-      display: flex;
-      flex-direction: column;
-    }
-
-    @include large {
-      box-shadow: 0 8px 4px 0 clr(border-transparent);
-      margin-top: $gutter-mobile;
-    }
-
-    // Not an interactable element, but Safari shows the outline
-    // because of the negative tab index.
-    &:focus {
-      outline: none;
-    }
-
-    &.is-closed {
-      display: none;
-    }
-
-    &--mobile {
-      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 15;
 
       @include large {
+        padding: 0 $gutter-mobile;
+      }
+
+      @include large-plus {
+        padding: 0 $gutter-large;
+      }
+
+      // Not an interactable element, but Safari shows the outline
+      // because of the negative tab index.
+      &:focus {
+        outline: none;
+      }
+
+      &.is-closed {
         display: none;
+      }
+
+      &--mobile {
+        display: block;
+
+        @include large {
+          display: none;
+        }
+      }
+    }
+
+    &-inside {
+      background-color: clr(background);
+      border: 2px solid var(--c-secondary);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: $gutter-medium;
+      width: 100%;
+
+      @include large {
+        box-shadow: 0 8px 4px 0 clr(border-transparent);
+        margin-top: $gutter-mobile;
+        padding: $gutter-medium;
       }
     }
   }
 
-  &__main-navigation--mobile {
+  &__main-navigation {
     @include large {
-      display: none;
+      &--mobile {
+        display: none;
+      }
+    }
+
+    @include main-menu-breakpoint {
+      grid-column: 1 / span 2;
     }
   }
 }

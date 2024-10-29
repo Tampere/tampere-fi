@@ -24,6 +24,7 @@ dependencies:
     - field.field.node.zoning_information.field_listing_search_content
     - field.field.node.zoning_information.field_location
     - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_omit_from_listing_map
     - field.field.node.zoning_information.field_other_identifiers
     - field.field.node.zoning_information.field_paragraphs
     - field.field.node.zoning_information.field_partially_binding_phase
@@ -407,7 +408,7 @@ content:
     third_party_settings: {  }
   field_feedback_form:
     type: webform_entity_reference_select
-    weight: 112
+    weight: 110
     region: content
     settings:
       default_data: true
@@ -471,6 +472,13 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_omit_from_listing_map:
+    type: boolean_checkbox
+    weight: 111
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_other_identifiers:
     type: entity_reference_autocomplete
     weight: 42
@@ -483,7 +491,7 @@ content:
     third_party_settings: {  }
   field_paragraphs:
     type: paragraphs_classic_asymmetric
-    weight: 111
+    weight: 109
     region: content
     settings:
       title: Paragraph

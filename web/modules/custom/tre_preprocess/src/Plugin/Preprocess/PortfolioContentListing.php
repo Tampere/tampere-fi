@@ -91,7 +91,7 @@ class PortfolioContentListing extends TrePreProcessPluginBase {
       }
 
       $previous_content_link = [
-        'text' => $this->t('All contents in this section', [], ['context' => 'Portfolio content listing paragraph']),
+        'text' => $this->t('See all contents in this section', [], ['context' => 'Portfolio content listing paragraph']),
         'url' => $listing_node->toUrl()->toString(TRUE)->getGeneratedUrl(),
       ];
 

@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Entity\RevisionableStorageInterface;
+use Drupal\paragraphs\ParagraphInterface;
+
+/**
+ * Replaces the old red (#c83e36) with the new (#ad3963) in color_field fields.
+ */
+function tre_preprocess_utility_functions_update_10001(): void {
+  $old_color = '#c83e36';
+  $new_color = '#ad3963';
+  $manager = \Drupal::entityTypeManager();
+  $storage = $manager->getStorage('paragraph');
+  assert($storage instanceof RevisionableStorageInterface);
+
+  $query = $storage->getQuery()->accessCheck(FALSE);
+  $query->condition('field_color', value: '#c83e36');
+  $paragraph_revisions = $query->execute();
+  foreach (array_keys($paragraph_revisions) as $paragraph_revision) {
+    // Since phpstan somehow does not accept that $storage is a non-deprecated
+    // interface with the correct version of the loadRevision method, must use
+    // magic tricks.
+    // @phpstan-ignore-next-line
+    $paragraph = $storage->loadRevision($paragraph_revision);
+    if (!($paragraph instanceof ParagraphInterface)) {
+      continue;
+    }
+    foreach ($paragraph->getTranslationLanguages() as $language) {
+      $translation = $paragraph->getTranslation($language->getId());
+      $changed = FALSE;
+      /** @var \Drupal\Core\Field\FieldItemInterface $value */
+      foreach ($translation->get('field_color') as &$value) {
+        $value_array = $value->getValue();
+        if ($value_array['color'] === $old_color) {
+          $value_array['color'] = $new_color;
+          $value->setValue($value_array);
+          $changed = TRUE;
+        }
+      }
+      if ($changed) {
+        $translation->save();
+      }
+    }
+  }
+}

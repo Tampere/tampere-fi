@@ -282,6 +282,10 @@ $sidebar-width: 28%;
 $sidebar-min-width: 285px;
 $main-width-with-sidebar: calc(100% - (#{$sidebar-width} + #{$gutter-sidebar-content}));
 
+/* menu */
+$main-menu-title-height: 72px; //@MAGIC: Do not use outside of main menu title height
+$site-header-hamburger-menu-margin-top: 0; //@MAGIC: Do not use outside of the additional menu inside the site header navigation
+
 /* content */
 $article-max-width: 858px;
 $article-content-max-width: calc(#{$article-max-width} + (#{$gutter-default} * 2));

@@ -1,0 +1,23 @@
+uuid: dd904b47-e675-40da-8f6b-3e472da726fe
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_omit_from_listing_map
+    - node.type.zoning_information
+id: node.zoning_information.field_omit_from_listing_map
+field_name: field_omit_from_listing_map
+entity_type: node
+bundle: zoning_information
+label: 'Älä näytä tätä sisältöä Lista ja kartta -paragraafeissa'
+description: 'Valitse, jos sisällön ei perustellusta syystä poikkeuksellisesti kuulu näkyä Lista ja kartta -paragraafeissa.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -7,15 +7,16 @@
   height: 100%;
   margin-bottom: $gutter-medium;
   overflow: hidden;
+  padding: 0 $space-s;
 
   @include large {
     margin-bottom: 0;
+    padding: 0;
   }
 
   &__heading-container {
     align-items: center;
-    border-top: 2px solid var(--sidebar-menu-container-border-color);
-    border-bottom: 2px solid var(--sidebar-menu-container-border-color);
+    border: 2px solid var(--sidebar-menu-container-border-color);
     display: flex;
     justify-content: space-between;
     min-height: $space-l + $space-xs;
@@ -40,6 +41,8 @@
     align-self: stretch;
     background-color: transparent;
     border: 0;
+    // NOTE XO-7347: In XO-2300 had text color set as text-inverse, however on dev env testing the text color was displayed wrong. Set back to text here.
+    // Any menus with darkly colored menu buttons should be checked for complications
     color: clr(text);
     cursor: pointer;
     display: flex;

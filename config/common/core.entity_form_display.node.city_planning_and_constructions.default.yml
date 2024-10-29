@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_listing_search_content
     - field.field.node.city_planning_and_constructions.field_location
     - field.field.node.city_planning_and_constructions.field_main_image
+    - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
     - field.field.node.city_planning_and_constructions.field_partially_binding_phase
     - field.field.node.city_planning_and_constructions.field_phase
@@ -80,6 +81,7 @@ third_party_settings:
         - field_display_location_on_map
         - field_address
         - field_paragraphs
+        - field_omit_from_listing_map
       label: Yleinen
       region: content
       parent_name: group_tabs
@@ -485,6 +487,13 @@ content:
     region: content
     settings:
       media_types: {  }
+    third_party_settings: {  }
+  field_omit_from_listing_map:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_paragraphs:
     type: paragraphs_classic_asymmetric

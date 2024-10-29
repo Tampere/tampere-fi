@@ -5,6 +5,9 @@
  * Contains hook implementations for tre_admin_theme_modifications module.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\views\ViewExecutable;
+
 /**
  * Implements hook_preprocess_HOOK().
  */
@@ -39,4 +42,17 @@ function _tre_admin_theme_modifications_preprocess(array &$variables): array {
   }
 
   return $variables;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function tre_admin_theme_modifications_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (($form_state_storage = $form_state->getStorage())
+  && is_array($form_state_storage)
+  && isset($form_state_storage['view'])
+  && $form_state_storage['view'] instanceof ViewExecutable
+  && ($form_state_storage['view']->id() == 'content' || $form_state_storage['view']->id() == 'moderated_content')) {
+    $form['revision_uid']['#size'] = 30;
+  }
 }

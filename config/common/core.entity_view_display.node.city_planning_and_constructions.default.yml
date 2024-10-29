@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_listing_search_content
     - field.field.node.city_planning_and_constructions.field_location
     - field.field.node.city_planning_and_constructions.field_main_image
+    - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
     - field.field.node.city_planning_and_constructions.field_partially_binding_phase
     - field.field.node.city_planning_and_constructions.field_phase
@@ -71,6 +72,11 @@ third_party_settings:
       last_updated:
         - node_changed_date
     fields:
+      node_changed_date:
+        plugin_id: node_changed_date
+        weight: 8
+        label: hidden
+        formatter: ds_post_date_date_only
       node_title:
         plugin_id: node_title
         weight: 3
@@ -85,11 +91,6 @@ third_party_settings:
           id: reset
           settings:
             lb: ''
-      node_changed_date:
-        plugin_id: node_changed_date
-        weight: 8
-        label: hidden
-        formatter: ds_post_date_date_only
 id: node.city_planning_and_constructions.default
 targetEntityType: node
 bundle: city_planning_and_constructions
@@ -191,6 +192,7 @@ hidden:
   field_keywords: true
   field_legal_phase: true
   field_listing_search_content: true
+  field_omit_from_listing_map: true
   field_partially_binding_phase: true
   field_plan_number: true
   field_preparation_phase: true

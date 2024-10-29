@@ -1,0 +1,43 @@
+uuid: 3bb04ec2-1e9a-4afa-a91c-682a0b46301e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.highlighted_targeted_link_list.field_highlighted_link_list
+    - paragraphs.paragraphs_type.highlighted_targeted_link_list
+  module:
+    - field_states_ui
+    - limited_field_widgets
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.highlighted_targeted_link_list.default
+targetEntityType: paragraph
+bundle: highlighted_targeted_link_list
+mode: default
+content:
+  field_highlighted_link_list:
+    type: paragraphs_classic_asymmetric
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: highlighted_link_list
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+  translation:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

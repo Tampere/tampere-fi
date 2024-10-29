@@ -1,0 +1,23 @@
+uuid: c248370d-a43a-4912-959e-37af089b20f9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_hours
+    - paragraphs.paragraphs_type.embedded_content_and_map_tabs
+id: paragraph.embedded_content_and_map_tabs.field_show_hours
+field_name: field_show_hours
+entity_type: paragraph
+bundle: embedded_content_and_map_tabs
+label: 'Näytä aukioloajat ja poikkeusaukioloajat'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean
