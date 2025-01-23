@@ -10,6 +10,7 @@ dependencies:
     - media.type.remote_video
   module:
     - admin_toolbar_search
+    - ai_translate_textfield
     - content_moderation
     - content_translation
     - dropzonejs
@@ -280,6 +281,7 @@ permissions:
   - 'update paragraph content zoning_project_card'
   - 'update paragraph content zoning_project_cards'
   - 'use admin toolbar search'
+  - 'use ai translation'
   - 'use text format notice_html'
   - 'view all media revisions'
   - 'view any unpublished content'

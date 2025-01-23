@@ -1,6 +1,5 @@
 _core:
   default_config_hash: wOZVD8Wsf3NSSsAU36-FVkO7zaC4TgH_Buj0Up6vHYQ
-langcode: fi
 image_styles:
   api_image_style: api_image_style
   content_liftup_with_image_medium_image_style: '0'

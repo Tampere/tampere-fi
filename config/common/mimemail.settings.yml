@@ -1,6 +1,5 @@
 _core:
   default_config_hash: rpfRQVoEn2ZWd_lw-iULKPiuina5CqcmzXWlz1OjTwM
-langcode: fi
 name: noreply@tampere.fi
 mail: noreply@tampere.fi
 simple_address: true

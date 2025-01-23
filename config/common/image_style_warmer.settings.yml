@@ -1,4 +1,3 @@
-langcode: fi
 initial_image_styles:
   blog_header_large_view_mode: blog_header_large_view_mode
 queue_image_styles: {  }

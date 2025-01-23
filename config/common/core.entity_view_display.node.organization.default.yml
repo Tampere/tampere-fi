@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.organization.field_help_text
     - field.field.node.organization.field_keywords
     - field.field.node.organization.field_main_image
+    - field.field.node.organization.field_page_summary
     - field.field.node.organization.field_paragraphs
     - field.field.node.organization.field_search_keywords
     - field.field.node.organization.field_topics
@@ -33,6 +34,7 @@ third_party_settings:
       main_title:
         - node_title
       main_content:
+        - field_page_summary
         - content_moderation_control
         - field_description
         - field_paragraphs
@@ -46,6 +48,7 @@ third_party_settings:
         settings:
           link: false
           'link class': ''
+          link_target: ''
           wrapper: ''
           class: ''
         ft:
@@ -60,7 +63,7 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: main_content
   field_contact_info_paragraph:
     type: entity_reference_revisions_entity_view
@@ -98,14 +101,14 @@ content:
             fi-def-at: false
             prefix: ''
             suffix: ''
-    weight: 5
+    weight: 6
     region: main_content
   field_description:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: main_content
   field_main_image:
     type: entity_reference_entity_view
@@ -123,6 +126,20 @@ content:
             classes: {  }
     weight: 0
     region: main_image
+  field_page_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: main_content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -130,7 +147,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: main_content
 hidden:
   entitygroupfield: true

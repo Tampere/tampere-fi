@@ -267,6 +267,12 @@ function _tre_node_location_coordinate_conversion_geofield_coordinates_unchanged
       return FALSE;
     }
 
+    // Location coordinates are filled, but for some reason the EPSG point string field is empty.
+    // In this case the location field needs to be processed again.
+    if ($entity->get(HelperFunctionsInterface::EPSG_COORDINATE_POINT_FIELD_NAME)->isEmpty()) {
+      return FALSE;
+    }
+
     $original_location_field_items = $original_entity->get('field_location');
     /** @var \Drupal\geofield\Plugin\Field\FieldType\GeofieldItem $original_location_field_item */
     $original_location_field_item = $original_location_field_items->first();

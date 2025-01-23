@@ -1,6 +1,5 @@
 _core:
   default_config_hash: MyabvDT1FAaMt3eMLoQ_yg17eopyAABvcOxZ5spt5kk
-langcode: fi
 skipClass: no-lazy
 disable_admin: true
 visibility:

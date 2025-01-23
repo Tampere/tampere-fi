@@ -10,8 +10,10 @@ dependencies:
     - field.field.node.news_item.field_contact_info_paragraph
     - field.field.node.news_item.field_cross_site_publications
     - field.field.node.news_item.field_date_of_publication
+    - field.field.node.news_item.field_exclude_from_search
     - field.field.node.news_item.field_geographical_areas
     - field.field.node.news_item.field_help_text
+    - field.field.node.news_item.field_keep_public
     - field.field.node.news_item.field_keywords
     - field.field.node.news_item.field_lead
     - field.field.node.news_item.field_life_situations
@@ -31,6 +33,7 @@ dependencies:
     - node.type.news_item
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - allowed_formats
     - content_moderation
     - field_group
@@ -42,6 +45,7 @@ dependencies:
     - paragraphs_asymmetric_translation_widgets
     - path
     - publication_date
+    - search_api_exclude_entity
     - text
 third_party_settings:
   field_group:
@@ -211,6 +215,9 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
@@ -220,7 +227,6 @@ content:
         maxlength_js_summary: null
         maxlength_js_label_summary: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
-        maxlength_js_truncate_html: false
   field_contact_info_paragraph:
     type: paragraphs_classic_asymmetric
     weight: 30
@@ -241,6 +247,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_exclude_from_search:
+    type: search_api_exclude_entity_widget
+    weight: 37
+    region: content
+    settings:
+      field_label: 'Yes, exclude this entity from the search indexes.'
+      use_details_container: true
+    third_party_settings: {  }
   field_geographical_areas:
     type: entity_reference_autocomplete
     weight: 11
@@ -256,6 +270,13 @@ content:
     weight: 11
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_keep_public:
+    type: boolean_checkbox
+    weight: 38
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
@@ -282,6 +303,9 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       maxlength:
         maxlength_js: 450
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
@@ -474,7 +498,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 24
     region: content

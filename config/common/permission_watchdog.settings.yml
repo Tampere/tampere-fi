@@ -1,5 +1,4 @@
 _core:
   default_config_hash: 3yQBjhaU3cGhKuR9AP67nTub9qgGfTyLMSmjkS4xwY4
-langcode: fi
 all_roles: true
 roles: {  }

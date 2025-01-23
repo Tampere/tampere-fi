@@ -20,6 +20,8 @@ matchers:
         blog_article: blog_article
         city_planning_and_constructions: city_planning_and_constructions
         collection_page: collection_page
+        comprehensive_plan: comprehensive_plan
+        content_in_other_language: content_in_other_language
         front_page: front_page
         involvement_opportunity: involvement_opportunity
         moderated_page: moderated_page
@@ -27,6 +29,7 @@ matchers:
         notice: notice
         organization: organization
         place: place
+        portfolio: portfolio
         project: project
         rich_article: rich_article
         small_news_item: small_news_item
@@ -34,7 +37,7 @@ matchers:
       group_by_bundle: false
       substitution_type: canonical
       limit: 100
+      include_unpublished: false
       translated_entities: 1
       hide_untranslated_entities: false
-      include_unpublished: false
     weight: 0

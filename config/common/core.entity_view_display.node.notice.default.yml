@@ -168,6 +168,7 @@ content:
       timezone_override: ''
       format_type: date_only
       separator: '-'
+      from_to: both
     third_party_settings:
       ds:
         ft:

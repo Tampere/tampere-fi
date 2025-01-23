@@ -16,6 +16,7 @@ dependencies:
     - node.type.collection_page
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - content_moderation
     - field_group
     - field_states_ui
@@ -152,6 +153,9 @@ content:
       rows: 3
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       field_states_ui:
         form:
           type: ''
@@ -243,7 +247,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 9
     region: content
@@ -271,6 +278,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_topic: true
   promote: true
   published_at: true

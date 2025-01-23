@@ -1,0 +1,22 @@
+uuid: 4d241917-0f11-446c-8fef-06126232857b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_phasing_not_in_use
+field_name: field_phasing_not_in_use
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

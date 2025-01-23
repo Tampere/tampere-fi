@@ -1,6 +1,5 @@
 _core:
   default_config_hash: pefQIx7YdI1zQU_NSZMEY6gyZyFqvH3mhAFVYSeZjdg
-langcode: fi
 cache_strings: true
 translate_english: false
 javascript:

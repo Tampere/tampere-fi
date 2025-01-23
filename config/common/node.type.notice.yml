@@ -11,7 +11,7 @@ third_party_settings:
 name: Ilmoitus
 type: notice
 description: "Ilmoitukset ovat Tampereen\r\nkaupungin virallisia kuulutuksia, esim. kaavakuulutuksia\r\nja meluilmoituksia."
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

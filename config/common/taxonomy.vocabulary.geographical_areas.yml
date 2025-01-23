@@ -6,3 +6,4 @@ name: 'Maantieteelliset alueet'
 vid: geographical_areas
 description: 'Kaupunginosia yhdistelevät suuralueet'
 weight: 0
+new_revision: false

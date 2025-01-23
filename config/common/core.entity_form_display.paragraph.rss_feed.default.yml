@@ -8,6 +8,10 @@ dependencies:
     - field.field.paragraph.rss_feed.field_number_of_items_to_show
     - field.field.paragraph.rss_feed.field_sort_order
     - paragraphs.paragraphs_type.rss_feed
+  module:
+    - ai_translate_textfield
+    - field_states_ui
+    - maxlength
 id: paragraph.rss_feed.default
 targetEntityType: paragraph
 bundle: rss_feed
@@ -26,7 +30,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_sort_order:
     type: options_select
     weight: 2

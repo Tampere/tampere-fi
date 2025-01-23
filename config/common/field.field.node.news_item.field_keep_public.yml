@@ -1,0 +1,21 @@
+uuid: 7e5b7fdc-2036-4be5-92a9-602de6d1bd1e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_keep_public
+    - node.type.news_item
+id: node.news_item.field_keep_public
+field_name: field_keep_public
+entity_type: node
+bundle: news_item
+label: 'Pidä julkisena'
+description: 'Merkitse estääksesi uutisen arkistoitumasta automaattisesti vuodenvaihteessa.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

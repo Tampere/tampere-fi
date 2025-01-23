@@ -31,6 +31,95 @@ Drupal.behaviors.mapTabsContent = {
     const locations = drupalSettings.tampere.embeddedContentAndMapTabs.locations;
 
     const showHours = drupalSettings.tampere.showHours;
+
+    // Keeping track of items opened on the list side.
+    let lastOpened = {}
+
+    /**
+     * Update location pins based on tab list result.
+     *
+     * @param {Object} channel
+     *   The channel connected with the map.
+     * @param {string} containerParagraphId
+     *   The map container paragraph ID.
+     * @param {Object} locations
+     *   The location data.
+     */
+    function updateLocationPins(channel, containerParagraphId, filteredLocationsForCurrentMap) {
+      
+      const keys = Object.keys(filteredLocationsForCurrentMap);
+      const vectorLayerId = getVectorLayerId(LOCATION_PIN_VECTOR_LAYER_ID_BASE)(containerParagraphId);
+      const features = [];
+
+      // Clear current location pins before adding the locations from tab list result.
+      channel.postRequest('MapModulePlugin.RemoveFeaturesFromMapRequest', []);
+
+      for (const item of keys) {
+        const locationLongitude = filteredLocationsForCurrentMap[item].longitude;
+        const locationLatitude = filteredLocationsForCurrentMap[item].latitude;
+        const locationNodeId = filteredLocationsForCurrentMap[item].nid.toString();
+
+        // Adding each location for the current map to the available features.
+        features.push({
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [locationLongitude, locationLatitude],
+          },
+          properties: {
+            active: false,
+            nid: locationNodeId,
+          },
+        });
+      }
+
+      const geojson = {
+        type: 'FeatureCollection',
+        crs: {
+          type: 'name',
+          properties: {
+            name: 'EPSG:3067',
+          },
+        },
+        features,
+      };
+
+      const featureStyle = {
+        image: {
+          shape: LOCATION_PIN_SHAPE,
+          size: LOCATION_PIN_SIZE,
+          offsetX: LOCATION_PIN_OFFSET_X,
+          offsetY: LOCATION_PIN_OFFSET_Y,
+        },
+      };
+
+      const addFeaturesParams = [
+        geojson,
+        {
+          layerId: vectorLayerId,
+          centerTo: true,
+          cursor: 'pointer',
+          featureStyle,
+          maxZoomLevel: MAX_ZOOM_LEVEL,
+        },
+      ];
+
+      // Recommendable practice is to prepare a layer with VectorLayerRequest before adding features.
+      // https://oskari.org/api/requests#2.6.0/mapping/mapmodule/request/vectorlayerrequest.md
+      channel.postRequest('VectorLayerRequest', [
+        {
+          layerId: vectorLayerId,
+          opacity: 100,
+        },
+      ]);
+
+      // Adding features to the map.
+      // https://oskari.org/api/requests#2.6.0/mapping/mapmodule/request/addfeaturestomaprequest.md
+      channel.postRequest(
+        'MapModulePlugin.AddFeaturesToMapRequest',
+        addFeaturesParams
+      );
+    }
     
     /**
      * Toggles given feature location pin styles.
@@ -41,11 +130,17 @@ Drupal.behaviors.mapTabsContent = {
      *   The feature to update.
      * @param {string} activeFeatureId
      *   The active feature's ID.
+     * @param {boolean} turnOffPreviousPin
+     *   If previously active pins should be deactivated.
      */
-    function toggleLocationPin(channel, feature, activeFeatureId) {
+    function toggleLocationPin(channel, feature, activeFeatureId, turnOffPreviousPin = true) {
       const featureId = feature.id;
       const { layerId } = feature;
-      const isFeatureActive = feature.geojson.features[0].properties.active;
+
+      const properties = feature?.geojson
+        ? feature.geojson.features[0].properties
+        : feature.properties;
+      const isFeatureActive = properties.active;
 
       const activePinStyle = {
         image: {
@@ -58,29 +153,31 @@ Drupal.behaviors.mapTabsContent = {
           shape: LOCATION_PIN_SHAPE,
         },
       };
-
       const featureStyle = isFeatureActive ? defaultPinStyle : activePinStyle;
 
-      // Make sure previously active feature is switched back to default state.
-      if (activeFeatureId !== featureId) {
-        channel.postRequest('MapModulePlugin.AddFeaturesToMapRequest', [
-          {
-            id: [
+      if (turnOffPreviousPin && activeFeatureId !== featureId) {
+        // Get all active location pins and set them back to default state.
+        channel.getFeatures([true], function (data) {
+          const activeFeatures = data[layerId].features.filter((feature) => feature.properties.active);
+          activeFeatures.forEach((activeFeature) => {
+            channel.postRequest('MapModulePlugin.AddFeaturesToMapRequest', [
               {
-                value: activeFeatureId,
-                properties: {
-                  active: false,
-                },
+                id: [
+                  {
+                    value: activeFeature.properties.id,
+                    properties: {
+                      active: false,
+                    },
+                  },
+                ],
               },
-            ],
-          },
-          {
-            layerId,
-            featureStyle: defaultPinStyle,
-          },
-        ]);
-
-        activeFeatureId = featureId;
+              {
+                layerId,
+                featureStyle: defaultPinStyle,
+              },
+            ]);
+          });
+        });
       }
 
       // Updating existing feature on the map.
@@ -133,13 +230,32 @@ Drupal.behaviors.mapTabsContent = {
         return false;
       }
 
-      const isFeatureActive = feature.geojson.features[0].properties.active;
-      const informationCard = mapElement.closest('.js-search-panel-map').querySelector('.search-panel__popup-item');
-      const loadingText = mapElement.closest('.js-search-panel-map').querySelector('.search-panel__loading-text');
+      toggleInformationCard(feature, channel, mapElement);
+    }
+
+    /**
+     * Handle toggling the location information card for map.
+     *
+     * @param {Object} feature
+     * @param {Object} channel
+     * @param {HTMLElement} mapElement
+     */
+    function toggleInformationCard(feature, channel, mapElement) {
+      const properties = feature?.geojson
+        ? feature.geojson.features[0].properties
+        : feature.properties;
+
+      const isFeatureActive = properties.active;
+      const informationCard = mapElement
+        .closest('.js-search-panel-map')
+        .querySelector('.search-panel__popup-item');
+      const loadingText = mapElement
+        .closest('.js-search-panel-map')
+        .querySelector('.search-panel__loading-text');
       const activeFeatureId = informationCard.getAttribute('data-featureId');
       toggleLocationPin(channel, feature, activeFeatureId);
 
-      const locationNid = feature.geojson.features[0].properties.nid;
+      const locationNid = properties.nid;
 
       loadingText.hidden = false;
 
@@ -166,6 +282,102 @@ Drupal.behaviors.mapTabsContent = {
       informationCard.hidden = isFeatureActive;
 
       return false;
+    }
+
+    /**
+     * Handles search events when getting autocomplete suggestions.
+     *
+     * @param {Event} event
+     *   The Search Event to react to.
+     * @param {Object} channel
+     *   The channel connected with the event.
+     * @param {string} id
+     *   An identifier for the map.
+     */
+    function handleAutocomplete(event, channel, id) {
+      const mapElement = mapElements.find((mapElement) => mapElement.id === `map-${id}`);
+      const mapContainer = mapElement.closest('.tabbed-container__content');
+      const searchField = mapContainer.querySelector('.form-item__textfield.search-bar__input');
+      const suggestionsWrapper = mapContainer.querySelector('.map-search-suggestions');
+      // Reset the list when the list of suggestions changes.
+      suggestionsWrapper.innerHTML = '';
+
+      // Filter list of suggestions to a manageable level and to preferred region.
+      const suggestions = event.result.locations
+        .filter((suggestion) => suggestion.region === PREFERRED_SEARCH_RESULT_REGION)
+        .slice(0, 10)
+        .map((location) => location.name)
+
+      // Create suggestions list.
+      suggestions.forEach((location, i) => {
+        const suggestionElement = document.createElement('li');
+        suggestionElement.classList.add('ui-menu-item');
+        suggestionElement.textContent = location;
+        suggestionElement.tabIndex = -1;
+        suggestionElement.dataset.index = i;
+
+        // Handle showing which list element is active.
+        suggestionElement.addEventListener('mouseover', function (e) {
+          e.target.focus();
+          currentIndex = e.target.dataset.index;
+        });
+
+        suggestionElement.addEventListener('focus', function (e) {
+          e.target.classList.add('ui-state-active');
+        });
+
+        suggestionElement.addEventListener('blur', function (e) {
+          e.target.classList.remove('ui-state-active');
+        });
+
+        suggestionsWrapper.append(suggestionElement);
+      });
+
+      // Handle moving on the list with arrow keys.
+      const listItems = suggestionsWrapper.querySelectorAll('li');
+      currentIndex = 0;
+
+      function focusListItem(index) {
+        if (index < 0 || index >= listItems.length) return;
+        // Focus on the new item
+        listItems[index].focus();
+      }
+
+      searchField.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          listItems[0].focus();
+        }
+      });
+
+      suggestionsWrapper.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          currentIndex = (currentIndex + 1) % listItems.length;
+          focusListItem(currentIndex);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          currentIndex = (currentIndex - 1 + listItems.length) % listItems.length;
+          focusListItem(currentIndex);
+        } else if (e.key === 'Enter') {
+          listItems[currentIndex].click();
+        }
+      });
+
+      // Close autocomplete if clicked outside the list.
+      document.addEventListener('click', function(e) {
+        if (!suggestionsWrapper.contains(e.target)) {
+          suggestionsWrapper.innerHTML = '';
+        }
+      });
+
+      // Remove the suggestions list and performa a search when a suggestion
+      // is clicked.
+      suggestionsWrapper.addEventListener('click', function (e) {
+        searchField.value = e.target.textContent;
+        suggestionsWrapper.innerHTML = '';
+        channel.postRequest('SearchRequest', [e.target.textContent]);
+      });
     }
 
     /**
@@ -268,6 +480,28 @@ Drupal.behaviors.mapTabsContent = {
       ]);
     }
 
+     /**
+     * Extract the related locations to the paragraph from all the locations.
+     *
+     * @param {String} containerParagraphId
+     *   The target containerParagraphId to extract locations for.
+     * @param {Object} allLocations
+     *   All the locations history for all the views.
+     * @param {Object} paragraphToViewHashTable
+     *   The hash table to map a paragraph id to its view dom id.
+     */
+    function getParagraphFilteredLocations(containerParagraphId, allLocations, paragraphToViewHashTable) {
+      // Because the view is in AJAX mode, when interacting with the view, i.e. changing the filters,
+      // only the view gets re-rendered, not the parent paragraph, so here we use the view Dom Id to 
+      // extract the related locations.
+      const domId = paragraphToViewHashTable[containerParagraphId];
+      const filteredLocationsArray = allLocations[domId];
+
+      // The history of all locations is kept based on a timestamp, so we can get the latest one.
+      const latestLocations = Math.max(...Object.keys(filteredLocationsArray).map(Number));
+      return filteredLocationsArray[latestLocations];
+    }
+
     /**
      * Handles interaction with the close button on cards.
      *
@@ -322,6 +556,9 @@ Drupal.behaviors.mapTabsContent = {
 
         const mapContainer = mapElement.closest('.tabbed-container__content');
         const mapTabButton = mapContainer.querySelector('.tabbed-container__tab-list-item');
+        
+        const mapId = mapElement.id;
+        lastOpened[mapId] = [];
 
         // Only if the Map Tab is already hidden. i.e. it is not the default tab.
         // In this case, we manually display the map,
@@ -356,14 +593,104 @@ Drupal.behaviors.mapTabsContent = {
           }.bind(channel, channel, mapElement));
 
           channel.handleEvent('SearchResultEvent', function(channel, id, event) {
-            handleSearch(event, channel, id);
+            if (event.options.autocomplete) {
+              handleAutocomplete(event, channel, id);
+            } else {
+              handleSearch(event, channel, id);
+            }
           }.bind(channel, channel, containerParagraphId));
+
 
           const containerSearchPanel = mapElement.closest('.js-search-panel-map');
           if (containerSearchPanel) {
             const searchButton = containerSearchPanel.querySelector('.search-bar__button');
             const input = containerSearchPanel.querySelector('input');
             const informationCardCloseButtons = once('embedded-content-and-map-tabs-information-card-close-toggles', '.search-panel__popup-item button', containerSearchPanel);
+
+            // Clear the lastOpened list when page changes.
+            jQuery(`#paragraph-${containerParagraphId}`).on('click', '.pager', function() {
+              lastOpened[mapId] = [];
+            });
+
+            // Keeping track of opening and closing list items, used for opening the correct infobox on the map side.
+            jQuery(`#paragraph-${containerParagraphId}`).on('click', '.search-panel__results-section .accordion__heading', function() {
+              if (this.classList.contains('is-active'))  {
+                lastOpened[mapId].push(this.getAttribute('data-nid'));
+              } else {
+                lastOpened[mapId] = lastOpened[mapId].filter((nid) => nid !== this.getAttribute('data-nid'));
+              }
+            });
+
+            // When tab is changed from list to map and a location was open on the list, open the same location
+            // on the map.
+            const mapTabButton = mapContainer.querySelector('.tabbed-container__tab-list-item');
+            
+            // Since the map tab can be selected by keyboard arrows as well,
+            // we consider both clicking and pressing keys.
+            ['click', 'keyup'].forEach(event =>
+              mapTabButton.addEventListener(event, function () {
+                var filteredLocations = []
+                const tabbedContainer = mapElement.closest('.tabbed-container__content');
+                const searchPanel = tabbedContainer.querySelector('.js-search-panel-list');
+                const totalCount = searchPanel.querySelector('.js-total-count');
+
+                // If JS-total-count element exists, it means the result has at least one row.
+                // So in that case we should upadte the locations.
+                // Otherwise, there must be no location on the map.
+                if (totalCount) {
+                  const allFilteredLocations = drupalSettings.tampere.embeddedContentAndMapTabs.filteredLocations;
+                  const paragraphToViewHashTable = drupalSettings.tampere.embeddedContentAndMapTabs.paragraphToViewHashTable;
+                  filteredLocations = getParagraphFilteredLocations(containerParagraphId, allFilteredLocations, paragraphToViewHashTable)
+                }
+  
+                updateLocationPins(channel, containerParagraphId, filteredLocations);
+
+                if (lastOpened[mapId].length === 0) {
+                  return;
+                }
+
+                // Get the last clicked element from the list.
+                const lastOpenedItem = lastOpened[mapId][lastOpened[mapId].length - 1];
+                const activeListElement = mapContainer.querySelector(`[data-nid="${lastOpenedItem}"]`);
+
+                // Couldn't find the item, remove it from the list.
+                if (!activeListElement || !activeListElement.getAttribute('data-nid')) {
+                  lastOpened[mapId].pop();
+                  return;
+                }
+
+                const activeNid = activeListElement.getAttribute('data-nid');
+
+                channel.getFeatures([true], function (data) {
+                  const vectorLayerId = getVectorLayerId(
+                    LOCATION_PIN_VECTOR_LAYER_ID_BASE
+                  )(containerParagraphId);
+                  // Get the right feature based on the node id.
+                  const targetFeature = data[vectorLayerId]?.features.find(
+                    (feature) =>
+                      feature.properties.nid === activeNid
+                  );
+
+                  const targetFeatures = data[vectorLayerId]?.features.filter(
+                    (feature) =>
+                      feature.properties.nid === activeNid
+                  );
+
+                  targetFeatures.forEach((targetFeature, i) => {
+                    if (!targetFeature.layerId) {
+                      targetFeature.layerId = vectorLayerId;
+                    }
+                    // If one item on the list has multiple locations on the map, we toggle multiple
+                    // pins to active for all of them.
+                    if (i === 0) {
+                      toggleInformationCard(targetFeature, channel, mapElement);
+                    } else {
+                      toggleLocationPin(channel, targetFeature, null, false);
+                    }
+                  })
+                });
+              })
+            );
 
             searchButton.addEventListener('click', (event) => {
               const searchValue = event.currentTarget.previousElementSibling.value.toLowerCase();
@@ -374,8 +701,20 @@ Drupal.behaviors.mapTabsContent = {
               }
             });
 
-            input.addEventListener('keydown', (event) => {
+            function autocompleteSearch (searchValue, channel) {
+              // Append asterisk to the query, so we can get results for partial words.
+              // Also add autocomplete params so we can differentiate from a normal search.
+              channel.postRequest('SearchRequest', [`${searchValue}*`, { autocomplete: true }]);
+            };
+
+            let typingTimeout;
+            input.addEventListener('input', (event) => {
+              // Fetch suggestions for autocomplete as user types, after a small
+              // delay to avoid request spam.
+              clearTimeout(typingTimeout);
               const searchValue = event.currentTarget.value.toLowerCase();
+              typingTimeout = setTimeout(() => autocompleteSearch(searchValue, channel), 200);
+
               if (event.key === 'Enter') {
                 if (searchValue.length > 0) {
                   channel.postRequest('SearchRequest', [searchValue]);

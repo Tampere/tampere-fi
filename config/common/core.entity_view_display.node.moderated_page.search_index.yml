@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.moderated_page.field_life_situations
     - field.field.node.moderated_page.field_main_image
     - field.field.node.moderated_page.field_metadata_description
+    - field.field.node.moderated_page.field_page_summary
     - field.field.node.moderated_page.field_paragraphs
     - field.field.node.moderated_page.field_search_keywords
     - field.field.node.moderated_page.field_topic
@@ -111,6 +112,7 @@ hidden:
   field_help_text: true
   field_main_image: true
   field_metadata_description: true
+  field_page_summary: true
   field_topic: true
   langcode: true
   links: true

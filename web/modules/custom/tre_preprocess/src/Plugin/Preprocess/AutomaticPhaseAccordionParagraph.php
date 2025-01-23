@@ -127,8 +127,25 @@ class AutomaticPhaseAccordionParagraph extends TrePreProcessPluginBase {
       return $variables;
     }
 
-    /** @var \Drupal\node\NodeInterface $translated_parent_node */
-    $translated_parent_node = $this->entityRepository->getTranslationFromContext($parent_node);
+    $node_storage = $this->entityTypeManager->getStorage('node');
+    $latest_parent_revision = $node_storage->getLatestRevisionId($parent_node->id());
+    $latest_parent_node = $node_storage->loadRevision($latest_parent_revision);
+
+    $current_user = \Drupal::currentUser();
+
+    // Check if user has access to the latest version.
+    if ($latest_parent_node->access('view', $current_user)) {
+      // Load the latest revision of zoning information page, so that we get
+      // the updated attachment list for the accordion even in draft mode.
+      /** @var \Drupal\node\NodeInterface $translated_parent_node */
+      $translated_parent_node = $this->entityRepository->getTranslationFromContext($latest_parent_node);
+    }
+    else {
+      // Load the latest published version if user doesn't have access rights.
+      /** @var \Drupal\node\NodeInterface $translated_published_parent_node */
+      $translated_parent_node = $this->entityRepository->getTranslationFromContext($parent_node);
+    }
+
     $this->renderer->addCacheableDependency($variables, $translated_parent_node);
 
     $paragraph_list = [];

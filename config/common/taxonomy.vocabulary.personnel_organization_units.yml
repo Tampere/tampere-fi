@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Henkilöstön organisaatioyksiköt'
 vid: personnel_organization_units
-description: ''
+description: null
 weight: 0
+new_revision: false

@@ -11,7 +11,7 @@ third_party_settings:
 name: Paikka
 type: place
 description: 'Käytä tätä sisältötyyppiä luodaksesi paikan, joka ei ole varsinainen kaupungin toimipiste.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

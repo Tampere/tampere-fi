@@ -10,7 +10,6 @@ dependencies:
     - node
     - options
     - user
-    - views_custom_cache_tag
 id: emergency_notice
 label: Häiriöilmoitus
 module: views

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: guj6hPm6Kz0P7ftlkGhvaK-YQQE0UNqs4WL0pnxdgkk
-langcode: fi
 enable: false
 admin-pages: false
 container_urls: {  }

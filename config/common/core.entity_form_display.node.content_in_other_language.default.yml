@@ -15,10 +15,12 @@ dependencies:
     - field.field.node.content_in_other_language.field_topics
     - node.type.content_in_other_language
   module:
+    - ai_translate_textfield
     - content_moderation
     - field_group
     - field_states_ui
     - limited_field_widgets
+    - maxlength
     - media_library
     - paragraphs_asymmetric_translation_widgets
     - path
@@ -151,16 +153,18 @@ content:
       rows: 3
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: 200
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: true
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
-      maxlength:
-        maxlength_js: 200
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
-        maxlength_js_enforce: true
-        maxlength_js_truncate_html: false
   field_paragraphs:
     type: paragraphs_classic_asymmetric
     weight: 107
@@ -241,7 +245,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 105
     region: content
@@ -269,6 +276,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_topic: true
   promote: true
   published_at: true

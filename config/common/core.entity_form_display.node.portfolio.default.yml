@@ -23,11 +23,14 @@ dependencies:
     - node.type.portfolio
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
+    - allowed_formats
     - content_moderation
     - field_group
     - field_states_ui
     - limited_field_widgets
     - markup
+    - maxlength
     - media_library
     - paragraphs_asymmetric_translation_widgets
     - path
@@ -161,7 +164,10 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   field_display_main_image_on_page:
     type: boolean_checkbox
     weight: 131
@@ -203,6 +209,9 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       maxlength:
         maxlength_js: 450
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
@@ -364,7 +373,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: -2
     region: content

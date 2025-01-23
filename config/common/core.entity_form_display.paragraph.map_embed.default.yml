@@ -9,6 +9,10 @@ dependencies:
     - field.field.paragraph.map_embed.field_map_height
     - field.field.paragraph.map_embed.field_title
     - paragraphs.paragraphs_type.map_embed
+  module:
+    - ai_translate_textfield
+    - field_states_ui
+    - maxlength
 id: paragraph.map_embed.default
 targetEntityType: paragraph
 bundle: map_embed
@@ -28,7 +32,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_map_embed_code:
     type: string_textarea
     weight: 1
@@ -51,7 +67,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 3
     region: content

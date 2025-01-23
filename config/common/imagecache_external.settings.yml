@@ -1,6 +1,5 @@
 _core:
   default_config_hash: sYKKIgXKwriRVKA1-QEKqToS8jwnr-TasvZwHT0Asek
-langcode: fi
 imagecache_directory: externals
 imagecache_subdirectories: false
 imagecache_default_extension: .jpg

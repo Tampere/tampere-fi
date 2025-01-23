@@ -2,6 +2,7 @@
 
 namespace Drupal\tre_preprocess;
 
+use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
@@ -140,6 +141,13 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
   protected $entityDisplayRepository;
 
   /**
+   * The Cache Backend service.
+   *
+   * @var \Drupal\Core\Cache\CacheBackendInterface
+   */
+  protected $cache;
+
+  /**
    * Constructor.
    */
   final public function __construct(
@@ -162,6 +170,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
     Token $token,
     Connection $database,
     EntityDisplayRepositoryInterface $entity_display_repository,
+    CacheBackendInterface $cache,
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->fileUrlGenerator = $file_url_generator;
@@ -180,6 +189,7 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
     $this->token = $token;
     $this->db = $database;
     $this->entityDisplayRepository = $entity_display_repository;
+    $this->cache = $cache;
   }
 
   /**
@@ -205,7 +215,8 @@ abstract class TrePreProcessPluginBase extends PreprocessPluginBase implements C
       $container->get('current_route_match'),
       $container->get('token'),
       $container->get('database'),
-      $container->get('entity_display.repository')
+      $container->get('entity_display.repository'),
+      $container->get('cache.default')
     );
   }
 

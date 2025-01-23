@@ -1,0 +1,29 @@
+.card-with-border {
+  @include page-element-spacer;
+
+  font-size: $font-16;
+  border: $border-card;
+  padding: $space-l;
+
+  @include large {
+    font-size: $font-20;
+  }
+
+  &__heading {
+    font-family: $font-heading;
+    font-weight: $font-weight-bold;
+    font-size: $font-18;
+    color: $color-darkest-blue;
+    margin: 0 0 $space-s 0;
+
+    @include large {
+      margin-bottom: $space-m-plus;
+    }
+  }
+
+  &__body {
+    font-family: $font-body;
+    font-size: $font-18;
+    margin: 0;
+  }
+}

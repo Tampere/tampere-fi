@@ -1,0 +1,22 @@
+{% set card_with_border__base_class = "card-with-border" %}
+{% set has_content = card_with_border__content|render|trim %}
+
+<div {{ bem (card_with_border__base_class, card_with_border__modifiers, card_with_border__blockname) }}>
+  
+    {% if card_with_border__heading %}
+      {% include "@atoms/02-text/text/01-paragraph.twig" with {
+        paragraph_base_class: card_with_border__heading__base_class|default("heading"),
+        paragraph_blockname: card_with_border__base_class,
+        paragraph_content: card_with_border__heading,
+      } %}
+    {% endif %}
+
+    {% if has_content %}
+      {% include "@atoms/02-text/text/07-text-block.twig" with {
+        text_block_base_class: card_with_border__content__base_class|default("body"),
+        text_block_blockname: card_with_border__base_class,
+        text_block_content: card_with_border__content,
+      } %}
+    {% endif %}
+
+</div>

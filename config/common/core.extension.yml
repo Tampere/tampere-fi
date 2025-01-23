@@ -1,16 +1,18 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
-langcode: fi
 module:
+  auto_entitylabel: -100
   address: 0
   address_display: 0
   admin_toolbar: 0
   admin_toolbar_links_access_filter: 0
   admin_toolbar_search: 0
   admin_toolbar_tools: 0
+  ai: 0
+  ai_provider_deepl: 0
+  ai_translate_textfield: 0
   allowed_formats: 0
   antibot: 0
-  auto_entitylabel: 0
   better_exposed_filters: 0
   big_pipe: 0
   block: 0
@@ -174,6 +176,8 @@ module:
   scn: 0
   search_api: 0
   search_api_autocomplete: 0
+  search_api_exclude_entity: 0
+  search_api_exclude_entity_by_field: 0
   search_api_mapping: 0
   search_api_solr: 0
   search_api_solr_admin: 0
@@ -258,6 +262,7 @@ module:
   varnish_image_purge: 0
   varnish_purge_tags: 0
   varnish_purger: 0
+  views_autocomplete_filters: 0
   views_contextual_filters_or: 0
   views_custom_cache_tag: 0
   views_ef_fieldset: 0

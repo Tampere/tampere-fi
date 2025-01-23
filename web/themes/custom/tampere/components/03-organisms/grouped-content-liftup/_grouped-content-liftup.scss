@@ -27,9 +27,6 @@
   }
 
   &__liftups {
-    // XO-7359: Overwriting secondary (red) color with berry red in colorful card
-    --c-secondary: #{$color-red-berry};
-    
     .card__wrapper:nth-of-type(3n + 2) .card--grouped {
       @include dynamic-color(#{$colorful-card-2-color-name}, $set-focus-color: false);
 

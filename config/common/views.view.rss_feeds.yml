@@ -602,7 +602,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: entity_target_id
           default_action: default
           exception:
             value: all
@@ -635,6 +635,7 @@ display:
             multiple: 1
           break_phrase: true
           not: false
+          target_entity_type_id: taxonomy_term
         field_life_situations_target_id:
           id: field_life_situations_target_id
           table: node__field_life_situations
@@ -642,7 +643,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: entity_target_id
           default_action: default
           exception:
             value: all
@@ -675,6 +676,7 @@ display:
             multiple: 1
           break_phrase: true
           not: false
+          target_entity_type_id: taxonomy_term
         field_geographical_areas_target_id:
           id: field_geographical_areas_target_id
           table: node__field_geographical_areas
@@ -682,7 +684,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: entity_target_id
           default_action: default
           exception:
             value: all
@@ -715,6 +717,7 @@ display:
             multiple: 1
           break_phrase: false
           not: false
+          target_entity_type_id: taxonomy_term
       filters:
         status:
           id: status
@@ -1694,7 +1697,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: entity_target_id
           default_action: default
           exception:
             value: all
@@ -1727,6 +1730,7 @@ display:
             multiple: 1
           break_phrase: true
           not: false
+          target_entity_type_id: taxonomy_term
         field_life_situations_target_id:
           id: field_life_situations_target_id
           table: node__field_life_situations
@@ -1734,7 +1738,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: numeric
+          plugin_id: entity_target_id
           default_action: default
           exception:
             value: all
@@ -1767,6 +1771,7 @@ display:
             multiple: 1
           break_phrase: true
           not: false
+          target_entity_type_id: taxonomy_term
       row:
         type: rss_fields
         options:

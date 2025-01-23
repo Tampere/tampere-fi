@@ -17,12 +17,14 @@ dependencies:
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
     - field.field.node.place.field_omit_from_listing_map
+    - field.field.node.place.field_page_summary
     - field.field.node.place.field_paragraphs
     - field.field.node.place.field_search_keywords
     - field.field.node.place.field_topics
     - node.type.place
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - allowed_formats
     - content_moderation
     - field_group
@@ -72,6 +74,7 @@ third_party_settings:
         - field_main_image
         - title
         - field_description
+        - field_page_summary
         - langcode
         - translation
         - field_location
@@ -118,12 +121,15 @@ content:
     third_party_settings: {  }
   field_additional_information:
     type: text_textarea
-    weight: 10
+    weight: 11
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
@@ -131,15 +137,17 @@ content:
         maxlength_js: null
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
-        maxlength_js_truncate_html: false
   field_address:
     type: string_textfield
-    weight: 9
+    weight: 10
     region: content
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   field_description:
     type: string_textarea
     weight: 4
@@ -147,10 +155,13 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   field_display_location_on_map:
     type: boolean_checkbox
-    weight: 8
+    weight: 9
     region: content
     settings:
       display_label: true
@@ -183,7 +194,7 @@ content:
     third_party_settings: {  }
   field_location:
     type: tre_geofield_latlon
-    weight: 7
+    weight: 8
     region: content
     settings:
       html5_geolocation: false
@@ -197,14 +208,34 @@ content:
     third_party_settings: {  }
   field_omit_from_listing_map:
     type: boolean_checkbox
-    weight: 12
+    weight: 13
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
+  field_page_summary:
+    type: string_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: 450
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_paragraphs:
     type: paragraphs_classic_asymmetric
-    weight: 11
+    weight: 12
     region: content
     settings:
       title: Paragraph
@@ -241,7 +272,7 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 5
+    weight: 6
     region: content
     settings:
       include_locked: false
@@ -283,9 +314,21 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

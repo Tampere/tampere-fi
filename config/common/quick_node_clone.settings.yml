@@ -1,6 +1,5 @@
 _core:
   default_config_hash: 6XRelHPjACQVOo9yRQMmbXt-ysCA2Pt6l762bxQQbdw
-langcode: fi
 exclude:
   node: {  }
   paragraph: {  }

@@ -34,6 +34,7 @@ dependencies:
     - workflows.workflow.chance_for_participation_moderation
     - workflows.workflow.content_moderation
   module:
+    - ai_translate_textfield
     - content_moderation
     - content_translation
     - dropzonejs
@@ -336,6 +337,7 @@ permissions:
   - 'update paragraph content video_embed'
   - 'update paragraph content zoning_project_card'
   - 'update paragraph content zoning_project_cards'
+  - 'use ai translation'
   - 'use chance_for_participation_moderation transition archive'
   - 'use chance_for_participation_moderation transition create_draft'
   - 'use chance_for_participation_moderation transition restore_draft'

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: r3nWfQw2xrKshQRjkK49pfAFDe-LadmW8f01Ov1D3T4
-langcode: fi
 role_watchdog_monitor_roles:
   authenticated: authenticated
   mailing_list_admin: mailing_list_admin

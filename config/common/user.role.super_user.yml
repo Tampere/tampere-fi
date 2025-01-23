@@ -3,6 +3,9 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - entity_browser.browser.all_content_entity_browser
+    - entity_browser.browser.all_places_entity_browser
+    - entity_browser.browser.persons_entity_browser
     - feeds.feed_type.rss_feed
     - filter.format.notice_html
     - filter.format.page_not_found_content
@@ -56,7 +59,9 @@ dependencies:
     - taxonomy.vocabulary.zoning_information_types
     - workflows.workflow.chance_for_participation_moderation
     - workflows.workflow.content_moderation
+    - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - comment
     - config_pages
     - content_moderation
@@ -85,6 +90,7 @@ dependencies:
     - robotstxt
     - role_delegation
     - scheduled_transitions
+    - search_api_exclude_entity
     - system
     - tablefield
     - taxonomy
@@ -194,7 +200,9 @@ permissions:
   - 'create field_eventz_featured_end'
   - 'create field_eventz_featured_event_id'
   - 'create field_eventz_featured_start'
+  - 'create field_exclude_from_search'
   - 'create field_ignore_omit_checkbox'
+  - 'create field_keep_public'
   - 'create field_omit_from_listing_map'
   - 'create field_search_keywords'
   - 'create file media'
@@ -521,7 +529,9 @@ permissions:
   - 'edit field_eventz_featured_end'
   - 'edit field_eventz_featured_event_id'
   - 'edit field_eventz_featured_start'
+  - 'edit field_exclude_from_search'
   - 'edit field_ignore_omit_checkbox'
+  - 'edit field_keep_public'
   - 'edit field_omit_from_listing_map'
   - 'edit field_search_keywords'
   - 'edit footer_information config page entity'
@@ -547,8 +557,11 @@ permissions:
   - 'edit own field_eventz_featured_end'
   - 'edit own field_eventz_featured_event_id'
   - 'edit own field_eventz_featured_start'
+  - 'edit own field_exclude_from_search'
   - 'edit own field_ignore_omit_checkbox'
+  - 'edit own field_keep_public'
   - 'edit own field_omit_from_listing_map'
+  - 'edit search api exclude entity'
   - 'edit terms in accessibility_and_service_infos'
   - 'edit terms in blogs'
   - 'edit terms in cross_site_publications'
@@ -714,6 +727,7 @@ permissions:
   - 'update paragraph content zoning_project_card'
   - 'update paragraph content zoning_project_cards'
   - 'update rss_feed feeds'
+  - 'use ai translation'
   - 'use chance_for_participation_moderation transition archive'
   - 'use chance_for_participation_moderation transition create_draft'
   - 'use chance_for_participation_moderation transition julkaise'
@@ -725,6 +739,7 @@ permissions:
   - 'use content_moderation transition submit_for_review'
   - 'use download_files bulk upload form'
   - 'use download_images bulk upload form'
+  - 'use scheduled_transitions transition restore_draft'
   - 'use text format notice_html'
   - 'use text format page_not_found_content'
   - 'use text format ptv_markdown'
@@ -760,7 +775,9 @@ permissions:
   - 'view field_eventz_featured_end'
   - 'view field_eventz_featured_event_id'
   - 'view field_eventz_featured_start'
+  - 'view field_exclude_from_search'
   - 'view field_ignore_omit_checkbox'
+  - 'view field_keep_public'
   - 'view field_omit_from_listing_map'
   - 'view footer_information config page entity'
   - 'view footer_social_links_en config page entity'
@@ -790,7 +807,9 @@ permissions:
   - 'view own field_eventz_featured_end'
   - 'view own field_eventz_featured_event_id'
   - 'view own field_eventz_featured_start'
+  - 'view own field_exclude_from_search'
   - 'view own field_ignore_omit_checkbox'
+  - 'view own field_keep_public'
   - 'view own field_omit_from_listing_map'
   - 'view own unpublished media'
   - 'view person revisions'

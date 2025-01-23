@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.moderated_page.field_life_situations
     - field.field.node.moderated_page.field_main_image
     - field.field.node.moderated_page.field_metadata_description
+    - field.field.node.moderated_page.field_page_summary
     - field.field.node.moderated_page.field_paragraphs
     - field.field.node.moderated_page.field_search_keywords
     - field.field.node.moderated_page.field_topic
@@ -16,6 +17,7 @@ dependencies:
     - node.type.moderated_page
     - workflows.workflow.content_moderation
   module:
+    - ai_translate_textfield
     - content_moderation
     - field_group
     - field_states_ui
@@ -63,6 +65,7 @@ third_party_settings:
         - title
         - langcode
         - field_metadata_description
+        - field_page_summary
         - field_paragraphs
       label: Yleinen
       region: content
@@ -151,19 +154,41 @@ content:
       rows: 3
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: 200
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: true
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
+  field_page_summary:
+    type: string_textarea
+    weight: 105
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       maxlength:
-        maxlength_js: 200
+        maxlength_js: 450
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: true
-        maxlength_js_truncate_html: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_paragraphs:
     type: paragraphs_classic_asymmetric
-    weight: 105
+    weight: 106
     region: content
     settings:
       title: Paragraafi
@@ -242,7 +267,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 3
     region: content
@@ -270,6 +298,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   field_topic: true
   promote: true
   published_at: true

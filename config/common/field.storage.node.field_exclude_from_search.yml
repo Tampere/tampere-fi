@@ -1,0 +1,23 @@
+uuid: 5620695b-2b61-4110-8f6f-bbf83a152390
+langcode: fi
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - search_api_exclude_entity
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: node.field_exclude_from_search
+field_name: field_exclude_from_search
+entity_type: node
+type: search_api_exclude_entity
+settings: {  }
+module: search_api_exclude_entity
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

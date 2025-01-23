@@ -637,7 +637,7 @@ class EventzTodayListing extends TrePreProcessPluginBase {
 
     // If the summary is longer than the threshold,
     // extract and use the full sentences shorter than the threshold.
-    $summary = $event["description"];
+    $summary = strip_tags($event["descriptionShort"]);
     if (mb_strlen($summary) > self::SUMMARY_LENGTH) {
       $summary = $this->extractFullSentences(mb_substr($summary, 0, self::SUMMARY_LENGTH));
     }

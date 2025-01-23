@@ -1,0 +1,9 @@
+_core:
+  default_config_hash: RGedRkFydKZjS0ZJ6vbtZH00KbhYVGsK-ABILHdQLyw
+langcode: fi
+prompt_logging: false
+prompt_logging_tags: ''
+default_providers:
+  translate_text:
+    provider_id: deepl
+    model_id: default

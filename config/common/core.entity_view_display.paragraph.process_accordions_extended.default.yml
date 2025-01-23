@@ -80,6 +80,7 @@ content:
       timezone_override: Europe/Helsinki
       date_format: j.n.Y
       separator: ' - '
+      from_to: both
     third_party_settings:
       field_delimiter:
         delimiter: ''

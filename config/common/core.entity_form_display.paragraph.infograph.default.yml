@@ -8,7 +8,9 @@ dependencies:
     - field.field.paragraph.infograph.field_short_description
     - paragraphs.paragraphs_type.infograph
   module:
+    - ai_translate_textfield
     - color_field
+    - field_states_ui
     - maxlength
 id: paragraph.infograph.default
 targetEntityType: paragraph
@@ -29,7 +31,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_short_description:
     type: string_textarea
     weight: 1
@@ -38,11 +52,18 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       maxlength:
         maxlength_js: 200
         maxlength_js_label: 'Sisältö rajoitettu @limit merkkiin, merkkejä jäljellä: <strong>@remaining</strong>'
         maxlength_js_enforce: false
-        maxlength_js_truncate_html: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 3
     region: content

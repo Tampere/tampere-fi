@@ -264,7 +264,9 @@ class HelperFunctions implements HelperFunctionsInterface {
       // on the map to distinguish the markers from each other. However, taking
       // the markers further than 300 meters away in either direction would
       // cause quite serious issues with accuracy.
-      $step = random_int(100, 300);
+      // CARE-4940: Let's test shifting by 10-30 meters instead, since now
+      // some locations can move quite far away from their correct location.
+      $step = random_int(10, 30);
       $longitude_float += $longitude_coefficient * $step;
       $latitude_float += $latitude_coefficient * $step;
       $match_string = sprintf('%s-%s-%s', $longitude_float, $latitude_float, $map_id);

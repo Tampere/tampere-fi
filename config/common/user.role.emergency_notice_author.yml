@@ -6,6 +6,7 @@ dependencies:
     - node.type.emergency_notice
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - content_moderation
     - content_translation
     - entity_browser
@@ -32,6 +33,7 @@ permissions:
   - 'edit any emergency_notice content'
   - 'revert emergency_notice revisions'
   - 'translate editable entities'
+  - 'use ai translation'
   - 'use scheduled_transitions transition archive'
   - 'use scheduled_transitions transition publish'
   - 'use scheduled_transitions transition restore_draft'

@@ -278,13 +278,13 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
 
     }
     elseif ($heading_field_is_filled_in) {
-      // The hard-coded classes are the same as field known as $hours_field_name
-      // would have on its output, were it rendered.
+      // The hard-coded classes are the same as field known as $hours_heading_field
+      // would have on its output, were it rendered with field $hours_field_name.
       $view = [
         '#type' => 'html_tag',
         '#tag' => 'div',
         '#attributes' => [
-          'class' => ['field', 'field-name-field-opening-hours'],
+          'class' => ['field', 'field-name-field-opening-hours', 'field-label-above'],
         ],
         '#value' => nl2br($node->get($hours_heading_field)->getString()),
       ];

@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_paragraphs
     - field.field.node.city_planning_and_constructions.field_partially_binding_phase
     - field.field.node.city_planning_and_constructions.field_phase
+    - field.field.node.city_planning_and_constructions.field_phasing_not_in_use
     - field.field.node.city_planning_and_constructions.field_plan_number
     - field.field.node.city_planning_and_constructions.field_preparation_phase
     - field.field.node.city_planning_and_constructions.field_proposal_phase
@@ -40,9 +41,11 @@ dependencies:
     - node.type.city_planning_and_constructions
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - allowed_formats
     - content_moderation
     - field_group
+    - field_states_ui
     - markup
     - maxlength
     - media_library
@@ -157,6 +160,8 @@ third_party_settings:
         required_fields: true
     group_phase:
       children:
+        - field_phasing_not_in_use
+        - field_computed_status
         - field_phase
       label: Vaiheistus
       region: content
@@ -370,6 +375,9 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
@@ -377,7 +385,11 @@ content:
         maxlength_js: null
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
-        maxlength_js_truncate_html: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_address:
     type: string_textfield
     weight: 16
@@ -415,6 +427,32 @@ content:
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
     third_party_settings: {  }
+  field_computed_status:
+    type: options_buttons
+    weight: 51
+    region: content
+    settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          e23a18af-d074-4960-9b71-cdb93f338950:
+            id: visible
+            data:
+              target: field_phasing_not_in_use
+              comparison: checked
+              value: ''
+              submit: 'Update State Peruuta'
+            uuid: e23a18af-d074-4960-9b71-cdb93f338950
+        form:
+          type: ''
+          list:
+            e23a18af-d074-4960-9b71-cdb93f338950:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   field_description:
     type: string_textarea
     weight: 10
@@ -422,7 +460,10 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   field_display_location_on_map:
     type: boolean_checkbox
     weight: 15
@@ -528,9 +569,34 @@ content:
     third_party_settings: {  }
   field_phase:
     type: options_buttons
-    weight: 23
+    weight: 52
     region: content
     settings: {  }
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          5a63923d-cdbc-4633-9527-8b6e8784d3ac:
+            id: visible
+            data:
+              target: field_phasing_not_in_use
+              comparison: unchecked
+              value: ''
+              submit: 'Update State Peruuta'
+            uuid: 5a63923d-cdbc-4633-9527-8b6e8784d3ac
+        form:
+          type: ''
+          list:
+            5a63923d-cdbc-4633-9527-8b6e8784d3ac:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
+  field_phasing_not_in_use:
+    type: boolean_checkbox
+    weight: 50
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_plan_number:
     type: entity_reference_autocomplete
@@ -699,7 +765,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 12
     region: content
@@ -728,7 +797,6 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
-  field_computed_status: true
   field_computed_visibility: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

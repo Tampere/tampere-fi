@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.moderated_page.field_life_situations
     - field.field.node.moderated_page.field_main_image
     - field.field.node.moderated_page.field_metadata_description
+    - field.field.node.moderated_page.field_page_summary
     - field.field.node.moderated_page.field_paragraphs
     - field.field.node.moderated_page.field_search_keywords
     - field.field.node.moderated_page.field_topic
@@ -34,6 +35,7 @@ third_party_settings:
       main_title:
         - node_title
       main_content:
+        - field_page_summary
         - content_moderation_control
         - field_paragraphs
       last_updated:
@@ -41,7 +43,7 @@ third_party_settings:
     fields:
       node_changed_date:
         plugin_id: node_changed_date
-        weight: 4
+        weight: 5
         label: hidden
         formatter: ds_post_date_date_only
       node_title:
@@ -66,7 +68,7 @@ content:
   content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: main_content
   field_main_image:
     type: entity_reference_entity_view
@@ -84,6 +86,20 @@ content:
             classes: {  }
     weight: 0
     region: main_image
+  field_page_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: main_content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -91,7 +107,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: main_content
 hidden:
   entitygroupfield: true

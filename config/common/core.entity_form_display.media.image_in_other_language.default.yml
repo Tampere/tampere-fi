@@ -18,10 +18,12 @@ dependencies:
     - image.style.focal_point_thumbnail
     - media.type.image_in_other_language
   module:
+    - ai_translate_textfield
     - decorative_image_widget
     - field_group
     - field_states_ui
     - focal_point
+    - maxlength
     - term_reference_tree
 third_party_settings:
   field_group:
@@ -223,7 +225,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   replace_file:
     weight: 3
     region: content

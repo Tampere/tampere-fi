@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: Diaarinumerot
 vid: record_numbers
-description: ''
+description: null
 weight: 0
+new_revision: false

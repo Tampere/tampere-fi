@@ -1,11 +1,18 @@
 uuid: 564a3e8a-cbbf-4dbf-93b7-950cd0a14d23
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
 _core:
   default_config_hash: Om6FEO7vZZMkPIbVvfxtdkWerQ2PvQM4sWUd6Q3ZnfI
 id: administrator
 label: Ylläpitäjä
 weight: 9
 is_admin: true
-permissions: {  }
+permissions:
+  - 'create field_keep_public'
+  - 'edit field_keep_public'
+  - 'edit own field_keep_public'
+  - 'view field_keep_public'
+  - 'view own field_keep_public'

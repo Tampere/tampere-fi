@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Henkilöstön kustannuspaikat'
 vid: personnel_cost_centers
-description: ''
+description: null
 weight: 0
+new_revision: false

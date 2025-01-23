@@ -11,6 +11,7 @@ dependencies:
     - field.field.paragraph.text_with_bgcolor.field_text_or_image
     - paragraphs.paragraphs_type.text_with_bgcolor
   module:
+    - ai_translate_textfield
     - allowed_formats
     - field_states_ui
     - maxlength
@@ -102,9 +103,16 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
       field_states_ui:
         field_states:
           7c1a9f4f-d297-49d1-abd5-876b3f619fc0:
@@ -123,11 +131,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-      maxlength:
-        maxlength_js: null
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
-        maxlength_js_enforce: false
-        maxlength_js_truncate_html: false
   field_text_bgcolor:
     type: text_textarea
     weight: 1
@@ -136,19 +139,21 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
-      maxlength:
-        maxlength_js: null
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
-        maxlength_js_enforce: false
-        maxlength_js_truncate_html: false
   field_text_or_image:
     type: options_select
     weight: 3

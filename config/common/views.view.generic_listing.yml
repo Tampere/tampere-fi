@@ -533,6 +533,7 @@ display:
             offset: false
             offset_label: Offset
           quantity: 3
+          pagination_heading_level: h4
       style:
         type: default
         options:
@@ -726,6 +727,7 @@ display:
             offset: false
             offset_label: Offset
           quantity: 3
+          pagination_heading_level: h4
       sorts:
         title:
           id: title

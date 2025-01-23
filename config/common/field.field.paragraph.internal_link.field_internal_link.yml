@@ -8,6 +8,8 @@ dependencies:
     - node.type.blog_article
     - node.type.city_planning_and_constructions
     - node.type.collection_page
+    - node.type.comprehensive_plan
+    - node.type.content_in_other_language
     - node.type.emergency_notice
     - node.type.front_page
     - node.type.involvement_opportunity
@@ -40,15 +42,16 @@ settings:
   handler: unpublished
   handler_settings:
     target_bundles:
+      zoning_information: zoning_information
       blog_article: blog_article
       front_page: front_page
       person: person
       emergency_notice: emergency_notice
       notice: notice
-      zoning_information: zoning_information
       city_planning_and_constructions: city_planning_and_constructions
       collection_page: collection_page
       moderated_page: moderated_page
+      content_in_other_language: content_in_other_language
       organization: organization
       involvement_opportunity: involvement_opportunity
       place: place
@@ -61,6 +64,7 @@ settings:
       rich_article: rich_article
       place_of_business: place_of_business
       news_item: news_item
+      comprehensive_plan: comprehensive_plan
     sort:
       field: _none
       direction: ASC

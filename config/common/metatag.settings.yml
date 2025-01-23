@@ -1,6 +1,5 @@
 _core:
   default_config_hash: CAJ-9AcdYeNTIjOw77fZlHfAJ4cNRPriq3VgOgOaNLw
-langcode: fi
 entity_type_groups:
   node:
     person:
@@ -20,3 +19,4 @@ tag_trim_maxlength:
   metatag_maxlength_twitter_cards_label1: null
   metatag_maxlength_twitter_cards_description: null
   metatag_maxlength_twitter_cards_title: null
+tag_trim_end: '|.,-:;/+&([{"'''

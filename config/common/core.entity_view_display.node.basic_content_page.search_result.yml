@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.basic_content_page.field_life_situations
     - field.field.node.basic_content_page.field_main_image
     - field.field.node.basic_content_page.field_metadata_description
+    - field.field.node.basic_content_page.field_page_summary
     - field.field.node.basic_content_page.field_paragraphs
     - field.field.node.basic_content_page.field_search_keywords
     - field.field.node.basic_content_page.field_topic
@@ -61,6 +62,7 @@ hidden:
   field_life_situations: true
   field_main_image: true
   field_metadata_description: true
+  field_page_summary: true
   field_paragraphs: true
   field_search_keywords: true
   field_topic: true

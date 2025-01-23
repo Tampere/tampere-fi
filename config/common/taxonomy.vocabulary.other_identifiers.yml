@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Muut tunnisteet'
 vid: other_identifiers
-description: ''
+description: null
 weight: 0
+new_revision: false

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: blfmQx2l-O0o6lCjybd2SQ2mMo0Qv7USRev0G4O--QE
-langcode: fi
 mirror_operations:
   'view scheduled transition': update
   'add scheduled transition': update

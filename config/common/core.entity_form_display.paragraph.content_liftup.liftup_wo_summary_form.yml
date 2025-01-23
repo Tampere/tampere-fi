@@ -10,6 +10,9 @@ dependencies:
     - field.field.paragraph.content_liftup.field_summary
     - paragraphs.paragraphs_type.content_liftup
   module:
+    - ai_translate_textfield
+    - field_states_ui
+    - maxlength
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.content_liftup.liftup_wo_summary_form
 targetEntityType: paragraph
@@ -35,7 +38,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 0
     region: content

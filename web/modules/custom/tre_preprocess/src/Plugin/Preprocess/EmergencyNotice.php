@@ -20,6 +20,11 @@ class EmergencyNotice extends PreprocessPluginBase {
    */
   public function preprocess(array $variables): array {
     $node = $variables['node'];
+
+    // Get the end time and add it to variables.
+    $end_time = $node->get('field_end_time')->value;
+    $variables['end_time'] = $end_time;
+
     $link_field = $node->get('field_more_information_link');
     if (!$link_field->isEmpty()) {
       $url = $this->getLinkFieldUrl($link_field);

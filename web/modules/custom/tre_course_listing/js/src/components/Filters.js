@@ -81,6 +81,11 @@ export default function Filters({
           return Drupal.t("Location", {}, { context: "Course listing (sports) filter type" });
         }
         return Drupal.t("Location", {}, { context: "Course listing filter type" });
+      case "locationgroup":
+        if (listingType === LISTING_TYPE_SPORTS) {
+          return Drupal.t("Region", {}, { context: "Course listing (sports) filter type" });
+        }
+        return Drupal.t("Region", {}, { context: "Course listing filter type" });
       case "subject":
       case "category":
         return Drupal.t("Course subject", {}, { context: "Course listing filter type" });

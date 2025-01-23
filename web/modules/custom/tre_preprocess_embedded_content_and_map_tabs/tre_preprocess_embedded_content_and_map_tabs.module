@@ -145,6 +145,11 @@ function _tre_preprocess_embedded_content_and_map_tabs_update_field_computed_sta
   /** @var \Drupal\node\NodeInterface $translated_node */
   $translated_node = $entity_repository->getTranslationFromContext($node);
 
+  // When phasing is not in use, we don't want to compute the field.
+  if ($node->hasField('field_phasing_not_in_use') && $translated_node->get('field_phasing_not_in_use')->value) {
+    return;
+  }
+
   $phase_value = $translated_node->get('field_phase')->getString();
   if ($phase_value === '') {
     return;
@@ -187,37 +192,46 @@ function tre_preprocess_embedded_content_and_map_tabs_node_update(NodeInterface 
  * Implements hook_cron().
  */
 function tre_preprocess_embedded_content_and_map_tabs_cron() {
-  $last_update_date = \Drupal::state()->get('tre_list_and_map_update_field_computed_visibility', '');
+  // Get last cron run timestamp.
+  $last_run_timestamp = \Drupal::state()->get('tre_content_and_map_cron_last_run', 0);
 
-  // Only insert nodes into the automatic update queue that have not been
-  // updated today. This is to save resources, since the ones that have been
-  // updated already today already have the correct values in place for the
-  // metadata (field_computed_visibility).
-  $current_timestamp = new DrupalDateTime('today midnight', 'Europe/Helsinki');
-  $current_date = $current_timestamp->format('Y-m-d');
-
-  if ($last_update_date === $current_date) {
-    return;
+  // If no previous cron run was found, default to past 24 hours
+  // so we don't miss data between deployments.
+  if ($last_run_timestamp === 0) {
+    $last_run_timestamp = \Drupal::time()->getRequestTime() - 24 * 3600;
   }
 
-  _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue($current_timestamp);
+  // Convert the timestamp to a datetime object for queuring.
+  $last_run_datetime = new DrupalDateTime('@' . $last_run_timestamp, new \DateTimeZone('UTC'));
 
-  \Drupal::state()->set('tre_list_and_map_update_field_computed_visibility', $current_date);
+  // Only insert nodes into the automatic update queue that have not been
+  // updated since the last cron run. This is to save resources, since the ones that have been
+  // updated already have the correct values in place for the
+  // metadata (field_computed_visibility).
+  _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue($last_run_datetime);
+
+  // Save timestamp for the current cron run.
+  \Drupal::state()->set('tre_content_and_map_cron_last_run', \Drupal::time()->getRequestTime());
 }
 
 /**
  * Inserts nodes into a queue for automated updates of time-dependent metadata.
  *
- * @param \Drupal\Core\Datetime\DrupalDateTime $until
+ * @param \Drupal\Core\Datetime\DrupalDateTime $since
  *   The limit value for 'changed' in nodes; any nodes that have been updated
- *   earlier than this time limit are included in the queue.
+ *   after than this time limit are included in the queue.
  *
  * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
  * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
  */
-function _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue(DrupalDateTime $until): void {
-  $until_utc = clone $until;
-  $until_utc->setTimezone(new \DateTimeZone(DateTimeItemInterface::STORAGE_TIMEZONE));
+function _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue(DrupalDateTime $since): void {
+  $since_utc = clone $since;
+  $since_utc->setTimezone(new \DateTimeZone(DateTimeItemInterface::STORAGE_TIMEZONE));
+  $current_datetime = new DrupalDateTime('now', DateTimeItemInterface::STORAGE_TIMEZONE);
+  $today = $current_datetime->format('Y-m-d');
+
+  $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
 
   $content_types = [
     'comprehensive_plan',
@@ -225,20 +239,57 @@ function _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue(D
     'zoning_information',
   ];
 
-  $node_query = \Drupal::entityTypeManager()
-    ->getStorage('node')
+  // Query 1) Fetch nodes that were changed after the last cron run timestamp.
+  $node_query = $node_storage
     ->getQuery()
     ->accessCheck(FALSE);
   $node_query->condition('type', $content_types, 'IN');
-  $node_query->condition('changed', $until_utc->getTimestamp(), '<');
+  $node_query->condition('changed', $since_utc->getTimestamp(), '>');
   $nids = $node_query->execute();
 
-  if (count($nids) === 0) {
+  // Query 2) fetch accordion paragraphs that have field_materials_visibility
+  // start date today or end date that has passed.
+  $paragraph_query = $paragraph_storage
+    ->getQuery()
+    ->accessCheck(FALSE);
+  $query_group = $paragraph_query->orConditionGroup()
+    ->condition('field_materials_visibility.value', $today, '=')
+    ->condition('field_materials_visibility.end_value', $today, '<');
+  $paragraph_query->condition($query_group);
+  $paragraph_ids = $paragraph_query->execute();
+
+  $date_nids = [];
+  if (!empty($paragraph_ids)) {
+    // Go through found accordion paragraphs.
+    $paragraphs = $paragraph_storage->loadMultiple($paragraph_ids);
+    foreach ($paragraphs as $paragraph) {
+      // Get the related parent node.
+      $parent = $paragraph->getParentEntity();
+
+      // Check that parent is a node and not null.
+      if (!($parent instanceof NodeInterface)) {
+        continue;
+      }
+
+      // Check if parent node type matches the specified content types.
+      if (in_array($parent->getType(), $content_types)) {
+        // Add matching parent nodes for processing.
+        $date_nids[] = $parent->id();
+      }
+    }
+  }
+
+  // Merge the two sets of nodes ids.
+  $grouped_nodes = array_merge($nids, $date_nids);
+  // Clear duplicates if node id is found in both sets.
+  $nids_to_process = array_unique($grouped_nodes);
+
+  if (count($nids_to_process) === 0) {
     return;
   }
 
   $queue = \Drupal::queue('tre_list_and_map_update_field_computed_visibility', TRUE);
-  foreach ($nids as $nid) {
+  foreach ($nids_to_process as $nid) {
     $queue->createItem(['nid' => $nid]);
   }
 }

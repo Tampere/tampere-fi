@@ -81,7 +81,16 @@ function _tre_news_archive_archive_news(DrupalDateTime $now, int $years_before_l
  *   Node that is going to be archived.
  */
 function _tre_news_archive_set_archived(NodeInterface $node) {
-  if ($node->hasField('moderation_state') && $node->get('moderation_state')->value !== 'archived') {
+  // If field is marked to stay public, instead of archiving it,
+  // we mark it to exclude it from News archive search and site search.
+  if ($node->hasField('field_keep_public') && $node->get('field_keep_public')->value === '1') {
+    if ($node->hasField('field_exclude_from_search') && !$node->get('field_exclude_from_search')->value) {
+      $node->set('field_exclude_from_search', TRUE);
+      $node->save();
+    }
+  }
+  // Otherwise archive the news item.
+  elseif ($node->hasField('moderation_state') && $node->get('moderation_state')->value !== 'archived') {
     $node->set('moderation_state', 'archived');
     $node->set('status', NodeInterface::NOT_PUBLISHED);
     if ($node instanceof RevisionLogInterface) {
@@ -89,7 +98,7 @@ function _tre_news_archive_set_archived(NodeInterface $node) {
       $node->setRevisionUserId(1);
     }
     $node->save();
-  };
+  }
 }
 
 /**

@@ -18,9 +18,12 @@ dependencies:
     - field.field.media.file.field_topics
     - media.type.file
   module:
+    - ai_translate_textfield
     - field_group
+    - field_states_ui
     - file
     - markup
+    - maxlength
     - term_reference_tree
 third_party_settings:
   field_group:
@@ -226,7 +229,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   status:
     type: boolean_checkbox
     weight: 16
@@ -251,3 +266,4 @@ content:
     third_party_settings: {  }
 hidden:
   path: true
+  replace_file: true

@@ -1,6 +1,5 @@
 _core:
   default_config_hash: J6QBFdEYFecHpT05_8KmHuTn9k9ELLdiLJO-fQS1nDk
-langcode: fi
 session:
   parameter: language
 url:

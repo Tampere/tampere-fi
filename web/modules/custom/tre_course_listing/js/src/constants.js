@@ -4,7 +4,7 @@ export const LISTING_TYPE_SPORTS = "course_listing_sports";
 
 export const FILTER_TYPES_BY_LISTING_TYPE = {
   [LISTING_TYPE_DEFAULT]: [ "department", "subject", "period" ],
-  [LISTING_TYPE_SPORTS]: [ "department", "category", "period" ]
+  [LISTING_TYPE_SPORTS]: [ "department", "category", "period", "locationgroup" ]
 };
 
 export const FILTER_TYPES_WO_COMPLEX_RELATIONSHIPS = [ "period" ];

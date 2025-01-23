@@ -10,19 +10,19 @@ plugin: windows_aad
 settings:
   client_id: replaced-by-config-override
   client_secret: tre_aad_opetus
+  iss_allowed_domains: ''
   authorization_endpoint_wa: 'https://example.com/replaced-by-config-override'
   token_endpoint_wa: 'https://example.com/replaced-by-config-override'
+  end_session_endpoint: ''
   userinfo_endpoint_wa: ''
   map_ad_groups_to_roles: false
   group_mapping:
     method: 0
     mappings: ''
     strict: false
-  userinfo_graph_api_wa: 1
+  userinfo_graph_api_wa: 2
   userinfo_graph_api_use_other_mails: false
   userinfo_update_email: false
   hide_email_address_warning: true
   subject_key: sub
-  end_session_endpoint: ''
-  iss_allowed_domains: ''
   front_channel_logout_url: ''

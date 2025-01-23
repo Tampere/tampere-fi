@@ -78,7 +78,7 @@
                 {% block header_secondary_main_navigation %}
                   {% include "@molecules/menus/main-menu/main-menu.twig" with {
                     "main_menu_title_id": "life-situation-menu-title",
-                    "main_menu_title": header__secondary_main_menu__title|default("Information in different life situations"|t),
+                    "main_menu_title": header__secondary_main_menu__title|default("Information by region and in different life situations"|t),
                     "main_menu_modifiers": [ "secondary" ],
                   } %}
                 {% endblock %}
@@ -158,7 +158,7 @@
             {% endembed %}
 
             {% embed "@organisms/accordion/accordion-item.twig" with {
-              "accordion_heading": "Information in different life situations"|t({}, {"context": "Mobile navigation label for life situation menu"}),
+              "accordion_heading": "Information by region and in different life situations"|t({}, {"context": "Mobile navigation label for life situation menu"}),
               "accordion_content": life_situation_menu_accordion_content,
               "accordion_item_h_element": "div",
               "id": "life-situation-menu-accordion",

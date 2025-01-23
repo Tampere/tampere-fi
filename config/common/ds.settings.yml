@@ -1,8 +1,13 @@
 _core:
   default_config_hash: PVw1CqINc8mdBO0v-gKzrhG9fd1pyKwx4wIXdks-k3w
-langcode: fi
 disabled: false
 field_template: true
+ft_default: default
+ft_show_colon: false
+ft_layout_builder: false
+ft_bc: true
+ft_default_bc: true
+ft_expert_prefix_suffix_textarea: false
 classes:
   region:
     - 'text-with-bgcolor|Elementti tekstille taustavärillä'
@@ -10,13 +15,7 @@ classes:
     - 'text-with-bgcolor__plain-textbox|Tekstilaatikko ilman taustaväriä'
   field: {  }
 use_field_names: true
-ft_bc: true
 exclude_layout_builder_blocks_on_block_field: false
-ft_expert_prefix_suffix_textarea: false
-ft_default: default
-ft_show_colon: false
-ft_layout_builder: false
 exclude_ds_layout_layout_builder: false
 layout_icon_image_bc: true
-ft_default_bc: true
 layout_suggestion_bc: true

@@ -1,0 +1,19 @@
+uuid: c9240fbf-4a7b-42e7-89e6-ab8012464e74
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_summary
+    - node.type.organization
+id: node.organization.field_page_summary
+field_name: field_page_summary
+entity_type: node
+bundle: organization
+label: 'Sivun sisältö lyhyesti'
+description: 'Lisää tähän tiivistelmä sivun sisällöstä. Kentän sisältö näytetään sivun alussa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

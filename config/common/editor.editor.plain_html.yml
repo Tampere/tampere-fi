@@ -99,4 +99,5 @@ settings:
     linkit_extension:
       linkit_enabled: true
       linkit_profile: linkit_wysiwyg
-image_upload: {  }
+image_upload:
+  status: false

@@ -16,6 +16,7 @@ dependencies:
     - node.type.front_page
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - content_moderation
     - field_group
     - field_states_ui
@@ -157,9 +158,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       maxlength:
         maxlength_js: 65
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_main_image_link:
     type: paragraphs_classic_asymmetric
     weight: 5
@@ -253,7 +263,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 7
     region: content
@@ -281,6 +294,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   promote: true
   published_at: true
   sticky: true

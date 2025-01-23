@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Esteettömyys- ja palvelutiedot'
 vid: accessibility_and_service_infos
-description: ''
+description: null
 weight: 0
+new_revision: false

@@ -35,13 +35,27 @@ Drupal.behaviors.emergencyNotice = {
       const closeButton = closeButtons[i];
       const emergencyNotice = emergencyNotices[i];
 
-      // do not display emergy notice if the close button has already been pushed
-      if (myStorage.getItem(`emergencyNotice-${emergencyNotice.id}`) === null) {
-        emergencyNotice.classList.remove('hidden');
-        emergencyNotice.classList.add('shown');
-      }
+      // Get notice end time from drupal attribute and parse it match current local time.
+      const endTime = new Date(emergencyNotice.getAttribute('data-end-time'));
+      const localEndTime = new Date(
+        endTime.getTime() - (endTime.getTimezoneOffset() * 60000),
+      );
 
-      handleClick(closeButton, emergencyNotice);
+      const currentTime = new Date();
+
+      // Remove the notice if the time has expired and continue
+      if (currentTime > localEndTime) {
+        myStorage.removeItem(`emergencyNotice-${emergencyNotice.id}`);
+        emergencyNotice.style.display = 'none';
+      } else {
+        // do not display emergy notice if the close button has already been pushed
+        if (myStorage.getItem(`emergencyNotice-${emergencyNotice.id}`) === null) {
+          emergencyNotice.classList.remove('hidden');
+          emergencyNotice.classList.add('shown');
+        }
+
+        handleClick(closeButton, emergencyNotice);
+      }
     }
   },
 };

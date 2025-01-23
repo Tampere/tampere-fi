@@ -8,8 +8,10 @@ dependencies:
     - field.field.paragraph.material_download_list.field_title
     - paragraphs.paragraphs_type.material_download_list
   module:
+    - ai_translate_textfield
     - field_states_ui
     - limited_field_widgets
+    - maxlength
     - paragraphs
 id: paragraph.material_download_list.default
 targetEntityType: paragraph
@@ -23,7 +25,19 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_downloadable_material:
     type: paragraphs
     weight: 2
@@ -57,7 +71,19 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 10
     region: content

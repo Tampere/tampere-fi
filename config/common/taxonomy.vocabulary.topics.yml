@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: Aihealueet
 vid: topics
-description: ''
+description: null
 weight: 0
+new_revision: false

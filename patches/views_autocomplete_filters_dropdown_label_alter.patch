@@ -1,0 +1,13 @@
+diff --git a/src/Controller/ViewsAutocompleteFiltersController.php b/src/Controller/ViewsAutocompleteFiltersController.php
+index 68c2559..82453c4 100644
+--- a/src/Controller/ViewsAutocompleteFiltersController.php
++++ b/src/Controller/ViewsAutocompleteFiltersController.php
+@@ -285,7 +285,7 @@ class ViewsAutocompleteFiltersController implements ContainerInjectionInterface
+                 // Add a class wrapper for a few required CSS overrides.
+                 $matches[] = [
+                   'value' => $suggestion,
+-                  'label' => $dropdown,
++                  'label' => $entity->getTitle(),
+                 ];
+               }
+             }

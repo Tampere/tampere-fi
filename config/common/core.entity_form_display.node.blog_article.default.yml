@@ -27,6 +27,7 @@ dependencies:
     - node.type.blog_article
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - allowed_formats
     - content_moderation
     - field_group
@@ -174,6 +175,9 @@ content:
       placeholder: ''
       show_summary: false
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
@@ -225,6 +229,9 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       maxlength:
         maxlength_js: 450
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
@@ -393,7 +400,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 4
     region: content

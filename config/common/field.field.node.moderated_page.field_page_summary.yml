@@ -1,0 +1,19 @@
+uuid: edcff152-8972-4e87-8a1f-38e506640f69
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_summary
+    - node.type.moderated_page
+id: node.moderated_page.field_page_summary
+field_name: field_page_summary
+entity_type: node
+bundle: moderated_page
+label: 'Sivun sisältö lyhyesti'
+description: 'Lisää tähän tiivistelmä sivun sisällöstä. Kentän sisältö näytetään sivun alussa.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

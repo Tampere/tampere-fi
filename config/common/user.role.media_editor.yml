@@ -8,6 +8,7 @@ dependencies:
     - media.type.image
     - media.type.remote_video
   module:
+    - ai_translate_textfield
     - content_translation
     - dropzonejs
     - embederator
@@ -47,6 +48,7 @@ permissions:
   - 'translate editable entities'
   - 'update any media'
   - 'update paragraph content embederator_embed'
+  - 'use ai translation'
   - 'use download_files bulk upload form'
   - 'use download_images bulk upload form'
   - 'view all media revisions'

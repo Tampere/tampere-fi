@@ -11,7 +11,7 @@ third_party_settings:
 name: Pikku-uutinen
 type: small_news_item
 description: 'Käytetään lähinnä alasivusto- ja minikotisivustokohtaiseen uutisointiin.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

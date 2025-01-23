@@ -11,6 +11,7 @@ $defaultColors: (
   primary-transparent: rgba($color-darkest-blue, 0.9),
   primary-light: $color-dark-blue,
   secondary: $color-warm-red,
+  card-secondary: $color-red-berry,
   accent: $color-blue-steel,
   accent-transparent: rgba($color-blue-steel, 0.9),
   accent-secondary: $color-light-gray,
@@ -47,12 +48,14 @@ $defaultColors: (
   course-full: $color-dark-red,
   minisite-identifier-background: $color-warm-red,
   search-bar: $color-dark-blue,
+  card-border: $color-light-middle-gray,
 );
 
 // Minisite palettes
 // These can be used via the clr() function.
 $palette-1: (
   secondary: $color-darkest-blue,
+  card-secondary: $color-darkest-blue,
   accent: $color-warm-red,
   accent-tertiary: $color-light-green,
   accent-tertiary-transparent: rgba($color-light-green, 0.8),
@@ -63,6 +66,7 @@ $palette-1: (
   muted: $color-lighter-light-green,
   muted-transparent: rgba($color-lighter-light-green, 0.8),
   alternative-secondary: $color-warm-red,
+  alternative-card-secondary: $color-warm-red,
   alternative-accent: $color-darkest-blue,
   minisite-identifier-background: $color-darkest-blue,
   search-bar: $color-darkest-blue,
@@ -70,6 +74,7 @@ $palette-1: (
 
 $palette-2: (
   secondary: $color-blue-steel,
+  card-secondary: $color-blue-steel,
   accent: $color-red-berry,
   accent-tertiary: $color-light-blue,
   accent-tertiary-transparent: rgba($color-light-blue, 0.8),
@@ -84,6 +89,7 @@ $palette-2: (
 
 $palette-3: (
   secondary: $color-dark-green,
+  card-secondary: $color-dark-green,
   accent: $color-green,
   accent-tertiary: $color-light-green-petrol,
   accent-tertiary-transparent: rgba($color-light-green-petrol, 0.8),
@@ -99,6 +105,7 @@ $palette-3: (
 
 $palette-4: (
   secondary: $color-warm-red,
+  card-secondary: $color-warm-red,
   accent: $color-darkest-blue,
   background-secondary: $color-yellow-heat,
   accent-secondary: $color-light-blue-gray,
@@ -112,6 +119,7 @@ $palette-4: (
 
 $palette-5: (
   secondary: $color-yellow-heat,
+  card-secondary: $color-yellow-heat,
   accent: $color-dark-green,
   accent-tertiary: $color-light-green-petrol,
   accent-tertiary-transparent: rgba($color-light-green-petrol, 0.8),
@@ -126,6 +134,7 @@ $palette-5: (
 
 $palette-6: (
   secondary: $color-yellow-heat,
+  card-secondary: $color-yellow-heat,
   accent: $color-light-red,
   accent-tertiary: $color-yellow-heat,
   accent-tertiary-transparent: rgba($color-yellow-heat, 0.8),
@@ -137,6 +146,7 @@ $palette-6: (
 
 $palette-7: (
   secondary: $color-light-green-petrol,
+  card-secondary: $color-light-green-petrol,
   accent: $color-green,
   accent-tertiary: $color-light-green,
   accent-tertiary-transparent: rgba($color-light-green, 0.8),
@@ -153,6 +163,7 @@ $palette-7: (
 
 $palette-8: (
   secondary: $color-light-blue-water,
+  card-secondary: $color-light-blue-water,
   accent: $color-warm-red,
   accent-tertiary: $color-pink,
   accent-tertiary-transparent: rgba($color-pink, 0.8),
@@ -170,6 +181,7 @@ $palette-8: (
 
 $palette-9: (
   secondary: $color-light-green,
+  card-secondary: $color-light-green,
   accent: $color-dark-blue,
   background-secondary: $color-light-red,
   primary-text-on-background-secondary: $color-black,
@@ -182,6 +194,7 @@ $palette-9: (
 
 $palette-10: (
   secondary: $color-red-berry,
+  card-secondary: $color-red-berry,
   accent: $color-light-green-petrol,
   accent-tertiary: $color-yellow,
   accent-tertiary-transparent: rgba($color-yellow, 0.8),
@@ -196,6 +209,7 @@ $palette-10: (
 
 $palette-11: (
   secondary: $color-pink,
+  card-secondary: $color-pink,
   accent: $color-yellow,
   accent-tertiary: $color-middle-gray,
   accent-tertiary-transparent: rgba($color-middle-gray, 0.95),
@@ -365,8 +379,6 @@ $color-table-row-odd-bg: $color-white;
 $color-table-border: $color-dark-blue;
 $color-table-cell: $color-black;
 
-
-
 /* forms */
 $input-placeholder-color: clr(form-border);
 
@@ -408,7 +420,7 @@ $accordion-heading-color-active: $color-dove-gray;
 
 /* card */
 $colorful-card-1-color-name: primary;
-$colorful-card-2-color-name: secondary;
+$colorful-card-2-color-name: card-secondary;
 $colorful-card-3-color-name: accent;
 
 /* pager */

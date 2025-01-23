@@ -1,0 +1,4 @@
+button_text: 'Translate with AI'
+dialog_content:
+  value: "<p>Tarkista aina tekoälyn tekemä käännös, vastaat sisällön oikeellisuudesta. Ovathan faktat oikein? Onhan käytetty oikeita termejä kaupungin palveluista ja yksiköistä?</p>\r\n\r\n<p>Always check the translation made by the AI, you are responsible for the accuracy of the content. Are the facts correct? Are the correct terms used for city services and departments?</p>"
+dialog_cancel_button: Cancel

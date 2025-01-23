@@ -1,6 +1,5 @@
 _core:
   default_config_hash: EoVwYI2Kaa9MRr_jXrb1xSuMbkORrsDJyIWkEfmRb3A
-langcode: fi
 max_links: 2000
 cron_generate: true
 cron_generate_interval: 3

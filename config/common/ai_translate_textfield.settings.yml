@@ -1,0 +1,22 @@
+_core:
+  default_config_hash: _5K3fTbQA3g3zKYrcHTDpA4HdQwalmhgaUZcZXqpWcQ
+langcode: fi
+enabled_languages:
+  - en
+provider: deepl
+button_text: 'Käännä tekoälyn avulla'
+warning_enabled: true
+dialog_title: 'Huomio! Lue tämä, ennen kuin jatkat'
+dialog_content:
+  value: '<p>Tarkista aina tekoälyn tekemä käännös, vastaat sisällön oikeellisuudesta. Ovathan faktat oikein? Onhan käytetty oikeita termejä kaupungin palveluista ja yksiköistä?</p>'
+  format: basic_html
+dialog_ok_button: Okay
+dialog_cancel_button: Peruuta
+translator_config:
+  deepl:
+    label: 'DeepL API'
+    class_name: \Drupal\ai_translate_textfield\DeepLTranslator
+    api_key: override-this-in-a-settings-file
+    api_endpoint: 'https://api.deepl.com/v2/translate'
+model: default
+strip_tags: null

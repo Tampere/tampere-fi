@@ -93,6 +93,7 @@ class EmbeddedContentAndMapTabs extends ListingAndMapParagraphBase {
     }
     $variables['content_listing_block'] = $content_listing_block;
     $variables['tab_map_content'] = $this->getMap($translated_paragraph);
+    $variables['content_listing_block']['#attached']['drupalSettings']['container_paragraph_id']= $container_paragraph_id;
     $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['zoomLevels'][$container_paragraph_id] = $zoom_level;
     $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['locations'][$container_paragraph_id] = $locations;
     $variables['#attached']['drupalSettings']['tampere']['currentLanguage'] = $this->languageManager->getCurrentLanguage()->getId();

@@ -44,7 +44,8 @@
       {% include "@organisms/accordion/accordion-item.twig" with {
         accordion_heading: ac_item.dl_heading,
         accordion_content: ac_item.dl_content,
-        id: ac_item.id
+        id: ac_item.id,
+        nid: ac_item.nid ?? NULL
       } %}
     {% endfor %}
   {% endblock %}

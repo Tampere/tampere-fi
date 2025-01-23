@@ -13,6 +13,7 @@ dependencies:
     - node.type.moderated_page
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_translate_textfield
     - content_moderation
     - content_translation
     - entity_browser
@@ -272,6 +273,7 @@ permissions:
   - 'update paragraph content video_embed'
   - 'update paragraph content zoning_project_card'
   - 'update paragraph content zoning_project_cards'
+  - 'use ai translation'
   - 'use scheduled_transitions transition archive'
   - 'use scheduled_transitions transition publish'
   - 'use scheduled_transitions transition restore_draft'

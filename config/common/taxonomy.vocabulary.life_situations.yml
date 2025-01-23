@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: Elämäntilanteet
 vid: life_situations
-description: ''
+description: null
 weight: 0
+new_revision: false

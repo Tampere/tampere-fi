@@ -58,6 +58,15 @@ class GroupContentMenuBlock extends TrePreProcessPluginBase {
       return $variables;
     }
 
+    if ($group->bundle() === 'minisite' && $current_node instanceof NodeInterface) {
+      $current_group_content_menu = $this->getCurrentGroupContentMenu($current_node);
+
+      if (!empty($current_group_content_menu)) {
+        // Invalidate cache when there is a change in the group content menu.
+        $variables['#cache']['tags'][] = "config:system.menu.group_menu_link_content-{$current_group_content_menu->id()}";
+      }
+    }
+
     if (isset($variables['content']['#items'])) {
       $variables['group_sidebar__has_content'] = TRUE;
     }
@@ -109,40 +118,7 @@ class GroupContentMenuBlock extends TrePreProcessPluginBase {
    *   Otherwise null.
    */
   private function getMinisiteMenuBlockHeadingLinkInformation(NodeInterface $node): ?array {
-    $group_contents_for_node = GroupRelationship::loadByEntity($node);
-    $node_belongs_to_group = count($group_contents_for_node) > 0;
-
-    if (!$node_belongs_to_group) {
-      return NULL;
-    }
-
-    /** @var \Drupal\group\Entity\GroupRelationshipInterface $group_content */
-    $group_content = reset($group_contents_for_node);
-
-    if (!($group_content instanceof GroupRelationshipInterface)) {
-      return NULL;
-    }
-
-    $group = $group_content->getGroup();
-
-    if (!($group instanceof GroupInterface)) {
-      return NULL;
-    }
-
-    $all_group_content_menus_for_group = array_map(static function (GroupRelationshipInterface $group_content) {
-      return $group_content->getEntity();
-    }, group_content_menu_get_menus_per_group($group));
-
-    $current_language_code = $this->languageManager->getCurrentLanguage()->getId();
-    $menu_type_for_current_language = self::MINISITE_GROUP_CONTENT_MENU_TYPES_BY_LANGUAGE[$current_language_code];
-
-    $current_group_content_menu = NULL;
-    foreach ($all_group_content_menus_for_group as $group_content_menu) {
-      if ($group_content_menu->bundle() === $menu_type_for_current_language) {
-        $current_group_content_menu = $group_content_menu;
-        break;
-      }
-    }
+    $current_group_content_menu = $this->getCurrentGroupContentMenu($node);
 
     if (empty($current_group_content_menu)) {
       return NULL;
@@ -186,6 +162,59 @@ class GroupContentMenuBlock extends TrePreProcessPluginBase {
     }
 
     return NULL;
+  }
+
+  /**
+   * Returns the current group content menu.
+   *
+   * @param \Drupal\node\NodeInterface $node
+   *   The current node to get the current group content menu for.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface|null
+   *   Return the current group content menu of exists.
+   *   Otherwise null.
+   */
+  private function getCurrentGroupContentMenu(NodeInterface $node) {
+    $group_contents_for_node = GroupRelationship::loadByEntity($node);
+    $node_belongs_to_group = count($group_contents_for_node) > 0;
+
+    if (!$node_belongs_to_group) {
+      return NULL;
+    }
+
+    /** @var \Drupal\group\Entity\GroupRelationshipInterface $group_content */
+    $group_content = reset($group_contents_for_node);
+
+    if (!($group_content instanceof GroupRelationshipInterface)) {
+      return NULL;
+    }
+
+    $group = $group_content->getGroup();
+
+    if (!($group instanceof GroupInterface)) {
+      return NULL;
+    }
+
+    $all_group_content_menus_for_group = array_map(static function (GroupRelationshipInterface $group_content) {
+      return $group_content->getEntity();
+    }, group_content_menu_get_menus_per_group($group));
+
+    $current_language_code = $this->languageManager->getCurrentLanguage()->getId();
+    $menu_type_for_current_language = self::MINISITE_GROUP_CONTENT_MENU_TYPES_BY_LANGUAGE[$current_language_code];
+
+    $current_group_content_menu = NULL;
+    foreach ($all_group_content_menus_for_group as $group_content_menu) {
+      if ($group_content_menu->bundle() === $menu_type_for_current_language) {
+        $current_group_content_menu = $group_content_menu;
+        break;
+      }
+    }
+
+    if (empty($current_group_content_menu)) {
+      $current_group_content_menu = NULL;
+    }
+
+    return $current_group_content_menu;
   }
 
 }

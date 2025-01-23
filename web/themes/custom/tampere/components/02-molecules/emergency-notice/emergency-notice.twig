@@ -3,7 +3,8 @@
 {% set emergency_notice__base_class = "emergency-notice" %}
 {% set emergency_notice__extra_classes = ["hidden"] %}
 
-<div id={{node.id}} {{ bem(emergency_notice__base_class, emergency_notice__modifiers, emergency_notice__blockname, emergency_notice__extra_classes) }} >
+<div id={{node.id}} data-end-time="{{ end_time|date('c') }}"
+ {{ bem(emergency_notice__base_class, emergency_notice__modifiers, emergency_notice__blockname, emergency_notice__extra_classes) }} >
   
   <div {{ bem("content", emergency_notice__max_width__modifiers, emergency_notice__base_class)}}>
     

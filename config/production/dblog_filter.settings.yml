@@ -1,22 +1,35 @@
-log_values: "tre_hr_import|info\r\nopenid_connect|emergency,alert,critical,error,warning,notice,info,debug\r\ntre_node_location_coordinate_conversion|alert,error,warning,notice,info,debug"
 severity_levels:
-  emergency: 0
-  alert: 0
-  critical: 0
-  error: 0
-  warning: 0
-  notice: 0
-  info: 0
-  debug: 0
+  emergency: false
+  alert: false
+  critical: false
+  error: false
+  warning: false
+  notice: false
+  info: false
+  debug: false
+log_values:
+  - tre_hr_import|info
+  - 'openid_connect|emergency,alert,critical,error,warning,notice,info,debug'
+  - 'tre_node_location_coordinate_conversion|alert,error,warning,notice,info,debug'
+log_values_regex: {  }
 method: include
 syslog_severity_levels:
-  emergency: 0
-  alert: 0
-  critical: 0
-  error: 0
-  warning: 0
-  notice: 0
-  info: 0
-  debug: 0
+  emergency: false
+  alert: false
+  critical: false
+  error: false
+  warning: false
+  notice: false
+  info: false
+  debug: false
+syslog_log_values:
+  - user|notice
+  - permission_watchdog|notice
+  - role_watchdog|notice
+  - entity_log|info
+  - 'content|notice,info'
+  - php|error
+  - 'tre_ptv_import|warning,error'
+  - 'tre_preprocess_migration|info,notice'
+syslog_log_values_regex: {  }
 syslog_method: include
-syslog_log_values: "user|notice\r\npermission_watchdog|notice\r\nrole_watchdog|notice\r\nentity_log|info\r\ncontent|notice,info\r\nphp|error\r\ntre_ptv_import|warning,error\r\ntre_preprocess_migration|info,notice"

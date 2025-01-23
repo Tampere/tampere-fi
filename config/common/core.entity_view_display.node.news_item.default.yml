@@ -10,8 +10,10 @@ dependencies:
     - field.field.node.news_item.field_contact_info_paragraph
     - field.field.node.news_item.field_cross_site_publications
     - field.field.node.news_item.field_date_of_publication
+    - field.field.node.news_item.field_exclude_from_search
     - field.field.node.news_item.field_geographical_areas
     - field.field.node.news_item.field_help_text
+    - field.field.node.news_item.field_keep_public
     - field.field.node.news_item.field_keywords
     - field.field.node.news_item.field_lead
     - field.field.node.news_item.field_life_situations
@@ -273,8 +275,10 @@ hidden:
   field_archive_search_content: true
   field_cross_site_publications: true
   field_date_of_publication: true
+  field_exclude_from_search: true
   field_geographical_areas: true
   field_help_text: true
+  field_keep_public: true
   field_keywords: true
   field_life_situations: true
   field_mailing_list_information: true

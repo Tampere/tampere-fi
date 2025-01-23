@@ -11,8 +11,8 @@ id: node.city_planning_and_constructions.field_computed_status
 field_name: field_computed_status
 entity_type: node
 bundle: city_planning_and_constructions
-label: 'Computed status'
-description: 'This field is computed-only so not visible on the form or the display. Only used in preprocessing / templates / filters.'
+label: Status
+description: ''
 required: false
 translatable: true
 default_value: {  }

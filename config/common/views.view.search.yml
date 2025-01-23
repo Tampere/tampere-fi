@@ -113,6 +113,7 @@ display:
             offset: false
             offset_label: Offset
           quantity: 3
+          pagination_heading_level: h4
       exposed_form:
         type: input_required
         options:

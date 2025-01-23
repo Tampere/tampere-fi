@@ -11,7 +11,7 @@ third_party_settings:
 name: Häiriöilmoitus
 type: emergency_notice
 description: 'Hetkellisten, erityisen akuuttien häiriötilanteiden esittämiseen tarkoitettu sisältötyyppi.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.text.field_text
     - paragraphs.paragraphs_type.text
   module:
+    - ai_translate_textfield
     - allowed_formats
     - field_states_ui
     - maxlength
@@ -34,6 +35,15 @@ content:
       placeholder: ''
     third_party_settings:
       field_states_ui:
+        field_states:
+          3b91daf4-0212-4cce-a3a4-ca1e3309eebd:
+            id: visible
+            data:
+              target: field_add_anchor_list
+              comparison: checked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: 3b91daf4-0212-4cce-a3a4-ca1e3309eebd
         form:
           type: ''
           list:
@@ -42,15 +52,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states:
-          3b91daf4-0212-4cce-a3a4-ca1e3309eebd:
-            uuid: 3b91daf4-0212-4cce-a3a4-ca1e3309eebd
-            id: visible
-            data:
-              target: field_add_anchor_list
-              comparison: checked
-              value: ''
-              submit: 'Lisää Peruuta'
       maxlength:
         maxlength_js: null
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
@@ -68,6 +69,9 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
@@ -75,7 +79,11 @@ content:
         maxlength_js: null
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
-        maxlength_js_truncate_html: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 2
     region: content

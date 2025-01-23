@@ -11,8 +11,12 @@ dependencies:
     - field.field.node.rss_item.field_topics
     - node.type.rss_item
   module:
+    - ai_translate_textfield
+    - allowed_formats
     - content_moderation
+    - field_states_ui
     - link
+    - maxlength
     - path
     - text
 id: node.rss_item.default
@@ -29,7 +33,10 @@ content:
       summary_rows: 3
       placeholder: ''
       show_summary: false
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   created:
     type: datetime_timestamp
     weight: 3
@@ -103,7 +110,10 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
   translation:
     weight: 4
     region: content
@@ -131,6 +141,7 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   feeds_item: true
   field_topics: true
   promote: true

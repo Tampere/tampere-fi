@@ -133,6 +133,11 @@ export default function App({ title, description, originalItems, sortType, listi
         if (!filterItemParentNames.has(catalogItem.parent)) {
           return catalogItem;
         }
+        
+        // Do not append parent name to catalogItem name in sports course listing.
+        if (listingType === LISTING_TYPE_SPORTS) {
+          return catalogItem;
+        }
 
         const parentItemName = filterItemParentNames.get(catalogItem.parent);
 

@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Sivustojen väliset julkaisut'
 vid: cross_site_publications
-description: ''
+description: null
 weight: 0
+new_revision: false

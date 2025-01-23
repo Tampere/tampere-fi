@@ -1,0 +1,21 @@
+uuid: a7f6c449-b5b0-47bf-acb0-5404cc4745d4
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phasing_not_in_use
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_phasing_not_in_use
+field_name: field_phasing_not_in_use
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Vaiheistus ei käytössä'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

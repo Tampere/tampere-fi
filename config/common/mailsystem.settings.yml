@@ -1,6 +1,5 @@
 _core:
   default_config_hash: IhwTepsVwtbtbcT5GzQKhCXDCRvbk3MNkWqPiuiZ10s
-langcode: fi
 theme: tampere
 defaults:
   sender: php_mail

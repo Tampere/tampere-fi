@@ -112,6 +112,23 @@ $search-bar-max-width--long: 540px;
       flex-wrap: nowrap;
       height: $search-bar-height;
       width: 100%;
+      position: relative;
+
+      .map-search-suggestions {
+        top: $search-bar-height;
+        width: 100%;
+
+        li.ui-menu-item {
+          padding: 1px 5px;
+
+          &:focus-visible,
+          &:focus {
+            // Important needed here to override another !important.
+            // There's also a highlight style used to indicate focus.
+            outline: none !important;
+          }
+        }
+      }
     }
   }
 }

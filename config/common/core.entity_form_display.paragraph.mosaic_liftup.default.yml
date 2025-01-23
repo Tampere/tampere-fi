@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.mosaic_liftup.field_summary
     - paragraphs.paragraphs_type.mosaic_liftup
   module:
+    - ai_translate_textfield
     - field_group
     - field_states_ui
     - maxlength
@@ -72,7 +73,23 @@ content:
       size: 60
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: 140
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
       field_states_ui:
+        field_states:
+          0f04ba02-4109-4ad5-8057-0dd536f25d4c:
+            id: required
+            data:
+              target: field_media
+              comparison: empty
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: 0f04ba02-4109-4ad5-8057-0dd536f25d4c
         form:
           type: ''
           list:
@@ -81,18 +98,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states:
-          0f04ba02-4109-4ad5-8057-0dd536f25d4c:
-            uuid: 0f04ba02-4109-4ad5-8057-0dd536f25d4c
-            id: required
-            data:
-              target: field_media
-              comparison: empty
-              value: ''
-              submit: 'Lisää Peruuta'
-      maxlength:
-        maxlength_js: 140
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
   field_media:
     type: media_library_widget
     weight: 1
@@ -101,6 +106,15 @@ content:
       media_types: {  }
     third_party_settings:
       field_states_ui:
+        field_states:
+          0824155f-9be4-4526-8234-7783e43f5cdc:
+            id: required
+            data:
+              target: field_liftup_title
+              comparison: empty
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: 0824155f-9be4-4526-8234-7783e43f5cdc
         form:
           type: ''
           list:
@@ -109,15 +123,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states:
-          0824155f-9be4-4526-8234-7783e43f5cdc:
-            uuid: 0824155f-9be4-4526-8234-7783e43f5cdc
-            id: required
-            data:
-              target: field_liftup_title
-              comparison: empty
-              value: ''
-              submit: 'Lisää Peruuta'
   field_summary:
     type: string_textarea
     weight: 2
@@ -126,16 +131,18 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: 320
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: true
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
-      maxlength:
-        maxlength_js: 320
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
-        maxlength_js_enforce: true
-        maxlength_js_truncate_html: false
   translation:
     weight: 5
     region: content

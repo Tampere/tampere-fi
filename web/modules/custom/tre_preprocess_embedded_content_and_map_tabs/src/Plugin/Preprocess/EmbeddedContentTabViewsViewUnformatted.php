@@ -4,6 +4,7 @@ namespace Drupal\tre_preprocess_embedded_content_and_map_tabs\Plugin\Preprocess;
 
 use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
+use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctions;
 
 /**
  * Embedded content tab unformatted views view preprocessing.
@@ -43,7 +44,7 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
     $item_counter = 1;
     $rows = $variables['rows'];
     foreach ($rows as $row) {
-      $node = $row['content']['#node'];
+      $node = $row['content']['#row']->_entity;
       if (!($node instanceof NodeInterface)) {
         continue;
       }
@@ -68,17 +69,82 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
 
       $tab_list_content_item_id = $node_id . $item_counter;
 
-      $tab_list_content[] = [
-        'id' => $tab_list_content_item_id,
-        'dl_heading' => $translated_node_title,
-        'dl_content' => $translated_node_content,
-      ];
+      // Check that each item is unique.
+      if (!in_array($node_id, array_column($tab_list_content, 'nid'))) {
+        $tab_list_content[] = [
+          'id' => $tab_list_content_item_id,
+          'nid' => $node_id,
+          'dl_heading' => $translated_node_title,
+          'dl_content' => $translated_node_content,
+        ];
 
-      $item_counter++;
+        $item_counter++;
+      }
+
     }
 
+    $tab_list_node_ids = [];
+    foreach ($tab_list_content as $item) {
+      array_push($tab_list_node_ids, $item['nid']);
+    }
+
+    $view = $variables['view'];
+    $container_paragraph_id = $view->element['#attached']['drupalSettings']['container_paragraph_id'];
+    $filtered_locations = $this->getLocationData($tab_list_node_ids, $container_paragraph_id);
+
+    // Because the view is in AJAX mode, when interacting with the view,
+    // i.e. changing the filters, only the view gets re-rendered,
+    // not the parent paragraph. For that reason, everything that comes
+    // from the paragraph to the view, i.e. paragraph ID, won't be avaible
+    // after the view is re-rendered. So here we use the view Dom Id to pass
+    // the related locations to the frontend.
+    if (!empty($container_paragraph_id)) {
+      $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['paragraphToViewHashTable'][$container_paragraph_id] = $view->dom_id;
+    }
+
+    // Because after re-rendering, it doesn't have access to exsiting locations,
+    // we keep the history of all locations based on timestamps.
+    $variables['#attached']['drupalSettings']['tampere']['embeddedContentAndMapTabs']['filteredLocations'][$view->dom_id][time()] = $filtered_locations;
+
     $variables['tab_list_content'] = $tab_list_content;
+
     return $variables;
+  }
+
+  /**
+   * Gets location data for nodes by their IDs.
+   *
+   * @param array $node_ids
+   *   The IDs of the nodes.
+   * @param mixed $map_id
+   *   The ID of the map to use in determining uniqueness of coordinates.
+   *
+   * @return array
+   *   An array of location arrays, each keyed with 'nid', 'latitude', and
+   *   'longitude'.
+   */
+  protected function getLocationData(array $node_ids, mixed $map_id): array {
+    $query = $this->db->select('node__field_epsg_3067_point_strings', 'points');
+
+    $query->fields('points', ['entity_id'])
+      ->fields('points', ['field_epsg_3067_point_strings_value'])
+      ->condition('points.entity_id', $node_ids, 'IN');
+
+    $result = $query->execute()->fetchAll();
+
+    $locations = [];
+
+    foreach ($result as $location) {
+      [$longitude, $latitude] = explode(' ', $location->field_epsg_3067_point_strings_value, 2);
+      [$longitude, $latitude] = HelperFunctions::getUniqueCoordinates($longitude, $latitude, (string) $map_id);
+      $locations[] = [
+        'nid' => $location->entity_id,
+        'latitude' => $latitude,
+        'longitude' => $longitude,
+      ];
+    }
+
+    return $locations;
   }
 
 }

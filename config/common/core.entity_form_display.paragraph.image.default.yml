@@ -95,9 +95,18 @@ content:
       size: 100
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       maxlength:
         maxlength_js: null
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_language:
     type: options_select
     weight: 4
@@ -113,6 +122,15 @@ content:
       placeholder: ''
     third_party_settings:
       field_states_ui:
+        field_states:
+          3d00be23-8775-4bd0-8482-0d7dbf833370:
+            id: required
+            data:
+              target: field_content_link
+              comparison: filled
+              value: ''
+              submit: Lähetä
+            uuid: 3d00be23-8775-4bd0-8482-0d7dbf833370
         form:
           type: ''
           list:
@@ -121,15 +139,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states:
-          3d00be23-8775-4bd0-8482-0d7dbf833370:
-            uuid: 3d00be23-8775-4bd0-8482-0d7dbf833370
-            id: required
-            data:
-              target: field_content_link
-              comparison: filled
-              value: ''
-              submit: Lähetä
       maxlength:
         maxlength_js: null
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'

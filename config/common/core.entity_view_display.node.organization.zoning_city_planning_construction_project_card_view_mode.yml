@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.organization.field_help_text
     - field.field.node.organization.field_keywords
     - field.field.node.organization.field_main_image
+    - field.field.node.organization.field_page_summary
     - field.field.node.organization.field_paragraphs
     - field.field.node.organization.field_search_keywords
     - field.field.node.organization.field_topics
@@ -63,6 +64,7 @@ hidden:
   field_help_text: true
   field_keywords: true
   field_main_image: true
+  field_page_summary: true
   field_paragraphs: true
   field_search_keywords: true
   field_topics: true

@@ -59,12 +59,14 @@
           "icon_decorative": true,
         } %}
       </div>
-      <div {{ bem("menu-button", [ "desktop" ], header__base_class)}}>
-        {% include "@molecules/menu-button/menu-button.twig" with {
-          "menu_button_controls": header_navigation_container_id,
-          "menu_button__modifiers": [ "minisite" ],
-        } %}
-      </div>
+      {% if has_minisite_menu_with_items %}
+        <div {{ bem("menu-button", [ "desktop" ], header__base_class)}}>
+          {% include "@molecules/menu-button/menu-button.twig" with {
+            "menu_button_controls": header_navigation_container_id,
+            "menu_button__modifiers": [ "minisite" ],
+          } %}
+        </div>
+      {% endif %}
       {# Desktop elements end #}
 
       {# Mobile elements start #}
@@ -123,12 +125,14 @@
               } %}
             {% endblock %}
           </div>
-          <div {{ bem("menu-button", [ "mobile" ], header__base_class)}}>
-            {% include "@molecules/menu-button/menu-button.twig" with {
-              "menu_button_controls": header_navigation_container_id,
-              "menu_button__modifiers": [ "mobile", "minisite" ],
-            } %}
-          </div>
+          {% if has_minisite_menu_with_items %}
+            <div {{ bem("menu-button", [ "mobile" ], header__base_class)}}>
+              {% include "@molecules/menu-button/menu-button.twig" with {
+                "menu_button_controls": header_navigation_container_id,
+                "menu_button__modifiers": [ "mobile", "minisite" ],
+              } %}
+            </div>
+          {% endif %}
         </div>
       </div>
       {# Mobile elements end #}
