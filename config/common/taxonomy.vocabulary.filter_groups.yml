@@ -1,0 +1,9 @@
+uuid: 97dc477c-f5a9-45ea-aa4c-dd6470c654a2
+langcode: en
+status: true
+dependencies: {  }
+name: 'Filter groups'
+vid: filter_groups
+description: 'Filter groups for Content Listing paragraph'
+weight: 0
+new_revision: false

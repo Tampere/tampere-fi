@@ -169,8 +169,16 @@ content:
       preview_link: true
       offsets: '50,50'
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
       decorative_image_widget:
         use_decorative_checkbox: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_other_identifiers:
     type: entity_reference_autocomplete
     weight: 15

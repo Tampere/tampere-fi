@@ -1,0 +1,18 @@
+uuid: f5d3741c-1742-415d-9df2-79ccf096f5f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Listing content'
+type: listing_content
+description: 'Content for the Content Listing type'
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

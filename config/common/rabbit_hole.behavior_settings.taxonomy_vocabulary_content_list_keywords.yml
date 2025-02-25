@@ -1,0 +1,14 @@
+uuid: 2931625b-1cda-4343-a626-8eff2ccb7d7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.content_list_keywords
+id: taxonomy_vocabulary_content_list_keywords
+entity_type_id: taxonomy_vocabulary
+entity_id: content_list_keywords
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -13,6 +13,7 @@ dependencies:
     - field.field.paragraph.image.field_media_file_in_other_lang
     - paragraphs.paragraphs_type.image
   module:
+    - ai_translate_textfield
     - field_group
     - field_states_ui
     - maxlength
@@ -121,6 +122,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
       field_states_ui:
         field_states:
           3d00be23-8775-4bd0-8482-0d7dbf833370:
@@ -139,9 +147,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-      maxlength:
-        maxlength_js: null
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
   field_media:
     type: media_library_widget
     weight: 0

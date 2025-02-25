@@ -30,8 +30,7 @@
                 "drupal/form_display_field_machine_name",
                 "drupal/cache_tags",
                 "drupal/quick_node_clone",
-                "drupal/address_display",
-                "drupal/ai_translate_textfield"
+                "drupal/address_display"
             ]
         },
         "2": {
@@ -186,19 +185,6 @@
                     "reference": "a8634b8df1390cd852e09eb8f7b5fe89eca47ca1"
                 }
             }
-        },
-        "ai_translate_textfield": {
-            "type": "package",
-            "package": {
-                "name": "drupal/ai_translate_textfield",
-                "version": "dev-fork",
-                "type": "drupal-module",
-                "source": {
-                    "url": "https://git.drupalcode.org/issue/ai_translate_textfield-3490601.git",
-                    "type": "git",
-                    "reference": "7bc89a0a91291805646de0e23414d7477bed53fe"
-                }
-            }
         }
     },
     "require": {
@@ -213,7 +199,7 @@
         "drupal/address_display": "dev-fork",
         "drupal/admin_toolbar": "^3.0",
         "drupal/ai_provider_deepl": "^1.0@alpha",
-        "drupal/ai_translate_textfield": "dev-fork",
+        "drupal/ai_translate_textfield": "^2.0@alpha",
         "drupal/allowed_formats": "^3.0",
         "drupal/antibot": "^2.0",
         "drupal/auto_entitylabel": "^3.0",
@@ -223,6 +209,7 @@
         "drupal/ckeditor5_paste_filter": "^1.0",
         "drupal/color_field": "^3.0",
         "drupal/components": "^3.0@beta",
+        "drupal/conditional_fields": "^4.0@alpha",
         "drupal/config_ignore": "^3.1",
         "drupal/config_pages": "^2.9",
         "drupal/config_split": "^2.0",
@@ -315,6 +302,7 @@
         "drupal/publication_date": "^2.0@beta",
         "drupal/purge": "^3.2",
         "drupal/purge_file": "^1.1",
+        "drupal/queue_ui": "^3.2",
         "drupal/quick_node_clone": "dev-fork",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/redirect": "^1.5",
@@ -466,6 +454,11 @@
             ]
         },
         "patches": {
+            "drupal/ai_translate_textfield": {
+                "3490601: Add feature to select languages this feature is enabled on": "https://git.drupalcode.org/issue/ai_translate_textfield-3490601/-/commit/7bc89a0a91291805646de0e23414d7477bed53fe.patch",
+                "3503517: Support for other field types like Link or Table fields": "https://www.drupal.org/files/issues/2025-02-04/Support-for-other-field-types_3503517_3.patch",
+                "3504251:The wrapper class not getting added for image focal point widget": "https://www.drupal.org/files/issues/2025-02-04/wrapper-class-not-getting-added-3504251_1.patch"
+            },
             "drupal/better_exposed_filters": {
                 "3164774 - Add support for adding datepicker options": "https://www.drupal.org/files/issues/2022-04-20/3164774-bef_respect_datepicker_opts_date_format.patch"
             },
@@ -484,7 +477,8 @@
                 "3171835 - Field Groups marked as required are missing red asterisk": "https://www.drupal.org/files/issues/2024-09-05/3171835-90--reroll-74-10.3.patch",
                 "2968207 - Allow multiple instances of the same exposed filter form on a single page": "https://www.drupal.org/files/issues/2023-04-11/2968207-39.patch",
                 "2511878 - Support enclosure field in Views RssFields row plugin - D10.3": "https://www.drupal.org/files/issues/2024-06-23/2511878-add-support-for-enclosure-field-10.3.x.patch",
-                "3444344 - Claro: Autocomplete dropdown bleeds through sticky table header": "https://www.drupal.org/files/issues/2024-09-12/3444344-65.patch"
+                "3444344 - Claro: Autocomplete dropdown bleeds through sticky table header": "https://www.drupal.org/files/issues/2024-09-12/3444344-65.patch",
+                "3445965 - Content translation: remove warning message about untranslatable fields being hidden": "https://git.drupalcode.org/issue/drupal-3445965/-/commit/78cec6047a861250ae4ef65f9eb69f5947bbc1f6.patch"
             },
             "drupal/dropzonejs": {
                 "3341846 REVERT - Media library form breaking getFormId() function": "patches/dropzonejs-remove-media-library-form-breaking-getFormId-function-added-in-issue-3341846.patch"

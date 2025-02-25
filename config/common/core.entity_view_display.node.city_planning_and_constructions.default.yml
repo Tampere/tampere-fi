@@ -45,6 +45,7 @@ dependencies:
     - geofield
     - options
     - text
+    - tre_preprocess
     - user
 third_party_settings:
   ds:
@@ -61,6 +62,7 @@ third_party_settings:
         - field_main_image
       pre_title_content:
         - field_phase
+        - field_computed_visibility
       main_title:
         - node_title
       main_content:
@@ -73,12 +75,12 @@ third_party_settings:
     fields:
       node_changed_date:
         plugin_id: node_changed_date
-        weight: 7
+        weight: 8
         label: hidden
         formatter: ds_post_date_date_only
       node_title:
         plugin_id: node_title
-        weight: 2
+        weight: 3
         label: hidden
         formatter: default
         settings:
@@ -100,14 +102,31 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: main_content
+  field_computed_visibility:
+    type: list_selected_options_values
+    label: hidden
+    settings:
+      options_selected:
+        visible: visible
+        not_visible: 0
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: pre_title_content
   field_description:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 3
+    weight: 4
     region: main_content
   field_location:
     type: geofield_latlon
@@ -122,7 +141,7 @@ content:
             lb: 'Sijainti kartalla'
             lb-col: false
             classes: {  }
-    weight: 5
+    weight: 6
     region: main_content
   field_main_image:
     type: entity_reference_entity_view
@@ -147,7 +166,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: main_content
   field_phase:
     type: list_default
@@ -164,7 +183,6 @@ hidden:
   field_city_strategy: true
   field_city_strategy_work_program: true
   field_computed_status: true
-  field_computed_visibility: true
   field_display_location_on_map: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

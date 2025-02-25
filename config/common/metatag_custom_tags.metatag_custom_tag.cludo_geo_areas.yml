@@ -1,0 +1,10 @@
+uuid: 3a803b52-656b-43f2-8612-0f21d668e5ef
+langcode: fi
+status: true
+dependencies: {  }
+id: cludo_geo_areas
+label: 'Cludo Geographical areas'
+description: 'Cludo metatag for field_geographical_areas'
+htmlElement: meta
+htmlNameAttribute: name
+htmlValueAttribute: content

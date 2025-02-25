@@ -1,0 +1,21 @@
+uuid: 33dba1e8-dcaf-409b-89a6-aaf2d0e8014f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_filter_type
+    - paragraphs.paragraphs_type.content_listing
+  module:
+    - options
+id: paragraph.content_listing.field_filter_type
+field_name: field_filter_type
+entity_type: paragraph
+bundle: content_listing
+label: 'Filter type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

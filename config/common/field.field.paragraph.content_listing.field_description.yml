@@ -1,0 +1,19 @@
+uuid: a5384781-c29d-4970-8196-209c78155506
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.content_listing
+id: paragraph.content_listing.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: content_listing
+label: Description
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

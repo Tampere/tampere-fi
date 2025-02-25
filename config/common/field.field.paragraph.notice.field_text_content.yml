@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.storage.paragraph.field_text_content
     - filter.format.notice_html
+    - filter.format.plain_html
     - paragraphs.paragraphs_type.notice
   module:
     - text
@@ -21,4 +22,5 @@ default_value_callback: ''
 settings:
   allowed_formats:
     - notice_html
+    - plain_html
 field_type: text_long

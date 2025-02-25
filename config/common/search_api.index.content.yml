@@ -203,6 +203,7 @@ datasource_settings:
       selected:
         - content_in_other_language
         - emergency_notice
+        - listing_content
         - map_point
         - person
         - place_of_business

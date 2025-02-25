@@ -1,0 +1,10 @@
+uuid: 58977115-61ed-46a3-aa1f-e4348c3acc05
+langcode: fi
+status: true
+dependencies: {  }
+id: cludo_topics
+label: 'Cludo topics'
+description: "Cludo metatag for field_topics\t"
+htmlElement: meta
+htmlNameAttribute: name
+htmlValueAttribute: content

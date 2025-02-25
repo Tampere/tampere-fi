@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - feeds.feed_type.rss_feed
+    - search_api_autocomplete.search.search
   module:
     - comment
     - config_pages
@@ -50,6 +51,7 @@ permissions:
   - 'view paragraph content contact_information_liftups'
   - 'view paragraph content contact_information_list'
   - 'view paragraph content content_liftup'
+  - 'view paragraph content content_listing'
   - 'view paragraph content course_listing'
   - 'view paragraph content course_listing_sports'
   - 'view paragraph content current_liftup'

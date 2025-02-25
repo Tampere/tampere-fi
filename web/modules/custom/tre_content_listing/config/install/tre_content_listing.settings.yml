@@ -1,0 +1,5 @@
+api_urls:
+  local: "http://tampere.l/api/tre-content-listing"
+  dev: "https://web-dev.tampere.fi/api/tre-content-listing"
+  staging: "https://staging.tampere.fi/api/tre-content-listing"
+  production: "https://www.tampere.fi/api/tre-content-listing"

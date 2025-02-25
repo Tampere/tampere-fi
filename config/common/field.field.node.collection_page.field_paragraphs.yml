@@ -12,6 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.city_construction_project_cards
     - paragraphs.paragraphs_type.colorful_content_liftup
     - paragraphs.paragraphs_type.contact_information_liftups
+    - paragraphs.paragraphs_type.content_listing
     - paragraphs.paragraphs_type.course_listing
     - paragraphs.paragraphs_type.course_listing_sports
     - paragraphs.paragraphs_type.current_listing
@@ -117,6 +118,7 @@ settings:
       video_embed: video_embed
       colorful_content_liftup: colorful_content_liftup
       contact_information_liftups: contact_information_liftups
+      content_listing: content_listing
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -167,6 +169,9 @@ settings:
       content_liftup:
         weight: 66
         enabled: false
+      content_listing:
+        weight: 108
+        enabled: true
       course_listing:
         weight: 35
         enabled: true

@@ -6,7 +6,9 @@ dependencies:
     - field.field.paragraph.external_link_with_link_text.field_external_link_w_link_text
     - paragraphs.paragraphs_type.external_link_with_link_text
   module:
+    - ai_translate_textfield
     - elb
+    - field_states_ui
 id: paragraph.external_link_with_link_text.default
 targetEntityType: paragraph
 bundle: external_link_with_link_text
@@ -19,7 +21,15 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   translation:
     weight: 10
     region: content

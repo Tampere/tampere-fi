@@ -1,0 +1,12 @@
+uuid: 0dd2e29a-4dea-43ff-96f4-6ca759b75823
+langcode: fi
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: W7EEOF3XLX-Csvz64mmi_nzUz_XZgbAloH68rEh6UfI
+id: sitename
+label: Sitename
+description: 'The name of the site.'
+htmlElement: meta
+htmlNameAttribute: name
+htmlValueAttribute: content

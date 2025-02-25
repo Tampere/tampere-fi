@@ -1,0 +1,10 @@
+uuid: 55054ffb-1ab2-4116-b5db-e6932059717e
+langcode: fi
+status: true
+dependencies: {  }
+id: cludo_life_situations
+label: 'Cludo Life situations'
+description: "Cludo metatag for field_life_situations\t"
+htmlElement: meta
+htmlNameAttribute: name
+htmlValueAttribute: content

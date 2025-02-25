@@ -26,7 +26,6 @@ settings:
       - indent
       - '|'
       - heading
-      - alignment
   plugins:
     ckeditor5_alignment:
       enabled_alignments:

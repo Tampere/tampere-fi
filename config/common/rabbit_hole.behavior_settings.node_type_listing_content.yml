@@ -1,0 +1,14 @@
+uuid: eadb8d95-26c3-4f4a-90a5-fc1983609b75
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.listing_content
+id: node_type_listing_content
+entity_type_id: node_type
+entity_id: listing_content
+action: access_denied
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,23 @@
+uuid: b3404a10-dc38-4728-9a5d-9ebe0952d138
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_item_link
+    - node.type.listing_content
+  module:
+    - link
+id: node.listing_content.field_listing_item_link
+field_name: field_listing_item_link
+entity_type: node
+bundle: listing_content
+label: 'Listing item link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

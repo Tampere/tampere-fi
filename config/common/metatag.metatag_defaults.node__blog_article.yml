@@ -8,7 +8,7 @@ tags:
   article_modified_time: '[node:changed:html_datetime]'
   article_published_time: '[node:published:html_datetime]'
   article_section: '[node:field_blog]'
-  article_tag: '[node:field_topics],[node:field_keywords],[node:field_life_situations],[node:field_geographical_areas]'
+  article_tag: '[node:field_topics];[node:field_keywords];[node:field_life_situations];[node:field_geographical_areas]'
   description: '[node:field_body:value]'
   og_description: '[node:field_body:value]'
   og_type: article

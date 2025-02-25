@@ -1,0 +1,21 @@
+uuid: 8fe3847f-6231-4ffe-8142-65d62949c914
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_used_in_alphabetical_list
+    - node.type.listing_content
+id: node.listing_content.field_used_in_alphabetical_list
+field_name: field_used_in_alphabetical_list
+entity_type: node
+bundle: listing_content
+label: 'Used in alphabetical list'
+description: 'Controls wether this listing content node is used in hierarchical / alphabetical listing.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

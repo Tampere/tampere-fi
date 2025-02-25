@@ -7,6 +7,8 @@ dependencies:
     - field.field.paragraph.table_with_row_headers.field_tablefield
     - paragraphs.paragraphs_type.table_with_row_headers
   module:
+    - ai_translate_textfield
+    - field_states_ui
     - tablefield
 id: paragraph.table_with_row_headers.default
 targetEntityType: paragraph
@@ -26,7 +28,15 @@ content:
     region: content
     settings:
       input_type: textfield
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 10
     region: content

@@ -3,6 +3,9 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - entity_browser.browser.all_content_entity_browser
+    - entity_browser.browser.all_places_entity_browser
+    - entity_browser.browser.persons_entity_browser
     - filter.format.notice_html
     - media.type.dream_broker_video
     - media.type.file
@@ -17,6 +20,7 @@ dependencies:
     - node.type.emergency_notice
     - node.type.front_page
     - node.type.involvement_opportunity
+    - node.type.listing_content
     - node.type.moderated_page
     - node.type.news_item
     - node.type.notice
@@ -84,6 +88,7 @@ permissions:
   - 'create file media'
   - 'create image media'
   - 'create involvement_opportunity content'
+  - 'create listing_content content'
   - 'create media'
   - 'create moderated_page content'
   - 'create paragraph content accordion_item'
@@ -165,6 +170,7 @@ permissions:
   - 'create remote_video media'
   - 'delete any file'
   - 'delete any involvement_opportunity content'
+  - 'delete any listing_content content'
   - 'delete any place content'
   - 'delete files'
   - 'delete media'
@@ -172,6 +178,7 @@ permissions:
   - 'delete own file media'
   - 'delete own files'
   - 'delete own image media'
+  - 'delete own listing_content content'
   - 'delete paragraph content accordion_item'
   - 'delete paragraph content accordion_text_content'
   - 'delete paragraph content accordions'
@@ -248,6 +255,7 @@ permissions:
   - 'delete paragraph content zoning_project_cards'
   - 'dropzone upload files'
   - 'edit any involvement_opportunity content'
+  - 'edit any listing_content content'
   - 'edit any place content'
   - 'edit any ptv_service content'
   - 'edit any service_channel content'
@@ -261,11 +269,13 @@ permissions:
   - 'edit own field_eventz_featured_end'
   - 'edit own field_eventz_featured_event_id'
   - 'edit own field_eventz_featured_start'
+  - 'edit own listing_content content'
   - 'import tablefield'
   - 'rebuild tablefield'
   - 'reschedule scheduled transitions node involvement_opportunity'
   - 'revert basic_content_page revisions'
   - 'revert content_in_other_language revisions'
+  - 'revert listing_content revisions'
   - 'revert moderated_page revisions'
   - 'revert person revisions'
   - 'revert place revisions'
@@ -290,6 +300,7 @@ permissions:
   - 'update paragraph content contact_information_liftups'
   - 'update paragraph content contact_information_list'
   - 'update paragraph content content_liftup'
+  - 'update paragraph content content_listing'
   - 'update paragraph content course_listing'
   - 'update paragraph content course_listing_sports'
   - 'update paragraph content current_liftup'
@@ -393,6 +404,7 @@ permissions:
   - 'view field_eventz_featured_start'
   - 'view front_page revisions'
   - 'view latest version'
+  - 'view listing_content revisions'
   - 'view moderated_page revisions'
   - 'view news_item revisions'
   - 'view notice revisions'

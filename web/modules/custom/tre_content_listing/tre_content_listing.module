@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file
+ * Contains implementation for content listing paragraph preprocess.
+ */
+
+use Drupal\taxonomy\TermInterface;
+
+/**
+ * Implements hook_preprocess_paragraph__content_listing().
+ */
+function tre_content_listing_preprocess_paragraph__content_listing(&$variables) {
+  $paragraph = $variables['paragraph'];
+  $pid = $paragraph->id();
+
+  // Generate a unique element react will attach to.
+  $listing_id = "content-listing-app-{$pid}";
+
+  // Insert markup that is used to render the paragraph and
+  // attach the react app library.
+  $variables['content'] = [
+    '#markup' => "<div id='{$listing_id}'></div>",
+    '#attached' => [
+      'library' => [
+        'tre_content_listing/tre-content-listing-app',
+      ],
+    ],
+  ];
+
+  // Paragraph data.
+  $title = $paragraph->get('field_content_list_title')->value;
+  $description = $paragraph->get('field_description')->value;
+
+  $term = $paragraph->get('field_high_level_category')->entity;
+  $filter_type = $paragraph->get('field_filter_type')->value ?: 'alphabetical';
+  $filter_values = [];
+
+  // Fetch sub terms if the parent term is valid.
+  if ($term && $term instanceof TermInterface) {
+    $term_id = $term->id();
+  }
+
+  // Get listings allowed filter values.
+  if (!$paragraph->get('field_allowed_filter_groups')->isEmpty()) {
+    $allowed_filter_groups = $paragraph->get('field_allowed_filter_groups')->referencedEntities();
+    foreach ($allowed_filter_groups as $group) {
+      $child_filter_terms = \Drupal::entityTypeManager()
+        ->getStorage('taxonomy_term')
+        ->loadTree($group->bundle(), $group->id(), 1, TRUE);
+
+      $filter_options = [];
+      foreach ($child_filter_terms as $child_filter) {
+        $filter_options[] = $child_filter->getName();
+      }
+
+      $filter_values[] = [
+        'id' => $group->id(),
+        'label' => $group->getName(),
+        'content' => $filter_options,
+      ];
+    }
+  }
+
+  // Define the base URL for the controller api based on environment.
+  $host = \Drupal::request()->getHost();
+
+  $environment = match ($host) {
+    'tampere.l' => 'local',
+    'web-dev.tampere.fi' => 'dev',
+    'staging.tampere.fi' => 'staging',
+    'www.tampere.fi' => 'production',
+  };
+
+  $config = \Drupal::config('tre_content_listing.settings');
+  $api_url = $config->get("api_urls.$environment");
+
+  $variables['content']['#attached']['drupalSettings']['tampere']['contentListing'][$pid] = [
+    'listingId' => $listing_id,
+    'title' => $title,
+    'description' => $description,
+    'apiUrl' => $api_url,
+    'termId' => $term_id,
+    'filterType' => $filter_type,
+    'filterValues' => $filter_values,
+  ];
+
+}

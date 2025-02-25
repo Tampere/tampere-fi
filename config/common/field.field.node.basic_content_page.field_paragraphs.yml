@@ -12,6 +12,7 @@ dependencies:
     - paragraphs.paragraphs_type.colorful_content_liftup
     - paragraphs.paragraphs_type.contact_information_liftups
     - paragraphs.paragraphs_type.contact_information_list
+    - paragraphs.paragraphs_type.content_listing
     - paragraphs.paragraphs_type.course_listing
     - paragraphs.paragraphs_type.course_listing_sports
     - paragraphs.paragraphs_type.current_listing
@@ -119,6 +120,7 @@ settings:
       video_embed: video_embed
       colorful_content_liftup: colorful_content_liftup
       contact_information_liftups: contact_information_liftups
+      content_listing: content_listing
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -169,6 +171,9 @@ settings:
       content_liftup:
         weight: 56
         enabled: false
+      content_listing:
+        weight: 108
+        enabled: true
       course_listing:
         weight: 28
         enabled: true
@@ -219,6 +224,9 @@ settings:
         enabled: false
       highlighted_links_with_feedback:
         weight: 88
+        enabled: false
+      highlighted_targeted_link_list:
+        weight: 126
         enabled: false
       icon_and_text_link:
         weight: 75

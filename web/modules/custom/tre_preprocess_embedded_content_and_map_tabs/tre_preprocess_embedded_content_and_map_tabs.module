@@ -247,34 +247,37 @@ function _tre_preprocess_embedded_content_and_map_tabs_insert_nodes_into_queue(D
   $node_query->condition('changed', $since_utc->getTimestamp(), '>');
   $nids = $node_query->execute();
 
+  $since_formatted = $since_utc->format('Y-m-d');
+  $date_nids = [];
   // Query 2) fetch accordion paragraphs that have field_materials_visibility
   // start date today or end date that has passed.
-  $paragraph_query = $paragraph_storage
-    ->getQuery()
-    ->accessCheck(FALSE);
-  $query_group = $paragraph_query->orConditionGroup()
-    ->condition('field_materials_visibility.value', $today, '=')
-    ->condition('field_materials_visibility.end_value', $today, '<');
-  $paragraph_query->condition($query_group);
-  $paragraph_ids = $paragraph_query->execute();
+  if ($today !== $since_formatted) {
+    $paragraph_query = $paragraph_storage
+      ->getQuery()
+      ->accessCheck(FALSE);
+    $query_group = $paragraph_query->orConditionGroup()
+      ->condition('field_materials_visibility.value', $today, '=')
+      ->condition('field_materials_visibility.end_value', $today, '<');
+    $paragraph_query->condition($query_group);
+    $paragraph_ids = $paragraph_query->execute();
 
-  $date_nids = [];
-  if (!empty($paragraph_ids)) {
-    // Go through found accordion paragraphs.
-    $paragraphs = $paragraph_storage->loadMultiple($paragraph_ids);
-    foreach ($paragraphs as $paragraph) {
-      // Get the related parent node.
-      $parent = $paragraph->getParentEntity();
+    if (!empty($paragraph_ids)) {
+      // Go through found accordion paragraphs.
+      $paragraphs = $paragraph_storage->loadMultiple($paragraph_ids);
+      foreach ($paragraphs as $paragraph) {
+        // Get the related parent node.
+        $parent = $paragraph->getParentEntity();
 
-      // Check that parent is a node and not null.
-      if (!($parent instanceof NodeInterface)) {
-        continue;
-      }
+        // Check that parent is a node and not null.
+        if (!($parent instanceof NodeInterface)) {
+          continue;
+        }
 
-      // Check if parent node type matches the specified content types.
-      if (in_array($parent->getType(), $content_types)) {
-        // Add matching parent nodes for processing.
-        $date_nids[] = $parent->id();
+        // Check if parent node type matches the specified content types.
+        if (in_array($parent->getType(), $content_types)) {
+          // Add matching parent nodes for processing.
+          $date_nids[] = $parent->id();
+        }
       }
     }
   }

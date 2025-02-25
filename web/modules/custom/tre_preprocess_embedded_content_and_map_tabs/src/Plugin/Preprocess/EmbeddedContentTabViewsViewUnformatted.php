@@ -40,6 +40,26 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
       return $variables;
     }
 
+    // Create a copy of the view to be able to re-render it to
+    // fetch all items. All items are needed to show all locations.
+    $view_all_locations = \Drupal\views\Views::getView($variables['view']->id());
+    $view_all_locations->setDisplay($variables['view']->current_display);
+
+    // Set the pager to zero to fetch all rows.
+    $view_all_locations->setItemsPerPage(0);
+    $view_all_locations->args = $variables['view']->args;
+    $view_all_locations->execute();
+    $all_rows = $view_all_locations->result;
+    $all_nodes_id = [];
+    
+    foreach ($all_rows as $row) {
+      $node = $row->_entity;
+      if (!($node instanceof NodeInterface)) {
+        continue;
+      }
+      $all_nodes_id[] = $node->id();
+    }
+
     $tab_list_content = [];
     $item_counter = 1;
     $rows = $variables['rows'];
@@ -90,7 +110,7 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
 
     $view = $variables['view'];
     $container_paragraph_id = $view->element['#attached']['drupalSettings']['container_paragraph_id'];
-    $filtered_locations = $this->getLocationData($tab_list_node_ids, $container_paragraph_id);
+    $filtered_locations = $this->getLocationData($all_nodes_id, $container_paragraph_id);
 
     // Because the view is in AJAX mode, when interacting with the view,
     // i.e. changing the filters, only the view gets re-rendered,

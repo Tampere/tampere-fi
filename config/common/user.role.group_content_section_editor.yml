@@ -217,6 +217,7 @@ permissions:
   - 'update paragraph content contact_information_liftups'
   - 'update paragraph content contact_information_list'
   - 'update paragraph content content_liftup'
+  - 'update paragraph content content_listing'
   - 'update paragraph content course_listing'
   - 'update paragraph content course_listing_sports'
   - 'update paragraph content current_liftup'

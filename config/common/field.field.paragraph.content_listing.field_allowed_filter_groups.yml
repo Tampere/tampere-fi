@@ -1,0 +1,29 @@
+uuid: 071c2c7d-5c19-4135-aa91-eb2c4a7d7d6c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_allowed_filter_groups
+    - paragraphs.paragraphs_type.content_listing
+    - taxonomy.vocabulary.filter_groups
+id: paragraph.content_listing.field_allowed_filter_groups
+field_name: field_allowed_filter_groups
+entity_type: paragraph
+bundle: content_listing
+label: 'Allowed Filter Groups'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      filter_groups: filter_groups
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

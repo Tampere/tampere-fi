@@ -1,0 +1,7 @@
+tre-content-listing-app:
+  version: 1.x
+  js:
+    js/dist/main.bundle.js: { minified: true }
+  dependencies:
+    - core/drupal
+    - core/drupalSettings

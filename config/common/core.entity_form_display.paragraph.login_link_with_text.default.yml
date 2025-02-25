@@ -6,7 +6,9 @@ dependencies:
     - field.field.paragraph.login_link_with_text.field_external_link_w_link_text
     - paragraphs.paragraphs_type.login_link_with_text
   module:
+    - ai_translate_textfield
     - elb
+    - field_states_ui
 id: paragraph.login_link_with_text.default
 targetEntityType: paragraph
 bundle: login_link_with_text
@@ -19,7 +21,15 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
     weight: 10
     region: content

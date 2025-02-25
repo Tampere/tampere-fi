@@ -1,0 +1,20 @@
+uuid: e5cb727a-3116-446a-a04f-57f9c2768817
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - taxonomy
+id: paragraph.field_allowed_filter_groups
+field_name: field_allowed_filter_groups
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

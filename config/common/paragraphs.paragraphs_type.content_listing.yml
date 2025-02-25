@@ -1,0 +1,10 @@
+uuid: 01a241a8-ad70-4ac7-b831-24155fc2f645
+langcode: en
+status: true
+dependencies: {  }
+id: content_listing
+label: 'Content Listing'
+icon_uuid: null
+icon_default: null
+description: 'Lists content based on selected high-level keyword group'
+behavior_plugins: {  }

@@ -32,6 +32,9 @@ settings:
     -
       value: snapchat
       label: Snapchat
+    -
+      value: bluesky
+      label: Bluesky
   allowed_values_function: ''
 module: options
 locked: false

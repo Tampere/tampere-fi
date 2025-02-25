@@ -53,7 +53,7 @@ function _tre_news_archive_archive_news(DrupalDateTime $now, int $years_before_l
   $archive_date_range_start_string = sprintf('%s-01-01T00:00:00', (string) $start_year);
   $archive_date_range_start = new DrupalDateTime($archive_date_range_start_string, 'UTC');
 
-  $nids_to_archive_fi = _tre_news_archive_get_news_nids_by_date_range('fi', $archive_date_range_start, $archive_date_range_end);
+  $nids_to_archive_fi = _tre_news_archive_get_news_nids_by_date_range('fi', $archive_date_range_start, $archive_date_range_end, TRUE);
 
   if ($nids_to_archive_fi) {
     foreach ($nids_to_archive_fi as $nid) {
@@ -62,7 +62,7 @@ function _tre_news_archive_archive_news(DrupalDateTime $now, int $years_before_l
     }
   }
 
-  $nids_to_archive_en = _tre_news_archive_get_news_nids_by_date_range('en', $archive_date_range_start, $archive_date_range_end);
+  $nids_to_archive_en = _tre_news_archive_get_news_nids_by_date_range('en', $archive_date_range_start, $archive_date_range_end, TRUE);
 
   if ($nids_to_archive_en) {
     foreach ($nids_to_archive_en as $nid) {
@@ -221,7 +221,7 @@ function _tre_news_archive_nids_to_mpdf(string $filename, string $directory, arr
 }
 
 /**
- * Get the nids of news in array between given date range.
+ * Get the nids of news and small news items in array between given date range.
  *
  * @param string $lang_code
  *   The language code query is targetting.
@@ -229,15 +229,23 @@ function _tre_news_archive_nids_to_mpdf(string $filename, string $directory, arr
  *   The start date of the date range.
  * @param \Drupal\Core\Datetime\DrupalDateTime $date_range_end
  *   The end date of the date range.
+ * @param bool $include_small_news
+ *   To include small news itmes in addition to news items, pass True.
  *
  * @return array
  *   Array of news item nids.
  */
-function _tre_news_archive_get_news_nids_by_date_range(string $lang_code, DrupalDateTime $date_range_start, DrupalDateTime $date_range_end): array {
-  $content_type = 'news_item';
+function _tre_news_archive_get_news_nids_by_date_range(string $lang_code, DrupalDateTime $date_range_start, DrupalDateTime $date_range_end, bool $include_small_news = FALSE): array {
+  $content_types = [
+    'news_item',
+  ];
+
+  if ($include_small_news) {
+    $content_types[] = 'small_news_item';
+  }
 
   $query = \Drupal::entityQuery('node')->accessCheck(FALSE);
-  $query->condition('type', $content_type, '=');
+  $query->condition('type', $content_types, 'IN');
   $query->condition('langcode', $lang_code);
   $query->condition('published_at', $date_range_end->format('U'), '<', $lang_code);
   $query->condition('published_at', $date_range_start->format('U'), '>=', $lang_code);

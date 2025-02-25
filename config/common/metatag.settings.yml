@@ -7,6 +7,7 @@ entity_type_groups:
       advanced: advanced
       open_graph: open_graph
       twitter_cards: twitter_cards
+separator: ;
 tag_trim_method: beforeValue
 tag_trim_maxlength:
   metatag_maxlength_title: null

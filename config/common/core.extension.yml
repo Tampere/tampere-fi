@@ -24,6 +24,7 @@ module:
   color_field: 0
   comment: 0
   components: 0
+  conditional_fields: 0
   config: 0
   config_ignore: 0
   config_pages: 0
@@ -117,6 +118,7 @@ module:
   message: 0
   message_notify: 0
   metatag: 0
+  metatag_custom_tags: 0
   metatag_favicons: 0
   metatag_hreflang: 0
   metatag_open_graph: 0
@@ -160,6 +162,7 @@ module:
   purge_queuer_coretags: 0
   purge_tokens: 0
   purge_ui: 0
+  queue_ui: 0
   quick_node_clone: 0
   rabbit_hole: 0
   redirect: 0
@@ -204,6 +207,7 @@ module:
   tre_alphabetical_job_titles: 0
   tre_breadcrumbs_custom: 0
   tre_cloned_node_alteration: 0
+  tre_content_listing: 0
   tre_course_listing: 0
   tre_current_content_archive_search_content: 0
   tre_custom_document_titles: 0

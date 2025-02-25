@@ -40,7 +40,9 @@ dependencies:
     - node.type.zoning_information
     - taxonomy.vocabulary.accessibility_and_service_infos
     - taxonomy.vocabulary.blogs
+    - taxonomy.vocabulary.content_list_keywords
     - taxonomy.vocabulary.cross_site_publications
+    - taxonomy.vocabulary.filter_groups
     - taxonomy.vocabulary.geographical_areas
     - taxonomy.vocabulary.keywords
     - taxonomy.vocabulary.life_situations
@@ -231,6 +233,7 @@ permissions:
   - 'create paragraph content contact_information_liftups'
   - 'create paragraph content contact_information_list'
   - 'create paragraph content content_liftup'
+  - 'create paragraph content content_listing'
   - 'create paragraph content course_listing'
   - 'create paragraph content course_listing_sports'
   - 'create paragraph content current_liftup'
@@ -312,7 +315,9 @@ permissions:
   - 'create subsite group'
   - 'create terms in accessibility_and_service_infos'
   - 'create terms in blogs'
+  - 'create terms in content_list_keywords'
   - 'create terms in cross_site_publications'
+  - 'create terms in filter_groups'
   - 'create terms in geographical_areas'
   - 'create terms in keywords'
   - 'create terms in life_situations'
@@ -389,6 +394,7 @@ permissions:
   - 'delete paragraph content contact_information_liftups'
   - 'delete paragraph content contact_information_list'
   - 'delete paragraph content content_liftup'
+  - 'delete paragraph content content_listing'
   - 'delete paragraph content course_listing'
   - 'delete paragraph content course_listing_sports'
   - 'delete paragraph content current_liftup'
@@ -470,7 +476,9 @@ permissions:
   - 'delete small_news_item revisions'
   - 'delete terms in accessibility_and_service_infos'
   - 'delete terms in blogs'
+  - 'delete terms in content_list_keywords'
   - 'delete terms in cross_site_publications'
+  - 'delete terms in filter_groups'
   - 'delete terms in geographical_areas'
   - 'delete terms in keywords'
   - 'delete terms in life_situations'
@@ -564,7 +572,9 @@ permissions:
   - 'edit search api exclude entity'
   - 'edit terms in accessibility_and_service_infos'
   - 'edit terms in blogs'
+  - 'edit terms in content_list_keywords'
   - 'edit terms in cross_site_publications'
+  - 'edit terms in filter_groups'
   - 'edit terms in geographical_areas'
   - 'edit terms in keywords'
   - 'edit terms in life_situations'
@@ -655,6 +665,7 @@ permissions:
   - 'update paragraph content contact_information_liftups'
   - 'update paragraph content contact_information_list'
   - 'update paragraph content content_liftup'
+  - 'update paragraph content content_listing'
   - 'update paragraph content course_listing'
   - 'update paragraph content course_listing_sports'
   - 'update paragraph content current_liftup'

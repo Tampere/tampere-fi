@@ -1,0 +1,9 @@
+uuid: 79b1bd2d-4fbe-46bc-89dc-cbbfffc4634a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Content list keywords'
+vid: content_list_keywords
+description: null
+weight: 0
+new_revision: false

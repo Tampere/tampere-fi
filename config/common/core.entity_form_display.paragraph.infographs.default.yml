@@ -7,6 +7,7 @@ dependencies:
     - field.field.paragraph.infographs.field_infograph_heading
     - paragraphs.paragraphs_type.infographs
   module:
+    - ai_translate_textfield
     - field_states_ui
     - heading
     - paragraphs_asymmetric_translation_widgets
@@ -37,7 +38,15 @@ content:
     weight: 0
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   translation:
     weight: 4
     region: content

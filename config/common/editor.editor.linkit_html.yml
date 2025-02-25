@@ -12,8 +12,6 @@ settings:
   toolbar:
     items:
       - link
-      - '|'
-      - sourceEditing
   plugins:
     ckeditor5_paste_filter_pasteFilter:
       enabled: true

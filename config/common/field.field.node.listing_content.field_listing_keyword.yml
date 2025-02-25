@@ -1,0 +1,29 @@
+uuid: 66a532df-dc79-4bfd-83c0-ab45401945da
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_keyword
+    - node.type.listing_content
+    - taxonomy.vocabulary.content_list_keywords
+id: node.listing_content.field_listing_keyword
+field_name: field_listing_keyword
+entity_type: node
+bundle: listing_content
+label: 'Listing keyword'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_list_keywords: content_list_keywords
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: content_list_keywords
+field_type: entity_reference

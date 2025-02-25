@@ -1,0 +1,59 @@
+uuid: ff6fbeee-ba14-4332-9e17-b7b4fdcced58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_listing.field_allowed_filter_groups
+    - field.field.paragraph.content_listing.field_content_list_title
+    - field.field.paragraph.content_listing.field_description
+    - field.field.paragraph.content_listing.field_filter_type
+    - field.field.paragraph.content_listing.field_high_level_category
+    - paragraphs.paragraphs_type.content_listing
+  module:
+    - options
+id: paragraph.content_listing.default
+targetEntityType: paragraph
+bundle: content_listing
+mode: default
+content:
+  field_allowed_filter_groups:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_content_list_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_description:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_filter_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_high_level_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  search_api_excerpt: true

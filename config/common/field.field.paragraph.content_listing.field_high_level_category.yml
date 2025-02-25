@@ -1,0 +1,29 @@
+uuid: 92c07997-4858-4e87-8b8f-d9cc4597b73b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_high_level_category
+    - paragraphs.paragraphs_type.content_listing
+    - taxonomy.vocabulary.content_list_keywords
+id: paragraph.content_listing.field_high_level_category
+field_name: field_high_level_category
+entity_type: paragraph
+bundle: content_listing
+label: 'High Level Category'
+description: 'Select which high-level category to use for this listing'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_list_keywords: content_list_keywords
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

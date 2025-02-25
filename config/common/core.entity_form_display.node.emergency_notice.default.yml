@@ -58,7 +58,15 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
-    third_party_settings: {  }
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_start_time:
     type: datetime_default
     weight: 3
