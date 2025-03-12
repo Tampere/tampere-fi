@@ -67,15 +67,6 @@ const NodeAccordion = ({ node }) => {
             ></NodeTextBody>
           )}
 
-          {node.link_url && (
-            <PageLink href={node.link_url}>
-              <LinkText>{node.link_title}</LinkText>
-              <LinkIcon>
-                <use xlinkHref="/themes/custom/tampere/dist/main-site-icons.svg?20250221#arrow" />
-              </LinkIcon>
-            </PageLink>
-          )}
-
           {node.listing_image && (
             <NodeImage>
               <img
@@ -84,6 +75,24 @@ const NodeAccordion = ({ node }) => {
                 style={{ maxWidth: "100%" }}
               />
             </NodeImage>
+          )}
+
+          {node.links.map((link, index) =>
+            link.type === "external" ? (
+              <PageLink key={index} href={link.url}>
+                <LinkText>{link.title}</LinkText>
+                <LinkIcon>
+                  <use xlinkHref="/themes/custom/tampere/dist/main-site-icons.svg?20250228#external" />
+                </LinkIcon>
+              </PageLink>
+            ) : (
+              <PageLink key={index} href={link.url}>
+                <LinkText>{link.title}</LinkText>
+                <LinkIcon>
+                  <use xlinkHref="/themes/custom/tampere/dist/main-site-icons.svg?20250221#arrow" />
+                </LinkIcon>
+              </PageLink>
+            ),
           )}
 
           {node.attachment_file && (

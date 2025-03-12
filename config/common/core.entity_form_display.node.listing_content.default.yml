@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.listing_content.field_attachment_file
     - field.field.node.listing_content.field_filter_options
+    - field.field.node.listing_content.field_item_links
     - field.field.node.listing_content.field_listing_image
-    - field.field.node.listing_content.field_listing_item_link
     - field.field.node.listing_content.field_listing_keyword
     - field.field.node.listing_content.field_text_body
     - field.field.node.listing_content.field_used_in_alphabetical_list
@@ -81,20 +81,20 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
+  field_item_links:
+    type: link_default
+    weight: 26
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_listing_image:
     type: media_library_widget
     weight: 17
     region: content
     settings:
       media_types: {  }
-    third_party_settings: {  }
-  field_listing_item_link:
-    type: link_default
-    weight: 16
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
     third_party_settings: {  }
   field_listing_keyword:
     type: entity_reference_autocomplete

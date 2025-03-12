@@ -13,14 +13,22 @@ function delete_over_saved_revisions() {
   $nids = get_nids_with_over_saved_revisions();
 
   foreach ($nids as $nid) {
-
     $node = Node::load($nid);
     if (!($node instanceof NodeInterface)) {
       continue;
     }
 
+    if ($node->bundle() != 'zoning_information') {
+      continue;
+    }
+
     $vids = \Drupal::entityTypeManager()->getStorage('node')->revisionIds($node);
-    $remove_vids = array_slice($vids, 20);
+    $total_revisions_initial = count($vids);
+    if ($total_revisions_initial < 1000) {
+      continue;
+    }
+
+    $remove_vids = array_slice($vids, 100, $total_revisions_initial - 200);
     $current_revision_vid = $node->getRevisionId();
     $remove_vids = array_diff($remove_vids, [$current_revision_vid]);
 
@@ -42,7 +50,7 @@ function delete_over_saved_revisions() {
 
       $current_revision += count($batch);
       $percentage = $current_revision / $total_revisions * 100;
-      echo "\r # Deleting Over Saved Revisions For Node ID {$nid}: " . number_format($percentage, 2) . "%";
+      echo "\r # Deleting Over Saved Revisions ({$total_revisions}) For Node ID {$nid}: " . number_format($percentage, 2) . "%";
       flush();
     }
 
@@ -62,7 +70,7 @@ function get_nids_with_over_saved_revisions() {
   $query = $database->select('node_revision', 'nr')
     ->fields('nr', ['nid'])
     ->groupBy('nr.nid')
-    ->having('COUNT(nr.vid) > :revision_count', [':revision_count' => 100]);
+    ->having('COUNT(nr.vid) > :revision_count', [':revision_count' => 1000]);
 
   $result = $query->execute()->fetchCol();
   return $result;

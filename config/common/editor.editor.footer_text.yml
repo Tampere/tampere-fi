@@ -94,11 +94,15 @@ settings:
     ckeditor5_sourceEditing:
       allowed_tags:
         - '<a hreflang>'
+        - '<span class="visually-hidden">'
     ckeditor5_style:
       styles:
         -
           label: Puhelinnumero
           element: '<p class="phone-icon-prefix">'
+        -
+          label: 'Saavutettava teksti'
+          element: '<span class="visually-hidden">'
     linkit_extension:
       linkit_enabled: true
       linkit_profile: linkit_wysiwyg

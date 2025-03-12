@@ -1,18 +1,18 @@
-uuid: 3dd44c4d-8cd1-4eda-80d8-88d3e8568dc2
+uuid: 5c88efb1-0109-45aa-9d8c-0c90a9cb783f
 langcode: fi
 status: true
 dependencies:
   module:
     - link
     - node
-id: node.field_listing_item_link
-field_name: field_listing_item_link
+id: node.field_item_links
+field_name: field_item_links
 entity_type: node
 type: link
 settings: {  }
 module: link
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -1,23 +1,23 @@
-uuid: b3404a10-dc38-4728-9a5d-9ebe0952d138
+uuid: 652a23d7-4010-42e2-859b-09ebc7cca595
 langcode: fi
 status: true
 dependencies:
   config:
-    - field.storage.node.field_listing_item_link
+    - field.storage.node.field_item_links
     - node.type.listing_content
   module:
     - link
-id: node.listing_content.field_listing_item_link
-field_name: field_listing_item_link
+id: node.listing_content.field_item_links
+field_name: field_item_links
 entity_type: node
 bundle: listing_content
-label: 'Listing item link'
+label: Linkit
 description: ''
 required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  title: 1
+  title: 2
   link_type: 17
 field_type: link

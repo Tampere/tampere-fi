@@ -16,7 +16,7 @@ filters:
     status: true
     weight: -15
     settings:
-      allowed_html: '<br> <p class="phone-icon-prefix"> <a hreflang href data-entity-type data-entity-uuid data-entity-substitution> <strong> <em>'
+      allowed_html: '<br> <span class="visually-hidden"> <p class="phone-icon-prefix"> <a hreflang href data-entity-type data-entity-uuid data-entity-substitution> <strong> <em>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_html_escape:

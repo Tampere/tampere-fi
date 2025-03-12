@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.listing_content.field_attachment_file
     - field.field.node.listing_content.field_filter_options
+    - field.field.node.listing_content.field_item_links
     - field.field.node.listing_content.field_listing_image
-    - field.field.node.listing_content.field_listing_item_link
     - field.field.node.listing_content.field_listing_keyword
     - field.field.node.listing_content.field_text_body
     - field.field.node.listing_content.field_used_in_alphabetical_list
@@ -27,7 +27,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 7
+    weight: 9
     region: content
   field_filter_options:
     type: entity_reference_label
@@ -37,16 +37,7 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
-  field_listing_image:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 6
-    region: content
-  field_listing_item_link:
+  field_item_links:
     type: link
     label: above
     settings:
@@ -56,7 +47,16 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 5
+    weight: 11
+    region: content
+  field_listing_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_listing_keyword:
     type: entity_reference_label
@@ -91,7 +91,7 @@ content:
   search_api_excerpt:
     settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 10
     region: content
 hidden:
   entitygroupfield: true

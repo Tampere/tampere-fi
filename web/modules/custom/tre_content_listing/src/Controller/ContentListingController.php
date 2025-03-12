@@ -219,34 +219,21 @@ class ContentListingController extends ControllerBase {
 
     $items = [];
     foreach ($nodes as $node) {
-      // Get the listing link url and title.
-      $link_url = '';
-      $link_title = '';
-      if ($node->hasField('field_listing_item_link') && !$node->get('field_listing_item_link')->isEmpty()) {
-        $link_item = $node->get('field_listing_item_link')->first();
-        $url = $link_item->getUrl();
 
-        // Check if the URL is an internal link.
-        if ($url->isExternal() === FALSE && $url->getRouteName() === 'entity.node.canonical') {
-          $route_params = $url->getRouteParameters();
-          if (isset($route_params['node'])) {
-            // Load the target node and set link title.
-            $nid = $route_params['node'];
-            $target_node = $this->entityTypeManager->getStorage('node')->load($nid);
-            if ($target_node) {
-              $link_title = $target_node->label();
-            }
-            else {
-              $link_title = $url->toString();
-            }
-          }
-        }
-        else {
-          $link_title = $link_item->getTitle() ? $link_item->getTitle() : $url->toString();
-        }
+      $node_links = [];
+      if ($node->hasField('field_item_links') && !$node->get('field_item_links')->isEmpty()) {
+        // Go through each added link item and set values.
+        foreach ($node->get('field_item_links') as $link_item) {
+          $url = $link_item->getUrl();
+          $link_title = $link_item->getTitle();
 
-        // Set link URL.
-        $link_url = $url->toString();
+          // Define the link type, so React app knows which icon to render.
+          $node_links[] = [
+            'type' => $url->isExternal() ? 'external' : 'internal',
+            'url' => $url->toString(),
+            'title' => $link_title,
+          ];
+        }
       }
 
       // Get the text body field and strip it from HTML tags.
@@ -284,12 +271,11 @@ class ContentListingController extends ControllerBase {
       $items[] = [
         'id' => $node->id(),
         'title' => $node->label(),
-        'link_url' => $link_url,
-        'link_title' => $link_title,
         'text_body' => $text_body,
         'attachment_file' => $attachment_file,
         'attachment_file_name' => $attachment_file_name,
         'listing_image' => $listing_image,
+        'links' => $node_links,
       ];
     }
 

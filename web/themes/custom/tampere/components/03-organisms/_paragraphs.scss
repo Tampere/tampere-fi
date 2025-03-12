@@ -69,7 +69,7 @@
         align-items: center;
 
         &::before {
-          background-image: url('/themes/custom/tampere/images/icon-sets/icons/map.svg');
+          background-image: url('/themes/custom/tampere/images/map.svg');
           background-size: contain;
           background-repeat: no-repeat;
           content: '';
@@ -107,7 +107,7 @@
       // Set list icon.
       &:nth-child(2) {
         .tabbed-container__tab::before {
-          background-image: url('/themes/custom/tampere/images/icon-sets/icons/list.svg');
+          background-image: url('/themes/custom/tampere/images/list.svg');
         }
       }
     }
@@ -218,10 +218,10 @@
       grid-template-columns: initial;
     }
   }
-  
+
   &--type-highlighted-targeted-link-list {
     @include page-element-spacer;
-    
+
     .link-list--primary {
       grid-template-columns: repeat(auto-fill, minmax(calc(var(--basic-component-max-width) / 5), 1fr));
     }
