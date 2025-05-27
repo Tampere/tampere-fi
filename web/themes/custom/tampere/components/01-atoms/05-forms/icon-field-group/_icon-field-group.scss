@@ -9,10 +9,12 @@
 
   &__wrapper {
     @include word-wrap;
-
+    @include mobile-breakpoint{
+      grid-template-columns: $icon-small 1fr;
+    }
     display: grid;
     gap: $space-m;
-    grid-template-columns: $icon-small 1fr;
+    grid-template-columns: none;
   }
 
   &__icon {

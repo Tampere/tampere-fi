@@ -1,0 +1,27 @@
+{
+	"controls": {
+		"filters_description": "Kun valitset suodattimen, hakutulokset rajautuvat automaattisesti valintasi mukaisiksi.",
+		"filters_label": "Suodata hakutuloksia",
+		"filters_reset_label": "Poista suodatus",
+		"external_search_label": "Hakusi tulokset kaupungin muilta sivustoilta",
+		"internal_search_label": "Hakusi tulokset Tampere.fi:stä",
+		"internal_search_page_title": "Hakutulokset Tampere.fi:stä",
+		"external_search_page_title": "Hakutulokset kaupungin muilta sivustoilta"
+	},
+	"facets": {
+		"content_type": "Sisällön tyyppi",
+		"topic": "Aihealue",
+		"sivusto": "Sivusto",
+		"life_situation": "Elämäntilanne",
+		"location": "Sijainti",
+		"date": "Julkaisupäivämäärä"
+	},
+	"instructions": {
+		"summary_note": "Tämän tiivistelmän teki tekoäly käyttäen lähteenä kaupungin verkkosivuja."
+	},
+	"autocomplete": {
+		"search_page_link": "/search",
+		"search_page_link_text": "Kokeile tarkennettua hakua",
+		"search_page_link_description": "Voit rajata hakutuloksia tai etsiä myös kaupungin muilta sivustoilta"
+	}
+}

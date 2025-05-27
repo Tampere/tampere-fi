@@ -164,3 +164,10 @@ text-paragraph-in-page-menu:
     - core/drupal
     - core/once
     - tampere/anchor-link
+
+menu-button:
+  js:
+    dist/js/02-molecules/menu-button/menu-button.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

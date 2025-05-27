@@ -4,8 +4,13 @@ status: true
 dependencies:
   config:
     - node.type.listing_content
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
 id: node.listing_content
 target_entity_type_id: node
 target_bundle: listing_content
 default_langcode: site_default
-language_alterable: false
+language_alterable: true

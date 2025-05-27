@@ -1,6 +1,7 @@
 $footer-background-color: clr(primary-light);
 $footer-secondary-background-color: clr(primary);
 $footer-font-size: $font-18;
+$footer-font-size-mobile: $font-16;
 $footer-padding: $space-xl;
 $footer-section-spacing: $space-xl;
 $footer-section-spacing--desktop: $space-l;
@@ -39,6 +40,10 @@ $footer-background-image-bottom-position--desktop: 93px;
     position: relative;
     padding: $space-xl;
 
+    @include mobile-breakpoint-down {
+      padding:$space-m-plus;
+    }
+
     @include large {
       background-image: none;
       padding: $space-xxl 0 0 96px;
@@ -70,6 +75,10 @@ $footer-background-image-bottom-position--desktop: 93px;
     margin-left: (-1) * $space-l;
     width: 100%;
 
+    @include mobile-breakpoint-down {
+      margin-left: unset;
+    }
+
     @include large {
       width: 30rem;
     }
@@ -89,11 +98,15 @@ $footer-background-image-bottom-position--desktop: 93px;
   }
 
   &__paragraph {
-    font-size: $footer-font-size;
+    font-size: $footer-font-size-mobile;
     color: clr(text-inverse);
     padding-bottom: $space-l;
     margin: 0;
     overflow-wrap: break-word;
+
+    @include mobile-breakpoint {
+      font-size: $footer-font-size;
+    }
 
     + #{$base_class}__paragraph {
       padding-bottom: $footer-section-spacing;

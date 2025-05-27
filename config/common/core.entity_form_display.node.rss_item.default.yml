@@ -5,18 +5,21 @@ dependencies:
   config:
     - field.field.node.rss_item.body
     - field.field.node.rss_item.feeds_item
+    - field.field.node.rss_item.field_action_text
+    - field.field.node.rss_item.field_construction_site
     - field.field.node.rss_item.field_domain_all_affiliates
     - field.field.node.rss_item.field_guid
+    - field.field.node.rss_item.field_license_plate
     - field.field.node.rss_item.field_link_single
+    - field.field.node.rss_item.field_publication_end_time
+    - field.field.node.rss_item.field_publication_time
     - field.field.node.rss_item.field_topics
     - node.type.rss_item
   module:
     - ai_translate_textfield
-    - allowed_formats
     - content_moderation
-    - field_states_ui
+    - datetime
     - link
-    - maxlength
     - path
     - text
 id: node.rss_item.default
@@ -43,6 +46,22 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_action_text:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_construction_site:
+    type: string_textfield
+    weight: 128
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_domain_all_affiliates:
     type: boolean_checkbox
     weight: 13
@@ -58,6 +77,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_license_plate:
+    type: string_textfield
+    weight: 131
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_link_single:
     type: link_default
     weight: 12
@@ -65,6 +92,18 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_publication_end_time:
+    type: datetime_default
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_publication_time:
+    type: datetime_default
+    weight: 129
+    region: content
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select

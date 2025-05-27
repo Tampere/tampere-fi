@@ -23,6 +23,8 @@ settings:
     -
       label: Email
     -
+      label: 'Email 2'
+    -
       label: 'Opening hours 1'
     -
       label: 'Opening hours 2'
@@ -36,3 +38,5 @@ settings:
       label: Map
     -
       label: 'Exception hours'
+    -
+      label: 'Image gallery'

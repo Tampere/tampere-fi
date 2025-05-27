@@ -18,6 +18,8 @@
  #
  # - place_of_business_contact__additional_content__modifiers - array of modifiers to add to the base classname of the additional content.
  # - place_of_business_contact__additional_content - any additional content for the contact.
+ #
+ # - place_of_business_contact__image_gallery - optional image gallery
  #}
 
 {% set place_of_business_contact__base_class = place_of_business_of_business__base_class|default('place-of-business-contact') %}
@@ -94,6 +96,13 @@
             {% block email_block %}{% endblock %}
           </div>
         {% endif %}
+
+        {% if place_of_business_email_2 %}
+          <div {{ bem("email", place_of_business_contact__email__modifiers|default([]), place_of_business_contact__base_class) }}>
+            {% block email_2_block %}{% endblock %}
+          </div>
+        {% endif %}
+
       </div>
 
       {% if right_column_content %}

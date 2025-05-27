@@ -1,0 +1,10 @@
+uuid: fd7c2c42-f668-4f1c-8472-e25364407f13
+langcode: fi
+status: true
+dependencies: {  }
+id: cludo_ingress
+label: 'Cludo ingress'
+description: 'Metatag for partial ingress field'
+htmlElement: meta
+htmlNameAttribute: name
+htmlValueAttribute: content

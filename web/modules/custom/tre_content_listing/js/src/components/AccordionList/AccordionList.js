@@ -15,12 +15,60 @@ import {
   LetterGroupWrapper,
   AccordionArrow,
   Row,
+  LetterRow,
   LetterCell,
 } from "./AccordionList.styles";
 
-const AccordionList = ({ subTerms, queryParams }) => {
+const AccordionItemComponent = ({
+  isActive,
+  term,
+  controlId,
+  contentId,
+  onToggle,
+}) => {
+  return (
+    <AccordionItem>
+      <AccordionHeading
+        isActive={isActive}
+        onClick={() => onToggle(term)}
+        aria-expanded={isActive}
+        aria-controls={contentId}
+        id={controlId}
+        title={term.term_name}
+      >
+        <AccordionTitleWrapper>
+          <AccordionTitle>{term.term_name}</AccordionTitle>
+        </AccordionTitleWrapper>
+        <AccordionIconWrapper>
+          <AccordionArrow isActive={isActive} />
+          <span>
+            {isActive
+              ? Drupal.t("Close", {}, { context: "accordion toggle" })
+              : Drupal.t("Open", {}, { context: "accordion toggle" })}
+          </span>
+        </AccordionIconWrapper>
+      </AccordionHeading>
+      <AccordionContent
+        isActive={isActive}
+        aria-labelledby={controlId}
+        role="region"
+      >
+        <ContentList>
+          {isActive &&
+            term.items &&
+            term.items.map((item, i) => (
+              <ContentListItem key={i}>
+                <NodeAccordion node={item} />
+              </ContentListItem>
+            ))}
+        </ContentList>
+      </AccordionContent>
+    </AccordionItem>
+  );
+};
+
+const AccordionList = ({ subTerms, disableLetterGrouping }) => {
   const [openTermIds, setOpenTermIds] = useState([]);
-  const [accordionContents, setAccordionContents] = useState({});
 
   async function toggleAccordion(term) {
     const termId = term.term_id;
@@ -33,38 +81,7 @@ const AccordionList = ({ subTerms, queryParams }) => {
     } else {
       // Otherwise we append the clicked accordion to open indexes.
       setOpenTermIds((prev) => [...prev, termId]);
-
-      // Fetch content for the opened accordion.
-      const nodes = await fetchTermNodes(termId);
-      setAccordionContents((prev) => ({
-        ...prev,
-        [termId]: nodes.items.sort((a, b) => a.title.localeCompare(b.title)),
-      }));
     }
-  }
-
-  // When query parameters change, refresh data for open accordions.
-  useEffect(() => {
-    async function refreshOpenAccordions() {
-      // For each open term, re-fetch the nodes using the new filters.
-      openTermIds.forEach(async (termId) => {
-        const nodes = await fetchTermNodes(termId);
-        setAccordionContents((prev) => ({
-          ...prev,
-          [termId]: nodes.items.sort((a, b) => a.title.localeCompare(b.title)),
-        }));
-      });
-    }
-    if (openTermIds.length > 0) {
-      refreshOpenAccordions();
-    }
-  }, [queryParams]);
-
-  async function fetchTermNodes(termId) {
-    const url = `${API_URL}/${termId}/sub-term-items?${queryParams}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
   }
 
   // Helper function to group terms by their first letter.
@@ -82,78 +99,63 @@ const AccordionList = ({ subTerms, queryParams }) => {
 
   const groupedTerms = groupByFirstLetter(subTerms);
   const sortedLetters = Object.keys(groupedTerms).sort((a, b) =>
-    a.localeCompare(b)
+    a.localeCompare(b),
   );
 
   return (
     <AccordionContainer>
-      {sortedLetters.map((letter) => {
-        const termsForLetter = groupedTerms[letter] || [];
+      {disableLetterGrouping ? (
+        <>
+          {subTerms.map((term) => {
+            const isActive = openTermIds.includes(term.term_id);
+            const controlId = `accordion-control-${term.term_id}`;
+            const contentId = `accordion-content-${term.term_id}`;
 
-        return (
-          <LetterGroupWrapper key={letter}>
-            {termsForLetter.map((term, idx) => {
-              const showLetter = idx === 0;
-              const isActive = openTermIds.includes(term.term_id);
+            return (
+              <Row key={term.term_id}>
+                <AccordionItemComponent
+                  term={term}
+                  isActive={isActive}
+                  controlId={controlId}
+                  contentId={contentId}
+                  onToggle={toggleAccordion}
+                />
+              </Row>
+            );
+          })}
+        </>
+      ) : (
+        <>
+          {sortedLetters.map((letter) => {
+            const termsForLetter = groupedTerms[letter] || [];
 
-              const controlId = `accordion-control-${term.term_id}`;
-              const contentId = `accordion-content-${term.term_id}`;
+            return (
+              <LetterGroupWrapper key={letter}>
+                {termsForLetter.map((term, idx) => {
+                  const showLetter = idx === 0;
+                  const isActive = openTermIds.includes(term.term_id);
 
-              return (
-                <Row key={term.term_id}>
-                  <LetterCell>{showLetter ? letter : ""}</LetterCell>
+                  const controlId = `accordion-control-${term.term_id}`;
+                  const contentId = `accordion-content-${term.term_id}`;
 
-                  <AccordionItem>
-                    <AccordionHeading
-                      isActive={isActive}
-                      onClick={() => toggleAccordion(term)}
-                      aria-expanded={isActive}
-                      aria-controls={contentId}
-                      id={controlId}
-                      title={term.term_name}
-                    >
-                      <AccordionTitleWrapper>
-                        <AccordionTitle>{term.term_name}</AccordionTitle>
-                      </AccordionTitleWrapper>
-                      <AccordionIconWrapper>
-                        <AccordionArrow isActive={isActive} />
-                        <span>
-                          {isActive
-                            ? Drupal.t(
-                                "Close",
-                                {},
-                                { context: "accordion toggle" }
-                              )
-                            : Drupal.t(
-                                "Open",
-                                {},
-                                { context: "accordion toggle" }
-                              )}
-                        </span>
-                      </AccordionIconWrapper>
-                    </AccordionHeading>
-                    <AccordionContent
-                      isActive={isActive}
-                      aria-labelledby={controlId}
-                      role="region"
-                    >
-                      <ContentList>
-                        {isActive &&
-                          accordionContents[term.term_id] &&
-                          accordionContents[term.term_id].map((item, i) => (
-                            <ContentListItem key={i}>
-                              <NodeAccordion node={item} />
-                            </ContentListItem>
-                          ))}
-                      </ContentList>
-                    </AccordionContent>
-                  </AccordionItem>
-                </Row>
-              );
-            })}
-          </LetterGroupWrapper>
-        );
-      })}
+                  return (
+                    <LetterRow key={term.term_id}>
+                      <LetterCell>{showLetter ? letter : ""}</LetterCell>
+                      <AccordionItemComponent
+                        term={term}
+                        isActive={isActive}
+                        controlId={controlId}
+                        contentId={contentId}
+                        onToggle={toggleAccordion}
+                      />
+                    </LetterRow>
+                  );
+                })}
+              </LetterGroupWrapper>
+            );
+          })}
+        </>
+      )}
     </AccordionContainer>
   );
 };

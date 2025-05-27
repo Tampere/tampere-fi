@@ -58,7 +58,9 @@
   &__type-container {
     display: flex;
     flex-direction: column;
-    width: max-content;
+    @include mobile-breakpoint {
+      width: max-content;
+    }
 
     @include large {
       flex-direction: row;
@@ -67,6 +69,7 @@
 
   &__way {
     background-color: clr(involvement);
+    hyphens: auto;
   }
 
   &__time {

@@ -11,7 +11,7 @@ html {
 // Focus styles take into consideration browsers
 // that do not support :focus-visible yet.
 *:focus {
-  outline: 1px solid clr(focus) !important;
+  outline: 2px solid clr(focus) !important;
   outline-offset: var(--focus-outline-offset) !important;
 }
 

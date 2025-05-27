@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.comprehensive_plan.field_omit_from_listing_map
     - field.field.node.comprehensive_plan.field_other_identifiers
     - field.field.node.comprehensive_plan.field_paragraphs
+    - field.field.node.comprehensive_plan.field_partial_ingress
     - field.field.node.comprehensive_plan.field_partially_binding_phase
     - field.field.node.comprehensive_plan.field_phase
     - field.field.node.comprehensive_plan.field_plan_number
@@ -39,8 +40,6 @@ dependencies:
     - ai_translate_textfield
     - content_moderation
     - field_group
-    - field_states_ui
-    - maxlength
     - media_library
     - paragraphs_asymmetric_translation_widgets
     - path
@@ -621,44 +620,44 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 8
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 6
+    weight: 5
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 5
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 11
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 7
+    weight: 6
     region: content
     settings:
       display_label: true
@@ -690,7 +689,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 9
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -701,4 +700,5 @@ hidden:
   field_display_period: true
   field_epsg_3067_point_strings: true
   field_listing_search_content: true
+  field_partial_ingress: true
   field_processing_time: true

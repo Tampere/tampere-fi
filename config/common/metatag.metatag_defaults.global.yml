@@ -33,6 +33,7 @@ tags:
     href: /themes/custom/tampere/images/favicon-files/tre-favicon-svg.svg
     color: ''
   'metatag_custom_tag:cludo_geo_areas': '[node:field_geographical_areas]'
+  'metatag_custom_tag:cludo_ingress': '[node:field_partial_ingress]'
   'metatag_custom_tag:cludo_life_situations': '[node:field_life_situations]'
   'metatag_custom_tag:cludo_topics': '[node:field_topics]'
   og_description: 'Tampereen kaupungin verkkosivuilta löydät kaupungin palvelut sekä ajankohtaiset asiat ja pääset kaupungin asiointipalveluihin.'

@@ -22,6 +22,10 @@
     min-height: $space-l + $space-xs;
     position: relative;
 
+    @include mobile-breakpoint-down {
+      flex-wrap: wrap;
+    }
+
     @include large {
       display: none;
       border-top: 0;

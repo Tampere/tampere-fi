@@ -45,6 +45,7 @@ $grouped-card-background-position: bottom -305px right -10px;
     flex-direction: column;
     height: 100%;
     padding: $space-l $space-m;
+    hyphens: auto;
 
     @include large {
       padding: $space-xl $space-l $space-l $space-l;
@@ -307,11 +308,9 @@ $grouped-card-background-position: bottom -305px right -10px;
     background-color: transparent;
     color: clr(text);
 
-    &:hover,
-    &:focus {
-      #{$base_class}__icon {
-        background-color: clr(primary);    
-        color: clr(text-inverse);
+    &:hover {
+      #{$base_class}__heading {
+        text-decoration: underline;
       }
     }
 

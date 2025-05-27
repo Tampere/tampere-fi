@@ -1,0 +1,58 @@
+.cludo-banner {
+  @include centered-content($max-width: $max-width, $use-padding: false);
+
+  background-color: clr(muted);
+  font-size: $font-16;
+  padding: $gutter-large $gutter-medium;
+  hyphens: auto;
+  margin-left: $space-s;
+  margin-right: $space-s;
+  margin-bottom: $space-s;
+
+  @include large {
+    font-size: $font-20;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: $space-xl;
+    padding: clamp($gutter-small, 5%, $gutter-default);
+  }
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  h2 {
+    color: clr(primary);
+    font-size: $font-24;
+    font-weight: $font-weight-black;
+    margin-top: 0;
+    margin-bottom: $space-s;
+
+    @include large {
+      font-size: $font-32;
+      margin-bottom: $space-l;
+    }
+  }
+
+  a {
+    @include link;
+
+    &::after {
+      background-image: url("/themes/custom/tampere/images/blue-arrow.svg");
+      background-size: $icon-xs $icon-xs;
+      content: "";
+      display: inline-block;
+      margin-left: $space-xs;
+      position: relative;
+      top: 2px;
+      height: $icon-xs;
+      width: $icon-xs;
+    }
+
+    &.external-link::after {
+      background-image: url("/themes/custom/tampere/images/blue-external.svg");
+    }
+  }
+}

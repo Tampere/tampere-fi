@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   StyledFilters,
   FilterGroupLabelsContainer,
-  ResetButton,
   StyledFilterGroup,
   StyledFilterList,
   Label,
@@ -14,49 +13,37 @@ import {
   Count,
 } from "./FilterGroupMenu.styles";
 
-const FilterGroupMenu = ({ filterValues, onFilterChange }) => {
+const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
   const [activeGroupIndex, setActiveGroupIndex] = useState(null);
-  const [selectedFilters, setSelectedFilters] = useState({});
 
   const toggleFacetAccordion = (index) => {
     setActiveGroupIndex(activeGroupIndex === index ? null : index);
   };
 
-  const clearAllFilters = () => {
-    setSelectedFilters({});
-    setActiveGroupIndex(null);
-  };
-
   // Whenever the user checks/unchecks a filter, update filter selection accordingly.
   const handleCheckboxChange = (label, option) => {
     const groupKey = label.toLowerCase();
-    setSelectedFilters((prev) => {
-      const groupFilters = prev[groupKey] || [];
-      let updatedFilters;
 
-      if (groupFilters.includes(option)) {
-        // If filter is already selected, remove it
-        updatedFilters = {
-          ...prev,
-          [groupKey]: groupFilters.filter((item) => item !== option),
-        };
-      } else {
-        // Otherwise, add it
-        updatedFilters = {
-          ...prev,
-          [groupKey]: [...groupFilters, option],
-        };
-      }
+    const updatedFilters = { ...selectedFilters };
 
-      return updatedFilters;
-    });
+    // Intialize the filter group array if it doesnt exist.
+    if (!updatedFilters[groupKey]) {
+      updatedFilters[groupKey] = [];
+    }
+
+    if (updatedFilters[groupKey].includes(option)) {
+      // Remove the filter option if its already selected.
+      updatedFilters[groupKey] = updatedFilters[groupKey].filter(
+        (item) => item !== option,
+      );
+    } else {
+      // Add the option.
+      updatedFilters[groupKey] = [...updatedFilters[groupKey], option];
+    }
+
+    // Call the parents update filter handler.
+    onFilterChange(updatedFilters);
   };
-
-  // Whenever selectedFilters is updated, we call onFilterChange
-  // to inform the parent component.
-  useEffect(() => {
-    onFilterChange(selectedFilters);
-  }, [selectedFilters]);
 
   return (
     <StyledFilters>
@@ -101,7 +88,7 @@ const FilterGroupMenu = ({ filterValues, onFilterChange }) => {
                           onChange={() =>
                             handleCheckboxChange(
                               filterValues[activeGroupIndex].label,
-                              option
+                              option,
                             )
                           }
                         />
@@ -111,17 +98,11 @@ const FilterGroupMenu = ({ filterValues, onFilterChange }) => {
                       </StyledLabel>
                     </StyledFilter>
                   );
-                }
+                },
               )}
             </StyledFilterList>
           )}
         </StyledFilterGroup>
-      )}
-
-      {Object.keys(selectedFilters).length > 0 && (
-        <ResetButton onClick={clearAllFilters}>
-          {Drupal.t("Remove filters")}
-        </ResetButton>
       )}
     </StyledFilters>
   );

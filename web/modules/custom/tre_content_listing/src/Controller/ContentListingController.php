@@ -72,21 +72,13 @@ class ContentListingController extends ControllerBase {
   /**
    * Returns sub-terms for the parent term that match query filters.
    */
-  public function getSubTerms(int $term_id): JsonResponse {
+  public function getSubTerms(int $term_id, string $langcode = 'fi'): JsonResponse {
     // Get the request.
     $request = $this->requestStack->getCurrentRequest();
 
-    // Get current page, default to 1.
-    $page = $request->query->get('page', 1);
-    if (!ctype_digit($page) || $page < 1 || $page > 100) {
-      $page = 1;
-    }
-    $limit = 25;
-    $offset = ($page - 1) * $limit;
-
     // Get request params for filters and create cache id.
     $params = $this->parseRequestParams($request);
-    $cid = $this->createCid('subterms', $term_id, $request, $params, $page);
+    $cid = $this->createCid('subterms', $term_id, $request, $params, $langcode);
 
     // Return cachecd response if it already exists.
     if ($cache = $this->cache->get($cid)) {
@@ -103,9 +95,8 @@ class ContentListingController extends ControllerBase {
     }
 
     // Load direct children.
-    $child_terms = $this->entityTypeManager
-      ->getStorage('taxonomy_term')
-      ->loadTree('content_list_keywords', $term_id, 1, FALSE);
+    $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
+    $child_terms = $term_storage->loadTree('content_list_keywords', $term_id, 1, FALSE);
 
     // If filter is set to alphabetical, apply filters to direct child terms.
     if ($params['filter_type'] === 'alphabetical') {
@@ -114,29 +105,34 @@ class ContentListingController extends ControllerBase {
 
     // Build an array of sub-term data, including node counts.
     $all_filtered_sub_terms = [];
-    $total_node_count = 0;
+    $node_storage = $this->entityTypeManager->getStorage('node');
+
     foreach ($child_terms as $child_term) {
       // Count how many nodes match for this child term.
-      $query = $this->entityTypeManager->getStorage('node')->getQuery()
+      $query = $node_storage->getQuery()
         ->condition('type', 'listing_content')
         ->condition('field_listing_keyword', $child_term->tid, 'IN')
+        ->condition('langcode', $langcode)
         ->accessCheck(TRUE);
 
       // Apply hierarchical filters to nodes under the sub-term, if needed.
       if ($params['filter_type'] === 'hierarchical') {
-        $this->applyHierarchicalFilters($query, $request);
+        $this->applyHierarchicalFilters($query, $request, $langcode);
       }
-      $count = $query->count()->execute();
 
-      // Only include terms that have matching nodes.
-      if ($count > 0) {
-        $all_filtered_sub_terms[] = [
-          'term_name'      => $child_term->name,
-          'term_id'        => $child_term->tid,
-          'matching_items' => $count,
-        ];
-        $total_node_count = $total_node_count + $count;
+      $nids = $query->execute();
+      $items = $this->getSubTermNodes($nids, $langcode);
+
+      $child_term = $term_storage->load($child_term->tid);
+      if ($child_term->hasTranslation($langcode)) {
+        $child_term = $child_term->getTranslation($langcode);
       }
+
+      $all_filtered_sub_terms[] = [
+        'term_name'      => $child_term->name->value,
+        'term_id'        => $child_term->tid->value,
+        'items'          => $items,
+      ];
     }
 
     // Sort subterm list alphabetically.
@@ -146,21 +142,12 @@ class ContentListingController extends ControllerBase {
 
     // Count the total number of matching terms.
     $total_terms = count($all_filtered_sub_terms);
-    // Paginate terms and add pager data for the response.
-    $paginated_sub_terms = array_slice($all_filtered_sub_terms, $offset, $limit);
-    $total_pages = ceil($total_terms / $limit);
 
     $response_data = [
       'parent_term' => $parent_term->label(),
       'parent_tid'  => $term_id,
-      'sub_terms'   => array_values($paginated_sub_terms),
-      'total_count' => $total_node_count,
-      'pagination'  => [
-        'current_page' => $page,
-        'per_page'     => $limit,
-        'total_terms'  => $total_terms,
-        'total_pages'  => $total_pages,
-      ],
+      'sub_terms'   => array_values($all_filtered_sub_terms),
+      'total_count' => $total_terms,
     ];
 
     // Cache the result with tags to make sure if
@@ -180,46 +167,23 @@ class ContentListingController extends ControllerBase {
   }
 
   /**
-   * Returns the nodes (content list items) for a single sub-term.
+   * Fetches and parses data for passed node is.
    */
-  public function getSubTermItems(int $term_id): JsonResponse {
-    $request = $this->requestStack->getCurrentRequest();
-    $params = $this->parseRequestParams($request);
-
-    // Build the cid for the request.
-    $cid = $this->createCid('subtermitems', $term_id, $request, $params);
-
-    // Return cachced response if it exists.
-    if ($cache = $this->cache->get($cid)) {
-      return new JsonResponse($cache->data);
+  private function getSubTermNodes(array $nids, string $langcode = 'fi'): array {
+    if (empty($nids)) {
+      return [];
     }
 
-    $child_term = $this->entityTypeManager
-      ->getStorage('taxonomy_term')
-      ->load($term_id);
-
-    if (!$child_term || !$child_term instanceof TermInterface) {
-      return new JsonResponse(['error' => 'Invalid term ID'], 404);
-    }
-
-    // Fetch nodes for the given sub-term.
     $node_storage = $this->entityTypeManager->getStorage('node');
-    $query = $node_storage->getQuery()
-      ->condition('type', 'listing_content')
-      ->condition('field_listing_keyword', $term_id, 'IN')
-      ->accessCheck(TRUE);
-
-    // Only apply hierarchical filters to to node titles if needed.
-    if ($params['filter_type'] === 'hierarchical') {
-      $this->applyHierarchicalFilters($query, $request);
-    }
-
-    $nids = $query->execute();
     $nodes = $node_storage->loadMultiple($nids);
-
     $items = [];
-    foreach ($nodes as $node) {
 
+    foreach ($nodes as $node) {
+      if (!$node->hasTranslation($langcode)) {
+        continue;
+      }
+
+      $node = $node->getTranslation($langcode);
       $node_links = [];
       if ($node->hasField('field_item_links') && !$node->get('field_item_links')->isEmpty()) {
         // Go through each added link item and set values.
@@ -236,7 +200,7 @@ class ContentListingController extends ControllerBase {
         }
       }
 
-      // Get the text body field and strip it from HTML tags.
+      // Get the text body field.
       $text_body = '';
       if ($node->hasField('field_text_body') && !$node->get('field_text_body')->isEmpty()) {
         $text_body = $node->get('field_text_body')->value;
@@ -279,34 +243,14 @@ class ContentListingController extends ControllerBase {
       ];
     }
 
-    $response_data = [
-      'term_id' => $child_term->id(),
-      'term_name' => $child_term->label(),
-      'filter_type' => $params['filter_type'],
-      'items' => $items,
-    ];
-
-    // Cache the result with tags to make sure if subterm
-    // or nodes change, cache gets invalidated.
-    $cache_tags = [
-      'taxonomy_term:' . $child_term->id(),
-      'node_list',
-    ];
-    $this->cache->set(
-      $cid,
-      $response_data,
-      CacheBackendInterface::CACHE_PERMANENT,
-      $cache_tags
-    );
-
-    return new JsonResponse($response_data);
+    return $items;
   }
 
   /**
    * Creates a cahce id with the given parameters.
    */
-  private function createCid(string $type, int $term_id, Request $request, array $params, ?int $page = NULL): string {
-    $cid = self::TRE_CONTENT_LISTING_CID . ':' . $type . ':' . $term_id . ':' . $params['filter_type'];
+  private function createCid(string $type, int $term_id, Request $request, array $params, string $langcode): string {
+    $cid = self::TRE_CONTENT_LISTING_CID . ':' . $type . ':' . $term_id . ':' . $params['filter_type'] . ':' . $langcode;
 
     // For alphabetical filters include letters in CID.
     if ($params['filter_type'] === 'alphabetical') {
@@ -316,14 +260,10 @@ class ContentListingController extends ControllerBase {
       // Get all query parameters.
       $query_params = $request->query->all();
       // Remove the keys already included in our cid.
-      unset($query_params['filter_type'], $query_params['page'], $query_params['letter']);
+      unset($query_params['filter_type'], $query_params['letter']);
       ksort($query_params);
       $hierarchical_string = http_build_query($query_params);
       $cid .= ':' . md5($hierarchical_string);
-    }
-
-    if ($page !== NULL) {
-      $cid .= ':page:' . $page;
     }
 
     return $cid;
@@ -332,7 +272,7 @@ class ContentListingController extends ControllerBase {
   /**
    * Applies hierarchical filters to the node query.
    */
-  private function applyHierarchicalFilters($query, Request $request): void {
+  private function applyHierarchicalFilters($query, Request $request, $langcode = 'fi'): void {
     // Get all filter group parent terms.
     $filter_groups = $this->entityTypeManager
       ->getStorage('taxonomy_term')
@@ -343,7 +283,13 @@ class ContentListingController extends ControllerBase {
 
     // Go through each filter group.
     foreach ($filter_groups as $filter_group) {
-      $filter_name = $filter_group->label();
+      if (!$filter_group->hasTranslation($langcode)) {
+        continue;
+      }
+
+      $filter_group_translated = $filter_group->getTranslation($langcode);
+      $filter_name = $filter_group_translated->label();
+
       // Convert filter group name to match the query param format.
       // eg. "Education Background" -> "education_background".
       $param_key = strtolower(str_replace(' ', '_', $filter_name));
@@ -377,6 +323,7 @@ class ContentListingController extends ControllerBase {
           $group_query = $this->entityTypeManager->getStorage('node')->getQuery();
           $group_query->condition('type', 'listing_content')
             ->condition('field_filter_options', $matched_term_ids, 'IN')
+            ->condition('langcode', $langcode)
             ->accessCheck(TRUE);
           $group_nids = $group_query->execute();
 

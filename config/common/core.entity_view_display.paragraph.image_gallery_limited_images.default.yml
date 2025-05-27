@@ -1,0 +1,30 @@
+uuid: 5326cbe6-7e68-479b-bd1d-11629c5ec4e9
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_gallery_limited_images.field_image_gallery_help
+    - field.field.paragraph.image_gallery_limited_images.field_images_limited
+    - paragraphs.paragraphs_type.image_gallery_limited_images
+  module:
+    - entity_reference_revisions
+    - field_delimiter
+id: paragraph.image_gallery_limited_images.default
+targetEntityType: paragraph
+bundle: image_gallery_limited_images
+mode: default
+content:
+  field_images_limited:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+    weight: 0
+    region: content
+hidden:
+  field_image_gallery_help: true
+  search_api_excerpt: true

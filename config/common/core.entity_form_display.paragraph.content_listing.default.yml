@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.content_listing.field_allowed_filter_groups
     - field.field.paragraph.content_listing.field_content_list_title
     - field.field.paragraph.content_listing.field_description
+    - field.field.paragraph.content_listing.field_disable_letter_grouping
     - field.field.paragraph.content_listing.field_filter_type
     - field.field.paragraph.content_listing.field_high_level_category
     - paragraphs.paragraphs_type.content_listing
@@ -40,9 +41,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_disable_letter_grouping:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_filter_type:
     type: options_select
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }

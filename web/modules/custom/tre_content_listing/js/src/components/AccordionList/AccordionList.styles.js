@@ -18,7 +18,6 @@ export const AccordionHeading = styled.button`
   background: none;
   border: 2px solid var(--color-accent-secondary, #f1eeeb);
   color: var(--color-text, #000);
-  align-items: center;
   font-family: var(
     --font-family-heading,
     "Montserrat",
@@ -33,6 +32,15 @@ export const AccordionHeading = styled.button`
   display: flex;
   justify-content: space-between;
   text-align: left;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  @media screen and (min-width: 24.375rem) {
+    flex-direction: row;
+    align-items: center;
+    gap: unset;
+  }
 
   ${large} {
     font-size: var(--font-size-20, 1.25rem);
@@ -100,6 +108,11 @@ export const AccordionIconWrapper = styled.span`
   align-items: center;
   white-space: nowrap;
   margin-right: 1rem;
+  margin-left: 8px;
+
+  @media screen and (min-width: 24.375rem) {
+    margin-left: unset;
+  }
 `;
 
 export const AccordionIconText = styled.span`
@@ -198,9 +211,19 @@ export const LetterGroupWrapper = styled.div`
   }
 `;
 
-export const Row = styled.div`
+export const LetterRow = styled.div`
   display: flex;
   margin-left: 1rem;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    flex-direction: column;
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
   margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {

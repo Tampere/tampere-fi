@@ -1,0 +1,19 @@
+uuid: 29efec98-b3ca-44e4-b2b4-a6a8f0f86e0e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_partial_ingress
+    - node.type.comprehensive_plan
+id: node.comprehensive_plan.field_partial_ingress
+field_name: field_partial_ingress
+entity_type: node
+bundle: comprehensive_plan
+label: 'Partial ingress'
+description: "Generated from the ingress field, showing the first sentence from it. Used for search results. Shouldn't be visible when editing a node."
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

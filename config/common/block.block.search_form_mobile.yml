@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.search
   module:
+    - group
     - system
     - views
   theme:
@@ -26,3 +27,10 @@ visibility:
     id: request_path
     negate: true
     pages: /search-external
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      minisite: minisite

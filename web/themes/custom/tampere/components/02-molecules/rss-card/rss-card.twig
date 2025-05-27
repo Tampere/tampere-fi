@@ -24,9 +24,13 @@
  #}
 {% set rss_card__base_class = "rss-card" %}
 
+{% if rss_card__publication_date or rss_card__license_plate %}
+  {% set rss_card__content__modifiers_default = "notices-feed" %}
+{% endif %}
+
 <li {{ bem("wrapper", rss_card__wrapper__modifiers|default([]), rss_card__base_class) }}>
   <a {{ bem(rss_card__base_class, rss_card__modifiers|default([ variant ]), rss_card__blockname, rss_card__extra_classes) }} href="{{ rss_card__link__url|striptags|trim }}">
-    <div {{ bem("content", rss_card__content__modifiers|default([]), rss_card__base_class) }}>
+    <div {{ bem("content", rss_card__content__modifiers|default([ rss_card__content__modifiers_default ]), rss_card__base_class) }}>
       {% if rss_card__date or rss_card__heading %}
         <div {{ bem("text-content", rss_card__text_content__modifiers|default([]), rss_card__base_class) }}>
           {# Details #}
@@ -52,6 +56,59 @@
             {{ title_suffix }}
           {% endif %}
         </div>
+      {% endif %}
+
+      {% if rss_card__publication_date or rss_card__license_plate %}
+          {% if rss_card__license_plate %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class:rss_card__heading__base_class|default("heading"),
+              text_block_modifiers: rss_card__heading__modifiers,
+              text_block_blockname: rss_card__base_class,
+              text_block_extra_classes: [ "h2", "hyphenate" ],
+              text_block_content: rss_card__license_plate,
+            } %}
+          {% endif %}
+
+          {% if rss_card__construction_site %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class:rss_card__heading__base_class|default("heading"),
+              text_block_modifiers: rss_card__heading__modifiers,
+              text_block_blockname: rss_card__base_class,
+              text_block_extra_classes: [ "h2", "hyphenate" ],
+              text_block_content: rss_card__construction_site,
+              text_block_lang: 'fi',
+            } %}
+          {% endif %}
+
+          {% if rss_card__description %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class:rss_card__heading__base_class|default("heading"),
+              text_block_modifiers: rss_card__heading__modifiers,
+              text_block_blockname: rss_card__base_class,
+              text_block_extra_classes: [ "h2", "hyphenate" ],
+              text_block_content: rss_card__description,
+            } %}
+          {% endif %}
+
+          {% if rss_card__publication_date %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class:rss_card__heading__base_class|default("heading"),
+              text_block_modifiers: rss_card__heading__modifiers,
+              text_block_blockname: rss_card__base_class,
+              text_block_extra_classes: [ "h2", "hyphenate" ],
+              text_block_content: rss_card__publication_date,
+            } %}
+          {% endif %}
+
+          {% if rss_card__publication_end_date %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class:rss_card__heading__base_class|default("heading"),
+              text_block_modifiers: rss_card__heading__modifiers,
+              text_block_blockname: rss_card__base_class,
+              text_block_extra_classes: [ "h2", "hyphenate" ],
+              text_block_content: rss_card__publication_end_date,
+            } %}
+          {% endif %}
       {% endif %}
 
       {# Icon #}

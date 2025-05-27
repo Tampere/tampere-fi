@@ -1,0 +1,21 @@
+uuid: 903956b6-d581-4ad7-8381-fc402ae9ed1d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publication_time
+    - node.type.rss_item
+  module:
+    - datetime
+id: node.rss_item.field_publication_time
+field_name: field_publication_time
+entity_type: node
+bundle: rss_item
+label: julkaisuAlkaa
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

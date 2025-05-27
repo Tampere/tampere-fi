@@ -34,8 +34,12 @@ $hero-icon-large-width: 105px;
     align-items: flex-end;
     color: $hero-title-color;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     margin-bottom: $space-m;
+
+    @include mobile-breakpoint {
+      flex-wrap: nowrap;
+    }
 
     @include large {
       bottom: 0;

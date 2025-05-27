@@ -71,7 +71,6 @@
         {% endif %}
       {% endblock %}
 
-
     {% block header_search %}
       {{ elements.search_form }}
       {{ elements.search_ext_form }}
@@ -150,8 +149,9 @@
     {% endblock %}
 
     {% block header_search %}
-      {{ elements.search_form }}
-      {{ elements.search_ext_form }}
+      {{ elements.tre_cludo_search_block }}
+      {{ elements.search_form_mobile }}
+      {{ elements.search_ext_form_mobile }}
     {% endblock %}
 
     {% block header_mobile_language_switcher %}
@@ -162,5 +162,6 @@
       {{ elements.search_form_mobile }}
       {{ elements.search_ext_form_mobile }}
     {% endblock %}
+
   {% endembed %}
 {% endif %}

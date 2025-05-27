@@ -8,6 +8,7 @@ import AlphabeticalFilter from "./components/FilterGroupMenu/AlphabeticalFilter"
 import Pager from "./components/Pagination/Pager";
 import TotalResults from "./components/TotalResults/TotalResults";
 import { Label } from "./components/SearchBar/SearchBar.styles";
+import { ResetButton } from "./components/FilterGroupMenu/FilterGroupMenu.styles";
 
 const StyledApp = styled.div`
   --color-primary: #22437b;
@@ -17,6 +18,7 @@ const StyledApp = styled.div`
   --color-count: #ae1e20;
   --color-accent-secondary: #f1eeeb;
   --color-border: #ccc;
+  --color-blue-600: #1d3a6c;
 
   --font-family-body: "Open Sans", "Arial", sans-serif;
   --font-family-heading: "Montserrat", "Helvetica", "Arial", sans-serif;
@@ -47,30 +49,98 @@ const StyledApp = styled.div`
   }
 `;
 
-const App = ({ title, description, termId, filterType, filterValues }) => {
+const App = ({
+  title,
+  description,
+  termId,
+  filterType,
+  filterValues,
+  disableLetterGrouping,
+  langcode,
+}) => {
   const [selectedFilters, setSelectedFilters] = useState({});
-  const [filteredSubTerms, setFilteredSubTerms] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [totalResults, setTotalResults] = useState(0);
-  const [pagination, setPagination] = useState({});
+
+  const [allSubTerms, setAllSubTerms] = useState([]);
+  const [filteredSubTerms, setFilteredSubTerms] = useState([]);
+  const [pageSubTerms, setPageSubTerms] = useState([]);
+  const [alphabeticalFilters, setAlphabeticalFilters] = useState(new Set());
+
   const [currentPage, setCurrentPage] = useState(1);
-
-  const [originalSubTerms, setOriginalSubTerms] = useState([]);
-  const [originalPagination, setOriginalPagination] = useState({});
-
   const pagerLinkSiblingCount = 1;
+  const itemsPerPage = 25;
 
-  // Whenever selected filters or filter type changes, fetch new sub terms
   useEffect(() => {
     fetchSubTerms();
-  }, [selectedFilters, currentPage]);
+  }, [selectedFilters]);
+
+  useEffect(() => {
+    // Sets alphabetical filter options based on results from the API.
+    async function loadAlphabeticalFilters() {
+      const terms = await fetchSubTerms();
+
+      // Iterate over the results and include each
+      // found letter to the set once.
+      if (terms.length > 0) {
+        const firstLetters = new Set([]);
+        terms.map((term) => {
+          firstLetters.add(term.term_name?.charAt(0).toUpperCase());
+        });
+        setAlphabeticalFilters(firstLetters);
+      }
+    }
+    loadAlphabeticalFilters();
+  }, []);
+
+  useEffect(() => {
+    // If there is a search query, filter each sub-terms nodes.
+    let results;
+
+    if (searchQuery.trim() !== "") {
+      results = allSubTerms
+        .map((term) => {
+          // Get those that nodes that match the query.
+          const filteredItems = term.items.filter((item) => {
+            const titleMatch = item.title
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase());
+
+            // Not every node has text body, so filter conditionally.
+            const bodyMatch = (item.text_body?.toLowerCase() ?? "").includes(
+              searchQuery.toLowerCase(),
+            );
+
+            // Return true if either matches.
+            return titleMatch || bodyMatch;
+          });
+          return { ...term, items: filteredItems };
+        })
+        .filter((term) => term.items.length > 0);
+    } else {
+      // No search query -> return all terms with nodes.
+      results = allSubTerms;
+    }
+    // Go through each items array and count total nodes.
+    const totalNodeCount = results.reduce(
+      (total, term) => total + term.items.length,
+      0,
+    );
+
+    setFilteredSubTerms(results);
+    setTotalResults(totalNodeCount);
+    setCurrentPage(1);
+  }, [allSubTerms, searchQuery]);
+
+  useEffect(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    const paginated = filteredSubTerms.slice(start, start + itemsPerPage);
+    setPageSubTerms(paginated);
+  }, [filteredSubTerms, currentPage]);
 
   async function fetchSubTerms() {
-    const queryString = buildQueryString(
-      selectedFilters,
-      filterType,
-      currentPage
-    );
-    const url = `${API_URL}/${termId}/sub-terms?${queryString}`;
+    const queryString = buildQueryString(selectedFilters, filterType);
+    const url = `${API_URL}/${langcode}/${termId}/sub-terms?${queryString}`;
 
     try {
       const response = await fetch(url);
@@ -80,30 +150,27 @@ const App = ({ title, description, termId, filterType, filterValues }) => {
       const data = await response.json();
 
       if (data.sub_terms) {
-        setFilteredSubTerms(data.sub_terms);
-        setTotalResults(data.total_count);
-        setPagination(data.pagination);
-        setOriginalSubTerms(data);
-        setOriginalPagination(data.pagination);
+        // Get those terms that contain nodes.
+        const subTermsWithNodes = data.sub_terms.filter(
+          (term) => term.items.length > 0,
+        );
+
+        setAllSubTerms(subTermsWithNodes);
+        setCurrentPage(1);
+        return subTermsWithNodes;
       } else {
-        setFilteredSubTerms([]);
-        setPagination({});
-        setOriginalSubTerms([]);
-        setOriginalPagination({});
+        setAllSubTerms([]);
+        return [];
       }
     } catch (error) {
       console.error("Error:", error);
-      setOriginalSubTerms([]);
-      setFilteredSubTerms([]);
-      setPagination({});
-      setOriginalPagination({});
+      setAllSubTerms([]);
     }
   }
 
-  function buildQueryString(filters, filterType, page) {
+  function buildQueryString(filters, filterType) {
     const params = new URLSearchParams();
     params.append("filter_type", filterType);
-    params.append("page", page);
 
     // Go through each selected filter group and selected option, add them to query.
     Object.entries(filters).forEach(([groupKey, selectedOptions]) => {
@@ -123,31 +190,9 @@ const App = ({ title, description, termId, filterType, filterValues }) => {
     setCurrentPage(1);
   }
 
-  function filterTerms(searchQuery) {
-    if (searchQuery.length === 0) {
-      setFilteredSubTerms(originalSubTerms.sub_terms);
-      setCurrentPage(1);
-      setPagination(originalPagination);
-      setTotalResults(originalSubTerms.total_count);
-      return;
-    }
-
-    const filteredResults = originalSubTerms.sub_terms.filter((term) => {
-      const termName = term.term_name.toLowerCase();
-      return termName.includes(searchQuery.toLowerCase());
-    });
-    setFilteredSubTerms(filteredResults);
-    setCurrentPage(1);
-    setPagination((prev) => ({
-      ...prev,
-      total_terms: filteredResults.length,
-    }));
-
-    const updatedResultCount = filteredResults.reduce(
-      (acculumator, { matching_items }) => acculumator + matching_items,
-      0
-    );
-    setTotalResults(updatedResultCount);
+  function clearAllFilters() {
+    setSearchQuery("");
+    setSelectedFilters({});
   }
 
   // Called when the user changes the page. updates the current page which triggers a new API call.
@@ -155,38 +200,56 @@ const App = ({ title, description, termId, filterType, filterValues }) => {
     setCurrentPage(pageNumber);
   }
 
+  const hasActiveFilters =
+    searchQuery.length > 0 || Object.keys(selectedFilters).length > 0;
+
   return (
     <StyledApp>
       <h2>{title}</h2>
       <p>{description}</p>
 
-      <SearchBar filterTerms={filterTerms} />
+      <SearchBar
+        filterTerms={setSearchQuery}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
 
       <p>{FILTER_HELP_TEXT}</p>
       <Label>{FILTER_TITLE}</Label>
 
       {filterType === "alphabetical" && (
-        <AlphabeticalFilter onFilterChange={handleFilterChange} />
+        <AlphabeticalFilter
+          selectedLetters={selectedFilters.letter || []}
+          onFilterChange={handleFilterChange}
+          alphabeticalFilters={alphabeticalFilters}
+        />
       )}
 
       {filterType === "hierarchical" && (
         <FilterGroupMenu
+          selectedFilters={selectedFilters}
           filterValues={filterValues}
           onFilterChange={handleFilterChange}
         />
       )}
 
+      {hasActiveFilters && (
+        <ResetButton onClick={clearAllFilters}>
+          {Drupal.t("Remove filters")}
+        </ResetButton>
+      )}
+
       <TotalResults totalResults={totalResults} />
 
       <AccordionList
-        subTerms={filteredSubTerms}
-        queryParams={buildQueryString(selectedFilters, filterType, currentPage)}
+        subTerms={pageSubTerms}
+        disableLetterGrouping={disableLetterGrouping}
       />
 
       <Pager
         currentPage={currentPage}
-        itemsPerPage={pagination.per_page}
-        totalItems={pagination.total_terms}
+        itemsPerPage={itemsPerPage}
+        totalItems={filteredSubTerms.length}
         pagerLinkSiblingCount={pagerLinkSiblingCount}
         paginate={handlePaginate}
       />

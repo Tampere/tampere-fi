@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.rich_article.field_media_caption
     - field.field.node.rich_article.field_minisites
     - field.field.node.rich_article.field_paragraphs
+    - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
     - field.field.node.rich_article.field_search_keywords
     - field.field.node.rich_article.field_social_media_share
@@ -175,6 +176,7 @@ hidden:
   field_date_of_publication: true
   field_help_text: true
   field_minisites: true
+  field_partial_ingress: true
   field_social_media_share: true
   field_topic: true
   langcode: true

@@ -87,7 +87,7 @@
           </div>
           {# Desktop navigation container ends #}
         </div>
-
+        
         {# Desktop search #}
         <div {{ bem("search", [ "desktop" ], header__base_class)}}>
           {% block header_search %}{% endblock %}
@@ -112,10 +112,10 @@
           } %}
         </div>
 
-        {# Mobile search #}
-        <div {{ bem("search", [ "mobile" ], header__base_class)}}>
+        {# Mobile solr search #}
+{#      <div {{ bem("search", [ "mobile" ], header__base_class)}}>
           {% block header_search_mobile %}{% endblock %}
-        </div>
+        </div> #}
 
         {# Desktop secondary navigation #}
         <div {{ bem("secondary-navigation", (header__secondary_navigation__modifiers|default([])), header__base_class)}}>

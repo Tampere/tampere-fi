@@ -12,7 +12,7 @@ dependencies:
 id: life_situation_menu_mobile_fi
 theme: tampere
 region: header
-weight: -3
+weight: -6
 provider: null
 plugin: 'system_menu_block:life-situation-menu-fi'
 settings:

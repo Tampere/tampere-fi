@@ -1,0 +1,8 @@
+tre_cludo_search.search:
+  path: '/search'
+  defaults:
+    _title: 'Search'
+    _controller: '\Drupal\tre_cludo_search\Controller\CludoSearchRouteController::content'
+    _entity_view: node.full
+  requirements:
+    _permission: 'access content'

@@ -16,7 +16,7 @@
 {% set text_block_base_class = text_block_base_class|default("") %}
 {% set text_block_element = text_block_element|default("div") %}
 
-<{{text_block_element}} {{ bem(text_block_base_class, (text_block_modifiers), text_block_blockname, text_block_extra_classes) }} {% if aria_hidden %}aria-hidden="true"{% endif %}
+<{{text_block_element}} {{ bem(text_block_base_class, (text_block_modifiers), text_block_blockname, text_block_extra_classes) }} {% if text_block_lang is defined and text_block_lang %} lang="{{ text_block_lang }}"{% endif %} {% if aria_hidden %}aria-hidden="true" {% endif %}
 >
   {% block text_block_content %}
     {% if wrap_content %}

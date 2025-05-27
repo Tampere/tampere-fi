@@ -16,7 +16,9 @@ if (drupalData) {
         termId={listing.termId}
         filterType={listing.filterType}
         filterValues={listing.filterValues}
-      />
+        disableLetterGrouping={listing.disableLetterGrouping}
+        langcode={listing.langcode}
+      />,
     );
   }
 }

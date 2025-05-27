@@ -5,6 +5,9 @@
  * Contains hook implementations for tre_group_module_custom module.
  */
 
+use Drupal\node\NodeInterface;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+
 /**
  * Implements hook_module_implements_alter().
  */
@@ -16,5 +19,33 @@ function tre_group_module_custom_module_implements_alter(&$implementations, $hoo
   // menu items disappearing from the sub site menu.
   if ($hook === 'form_alter' && isset($implementations['group_content_menu'])) {
     unset($implementations['group_content_menu']);
+  }
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function tre_group_module_custom_node_presave(NodeInterface $node) {
+  if (!$node->hasField('moderation_state')) {
+    return;
+  }
+
+  if ($node->get('moderation_state')->value !== 'archived') {
+    return;
+  }
+
+  $query = \Drupal::entityQuery('menu_link_content')
+    ->accessCheck(FALSE)
+    ->condition('link.uri', 'entity:node/' . $node->id());
+
+  $ids = $query->execute();
+
+  if (!empty($ids)) {
+    $menu_links = MenuLinkContent::loadMultiple($ids);
+
+    foreach ($menu_links as $menu_link) {
+      $menu_link->set('enabled', FALSE);
+      $menu_link->save();
+    }
   }
 }

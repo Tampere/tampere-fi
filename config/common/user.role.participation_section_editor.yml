@@ -34,6 +34,7 @@ permissions:
   - 'edit any involvement_opportunity content'
   - 'reschedule scheduled transitions node involvement_opportunity'
   - 'revert involvement_opportunity revisions'
+  - 'update paragraph content image_gallery_limited_images'
   - 'update paragraph content person_liftup'
   - 'update paragraph content person_liftups'
   - 'use ai translation'

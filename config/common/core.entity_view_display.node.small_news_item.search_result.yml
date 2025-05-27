@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.small_news_item.field_media_caption
     - field.field.node.small_news_item.field_minisites
     - field.field.node.small_news_item.field_paragraphs
+    - field.field.node.small_news_item.field_partial_ingress
     - field.field.node.small_news_item.field_photographer
     - field.field.node.small_news_item.field_search_keywords
     - field.field.node.small_news_item.field_social_media_share
@@ -41,6 +42,7 @@ third_party_settings:
       listing_item__heading:
         - node_title
       listing_item__main_content:
+        - field_partial_ingress
         - published_at
     fields:
       node_title:
@@ -62,6 +64,13 @@ targetEntityType: node
 bundle: small_news_item
 mode: search_result
 content:
+  field_partial_ingress:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: listing_item__main_content
   published_at:
     type: timestamp
     label: hidden

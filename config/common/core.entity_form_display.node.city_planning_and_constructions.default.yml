@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_main_image
     - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
+    - field.field.node.city_planning_and_constructions.field_partial_ingress
     - field.field.node.city_planning_and_constructions.field_partially_binding_phase
     - field.field.node.city_planning_and_constructions.field_phase
     - field.field.node.city_planning_and_constructions.field_phasing_not_in_use
@@ -828,5 +829,6 @@ hidden:
   field_epsg_3067_northing: true
   field_epsg_3067_point_strings: true
   field_listing_search_content: true
+  field_partial_ingress: true
   promote: true
   sticky: true

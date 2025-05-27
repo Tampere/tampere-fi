@@ -1,0 +1,14 @@
+.accessibility-info {
+  @include word-wrap;
+  
+  font-size: $font-20;
+  hyphens: auto;
+
+  &__group {
+    margin-top: $space-s;
+
+    @include large {
+      margin-top: $space-m;
+    }
+  }
+}

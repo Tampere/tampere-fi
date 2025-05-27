@@ -12,10 +12,12 @@ dependencies:
     - field.field.node.place_of_business.field_alternative_name
     - field.field.node.place_of_business.field_body_md
     - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_email_2
     - field.field.node.place_of_business.field_epsg_3067_point_strings
     - field.field.node.place_of_business.field_exception_hours
     - field.field.node.place_of_business.field_geographical_areas
     - field.field.node.place_of_business.field_hr_organizational_unit
+    - field.field.node.place_of_business.field_image_gallery
     - field.field.node.place_of_business.field_keywords
     - field.field.node.place_of_business.field_life_situations
     - field.field.node.place_of_business.field_links
@@ -35,6 +37,7 @@ dependencies:
   module:
     - address
     - ds
+    - entity_reference_revisions
     - field_delimiter
     - office_hours
     - options
@@ -62,14 +65,14 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 24
+    weight: 25
     region: content
   field_accessibility_info_title:
     type: list_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 23
+    weight: 24
     region: content
   field_additional_information:
     type: text_default
@@ -123,6 +126,13 @@ content:
     third_party_settings: {  }
     weight: 15
     region: content
+  field_email_2:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 16
+    region: content
   field_epsg_3067_point_strings:
     type: string
     label: above
@@ -131,14 +141,14 @@ content:
     third_party_settings:
       field_delimiter:
         delimiter: ';  '
-    weight: 26
+    weight: 27
     region: content
   field_exception_hours:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 22
+    weight: 23
     region: content
   field_geographical_areas:
     type: entity_reference_label
@@ -155,6 +165,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_image_gallery:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 27
     region: content
   field_keywords:
     type: entity_reference_label
@@ -197,7 +216,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 25
+    weight: 26
     region: content
   field_opening_hours:
     type: office_hours
@@ -233,7 +252,7 @@ content:
     third_party_settings:
       field_delimiter:
         delimiter: ''
-    weight: 17
+    weight: 18
     region: content
   field_opening_hours_2:
     type: office_hours
@@ -269,7 +288,7 @@ content:
     third_party_settings:
       field_delimiter:
         delimiter: ''
-    weight: 19
+    weight: 20
     region: content
   field_opening_hours_3:
     type: office_hours
@@ -305,28 +324,28 @@ content:
     third_party_settings:
       field_delimiter:
         delimiter: ''
-    weight: 21
+    weight: 22
     region: content
   field_opening_hours_info:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 16
+    weight: 17
     region: content
   field_opening_hours_info_2:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 18
+    weight: 19
     region: content
   field_opening_hours_info_3:
     type: basic_string
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 20
+    weight: 21
     region: content
   field_search_keywords:
     type: string

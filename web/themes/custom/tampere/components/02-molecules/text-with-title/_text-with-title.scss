@@ -21,6 +21,10 @@
     }
 
     &--map-embed {
+      @include mobile-breakpoint-down {
+        overflow: scroll;
+      }
+
       .content-map {
         height: 270px !important;
         width: 270px !important;

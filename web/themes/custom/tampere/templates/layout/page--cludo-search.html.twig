@@ -1,0 +1,30 @@
+{{ attach_library('tre_cludo_search/cludo-search') }}
+
+{# For header quick search #}
+{% if not search_results_page %}
+  {% include "@molecules/search-bar/search-bar-with-label.twig" with {
+    "use_form": true,
+    "search_bar_input_id": "mysearch",
+    "search_bar_form_id": "cludo-search-input",
+    "search_bar_input_label": "Site search"|t,
+    "search_bar_input_placeholder": "Search"|t,
+    "search_bar_button_type": "submit",
+    "search_bar_button_aria_label": "Search"|t,
+  } %}
+{% else %}
+  {% embed "@templates/search-page/search-page.twig" %}
+
+    {% block search_page_header %}
+      <div class="cludo-search-controls"></div>
+    {% endblock %}
+
+    {% block search_page_content %}
+      <div class="cludo-search-results"></div>
+    {% endblock %}
+
+    {% block search_page_pager %}
+      {{ pager }}
+    {% endblock %}
+
+  {% endembed %}
+{% endif %}

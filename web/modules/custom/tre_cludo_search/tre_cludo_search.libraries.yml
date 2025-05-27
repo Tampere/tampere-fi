@@ -1,0 +1,9 @@
+cludo-search-api:
+  js:
+    //customer.cludo.com/scripts/bundles/search-script.min.js: { external: true, minified: true }
+cludo-search:
+  js:
+    App/dist/js/cludo-search-results.js: { minified: true }
+  dependencies:
+    - tre_cludo_search/cludo-search-api
+    - core/drupalSettings

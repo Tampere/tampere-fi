@@ -11,12 +11,17 @@ $footer-menu-icon-margin: $space-xs;
 
   @include list-reset;
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
   font-family: $font-body;
   font-size: $footer-mobile-font-size;
   font-weight: $footer-mobile-bold;
   gap: $space-s;
-  grid-template-columns: 1fr 1fr;
+
+  @include mobile-breakpoint {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
   @include large {
     display: flex;

@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.news_item.field_media_caption
     - field.field.node.news_item.field_minisites
     - field.field.node.news_item.field_paragraphs
+    - field.field.node.news_item.field_partial_ingress
     - field.field.node.news_item.field_photographer
     - field.field.node.news_item.field_search_keywords
     - field.field.node.news_item.field_send_to_media
@@ -143,6 +144,7 @@ hidden:
   field_media_caption: true
   field_minisites: true
   field_paragraphs: true
+  field_partial_ingress: true
   field_photographer: true
   field_search_keywords: true
   field_send_to_media: true

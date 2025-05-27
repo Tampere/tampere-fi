@@ -74,7 +74,7 @@ $header-secondary-inline-padding: 13px;
 
   &__second-line {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     justify-content: flex-end;
 
     @include large {
@@ -86,7 +86,8 @@ $header-secondary-inline-padding: 13px;
   }
 
   &__search {
-    display: none;
+    display: grid;
+    margin-top: $space-xs;
 
     @include large-down {
       width: 100%;
@@ -96,6 +97,7 @@ $header-secondary-inline-padding: 13px;
       display: block;
       margin-right: auto;
       margin-left: $space-xs;
+      margin-top: 0;
     }
 
     &--mobile {
@@ -125,6 +127,12 @@ $header-secondary-inline-padding: 13px;
 
   &__quick-links {
     display: none;
+    
+    .inline-menu__item {
+      .inline-menu__link {
+        padding: 2px;
+      }
+    }
 
     @include large {
       display: block;

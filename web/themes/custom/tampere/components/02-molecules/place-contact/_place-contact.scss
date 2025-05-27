@@ -67,6 +67,7 @@
 
   &__additional-content {
     --field-label-font-weight: $font-weight-normal;
+    hyphens: auto;
 
     @include large {
       font-size: $font-16;

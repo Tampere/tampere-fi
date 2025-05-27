@@ -26,6 +26,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_main_image
     - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
+    - field.field.node.city_planning_and_constructions.field_partial_ingress
     - field.field.node.city_planning_and_constructions.field_partially_binding_phase
     - field.field.node.city_planning_and_constructions.field_phase
     - field.field.node.city_planning_and_constructions.field_phasing_not_in_use
@@ -57,6 +58,8 @@ third_party_settings:
     regions:
       listing_item__heading:
         - node_title
+      listing_item__main_content:
+        - field_partial_ingress
     fields:
       node_title:
         plugin_id: node_title
@@ -76,7 +79,14 @@ id: node.city_planning_and_constructions.search_result
 targetEntityType: node
 bundle: city_planning_and_constructions
 mode: search_result
-content: {  }
+content:
+  field_partial_ingress:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: listing_item__main_content
 hidden:
   content_moderation_control: true
   entitygroupfield: true

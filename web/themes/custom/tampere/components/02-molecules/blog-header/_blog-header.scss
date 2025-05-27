@@ -53,10 +53,15 @@ $blog-header-image-size--large: 154px;
 
   &__heading {
     margin: 0;
-    padding-right: $space-m;
-    padding-left: 88px;
+    padding-top: 88px;
     font-size: $font-20;
     font-weight: $font-weight-black;
+
+    @include mobile-breakpoint {
+      padding-top: unset;
+      padding-right: $space-m;
+      padding-left: 88px;
+    }
 
     @include breakpoint(26.76rem) {
       padding-bottom: $space-s;

@@ -683,6 +683,11 @@ class EventzTodayListing extends TrePreProcessPluginBase {
       $location = '';
       if (!empty($item["locations"])) {
         $location = $item["locations"][0]["address"];
+
+        if (count($item["locations"]) > 1) {
+          $multiple_location_suffix = $this->t("and other venues", [], ["context" => "Suffix for multiple location events"]);
+          $location .= ' ' . $multiple_location_suffix;
+        }
       }
 
       $info_url = $item["url"];

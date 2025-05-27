@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.content_listing.field_allowed_filter_groups
     - field.field.paragraph.content_listing.field_content_list_title
     - field.field.paragraph.content_listing.field_description
+    - field.field.paragraph.content_listing.field_disable_letter_grouping
     - field.field.paragraph.content_listing.field_filter_type
     - field.field.paragraph.content_listing.field_high_level_category
     - paragraphs.paragraphs_type.content_listing
@@ -39,6 +40,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_disable_letter_grouping:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_filter_type:
     type: list_default

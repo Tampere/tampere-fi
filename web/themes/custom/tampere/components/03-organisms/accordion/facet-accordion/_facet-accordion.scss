@@ -37,7 +37,8 @@
       }
     }
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       text-decoration: none;
 
       #{$base_class}__title {
@@ -55,6 +56,18 @@
     @include large {
       font-size: $font-20;
     }
+  }
+
+  &__count {
+    background-color: #ae1e20;
+    border: 1px solid clr(accent-secondary);
+    border-radius: 32px;
+    color: clr(text-inverse);
+    display: inline-block;
+    font-size: $font-18;
+    margin-left: 32px;
+    min-width: 30px;
+    padding: 4px 10px;
   }
 
   // Toggled with JS.
@@ -93,18 +106,18 @@
 
   &__list-item {
     color: clr(primary);
-    border: $border-thick-primary;
+    border: $border-thin-primary;
     border-radius: $space-l;
-    margin: $space-xs;
+    margin: 6px;
     position: relative;
-    font-size: $font-18;
+    font-size: $font-16;
     display: flex;
     align-items: center;
     text-underline-offset: 4px;
     width: fit-content;
 
     @include large {
-      font-size: $font-20;
+      font-size: $font-16;
     }
 
     &:focus-within {
@@ -115,6 +128,12 @@
     &:focus-within,
     &:hover {
       text-decoration: underline;
+    }
+
+    &.cludo-filter {
+      font-size: $font-16;
+      border: $border-thin-primary;
+      margin: 6px;
     }
 
     &.is-active {
@@ -129,7 +148,7 @@
       &::after {
         @include close-icon-white;
 
-        content: "";
+        content: '';
         display: inline-block;
         margin-left: $space-s * (-1);
         pointer-events: none;

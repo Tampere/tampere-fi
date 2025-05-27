@@ -1,4 +1,6 @@
 {% set search_page__base_class = "search-page" %}
+{# Set to true if solr search is in use instead of Cludo for the main site search #}
+{% set use_solr_search_switcher = use_solr_search_switcher|default(false) %}
 
 <section {{ bem(search_page__base_class, search_page__modifiers|default([]), search_page__blockname) }}>
   {% block search_page__heading %}
@@ -14,41 +16,43 @@
 
   <div {{ bem("content", search_page__content__modifiers|default([]), search_page__base_class) }}>
     <div {{ bem("content-wrapper", search_page__content_wrapper__modifiers|default([]), search_page__base_class) }}>
-      {% embed "@molecules/search-switcher/search-switcher.twig" %}
-        {% block search_switcher_tabs %}
-          {{ extra_facets }}
-        {% endblock %}
+      {% if use_solr_search_switcher %}
+        {% embed "@molecules/search-switcher/search-switcher.twig" %}
+          {% block search_switcher_tabs %}
+            {{ extra_facets }}
+          {% endblock %}
 
-        {% block search_switcher_content %}
-          {% if content_facets %}
-            <div {{ bem("additional-information", search_page__additional_information__modifiers|default([]), search_page__base_class) }}>
-              {{ search_page_additional_information }}
-            </div>
+          {% block search_switcher_content %}
+            {% if content_facets %}
+              <div {{ bem("additional-information", search_page__additional_information__modifiers|default([]), search_page__base_class) }}>
+                {{ search_page_additional_information }}
+              </div>
 
-            <div {{ bem("facets", search_page__facets__modifiers|default([]), search_page__base_class) }}>
-              {% include "@atoms/02-text/00-headings/_heading.twig" with {
-                "heading_level": 2,
-                "heading": "Filter results"|t,
-                "heading_blockname": search_page__base_class,
-                "heading_base_class": "filter-title",
-              } %}
-              {% embed "@organisms/accordion/facet-accordion/facet-accordion.twig" %}
-                {% block accordion_content %}
-                  {% for facet in content_facets %}
-                    {{ facet }}
-                  {% endfor %}
-                {% endblock %}
-              {% endembed %}
-
-              {% if remove_facets__link %}
-                {% include "@molecules/remove-facets/remove-facets.twig" with {
-                  search_link: remove_facets__link,
+              <div {{ bem("facets", search_page__facets__modifiers|default([]), search_page__base_class) }}>
+                {% include "@atoms/02-text/00-headings/_heading.twig" with {
+                  "heading_level": 2,
+                  "heading": "Filter results"|t,
+                  "heading_blockname": search_page__base_class,
+                  "heading_base_class": "filter-title",
                 } %}
-              {% endif %}
-            </div>
-          {% endif %}
-        {% endblock %}
-      {% endembed %}
+                {% embed "@organisms/accordion/facet-accordion/facet-accordion.twig" %}
+                  {% block accordion_content %}
+                    {% for facet in content_facets %}
+                      {{ facet }}
+                    {% endfor %}
+                  {% endblock %}
+                {% endembed %}
+
+                {% if remove_facets__link %}
+                  {% include "@molecules/remove-facets/remove-facets.twig" with {
+                    search_link: remove_facets__link,
+                  } %}
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endblock %}
+        {% endembed %}
+      {% endif %}
 
       <div {{ bem("header", search_page__header__modifiers|default([]), search_page__base_class) }}>
         {% block search_page_header %}{% endblock %}

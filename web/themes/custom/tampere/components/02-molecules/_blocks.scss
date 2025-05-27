@@ -22,11 +22,19 @@
     @include centered-content($max-width: $max-width);
     @include page-element-spacer;
 
+    overflow: scroll;
+
     @include large {
       .layout-container--with-sidebar & {
         padding-left: 0;
         padding-right: $gutter-sidebar-content;
       }
+    }
+  }
+
+  &--tre-cludo-search-block {
+    .search-bar__label {
+      @include visually-hidden;
     }
   }
 

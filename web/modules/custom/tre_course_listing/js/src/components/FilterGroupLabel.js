@@ -47,6 +47,7 @@ const StyledFilterGroupLabel = styled.button`
 const Count = styled.span`
   background-color: var(--color-count);
   border-radius: 32px;
+  border: 1px solid #f1eeeb;
   color: #fff;
   display: inline-block;
   font-size: var(--font-size-18);

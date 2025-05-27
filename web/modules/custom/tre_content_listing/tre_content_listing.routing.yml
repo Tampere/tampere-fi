@@ -1,13 +1,6 @@
 tre_content_listing.sub_terms:
-  path: '/api/tre-content-listing/{term_id}/sub-terms'
+  path: '/api/tre-content-listing/{langcode}/{term_id}/sub-terms'
   defaults:
     _controller: '\Drupal\tre_content_listing\Controller\ContentListingController::getSubTerms'
-  requirements:
-    _permission: 'access content'
-
-tre_content_listing.sub_term_items:
-  path: '/api/tre-content-listing/{term_id}/sub-term-items'
-  defaults:
-    _controller: '\Drupal\tre_content_listing\Controller\ContentListingController::getSubTermItems'
   requirements:
     _permission: 'access content'

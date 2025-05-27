@@ -64,6 +64,7 @@ $field-sections-v-gutter-desktop: $space-xl;
   &:not(.field--no-visible-label) {
     .office-hours {
       margin-top: $space-m;
+      word-break: break-all;
     }
   }
 

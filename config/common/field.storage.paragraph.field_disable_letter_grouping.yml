@@ -1,0 +1,18 @@
+uuid: 3fc064ac-9de2-488b-a4ee-17c9532cfab4
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_disable_letter_grouping
+field_name: field_disable_letter_grouping
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

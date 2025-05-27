@@ -1,7 +1,7 @@
 $search-bar-border: 2px solid clr(search-bar);
 $search-bar-height: 55px;
 $search-bar-max-width: 350px;
-$search-bar-max-width--long: 540px;
+$search-bar-max-width--long: 640px;
 
 .search-bar {
   $base_class: &;
@@ -54,10 +54,16 @@ $search-bar-max-width--long: 540px;
     width: $search-bar-height;
     margin: 0;
 
-    &:focus,
+
     &:hover {
-      background-color: clr(background);
-      color: clr(search-bar);
+      color: $color-white;
+      background-color: $search-bar-hover;
+      border: unset;
+    }
+
+    &:focus {
+      color: $color-white;
+      background-color: clr(search-bar);
     }
   }
 
@@ -131,4 +137,49 @@ $search-bar-max-width--long: 540px;
       }
     }
   }
+}
+
+.cludo-search-autocomplete-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-left: 0px;
+  width: 100%;
+  max-width: $search-bar-max-width;
+  z-index: 10;
+  background-color: $color-white;
+  border: 2px solid var(--c-border);
+  margin: 0;
+
+  @include medium {
+    width: max-content;
+    display: flex;
+    max-width: $search-bar-max-width--long;
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .autocomplete-link-container {
+    padding: 0 $space-m;
+    position: relative;
+
+    @include medium {
+      margin-top: $space-m;
+      padding: $space-xs;
+      padding-right: $space-m;
+      width: 50%;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0;
+      padding: $space-xs 0;
+    }
+  } 
 }

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.address_only
+    - field.field.node.map_point.field_access_info_sentences_json
     - field.field.node.map_point.field_address_hash
     - field.field.node.map_point.field_address_street
     - field.field.node.map_point.field_description
@@ -115,6 +116,7 @@ content:
     region: ds_content
 hidden:
   entitygroupfield: true
+  field_access_info_sentences_json: true
   field_address_hash: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

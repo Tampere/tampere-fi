@@ -27,13 +27,14 @@ $xl-down: 89.99rem;
  * The max-width breakpoint is used when the design should be applied at whatever the
  * largest breakpoint is regardless of actual pixel value. e.g. removing outer margin on body wrapper
  */
-$max-width: $xl;
-$main-menu-width: 83rem;
-$main-menu-width-down: 82.99rem;
-$picture-mosaic-breakpoint: 70rem;
-$picture-mosaic-breakpoint-down: 69.99rem;
-$table-breakpoint: 50rem;
-$table-breakpoint-down: 49.99rem;
+$max-width: $xl; // 1440px
+$main-menu-width: 83rem; // 1328px
+$main-menu-width-down: 82.99rem; // 1327.84px
+$picture-mosaic-breakpoint: 70rem; // 1120px
+$picture-mosaic-breakpoint-down: 69.99rem; // 1119.84px
+$table-breakpoint: 50rem; // 800px
+$table-breakpoint-down: 49.99rem; // 799.84px
+$mobile-breakpoint: 24.375rem; // 390px
 
 /**
  * Mixin - xs Breakpoint
@@ -211,6 +212,26 @@ $table-breakpoint-down: 49.99rem;
  */
  @mixin table-breakpoint-down {
   @include breakpoint(0 $table-breakpoint-down) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - Mobile Breakpoint
+ * Allows easier @include mobile-breakpoint {} syntax
+ */
+ @mixin mobile-breakpoint {
+  @include breakpoint($mobile-breakpoint) {
+    @content;
+  }
+}
+
+/**
+ * Mixin - Mobile Down Breakpoint
+ * Allows easier @include mobile-breakpoint-down {} syntax
+ */
+ @mixin mobile-breakpoint-down {
+  @include breakpoint(0 $mobile-breakpoint) {
     @content;
   }
 }

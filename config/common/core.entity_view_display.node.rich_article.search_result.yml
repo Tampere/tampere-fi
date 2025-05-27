@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.rich_article.field_media_caption
     - field.field.node.rich_article.field_minisites
     - field.field.node.rich_article.field_paragraphs
+    - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
     - field.field.node.rich_article.field_search_keywords
     - field.field.node.rich_article.field_social_media_share
@@ -42,6 +43,7 @@ third_party_settings:
       listing_item__heading:
         - node_title
       listing_item__main_content:
+        - field_partial_ingress
         - published_at
     fields:
       node_title:
@@ -63,6 +65,13 @@ targetEntityType: node
 bundle: rich_article
 mode: search_result
 content:
+  field_partial_ingress:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: listing_item__main_content
   published_at:
     type: timestamp
     label: hidden

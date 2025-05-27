@@ -271,6 +271,7 @@
 @mixin paragraph($margin: 0 0 $text-paragraph-margin-bottom) {
   margin: #{$margin};
   max-width: var(--text-content-max-width);
+  hyphens: auto;
 }
 
 @mixin body-copy {
@@ -485,6 +486,7 @@
 
     &:not(:first-of-type) {
       margin-top: $space-m;
+      hyphens: auto;
     }
   }
 

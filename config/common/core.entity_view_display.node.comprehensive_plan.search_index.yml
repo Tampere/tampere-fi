@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.comprehensive_plan.field_omit_from_listing_map
     - field.field.node.comprehensive_plan.field_other_identifiers
     - field.field.node.comprehensive_plan.field_paragraphs
+    - field.field.node.comprehensive_plan.field_partial_ingress
     - field.field.node.comprehensive_plan.field_partially_binding_phase
     - field.field.node.comprehensive_plan.field_phase
     - field.field.node.comprehensive_plan.field_plan_number
@@ -167,6 +168,7 @@ hidden:
   field_main_image: true
   field_omit_from_listing_map: true
   field_other_identifiers: true
+  field_partial_ingress: true
   field_partially_binding_phase: true
   field_phase: true
   field_preparation_phase: true

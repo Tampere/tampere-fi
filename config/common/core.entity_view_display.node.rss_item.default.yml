@@ -5,9 +5,14 @@ dependencies:
   config:
     - field.field.node.rss_item.body
     - field.field.node.rss_item.feeds_item
+    - field.field.node.rss_item.field_action_text
+    - field.field.node.rss_item.field_construction_site
     - field.field.node.rss_item.field_domain_all_affiliates
     - field.field.node.rss_item.field_guid
+    - field.field.node.rss_item.field_license_plate
     - field.field.node.rss_item.field_link_single
+    - field.field.node.rss_item.field_publication_end_time
+    - field.field.node.rss_item.field_publication_time
     - field.field.node.rss_item.field_topics
     - node.type.rss_item
   module:
@@ -24,7 +29,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 1
     region: content
   field_domain_all_affiliates:
     type: boolean
@@ -34,7 +39,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 105
+    weight: 4
     region: content
   field_guid:
     type: string
@@ -42,7 +47,15 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 102
+    weight: 2
+    region: content
+  field_license_plate:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_link_single:
     type: link
@@ -54,16 +67,20 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 104
+    weight: 3
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 0
     region: content
 hidden:
   entitygroupfield: true
   feeds_item: true
+  field_action_text: true
+  field_construction_site: true
+  field_publication_end_time: true
+  field_publication_time: true
   field_topics: true
   langcode: true
   published_at: true

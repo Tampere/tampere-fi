@@ -18,6 +18,7 @@
   &__summary {
     margin-top: $gutter-small;
     margin-bottom: $gutter-small;
+    hyphens: auto;
 
     @include large {
       margin-top: $gutter-medium;

@@ -3,8 +3,12 @@
 
   display: grid;
   gap: $gutter-small;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: none;
   max-width: var(--basic-component-max-width);
+
+  @include mobile-breakpoint {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
 
   .lightbox {
     display: block;

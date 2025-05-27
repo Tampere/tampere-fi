@@ -1,3 +1,5 @@
+{{ attach_library('tampere/menu-button') }}
+
 {% set menu_button__base_class = "menu-button" %}
 
 <button
@@ -7,7 +9,7 @@
   aria-label="{{ "Show menu"|t }}"
 >
   {% block menu_button__content %}
-    <span>{{ "Menu"|t ({}, { "context" : "Header menu button text" }) }}</span>
+    <span class="button-text" data-open="{{ "Menu"|t}}" data-close="{{ "Close"|t}}">{{ "Menu"|t ({}, { "context" : "Header menu button text" }) }}</span>
     {% include "@atoms/04-images/icons/_icon.twig" with {
       icon_name: "close",
       icon_base_class: "icon",

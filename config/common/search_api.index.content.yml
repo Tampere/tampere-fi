@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.search_index
     - field.storage.node.field_geographical_areas
+    - field.storage.node.field_lead
     - field.storage.node.field_life_situations
     - field.storage.node.field_search_keywords
     - field.storage.node.field_topics
@@ -86,6 +87,15 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.field_geographical_areas
+  field_lead:
+    label: 'Lead paragraph'
+    datasource_id: 'entity:node'
+    property_path: field_lead
+    type: text
+    boost: 2.0
+    dependencies:
+      config:
+        - field.storage.node.field_lead
   field_life_situations:
     label: Elämäntilanteet
     datasource_id: 'entity:node'
@@ -126,7 +136,7 @@ field_settings:
     type: string
     configuration:
       field: 'entity:node/type'
-      mapping: "basic_content_page|page\r\ncollection_page|page\r\nmoderated_page|page\r\nproject|page\r\norganization|page\r\nzoning_information|page\r\ncomprehensive_plan|page\r\nplace|page\r\ncity_planning_and_constructions|page\r\ninvolvement_opportunity|page\r\nportfolio|page\r\nsmall_news_item|news_item"
+      mapping: "basic_content_page|page\r\ncollection_page|page\r\nmoderated_page|page\r\nproject|page\r\norganization|page\r\nzoning_information|page\r\ncomprehensive_plan|page\r\nplace|page\r\ncity_planning_and_constructions|page\r\ninvolvement_opportunity|page\r\nportfolio|page\r\nsmall_news_item|page\r\nnews_item|news_item"
       with_value: page
       without_value: ''
   nid:
@@ -294,6 +304,7 @@ tracker_settings:
     indexing_order: fifo
 options:
   cron_limit: 100
+  delete_on_fail: true
   index_directly: true
   track_changes_in_references: true
 server: solr

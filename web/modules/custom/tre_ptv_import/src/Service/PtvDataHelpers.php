@@ -8,6 +8,7 @@ use Drupal\Component\Datetime\DateTimePlus;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Component\Utility\Unicode;
 use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\node\NodeInterface;
 use Drupal\tre_ptv_import\PtvDataHelpersInterface;
 use Tampere\PtvV11\PtvApi\OrganizationApi;
 use Tampere\PtvV11\PtvModel\V11VmOpenApiServiceChannels;
@@ -157,7 +158,7 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
     string $language,
     OrganizationApi $organization_api_connection,
     CacheBackendInterface $cache,
-    TimeInterface $timeService
+    TimeInterface $timeService,
   ): string {
     $organization_name_cid = 'tre_ptv_import_organization_name__' . $organization_id;
     $cached = $cache->get($organization_name_cid);
@@ -361,6 +362,27 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
 
     $description_data = self::getOpenApiLanguageItemStringsByLanguage($address_item->getAdditionalInformation(), $additional_data['language']);
 
+    $entrances = $address->getEntrances();
+    $accessibility_information = [];
+
+    foreach ($entrances as $entrance) {
+      $accessibility_sentences = $entrance->getAccessibilitySentences();
+      foreach ($accessibility_sentences as $accessibility_sentence) {
+        $title = self::getOpenApiLanguageItemStringsByLanguage($accessibility_sentence->getSentenceGroup(), $additional_data['language']);
+        $sentences = [];
+        foreach ($accessibility_sentence->getSentences() as $sentence_group) {
+          $sentence = self::getOpenApiLanguageItemStringsByLanguage($sentence_group->getSentence(), $additional_data['language']);
+          if (!empty($sentence)) {
+            $sentences[] = current($sentence)->getValue();
+          }
+        }
+        $accessibility_information[] = [
+          'title' => current($title)->getValue(),
+          'sentences' => $sentences,
+        ];
+      }
+    }
+
     // The country, thouroughfare, postal_code, and locality member names in the
     // array are inspired by the 'addressfield' MigrateProcessPlugin.
     $address = [
@@ -377,6 +399,28 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
 
     $address_hash = hash('sha512', serialize($address));
     $address['address_hash'] = $address_hash;
+    $address['accessibility_information'] = json_encode($accessibility_information);
+
+    $existing = \Drupal::entityTypeManager()
+      ->getStorage('node')
+      ->loadByProperties([
+        'type' => 'map_point',
+        'field_address_hash' => $address_hash,
+      ]);
+
+    // If there is a map point node with the hash
+    // and if there is accessibility information available,
+    // update the node because the migration with the current strucutre
+    // doesn't update the exsiting map point nodes.
+    if ((reset($existing) instanceof NodeInterface) && !empty($accessibility_information)) {
+      $node = reset($existing);
+      if ($node->hasTranslation($additional_data['language'])) {
+        $translated_node = $node->getTranslation($additional_data['language']);
+        $translated_node->set('field_access_info_sentences_json', json_encode($accessibility_information));
+        $translated_node->save();
+      }
+    }
+
   }
 
   /**

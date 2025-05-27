@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   StyledFilters,
   StyledFilterGroup,
@@ -6,63 +6,57 @@ import {
   StyledAlphabeticalFilter,
   StyledAlphabeticalLabel,
   StyledCheckbox,
-  ResetButton,
   CloseIconAlphabetical,
 } from "./FilterGroupMenu.styles";
-import { ALPHABETICAL_FILTERS } from "../../lib/constants";
 
-const AlphabeticalFilter = ({ onFilterChange }) => {
-  const [selectedLetters, setSelectedLetters] = useState([]);
-
-  useEffect(() => {
-    // Set letter as the group key and update parent component
-    const letterFilter = { letter: selectedLetters };
-
-    onFilterChange(letterFilter);
-  }, [selectedLetters]);
-
-  const clearAllFilters = () => {
-    setSelectedLetters([]);
-  };
-
+const AlphabeticalFilter = ({
+  onFilterChange,
+  selectedLetters,
+  alphabeticalFilters,
+}) => {
   const handleCheckboxChange = (letter) => {
+    let updatedLetters;
+
     if (selectedLetters.includes(letter)) {
-      const updatedLetters = selectedLetters.filter(
-        (selected) => selected !== letter
+      updatedLetters = selectedLetters.filter(
+        (selected) => selected !== letter,
       );
-      setSelectedLetters(updatedLetters);
     } else {
-      setSelectedLetters([...selectedLetters, letter]);
+      updatedLetters = [...selectedLetters, letter];
     }
+
+    if (updatedLetters.length === 0) {
+      onFilterChange({});
+      return;
+    }
+
+    onFilterChange({ letter: updatedLetters });
   };
 
   return (
     <StyledFilters>
       <StyledFilterGroup>
         <StyledFilterList isActive={true}>
-          {ALPHABETICAL_FILTERS.map((letter, index) => {
-            const isSelected = selectedLetters.includes(letter);
+          {alphabeticalFilters?.size > 0 &&
+            Array.from(alphabeticalFilters).map((letter, index) => {
+              const isSelected = selectedLetters.includes(letter);
 
-            return (
-              <StyledAlphabeticalFilter key={index} isActive={isSelected}>
-                <StyledAlphabeticalLabel isActive={isSelected}>
-                  <StyledCheckbox
-                    type="checkbox"
-                    checked={isSelected || false}
-                    onChange={() => handleCheckboxChange(letter)}
-                  />
-                  {letter}
-                  {isSelected && <CloseIconAlphabetical />}
-                </StyledAlphabeticalLabel>
-              </StyledAlphabeticalFilter>
-            );
-          })}
+              return (
+                <StyledAlphabeticalFilter key={index} isActive={isSelected}>
+                  <StyledAlphabeticalLabel isActive={isSelected}>
+                    <StyledCheckbox
+                      type="checkbox"
+                      checked={isSelected || false}
+                      onChange={() => handleCheckboxChange(letter)}
+                    />
+                    {letter}
+                    {isSelected && <CloseIconAlphabetical />}
+                  </StyledAlphabeticalLabel>
+                </StyledAlphabeticalFilter>
+              );
+            })}
         </StyledFilterList>
       </StyledFilterGroup>
-
-      {selectedLetters.length > 0 && (
-        <ResetButton onClick={clearAllFilters}>Remove filters</ResetButton>
-      )}
     </StyledFilters>
   );
 };

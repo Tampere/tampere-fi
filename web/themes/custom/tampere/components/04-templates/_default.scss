@@ -26,7 +26,9 @@
 }
 
 .main-sidebar {
-  min-width: $sidebar-min-width;
+  @include mobile-breakpoint {
+    min-width: $sidebar-min-width;
+  }
 
   @include large {
     width: $sidebar-width;
@@ -73,6 +75,16 @@
 .skip-to-content-link {
   display: inline-block;
   margin: $space-s;
+}
+
+
+// 404-page
+.field-page-content {
+  padding: 0 $gutter-mobile;
+  
+  @include large {
+    padding: 0 $gutter-large;
+  }
 }
 
 /**

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - feeds.feed_type.rss_feed
+    - feeds.feed_type.rss_feed_notices
     - field.storage.node.body
     - field.storage.node.field_link_single
     - node.type.rss_item
@@ -176,6 +177,19 @@ display:
             field_identifier: created
           exposed: false
           granularity: second
+        field_construction_site_value:
+          id: field_construction_site_value
+          table: node__field_construction_site
+          field: field_construction_site_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: 'rakennuspaikka (field_construction_site)'
+            field_identifier: field_construction_site_value
+          exposed: false
       arguments:
         feeds_item_target_id:
           id: feeds_item_target_id
@@ -211,6 +225,7 @@ display:
           validate_options:
             bundles:
               rss_feed: rss_feed
+              rss_feed_notices: rss_feed_notices
             access: false
             operation: view
             multiple: 1
@@ -500,6 +515,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 10
           total_pages: null
           id: 0
@@ -517,7 +533,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 3
-          pagination_heading_level: h4
       style:
         type: default
         options:
@@ -771,6 +786,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 10
           total_pages: null
           id: 0
@@ -788,7 +804,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 3
-          pagination_heading_level: h4
       sorts:
         title:
           id: title

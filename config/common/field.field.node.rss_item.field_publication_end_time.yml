@@ -1,0 +1,21 @@
+uuid: 977f1e41-514c-4a40-a4fc-e0b80e76e53b
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_publication_end_time
+    - node.type.rss_item
+  module:
+    - datetime
+id: node.rss_item.field_publication_end_time
+field_name: field_publication_end_time
+entity_type: node
+bundle: rss_item
+label: julkaisuPaattyy
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

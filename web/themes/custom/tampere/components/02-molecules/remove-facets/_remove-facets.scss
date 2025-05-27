@@ -8,8 +8,12 @@
   }
 
   &__link {
+    background: none;
+    border: none;
     color: clr(primary);
+    cursor: pointer;
     font-size: $font-16;
+    text-decoration: underline;
     text-underline-position: under;
     text-decoration-thickness: 1px;
 

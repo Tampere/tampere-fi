@@ -43,6 +43,11 @@
   &__additional-content + .conditional-content,
   &__additional-content-wrapper + .conditional-content {
     margin-top: $space-m;
+    hyphens: auto;
+
+    @include mobile-breakpoint-down {
+      word-wrap: break-word;
+    }
 
     @include large {
       margin-top: $space-l;
@@ -59,6 +64,7 @@
 
   &__main-content {
     max-width: var(--text-content-max-width);
+    hyphens: auto;
   }
 
   &--background-secondary {

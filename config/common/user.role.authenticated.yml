@@ -10,6 +10,7 @@ dependencies:
     - filter.format.linkit_html
     - filter.format.plain_html
     - filter.format.webform_default
+    - search_api_autocomplete.search.search
     - workflows.workflow.content_moderation
     - workflows.workflow.scheduled_transitions
   module:
@@ -104,6 +105,7 @@ permissions:
   - 'view paragraph content image'
   - 'view paragraph content image_gallery'
   - 'view paragraph content image_gallery_item'
+  - 'view paragraph content image_gallery_limited_images'
   - 'view paragraph content infograph'
   - 'view paragraph content infographs'
   - 'view paragraph content internal_link'

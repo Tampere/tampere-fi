@@ -1,0 +1,26 @@
+uuid: 87b690d5-bbd4-4ca0-9ce3-98b51a0d6efc
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image_gallery_help
+    - paragraphs.paragraphs_type.image_gallery_limited_images
+  module:
+    - markup
+id: paragraph.image_gallery_limited_images.field_image_gallery_help
+field_name: field_image_gallery_help
+entity_type: paragraph
+bundle: image_gallery_limited_images
+label: 'Kuvagallerian ohje'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    markup: null
+default_value_callback: ''
+settings:
+  markup:
+    value: "<p>Varmista, että valituille kuville on annettu Mediakirjastossa yleiskielinen selkeä nimi (kentässä \"Name\") ja että kuvista löytyy vaihtoehtoinen teksti ruudunlukijoita varten. Kuvan nimi luetaan asiakkaalle kuvagallerian kuvia ruudunlukijalla selatessa ja vaihtoehtoinen teksti luetaan kuvan ollessa suurennettuna.</p>\r\n"
+    format: basic_html
+field_type: markup

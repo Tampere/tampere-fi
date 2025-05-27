@@ -25,6 +25,12 @@ $material-image-size: 90px;
       justify-content: flex-end;
     }
 
+
+    @include mobile-breakpoint-down {
+      flex-direction: column;
+    }
+
+
     &--desktop {
       display: none;
 

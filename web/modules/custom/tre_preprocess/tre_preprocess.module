@@ -254,3 +254,47 @@ function tre_preprocess_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMa
     $breadcrumb = $new_breadcrumb;
   }
 }
+
+/**
+ * Implement hook_node_presave().
+ *
+ * @param NodeInterface $node
+ * @return void
+ */
+function tre_preprocess_node_presave (NodeInterface $node) {
+  if ($node->hasField('field_partial_ingress')) {
+    _tre_preprocess_generate_partial_ingress($node);
+  }
+}
+
+/**
+ * Generate value for partial ingress field from ingress.
+ *
+ * @param NodeInterface $node
+ * @return void
+ */
+function _tre_preprocess_generate_partial_ingress (NodeInterface $node) {
+  $ingress = NULL;
+  if ($node->hasField('field_lead') && !$node->get('field_lead')->isEmpty()) {
+    $ingress = $node->get('field_lead')->value;
+  } elseif ($node->hasField('field_description') && !$node->get('field_description')->isEmpty()) {
+    $ingress = $node->get('field_description')->value;
+  }
+
+  if (!$ingress || strlen($ingress) === 0) {
+    return;
+  }
+
+  // Get the first sentence of the ingress that is
+  // followed by empty space and a capitalized letter.
+  $matches = [];
+  $first_sentence = preg_match('/(^.*?[a-z]{2,}[.!?])\s+\W*[A-Z]/', $ingress, $matches, PREG_OFFSET_CAPTURE);
+  if ($first_sentence) {
+    $partial_ingress = $matches[1];
+    $node->set('field_partial_ingress', $partial_ingress);
+  }
+  // No capitalized letter after sentence etc. just return the full string.
+  else {
+    $node->set('field_partial_ingress', $ingress);
+  }
+}

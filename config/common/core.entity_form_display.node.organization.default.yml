@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.organization.field_main_image
     - field.field.node.organization.field_page_summary
     - field.field.node.organization.field_paragraphs
+    - field.field.node.organization.field_partial_ingress
     - field.field.node.organization.field_search_keywords
     - field.field.node.organization.field_topics
     - node.type.organization
@@ -294,6 +295,7 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  field_partial_ingress: true
   promote: true
   published_at: true
   sticky: true

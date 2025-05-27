@@ -12,7 +12,7 @@ dependencies:
 id: main_menu_fi
 theme: tampere
 region: header
-weight: -21
+weight: -23
 provider: null
 plugin: 'system_menu_block:main-menu-fi'
 settings:

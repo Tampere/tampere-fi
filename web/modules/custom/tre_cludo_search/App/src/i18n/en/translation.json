@@ -1,0 +1,27 @@
+{
+	"controls": {
+		"filters_description": "When you select a filter, the search results are automatically narrowed down to your selection.",
+		"filters_label": "Filter results",
+		"filters_reset_label": "Remove filters",
+		"external_search_label": "Search results from other sites maintained by the city",
+		"internal_search_label": "Search results from Tampere.fi",
+		"internal_search_page_title": "Search results from Tampere.fi",
+		"external_search_page_title": "Search results from other sites maintained by the city"
+	},
+	"facets": {
+		"content_type": "Content type",
+		"topic": "Topic",
+		"sivusto": "Domain",
+		"life_situation": "Life situation",
+		"location": "Location",
+		"date": "Published on"
+	},
+	"instructions": {
+		"summary_note": "This summary was created by AI using the city's website as the source."
+	},
+	"autocomplete": {
+		"search_page_link": "/en/search",
+		"search_page_link_text": "Advanced search",
+		"search_page_link_description": "You can narrow down the search results or search on the city's other websites"
+	}
+}

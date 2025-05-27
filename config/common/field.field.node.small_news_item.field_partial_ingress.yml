@@ -1,0 +1,19 @@
+uuid: 9d2dbc87-3537-4e38-a237-9c2a116c89d1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_partial_ingress
+    - node.type.small_news_item
+id: node.small_news_item.field_partial_ingress
+field_name: field_partial_ingress
+entity_type: node
+bundle: small_news_item
+label: 'Partial ingress'
+description: "Generated from the ingress field, showing the first sentence from it. Used for search results. Shouldn't be visible when editing a node."
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

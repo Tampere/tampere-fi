@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.organization.field_main_image
     - field.field.node.organization.field_page_summary
     - field.field.node.organization.field_paragraphs
+    - field.field.node.organization.field_partial_ingress
     - field.field.node.organization.field_search_keywords
     - field.field.node.organization.field_topics
     - node.type.organization
@@ -154,6 +155,7 @@ hidden:
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_partial_ingress: true
   field_search_keywords: true
   field_topics: true
   langcode: true

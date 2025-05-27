@@ -101,7 +101,9 @@
       }
 
       &:nth-child(1) {
-        margin-right: $space-xxs;
+        @include mobile-breakpoint {
+          margin-right: $space-xxs;
+        }
       }
 
       // Set list icon.

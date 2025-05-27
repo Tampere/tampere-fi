@@ -266,13 +266,16 @@ abstract class ListingAndMapParagraphBase extends TrePreProcessPluginBase {
 
     $nid_argument = implode('+', $node_ids);
 
-    $view->setArguments([$nid_argument]);
+    $arguments = [$nid_argument];
+    $view->setArguments($arguments);
 
     if (
       $paragraph->hasField('field_description_text')
       && !$paragraph->get('field_description_text')->isEmpty()
     ) {
       $paragraph_description = $paragraph->get('field_description_text')->getString();
+      $arguments[] = $paragraph_description;
+      $view->setArguments($arguments);
 
       $options = [
         'id' => 'area_text_custom',

@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.place.field_omit_from_listing_map
     - field.field.node.place.field_page_summary
     - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_partial_ingress
     - field.field.node.place.field_search_keywords
     - field.field.node.place.field_topics
     - node.type.place
@@ -103,6 +104,7 @@ hidden:
   field_omit_from_listing_map: true
   field_page_summary: true
   field_paragraphs: true
+  field_partial_ingress: true
   field_search_keywords: true
   field_topics: true
   langcode: true

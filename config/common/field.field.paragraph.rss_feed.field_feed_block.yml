@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - feeds.feed_type.rss_feed
+    - feeds.feed_type.rss_feed_notices
     - field.storage.paragraph.field_feed_block
     - paragraphs.paragraphs_type.rss_feed
 id: paragraph.rss_feed.field_feed_block
@@ -21,9 +22,10 @@ settings:
   handler_settings:
     target_bundles:
       rss_feed: rss_feed
+      rss_feed_notices: rss_feed_notices
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: rss_feed
 field_type: entity_reference

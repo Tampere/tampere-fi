@@ -215,9 +215,9 @@
         "drupal/config_split": "^2.0",
         "drupal/content_moderation_notifications": "^3.4",
         "drupal/cookieinformation": "^2.0",
-        "drupal/core-composer-scaffold": "~10.3.9",
-        "drupal/core-project-message": "~10.3.9",
-        "drupal/core-recommended": "~10.3.9",
+        "drupal/core-composer-scaffold": "~10.3.14",
+        "drupal/core-project-message": "~10.3.14",
+        "drupal/core-recommended": "~10.3.14",
         "drupal/dblog_filter": "^4.1",
         "drupal/decorative_image_widget": "^1.0",
         "drupal/diff": "^1.0",
@@ -238,6 +238,7 @@
         "drupal/facets": "dev-3.0.x#bd8f00c@dev",
         "drupal/facets_custom_label": "^1.1",
         "drupal/feeds": "^3.0@beta",
+        "drupal/feeds_ex": "^1.0@beta",
         "drupal/field_delimiter": "^2.0",
         "drupal/field_group": "^3.1",
         "drupal/field_permissions": "^1.2",
@@ -529,6 +530,9 @@
             },
             "drupal/memcache": {
                 "#2996615: Transaction support for cache (tags) invalidation": "https://www.drupal.org/files/issues/2022-10-25/2996615-revised-woth-hooks--rerolled-against-2.5.patch"
+            },
+            "drupal/metatag": {
+                "Change the value separator to ; so that multivalue tag is separated and not combined untintentionally": "./patches/metatag_multivalue_separator.patch"
             },
             "drupal/office_hours": {
                 "Prevent displaying adjacent commas with empty values - updated to support v1.17": "patches/office_hours_remove_empty_values_from_comments_to_prevent_displaying_adjacent_commas.diff"

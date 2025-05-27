@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.project.field_main_image
     - field.field.node.project.field_page_summary
     - field.field.node.project.field_paragraphs
+    - field.field.node.project.field_partial_ingress
     - field.field.node.project.field_search_keywords
     - field.field.node.project.field_topics
     - node.type.project
@@ -111,6 +112,7 @@ hidden:
   field_help_text: true
   field_main_image: true
   field_page_summary: true
+  field_partial_ingress: true
   langcode: true
   links: true
   published_at: true

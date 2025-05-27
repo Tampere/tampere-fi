@@ -103,7 +103,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ title }}"
+            text: '{{ title }}'
             make_link: false
             path: ''
             absolute: false
@@ -157,6 +157,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 10
           total_pages: null
           id: 0
@@ -174,7 +175,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 3
-          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -3980,6 +3980,398 @@ display:
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        field_listing_search_content_value:
+          id: field_listing_search_content_value
+          table: node__field_listing_search_content
+          field: field_listing_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: field_listing_search_content_value_op
+            label: Listaushakusisältö
+            description: ''
+            use_operator: false
+            operator: field_listing_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: listing_search_content
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              group_content_section_editor: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            placeholder: ''
+            autocomplete_filter: 1
+            autocomplete_min_chars: '3'
+            autocomplete_items: '10'
+            autocomplete_field: field_listing_search_content
+            autocomplete_raw_suggestion: 0
+            autocomplete_raw_dropdown: 1
+            autocomplete_dependent: 0
+            autocomplete_contextual: 0
+            autocomplete_autosubmit: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Sisältötyyppi
+            description: null
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Rajaa tyypin perusteella'
+            description: ''
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Asemakaava
+                operator: in
+                value:
+                  zoning_information: zoning_information
+                  all: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+                  comprehensive_plan: '0'
+              2:
+                title: Yleiskaava
+                operator: in
+                value:
+                  comprehensive_plan: comprehensive_plan
+                  all: '0'
+                  zoning_information: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+              3:
+                title: 'Muu kaupunkisuunnittelun ja rakentamisen hanke'
+                operator: in
+                value:
+                  city_planning_and_constructions: city_planning_and_constructions
+                  all: '0'
+                  zoning_information: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+                  comprehensive_plan: '0'
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: 'Rajaa alueen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_computed_visibility_value:
+          id: field_computed_visibility_value
+          table: node__field_computed_visibility
+          field: field_computed_visibility_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_computed_visibility_value_op
+            label: 'Rajaa nähtävilläolon perusteella'
+            description: ''
+            use_operator: false
+            operator: field_computed_visibility_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_visibility_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+          3: AND
       defaults:
         use_ajax: false
         exposed_form: false
@@ -3987,8 +4379,8 @@ display:
         row: true
         fields: true
         arguments: true
-        filters: true
-        filter_groups: true
+        filters: false
+        filter_groups: false
         header: false
       use_ajax: true
       display_description: 'Has all filters but status.'
@@ -4568,6 +4960,203 @@ display:
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        field_listing_search_content_value:
+          id: field_listing_search_content_value
+          table: node__field_listing_search_content
+          field: field_listing_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: field_listing_search_content_value_op
+            label: Listaushakusisältö
+            description: ''
+            use_operator: false
+            operator: field_listing_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: listing_search_content
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              group_content_section_editor: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            placeholder: ''
+            autocomplete_filter: 1
+            autocomplete_min_chars: '3'
+            autocomplete_items: '10'
+            autocomplete_field: field_listing_search_content
+            autocomplete_raw_suggestion: 0
+            autocomplete_raw_dropdown: 1
+            autocomplete_dependent: 0
+            autocomplete_contextual: 0
+            autocomplete_autosubmit: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: 'Rajaa alueen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+          3: AND
       defaults:
         use_ajax: false
         exposed_form: false
@@ -4575,8 +5164,8 @@ display:
         row: true
         fields: true
         arguments: true
-        filters: true
-        filter_groups: true
+        filters: false
+        filter_groups: false
         header: false
       use_ajax: true
       display_description: 'Has no status, type, or visibility extra filters.'
@@ -4733,6 +5322,337 @@ display:
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        field_listing_search_content_value:
+          id: field_listing_search_content_value
+          table: node__field_listing_search_content
+          field: field_listing_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: field_listing_search_content_value_op
+            label: Listaushakusisältö
+            description: ''
+            use_operator: false
+            operator: field_listing_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: listing_search_content
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              group_content_section_editor: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            placeholder: ''
+            autocomplete_filter: 1
+            autocomplete_min_chars: '3'
+            autocomplete_items: '10'
+            autocomplete_field: field_listing_search_content
+            autocomplete_raw_suggestion: 0
+            autocomplete_raw_dropdown: 1
+            autocomplete_dependent: 0
+            autocomplete_contextual: 0
+            autocomplete_autosubmit: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Sisältötyyppi
+            description: null
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Rajaa tyypin perusteella'
+            description: ''
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Asemakaava
+                operator: in
+                value:
+                  zoning_information: zoning_information
+                  all: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+                  comprehensive_plan: '0'
+              2:
+                title: Yleiskaava
+                operator: in
+                value:
+                  comprehensive_plan: comprehensive_plan
+                  all: '0'
+                  zoning_information: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+              3:
+                title: 'Muu kaupunkisuunnittelun ja rakentamisen hanke'
+                operator: in
+                value:
+                  city_planning_and_constructions: city_planning_and_constructions
+                  all: '0'
+                  zoning_information: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+                  comprehensive_plan: '0'
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: 'Rajaa alueen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+          3: AND
       defaults:
         use_ajax: false
         exposed_form: false
@@ -4740,8 +5660,8 @@ display:
         row: true
         fields: true
         arguments: true
-        filters: true
-        filter_groups: true
+        filters: false
+        filter_groups: false
         header: false
       use_ajax: true
       display_description: 'Has all filters but status and visibility.'
@@ -4898,6 +5818,325 @@ display:
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        field_listing_search_content_value:
+          id: field_listing_search_content_value
+          table: node__field_listing_search_content
+          field: field_listing_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: field_listing_search_content_value_op
+            label: Listaushakusisältö
+            description: ''
+            use_operator: false
+            operator: field_listing_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: listing_search_content
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              group_content_section_editor: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            placeholder: ''
+            autocomplete_filter: 1
+            autocomplete_min_chars: '3'
+            autocomplete_items: '10'
+            autocomplete_field: field_listing_search_content
+            autocomplete_raw_suggestion: 0
+            autocomplete_raw_dropdown: 1
+            autocomplete_dependent: 0
+            autocomplete_contextual: 0
+            autocomplete_autosubmit: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: 'Rajaa alueen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_computed_status_value:
+          id: field_computed_status_value
+          table: node__field_computed_status
+          field: field_computed_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_computed_status_value_op
+            label: 'Rajaa tilanteen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_computed_status_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_status_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_computed_visibility_value:
+          id: field_computed_visibility_value
+          table: node__field_computed_visibility
+          field: field_computed_visibility_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_computed_visibility_value_op
+            label: 'Rajaa nähtävilläolon perusteella'
+            description: ''
+            use_operator: false
+            operator: field_computed_visibility_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_visibility_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+          3: AND
       defaults:
         use_ajax: false
         exposed_form: false
@@ -4905,8 +6144,8 @@ display:
         row: true
         fields: true
         arguments: true
-        filters: true
-        filter_groups: true
+        filters: false
+        filter_groups: false
         header: false
       use_ajax: true
       display_description: 'Has all filters but type.'
@@ -5486,6 +6725,398 @@ display:
           expose_sort_order: false
           sort_asc_label: Asc
           sort_desc_label: Desc
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        field_listing_search_content_value:
+          id: field_listing_search_content_value
+          table: node__field_listing_search_content
+          field: field_listing_search_content_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 2
+          exposed: true
+          expose:
+            operator_id: field_listing_search_content_value_op
+            label: Listaushakusisältö
+            description: ''
+            use_operator: false
+            operator: field_listing_search_content_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: listing_search_content
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              group_content_section_editor: '0'
+              section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            placeholder: ''
+            autocomplete_filter: 1
+            autocomplete_min_chars: '3'
+            autocomplete_items: '10'
+            autocomplete_field: field_listing_search_content
+            autocomplete_raw_suggestion: 0
+            autocomplete_raw_dropdown: 1
+            autocomplete_dependent: 0
+            autocomplete_contextual: 0
+            autocomplete_autosubmit: 0
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Sisältötyyppi
+            description: null
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Rajaa tyypin perusteella'
+            description: ''
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: Asemakaava
+                operator: in
+                value:
+                  zoning_information: zoning_information
+                  all: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+                  comprehensive_plan: '0'
+              2:
+                title: Yleiskaava
+                operator: in
+                value:
+                  comprehensive_plan: comprehensive_plan
+                  all: '0'
+                  zoning_information: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  city_planning_and_constructions: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+              3:
+                title: 'Muu kaupunkisuunnittelun ja rakentamisen hanke'
+                operator: in
+                value:
+                  city_planning_and_constructions: city_planning_and_constructions
+                  all: '0'
+                  zoning_information: '0'
+                  service_channel: '0'
+                  blog_article: '0'
+                  front_page: '0'
+                  person: '0'
+                  emergency_notice: '0'
+                  notice: '0'
+                  map_point: '0'
+                  collection_page: '0'
+                  moderated_page: '0'
+                  content_in_other_language: '0'
+                  organization: '0'
+                  involvement_opportunity: '0'
+                  place: '0'
+                  ptv_service: '0'
+                  basic_content_page: '0'
+                  small_news_item: '0'
+                  portfolio: '0'
+                  portfolio_listing: '0'
+                  project: '0'
+                  rss_item: '0'
+                  rich_article: '0'
+                  place_of_business: '0'
+                  news_item: '0'
+                  comprehensive_plan: '0'
+        field_geographical_areas_target_id:
+          id: field_geographical_areas_target_id
+          table: node__field_geographical_areas
+          field: field_geographical_areas_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_geographical_areas_target_id_op
+            label: 'Rajaa alueen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_geographical_areas_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_geographical_areas_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: geographical_areas
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_computed_status_value:
+          id: field_computed_status_value
+          table: node__field_computed_status
+          field: field_computed_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 3
+          exposed: true
+          expose:
+            operator_id: field_computed_status_value_op
+            label: 'Rajaa tilanteen perusteella'
+            description: ''
+            use_operator: false
+            operator: field_computed_status_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_status_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              siteimprove_user: '0'
+              mailing_list_admin: '0'
+              emergency_notice_author: '0'
+              service_author: '0'
+              contact_info_author: '0'
+              blog_article_author: '0'
+              notice_author: '0'
+              zoning_information_author: '0'
+              small_news_item_author: '0'
+              news_item_author: '0'
+              rich_article_author: '0'
+              basic_content_page_author: '0'
+              media_editor: '0'
+              front_page_author: '0'
+              author: '0'
+              section_editor: '0'
+              group_content_section_editor: '0'
+              participation_section_editor: '0'
+              super_user: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        langcode:
+          id: langcode
+          table: node_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+          3: AND
       defaults:
         use_ajax: false
         exposed_form: false
@@ -5493,8 +7124,8 @@ display:
         row: true
         fields: true
         arguments: true
-        filters: true
-        filter_groups: true
+        filters: false
+        filter_groups: false
         header: false
       use_ajax: true
       display_description: 'Has all filters but visibility.'

@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.place.field_omit_from_listing_map
     - field.field.node.place.field_page_summary
     - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_partial_ingress
     - field.field.node.place.field_search_keywords
     - field.field.node.place.field_topics
     - node.type.place
@@ -359,6 +360,7 @@ hidden:
   field_epsg_3067_northing: true
   field_epsg_3067_point_strings: true
   field_listing_search_content: true
+  field_partial_ingress: true
   promote: true
   published_at: true
   sticky: true

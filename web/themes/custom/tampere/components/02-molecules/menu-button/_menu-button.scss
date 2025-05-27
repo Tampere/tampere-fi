@@ -20,14 +20,15 @@ $menu-button-height: 55px;
 
   &:focus,
   &:hover {
-    background-color: clr(background);
-    color: clr(secondary);
+    color: $color-white;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   &.is-open {
-    background-color: clr(text-inverse);
-    color: clr(secondary);
-
     #{$base_class}__icon--closed {
       display: none;
     }
@@ -74,6 +75,8 @@ $menu-button-height: 55px;
     display: flex;
     font-size: $font-22;
     padding: $space-s $space-m;
+    justify-content: space-between;
+    min-width: 173px; // No layout shift
   }
 
   &__icon {
@@ -94,6 +97,8 @@ $menu-button-height: 55px;
 
   &--mobile {
     display: flex;
+    justify-content: space-between;
+    min-width: 115px; // No layout shift
 
     @include large {
       display: none;

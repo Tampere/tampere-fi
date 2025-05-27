@@ -36,6 +36,7 @@
 
   &__content {
     display: flex;
+    flex-wrap: wrap;
     padding: $space-xs $space-s;
 
     @include large {
@@ -46,6 +47,17 @@
       padding-bottom: $space-xxs;
       padding-left: 0;
     }
+
+    &--notices-feed {
+      display: grid;
+      grid-template-columns: none;
+      gap: $space-xs;
+
+      @include medium {
+        grid-template-columns: 3fr 3fr 5fr 2fr 2fr 1fr;
+      }
+    }
+  
   }
 
   &__text-content {
@@ -78,10 +90,13 @@
     font-weight: $font-weight-regular;
     line-height: 1.75;
     margin-bottom: 0;
-    overflow-wrap: initial;
-    word-break: initial;
+    word-break: break-word;
     width: fit-content;
 
+    @include mobile-breakpoint {
+      overflow-wrap: initial;
+      word-break: initial;
+    }
     @include large {
       font-size: $font-20;
       line-height: 1.4;
@@ -93,7 +108,6 @@
 
   &__icon-content {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     margin-left: auto;
   }

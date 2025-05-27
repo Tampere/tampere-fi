@@ -13,6 +13,7 @@ use Drupal\taxonomy\TermInterface;
 function tre_content_listing_preprocess_paragraph__content_listing(&$variables) {
   $paragraph = $variables['paragraph'];
   $pid = $paragraph->id();
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
   // Generate a unique element react will attach to.
   $listing_id = "content-listing-app-{$pid}";
@@ -36,6 +37,8 @@ function tre_content_listing_preprocess_paragraph__content_listing(&$variables) 
   $filter_type = $paragraph->get('field_filter_type')->value ?: 'alphabetical';
   $filter_values = [];
 
+  $letter_grouping = (bool) $paragraph->get('field_disable_letter_grouping')->value;
+
   // Fetch sub terms if the parent term is valid.
   if ($term && $term instanceof TermInterface) {
     $term_id = $term->id();
@@ -45,12 +48,19 @@ function tre_content_listing_preprocess_paragraph__content_listing(&$variables) 
   if (!$paragraph->get('field_allowed_filter_groups')->isEmpty()) {
     $allowed_filter_groups = $paragraph->get('field_allowed_filter_groups')->referencedEntities();
     foreach ($allowed_filter_groups as $group) {
+      $group = $group->hasTranslation($langcode) ? $group->getTranslation($langcode) : $group;
+
       $child_filter_terms = \Drupal::entityTypeManager()
         ->getStorage('taxonomy_term')
         ->loadTree($group->bundle(), $group->id(), 1, TRUE);
 
       $filter_options = [];
       foreach ($child_filter_terms as $child_filter) {
+        if (!$child_filter->hasTranslation($langcode)) {
+          continue;
+        }
+
+        $child_filter = $child_filter->getTranslation($langcode);
         $filter_options[] = $child_filter->getName();
       }
 
@@ -83,6 +93,8 @@ function tre_content_listing_preprocess_paragraph__content_listing(&$variables) 
     'termId' => $term_id,
     'filterType' => $filter_type,
     'filterValues' => $filter_values,
+    'disableLetterGrouping' => $letter_grouping,
+    'langcode' => $langcode,
   ];
 
 }

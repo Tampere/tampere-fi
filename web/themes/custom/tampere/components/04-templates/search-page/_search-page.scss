@@ -17,6 +17,61 @@
   &__header {
     margin-top: $space-m;
     margin-bottom: $space-m;
+
+    &__results {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-xs;
+      padding: 0 $gutter-mobile;
+      margin-top: $space-m;
+      margin-bottom: $space-m;
+
+      @include large {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+      }
+
+      &__link {
+        background: none;
+        border: none;
+        color: clr(primary);
+        cursor: pointer;
+        font-size: $font-16;
+        text-decoration: underline;
+        text-underline-position: under;
+        text-decoration-thickness: 1px;
+        margin-left: auto;
+
+        @include large {
+          font-size: $font-20;
+        }
+
+        &:focus,
+        &:hover {
+          text-decoration: none;
+        }
+
+        &::after {
+          background-image: url("/themes/custom/tampere/images/blue-arrow.svg");
+          background-size: $footer-menu-icon-size $footer-menu-icon-size;
+          content: "";
+          display: inline-block;
+          margin-left: $footer-menu-icon-margin;
+          position: relative;
+          top: 2px;
+          height: $footer-menu-icon-size;
+          width: $footer-menu-icon-size;
+        }
+      }
+    }
+  }
+
+  &__facets button {
+    text-transform: uppercase;
   }
 
   &__filter-title {
@@ -33,5 +88,36 @@
     @include large {
       margin-bottom: $space-xxl;
     }
+
+    .listing-item__published,
+    .listing-item__breadcrumbs {
+      display: block;
+      font-size: $font-18;
+      font-family: $font-heading;
+    }
+
+    .listing-item--default-search:hover,
+    .listing-item--default-search:focus {
+      .listing-item__main-content {
+        text-decoration: none;
+
+        .listing-item__heading,
+        .field-metadata-description {
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+      }
+    }
   }
+
+  &__title {
+    @include medium {
+      border-bottom: $border-thick-primary;
+      padding-bottom: $space-m;
+    }
+  }
+}
+
+.cludo-assistant-header h2 {
+  hyphens: auto;
 }

@@ -41,6 +41,24 @@
       aria-hidden="true"
     >
       {{ tab.content }}
+
+        {% if tab.accessibility_sentences %}
+          {% set accessibility_content %}
+            {% include "@molecules/accessibility-info/accessibility-info.twig" with {
+              accessibility_information_list: tab.accessibility_sentences
+            } only %}
+          {% endset %}
+
+        <div {{ bem("accessibility-accordion", [], horizontal_accordion__base_class) }}>
+          {% include "@organisms/accordion/accordion-item.twig" with {
+            accordion_heading: "Accurate accessibility information"|t,
+            accordion_content: accessibility_content,
+            attributes: []
+          } %}
+        </div>
+
+        {% endif %}
+
     </div>
   {% endfor %}
 </div>

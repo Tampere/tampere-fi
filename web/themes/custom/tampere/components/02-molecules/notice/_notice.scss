@@ -6,6 +6,11 @@
   display: flex;
   max-width: var(--basic-component-max-width);
 
+  @include mobile-breakpoint-down {
+    flex-direction: column;
+    gap: $space-s;
+  }
+
   @include large {
     font-size: $font-20;
   }
@@ -34,6 +39,7 @@
     font-family: $font-heading;
     margin: 0 0 $space-xxs 0;
     font-weight: $font-weight-bold;
+    hyphens: auto;
 
     @include large {
       margin-bottom: $space-s;
@@ -44,6 +50,7 @@
     font-family: $font-body;
     margin: 0;
     max-width: var(--text-content-max-width);
+    hyphens: auto;
 
     p:first-of-type {
       margin-top: $space-xs;

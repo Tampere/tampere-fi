@@ -13,7 +13,7 @@ dependencies:
 id: minisite_main_menu_fi
 theme: tampere
 region: header
-weight: -11
+weight: -14
 provider: null
 plugin: 'group_content_menu:minisite_main_menu_fi'
 settings:

@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.search_ext
   module:
+    - group
     - system
     - views
   theme:
@@ -12,7 +13,7 @@ dependencies:
 id: search_ext_form
 theme: tampere
 region: header
-weight: -14
+weight: -2
 provider: null
 plugin: 'views_exposed_filter_block:search_ext-page_1'
 settings:
@@ -26,3 +27,10 @@ visibility:
     id: request_path
     negate: false
     pages: /search-external
+  'entity_bundle:group':
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: '@group.group_route_context:group'
+    bundles:
+      minisite: minisite

@@ -42,7 +42,11 @@ $card-with-links-image-max-height: 720px;
 
   &__content {
     background-color: clr(muted);
-    padding: $gutter-large $gutter-medium;
+    padding: $space-l $space-s;
+
+    @include mobile-breakpoint {
+      padding: $gutter-large $gutter-medium;
+    }
 
     @include large {
       padding: clamp($gutter-small, 5%, $gutter-default);
@@ -67,6 +71,7 @@ $card-with-links-image-max-height: 720px;
     font-size: $font-16;
     margin-top: $space-xs;
     margin-bottom: $space-m;
+    hyphens: auto;
 
     @include large {
       font-size: $font-20;

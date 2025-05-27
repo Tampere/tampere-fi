@@ -8,11 +8,14 @@ $person-contact-image-size--large: 105px;
 
   display: grid;
   font-size: $font-16;
-  grid-template-columns: $person-contact-image-size 1fr;
   gap: $space-s;
   margin-top: $space-xl;
   padding-bottom: $space-xl;
   position: relative;
+
+  @include mobile-breakpoint {
+    grid-template-columns: $person-contact-image-size 1fr;
+  }
 
   &::after {
     background-color: clr(accent-tertiary);

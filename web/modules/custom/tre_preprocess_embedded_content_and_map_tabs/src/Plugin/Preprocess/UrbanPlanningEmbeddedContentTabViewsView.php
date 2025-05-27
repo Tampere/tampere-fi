@@ -17,6 +17,9 @@ class UrbanPlanningEmbeddedContentTabViewsView extends EmbeddedContentTabViewsVi
    */
   public function preprocess(array $variables): array {
     $view = $variables['view'];
+
+    // The description is passed as the second contextual argument.
+    $variables['footer'] = $view->args[1] ?? '';
     $variables['total_rows'] = $view->total_rows;
     $variables['current_page_rows'] = count($view->result);
     return $variables;

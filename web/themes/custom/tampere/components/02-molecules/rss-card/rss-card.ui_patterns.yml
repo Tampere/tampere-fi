@@ -14,4 +14,14 @@ rss_card:
       label: Heading
     rss_card__icon_name:
       label: Icon name
+    rss_card__license_plate:
+      label: License Plate
+    rss_card__construction_site:
+      label: Construction Site
+    rss_card__description:
+      label: Description
+    rss_card__publication_date:
+      label: Publication Date
+    rss_card__publication_end_date:
+      label: Publication End Date
   use: "@molecules/rss-card/rss-card.twig"

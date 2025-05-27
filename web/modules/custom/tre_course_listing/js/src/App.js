@@ -20,10 +20,12 @@ const StyledApp = styled.div`
   --color-full: #ae1e20;
   --color-available: #397368;
   --color-count: #ae1e20;
+  --color-blue-600: #1d3a6c;
 
   --font-family-body: 'Open Sans', 'Arial', sans-serif;
   --font-family-heading: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
 
+  --font-size-14: 0.875rem;
   --font-size-15: 0.9375rem;
   --font-size-16: 1rem;
   --font-size-18: 1.125rem;
@@ -52,6 +54,7 @@ const ListingTitle = styled.h2`
   font-size: var(--font-size-22);
   font-weight: 800;
   line-height: 1.11;
+  hyphens: auto;
 
   @media screen and (min-width: 61.56rem) {
     font-size: var(--font-size-28);

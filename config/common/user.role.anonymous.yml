@@ -74,6 +74,7 @@ permissions:
   - 'view paragraph content image'
   - 'view paragraph content image_gallery'
   - 'view paragraph content image_gallery_item'
+  - 'view paragraph content image_gallery_limited_images'
   - 'view paragraph content infograph'
   - 'view paragraph content infographs'
   - 'view paragraph content internal_link'

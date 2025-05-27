@@ -94,6 +94,7 @@ process:
           field_address_street/postal_code: postal_code
           field_address_street/locality: locality
           field_address_street/country_code: country
+          field_access_info_sentences_json: accessibility_information
   field_additional_phones:
     plugin: sub_process
     source: phones
@@ -115,6 +116,16 @@ process:
     -
       plugin: array_shift
       source: emails
+  field_email_2:
+    -
+      plugin: extract
+      source: emails
+      default: {  }
+      index:
+        - 1
+    -
+      plugin: skip_on_empty
+      method: process
   field_opening_hours:
     -
       plugin: extract

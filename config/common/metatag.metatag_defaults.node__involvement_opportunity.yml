@@ -6,4 +6,5 @@ id: node__involvement_opportunity
 label: 'Sisältö: Osallistumismahdollisuus'
 tags:
   description: '[node:field_participate_summary:value]'
+  'metatag_custom_tag:cludo_ingress': '[node:field_participate_summary:value]'
   og_description: '[node:field_participate_summary:value]'

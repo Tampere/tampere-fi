@@ -26,6 +26,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_main_image
     - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
+    - field.field.node.city_planning_and_constructions.field_partial_ingress
     - field.field.node.city_planning_and_constructions.field_partially_binding_phase
     - field.field.node.city_planning_and_constructions.field_phase
     - field.field.node.city_planning_and_constructions.field_phasing_not_in_use
@@ -132,6 +133,7 @@ hidden:
   field_main_image: true
   field_omit_from_listing_map: true
   field_paragraphs: true
+  field_partial_ingress: true
   field_partially_binding_phase: true
   field_phase: true
   field_phasing_not_in_use: true

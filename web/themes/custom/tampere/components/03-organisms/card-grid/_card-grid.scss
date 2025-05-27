@@ -8,6 +8,10 @@
     padding: 0;
     grid-auto-rows: auto;
 
+    @include mobile-breakpoint-down {
+      display: flex;
+      flex-direction: column;
+    }
     @include small {
       grid-template-columns: repeat(2, 1fr);
     }

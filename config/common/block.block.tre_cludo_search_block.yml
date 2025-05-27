@@ -1,0 +1,20 @@
+uuid: c8026b4a-4ca4-4ff5-b75d-776f088ff417
+langcode: fi
+status: true
+dependencies:
+  module:
+    - tre_cludo_search
+  theme:
+    - tampere
+id: tre_cludo_search_block
+theme: tampere
+region: header
+weight: -21
+provider: null
+plugin: cludo_search_block
+settings:
+  id: cludo_search_block
+  label: 'Cludo search block'
+  label_display: '0'
+  provider: tre_cludo_search
+visibility: {  }

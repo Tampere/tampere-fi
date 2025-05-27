@@ -1,0 +1,19 @@
+uuid: c2f7498d-e88b-4c75-966c-a90a8d6621e2
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_license_plate
+    - node.type.rss_item
+id: node.rss_item.field_license_plate
+field_name: field_license_plate
+entity_type: node
+bundle: rss_item
+label: Lupatunnus
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

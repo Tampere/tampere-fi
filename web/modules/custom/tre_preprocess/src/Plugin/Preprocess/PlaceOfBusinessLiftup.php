@@ -126,6 +126,12 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
             }
           }
 
+          if (in_array('email_2', $fields_selected_for_display, TRUE)) {
+            if (!$translated_pob_node->get('field_email_2')->isEmpty()) {
+              $variables['place_of_business_email_2'] = $translated_pob_node->get('field_email_2')->view(self::LIFTUP_VIEW_MODE);
+            }
+          }
+
           $variables['right_column_content'] = [];
 
           if (in_array('opening_hours', $fields_selected_for_display, TRUE)) {
@@ -167,13 +173,38 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
           }
 
           if (in_array('accessibility_information', $fields_selected_for_display, TRUE)) {
-            if (!$translated_pob_node->get('field_accessibility_and_services')->isEmpty()) {
-              $title_label = $translated_pob_node->field_accessibility_info_title->getSetting('allowed_values')[$translated_pob_node->field_accessibility_info_title->value];
-              $variables['place_of_business_accessibility_title'] = $title_label;
+            $accessibility_selected_label = 'accessibility';
 
+            if (!$translated_pob_node->get('field_accessibility_info_title')->isEmpty()) {
+              $accessibility_selected_label = $translated_pob_node->field_accessibility_info_title->value;
+            }
+            
+            $title_label = $translated_pob_node->field_accessibility_info_title->getSetting('allowed_values')[$accessibility_selected_label];
+            $variables['place_of_business_accessibility_title'] = $title_label;
+
+            if (!$translated_pob_node->get('field_accessibility_and_services')->isEmpty()) {
               $taxonomies = $translated_pob_node->get('field_accessibility_and_services')->view('default');
               $variables['place_of_business_accessibility_taxonomies'] = $taxonomies;
             }
+
+            $addresses = $translated_pob_node->get('field_addresses');
+            $access_info_list = [];
+
+            foreach ($addresses as $address_item) {
+              $map_location_node = $address_item->entity;
+
+              if ($map_location_node instanceof NodeInterface && $map_location_node->hasField('field_access_info_sentences_json')) {
+                $field_access_info_sentences_json = $map_location_node->get('field_access_info_sentences_json')->value;
+                if (!empty($field_access_info_sentences_json)) {
+                  $decoded = json_decode($field_access_info_sentences_json, TRUE);
+                  if (is_array($decoded)) {
+                    $access_info_list = array_merge($access_info_list, $decoded);
+                  }
+                }
+              }
+            }
+
+            $variables['access_info_list'] = $access_info_list;
           }
 
           if (in_array('map', $fields_selected_for_display, TRUE)) {
@@ -185,8 +216,16 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
               $variables['#attached']['drupalSettings']['tampere']['mmlMapIframeDomain'] = Settings::get('mml_map_iframe_domain');
             }
           }
+
+          if (in_array('image_gallery', $fields_selected_for_display, TRUE)) {
+            if (!$translated_pob_node->get('field_image_gallery')->isEmpty()) {
+              $variables['image_gallery'] = $translated_pob_node->get('field_image_gallery')->view('default');
+            }
+          }
+
         }
       }
+
     }
 
     return $variables;

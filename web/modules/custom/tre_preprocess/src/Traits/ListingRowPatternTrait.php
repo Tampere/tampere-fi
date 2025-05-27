@@ -3,6 +3,7 @@
 namespace Drupal\tre_preprocess\Traits;
 
 use Drupal\node\NodeInterface;
+use Drupal\feeds\Entity\Feed;
 
 /**
  * Trait for using a pattern for listing rows.
@@ -13,6 +14,13 @@ trait ListingRowPatternTrait {
    * {@inheritdoc}
    */
   public function preprocess(array $variables): array {
+    $view = $variables['view'];
+
+    $feed = Feed::load($view->args[0]);
+    if ($feed) {
+      $feed_type = $feed->bundle();
+      $variables['feed_type'] = $feed_type;
+    }
 
     $rows = $variables['rows'];
 
@@ -33,19 +41,39 @@ trait ListingRowPatternTrait {
         '#type' => 'pattern',
         '#id' => 'rss_card',
         '#fields' => [
-          'rss_card__heading' => $title,
           'rss_card__link__url' => $link_url,
           'rss_card__icon_name' => $icon_name,
         ],
       ];
 
-      if ($node->bundle() !== 'rss_item') {
-        $variables['rows'][$key]['content']['#variant'] = 'colorful';
+      if ($feed_type !== 'rss_feed_notices') {
+        $variables['rows'][$key]['content']['#fields']['rss_card__heading'] = $title;
+        if ($node->bundle() !== 'rss_item') {
+          $variables['rows'][$key]['content']['#variant'] = 'colorful';
+        }
+        else {
+          $date = $translated_node->getCreatedTime();
+          $formatted_date = $this->dateFormatter->format($date, 'custom', 'j.n.Y');
+          $variables['rows'][$key]['content']['#fields']['rss_card__date'] = $formatted_date;
+        }
       }
       else {
-        $date = $translated_node->getCreatedTime();
+        $license_plate = $translated_node->get('field_license_plate')->value;
+        $variables['rows'][$key]['content']['#fields']['rss_card__license_plate'] = $license_plate;
+
+        $construction_site = $translated_node->get('field_construction_site')->value;
+        $variables['rows'][$key]['content']['#fields']['rss_card__construction_site'] = $construction_site;
+
+        $description = $translated_node->get('body')->value;
+        $variables['rows'][$key]['content']['#fields']['rss_card__description'] = $description;
+
+        $date = $translated_node->get('field_publication_time')->date->getTimestamp();
         $formatted_date = $this->dateFormatter->format($date, 'custom', 'j.n.Y');
-        $variables['rows'][$key]['content']['#fields']['rss_card__date'] = $formatted_date;
+        $variables['rows'][$key]['content']['#fields']['rss_card__publication_date'] = $formatted_date;
+
+        $end_date = $translated_node->get('field_publication_end_time')->date->getTimestamp();
+        $formatted_date = $this->dateFormatter->format($end_date, 'custom', 'j.n.Y');
+        $variables['rows'][$key]['content']['#fields']['rss_card__publication_end_date'] = $formatted_date;
       }
     }
 

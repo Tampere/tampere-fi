@@ -1,0 +1,19 @@
+uuid: 29fddb61-a4d1-406d-935f-42ecfcc38e88
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email_2
+    - node.type.place_of_business
+id: node.place_of_business.field_email_2
+field_name: field_email_2
+entity_type: node
+bundle: place_of_business
+label: 'Sähköposti 2'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

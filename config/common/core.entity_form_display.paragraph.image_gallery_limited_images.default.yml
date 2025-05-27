@@ -1,0 +1,43 @@
+uuid: 61c16271-121a-4623-b577-f39ef2631c65
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image_gallery_limited_images.field_image_gallery_help
+    - field.field.paragraph.image_gallery_limited_images.field_images_limited
+    - paragraphs.paragraphs_type.image_gallery_limited_images
+  module:
+    - field_states_ui
+    - markup
+    - paragraphs_asymmetric_translation_widgets
+id: paragraph.image_gallery_limited_images.default
+targetEntityType: paragraph
+bundle: image_gallery_limited_images
+mode: default
+content:
+  field_image_gallery_help:
+    type: markup
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_images_limited:
+    type: paragraphs_classic_asymmetric
+    weight: 1
+    region: content
+    settings:
+      title: Kuva
+      title_plural: Kuvat
+      edit_mode: preview
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: image_gallery_item
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
+hidden:
+  created: true
+  status: true

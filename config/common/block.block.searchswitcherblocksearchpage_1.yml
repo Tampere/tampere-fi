@@ -1,6 +1,6 @@
 uuid: 77b1e478-548f-49f6-a3b3-f44ea971712b
 langcode: fi
-status: false
+status: true
 dependencies:
   config:
     - views.view.search

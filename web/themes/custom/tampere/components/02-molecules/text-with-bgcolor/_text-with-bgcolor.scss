@@ -2,11 +2,14 @@
   $base_class: &;
 
   @include page-element-spacer;
+  @include mobile-breakpoint {
+    display: grid;
+    column-gap: 0;
+    row-gap: 0;
+    overflow: hidden;
+  }
 
-  display: grid;
-  column-gap: 0;
-  row-gap: 0;
-  overflow: hidden;
+  hyphens: auto;
 
   @include medium {
     grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
@@ -25,7 +28,7 @@
   }
 
   &__text-box {
-    background: clr(accent-secondary);
+    background: #f1eeeb;
     padding: $space-m;
 
     @include large {
@@ -74,6 +77,21 @@
           padding: $space-l;
         }
       }
+    }
+  }
+
+  &__summary {
+    background: #f1eeeb;
+    padding: $space-m;
+    margin: 0 1rem;
+
+    @include large {
+      margin: 0;
+      padding: $space-l;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
     }
   }
 }

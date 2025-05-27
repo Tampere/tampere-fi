@@ -7,9 +7,7 @@ import {
   SearchButton,
 } from "./SearchBar.styles";
 
-const SearchBar = ({ filterTerms }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-
+const SearchBar = ({ filterTerms, searchQuery, setSearchQuery }) => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       filterTerms(searchQuery);
@@ -26,7 +24,11 @@ const SearchBar = ({ filterTerms }) => {
     <SearchBarWrapper>
       <Label>{Drupal.t("Search terms")}</Label>
       <InputWrapper>
-        <Input onKeyDown={handleKeyDown} onChange={handleInputChange} />
+        <Input
+          value={searchQuery}
+          onKeyDown={handleKeyDown}
+          onChange={handleInputChange}
+        />
         <SearchButton
           aria-label={Drupal.t("Search")}
           onClick={() => filterTerms(searchQuery)}

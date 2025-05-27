@@ -16,8 +16,14 @@ $link-list-large-icons-xl-breakpoint: 1200px;
   &__link {
     @include button-default;
     @include button;
+    @include mobile-breakpoint-down {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-s;
+    }
 
     width: fit-content;
+    gap: $space-l;
   }
 
   &__link-text {
@@ -28,7 +34,6 @@ $link-list-large-icons-xl-breakpoint: 1200px;
     flex-shrink: 0;
     height: $icon-default;
     width: $icon-default;
-    margin-left: $space-l;
   }
 
   // Variations
@@ -37,6 +42,11 @@ $link-list-large-icons-xl-breakpoint: 1200px;
     column-gap: $space-xs;
     row-gap: $gutter-small;
     grid-template-columns: repeat(2, 1fr);
+
+    @include mobile-breakpoint-down {
+      display: flex;
+      flex-direction: column;
+    }
 
     @include large {
       column-gap: clamp($gutter-small, 5%, $gutter-large);
@@ -55,7 +65,7 @@ $link-list-large-icons-xl-breakpoint: 1200px;
       display: flex;
       font-size: $font-15;
       font-weight: $font-weight-bold;
-      flex-direction: row-reverse;
+      flex-direction: column-reverse;
       justify-content: flex-end;
       padding-top: $space-s;
       padding-right: 0;
@@ -64,6 +74,10 @@ $link-list-large-icons-xl-breakpoint: 1200px;
       text-decoration: none;
       text-transform: none;
       width: 100%;
+
+      @include mobile-breakpoint {
+        flex-direction: row-reverse;
+      }
 
       @include large {
         font-size: $font-22;

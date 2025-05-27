@@ -40,6 +40,12 @@ $accordion-item-distance: $space-m;
       justify-content: space-between;
       text-align: left;
 
+      @include mobile-breakpoint-down {
+        flex-direction: column;
+        gap: $gutter-mobile;
+        align-items: flex-start;
+      }
+      
       @include large {
         font-size: $accordion-desktop-font-size;
       }
@@ -76,7 +82,13 @@ $accordion-item-distance: $space-m;
       }
 
       &-wrapper {
-        white-space: nowrap;
+        margin: 0 $space-s;
+        align-items: center;
+
+        @include mobile-breakpoint {
+          white-space: nowrap;
+          align-items: unset;
+        }
       }
 
       &,
@@ -344,6 +356,8 @@ $accordion-item-distance: $space-m;
     }
 
     #{$base_class}__heading {
+
+
       background-color: clr(primary);
       border: 0;
       box-shadow: none;

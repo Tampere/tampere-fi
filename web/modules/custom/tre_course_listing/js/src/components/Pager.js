@@ -19,6 +19,7 @@ const Pagination = styled.ul`
   margin: 0;
   padding: 0;
   width: 100%;
+  flex-wrap: wrap;
 `;
 
 const InactiveDirection = styled.span`
@@ -57,7 +58,6 @@ const PagerButton = styled.button`
   color: var(--color-primary);
   cursor: pointer;
   padding: 0;
-  text-transform: uppercase;
 
   &:hover {
     text-decoration: underline;

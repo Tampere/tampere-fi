@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.comprehensive_plan.field_omit_from_listing_map
     - field.field.node.comprehensive_plan.field_other_identifiers
     - field.field.node.comprehensive_plan.field_paragraphs
+    - field.field.node.comprehensive_plan.field_partial_ingress
     - field.field.node.comprehensive_plan.field_partially_binding_phase
     - field.field.node.comprehensive_plan.field_phase
     - field.field.node.comprehensive_plan.field_plan_number
@@ -52,6 +53,8 @@ third_party_settings:
     regions:
       listing_item__heading:
         - node_title
+      listing_item__main_content:
+        - field_partial_ingress
     fields:
       node_title:
         plugin_id: node_title
@@ -72,7 +75,14 @@ id: node.comprehensive_plan.search_result
 targetEntityType: node
 bundle: comprehensive_plan
 mode: search_result
-content: {  }
+content:
+  field_partial_ingress:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: listing_item__main_content
 hidden:
   content_moderation_control: true
   entitygroupfield: true

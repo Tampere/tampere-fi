@@ -1,0 +1,5 @@
+name: 'TRE Cludo search'
+type: module
+description: 'Custom module for adding cludo search'
+package: 'TRE'
+core_version_requirement: '>=10'

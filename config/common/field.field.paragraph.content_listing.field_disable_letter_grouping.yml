@@ -1,0 +1,21 @@
+uuid: 2863ebe3-b67f-472e-ba0b-e25275751427
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_disable_letter_grouping
+    - paragraphs.paragraphs_type.content_listing
+id: paragraph.content_listing.field_disable_letter_grouping
+field_name: field_disable_letter_grouping
+entity_type: paragraph
+bundle: content_listing
+label: 'Disable letter grouping'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

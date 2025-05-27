@@ -14,7 +14,6 @@ $button-default-line-height: 1.2;
   line-height: $button-default-line-height;
   padding: $button-mobile-padding;
   text-decoration: none;
-  text-transform: uppercase;
   align-items: center;
 
   @include large {

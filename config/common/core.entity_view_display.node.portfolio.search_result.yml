@@ -39,6 +39,8 @@ third_party_settings:
     regions:
       listing_item__heading:
         - node_title
+      listing_item__main_content:
+        - field_lead
     fields:
       node_title:
         plugin_id: node_title
@@ -58,7 +60,14 @@ id: node.portfolio.search_result
 targetEntityType: node
 bundle: portfolio
 mode: search_result
-content: {  }
+content:
+  field_lead:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: listing_item__main_content
 hidden:
   content_moderation_control: true
   entitygroupfield: true
@@ -68,7 +77,6 @@ hidden:
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
-  field_lead: true
   field_life_situations: true
   field_link_list: true
   field_main_image: true

@@ -32,6 +32,8 @@ third_party_settings:
     regions:
       listing_item__heading:
         - node_title
+      listing_item__main_content:
+        - field_metadata_description
     fields:
       node_title:
         plugin_id: node_title
@@ -51,7 +53,14 @@ id: node.collection_page.search_result
 targetEntityType: node
 bundle: collection_page
 mode: search_result
-content: {  }
+content:
+  field_metadata_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: listing_item__main_content
 hidden:
   content_moderation_control: true
   entitygroupfield: true
@@ -60,7 +69,6 @@ hidden:
   field_keywords: true
   field_life_situations: true
   field_main_image: true
-  field_metadata_description: true
   field_paragraphs: true
   field_search_keywords: true
   field_topic: true

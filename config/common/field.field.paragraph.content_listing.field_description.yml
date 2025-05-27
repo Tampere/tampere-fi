@@ -9,7 +9,7 @@ id: paragraph.content_listing.field_description
 field_name: field_description
 entity_type: paragraph
 bundle: content_listing
-label: Description
+label: Kuvaus
 description: ''
 required: true
 translatable: false

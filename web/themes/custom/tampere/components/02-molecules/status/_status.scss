@@ -5,6 +5,7 @@
   margin-bottom: $space-m;
   padding: $space-m;
   text-align: center;
+  hyphens: auto;
 
   a {
     @include link;

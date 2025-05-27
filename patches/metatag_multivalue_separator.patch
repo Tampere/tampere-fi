@@ -1,0 +1,13 @@
+diff --git a/src/MetatagManager.php b/src/MetatagManager.php
+index 405b282..162e2c8 100644
+--- a/src/MetatagManager.php
++++ b/src/MetatagManager.php
+@@ -771,7 +771,7 @@ class MetatagManager implements MetatagManagerInterface {
+     // language and a custom delimiter for multiple value fields in tokens.
+     $options = [
+       'langcode' => $langcode,
+-      'join' => ',',
++      'join' => ';',
+     ];
+ 
+     // Loop over each item in the array.

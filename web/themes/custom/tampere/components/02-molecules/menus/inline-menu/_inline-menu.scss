@@ -53,6 +53,10 @@ $inline-menu-item-margin-right: $space-m;
 
     #{$base_class}__item {
       margin-right: $space-xs;
+
+      @include mobile-breakpoint-down {
+        display: inline-block;
+      }
     }
 
     #{$base-class}__item::before {

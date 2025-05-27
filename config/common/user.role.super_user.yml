@@ -7,6 +7,7 @@ dependencies:
     - entity_browser.browser.all_places_entity_browser
     - entity_browser.browser.persons_entity_browser
     - feeds.feed_type.rss_feed
+    - feeds.feed_type.rss_feed_notices
     - filter.format.notice_html
     - filter.format.page_not_found_content
     - filter.format.ptv_markdown
@@ -159,6 +160,7 @@ permissions:
   - 'bypass node access'
   - 'bypass paragraphs type content access'
   - 'clear rss_feed feeds'
+  - 'clear rss_feed_notices feeds'
   - 'clone basic_content_page content'
   - 'clone blog_article content'
   - 'clone city_planning_and_constructions content'
@@ -256,6 +258,7 @@ permissions:
   - 'create paragraph content image'
   - 'create paragraph content image_gallery'
   - 'create paragraph content image_gallery_item'
+  - 'create paragraph content image_gallery_limited_images'
   - 'create paragraph content infograph'
   - 'create paragraph content infographs'
   - 'create paragraph content internal_link'
@@ -311,6 +314,7 @@ permissions:
   - 'create remote_video media'
   - 'create rich_article content'
   - 'create rss_feed feeds'
+  - 'create rss_feed_notices feeds'
   - 'create small_news_item content'
   - 'create subsite group'
   - 'create terms in accessibility_and_service_infos'
@@ -417,6 +421,7 @@ permissions:
   - 'delete paragraph content image'
   - 'delete paragraph content image_gallery'
   - 'delete paragraph content image_gallery_item'
+  - 'delete paragraph content image_gallery_limited_images'
   - 'delete paragraph content infograph'
   - 'delete paragraph content infographs'
   - 'delete paragraph content internal_link'
@@ -473,6 +478,7 @@ permissions:
   - 'delete project revisions'
   - 'delete rich_article revisions'
   - 'delete rss_feed feeds'
+  - 'delete rss_feed_notices feeds'
   - 'delete small_news_item revisions'
   - 'delete terms in accessibility_and_service_infos'
   - 'delete terms in blogs'
@@ -592,6 +598,7 @@ permissions:
   - 'edit terms in topics'
   - 'edit terms in zoning_information_types'
   - 'import rss_feed feeds'
+  - 'import rss_feed_notices feeds'
   - 'import tablefield'
   - 'post comments'
   - 'rebuild tablefield'
@@ -648,6 +655,7 @@ permissions:
   - 'translate interface'
   - 'translate own webform'
   - 'unlock rss_feed feeds'
+  - 'unlock rss_feed_notices feeds'
   - 'update any media'
   - 'update paragraph content accordion_item'
   - 'update paragraph content accordion_text_content'
@@ -687,6 +695,7 @@ permissions:
   - 'update paragraph content image'
   - 'update paragraph content image_gallery'
   - 'update paragraph content image_gallery_item'
+  - 'update paragraph content image_gallery_limited_images'
   - 'update paragraph content infograph'
   - 'update paragraph content infographs'
   - 'update paragraph content internal_link'
@@ -738,6 +747,7 @@ permissions:
   - 'update paragraph content zoning_project_card'
   - 'update paragraph content zoning_project_cards'
   - 'update rss_feed feeds'
+  - 'update rss_feed_notices feeds'
   - 'use ai translation'
   - 'use chance_for_participation_moderation transition archive'
   - 'use chance_for_participation_moderation transition create_draft'

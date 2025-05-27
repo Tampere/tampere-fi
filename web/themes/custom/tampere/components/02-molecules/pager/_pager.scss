@@ -5,7 +5,7 @@ $pager-item-padding--xs: $space-s;
 $pager-item-padding--small: $space-m;
 $pager-item-padding--desktop: 0 $space-xs;
 
-.pager {
+.pager, div[class^="cludo-"].pager {
   $base_class: &;
 
   margin: $pager-margin;
@@ -30,19 +30,20 @@ $pager-item-padding--desktop: 0 $space-xs;
     }
   }
 
-  &__items {
+  &__items, ul {
     @include list-reset;
   
     display: flex;
     align-items: center;
     width: 100%;
-  
+    flex-wrap: wrap;
+
     @include medium {
       justify-content: center;
     }
   }
 
-  &__item {
+  &__item, li {
     font-size: $font-20;
   
     @include large-down {
@@ -79,10 +80,13 @@ $pager-item-padding--desktop: 0 $space-xs;
     }
   }
 
-  &__link {
+  &__link,
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
     display: block;
     padding: $pager-item-padding;
-    text-transform: uppercase;
 
     @include xs {
       padding: $pager-item-padding--xs;
@@ -100,7 +104,8 @@ $pager-item-padding--desktop: 0 $space-xs;
   &__link,
   &__link:active,
   &__link:link,
-  &__link:visited {
+  &__link:visited,
+  button {
     color: $pager-color;
     text-decoration: none;
 
@@ -112,6 +117,12 @@ $pager-item-padding--desktop: 0 $space-xs;
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  // Cludo pager
+  button[aria-current="true"] {
+    font-weight: $font-weight-extra-bold;
+    text-decoration: underline;
   }
 
   &__link--next,

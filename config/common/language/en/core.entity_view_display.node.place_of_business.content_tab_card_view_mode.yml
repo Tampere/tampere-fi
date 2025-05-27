@@ -29,3 +29,11 @@ content:
             pattern_settings:
               icon_field_group:
                 field_label: Email
+  field_email_2:
+    third_party_settings:
+      ds:
+        ft:
+          settings:
+            pattern_settings:
+              icon_field_group:
+                field_label: Email

@@ -1,0 +1,19 @@
+uuid: ed52bd56-7e26-4153-9d82-07cbfe969147
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_access_info_sentences_json
+field_name: field_access_info_sentences_json
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

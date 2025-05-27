@@ -4,15 +4,16 @@ import styled from "styled-components";
 const StyledFilter = styled.li`
   align-items: center;
   background-color: ${props => props.isActive ? "var(--color-primary)" : "transparent"};
-  border: 2px solid var(--color-primary);
+  border: 1.5px solid var(--color-primary);
   border-radius: 35px;
   color: ${props => props.isActive ? "#fff" : "var(--color-primary)"};
   cursor: pointer;
   display: inline-flex;
   font-family: var(--font-family-heading);
-  font-size: var(--font-size-18);
+  font-size: var(--font-size-16);
   text-decoration: ${props => props.isActive ? "underline" : "none"};
   position: relative;
+  margin: 6px;
 
   &:focus-within {
     outline: 1px solid var(--color-primary);
@@ -25,7 +26,7 @@ const StyledFilter = styled.li`
   }
 
   @media screen and (min-width: 61.56rem) {
-    font-size: var(--font-size-20);
+    font-size: var(--font-size-16);
   }
 `;
 
@@ -41,21 +42,21 @@ const StyledCheckbox = styled.input`
 
 const StyledLabel = styled.label`
   cursor: pointer;
-  padding-top: 10px;
-  padding-right: ${props => props.isActive ? "72px" : "35px"};
-  padding-bottom: 10px;
-  padding-left: 36px;
+  padding: 8px 20px;
+  padding-right: ${props => props.isActive ? "48px" : "20px"};
 `;
 
 const CloseIcon = styled.span`
   background-image: url('/modules/custom/tre_course_listing/js/src/icons/close.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 32px;
-  position: absolute;
+  background-size: 1rem 1rem;
+  display: inline-block;
+  margin-left: -16px;
   pointer-events: none;
-  right: 13px;
-  width: 32px;
+  position: relative;
+  right: 20px;
+  top: 1px;
+  height: 16px;
+  width: 16px;
 `;
 
 export default function Filter({

@@ -13,10 +13,12 @@ dependencies:
     - field.field.node.place_of_business.field_alternative_name
     - field.field.node.place_of_business.field_body_md
     - field.field.node.place_of_business.field_email
+    - field.field.node.place_of_business.field_email_2
     - field.field.node.place_of_business.field_epsg_3067_point_strings
     - field.field.node.place_of_business.field_exception_hours
     - field.field.node.place_of_business.field_geographical_areas
     - field.field.node.place_of_business.field_hr_organizational_unit
+    - field.field.node.place_of_business.field_image_gallery
     - field.field.node.place_of_business.field_keywords
     - field.field.node.place_of_business.field_life_situations
     - field.field.node.place_of_business.field_links
@@ -54,9 +56,10 @@ third_party_settings:
         - field_summary
       left_column:
         - group_addresses
-        - field_links
         - field_addresses
+        - field_links
         - field_email
+        - field_email_2
         - field_additional_phones
   field_group:
     group_addresses:
@@ -90,7 +93,7 @@ third_party_settings:
       label: 'Aukioloajat 1'
       parent_name: ''
       region: hidden
-      weight: 37
+      weight: 40
       format_type: pattern_formatter
       format_settings:
         pattern: regular_field
@@ -110,7 +113,7 @@ third_party_settings:
       label: 'Aukioloajat 2'
       parent_name: ''
       region: hidden
-      weight: 38
+      weight: 41
       format_type: pattern_formatter
       format_settings:
         pattern: regular_field
@@ -130,7 +133,7 @@ third_party_settings:
       label: 'Aukioloajat 3'
       parent_name: ''
       region: hidden
-      weight: 36
+      weight: 39
       format_type: pattern_formatter
       format_settings:
         pattern: regular_field
@@ -151,7 +154,8 @@ content:
   field_additional_phones:
     type: tre_phone_field_plain
     label: above
-    settings: {  }
+    settings:
+      force_format: default
     third_party_settings:
       ds:
         ds_limit: ''
@@ -161,7 +165,7 @@ content:
             lb: Puhelin
             lb-col: true
             classes: {  }
-    weight: 9
+    weight: 5
     region: left_column
   field_addresses:
     type: entity_reference_entity_view
@@ -202,6 +206,30 @@ content:
                 field_label_token: ''
               regular_field:
                 display_colon_after_label: 0
+            pattern_variant: contact
+    weight: 3
+    region: left_column
+  field_email_2:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: icon_field_group
+            pattern_mapping:
+              'ds_field_template:field_email_2':
+                destination: icon_field_group_content
+                weight: 0
+                plugin: ds_field_template
+                source: field_email_2
+            pattern_settings:
+              icon_field_group:
+                field_label: Sähköposti
+                field_label_token: ''
+                label_highlight: 0
             pattern_variant: contact
     weight: 4
     region: left_column
@@ -244,6 +272,7 @@ hidden:
   field_exception_hours: true
   field_geographical_areas: true
   field_hr_organizational_unit: true
+  field_image_gallery: true
   field_keywords: true
   field_life_situations: true
   field_listing_search_content: true

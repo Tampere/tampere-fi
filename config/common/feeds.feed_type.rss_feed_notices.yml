@@ -1,0 +1,194 @@
+uuid: adb9cead-497f-4325-8b82-2ea7ee369a62
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.node.rss_item.body
+    - field.field.node.rss_item.field_action_text
+    - field.field.node.rss_item.field_construction_site
+    - field.field.node.rss_item.field_license_plate
+    - field.field.node.rss_item.field_link_single
+    - field.field.node.rss_item.field_publication_end_time
+    - field.field.node.rss_item.field_publication_time
+    - node.type.rss_item
+  module:
+    - feeds_ex
+    - node
+label: 'Lupapisteen RSS-syötteet'
+id: rss_feed_notices
+description: ''
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: xml
+parser_configuration:
+  context:
+    value: rss/channel/item
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+  use_tidy: false
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: rss_item
+  langcode: fi
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _delete
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  '':
+    value: ''
+    label: ''
+    machine_name: ''
+    type: blank
+  toimenpideteksti:
+    label: toimenpideteksti
+    machine_name: toimenpideteksti
+    value: 'lupapiste:toimenpideteksti'
+    raw: false
+    inner: false
+    type: xml
+  construction_site:
+    label: 'Construction Site'
+    machine_name: construction_site
+    value: 'lupapiste:rakennuspaikka'
+    raw: false
+    inner: false
+    type: xml
+  publication_time:
+    label: 'Publication Time'
+    machine_name: publication_time
+    value: 'lupapiste:julkaisuAlkaa'
+    raw: false
+    inner: false
+    type: xml
+  publication_end_time:
+    label: 'Publication End Time'
+    machine_name: publication_end_time
+    value: 'lupapiste:julkaisuPaattyy'
+    raw: false
+    inner: false
+    type: xml
+  link:
+    label: Link
+    machine_name: link
+    value: link
+    raw: false
+    inner: false
+    type: xml
+  title:
+    label: Title
+    machine_name: title
+    value: title
+    raw: false
+    inner: false
+    type: xml
+  license_plate:
+    label: 'License Plate'
+    machine_name: license_plate
+    value: 'lupapiste:lupatunnus'
+    raw: false
+    inner: false
+    type: xml
+  description:
+    label: Description
+    machine_name: description
+    value: description
+    raw: false
+    inner: false
+    type: xml
+  main_description:
+    label: Description
+    machine_name: main_description
+    value: description
+    raw: false
+    inner: false
+    type: xml
+  julkaisualkaa:
+    label: julkaisuAlkaa
+    machine_name: julkaisualkaa
+    value: 'lupapiste:julkaisuAlkaa'
+    raw: false
+    inner: false
+    type: xml
+mappings:
+  -
+    target: field_action_text
+    map:
+      value: toimenpideteksti
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: title
+    map:
+      value: main_description
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_construction_site
+    map:
+      value: construction_site
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_publication_time
+    map:
+      value: publication_time
+    settings:
+      language: ''
+      timezone: __SITE__
+  -
+    target: field_publication_end_time
+    map:
+      value: publication_end_time
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_link_single
+    map:
+      uri: link
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_license_plate
+    map:
+      value: license_plate
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: main_description
+      summary: ''
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: created
+    map:
+      value: julkaisualkaa
+    settings:
+      language: null
+      timezone: UTC

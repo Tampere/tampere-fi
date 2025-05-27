@@ -28,6 +28,7 @@ dependencies:
     - field.field.node.zoning_information.field_omit_from_listing_map
     - field.field.node.zoning_information.field_other_identifiers
     - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_partial_ingress
     - field.field.node.zoning_information.field_partially_binding_phase
     - field.field.node.zoning_information.field_phase
     - field.field.node.zoning_information.field_plan_number
@@ -197,6 +198,7 @@ hidden:
   field_omit_from_listing_map: true
   field_other_identifiers: true
   field_paragraphs: true
+  field_partial_ingress: true
   field_partially_binding_phase: true
   field_phase: true
   field_plan_number: true

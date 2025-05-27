@@ -50,12 +50,14 @@
  * - place_of_business_links: The links field in the referenced Place of business node as a render array.
  * - place_of_business_phones: The additional phones field in the referenced Place of business node as a render array.
  * - place_of_business_email: The email field in the referenced Place of business node as a render array.
+ * - place_of_business_email_2: The second email field in the referenced Place of business node as a render array.
  * - right_column_content: The opening hours and opening hours info fields in the referenced 
  *     Place of business node as a render arrays.
  * - place_of_business_accessibility_taxonomies: The array containing accessibility and service taxonomies.
  * - place_of_business_accessibility_title: The title value of accessibility field.
  * - place_of_business_map: Optional. The map for the 'Place of business' node as a render array.
  * - inside_accordion: Boolean if place of business is inside accordion.
+ * - image_gallery: Optional. The image gallery paragraph.
  *
  * @see template_preprocess_paragraph()
  *
@@ -76,6 +78,7 @@
 {% set place_of_business_links_markup = place_of_business_links|render %}
 {% set place_of_business_phones_markup = place_of_business_phones|render %}
 {% set place_of_business_email_markup = place_of_business_email|render %}
+{% set place_of_business_email_2_markup = place_of_business_email_2|render %}
 {% set right_column_content_markup = right_column_content|render %}
 {% set place_of_business_accessibility_taxonomies_markup = place_of_business_accessibility_taxonomies|render %}
 {% set place_of_business_map_markup = place_of_business_map|render %}
@@ -92,11 +95,12 @@
   } %}
 {% endif %}
 
-{% if place_of_business_accessibility_taxonomies_markup|trim %}
+{% if place_of_business_accessibility_taxonomies_markup|trim or access_info_list is not empty %}
   {% set accordion_tabs = [
     {
       "title": place_of_business_accessibility_title,
-      "content": place_of_business_accessibility_taxonomies_markup
+      "content": place_of_business_accessibility_taxonomies_markup,
+      "accessibility_sentences": access_info_list
     },
   ] %}
 {% endif %}
@@ -115,6 +119,19 @@
   ]) %}
 {% endif %}
 
+{% if image_gallery %}
+  {% if not accordion_tabs %}
+    {% set accordion_tabs = [] %}
+  {% endif %}
+
+  {% set accordion_tabs = accordion_tabs|merge([
+    {
+      "title": 'Pictures of the location'|t,
+      "content": image_gallery
+    },
+  ]) %}
+{% endif %}
+
 {% if
   place_of_business_title or
   place_of_business_alt_name or
@@ -126,6 +143,7 @@
   place_of_business_links_markup|trim or
   place_of_business_phones_markup|trim or
   place_of_business_email_markup|trim or
+  place_of_business_email_2_markup|trim or
   right_column_content_markup|trim or
   place_of_business_accessibility_taxonomies_markup|trim or
   place_of_business_map_markup|trim
@@ -147,6 +165,7 @@
         "place_of_business_contact__heading_level": heading_level,
         "place_of_business_contact__paragraph_id": paragraph.id.value,
         "place_of_business_contact__accordion_heading_level": accordion_heading_level,
+        "place_of_business_contact__access_info_list": access_info_list,
         "attributes": [],
       } %}
         {% block links_block %}
@@ -159,6 +178,10 @@
 
         {% block email_block %}
           {{ place_of_business_email_markup }}
+        {% endblock %}
+
+        {% block email_2_block %}
+          {{ place_of_business_email_2_markup }}
         {% endblock %}
 
         {% block right_column %}

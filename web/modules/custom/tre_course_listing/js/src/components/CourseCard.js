@@ -6,7 +6,11 @@ const StyledCourseCard = styled.li`
   display: flex;
   flex-direction: column;
   list-style: none;
-  padding: 20px;
+  padding: 16px;
+
+  @media screen and (min-width: 24.375rem) {
+    padding: 20px;
+  }
 `;
 
 const Title = styled.h3`
@@ -32,6 +36,7 @@ const DateContainer = styled.span`
   margin-top: 12px;
   margin-bottom: 12px;
   padding-left: 40px;
+  word-wrap: break-word;
 
   @media screen and (min-width: 61.56rem) {
     font-size: var(--font-size-18);
@@ -50,6 +55,7 @@ const Availability = styled.span`
   display: flex;
   font-size: var(--font-size-16);
   margin-bottom: 24px;
+  hyphens: auto;
 
   @media screen and (min-width: 61.56rem) {
     font-size: var(--font-size-18);
@@ -76,7 +82,9 @@ const PageLink = styled.a`
   margin-top: auto;
   max-width: 80%;
   text-decoration: none;
-  text-transform: uppercase;
+  flex-wrap: wrap;
+  hyphens: auto;
+  gap: 1rem;
 
   &:focus,
   &:hover {
@@ -86,12 +94,16 @@ const PageLink = styled.a`
 
   @media screen and (min-width: 61.56rem) {
     font-size: var(--font-size-18);
+    gap: unset;
   }
 `;
 
 const LinkText = styled.span`
   font-family: var(--font-family-heading);
-  margin-right: 16px;
+
+  @media screen and (min-width: 24.375rem) {
+    margin-right: 16px;
+  }
 `;
 
 const LinkIcon = styled.span`

@@ -32,6 +32,11 @@ $listing-item-person-link-column-min-width: 295px;
     height: 100%;
     min-width: 190px;
 
+    @include mobile-breakpoint-down {
+      justify-content: flex-start;
+      min-width: unset;
+    }
+
     @include large {
       border-right: $listing-item-accent-border;
       text-align: left;
@@ -99,6 +104,18 @@ $listing-item-person-link-column-min-width: 295px;
 
     h3 {
       margin-bottom: 0;
+    }
+
+    // Description/ lead text for search
+    .field-metadata-description,
+    .field-partial-ingress,
+    .field-description,
+    .field-lead,
+    .participate-summary {
+      font-size: $font-18;
+      font-family: $font-heading;
+      font-weight: normal;
+      margin: 0;
     }
   }
 
@@ -276,16 +293,6 @@ $listing-item-person-link-column-min-width: 295px;
   &--default-search,
   &--external-search {
     --border-color: #{clr(primary)};
-
-    &:hover,
-    &:focus {
-      @include large {
-        #{$base_class}__type {
-          color: clr(text-inverse);
-          background-color: clr(primary);
-        }
-      }
-    }
   }
 
   &--link-wrapper {

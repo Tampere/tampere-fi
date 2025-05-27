@@ -22,6 +22,10 @@
     text-decoration: none;
     width: 100%;
 
+    @include mobile-breakpoint-down {
+      padding: $space-s;
+    }
+
     &:hover {
       background-color: clr(accent-tertiary-transparent);
     }
@@ -135,5 +139,14 @@
       border: $border-thick-general-contact;
       border-top: 0;
     }
+  }
+
+  &__accessibility-accordion {
+    margin-top: $space-l;
+
+    @include medium {
+      margin-top: $space-xl;
+    }
+
   }
 }

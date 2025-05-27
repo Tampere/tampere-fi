@@ -3,6 +3,9 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - entity_browser.browser.all_content_entity_browser
+    - entity_browser.browser.all_places_entity_browser
+    - entity_browser.browser.persons_entity_browser
     - node.type.person
     - node.type.place_of_business
     - workflows.workflow.scheduled_transitions
@@ -45,6 +48,7 @@ permissions:
   - 'create paragraph content image'
   - 'create paragraph content image_gallery'
   - 'create paragraph content image_gallery_item'
+  - 'create paragraph content image_gallery_limited_images'
   - 'create paragraph content infograph'
   - 'create paragraph content infographs'
   - 'create paragraph content link_list'
@@ -90,6 +94,7 @@ permissions:
   - 'delete paragraph content image'
   - 'delete paragraph content image_gallery'
   - 'delete paragraph content image_gallery_item'
+  - 'delete paragraph content image_gallery_limited_images'
   - 'delete paragraph content infograph'
   - 'delete paragraph content infographs'
   - 'delete paragraph content link_list'
@@ -136,6 +141,7 @@ permissions:
   - 'update paragraph content image'
   - 'update paragraph content image_gallery'
   - 'update paragraph content image_gallery_item'
+  - 'update paragraph content image_gallery_limited_images'
   - 'update paragraph content infograph'
   - 'update paragraph content infographs'
   - 'update paragraph content link_list'

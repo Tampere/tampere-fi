@@ -1,0 +1,16 @@
+{% set accessibility_info__base_class = "accessibility-info" %}
+
+<div {{ bem(accessibility_info__base_class) }}>
+  {% for info in accessibility_information_list %}
+    <div {{ bem('group', [], accessibility_info__base_class) }}>
+      <b>{{ info.title }}</b>
+      <div>
+        {% for sentence in info.sentences %}
+          {% if sentence is not empty %}
+            <span>{{ sentence }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>

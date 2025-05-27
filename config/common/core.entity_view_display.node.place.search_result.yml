@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.place.field_omit_from_listing_map
     - field.field.node.place.field_page_summary
     - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_partial_ingress
     - field.field.node.place.field_search_keywords
     - field.field.node.place.field_topics
     - node.type.place
@@ -40,6 +41,8 @@ third_party_settings:
     regions:
       listing_item__heading:
         - node_title
+      listing_item__main_content:
+        - field_partial_ingress
     fields:
       node_title:
         plugin_id: node_title
@@ -59,7 +62,14 @@ id: node.place.search_result
 targetEntityType: node
 bundle: place
 mode: search_result
-content: {  }
+content:
+  field_partial_ingress:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: listing_item__main_content
 hidden:
   content_moderation_control: true
   entitygroupfield: true

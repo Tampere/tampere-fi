@@ -11,7 +11,6 @@ const StyledFilterGroup = styled.div`
 const StyledFilterList = styled.ul`
   display: ${props => props.isActive ? "flex" : "none"};
   flex-wrap: wrap;
-  gap: 16px;
   padding: 0;
 `;
 

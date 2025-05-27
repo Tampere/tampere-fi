@@ -6,7 +6,9 @@
   &__content {
     @include centered-content($max-width: $max-width, $use-padding: false);
 
-    display: grid;
+    @include mobile-breakpoint {
+      display: grid;
+    }
 
     @include large {
       grid-auto-rows: 1fr;

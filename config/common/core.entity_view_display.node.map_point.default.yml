@@ -3,6 +3,7 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - field.field.node.map_point.field_access_info_sentences_json
     - field.field.node.map_point.field_address_hash
     - field.field.node.map_point.field_address_street
     - field.field.node.map_point.field_description
@@ -21,6 +22,13 @@ targetEntityType: node
 bundle: map_point
 mode: default
 content:
+  field_access_info_sentences_json:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
   field_address_hash:
     type: string
     label: above

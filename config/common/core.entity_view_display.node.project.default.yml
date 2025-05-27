@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.project.field_main_image
     - field.field.node.project.field_page_summary
     - field.field.node.project.field_paragraphs
+    - field.field.node.project.field_partial_ingress
     - field.field.node.project.field_search_keywords
     - field.field.node.project.field_topics
     - node.type.project
@@ -153,6 +154,7 @@ hidden:
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_partial_ingress: true
   field_search_keywords: true
   field_topics: true
   langcode: true

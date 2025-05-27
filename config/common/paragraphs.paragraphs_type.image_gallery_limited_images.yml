@@ -1,0 +1,10 @@
+uuid: 97fc673a-8fb7-4acf-ae58-5566723c40e8
+langcode: fi
+status: true
+dependencies: {  }
+id: image_gallery_limited_images
+label: 'Kuvagalleria rajoitetuilla kuvilla'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

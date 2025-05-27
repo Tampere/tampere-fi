@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.zoning_information.field_omit_from_listing_map
     - field.field.node.zoning_information.field_other_identifiers
     - field.field.node.zoning_information.field_paragraphs
+    - field.field.node.zoning_information.field_partial_ingress
     - field.field.node.zoning_information.field_partially_binding_phase
     - field.field.node.zoning_information.field_phase
     - field.field.node.zoning_information.field_plan_number
@@ -501,7 +502,7 @@ content:
     third_party_settings: {  }
   field_omit_from_listing_map:
     type: boolean_checkbox
-    weight: 111
+    weight: 9
     region: content
     settings:
       display_label: true
@@ -781,6 +782,7 @@ hidden:
   field_epsg_3067_northing: true
   field_epsg_3067_point_strings: true
   field_listing_search_content: true
+  field_partial_ingress: true
   field_plan_type: true
   field_processing_time: true
   field_zoning_information_type: true

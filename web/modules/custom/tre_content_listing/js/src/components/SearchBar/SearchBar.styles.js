@@ -50,11 +50,11 @@ export const SearchButton = styled.button`
   padding: 8px;
   width: 55px;
 
-  &:focus,
-  &:hover {
-    background-color: #fff;
-    background-image: url("/modules/custom/tre_content_listing/js/src/assets/icons/search-inverted.svg");
-    border-left: 2px solid var(--color-secondary);
+  &:focus {
     color: var(--color-secondary);
+  }
+
+  &:hover {
+    background-color: var(--color-blue-600);
   }
 `;

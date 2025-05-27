@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.small_news_item.field_media_caption
     - field.field.node.small_news_item.field_minisites
     - field.field.node.small_news_item.field_paragraphs
+    - field.field.node.small_news_item.field_partial_ingress
     - field.field.node.small_news_item.field_photographer
     - field.field.node.small_news_item.field_search_keywords
     - field.field.node.small_news_item.field_social_media_share
@@ -436,6 +437,7 @@ content:
 hidden:
   entitygroupfield: true
   field_date_of_publication: true
+  field_partial_ingress: true
   field_social_media_share: true
   field_topic: true
   promote: true

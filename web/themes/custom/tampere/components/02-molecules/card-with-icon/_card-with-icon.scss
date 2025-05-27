@@ -33,6 +33,7 @@ $card-with-icon-image-height-large: 365px;
     padding-right: $space-s;
     padding-left: $space-s;
     padding-bottom: $space-s;
+    hyphens: auto;
 
     @include large {
       padding-top: $space-xxl;
@@ -77,6 +78,7 @@ $card-with-icon-image-height-large: 365px;
   &__body {
     margin-top: $space-xs;
     margin-bottom: $space-xs;
+    hyphens: auto;
 
     @include large {
       margin-top: $space-l

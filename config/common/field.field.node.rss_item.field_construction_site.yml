@@ -1,0 +1,19 @@
+uuid: 33be0aa2-4440-43a8-85da-33de834176ac
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_construction_site
+    - node.type.rss_item
+id: node.rss_item.field_construction_site
+field_name: field_construction_site
+entity_type: node
+bundle: rss_item
+label: rakennuspaikka
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
