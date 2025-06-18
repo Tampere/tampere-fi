@@ -90,7 +90,55 @@
       padding: $space-l;
     }
 
-    p:last-of-type {
+    &__title {
+      margin-bottom: 0.25rem;
+    }
+
+    &__text {
+      margin: 0 0 24px;
+      hyphens: auto;
+      height: 75px;
+
+      &--default {
+        height: 75px;
+        overflow: hidden;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+      }
+
+      &--expanded {
+        height: auto;
+        overflow: hidden;
+        mask-image: none;
+      }
+    }
+
+    .expand-button {
+      padding-left: 0rem;
+      border: none;
+      color: var(--c-primary);
+      background-color: transparent;
+
+      .accordion__icon {
+        height: 15px;
+        width: 20px;
+        margin-right: 1rem;
+
+        &--expanded {
+          transform: rotate(0deg);
+        }
+
+        &--collapsed {
+          transform: rotate(180deg);
+        }
+      }
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+
+    .b p:last-of-type {
       margin-bottom: 0;
     }
   }

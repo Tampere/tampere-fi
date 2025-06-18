@@ -1,6 +1,18 @@
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="currentColor" stroke-width="2.5" fill="none" fill-rule="evenodd">
-        <path d="M0 32h32V0H0z"/>
-        <path d="m13.902 7.28 9.247 9.244-9.247 9.247M8.524 16.524H23.15"/>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 97.17 97.17"
+  fill="none"
+  fill-rule="evenodd"
+  stroke="currentColor"
+  stroke-width="4.98px"
+>
+  <g id="Group_565" data-name="Group 565">
+    <g id="Rectangle_208" data-name="Rectangle 208">
+      <rect x="2.49" y="2.49" width="92.19" height="92.19"/>
     </g>
+    <g id="nuolet-03">
+      <path id="Path_9" data-name="Path 9" d="M50.51,23.32l26.5,26.49-26.5,26.5"/>
+      <line id="Line_3" data-name="Line 3" x1="18.97" y1="49.81" x2="77.01" y2="49.81"/>
+    </g>
+  </g>
 </svg>

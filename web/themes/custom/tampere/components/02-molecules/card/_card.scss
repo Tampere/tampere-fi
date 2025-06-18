@@ -79,6 +79,11 @@ $grouped-card-background-position: bottom -305px right -10px;
     @include large {
       width: $icon-medium;
       height: $icon-medium;
+
+      &.external-link__icon {
+        height: $external-link-icon-size--desktop;
+        width: $external-link-icon-size--desktop;
+      }
     }
   }
 

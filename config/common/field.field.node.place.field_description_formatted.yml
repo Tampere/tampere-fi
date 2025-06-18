@@ -1,0 +1,24 @@
+uuid: a261e214-78c6-43f5-a7ab-771e3fb9a8ce
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description_formatted
+    - filter.format.limited_html
+    - node.type.place
+  module:
+    - text
+id: node.place.field_description_formatted
+field_name: field_description_formatted
+entity_type: node
+bundle: place
+label: 'Kuvaus (muotoiltu)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - limited_html
+field_type: text_long

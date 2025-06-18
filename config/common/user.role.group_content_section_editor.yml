@@ -3,6 +3,7 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - filter.format.limited_html
     - filter.format.notice_html
     - media.type.dream_broker_video
     - media.type.file
@@ -286,6 +287,7 @@ permissions:
   - 'update paragraph content zoning_project_cards'
   - 'use admin toolbar search'
   - 'use ai translation'
+  - 'use text format limited_html'
   - 'use text format notice_html'
   - 'view all media revisions'
   - 'view any unpublished content'

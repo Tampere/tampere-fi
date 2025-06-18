@@ -307,16 +307,6 @@ $listing-item-person-link-column-min-width: 295px;
       $primary-color: map-get($palette, "primary");
 
       --border-color: #{$color};
-
-      &:hover,
-      &:focus {
-        @include large {
-          #{$base_class}__type {
-            color: set-color($color);
-            background-color: $color;
-          }
-        }
-      }
     }
   }
 }

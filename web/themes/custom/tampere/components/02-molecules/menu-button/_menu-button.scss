@@ -120,8 +120,7 @@ $menu-button-height: 55px;
 
     &:not(.is-open):hover {
       @include dynamic-color(minisite-identifier-background);
-
-      background-color: clr(minisite-identifier-background);
+      color: $color-black! important;
     }
 
     &:focus,

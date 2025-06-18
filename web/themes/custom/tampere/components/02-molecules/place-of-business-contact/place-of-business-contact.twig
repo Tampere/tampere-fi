@@ -92,13 +92,13 @@
         {% endif %}
 
         {% if place_of_business_email %}
-          <div {{ bem("email", place_of_business_contact__email__modifiers|default([]), place_of_business_contact__base_class) }}>
+          <div {{ bem("email", place_of_business_contact__email__modifiers|default([]), place_of_business_contact__base_class, ['notranslate']) }}>
             {% block email_block %}{% endblock %}
           </div>
         {% endif %}
 
         {% if place_of_business_email_2 %}
-          <div {{ bem("email", place_of_business_contact__email__modifiers|default([]), place_of_business_contact__base_class) }}>
+          <div {{ bem("email", place_of_business_contact__email__modifiers|default([]), place_of_business_contact__base_class, ['notranslate']) }}>
             {% block email_2_block %}{% endblock %}
           </div>
         {% endif %}

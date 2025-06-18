@@ -21,6 +21,7 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
    */
   const DEFAULT_LIST_ITEM_VIEW_MODE = 'content_tab_card_view_mode';
   const LIST_ITEM_VIEW_MODE_WITH_HOURS = 'content_tab_card_with_hours_view_mode';
+  const DEFAULT_LIST_ITEM_VIEW_MODE_FORMATTED_DESCRIPTION = 'content_tab_card_view_mode_formatted_description';
 
   protected const DISPLAY_IDS = [
     "content_listing_block",
@@ -83,6 +84,10 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
       if (in_array($variables['view']->current_display, static::DISPLAY_WITH_HOURS_IDS)
           && array_key_exists(self::LIST_ITEM_VIEW_MODE_WITH_HOURS, $node_available_view_modes)) {
         $node_view_mode = self::LIST_ITEM_VIEW_MODE_WITH_HOURS;
+      }
+
+      if ($translated_node->hasField('field_description_toggle') && $translated_node->get('field_description_toggle')->value) {
+        $node_view_mode = self::DEFAULT_LIST_ITEM_VIEW_MODE_FORMATTED_DESCRIPTION;
       }
 
       $translated_node_content = $this->entityTypeManager->getViewBuilder('node')->view($translated_node, $node_view_mode);

@@ -2,12 +2,12 @@ card__image__src: 'https://placeimg.com/1280/720/nature'
 card__heading: 'Lorem ipsum dolor sit amet'
 card__links__items:
   1:
-    icon: 'service-arrow-large'
+    icon: 'service-arrow'
     mobile_icon: 'service-arrow'
     text: 'Lorem ipsum? Que ipsum dolor aliquet.'
     url: '#'
   2:
-    icon: 'service-arrow-large'
+    icon: 'service-arrow'
     mobile_icon: 'service-arrow'
     text: 'Aliquet dolor ipsum.'
     url: '#'

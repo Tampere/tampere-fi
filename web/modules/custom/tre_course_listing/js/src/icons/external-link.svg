@@ -1,5 +1,19 @@
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#22437B" stroke-width="2" fill="none" fill-rule="evenodd">
-        <path d="M22.15 22.58H1.1V1.53M9.2 1.53h12.95v12.95M8.32 15.36 22.15 1.53"/>
-    </g>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64.14 64.08">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        fill-rule: evenodd;
+        stroke: #22437b;
+        stroke-width: 4.98px;
+      }
+    </style>
+  </defs>
+  <g id="nuolet-02">
+    <path id="Path_7" data-name="Path 7" class="cls-1" d="M20.5,2.49h41.15v41.15"/>
+    <line id="Line_2" data-name="Line 2" class="cls-1" x1="17.7" y1="46.44" x2="61.65" y2="2.49"/>
+  </g>
+  <g id="Rectangle_208" data-name="Rectangle 208">
+    <polyline class="cls-1" points="38.21 43.74 38.21 61.59 2.49 61.59 2.49 25.86 20.36 25.86"/>
+  </g>
 </svg>

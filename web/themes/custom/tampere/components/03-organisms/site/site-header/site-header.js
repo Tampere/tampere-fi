@@ -62,6 +62,10 @@ function toggleMenuContainer(button) {
   const isAriaExpanded = button.getAttribute('aria-expanded') === 'true';
   const controlledContainerId = button.getAttribute('aria-controls');
   const navigationContainer = document.getElementById(controlledContainerId);
+  const labelSpan = button.querySelector('span');
+  // Update button label based on data attributes
+  const openText = labelSpan.getAttribute('data-open');
+  const closeText = labelSpan.getAttribute('data-close');
 
   let ariaLabel;
 
@@ -86,6 +90,13 @@ function toggleMenuContainer(button) {
       header.classList.add('mobile-menu-open');
       header.classList.remove('mobile-menu-closed');
     }
+  }
+
+  // Open/ Close text for menu
+  if (isAriaExpanded) {
+    labelSpan.textContent = openText;
+  } else {
+    labelSpan.textContent = closeText;
   }
 
   navigationContainer.classList.toggle('is-closed');
@@ -200,9 +211,13 @@ Drupal.behaviors.siteHeader = {
     let menuButtons;
     let siteHeader;
 
-    // Once doesn't work in Storybook currently.
+    /*
+    * Once doesn't work in Storybook currently.
+    * Catch only catches JS errors not logical shortcomings,
+    * so add a fallback inside Try to make sure site header is not undefined.
+    */
     try {
-      siteHeader = once('site-header', document.getElementById('site-header'), context).shift(); // eslint-disable-line
+      siteHeader = once('site-header', document.getElementById('site-header'), context).shift() || document.getElementById('site-header'); // eslint-disable-line
     } catch (e) {
       siteHeader = document.getElementById('site-header');
     }
@@ -216,8 +231,19 @@ Drupal.behaviors.siteHeader = {
         bodyElem = document.body;
       }
 
+      // Set menu buttons and body explicitly here if they happen to return
+      // as undefined from once and dont end up in the catch.
+      if (!menuButtons || menuButtons.length === 0) {
+        menuButtons = document.querySelectorAll('.menu-button');
+      }
+
+      if (!bodyElem || bodyElem.length === 0) {
+        bodyElem = document.body;
+      }
+
       if (menuButtons) {
         menuButtons.forEach((menuButton) => {
+          menuButton.setAttribute('data-js-bound', 'true');
           menuButton.addEventListener('click', handleMenuButtonInteraction);
         });
       }
@@ -235,5 +261,138 @@ Drupal.behaviors.siteHeader = {
         window.addEventListener('resize', () => requestAnimationFrame(handleResize));
       }
     }
+
+    const translateBlockForMinisite = document.querySelector('.minisite-header__translate');
+    if (translateBlockForMinisite) {
+      const desktopTarget = document.querySelector('.minisite-header__language-switcher');
+      const mobileTarget = document.querySelector('.minisite-header__language-switcher--mobile');
+
+      // eslint-disable-next-line
+      function moveTranslateBlock() {
+        const mediaQuery = window.matchMedia('(max-width: 61.56rem)');
+        const isMobile = mediaQuery.matches;
+
+        const target = isMobile ? mobileTarget : desktopTarget;
+
+        if (translateBlockForMinisite && target
+          && translateBlockForMinisite.parentElement !== target.parentElement) {
+          // Move translateBlock right after the target element
+          target.insertAdjacentElement('afterend', translateBlockForMinisite);
+        }
+      }
+
+      // Initial move on load
+      moveTranslateBlock();
+
+      // Move again on resize
+      window.addEventListener('resize', moveTranslateBlock);
+    }
+
+    const initialPageLang = document.documentElement.lang;
+
+    once('toggle-translate', '.site-header__translate, .minisite-header__translate, .minisite-header__translate-mobile').forEach((translateBlock) => {
+      const translateButton = translateBlock.querySelector(
+        '.header-translate-expand',
+      );
+
+      const translateMenu = translateBlock.querySelector(
+        '.header-translate-block',
+      );
+
+      const manageCookiesSection = translateBlock.querySelector(
+        '.manage-cookies-section',
+      );
+
+      const googleTranslate = translateBlock.querySelector(
+        '#block-tampere-openygoogletranslate',
+      );
+
+      // Helper for checking if the lang attribute has changed from initial value.
+      function isTranslationActive() {
+        return document.documentElement.lang !== initialPageLang;
+      }
+
+      // Returns user cookie consent status.
+      function hasConsent() {
+        const cookieTypes = ['cookie_cat_necessary', 'cookie_cat_functional'];
+        return cookieTypes.every((type) =>
+          // eslint-disable-next-line
+          CookieInformation.getConsentGivenFor(type));
+      }
+
+      // Function creates an observer that looks for the Google translate
+      // banner in the DOM. Once its injected by the script, this updates
+      // it to hidden / visible based on user consent and translation selection.
+      function setupBannerObserver() {
+        // eslint-disable-next-line no-unused-vars
+        const observer = new MutationObserver((mutations, obs) => {
+          const banner = document.querySelector('[class="skiptranslate"]');
+          if (banner) {
+            const consentGiven = hasConsent();
+            const translationActive = isTranslationActive();
+
+            if (consentGiven && translationActive) {
+              banner.firstChild.setAttribute('style', 'visibility:visibile');
+              document.body.classList.remove('no-translate-banner');
+            } else {
+              banner.firstChild.setAttribute('style', 'visibility:hidden');
+              document.body.classList.add('no-translate-banner');
+            }
+          }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+
+      // Toggles translate widget / cookie menu based on user consent.
+      function updateWidgetState() {
+        const consentGiven = hasConsent();
+
+        if (consentGiven) {
+          manageCookiesSection.hidden = true;
+          googleTranslate.hidden = false;
+        } else {
+          manageCookiesSection.hidden = false;
+          googleTranslate.hidden = true;
+        }
+      }
+
+      updateWidgetState();
+      setupBannerObserver();
+
+      // When cookie consent changes, update state again.
+      window.addEventListener('CookieInformationConsentGiven', () => {
+        updateWidgetState();
+        setupBannerObserver();
+      });
+
+      // Event listener for toggling the translate menu.
+      translateButton.addEventListener('click', () => {
+        translateMenu.hidden = !translateMenu.hidden;
+
+        const googleTranslateDropDown = translateMenu.querySelector(
+          '.goog-te-combo',
+        );
+
+        // Add translated text after the dropdown
+        if (googleTranslateDropDown
+          && (!googleTranslateDropDown.nextElementSibling
+          || !googleTranslateDropDown.nextElementSibling.classList.contains('translator-message'))) {
+          googleTranslateDropDown.insertAdjacentHTML(
+            'afterend',
+            `<div class="translator-message">
+              ${Drupal.t('The City of Tampere is not responsible for translations made by Google Translate.')}
+            </div>`,
+          );
+        }
+      });
+
+      // Close the translate menu if clicked outside.
+      document.addEventListener('click', (event) => {
+        if (!translateBlock.contains(event.target)) {
+          translateMenu.hidden = true;
+        }
+      });
+    });
   },
 };

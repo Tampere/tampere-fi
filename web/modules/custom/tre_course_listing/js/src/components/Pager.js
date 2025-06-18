@@ -74,8 +74,8 @@ const PagerPrevButton = styled(PagerButton)`
 
   &,
   &::before {
-    min-height: 32px;
-    min-width: 32px;
+    min-height: 24px;
+    min-width: 24px;
   }
 
   &::before {

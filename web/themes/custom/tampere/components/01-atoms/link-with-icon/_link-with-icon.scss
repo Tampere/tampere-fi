@@ -24,6 +24,11 @@
     @include large {
       height: $icon-medium;
       width: $icon-medium;
+      
+      &.external-link__icon {
+        height: $external-link-icon-size--desktop;
+        width: $external-link-icon-size--desktop;
+      }
     }
   }
 
@@ -90,8 +95,8 @@
 
     #{$base_class}__icon {
       @include large {
-        height: $icon-medium;
-        width: $icon-medium;
+        height: $icon-small;
+        width: $icon-small;
       }
     }
   }
@@ -183,6 +188,7 @@
       margin-right: $space-xs;
       height: $icon-xs;
       width: $icon-xs;
+      transform: rotate(180deg);
     }
   }
 

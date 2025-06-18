@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.place.field_additional_information
     - field.field.node.place.field_address
     - field.field.node.place.field_description
+    - field.field.node.place.field_description_formatted
+    - field.field.node.place.field_description_toggle
     - field.field.node.place.field_display_location_on_map
     - field.field.node.place.field_epsg_3067_easting
     - field.field.node.place.field_epsg_3067_northing
@@ -91,6 +93,8 @@ hidden:
   entitygroupfield: true
   field_additional_information: true
   field_description: true
+  field_description_formatted: true
+  field_description_toggle: true
   field_display_location_on_map: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

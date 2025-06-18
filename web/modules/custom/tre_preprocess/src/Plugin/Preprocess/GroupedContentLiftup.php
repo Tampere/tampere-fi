@@ -70,7 +70,7 @@ class GroupedContentLiftup extends TrePreProcessPluginBase {
 
         $link_paragraph_bundle = $link_paragraph->bundle();
         if ($link_paragraph_bundle == 'login_link') {
-          $liftup_icon_name = 'service-arrow-large';
+          $liftup_icon_name = 'service-arrow';
         }
         else {
           $liftup_icon_name = 'external';

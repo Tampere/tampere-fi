@@ -176,6 +176,68 @@ $header-secondary-inline-padding: 13px;
     }
   }
 
+  &__translate {
+    position: relative;
+    display: block;
+    margin-right: $space-s;
+
+    @include large {
+      display: block;
+      padding-top: $header-secondary-inline-padding;
+    }
+
+    .header-translate {
+      &-expand {
+        width: 27px;
+        height: 27px;
+        border: none;
+        background-color: transparent;
+        background-image: url("/themes/custom/tampere/images/ikoni-kaanna.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        span { display: none; }
+        &:hover {border: 1px solid;}
+
+        @include large {
+          padding-top: 1.25rem;
+        }
+      }
+
+      &-block {
+        position: fixed;
+        width: max-content;
+        padding: 1.25rem;
+        background-color: lightgrey;
+        z-index: 100;
+        right: 0;
+          
+        @include small {
+          position: absolute;
+          right: 0;
+        }
+
+        .manage-cookies-section p {
+          width: 14rem;
+          font-size: $font-15;
+
+          @include small {
+            width: 20rem;
+            font-size: $font-18;
+          }
+        }
+
+        .translator-message {
+          width: 14rem;
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: break-word;
+        }
+      }
+
+    }
+  }
+
   &__tampere-finland-logo {
     @include to-rem('height', 44);
     @include to-rem('width', 112);

@@ -63,6 +63,10 @@ class PlaceLiftup extends TrePreProcessPluginBase {
       $display_place_description = $this->helperFunctions->getFieldValueString($paragraph, 'field_display_place_description');
       if ($display_place_description == HelperFunctionsInterface::BOOLEAN_FIELD_TRUE) {
         $variables['place_description'] = $this->helperFunctions->getFieldValueString($translated_place_node, 'field_description');
+
+        if ($translated_place_node->hasField('field_description_toggle') && $translated_place_node->get('field_description_toggle')->value) {
+          $variables['place_description'] = $translated_place_node->get('field_description_formatted')->view(self::LIFTUP_VIEW_MODE);
+        }
       }
 
       if (!$translated_place_node->get('field_additional_information')->isEmpty()) {

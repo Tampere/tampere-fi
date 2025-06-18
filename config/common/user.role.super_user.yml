@@ -8,6 +8,7 @@ dependencies:
     - entity_browser.browser.persons_entity_browser
     - feeds.feed_type.rss_feed
     - feeds.feed_type.rss_feed_notices
+    - filter.format.limited_html
     - filter.format.notice_html
     - filter.format.page_not_found_content
     - filter.format.ptv_markdown
@@ -761,6 +762,7 @@ permissions:
   - 'use download_files bulk upload form'
   - 'use download_images bulk upload form'
   - 'use scheduled_transitions transition restore_draft'
+  - 'use text format limited_html'
   - 'use text format notice_html'
   - 'use text format page_not_found_content'
   - 'use text format ptv_markdown'

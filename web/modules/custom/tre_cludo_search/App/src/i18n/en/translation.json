@@ -6,7 +6,9 @@
 		"external_search_label": "Search results from other sites maintained by the city",
 		"internal_search_label": "Search results from Tampere.fi",
 		"internal_search_page_title": "Search results from Tampere.fi",
-		"external_search_page_title": "Search results from other sites maintained by the city"
+		"external_search_page_title": "Search results from other sites maintained by the city",
+		"open": "Open",
+		"close": "Close"
 	},
 	"facets": {
 		"content_type": "Content type",
@@ -18,6 +20,9 @@
 	},
 	"instructions": {
 		"summary_note": "This summary was created by AI using the city's website as the source."
+	},
+	"titles": {
+		"summary_title": "Summary"
 	},
 	"autocomplete": {
 		"search_page_link": "/en/search",

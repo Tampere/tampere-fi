@@ -1,0 +1,11 @@
+uuid: 6fa39ff3-8b8c-4ba6-b548-26e5a80003bd
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.content_tab_card_view_mode_formatted_description
+label: 'Sisältö Välilehti Kortti muotoillulla kuvauksella'
+description: ''
+targetEntityType: node
+cache: true

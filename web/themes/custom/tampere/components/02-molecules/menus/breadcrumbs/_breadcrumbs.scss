@@ -61,6 +61,7 @@ $breadcrumb-separator-icon-extra-small-size: 10px;
   height: $icon-xs;
   width: $icon-xs;
   margin-right: $space-s;
+  transform: rotate(180deg);
 
   @include medium {
     display: none;

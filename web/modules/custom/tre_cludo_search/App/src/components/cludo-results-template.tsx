@@ -196,7 +196,7 @@ export function CludoResultsTemplate() {
                                 {breadcrumb}
                                 {i <
                                   currResult.Fields.Breadcrumb.Values.length -
-                                    1 && " > "}
+                                    1 && <span aria-hidden="true">{' > '}</span>}
                               </React.Fragment>
                             ),
                           )}

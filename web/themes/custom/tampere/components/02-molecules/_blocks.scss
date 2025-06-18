@@ -22,7 +22,8 @@
     @include centered-content($max-width: $max-width);
     @include page-element-spacer;
 
-    overflow: scroll;
+    // Activates scroll when needed, otherwise in windows scroll is always active
+    overflow: auto;
 
     @include large {
       .layout-container--with-sidebar & {

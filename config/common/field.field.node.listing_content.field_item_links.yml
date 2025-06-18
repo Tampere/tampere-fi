@@ -14,7 +14,7 @@ bundle: listing_content
 label: Linkit
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

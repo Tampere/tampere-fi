@@ -22,12 +22,13 @@
 
 {% set external_icon_description = "Link to an external website"|t %}
 
-{% if icon_name == "external" or is_external_link %}
-  {% set icon_aria_label = external_icon_description %}
-{% endif %}
-
 {% if not icon_extra_class %}
   {% set icon_extra_class = [] %}
+{% endif %}
+
+{% if icon_name == "external" or is_external_link %}
+  {% set icon_aria_label = external_icon_description %}
+  {% set icon_extra_class = icon_extra_class|merge(["external-link__icon"]) %}
 {% endif %}
 
 {% set icon_extra_class = icon_extra_class|merge(["rs_skip"]) %}

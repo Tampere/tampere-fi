@@ -9,6 +9,23 @@
   <div {{ bem("main-wrapper", (header__main_wrapper__modifiers|default([])), header__base_class)}}>
     <div {{ bem("main", (header__main__modifiers|default([])), header__base_class)}}>
 
+      <div {{ bem("translate", (header__translate__modifiers|default([])), header__base_class)}}>
+        <button class='header-translate-expand'>
+            <span>{{ 'Translate'|t }}</span>
+        </button>
+        <div class='header-translate-block' hidden>
+          {% block header_google_translate %}{% endblock %}
+          <div class="manage-cookies-section">
+            <p>
+              {{ "Unfortunately you are not able to use the translation option since you haven't accepted related cookies. You can accept cookies by clicking the Renew consent icon at the bottom left corner of the website or on the Accept cookies button below." |t }}
+            </p>
+            <button class="consent-placeholder__button" onClick="CookieConsent.renew()">
+              {{ 'Accept cookies'|t({}, { context: 'Cookie information' }) }}
+            </button>
+          </div>
+        </div>
+      </div>
+
       {# Desktop elements start #}
       <div {{ bem("top-section", (header__top_section__modifiers|default([ "desktop" ])), header__base_class)}}>
         <div {{ bem("back-to-frontpage", (header__back_to_frontpage__modifiers|default([])), header__base_class)}}>
@@ -19,7 +36,7 @@
             "link_with_icon__link_icon": "breadcrumb-arrow-mobile",
           } %}
         </div>
-        <div {{ bem("language-switcher", (header__language_switcher__modifiers|default([])), header__base_class)}}>
+        <div {{ bem("language-switcher", (header__language_switcher__modifiers|default([])), header__base_class, ['notranslate'])}}>
           {% block header_language_switcher %}
             {% include "@molecules/language-switcher/language-switcher.twig" with {
               "language_switcher__modifiers": [ "dynamic" ],

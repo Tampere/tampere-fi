@@ -29,8 +29,7 @@
                 "drupal/system_status",
                 "drupal/form_display_field_machine_name",
                 "drupal/cache_tags",
-                "drupal/quick_node_clone",
-                "drupal/address_display"
+                "drupal/quick_node_clone"
             ]
         },
         "2": {
@@ -105,19 +104,6 @@
                 "dist": {
                     "url": "https://raw.githubusercontent.com/aFarkas/lazysizes/5.3.1/lazysizes.min.js",
                     "type": "file"
-                }
-            }
-        },
-        "address_display": {
-            "type": "package",
-            "package": {
-                "name": "drupal/address_display",
-                "version": "dev-fork",
-                "type": "drupal-module",
-                "source": {
-                    "url": "https://git.drupalcode.org/issue/address_display-3411778.git",
-                    "type": "git",
-                    "reference": "315bacbce7a5d87674a38072a6aa0a68deae0963"
                 }
             }
         },
@@ -196,7 +182,7 @@
         "dinbror/blazy": "^1.8",
         "dropzone/dropzone": "5.9.3",
         "drupal/address": "^2.0",
-        "drupal/address_display": "dev-fork",
+        "drupal/address_display": "^1.0",
         "drupal/admin_toolbar": "^3.0",
         "drupal/ai_provider_deepl": "^1.0@alpha",
         "drupal/ai_translate_textfield": "^2.0@alpha",
@@ -204,7 +190,7 @@
         "drupal/antibot": "^2.0",
         "drupal/auto_entitylabel": "^3.0",
         "drupal/backward_compatibility": "^1.0",
-        "drupal/better_exposed_filters": "^6.0.3",
+        "drupal/better_exposed_filters": "^6.0.6",
         "drupal/cache_tags": "dev-fork",
         "drupal/ckeditor5_paste_filter": "^1.0",
         "drupal/color_field": "^3.0",
@@ -215,9 +201,9 @@
         "drupal/config_split": "^2.0",
         "drupal/content_moderation_notifications": "^3.4",
         "drupal/cookieinformation": "^2.0",
-        "drupal/core-composer-scaffold": "~10.3.14",
-        "drupal/core-project-message": "~10.3.14",
-        "drupal/core-recommended": "~10.3.14",
+        "drupal/core-composer-scaffold": "~10.4.6",
+        "drupal/core-project-message": "~10.4.6",
+        "drupal/core-recommended": "~10.4.6",
         "drupal/dblog_filter": "^4.1",
         "drupal/decorative_image_widget": "^1.0",
         "drupal/diff": "^1.0",
@@ -252,7 +238,7 @@
         "drupal/group": "^2.3",
         "drupal/group_content_menu": "^2.0",
         "drupal/group_scheduled_transitions": "^2.0",
-        "drupal/heading": "^1.6",
+        "drupal/heading": "^2.0",
         "drupal/image_style_warmer": "^1.1",
         "drupal/imagecache_external": "^3.0",
         "drupal/jquery_ui_datepicker": "^2.1",
@@ -263,7 +249,7 @@
         "drupal/jsonapi_image_styles": "^3.0",
         "drupal/jsonapi_include": "^1.5",
         "drupal/language_switcher_extended": "^1.0@beta",
-        "drupal/lazy": "^3.12",
+        "drupal/lazy": "^4.0",
         "drupal/limited_field_widgets": "^2.0",
         "drupal/linkit": "^6.1",
         "drupal/markdown": "^3.0",
@@ -289,6 +275,7 @@
         "drupal/openapi_ui_swagger": "^1.0",
         "drupal/openid_connect": "^3.0@alpha",
         "drupal/openid_connect_windows_aad": "^2.0@beta",
+        "drupal/openy_gtranslate": "^1.0",
         "drupal/options_table": "^2.0",
         "drupal/override_node_options": "^2.6",
         "drupal/paragraph_view_mode": "^3.0.0",
@@ -323,11 +310,11 @@
         "drupal/social_media_links": "^2.8",
         "drupal/svg_image_field": "^2.2",
         "drupal/system_status": "dev-fork",
-        "drupal/tablefield": "^2.2",
+        "drupal/tablefield": "^3.0",
         "drupal/telephone_plus": "^9.1",
         "drupal/term_reference_tree": "^2.0",
         "drupal/theme_breakpoints_js": "^1.1",
-        "drupal/timesup": "^1.0",
+        "drupal/timesup": "^2.0",
         "drupal/twig_tweak": "^3.1",
         "drupal/ui_patterns": "^1.2",
         "drupal/ui_patterns_settings": "^2.0",
@@ -460,9 +447,6 @@
                 "3503517: Support for other field types like Link or Table fields": "https://www.drupal.org/files/issues/2025-02-04/Support-for-other-field-types_3503517_3.patch",
                 "3504251:The wrapper class not getting added for image focal point widget": "https://www.drupal.org/files/issues/2025-02-04/wrapper-class-not-getting-added-3504251_1.patch"
             },
-            "drupal/better_exposed_filters": {
-                "3164774 - Add support for adding datepicker options": "https://www.drupal.org/files/issues/2022-04-20/3164774-bef_respect_datepicker_opts_date_format.patch"
-            },
             "drupal/components": {
                 "3107993 - Template is not defined error on admin pages when using administration theme": "patches/components__template_is_not_defined_error_on_admin_pages_when_using_administration_theme__3107993.patch"
             },
@@ -478,8 +462,7 @@
                 "3171835 - Field Groups marked as required are missing red asterisk": "https://www.drupal.org/files/issues/2024-09-05/3171835-90--reroll-74-10.3.patch",
                 "2968207 - Allow multiple instances of the same exposed filter form on a single page": "https://www.drupal.org/files/issues/2023-04-11/2968207-39.patch",
                 "2511878 - Support enclosure field in Views RssFields row plugin - D10.3": "https://www.drupal.org/files/issues/2024-06-23/2511878-add-support-for-enclosure-field-10.3.x.patch",
-                "3444344 - Claro: Autocomplete dropdown bleeds through sticky table header": "https://www.drupal.org/files/issues/2024-09-12/3444344-65.patch",
-                "3445965 - Content translation: remove warning message about untranslatable fields being hidden": "https://git.drupalcode.org/issue/drupal-3445965/-/commit/78cec6047a861250ae4ef65f9eb69f5947bbc1f6.patch"
+               "3445965 - Content translation: remove warning message about untranslatable fields being hidden": "https://git.drupalcode.org/issue/drupal-3445965/-/commit/78cec6047a861250ae4ef65f9eb69f5947bbc1f6.patch"
             },
             "drupal/dropzonejs": {
                 "3341846 REVERT - Media library form breaking getFormId() function": "patches/dropzonejs-remove-media-library-form-breaking-getFormId-function-added-in-issue-3341846.patch"
@@ -490,10 +473,6 @@
             },
             "drupal/feeds": {
                 "3080098 - Delete Empty Files Created If Empty/Error Exception is Returned": "https://www.drupal.org/files/issues/2024-12-12/delete-empty-error-file_3080098_7_for_3.0-rc3.patch"
-            },
-            "drupal/field_delimiter": {
-                "3354408 - Deprecation warning: Passing null to parameter #1 ($string) of type string is deprecated in Drupal\\Component\\Utility\\Unicode::validateUtf8()": "patches/field_delimiter__deprecation_warning_validateutf8__3354408.patch",
-                "3301169 - str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in Drupal\\Component\\Utility\\Xss::filter()": "https://www.drupal.org/files/issues/2022-10-13/field_delimiter-3301169-fix-php-8.1-warning-9.patch"
             },
             "drupal/field_group": {
                 "2969051 - HTML5 Validation Prevents Submission in Tabs": "https://www.drupal.org/files/issues/2024-08-09/2969051-148.patch",
@@ -526,7 +505,8 @@
             "drupal/markdown": {
                 "3399837 - jquery.once still used in markdown.admin.js": "https://www.drupal.org/files/issues/2023-11-07/3399837-jquery.once-still-used-2.patch",
                 "3409277 - SubformState incorrect interface error": "patches/markdown_subform_state_incorrect_interface_error_3409277.patch",
-                "3283349 - Add support for Commonmark v2": "https://www.drupal.org/files/issues/2023-09-11/markdown-3283349--minimal-upgrade-14.patch"
+                "3283349 - Add support for Commonmark v2": "https://www.drupal.org/files/issues/2023-09-11/markdown-3283349--minimal-upgrade-14.patch",
+                "3463119 - Error when saving text format" : "https://git.drupalcode.org/issue/markdown-3463119/-/commit/2724dce29c5461386cbc49156a6861ddb5351b20.patch"
             },
             "drupal/memcache": {
                 "#2996615: Transaction support for cache (tags) invalidation": "https://www.drupal.org/files/issues/2022-10-25/2996615-revised-woth-hooks--rerolled-against-2.5.patch"
@@ -534,8 +514,8 @@
             "drupal/metatag": {
                 "Change the value separator to ; so that multivalue tag is separated and not combined untintentionally": "./patches/metatag_multivalue_separator.patch"
             },
-            "drupal/office_hours": {
-                "Prevent displaying adjacent commas with empty values - updated to support v1.17": "patches/office_hours_remove_empty_values_from_comments_to_prevent_displaying_adjacent_commas.diff"
+            "drupal/openid_connect": {
+                "3497559 - User role cleared after log in": "https://www.drupal.org/files/issues/2025-04-16/open_id_connect_issue_3497559.patch"
             },
             "drupal/paragraphs": {
                 "3179817: Use label instead of key in paragraph summary for List (text) fields": "https://www.drupal.org/files/issues/2023-09-27/paragraphs-use_label_instead_key_in_summary_for_string_list_fields-3179817-9_0.patch"
@@ -550,8 +530,8 @@
                 "3075889 - Add option to have cloned node publish status default to unpublished": "https://www.drupal.org/files/issues/2022-05-07/quick_node_clone-unpublish-clone-option-3075889-11.patch",
                 "3376504 - Incompatibility with Address module version 2.x": "https://www.drupal.org/files/issues/2023-08-08/3376504-6.patch"
             },
-            "drupal/ui_patterns_settings": {
-                "3409221 - Fix TypeError: array_unshift(): Argument #1 ($array) must be of type array": "https://www.drupal.org/files/issues/2024-03-01/ui_patterns_settings-3409221-26.patch"
+            "drupal/rabbit_hole": {
+                "3463826 rh-node.js error": "https://www.drupal.org/files/issues/2024-07-30/3463826-rh-node-js-textContent-issue-3.patch"
             },
             "drupal/views_autocomplete_filters": {
                 "XO-3817 - Change autocomplete field label to always use node title": "patches/views_autocomplete_filters_dropdown_label_alter.patch"

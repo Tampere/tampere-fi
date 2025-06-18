@@ -113,6 +113,10 @@ $minisite-header-search-width: 140px;
 
   &__back-to-frontpage {
     @include dynamic-color(minisite-identifier-background);
+    
+    &__icon {
+      transform: rotate(180deg);
+    }
   }
 
   &__language-switcher {
@@ -132,6 +136,68 @@ $minisite-header-search-width: 140px;
       @include large {
         display: none;
       }
+    }
+  }
+
+  &__translate {
+    position: relative;
+    display: block;
+    margin-right: $space-s;
+
+    @include large {
+      display: block;
+    }
+
+    .header-translate {
+      &-expand {
+        @include dynamic-color(minisite-identifier-background);
+        width: 27px;
+        height: 27px;
+        border: none;
+        background-color: transparent;
+        background-image: url("/themes/custom/tampere/images/ikoni-kaanna-white.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        &:hover {border: 1px solid white;}
+        cursor: pointer;
+        span { display: none; }
+
+        @include large {
+          padding-top: 1.25rem;
+        }
+      }
+
+      &-block {
+        position: fixed;
+        width: max-content;
+        padding: 1.25rem;
+        background-color: lightgrey;
+        z-index: 100;
+        right: 0;
+          
+        @include small {
+          position: absolute;
+          right: 0;
+        }
+
+        .manage-cookies-section p {
+          width: 14rem;
+          font-size: $font-15;
+
+          @include small {
+            width: 20rem;
+            font-size: $font-18;
+          }
+        }
+
+        .translator-message {
+          width: 14rem;
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: break-word;
+        }
+      }
+
     }
   }
 
@@ -250,5 +316,15 @@ $minisite-header-search-width: 140px;
         margin-bottom: -2px;
       }
     }
+  }
+}
+
+.palette-5,
+.palette-6,
+.palette-7,
+.palette-8 {
+  .minisite-header__translate .header-translate-expand {
+    background-image: url("/themes/custom/tampere/images/ikoni-kaanna.svg");
+    &:hover {border: 1px solid black;}
   }
 }

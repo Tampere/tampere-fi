@@ -45,8 +45,6 @@ items:
     value: 'rss'
   - name: 'Service Arrow'
     value: 'service-arrow'
-  - name: 'Sercive Arrow Large'
-    value: 'service-arrow-large'
   - name: 'Up'
     value: 'up'
   - name: 'Link'

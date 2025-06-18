@@ -6,6 +6,7 @@ dependencies:
     - entity_browser.browser.all_content_entity_browser
     - entity_browser.browser.all_places_entity_browser
     - entity_browser.browser.persons_entity_browser
+    - filter.format.limited_html
     - filter.format.notice_html
     - media.type.dream_broker_video
     - media.type.file
@@ -283,6 +284,7 @@ permissions:
   - 'use scheduled_transitions transition archive'
   - 'use scheduled_transitions transition publish'
   - 'use scheduled_transitions transition restore_draft'
+  - 'use text format limited_html'
   - 'use text format notice_html'
   - 'view all media revisions'
   - 'view any unpublished content'

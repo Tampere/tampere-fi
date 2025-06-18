@@ -6,6 +6,8 @@ dependencies:
     - field.field.node.place.field_additional_information
     - field.field.node.place.field_address
     - field.field.node.place.field_description
+    - field.field.node.place.field_description_formatted
+    - field.field.node.place.field_description_toggle
     - field.field.node.place.field_display_location_on_map
     - field.field.node.place.field_epsg_3067_easting
     - field.field.node.place.field_epsg_3067_northing
@@ -47,6 +49,7 @@ third_party_settings:
       main_content:
         - field_page_summary
         - field_description
+        - field_description_formatted
         - field_additional_information
         - field_location
         - field_paragraphs
@@ -55,7 +58,7 @@ third_party_settings:
     fields:
       node_changed_date:
         plugin_id: node_changed_date
-        weight: 7
+        weight: 8
         label: hidden
         formatter: ds_post_date_date_only
       node_title:
@@ -82,7 +85,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 4
+    weight: 5
     region: main_content
   field_description:
     type: basic_string
@@ -90,6 +93,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 3
+    region: main_content
+  field_description_formatted:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
     region: main_content
   field_location:
     type: geofield_latlon
@@ -104,7 +114,7 @@ content:
             lb: 'Sijainti kartalla'
             lb-col: false
             classes: {  }
-    weight: 5
+    weight: 6
     region: main_content
   field_main_image:
     type: entity_reference_entity_view
@@ -143,12 +153,13 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: main_content
 hidden:
   content_moderation_control: true
   entitygroupfield: true
   field_address: true
+  field_description_toggle: true
   field_display_location_on_map: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

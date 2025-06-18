@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - feeds.feed_type.rss_feed
+    - filter.format.limited_html
     - search_api_autocomplete.search.search
   module:
     - comment
@@ -11,6 +12,7 @@ dependencies:
     - embederator
     - feeds
     - field_permissions
+    - filter
     - media
     - openapi
     - paragraphs_type_permissions
@@ -30,6 +32,7 @@ permissions:
   - 'access openapi api docs'
   - 'post comments'
   - 'use search_api_autocomplete for search'
+  - 'use text format limited_html'
   - 'view 404_page_content config page entity'
   - 'view embederator entity'
   - 'view field_search_keywords'

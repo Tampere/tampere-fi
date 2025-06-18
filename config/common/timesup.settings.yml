@@ -1,0 +1,6 @@
+resolvers:
+  minutely: true
+  hourly: true
+  daily: true
+  midnight: true
+  weekly: true

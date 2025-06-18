@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.place.field_additional_information
     - field.field.node.place.field_address
     - field.field.node.place.field_description
+    - field.field.node.place.field_description_formatted
+    - field.field.node.place.field_description_toggle
     - field.field.node.place.field_display_location_on_map
     - field.field.node.place.field_epsg_3067_easting
     - field.field.node.place.field_epsg_3067_northing
@@ -39,6 +41,7 @@ third_party_settings:
       settings:
         classes:
           layout_class: {  }
+          ds_content: {  }
         wrappers:
           ds_content: div
         outer_wrapper: div
@@ -49,6 +52,7 @@ third_party_settings:
     regions:
       ds_content:
         - field_description
+        - field_description_formatted
         - field_address
         - field_additional_information
         - field_location
@@ -69,7 +73,7 @@ content:
             lb: ''
             lb-col: true
             classes: {  }
-    weight: 2
+    weight: 3
     region: ds_content
   field_address:
     type: string
@@ -84,7 +88,7 @@ content:
             lb: Osoite
             lb-col: true
             classes: {  }
-    weight: 1
+    weight: 2
     region: ds_content
   field_description:
     type: basic_string
@@ -100,6 +104,13 @@ content:
             classes: {  }
     weight: 0
     region: ds_content
+  field_description_formatted:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: ds_content
   field_location:
     type: geofield_latlon
     label: hidden
@@ -113,11 +124,12 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 3
+    weight: 4
     region: ds_content
 hidden:
   content_moderation_control: true
   entitygroupfield: true
+  field_description_toggle: true
   field_display_location_on_map: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

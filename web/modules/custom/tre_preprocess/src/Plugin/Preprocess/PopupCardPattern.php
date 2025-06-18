@@ -50,6 +50,13 @@ class PopupCardPattern extends TrePreProcessPluginBase {
 
     $variables['popup_card_url'] = $popup_card_url;
 
+    if ($translated_node->hasField('field_description_toggle') && $translated_node->get('field_description_toggle')->value) {
+      unset($variables['first_column_content']['field_description']);
+    }
+    else {
+      unset($variables['first_column_content']['field_description_formatted']);
+    }
+
     return $variables;
   }
 

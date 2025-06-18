@@ -575,7 +575,7 @@
 
 @mixin contact-card-heading-link-arrow {
   &::after {
-    background-image: url("/themes/custom/tampere/images/blue-arrow.svg");
+    background-image: url("/themes/custom/tampere/images/icon-sets/main-site-icons/arrow.svg");
     background-size: $contact-card-icon-size $contact-card-icon-size;
     content: "";
     display: inline-block;

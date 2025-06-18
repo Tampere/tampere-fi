@@ -13,7 +13,7 @@ bundle: content_listing
 label: 'High Level Category'
 description: 'Select which high-level category to use for this listing'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

@@ -43,8 +43,9 @@
         $set-focus-color: false
       );
 
-      background-color: clr(background);
-      border-color: clr(background);
+      color: clr(color-hover)!important;  
+      border-color: clr(color-border);
+      border-width: 2.5px;
 
       @include large {
         @include dynamic-color(minisite-identifier-background);

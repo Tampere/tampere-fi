@@ -277,8 +277,20 @@ function _tre_preprocess_generate_partial_ingress (NodeInterface $node) {
   $ingress = NULL;
   if ($node->hasField('field_lead') && !$node->get('field_lead')->isEmpty()) {
     $ingress = $node->get('field_lead')->value;
-  } elseif ($node->hasField('field_description') && !$node->get('field_description')->isEmpty()) {
-    $ingress = $node->get('field_description')->value;
+  }
+  // If there is field_description_toggle set true,
+  // use field_description_formatted instead of field_description.
+  else {
+    if ($node->hasField('field_description_toggle') && $node->get('field_description_toggle')->value) {
+      if ($node->hasField('field_description_formatted') && !$node->get('field_description_formatted')->isEmpty()) {
+        $ingress = $node->get('field_description_formatted')->value;
+      }
+    }
+    else {
+      if ($node->hasField('field_description') && !$node->get('field_description')->isEmpty()) {
+        $ingress = $node->get('field_description')->value;
+      }
+    }
   }
 
   if (!$ingress || strlen($ingress) === 0) {

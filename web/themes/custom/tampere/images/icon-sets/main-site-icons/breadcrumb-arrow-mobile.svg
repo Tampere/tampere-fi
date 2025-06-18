@@ -1,5 +1,13 @@
-<svg width="12" height="14" viewBox="0 0 12 14" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="currentColor" stroke-width="2" fill="none" fill-rule="evenodd">
-        <path d="m8.317.669-6.332 6.33 6.332 6.332M12 6.999H1.984"/>
-    </g>
+<svg 
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 61.56 56.51"
+  fill="none"
+  stroke="currentColor"
+  fill-rule="evenodd"
+  stroke-width="4.98px"
+>
+  <g id="nuolet-03">
+    <path id="Path_9" data-name="Path 9" d="M31.54,1.76l26.5,26.49-26.5,26.5"/>
+    <line id="Line_3" data-name="Line 3" y1="28.25" x2="58.04" y2="28.25"/>
+  </g>
 </svg>

@@ -6,7 +6,9 @@
 		"external_search_label": "Hakusi tulokset kaupungin muilta sivustoilta",
 		"internal_search_label": "Hakusi tulokset Tampere.fi:stä",
 		"internal_search_page_title": "Hakutulokset Tampere.fi:stä",
-		"external_search_page_title": "Hakutulokset kaupungin muilta sivustoilta"
+		"external_search_page_title": "Hakutulokset kaupungin muilta sivustoilta",
+		"open": "Avaa",
+		"close": "Sulje"
 	},
 	"facets": {
 		"content_type": "Sisällön tyyppi",
@@ -18,6 +20,9 @@
 	},
 	"instructions": {
 		"summary_note": "Tämän tiivistelmän teki tekoäly käyttäen lähteenä kaupungin verkkosivuja."
+	},
+	"titles": {
+		"summary_title": "Tiivistelmä"
 	},
 	"autocomplete": {
 		"search_page_link": "/search",

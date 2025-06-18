@@ -1,0 +1,20 @@
+uuid: 0204d4d4-3f43-470f-9802-545dae5b0d9b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - openy_gtranslate
+  theme:
+    - tampere
+id: tampere_openygoogletranslate
+theme: tampere
+region: header
+weight: 0
+provider: null
+plugin: openy_gtranslate_block
+settings:
+  id: openy_gtranslate_block
+  label: 'Open Y Google Translate'
+  label_display: '0'
+  provider: openy_gtranslate
+visibility: {  }

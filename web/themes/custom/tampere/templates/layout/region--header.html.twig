@@ -36,40 +36,44 @@
       {{ elements.languageswitcher }}
     {% endblock %}
 
-      {% block header_text_logo_with_tagline %}
-        {% if group_logo %}
-          {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
-            "group_name": group_name,
-            "text_logo_w_tagline__url": group_front_page_url,
-            "display_tagline": FALSE,
-            "text_logo_w_tagline__modifiers": ["desktop-svg"],
-          } %}
-            {% block text_logo_w_tagline__logo %}
-              {{ group_logo }}
-            {% endblock %}
-          {% endembed %}
-        {% else %}
-          {{ parent() }}
-        {% endif %}
+    {% block header_google_translate %}
+      {{ elements.tampere_openygoogletranslate}}
+    {% endblock %}
 
-      {% endblock %}
-
-      {% block header_mobile_text_logo_with_tagline %}
-        {% if group_logo %}
+    {% block header_text_logo_with_tagline %}
+      {% if group_logo %}
         {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
           "group_name": group_name,
           "text_logo_w_tagline__url": group_front_page_url,
           "display_tagline": FALSE,
-          "text_logo_w_tagline__modifiers": ["mobile-svg"],
+          "text_logo_w_tagline__modifiers": ["desktop-svg"],
         } %}
           {% block text_logo_w_tagline__logo %}
             {{ group_logo }}
           {% endblock %}
         {% endembed %}
-        {% else %}
-          {{ parent() }}
-        {% endif %}
-      {% endblock %}
+      {% else %}
+        {{ parent() }}
+      {% endif %}
+
+    {% endblock %}
+
+    {% block header_mobile_text_logo_with_tagline %}
+      {% if group_logo %}
+      {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
+        "group_name": group_name,
+        "text_logo_w_tagline__url": group_front_page_url,
+        "display_tagline": FALSE,
+        "text_logo_w_tagline__modifiers": ["mobile-svg"],
+      } %}
+        {% block text_logo_w_tagline__logo %}
+          {{ group_logo }}
+        {% endblock %}
+      {% endembed %}
+      {% else %}
+        {{ parent() }}
+      {% endif %}
+    {% endblock %}
 
     {% block header_search %}
       {{ elements.search_form }}
@@ -116,6 +120,10 @@
 
     {% block header_language_switcher %}
       {{ elements.languageswitcher }}
+    {% endblock %}
+
+    {% block header_google_translate %}
+      {{ elements.tampere_openygoogletranslate}}
     {% endblock %}
 
     {% block header_secondary_navigation %}

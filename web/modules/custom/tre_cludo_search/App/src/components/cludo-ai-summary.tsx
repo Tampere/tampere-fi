@@ -11,6 +11,8 @@ export function CludoAiSummary() {
   const [searchInputState] = useSearchInput();
   const [searchResultsState] = useSearchResults();
   const [summary, setSummary] = useState("");
+  const [expandSummary, setExpandSummary] = useState(false);
+  const [summaryAvailable, setSummaryAvailable] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
   const { t } = useTranslation();
 
@@ -48,6 +50,9 @@ export function CludoAiSummary() {
 
     // Generate summary if its available for the search query.
     if (searchData.GenerativeAnswerAvailable) {
+      // Set summary container visible.
+      setSummaryAvailable(true);
+
       // Get top 3 hits from search results and pick used fields.
       const sourceData = searchData.TypedDocuments.slice(0, 3);
       const topHits = sourceData.map((document: TypedDocument) => ({
@@ -72,7 +77,8 @@ export function CludoAiSummary() {
           }),
         });
 
-        if (!response.body) {
+        if (!response.body || response.status !== 200) {
+          setSummaryAvailable(false);
           return null;
         }
 
@@ -93,8 +99,11 @@ export function CludoAiSummary() {
         }
       } catch (error) {
         // Return null, usually in case stream gets the abort signal.
+        setSummaryAvailable(false);
         return null;
       }
+    } else {
+      setSummaryAvailable(false);
     }
 
     return null;
@@ -102,7 +111,9 @@ export function CludoAiSummary() {
 
   // Fetches summary each time a search is done.
   useEffect(() => {
-    if (searchResultsState.isLoading || !searchInputState.query) return;
+    if (!searchInputState.query || searchResultsState.isLoading) {
+      return;
+    }
 
     async function fetchData() {
       // If there is an existing stream ongoing,
@@ -117,6 +128,7 @@ export function CludoAiSummary() {
 
       // Reset summary before streaming begins.
       setSummary("");
+      setExpandSummary(false);
       await fetchSummary();
     }
 
@@ -125,13 +137,47 @@ export function CludoAiSummary() {
 
   return (
     <>
-      {summary.length > 0 && (
-        <div className="text-with-bgcolor__summary">
-          <div className="field-text-bgcolor field--type-text-long field--view-mode-default text-long">
-            <p>{summary}</p>
-            <p>{t("translation:instructions:summary_note")}</p>
+      {summaryAvailable && (
+        <>
+          <div className="text-with-bgcolor__summary">
+            <h3 className="text-with-bgcolor__summary__title">
+              {t("translation:titles:summary_title")}
+            </h3>
+            <div
+              className={`text-with-bgcolor__summary__text ${
+                expandSummary
+                  ? "text-with-bgcolor__summary__text--expanded"
+                  : "text-with-bgcolor__summary__text--default"
+              }`}
+            >
+              {summary.length > 0 && (
+                <>
+                  <p>{summary}</p>
+                  <p>{t("translation:instructions:summary_note")}</p>
+                </>
+              )}
+            </div>
+            <button
+              className="expand-button"
+              onClick={() => setExpandSummary(!expandSummary)}
+            >
+              <svg
+                role="presentation"
+                className={`accordion__icon ${
+                  expandSummary
+                    ? "accordion__icon--expanded"
+                    : "accordion__icon--collapsed"
+                }`}
+              >
+                <use xlinkHref="/themes/custom/tampere/dist/main-site-icons.svg?20250221#arrow-plain-new" />
+              </svg>
+
+              {expandSummary
+                ? t("translation:controls:close")
+                : t("translation:controls:open")}
+            </button>
           </div>
-        </div>
+        </>
       )}
     </>
   );

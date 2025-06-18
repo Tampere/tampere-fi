@@ -9,6 +9,7 @@ $button-default-line-height: 1.2;
 
   display: flex;
   cursor: pointer;
+  $color: clr(primary);
   font-size: $button-mobile-font-size;
   font-family: $font-heading;
   line-height: $button-default-line-height;

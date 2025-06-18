@@ -31,6 +31,7 @@ $link-list-large-icons-xl-breakpoint: 1200px;
   }
 
   &__icon {
+    color: clr(primary);
     flex-shrink: 0;
     height: $icon-default;
     width: $icon-default;

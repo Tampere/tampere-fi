@@ -5,7 +5,7 @@ $pager-item-padding--xs: $space-s;
 $pager-item-padding--small: $space-m;
 $pager-item-padding--desktop: 0 $space-xs;
 
-.pager, div[class^="cludo-"].pager {
+.pager {
   $base_class: &;
 
   margin: $pager-margin;
@@ -17,17 +17,7 @@ $pager-item-padding--desktop: 0 $space-xs;
   }
 
   &__inactive-icon {
-    align-items: center;
-    color: clr(inactive);
-    display: flex;
-  
-    &--prev {
-      transform: rotate(180deg);
-    }
-  
-    @include large {
-      display: none;
-    }
+    display: none;
   }
 
   &__items, ul {

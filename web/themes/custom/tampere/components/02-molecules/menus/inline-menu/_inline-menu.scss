@@ -97,7 +97,6 @@ $inline-menu-item-margin-right: $space-m;
       @include link(clr(text-inverse), clr(text-inverse));
 
       @include large-down {
-        margin-right: calc($icon-menu-item--small + $space-m) * (-1);
         padding: $space-xs calc($icon-menu-item--small + $space-m) $space-xs
           $space-xs;
       }

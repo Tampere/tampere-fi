@@ -1,0 +1,17 @@
+uuid: fdb2b446-590e-4cd6-9086-d03c1b0ca7e1
+langcode: fi
+status: true
+dependencies: {  }
+name: 'Limited HTML'
+format: limited_html
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: false
+    weight: -10
+    settings:
+      allowed_html: '<br> <p> <ul> <ol start> <li>'
+      filter_html_help: true
+      filter_html_nofollow: false

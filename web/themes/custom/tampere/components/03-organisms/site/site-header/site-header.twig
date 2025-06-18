@@ -29,7 +29,7 @@
               } %}
             {% endblock %}
           </div>
-          <div {{ bem("language-switcher", (header__language_switcher__modifiers|default([])), header__base_class)}}>
+          <div {{ bem("language-switcher", (header__language_switcher__modifiers|default([])), header__base_class, ['notranslate'])}}>
             {% block header_language_switcher %}
               {% include "@molecules/language-switcher/language-switcher.twig" with {
                 links: header__language__links,
@@ -38,6 +38,24 @@
               } %}
             {% endblock %}
           </div>
+
+          <div {{ bem("translate", (header__translate__modifiers|default([])), header__base_class)}}>
+            <button class='header-translate-expand'>
+                <span>{{ 'Translate'|t }}</span>
+            </button>
+            <div class='header-translate-block' hidden>
+              {% block header_google_translate %}{% endblock %}
+              <div class="manage-cookies-section">
+                <p>
+                  {{ "Unfortunately you are not able to use the translation option since you haven't accepted related cookies. You can accept cookies by clicking the Renew consent icon at the bottom left corner of the website or on the Accept cookies button below." |t }}
+                </p>
+                <button class="consent-placeholder__button" onClick="CookieConsent.renew()">
+                  {{ 'Accept cookies'|t({}, { context: 'Cookie information' }) }}
+                </button>
+              </div>
+            </div>
+          </div>
+
           {% include "@atoms/04-images/icons/_icon.twig" with {
             icon_filename: "logo-icons",
             icon_name: "logo-tampere-finland-default",
@@ -111,11 +129,6 @@
             "menu_button__modifiers": [ "mobile" ],
           } %}
         </div>
-
-        {# Mobile solr search #}
-{#      <div {{ bem("search", [ "mobile" ], header__base_class)}}>
-          {% block header_search_mobile %}{% endblock %}
-        </div> #}
 
         {# Desktop secondary navigation #}
         <div {{ bem("secondary-navigation", (header__secondary_navigation__modifiers|default([])), header__base_class)}}>

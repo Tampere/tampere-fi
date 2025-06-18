@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.place.field_additional_information
     - field.field.node.place.field_address
     - field.field.node.place.field_description
+    - field.field.node.place.field_description_formatted
+    - field.field.node.place.field_description_toggle
     - field.field.node.place.field_display_location_on_map
     - field.field.node.place.field_epsg_3067_easting
     - field.field.node.place.field_epsg_3067_northing
@@ -47,9 +49,13 @@ third_party_settings:
           icon_field_group: location
           link_field: default
           regular_field: above
+          link_with_icon: default
+          cta: default
           listing_item: default
           in_page_menu: default
+          rss_card: default
           topical_card: default
+          accordion_item: default
           popup_card: default
           topical_content: default
           topics_and_life_situations: default
@@ -69,13 +75,9 @@ third_party_settings:
             weight: 2
             plugin: ds_field
             source: node_link
-        pattern_settings:
-          icon_field_group:
-            field_label: ''
-            field_label_token: ''
-          regular_field:
-            display_colon_after_label: 0
+        pattern_settings: {  }
         show_empty_fields: 0
+        label_as_html: 0
   ds:
     layout:
       id: ds_1col
@@ -102,7 +104,7 @@ third_party_settings:
     fields:
       node_link:
         plugin_id: node_link
-        weight: 3
+        weight: 4
         label: above
         formatter: default
         settings:
@@ -143,7 +145,7 @@ content:
                 field_label: Osoite
                 field_label_token: ''
             pattern_variant: location
-    weight: 2
+    weight: 3
     region: ds_content
   field_description:
     type: basic_string
@@ -156,6 +158,8 @@ hidden:
   content_moderation_control: true
   entitygroupfield: true
   field_additional_information: true
+  field_description_formatted: true
+  field_description_toggle: true
   field_display_location_on_map: true
   field_epsg_3067_easting: true
   field_epsg_3067_northing: true

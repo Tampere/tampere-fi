@@ -1,0 +1,156 @@
+uuid: b0083155-16f5-42c8-b146-c491a1a1c0cb
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.content_tab_card_view_mode_formatted_description
+    - field.field.node.place.field_additional_information
+    - field.field.node.place.field_address
+    - field.field.node.place.field_description
+    - field.field.node.place.field_description_formatted
+    - field.field.node.place.field_description_toggle
+    - field.field.node.place.field_display_location_on_map
+    - field.field.node.place.field_epsg_3067_easting
+    - field.field.node.place.field_epsg_3067_northing
+    - field.field.node.place.field_epsg_3067_point_strings
+    - field.field.node.place.field_geographical_areas
+    - field.field.node.place.field_help_text
+    - field.field.node.place.field_keywords
+    - field.field.node.place.field_listing_search_content
+    - field.field.node.place.field_location
+    - field.field.node.place.field_main_image
+    - field.field.node.place.field_omit_from_listing_map
+    - field.field.node.place.field_page_summary
+    - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_partial_ingress
+    - field.field.node.place.field_search_keywords
+    - field.field.node.place.field_topics
+    - node.type.place
+  module:
+    - ds
+    - field_group
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: ds_1col
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        classes:
+          layout_class: {  }
+          ds_content: {  }
+        wrappers:
+          ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
+        label: ''
+    regions:
+      ds_content:
+        - group_sarakkeet
+        - field_description_formatted
+        - field_address
+        - node_link
+    fields:
+      node_link:
+        plugin_id: node_link
+        weight: 2
+        label: above
+        formatter: default
+  field_group:
+    group_sarakkeet:
+      children:
+        - field_description_formatted
+        - field_address
+        - node_link
+      label: Sarakkeet
+      parent_name: ''
+      region: ds_content
+      weight: 0
+      format_type: pattern_formatter
+      format_settings:
+        pattern: column_field_group
+        variants:
+          figure: large
+          icon_field_group: location
+          link_field: default
+          regular_field: above
+          link_with_icon: default
+          cta: default
+          listing_item: default
+          in_page_menu: default
+          rss_card: default
+          topical_card: default
+          accordion_item: default
+          popup_card: default
+          topical_content: default
+          topics_and_life_situations: default
+        pattern_mapping:
+          'fields:field_description_formatted':
+            destination: pre_columns_content
+            weight: 0
+            plugin: fields
+            source: field_description_formatted
+          'fields:field_address':
+            destination: left_column
+            weight: 1
+            plugin: fields
+            source: field_address
+          'ds_field:node_link':
+            destination: left_column
+            weight: 2
+            plugin: ds_field
+            source: node_link
+        pattern_settings: {  }
+        show_empty_fields: 0
+        label_as_html: 0
+id: node.place.content_tab_card_view_mode_formatted_description
+targetEntityType: node
+bundle: place
+mode: content_tab_card_view_mode_formatted_description
+content:
+  field_address:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: ds_content
+  field_description_formatted:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: ds_content
+hidden:
+  content_moderation_control: true
+  entitygroupfield: true
+  field_additional_information: true
+  field_description: true
+  field_description_toggle: true
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_listing_search_content: true
+  field_location: true
+  field_main_image: true
+  field_omit_from_listing_map: true
+  field_page_summary: true
+  field_paragraphs: true
+  field_partial_ingress: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

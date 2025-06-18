@@ -1,5 +1,16 @@
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="currentColor" stroke-width="2" fill="none" fill-rule="evenodd">
-        <path d="M23.113 22.983H1.147V1.017M9.6 1.017h13.513V14.53M8.681 15.449 23.113 1.017"/>
-    </g>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64.14 64.08"
+  fill="none"
+  fill-rule="evenodd"
+  stroke="currentColor"
+  stroke-width="4.98px"
+>
+  <g id="nuolet-02">
+    <path id="Path_7" data-name="Path 7" d="M20.5,2.49h41.15v41.15"/>
+    <line id="Line_2" data-name="Line 2" x1="17.7" y1="46.44" x2="61.65" y2="2.49"/>
+  </g>
+  <g id="Rectangle_208" data-name="Rectangle 208">
+    <polyline points="38.21 43.74 38.21 61.59 2.49 61.59 2.49 25.86 20.36 25.86"/>
+  </g>
 </svg>
