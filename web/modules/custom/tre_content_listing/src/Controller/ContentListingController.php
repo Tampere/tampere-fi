@@ -100,7 +100,7 @@ class ContentListingController extends ControllerBase {
 
     // If filter is set to alphabetical, apply filters to direct child terms.
     if ($params['filter_type'] === 'alphabetical') {
-      $child_terms = $this->filterTermsAlphabetically($child_terms, $params['letters']);
+      $child_terms = $this->filterTermsAlphabetically($child_terms, $params['letters'], $langcode);
     }
 
     // Build an array of sub-term data, including node counts.
@@ -359,16 +359,23 @@ class ContentListingController extends ControllerBase {
   /**
    * Filters an array of terms alphabetically by the first letter(s).
    */
-  private function filterTermsAlphabetically(array $terms, array $letters): array {
+  private function filterTermsAlphabetically(array $terms, array $letters, string $langcode = 'fi'): array {
     // If no letters are specified, we just return the original list.
     if (empty($letters)) {
       return $terms;
     }
 
     // Filter by first letter of each terms name.
-    return array_filter($terms, function ($term) use ($letters) {
+    return array_filter($terms, function ($term) use ($letters, $langcode) {
+      $term_storage = $this->entityTypeManager->getStorage('taxonomy_term')->load($term->tid);
+      if ($term_storage->hasTranslation($langcode)) {
+        $translated_term = $term_storage->getTranslation($langcode);
+      }
+      else {
+        $translated_term = $term_storage;
+      }
       // Get first letter as capital.
-      $first_letter = strtoupper(substr($term->name, 0, 1));
+      $first_letter = strtoupper(substr($translated_term->getName(), 0, 1));
       // Check and return if it matches those found in query params.
       return in_array($first_letter, $letters);
     });

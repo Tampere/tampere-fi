@@ -39,6 +39,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
           ds_content: {  }
@@ -48,7 +49,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - group_sarakkeet
@@ -61,6 +61,17 @@ third_party_settings:
         weight: 2
         label: above
         formatter: default
+        settings:
+          'link text': 'Lue lisää'
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: Verkkosivu
+            lb-col: true
+            classes: {  }
   field_group:
     group_sarakkeet:
       children:
@@ -118,7 +129,24 @@ content:
     label: above
     settings:
       link_to_entity: false
-    third_party_settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: icon_field_group
+            pattern_mapping:
+              'ds_field_template:field_address__value':
+                destination: icon_field_group_content
+                weight: 0
+                plugin: ds_field_template
+                source: field_address__value
+            pattern_settings:
+              icon_field_group:
+                field_label: Osoite
+                field_label_token: ''
+                label_highlight: 0
+            pattern_variant: location
     weight: 1
     region: ds_content
   field_description_formatted:

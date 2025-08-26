@@ -63,6 +63,7 @@ module:
   facets_custom_label: 0
   feeds: 0
   feeds_ex: 0
+  feeds_tamper: 0
   field: 0
   field_delimiter: 0
   field_group: 0
@@ -196,6 +197,7 @@ module:
   system: 0
   system_status: 0
   tablefield: 0
+  tamper: 0
   taxonomy: 0
   telephone: 0
   telephone_plus: 0
@@ -209,8 +211,8 @@ module:
   tre_alphabetical_job_titles: 0
   tre_breadcrumbs_custom: 0
   tre_cloned_node_alteration: 0
-  tre_content_listing: 0
   tre_cludo_search: 0
+  tre_content_listing: 0
   tre_course_listing: 0
   tre_current_content_archive_search_content: 0
   tre_custom_document_titles: 0
@@ -241,6 +243,7 @@ module:
   tre_portfolio_listing: 0
   tre_preprocess: 0
   tre_preprocess_embedded_content_and_map_tabs: 0
+  tre_preprocess_script: 0
   tre_preprocess_utility_functions: 0
   tre_ptv_import: 0
   tre_react_and_share: 0

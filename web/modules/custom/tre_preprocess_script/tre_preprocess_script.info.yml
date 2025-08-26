@@ -1,0 +1,7 @@
+name: 'TRE Preprocess Script'
+type: module
+description: 'Custom module meant for redering Script paragraph.'
+core_version_requirement: '>=10'
+package: 'TRE'
+dependencies:
+  - tre_preprocess:tre_preprocess

@@ -24,7 +24,7 @@
     @include large {
       height: $icon-medium;
       width: $icon-medium;
-      
+
       &.external-link__icon {
         height: $external-link-icon-size--desktop;
         width: $external-link-icon-size--desktop;
@@ -74,6 +74,7 @@
   &--service {
     @include button-transparent;
     @include dynamic-color(secondary, $set-focus-color: false);
+    padding-left: $space-xs;
 
     background-color: clr(alternative-secondary, #{clr(secondary)});
     border-color: clr(text-inverse);
@@ -81,6 +82,10 @@
     @include large-down {
       padding-top: $space-s;
       padding-bottom: $space-s;
+    }
+
+    @include large {
+      padding-left: $space-m;
     }
 
     &:focus,
@@ -131,7 +136,11 @@
     &:focus,
     &:hover {
       #{$base_class}__icon {
-        @include dynamic-color(secondary, background-color, $set-focus-color: false);
+        @include dynamic-color(
+          secondary,
+          background-color,
+          $set-focus-color: false
+        );
 
         color: clr(alternative-secondary, #{clr(secondary)});
       }

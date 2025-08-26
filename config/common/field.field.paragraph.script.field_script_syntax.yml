@@ -1,0 +1,19 @@
+uuid: 1c5afdcf-77e4-4b78-89b0-8c58eaa5af4e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_script_syntax
+    - paragraphs.paragraphs_type.script
+id: paragraph.script.field_script_syntax
+field_name: field_script_syntax
+entity_type: paragraph
+bundle: script
+label: 'Skriptin syntaksi'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -13,7 +13,20 @@ dependencies:
     - node.type.rss_item
   module:
     - feeds_ex
+    - feeds_tamper
     - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      18598733-1ce0-4be7-ab28-6ae34ebd384c:
+        num_char: 250
+        ellipses: true
+        wordsafe: true
+        uuid: 18598733-1ce0-4be7-ab28-6ae34ebd384c
+        plugin: truncate_text
+        source: main_description
+        weight: 0
+        label: Truncate
 label: 'Lupapisteen RSS-syötteet'
 id: rss_feed_notices
 description: ''

@@ -16,6 +16,7 @@ trait ListingRowPatternTrait {
   public function preprocess(array $variables): array {
     $view = $variables['view'];
 
+    $feed_type = NULL;
     $feed = Feed::load($view->args[0]);
     if ($feed) {
       $feed_type = $feed->bundle();

@@ -111,6 +111,7 @@ permissions:
   - 'view paragraph content project_or_organization_card'
   - 'view paragraph content ptv_service_liftup'
   - 'view paragraph content rss_feed'
+  - 'view paragraph content script'
   - 'view paragraph content separator'
   - 'view paragraph content service_highlight'
   - 'view paragraph content single_colorful_content_liftup'

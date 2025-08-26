@@ -40,6 +40,7 @@ dependencies:
     - paragraphs.paragraphs_type.project_and_organization_cards
     - paragraphs.paragraphs_type.ptv_service_liftup
     - paragraphs.paragraphs_type.rss_feed
+    - paragraphs.paragraphs_type.script
     - paragraphs.paragraphs_type.separator
     - paragraphs.paragraphs_type.service_highlight
     - paragraphs.paragraphs_type.social_media_feed_embed
@@ -121,6 +122,7 @@ settings:
       video_embed: video_embed
       colorful_content_liftup: colorful_content_liftup
       contact_information_liftups: contact_information_liftups
+      script: script
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -240,6 +242,9 @@ settings:
       image_gallery_item:
         weight: 85
         enabled: false
+      image_gallery_limited_images:
+        weight: 133
+        enabled: false
       infograph:
         weight: 77
         enabled: false
@@ -338,6 +343,9 @@ settings:
         enabled: true
       rss_feed:
         weight: 44
+        enabled: true
+      script:
+        weight: 167
         enabled: true
       separator:
         weight: 14

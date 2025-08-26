@@ -1,0 +1,10 @@
+uuid: 0bf718f7-0aa6-42c8-8552-f3442a02d0eb
+langcode: fi
+status: true
+dependencies: {  }
+id: script
+label: Skripti
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

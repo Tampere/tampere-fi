@@ -1,0 +1,21 @@
+uuid: da7766b9-b690-4e8c-98e8-2855644ed555
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.script.field_script_syntax
+    - paragraphs.paragraphs_type.script
+id: paragraph.script.default
+targetEntityType: paragraph
+bundle: script
+mode: default
+content:
+  field_script_syntax:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

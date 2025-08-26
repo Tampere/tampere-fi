@@ -10,7 +10,7 @@
     <div {{ bem("main", (header__main__modifiers|default([])), header__base_class)}}>
 
       <div {{ bem("translate", (header__translate__modifiers|default([])), header__base_class)}}>
-        <button class='header-translate-expand'>
+        <button class='header-translate-expand' aria-label={{ 'Translate'|t }}>
             <span>{{ 'Translate'|t }}</span>
         </button>
         <div class='header-translate-block' hidden>

@@ -1,0 +1,19 @@
+uuid: fe05140b-7c09-4454-ab28-2b70d63700eb
+langcode: fi
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_script_syntax
+field_name: field_script_syntax
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
