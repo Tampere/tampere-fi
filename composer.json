@@ -184,7 +184,10 @@
         "drupal/address": "^2.0",
         "drupal/address_display": "^1.0",
         "drupal/admin_toolbar": "^3.0",
+        "drupal/ai": "^1.1",
+        "drupal/ai_auto_reference": "^1.0@RC",
         "drupal/ai_provider_deepl": "^1.0@alpha",
+        "drupal/ai_provider_openai": "^1.1",
         "drupal/ai_translate_textfield": "^2.0@alpha",
         "drupal/allowed_formats": "^3.0",
         "drupal/antibot": "^2.0",
@@ -443,6 +446,9 @@
             ]
         },
         "patches": {
+            "drupal/ai_auto_reference": {
+                "3544159: Missing translations for relevancy levels": "https://git.drupalcode.org/issue/ai_auto_reference-3544159/-/commit/8737c674b3b23e1d51e3433da1d1c93b0cda5abf.patch"
+            },
             "drupal/ai_translate_textfield": {
                 "3490601: Add feature to select languages this feature is enabled on": "https://git.drupalcode.org/issue/ai_translate_textfield-3490601/-/commit/7bc89a0a91291805646de0e23414d7477bed53fe.patch",
                 "3503517: Support for other field types like Link or Table fields": "https://www.drupal.org/files/issues/2025-02-04/Support-for-other-field-types_3503517_3.patch",

@@ -23,14 +23,13 @@ dependencies:
     - node.type.portfolio
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_auto_reference
     - ai_translate_textfield
-    - allowed_formats
     - content_moderation
     - field_group
     - field_states_ui
     - limited_field_widgets
     - markup
-    - maxlength
     - media_library
     - paragraphs_asymmetric_translation_widgets
     - path
@@ -127,6 +126,22 @@ third_party_settings:
         id: ''
         description: ''
         required_fields: true
+  ai_auto_reference:
+    field_geographical_areas:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_keywords:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_life_situations:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_minisites:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_topics:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
 id: node.portfolio.default
 targetEntityType: node
 bundle: portfolio

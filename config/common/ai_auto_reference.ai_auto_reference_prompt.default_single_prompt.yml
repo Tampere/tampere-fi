@@ -1,0 +1,7 @@
+uuid: e7fdf4bd-7579-4ef8-a2ce-7faf97460407
+langcode: fi
+status: true
+dependencies: {  }
+id: default_single_prompt
+label: 'Default prompt for single target reference'
+prompt: 'For the contents within the code block: \r\n```{CONTENTS}```\r\n\r\nWhich one of the following `|` separated options are highly relevant and moderately relevant?\r\n```{POSSIBLE_RESULTS}```\r\n\r\nReturn a single selection from within the square brackets only and as a valid RFC8259 compliant JSON array within one array key `highly` without deviation.\r\nExample:\r\n{\r\n    \"highly\": [\r\n        \"Your suggestion here\"\r\n    ],\r\n}'

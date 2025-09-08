@@ -1,0 +1,8 @@
+name: 'TRE Ai Auto Reference'
+type: module
+description: 'Custom module meant for customizing ai_auto_reference module.'
+core_version_requirement: '>=10'
+package: 'TRE'
+dependencies:
+  - preprocess:preprocess
+  - ai_auto_reference

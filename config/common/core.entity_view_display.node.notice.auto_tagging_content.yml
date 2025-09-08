@@ -1,0 +1,259 @@
+uuid: b27bb774-23f0-47dd-98c5-c5cdb9979198
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.auto_tagging_content
+    - field.field.node.notice.field_author
+    - field.field.node.notice.field_body
+    - field.field.node.notice.field_date_of_publication
+    - field.field.node.notice.field_display_period
+    - field.field.node.notice.field_event_time
+    - field.field.node.notice.field_geographical_areas
+    - field.field.node.notice.field_help_text
+    - field.field.node.notice.field_keywords
+    - field.field.node.notice.field_life_situations
+    - field.field.node.notice.field_main_image
+    - field.field.node.notice.field_media_caption
+    - field.field.node.notice.field_minisites
+    - field.field.node.notice.field_notice_type
+    - field.field.node.notice.field_paragraphs
+    - field.field.node.notice.field_search_keywords
+    - field.field.node.notice.field_social_media_share
+    - field.field.node.notice.field_time_limit
+    - field.field.node.notice.field_topic
+    - field.field.node.notice.field_topics
+    - node.type.notice
+  module:
+    - datetime
+    - datetime_range
+    - ds
+    - entity_reference_revisions
+    - field_group
+    - social_media
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_topical_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: notice
+    regions:
+      main_title:
+        - node_title
+      main_image_tag:
+        - 'bundle_field:node'
+      main_image_optional_tag:
+        - field_notice_type
+      main_image_caption:
+        - field_media_caption
+      main_content:
+        - group_dates
+        - field_body
+        - field_paragraphs
+        - field_time_limit
+        - field_author
+        - field_display_period
+        - field_social_media_share
+        - field_event_time
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 1
+        label: hidden
+        formatter: default
+  field_group:
+    group_dates:
+      children:
+        - field_time_limit
+        - field_display_period
+        - field_event_time
+      label: Päivämäärät
+      parent_name: ''
+      region: main_content
+      weight: 4
+      format_type: pattern_formatter
+      format_settings:
+        pattern: dates_field_group
+        variants:
+          figure: large
+          icon_field_group: location
+          link_field: default
+          regular_field: above
+          link_with_icon: default
+          cta: default
+          listing_item: default
+          in_page_menu: default
+          rss_card: default
+          topical_card: default
+          popup_card: default
+          topical_content: default
+          topics_and_life_situations: default
+        pattern_mapping:
+          'fields:field_display_period':
+            destination: dates_content
+            weight: 0
+            plugin: fields
+            source: field_display_period
+          'fields:field_event_time':
+            destination: dates_content
+            weight: 1
+            plugin: fields
+            source: field_event_time
+          'fields:field_time_limit':
+            destination: dates_content
+            weight: 2
+            plugin: fields
+            source: field_time_limit
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+            label_highlight: 0
+          link_with_icon:
+            link_text: ''
+          cta:
+            heading_level: ''
+            skip_paragraph_id: 0
+          place_contact:
+            additional_content_label: ''
+            place_contact__heading_level: ''
+          dates_field_group:
+            use_smaller_font_size: 0
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+id: node.notice.auto_tagging_content
+targetEntityType: node
+bundle: notice
+mode: auto_tagging_content
+content:
+  field_author:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: main_content
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
+  field_display_period:
+    type: daterange_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: date_only
+      from_to: both
+      separator: '-'
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 8
+    region: main_content
+  field_event_time:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: date_and_time_w_at_separator
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 9
+    region: main_content
+  field_media_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: main_image_caption
+  field_notice_type:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: main_image_optional_tag
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 6
+    region: main_content
+  field_social_media_share:
+    type: social_media_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: main_content
+  field_time_limit:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: date_only
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 7
+    region: main_content
+hidden:
+  content_moderation_control: true
+  entitygroupfield: true
+  field_date_of_publication: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_main_image: true
+  field_minisites: true
+  field_search_keywords: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

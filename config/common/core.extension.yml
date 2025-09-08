@@ -9,7 +9,9 @@ module:
   admin_toolbar_search: 0
   admin_toolbar_tools: 0
   ai: 0
+  ai_auto_reference: 0
   ai_provider_deepl: 0
+  ai_provider_openai: 0
   ai_translate_textfield: 0
   allowed_formats: 0
   antibot: 0
@@ -89,7 +91,6 @@ module:
   jquery_ui_slider: 0
   jquery_ui_touch_punch: 0
   jsonapi: 0
-  jsonapi_boost: 0
   jsonapi_defaults: 0
   jsonapi_extras: 0
   jsonapi_image_styles: 0
@@ -208,6 +209,7 @@ module:
   token: 0
   toolbar: 0
   tre_admin_theme_modifications: 0
+  tre_ai_auto_reference: 0
   tre_alphabetical_job_titles: 0
   tre_breadcrumbs_custom: 0
   tre_cloned_node_alteration: 0

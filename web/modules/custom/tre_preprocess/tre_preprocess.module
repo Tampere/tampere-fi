@@ -300,3 +300,15 @@ function _tre_preprocess_generate_partial_ingress (NodeInterface $node) {
     $node->set('field_partial_ingress', $ingress);
   }
 }
+
+/**
+ * Implement hook_office_hours_time_format_alter().
+ */
+function tre_preprocess_office_hours_time_format_alter(string &$formatted_time) {
+  // Remove separating space between time and ampm.
+  $formatted_time = str_replace([':'], ['.'], $formatted_time);
+
+  // Translate. Translations can be managed using the 'Interface Translation'
+  // module on /admin/config/regional/translate.
+  $formatted_time = t($formatted_time);
+}

@@ -1,0 +1,167 @@
+uuid: af13a4b5-dd60-42d5-8c06-527eaaf6c479
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.auto_tagging_content
+    - field.field.node.portfolio.field_author
+    - field.field.node.portfolio.field_body
+    - field.field.node.portfolio.field_display_main_image_on_page
+    - field.field.node.portfolio.field_geographical_areas
+    - field.field.node.portfolio.field_help_text
+    - field.field.node.portfolio.field_keywords
+    - field.field.node.portfolio.field_lead
+    - field.field.node.portfolio.field_life_situations
+    - field.field.node.portfolio.field_link_list
+    - field.field.node.portfolio.field_main_image
+    - field.field.node.portfolio.field_main_image_caption
+    - field.field.node.portfolio.field_minisites
+    - field.field.node.portfolio.field_paragraphs
+    - field.field.node.portfolio.field_photographer
+    - field.field.node.portfolio.field_search_keywords
+    - field.field.node.portfolio.field_social_media_share
+    - field.field.node.portfolio.field_topics
+    - node.type.portfolio
+  module:
+    - ds
+    - entity_reference_revisions
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_topical_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: default
+    regions:
+      main_title:
+        - node_title
+      summary:
+        - field_lead
+      main_image_caption:
+        - field_main_image_caption
+      main_content:
+        - field_body
+        - field_paragraphs
+        - field_link_list
+        - field_photographer
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+id: node.portfolio.auto_tagging_content
+targetEntityType: node
+bundle: portfolio
+mode: auto_tagging_content
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: main_content
+  field_lead:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: summary
+  field_link_list:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
+  field_main_image_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: main_image_caption
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: main_content
+  field_photographer:
+    type: basic_string
+    label: inline
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: true
+            lbw-el: span
+            lbw-cl: field-authors__label
+            lbw-at: ''
+            lb-col: true
+            ow: true
+            ow-el: div
+            ow-cl: field-authors
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: true
+            fis-el: span
+            fis-cl: field-authors_content
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 6
+    region: main_content
+hidden:
+  content_moderation_control: true
+  entitygroupfield: true
+  field_author: true
+  field_display_main_image_on_page: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_main_image: true
+  field_minisites: true
+  field_search_keywords: true
+  field_social_media_share: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

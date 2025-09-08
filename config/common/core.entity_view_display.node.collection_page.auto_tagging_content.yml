@@ -1,0 +1,86 @@
+uuid: 01b38992-b9c7-4c83-a757-629614f13999
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.auto_tagging_content
+    - field.field.node.collection_page.field_geographical_areas
+    - field.field.node.collection_page.field_help_text
+    - field.field.node.collection_page.field_keywords
+    - field.field.node.collection_page.field_life_situations
+    - field.field.node.collection_page.field_main_image
+    - field.field.node.collection_page.field_metadata_description
+    - field.field.node.collection_page.field_paragraphs
+    - field.field.node.collection_page.field_search_keywords
+    - field.field.node.collection_page.field_topic
+    - field.field.node.collection_page.field_topics
+    - node.type.collection_page
+  module:
+    - ds
+    - entity_reference_revisions
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_collection_page_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      main_title:
+        - node_title
+      main_content:
+        - content_moderation_control
+        - field_paragraphs
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.collection_page.auto_tagging_content
+targetEntityType: node
+bundle: collection_page
+mode: auto_tagging_content
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: main_content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: main_content
+hidden:
+  entitygroupfield: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_main_image: true
+  field_metadata_description: true
+  field_search_keywords: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

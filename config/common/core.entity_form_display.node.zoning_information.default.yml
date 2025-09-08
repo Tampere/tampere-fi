@@ -46,6 +46,7 @@ dependencies:
     - node.type.zoning_information
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_auto_reference
     - ai_translate_textfield
     - content_moderation
     - field_group
@@ -340,6 +341,19 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
+  ai_auto_reference:
+    field_geographical_areas:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_keywords:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_other_identifiers:
+      view_mode: auto_tagging_content
+      prompt: default_single_prompt
+    field_topics:
+      view_mode: auto_tagging_content
+      prompt: default_single_prompt
 id: node.zoning_information.default
 targetEntityType: node
 bundle: zoning_information

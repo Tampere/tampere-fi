@@ -1,0 +1,11 @@
+_core:
+  default_config_hash: nIukw9bx_qoTpVohqB0yv-wF86MujULRy_zw2u2_3mk
+service: gpt
+service_model: gpt-3.5-turbo
+service_api_key: ''
+token_limit: 8000
+auto_apply_suggestions: false
+auto_apply_relevance_levels:
+  - high
+  - medium
+provider: openai__gpt-4o-mini

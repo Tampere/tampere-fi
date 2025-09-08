@@ -1,0 +1,97 @@
+uuid: d4bda3dc-2bc1-431e-ba7a-d83724e7e80d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.auto_tagging_content
+    - field.field.node.content_in_other_language.field_geographical_areas
+    - field.field.node.content_in_other_language.field_keywords
+    - field.field.node.content_in_other_language.field_language
+    - field.field.node.content_in_other_language.field_life_situations
+    - field.field.node.content_in_other_language.field_main_image
+    - field.field.node.content_in_other_language.field_metadata_description
+    - field.field.node.content_in_other_language.field_paragraphs
+    - field.field.node.content_in_other_language.field_search_keywords
+    - field.field.node.content_in_other_language.field_topic
+    - field.field.node.content_in_other_language.field_topics
+    - node.type.content_in_other_language
+  module:
+    - ds
+    - entity_reference_revisions
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_basic_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      main_image:
+        - field_main_image
+      main_title:
+        - node_title
+      main_content:
+        - field_paragraphs
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.content_in_other_language.auto_tagging_content
+targetEntityType: node
+bundle: content_in_other_language
+mode: auto_tagging_content
+content:
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: hero_widescreen_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: main_image
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: main_content
+hidden:
+  entitygroupfield: true
+  field_geographical_areas: true
+  field_keywords: true
+  field_language: true
+  field_life_situations: true
+  field_metadata_description: true
+  field_search_keywords: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

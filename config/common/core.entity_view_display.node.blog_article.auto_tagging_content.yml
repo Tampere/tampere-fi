@@ -1,0 +1,200 @@
+uuid: aa11c665-68c6-4fab-9d62-e85a911d9b65
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.blog_article_comment.default
+    - core.entity_view_mode.node.auto_tagging_content
+    - field.field.node.blog_article.field_archive_search_content
+    - field.field.node.blog_article.field_blog
+    - field.field.node.blog_article.field_blog_post_author
+    - field.field.node.blog_article.field_blog_post_photographer
+    - field.field.node.blog_article.field_body
+    - field.field.node.blog_article.field_comment
+    - field.field.node.blog_article.field_date_of_publication
+    - field.field.node.blog_article.field_geographical_areas
+    - field.field.node.blog_article.field_help_text
+    - field.field.node.blog_article.field_keywords
+    - field.field.node.blog_article.field_lead
+    - field.field.node.blog_article.field_life_situations
+    - field.field.node.blog_article.field_link_list
+    - field.field.node.blog_article.field_main_image
+    - field.field.node.blog_article.field_media_caption
+    - field.field.node.blog_article.field_minisites
+    - field.field.node.blog_article.field_paragraphs
+    - field.field.node.blog_article.field_partial_ingress
+    - field.field.node.blog_article.field_search_keywords
+    - field.field.node.blog_article.field_social_media_share
+    - field.field.node.blog_article.field_topic
+    - field.field.node.blog_article.field_topics
+    - node.type.blog_article
+  module:
+    - comment
+    - ds
+    - entity_reference_revisions
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_topical_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+          variant: blog
+    regions:
+      main_title:
+        - node_title
+      summary:
+        - field_lead
+      main_image_tag:
+        - 'bundle_field:node'
+      main_image:
+        - field_main_image
+      main_image_caption:
+        - field_media_caption
+      main_content:
+        - field_body
+        - field_paragraphs
+        - field_link_list
+        - field_blog_post_author
+        - field_comment
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 0
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+      'bundle_field:node':
+        plugin_id: 'bundle_field:node'
+        weight: 2
+        label: hidden
+        formatter: default
+id: node.blog_article.auto_tagging_content
+targetEntityType: node
+bundle: blog_article
+mode: auto_tagging_content
+content:
+  field_blog_post_author:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: ''
+            lbw: true
+            lbw-el: span
+            lbw-cl: field-authors__label
+            lbw-at: ''
+            lb-col: true
+            ow: true
+            ow-el: div
+            ow-cl: field-authors
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: true
+            fis-el: span
+            fis-cl: field-authors__content
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 8
+    region: main_content
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
+  field_comment:
+    type: comment_default
+    label: above
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    weight: 9
+    region: main_content
+  field_lead:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: summary
+  field_link_list:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: main_content
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: article_main_image_view_mode
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: main_image
+  field_media_caption:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: main_image_caption
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 6
+    region: main_content
+hidden:
+  content_moderation_control: true
+  entitygroupfield: true
+  field_archive_search_content: true
+  field_blog: true
+  field_blog_post_photographer: true
+  field_date_of_publication: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_life_situations: true
+  field_minisites: true
+  field_partial_ingress: true
+  field_search_keywords: true
+  field_social_media_share: true
+  field_topic: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

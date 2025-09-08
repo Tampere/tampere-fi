@@ -1,0 +1,172 @@
+uuid: f419ab00-b313-49ed-bfdb-d8e2e11db565
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.auto_tagging_content
+    - field.field.node.place.field_additional_information
+    - field.field.node.place.field_address
+    - field.field.node.place.field_description
+    - field.field.node.place.field_description_formatted
+    - field.field.node.place.field_description_toggle
+    - field.field.node.place.field_display_location_on_map
+    - field.field.node.place.field_epsg_3067_easting
+    - field.field.node.place.field_epsg_3067_northing
+    - field.field.node.place.field_epsg_3067_point_strings
+    - field.field.node.place.field_geographical_areas
+    - field.field.node.place.field_help_text
+    - field.field.node.place.field_keywords
+    - field.field.node.place.field_listing_search_content
+    - field.field.node.place.field_location
+    - field.field.node.place.field_main_image
+    - field.field.node.place.field_omit_from_listing_map
+    - field.field.node.place.field_page_summary
+    - field.field.node.place.field_paragraphs
+    - field.field.node.place.field_partial_ingress
+    - field.field.node.place.field_search_keywords
+    - field.field.node.place.field_topics
+    - node.type.place
+  module:
+    - ds
+    - entity_reference_revisions
+    - geofield
+    - text
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_basic_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      main_image:
+        - field_main_image
+      main_title:
+        - node_title
+      main_content:
+        - field_page_summary
+        - field_description
+        - field_description_formatted
+        - field_additional_information
+        - field_location
+        - field_paragraphs
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.place.auto_tagging_content
+targetEntityType: node
+bundle: place
+mode: auto_tagging_content
+content:
+  field_additional_information:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: main_content
+  field_description_formatted:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: main_content
+  field_location:
+    type: geofield_latlon
+    label: above
+    settings:
+      output_format: decimal
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: 'Sijainti kartalla'
+            lb-col: false
+            classes: {  }
+    weight: 6
+    region: main_content
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: hero_widescreen_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: main_image
+  field_page_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: main_content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 7
+    region: main_content
+hidden:
+  content_moderation_control: true
+  entitygroupfield: true
+  field_address: true
+  field_description_toggle: true
+  field_display_location_on_map: true
+  field_epsg_3067_easting: true
+  field_epsg_3067_northing: true
+  field_epsg_3067_point_strings: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_listing_search_content: true
+  field_omit_from_listing_map: true
+  field_partial_ingress: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true

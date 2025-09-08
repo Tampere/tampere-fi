@@ -37,7 +37,15 @@ function _tre_preprocess_embedded_content_and_map_tabs_update_field_listing_sear
   /** @var \Drupal\Core\Render\RendererInterface $renderer */
   $renderer = \Drupal::service('renderer');
   $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
-  $build = $view_builder->view($node, 'content_tab_card_view_mode');
+
+  $view_mode = 'content_tab_card_view_mode';
+  $use_formatted_description = $node->hasField('field_description_toggle') && $node->get('field_description_toggle')->value;
+
+  if ($use_formatted_description && $node->hasField('field_description_formatted') && !$node->get('field_description_formatted')->isEmpty()) {
+    $view_mode = 'content_tab_card_view_mode_formatted_description';
+  }
+
+  $build = $view_builder->view($node, $view_mode);
   $text_content[] = $renderer->renderPlain($build);
 
   $text_string = implode("\n", $text_content);

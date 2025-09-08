@@ -42,6 +42,7 @@ dependencies:
     - node.type.city_planning_and_constructions
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_auto_reference
     - ai_translate_textfield
     - allowed_formats
     - content_moderation
@@ -340,6 +341,16 @@ third_party_settings:
         open: false
         description: ''
         required_fields: true
+  ai_auto_reference:
+    field_geographical_areas:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_keywords:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
+    field_topics:
+      view_mode: auto_tagging_content
+      prompt: default_multiple_prompt
 id: node.city_planning_and_constructions.default
 targetEntityType: node
 bundle: city_planning_and_constructions

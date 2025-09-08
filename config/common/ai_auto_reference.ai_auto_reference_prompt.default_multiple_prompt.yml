@@ -1,0 +1,7 @@
+uuid: 2a593976-ec2c-4168-802d-ef08d66e1121
+langcode: fi
+status: true
+dependencies: {  }
+id: default_multiple_prompt
+label: 'Default prompt for multiple target references'
+prompt: 'For the contents within the code block: \r\n```{CONTENTS}```\r\n\r\nWhich two to four of the following `|` separated options are highly relevant and moderately relevant?\r\n```{POSSIBLE_RESULTS}```\r\n\r\nReturn selections from within the square brackets only and as a valid RFC8259 compliant JSON array within two array keys `highly` and `moderately` without deviation.\r\nExample:\r\n{\r\n    \"highly\": [\r\n        \"First suggestion\",\r\n        \"Second suggestion\"\r\n    ],\r\n    \"moderately\": [\r\n        \"Third suggestion\",\r\n        \"Fourth suggestion\"\r\n    ]\r\n}'

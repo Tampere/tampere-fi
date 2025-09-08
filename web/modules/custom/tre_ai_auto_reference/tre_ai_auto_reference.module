@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Contains hook implementations for tre_ai_auto_reference module.
+ */
+
+use Drupal\ai_auto_reference\Form\AutoReferenceApplyForm;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function tre_ai_auto_reference_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
+  // Turning off the functionality on the 'create' page of nodes.
+  // The modules refreshes the page, which would just delete the progress on
+  // such pages.
+  if (
+    $node instanceof NodeInterface
+    && !$node->isNew()
+    && $configuration = \Drupal::service('ai_auto_reference.ai_references_generator')->getBundleAiReferencesConfiguration($node->bundle())
+  ) {
+
+    // Get the apply form when not auto-applied.
+    $apply_form = \Drupal::service('form_builder')->getForm(AutoReferenceApplyForm::class, $node, $configuration);
+
+    // To prevent messages duplications.
+    if (!empty($apply_form['container'])) {
+      $apply_form_rendered = \Drupal::service('renderer')->renderRoot($apply_form);
+      \Drupal::messenger()->deleteByType('status');
+      \Drupal::messenger()->addMessage($apply_form_rendered);
+    }
+
+    $build_info = $form_state->getBuildInfo();
+    $node = $build_info['callback_object']->getEntity();
+    if ($node instanceof NodeInterface && $node->id()) {
+      $form['#attached']['library'][] = 'ai_auto_reference/ai-auto-reference-admin';
+      $form['actions']['ai_auto_reference'] = [];
+
+      // A trick to keep group_general as the first tab.
+      $form['group_general'][] = [];
+      $form['group_categorization']['ai_auto_reference'] = [
+        '#type' => 'submit',
+        '#value' => t('Generate references with AI'),
+        '#name' => 'ai_auto_reference',
+        '#submit' => [
+          'ai_auto_reference_node_form_submit',
+        ],
+      ];
+    }
+  }
+}

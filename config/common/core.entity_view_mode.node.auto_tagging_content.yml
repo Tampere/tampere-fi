@@ -1,0 +1,11 @@
+uuid: e4871b5c-27f9-4202-bfe7-ba4d3640b97b
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.auto_tagging_content
+label: 'Auto tagging content'
+description: ''
+targetEntityType: node
+cache: true

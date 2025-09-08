@@ -484,7 +484,7 @@ content:
     label: above
     settings:
       day_format: long
-      time_format: H
+      time_format: G
       compress: false
       grouped: false
       show_empty: false

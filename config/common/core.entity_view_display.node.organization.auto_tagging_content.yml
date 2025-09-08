@@ -1,0 +1,165 @@
+uuid: 2ae6b3ef-83e1-43b7-be2b-56944b5e285c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.auto_tagging_content
+    - field.field.node.organization.field_contact_info_paragraph
+    - field.field.node.organization.field_description
+    - field.field.node.organization.field_geographical_areas
+    - field.field.node.organization.field_help_text
+    - field.field.node.organization.field_keywords
+    - field.field.node.organization.field_main_image
+    - field.field.node.organization.field_page_summary
+    - field.field.node.organization.field_paragraphs
+    - field.field.node.organization.field_partial_ingress
+    - field.field.node.organization.field_search_keywords
+    - field.field.node.organization.field_topics
+    - node.type.organization
+  module:
+    - ds
+    - entity_reference_revisions
+    - user
+third_party_settings:
+  ds:
+    layout:
+      id: pattern_basic_content
+      library: null
+      disable_css: false
+      entity_classes: all_classes
+      settings:
+        pattern:
+          field_templates: default
+    regions:
+      main_image:
+        - field_main_image
+      main_title:
+        - node_title
+      main_content:
+        - field_page_summary
+        - content_moderation_control
+        - field_description
+        - field_paragraphs
+        - field_contact_info_paragraph
+    fields:
+      node_title:
+        plugin_id: node_title
+        weight: 1
+        label: hidden
+        formatter: default
+        settings:
+          link: false
+          'link class': ''
+          link_target: ''
+          wrapper: ''
+          class: ''
+        ft:
+          id: reset
+          settings:
+            lb: ''
+id: node.organization.auto_tagging_content
+targetEntityType: node
+bundle: organization
+mode: auto_tagging_content
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: main_content
+  field_contact_info_paragraph:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings:
+      ds:
+        ds_limit: ''
+        ft:
+          id: expert
+          settings:
+            lb: Lisätietoja
+            lbw: true
+            lbw-el: h2
+            lbw-cl: ''
+            lbw-at: ''
+            lb-col: false
+            ow: false
+            ow-el: ''
+            ow-cl: ''
+            ow-at: ''
+            ow-def-at: false
+            ow-def-cl: false
+            fis: false
+            fis-el: h2
+            fis-cl: ''
+            fis-at: ''
+            fis-def-at: false
+            fi: false
+            fi-el: ''
+            fi-cl: ''
+            fi-at: ''
+            fi-def-at: false
+            prefix: ''
+            suffix: ''
+    weight: 6
+    region: main_content
+  field_description:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: main_content
+  field_main_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: hero_widescreen_view_mode
+      link: false
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: main_image
+  field_page_summary:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 2
+    region: main_content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: main_content
+hidden:
+  entitygroupfield: true
+  field_geographical_areas: true
+  field_help_text: true
+  field_keywords: true
+  field_partial_ingress: true
+  field_search_keywords: true
+  field_topics: true
+  langcode: true
+  links: true
+  published_at: true
+  search_api_excerpt: true
