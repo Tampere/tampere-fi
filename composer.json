@@ -196,6 +196,7 @@
         "drupal/better_exposed_filters": "^6.0.6",
         "drupal/cache_tags": "dev-fork",
         "drupal/ckeditor5_paste_filter": "^1.0",
+        "drupal/cloudflare_purge": "^2.0",
         "drupal/color_field": "^3.0",
         "drupal/components": "^3.0@beta",
         "drupal/conditional_fields": "^4.0@alpha",

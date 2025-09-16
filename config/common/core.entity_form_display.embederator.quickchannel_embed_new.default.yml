@@ -1,0 +1,38 @@
+uuid: 9aec9b70-f57f-474e-b440-fe37756001f5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.quickchannel_embed_new
+    - field.field.embederator.quickchannel_embed_new.field_quickchannel_title_new
+id: embederator.quickchannel_embed_new.default
+targetEntityType: embederator
+bundle: quickchannel_embed_new
+mode: default
+content:
+  embed_id:
+    type: string_textfield
+    weight: -6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_quickchannel_title_new:
+    type: string_textfield
+    weight: -4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: -8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  user_id: true

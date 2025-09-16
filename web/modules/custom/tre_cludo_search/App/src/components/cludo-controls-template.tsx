@@ -2,7 +2,7 @@ import { ClearAllFacets } from "@cludo/cludo-search-components";
 import { useFacet, useFacetGroup } from "@cludo/cludo-search-components";
 import { FacetState, FacetDispatchers } from "@cludo/cludo-search-components";
 import { useTranslation } from "react-i18next";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getGlobalSearchMode } from "../lib/globalSearchMode";
 
 export function CludoControlsTemplate() {
@@ -11,6 +11,9 @@ export function CludoControlsTemplate() {
   const [expandedFacetGroup, setExpandedFacetGroup] = useState<string | null>(
     null
   );
+  const facetButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const contentPanelRef = useRef<HTMLInputElement>(null);
+  const removeFacetsRef = useRef<HTMLDivElement>(null);
 
   // Define search facet config manually here to include
   // translated labels and local facet hooks.
@@ -47,8 +50,26 @@ export function CludoControlsTemplate() {
     },
   ];
 
-  function handleFacetClick(facetKey: string, event: React.MouseEvent) {
-    event.preventDefault();
+  // Filter the facets to only ones that should be visible in the current search mode
+  const visibleFacets = searchFacets.filter(
+    (facet) =>
+      (facet.name === "Sivusto" && getGlobalSearchMode() === "external") ||
+      (facet.name !== "Sivusto" && getGlobalSearchMode() === "main")
+  );
+
+  function findNextVisibleButton(currentFacetName: string) {
+    const currentIndex = visibleFacets.findIndex(
+      (f) => f.name === currentFacetName
+    );
+
+    // Return the next facet group button ref.
+    if (currentIndex > -1 && currentIndex < visibleFacets.length - 1) {
+      return facetButtonRefs.current[currentIndex + 1];
+    }
+    return null;
+  }
+
+  function handleFacetClick(facetKey: string) {
     setExpandedFacetGroup((prev) => (prev === facetKey ? null : facetKey));
   }
 
@@ -78,10 +99,9 @@ export function CludoControlsTemplate() {
   return (
     <>
       <h1 className="search-page__title h1 hyphenate">
-        {getGlobalSearchMode() ===  'main'
+        {getGlobalSearchMode() === "main"
           ? t("translation:controls:internal_search_page_title")
-          : t("translation:controls:external_search_page_title")
-        }
+          : t("translation:controls:external_search_page_title")}
       </h1>
       <div className="search-page__additional-information">
         {t("translation:controls:filters_description")}
@@ -92,53 +112,55 @@ export function CludoControlsTemplate() {
       <div className="search-page__facets">
         <div className="facet-accordion">
           <div className="facet-accordion__headings">
-            {searchFacets.map((facet) => {
-              // Get this facets state from the facet group hook.
+            {visibleFacets.map((facet, index) => {
               const [facetState] = facet.facetHook;
-              // Count the selected options and get the active state.
               const selectedCount =
-                facetState.facet?.values.filter((option) => option.isSelected)
-                  .length || 0;
+                facetState.facet?.values.filter((o) => o.isSelected).length ||
+                0;
               const isActive = expandedFacetGroup === facet.name;
+              const isLastButton = index === visibleFacets.length - 1;
+              const activeFacetHasContent =
+                activeFacet &&
+                activeFacet.values &&
+                activeFacet.values.length > 0;
 
               return (
-                facet.name === 'Sivusto' ? getGlobalSearchMode() === 'external' && (
-                  <button
-                    key={facet.name}
-                    type="button"
-                    onClick={(e) => handleFacetClick(facet.name, e)}
-                    className={`facet-accordion-item__heading accordion-heading ${
-                      isActive ? "is-active" : ""
-                    }`}
-                  >
-                    <span className="facet-accordion-item__title">
-                      {facet.label}
-                      {selectedCount > 0 && (
-                        <span className="facet-accordion-item__count">
-                          {selectedCount}
-                        </span>
-                      )}
-                    </span>
-                  </button>
-                ) : getGlobalSearchMode() === 'main' && (
-                  <button
-                    key={facet.name}
-                    type="button"
-                    onClick={(e) => handleFacetClick(facet.name, e)}
-                    className={`facet-accordion-item__heading accordion-heading ${
-                      isActive ? "is-active" : ""
-                    }`}
-                  >
-                    <span className="facet-accordion-item__title">
-                      {facet.label}
-                      {selectedCount > 0 && (
-                        <span className="facet-accordion-item__count">
-                          {selectedCount}
-                        </span>
-                      )}
-                    </span>
-                  </button>
-                )
+                <button
+                  key={facet.name}
+                  ref={(el) => (facetButtonRefs.current[index] = el)}
+                  type="button"
+                  onClick={() => handleFacetClick(facet.name)}
+                  className={`facet-accordion-item__heading accordion-heading ${
+                    isActive ? "is-active" : ""
+                  }`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Tab" && !e.shiftKey) {
+                      // When facet group is open, navigate to the opened facet options panel.
+                      if (isActive && activeFacetHasContent) {
+                        e.preventDefault();
+                        contentPanelRef.current?.focus();
+                      }
+                      // If this is the last button and some other group is open,
+                      // exit the component & break the loop.
+                      else if (
+                        isLastButton &&
+                        activeFacetHasContent &&
+                        !isActive
+                      ) {
+                        removeFacetsRef.current?.focus();
+                      }
+                    }
+                  }}
+                >
+                  <span className="facet-accordion-item__title">
+                    {facet.label}
+                    {selectedCount > 0 && (
+                      <span className="facet-accordion-item__count">
+                        {selectedCount}
+                      </span>
+                    )}
+                  </span>
+                </button>
               );
             })}
           </div>
@@ -146,7 +168,7 @@ export function CludoControlsTemplate() {
           {activeFacet && activeFacet.values && (
             <div className="facet-accordion-item__content accordion-content-section active">
               <ul className="facet-accordion-item__list">
-                {activeFacet.values.map((option) => (
+                {activeFacet.values.map((option, index) => (
                   <li
                     key={option.value}
                     className={`facet-item facet-accordion-item__list-item cludo-filter ${
@@ -156,15 +178,34 @@ export function CludoControlsTemplate() {
                     <label>
                       <input
                         type="checkbox"
+                        ref={index === 0 ? contentPanelRef : null}
                         className="facets-checkbox"
                         checked={option.isSelected || false}
                         onChange={(e) =>
                           handleOptionChange(activeFacet.key, option.value, e)
                         }
                         onKeyDown={(e) => {
-                          if(e.key === "Enter") {
-                            e.preventDefault()
-                            handleOptionChange(activeFacet.key, option.value, e)
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            handleOptionChange(
+                              activeFacet.key,
+                              option.value,
+                              e
+                            );
+                          }
+
+                          // When on the last option in the panel,
+                          // Tab moves focus to the next facet group button.
+                          const isLastOption =
+                            index === activeFacet.values.length - 1;
+                          if (isLastOption && e.key === "Tab" && !e.shiftKey) {
+                            const nextButton = findNextVisibleButton(
+                              activeFacet.key
+                            );
+                            if (nextButton) {
+                              e.preventDefault();
+                              nextButton.focus();
+                            }
                           }
                         }}
                       />
@@ -178,7 +219,7 @@ export function CludoControlsTemplate() {
         </div>
       </div>
 
-      <div className="remove-facets">
+      <div className="remove-facets" tabIndex={-1} ref={removeFacetsRef}>
         <ClearAllFacets
           disableTheme={true}
           label={t("translation:controls:filters_reset_label")}

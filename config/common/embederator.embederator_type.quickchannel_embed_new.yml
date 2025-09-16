@@ -1,0 +1,13 @@
+uuid: 1c5d1f6c-7f10-43e9-8417-a200aecbaefb
+langcode: fi
+status: true
+dependencies: {  }
+id: quickchannel_embed_new
+label: 'Quickchannel upotus UUSI'
+use_ssi: false
+embed_markup:
+  value: '<div style="position:relative;width:100%;padding-bottom:56.25%;"><iframe allow="autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://qcnl.tv/e/[embederator:embed_id]" style="border:0;width:100%;height:100%;position:absolute" title="[embederator:field_quickchannel_title_new]"></iframe></div>'
+  format: embederator_html
+embed_url: ''
+wrapper_class: ''
+description: 'Tällä elementillä voidaan upottaa Quickchannel video. Tarkoitettu uuden Quickchannel alustan videoille'

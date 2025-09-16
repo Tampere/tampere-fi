@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 import Filter from "./Filter";
@@ -14,14 +14,15 @@ const StyledFilterList = styled.ul`
   padding: 0;
 `;
 
-export default function FilterGroup({
+const FilterGroup = forwardRef(({
   id,
   type,
   availableFilters,
   selectFilter,
   activeFilters,
-  activeFilterGroup
-}) {
+  activeFilterGroup,
+  onLastItemTab,
+}, ref) => {
   const isActive = activeFilterGroup === type;
   const availableFiltersForType = availableFilters.filter(isOfType).sort(sortByName);
   const activeFiltersForType = activeFilters.filter(isOfType);
@@ -51,16 +52,20 @@ export default function FilterGroup({
       aria-labelledby={`label${id}`}
       aria-hidden={!isActive}
       role="tabpanel"
+      ref={ref}
     >
       <StyledFilterList isActive={isActive}>
         {
-          availableFiltersForType.map(filterItem => {
+          availableFiltersForType.map((filterItem, index) => {
+            const isLastItem = index === availableFiltersForType.length - 1;
             return (
               <Filter
                 filterItem={filterItem}
                 selectFilter={selectFilter}
                 activeFilters={activeFiltersForType}
                 key={`${filterItem.type}:${filterItem.id}`}
+                isLastItem={isLastItem}
+                onLastItemTab={onLastItemTab}
               />
             );
           })
@@ -68,4 +73,6 @@ export default function FilterGroup({
       </StyledFilterList>
     </StyledFilterGroup>
   );
-};
+});
+
+export default FilterGroup;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   StyledFilters,
   FilterGroupLabelsContainer,
@@ -15,6 +15,9 @@ import {
 
 const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
   const [activeGroupIndex, setActiveGroupIndex] = useState(null);
+  // Refs for storing the group buttons, and the first option of the opened group.
+  const groupButtonRefs = useRef([]);
+  const firstCheckboxRef = useRef(null);
 
   const toggleFacetAccordion = (index) => {
     setActiveGroupIndex(activeGroupIndex === index ? null : index);
@@ -34,7 +37,7 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
     if (updatedFilters[groupKey].includes(option)) {
       // Remove the filter option if its already selected.
       updatedFilters[groupKey] = updatedFilters[groupKey].filter(
-        (item) => item !== option,
+        (item) => item !== option
       );
     } else {
       // Add the option.
@@ -61,6 +64,16 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
                   key={filterGroup.id}
                   isActive={isActive}
                   onClick={() => toggleFacetAccordion(index)}
+                  ref={(el) => (groupButtonRefs.current[index] = el)}
+                  onKeyDown={(e) => {
+                    // When user tabs, focus on the first option in the group.
+                    if (e.key === "Tab" && !e.shiftKey) {
+                      if (isActive && filterGroup.content.length > 0) {
+                        e.preventDefault();
+                        firstCheckboxRef.current.focus();
+                      }
+                    }
+                  }}
                 >
                   <Label isActive={isActive}>{filterGroup.label}</Label>
 
@@ -78,6 +91,9 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
                     filterValues[activeGroupIndex].label.toLowerCase();
                   const isSelected =
                     selectedFilters[groupLabel]?.includes(option);
+                  const isLastOption =
+                    optIndex ===
+                    filterValues[activeGroupIndex].content.length - 1;
 
                   return (
                     <StyledFilter key={optIndex} isActive={isSelected}>
@@ -88,9 +104,27 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
                           onChange={() =>
                             handleCheckboxChange(
                               filterValues[activeGroupIndex].label,
-                              option,
+                              option
                             )
                           }
+                          ref={optIndex === 0 ? firstCheckboxRef : null}
+                          onKeyDown={(e) => {
+                            // On tab, move focus to the next group button
+                            // when we are at the last option.
+                            if (
+                              isLastOption &&
+                              e.key === "Tab" &&
+                              !e.shiftKey
+                            ) {
+                              const nextButton =
+                                groupButtonRefs.current[activeGroupIndex + 1];
+
+                              if (nextButton) {
+                                e.preventDefault();
+                                nextButton.focus();
+                              }
+                            }
+                          }}
                         />
                         {option}
 
@@ -98,7 +132,7 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
                       </StyledLabel>
                     </StyledFilter>
                   );
-                },
+                }
               )}
             </StyledFilterList>
           )}

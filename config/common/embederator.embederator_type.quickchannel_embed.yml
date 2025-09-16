@@ -10,4 +10,4 @@ embed_markup:
   format: embederator_html
 embed_url: ''
 wrapper_class: ''
-description: 'Tällä elementillä voidaan upottaa Quickchannel striimi.'
+description: 'Tällä elementillä voidaan upottaa Quickchannel video.'

@@ -1,0 +1,19 @@
+uuid: 380b0c4e-01cf-4767-9cd4-cead98d7596e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.quickchannel_embed_new
+    - field.storage.embederator.field_quickchannel_title_new
+id: embederator.quickchannel_embed_new.field_quickchannel_title_new
+field_name: field_quickchannel_title_new
+entity_type: embederator
+bundle: quickchannel_embed_new
+label: 'Quickchannel title new'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -67,6 +67,7 @@ function toggleMenuContainer(button) {
   const openText = labelSpan.getAttribute('data-open');
   const closeText = labelSpan.getAttribute('data-close');
 
+  const search = header.querySelector('.site-header__search');
   let ariaLabel;
 
   try {
@@ -84,11 +85,13 @@ function toggleMenuContainer(button) {
       body.classList.remove('mobile-menu-open');
       header.classList.add('mobile-menu-closed');
       header.classList.remove('mobile-menu-open');
+      search.style.display = '';
     } else {
       body.classList.add('mobile-menu-open');
       body.classList.remove('mobile-menu-closed');
       header.classList.add('mobile-menu-open');
       header.classList.remove('mobile-menu-closed');
+      search.style.display = 'none';
     }
   }
 
@@ -200,6 +203,11 @@ function handleResize() {
   header.classList.add('mobile-menu-closed');
   header.classList.remove('mobile-menu-open');
   navigationContainer.classList.add('is-closed');
+
+  const search = header.querySelector('.site-header__search');
+  if (search) {
+    search.style.display = '';
+  }
 
   button.setAttribute('aria-expanded', 'false');
   button.setAttribute('aria-label', Drupal.t('Show menu'));

@@ -54,16 +54,18 @@ export default function Filters({
   activeFilters,
   filterTypes,
   listingType
- }) {
+}) {
   const [activeFilterGroup, setActiveFilterGroup] = useState("");
   const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
   const [filtersHaveFocus, setFiltersHaveFocus] = useState(false);
+  
+  // Refs for the filter group content and reset button.
+  const contentPanelRefs = useRef({});
+  const resetButtonRef = useRef(null);
 
   const filterGroupRefs = filterTypes.map(() => createRef());
   const filtersTitleId = `filters-title-${useId()}`;
   const filterTypeIds = useRef(null);
-  // The following line is intentionally left long. The translations stopped
-  // working after the string was split into multiple lines.
   const filterHelpText = Drupal.t("When you select a filter, the search results are automatically narrowed down to your selection.",
     {}, { context: "Course listing filters help text" }
   );
@@ -125,7 +127,27 @@ export default function Filters({
     setCurrentActiveIndex(prevIndex => prevIndex === lastFilterRefIndex ? 0 : prevIndex + 1);
   };
 
-  const handleKeyDown = event => {
+  // Function handles focusing on the next filter group button / reset button.
+  const focusNextElement = (currentFilterType) => {
+    const currentIndex = filterTypes.indexOf(currentFilterType);
+    const isLastGroup = currentIndex === filterTypes.length - 1;
+
+    if (!isLastGroup) {
+      const nextGroupRef = filterGroupRefs[currentIndex + 1];
+      nextGroupRef.current?.focus();
+      return true;
+    }
+
+    if (resetButtonRef.current) {
+      resetButtonRef.current.focus();
+      return true;
+    }
+
+    // No next element to focus, return null so browser handles the focus.
+    return false;
+  };
+
+  const handleLabelKeyDown = (event, filterType) => {
     let preventDefaultBehavior = true;
 
     switch (event.key) {
@@ -150,6 +172,26 @@ export default function Filters({
       event.stopPropagation();
       event.preventDefault();
     }
+
+    // Handle tab navigation.
+    if (event.key === 'Tab' && !event.shiftKey) {
+      const groupIsOpen = activeFilterGroup === filterType;
+      const isLastGroupButton = filterTypes.indexOf(filterType) === filterTypes.length - 1;
+
+      if (groupIsOpen) {
+        // If this group is open, tab into first option in the panel.
+        const panelRef = contentPanelRefs.current[filterType];
+        const firstFilter = panelRef?.current?.querySelector('input[type="checkbox"]');
+        if (firstFilter) {
+          event.preventDefault();
+          firstFilter.focus();
+        }
+      } else if (!isLastGroupButton) {
+        // If group is closed and its not the last button, tab to the next button.
+        event.preventDefault();
+        moveIndexToNext();
+      }
+    }
   };
 
   const handleReset = () => {
@@ -173,9 +215,14 @@ export default function Filters({
 
   useEffect(() => {
     const filterTypeIdMap = new Map();
-    filterTypes.forEach(filterType => filterTypeIdMap.set(filterType, `filter-type-${uuidv4()}`));
+    const panelRefs = {};
+    filterTypes.forEach(filterType => {
+      filterTypeIdMap.set(filterType, `filter-type-${uuidv4()}`);
+      panelRefs[filterType] = createRef();
+    });
     filterTypeIds.current = filterTypeIdMap;
-  }, []);
+    contentPanelRefs.current = panelRefs;
+  }, [filterTypes]);
 
   useEffect(() => {
     moveFocusToCurrent();
@@ -208,7 +255,7 @@ export default function Filters({
               activeFilters={activeFilters}
               activeFilterGroup={activeFilterGroup}
               toggleActiveFilterGroup={toggleActiveFilterGroup}
-              handleKeyDown={handleKeyDown}
+              handleKeyDown={(event) => handleLabelKeyDown(event, filterType)}
               currentActiveIndex={currentActiveIndex}
               index={index}
               ref={filterGroupRefs[index]}
@@ -227,11 +274,16 @@ export default function Filters({
             activeFilters={activeFilters}
             activeFilterGroup={activeFilterGroup}
             key={`filterGroup${filterTypeIds.current.get(filterType)}`}
+            ref={contentPanelRefs.current[filterType]}
+            onLastItemTab={() => focusNextElement(filterType)}
           />
         ))
       }
-      { hasActiveFilters &&
-        <ResetButton onClick={handleReset}>
+      {hasActiveFilters &&
+        <ResetButton
+          onClick={handleReset}
+          ref={resetButtonRef}
+        >
           { Drupal.t("Remove filters") }
         </ResetButton>
       }

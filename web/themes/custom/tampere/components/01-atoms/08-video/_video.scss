@@ -4,6 +4,7 @@ $video-mediaserver-video-wide-content-two-column-breakpoint: 1112px;
 /* Responsive Video using CSS only */
 .video, 
 .embederator--quickchannel-embed,
+.embederator--quickchannel-embed-new,
 .embederator--mediaserver-live,
 .embederator--mediaserver-video {
   @include small-down {

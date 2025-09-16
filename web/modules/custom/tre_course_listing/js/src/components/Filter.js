@@ -62,13 +62,25 @@ const CloseIcon = styled.span`
 export default function Filter({
   filterItem,
   selectFilter,
-  activeFilters
+  activeFilters,
+  isLastItem,
+  onLastItemTab,
 }) {
   const isActive = activeFilters.some(
     filter => filter.keywords.includes(`${filterItem.type}:${filterItem.id}`)
   );
 
   const filterId = useId();
+
+  const handleKeyDown = (event) => {
+    if (isLastItem && event.key === 'Tab' && !event.shiftKey) {
+      // Prevent default behavior, if there was a group button to focus to.
+      const focusWasHandled = onLastItemTab();
+      if (focusWasHandled) {
+        event.preventDefault();
+      }
+    }
+  };
 
   return (
     <StyledFilter isActive={isActive}>
@@ -77,6 +89,7 @@ export default function Filter({
         type="checkbox"
         onChange={() => selectFilter(filterItem)}
         defaultChecked={isActive}
+        onKeyDown={handleKeyDown}
       />
       <StyledLabel
         htmlFor={`filter-${filterId}`}
