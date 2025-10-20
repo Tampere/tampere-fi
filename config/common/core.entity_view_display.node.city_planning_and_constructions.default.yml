@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_listing_search_content
     - field.field.node.city_planning_and_constructions.field_location
     - field.field.node.city_planning_and_constructions.field_main_image
+    - field.field.node.city_planning_and_constructions.field_no_category_topics
     - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
     - field.field.node.city_planning_and_constructions.field_partial_ingress
@@ -160,6 +161,16 @@ content:
             classes: {  }
     weight: 0
     region: main_image
+  field_no_category_topics:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden

@@ -1,0 +1,18 @@
+uuid: 8923378c-af17-41d7-9a90-b5c1ef74b3ee
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_no_category_keywords
+field_name: field_no_category_keywords
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

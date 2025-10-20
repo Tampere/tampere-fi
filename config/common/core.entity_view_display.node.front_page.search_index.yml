@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.front_page.field_main_image
     - field.field.node.front_page.field_main_image_caption
     - field.field.node.front_page.field_main_image_link
+    - field.field.node.front_page.field_no_category_topics
     - field.field.node.front_page.field_paragraphs
     - field.field.node.front_page.field_search_keywords
     - field.field.node.front_page.field_topics
@@ -160,6 +161,7 @@ hidden:
   content_moderation_control: true
   entitygroupfield: true
   field_help_text: true
+  field_no_category_topics: true
   langcode: true
   links: true
   published_at: true

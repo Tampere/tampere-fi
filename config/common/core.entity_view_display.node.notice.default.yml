@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.notice.field_main_image
     - field.field.node.notice.field_media_caption
     - field.field.node.notice.field_minisites
+    - field.field.node.notice.field_no_category_topics
     - field.field.node.notice.field_notice_type
     - field.field.node.notice.field_paragraphs
     - field.field.node.notice.field_search_keywords
@@ -167,8 +168,8 @@ content:
     settings:
       timezone_override: ''
       format_type: date_only
-      separator: '-'
       from_to: both
+      separator: '-'
     third_party_settings:
       ds:
         ft:
@@ -212,6 +213,16 @@ content:
     third_party_settings: {  }
     weight: 4
     region: main_image_caption
+  field_no_category_topics:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_notice_type:
     type: entity_reference_label
     label: hidden

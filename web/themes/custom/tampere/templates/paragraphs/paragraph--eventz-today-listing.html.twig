@@ -40,4 +40,35 @@
  */
 #}
 
-{% include "paragraph--event-and-hobby-listing.html.twig" %}
+{% set topical_listing__heading = paragraph.field_title.value %}
+{% set topical_listing__summary = paragraph.field_summary.value %}
+
+{% embed "@organisms/_paragraph.twig" %}
+  {% block paragraph_content %}
+    <div class="topical-listing topical-listing--events">
+      <div class="topical-listing__wrapper">
+        
+        {% if topical_listing__heading %}
+          <h2 class="topical-listing__heading h2 hyphenate">
+            {{ topical_listing__heading }}
+          </h2>
+        {% endif %}
+        
+        {% if topical_listing__summary %}
+          <p class="topical-listing__summary">
+            {{ topical_listing__summary }}
+          </p>
+        {% endif %}
+        
+        <div class="eventz-liftups-container" data-paragraph-id="{{ paragraph.id.value }}">
+          <div class="loader-wrapper" role="status">
+            <div class="loader" aria-hidden="true"></div>
+            <p class="loader-text">{{ 'Loading events'|t }}</p>
+          </div>
+          <ul class="topical-listing__liftups eventz-liftups-content"></ul>
+        </div>
+        
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}

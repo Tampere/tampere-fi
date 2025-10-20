@@ -1,0 +1,21 @@
+uuid: 5ff7f044-d7ee-4d66-8e64-885a6e6c8fb5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.notice
+id: node.notice.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: notice
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

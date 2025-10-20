@@ -1,0 +1,21 @@
+uuid: da9ff4e4-17a1-406a-bca5-f8f2132fd0a5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.small_news_item
+id: node.small_news_item.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: small_news_item
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.project.field_help_text
     - field.field.node.project.field_keywords
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_no_category_topics
     - field.field.node.project.field_page_summary
     - field.field.node.project.field_paragraphs
     - field.field.node.project.field_partial_ingress
@@ -126,6 +127,16 @@ content:
             classes: {  }
     weight: 0
     region: main_image
+  field_no_category_topics:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_page_summary:
     type: basic_string
     label: hidden

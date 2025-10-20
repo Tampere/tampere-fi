@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.portfolio.field_main_image
     - field.field.node.portfolio.field_main_image_caption
     - field.field.node.portfolio.field_minisites
+    - field.field.node.portfolio.field_no_category_topics
     - field.field.node.portfolio.field_paragraphs
     - field.field.node.portfolio.field_photographer
     - field.field.node.portfolio.field_search_keywords
@@ -210,6 +211,7 @@ hidden:
   entitygroupfield: true
   field_display_main_image_on_page: true
   field_help_text: true
+  field_no_category_topics: true
   field_social_media_share: true
   langcode: true
   published_at: true

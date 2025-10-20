@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.project.field_help_text
     - field.field.node.project.field_keywords
     - field.field.node.project.field_main_image
+    - field.field.node.project.field_no_category_topics
     - field.field.node.project.field_page_summary
     - field.field.node.project.field_paragraphs
     - field.field.node.project.field_partial_ingress
@@ -155,6 +156,7 @@ hidden:
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true
+  field_no_category_topics: true
   field_partial_ingress: true
   field_search_keywords: true
   field_topics: true

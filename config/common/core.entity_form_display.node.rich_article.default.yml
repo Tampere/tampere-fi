@@ -16,6 +16,8 @@ dependencies:
     - field.field.node.rich_article.field_main_image
     - field.field.node.rich_article.field_media_caption
     - field.field.node.rich_article.field_minisites
+    - field.field.node.rich_article.field_no_category_keywords
+    - field.field.node.rich_article.field_no_category_topics
     - field.field.node.rich_article.field_paragraphs
     - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
@@ -96,7 +98,9 @@ third_party_settings:
     group_categorization:
       children:
         - field_topics
+        - field_no_category_topics
         - field_keywords
+        - field_no_category_keywords
         - field_life_situations
         - field_geographical_areas
         - group_search_keywords
@@ -118,7 +122,7 @@ third_party_settings:
       label: Avainsanat
       region: content
       parent_name: group_categorization
-      weight: 9
+      weight: 11
       format_type: fieldset
       format_settings:
         classes: ''
@@ -129,7 +133,7 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
       prompt: default_multiple_prompt
@@ -149,7 +153,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -195,7 +199,7 @@ content:
         maxlength_js_enforce: false
   field_geographical_areas:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS
@@ -205,13 +209,13 @@ content:
     third_party_settings: {  }
   field_help_text:
     type: markup
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS
@@ -222,9 +226,22 @@ content:
       limited_field_widgets:
         limit_values: '0'
       field_states_ui:
+        field_states:
+          cfaa2dd0-b727-419e-aedf-459d46e7b1ee:
+            id: required
+            data:
+              target: field_no_category_keywords
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: cfaa2dd0-b727-419e-aedf-459d46e7b1ee
         form:
           type: ''
-          list: ''
+          list:
+            cfaa2dd0-b727-419e-aedf-459d46e7b1ee:
+              operations:
+                edit: Muokkaa
+                delete: Poista
           add: Lisää
   field_lead:
     type: string_textarea
@@ -248,7 +265,7 @@ content:
           add: Lisää
   field_life_situations:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 9
     region: content
     settings:
       match_operator: CONTAINS
@@ -308,7 +325,7 @@ content:
           add: Add
   field_minisites:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 12
     region: content
     settings:
       match_operator: CONTAINS
@@ -316,6 +333,30 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_no_category_keywords:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+  field_no_category_topics:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_paragraphs:
     type: paragraphs_classic_asymmetric
     weight: 7
@@ -355,7 +396,7 @@ content:
         maxlength_js_truncate_html: false
   field_search_keywords:
     type: string_textfield
-    weight: 26
+    weight: 4
     region: content
     settings:
       size: 60
@@ -370,7 +411,27 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          e8a0b52a-6fea-4a5b-b1d1-5a1cec24a032:
+            id: required
+            data:
+              target: field_no_category_topics
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: e8a0b52a-6fea-4a5b-b1d1-5a1cec24a032
+        form:
+          type: ''
+          list:
+            e8a0b52a-6fea-4a5b-b1d1-5a1cec24a032:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   langcode:
     type: language_select
     weight: 3
@@ -380,13 +441,13 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -398,12 +459,12 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -447,7 +508,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.notice.field_main_image
     - field.field.node.notice.field_media_caption
     - field.field.node.notice.field_minisites
+    - field.field.node.notice.field_no_category_topics
     - field.field.node.notice.field_notice_type
     - field.field.node.notice.field_paragraphs
     - field.field.node.notice.field_search_keywords
@@ -250,6 +251,7 @@ hidden:
   field_life_situations: true
   field_main_image: true
   field_minisites: true
+  field_no_category_topics: true
   field_search_keywords: true
   field_topic: true
   field_topics: true

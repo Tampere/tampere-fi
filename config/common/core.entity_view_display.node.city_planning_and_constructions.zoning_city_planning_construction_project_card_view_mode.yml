@@ -24,6 +24,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_listing_search_content
     - field.field.node.city_planning_and_constructions.field_location
     - field.field.node.city_planning_and_constructions.field_main_image
+    - field.field.node.city_planning_and_constructions.field_no_category_topics
     - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
     - field.field.node.city_planning_and_constructions.field_partial_ingress
@@ -53,6 +54,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
         wrappers:
@@ -61,7 +63,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - field_description
@@ -131,6 +132,7 @@ hidden:
   field_listing_search_content: true
   field_location: true
   field_main_image: true
+  field_no_category_topics: true
   field_omit_from_listing_map: true
   field_paragraphs: true
   field_partial_ingress: true

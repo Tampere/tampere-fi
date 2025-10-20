@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.involvement_opportunity.field_link_single
     - field.field.node.involvement_opportunity.field_location
     - field.field.node.involvement_opportunity.field_main_image
+    - field.field.node.involvement_opportunity.field_no_category_topics
     - field.field.node.involvement_opportunity.field_opportunity_description
     - field.field.node.involvement_opportunity.field_paragraphs
     - field.field.node.involvement_opportunity.field_participate_end_time
@@ -213,6 +214,7 @@ hidden:
   field_epsg_3067_point_strings: true
   field_help_text: true
   field_location: true
+  field_no_category_topics: true
   field_participate_end_time: true
   field_participate_start_time: true
   field_sign_up_link: true

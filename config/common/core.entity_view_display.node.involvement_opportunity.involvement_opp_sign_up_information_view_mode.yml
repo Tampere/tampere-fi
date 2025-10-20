@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.involvement_opportunity.field_link_single
     - field.field.node.involvement_opportunity.field_location
     - field.field.node.involvement_opportunity.field_main_image
+    - field.field.node.involvement_opportunity.field_no_category_topics
     - field.field.node.involvement_opportunity.field_opportunity_description
     - field.field.node.involvement_opportunity.field_paragraphs
     - field.field.node.involvement_opportunity.field_participate_end_time
@@ -44,6 +45,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
           ds_content: {  }
@@ -53,7 +55,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - 'dynamic_twig_field:node-involvement_opp_sign_up_info'
@@ -86,6 +87,7 @@ hidden:
   field_link_single: true
   field_location: true
   field_main_image: true
+  field_no_category_topics: true
   field_opportunity_description: true
   field_paragraphs: true
   field_participate_end_time: true

@@ -1,0 +1,21 @@
+uuid: 38d8c1ec-f1ef-4bc5-9dd4-c6ffa725ed23
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.city_planning_and_constructions
+id: node.city_planning_and_constructions.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: city_planning_and_constructions
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

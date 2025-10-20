@@ -1,6 +1,10 @@
 cludo-search-api:
   js:
-    //customer.cludo.com/scripts/bundles/search-script.min.js: { external: true, minified: true }
+    //customer.cludo.com/scripts/bundles/search-script.min.js:
+      external: true
+      minified: true
+      attributes:
+        defer: true
 cludo-search:
   js:
     App/dist/js/cludo-search-results.js: { minified: true }

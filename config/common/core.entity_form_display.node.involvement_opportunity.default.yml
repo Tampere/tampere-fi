@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.involvement_opportunity.field_link_single
     - field.field.node.involvement_opportunity.field_location
     - field.field.node.involvement_opportunity.field_main_image
+    - field.field.node.involvement_opportunity.field_no_category_topics
     - field.field.node.involvement_opportunity.field_opportunity_description
     - field.field.node.involvement_opportunity.field_paragraphs
     - field.field.node.involvement_opportunity.field_participate_end_time
@@ -56,6 +57,7 @@ third_party_settings:
     group_categorization:
       children:
         - field_topics
+        - field_no_category_topics
         - field_keywords
         - field_life_situations
         - field_geographical_areas
@@ -147,7 +149,7 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
       prompt: default_multiple_prompt
@@ -164,7 +166,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -232,7 +234,7 @@ content:
     third_party_settings: {  }
   field_geographical_areas:
     type: entity_reference_autocomplete
-    weight: 30
+    weight: 32
     region: content
     settings:
       match_operator: CONTAINS
@@ -242,23 +244,30 @@ content:
     third_party_settings: {  }
   field_help_text:
     type: markup
-    weight: 8
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 28
+    weight: 29
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_life_situations:
     type: entity_reference_autocomplete
-    weight: 29
+    weight: 31
     region: content
     settings:
       match_operator: CONTAINS
@@ -288,6 +297,18 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_no_category_topics:
+    type: boolean_checkbox
+    weight: 28
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_opportunity_description:
     type: text_textarea
     weight: 7
@@ -426,7 +447,27 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          f281bd04-3a93-49f0-8722-ee6c3c264c67:
+            id: required
+            data:
+              target: field_no_category_topics
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: f281bd04-3a93-49f0-8722-ee6c3c264c67
+        form:
+          type: ''
+          list:
+            f281bd04-3a93-49f0-8722-ee6c3c264c67:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   langcode:
     type: language_select
     weight: 2
@@ -436,18 +477,18 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 7
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -479,7 +520,7 @@ content:
           list: ''
           add: Lisää
   translation:
-    weight: 6
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -494,7 +535,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }

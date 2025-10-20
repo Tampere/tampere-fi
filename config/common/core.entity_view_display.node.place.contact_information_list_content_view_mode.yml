@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.place.field_listing_search_content
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
+    - field.field.node.place.field_no_category_topics
     - field.field.node.place.field_omit_from_listing_map
     - field.field.node.place.field_page_summary
     - field.field.node.place.field_paragraphs
@@ -105,6 +106,7 @@ hidden:
   field_listing_search_content: true
   field_location: true
   field_main_image: true
+  field_no_category_topics: true
   field_omit_from_listing_map: true
   field_page_summary: true
   field_paragraphs: true

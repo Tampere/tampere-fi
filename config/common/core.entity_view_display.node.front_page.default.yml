@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.front_page.field_main_image
     - field.field.node.front_page.field_main_image_caption
     - field.field.node.front_page.field_main_image_link
+    - field.field.node.front_page.field_no_category_topics
     - field.field.node.front_page.field_paragraphs
     - field.field.node.front_page.field_search_keywords
     - field.field.node.front_page.field_topics
@@ -82,6 +83,16 @@ content:
             lb: ''
     weight: 2
     region: main_image_caption
+  field_no_category_topics:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden

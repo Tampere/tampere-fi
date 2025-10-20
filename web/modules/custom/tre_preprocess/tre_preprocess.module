@@ -7,6 +7,7 @@
 
 use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Entity\RevisionableStorageInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
@@ -311,4 +312,117 @@ function tre_preprocess_office_hours_time_format_alter(string &$formatted_time) 
   // Translate. Translations can be managed using the 'Interface Translation'
   // module on /admin/config/regional/translate.
   $formatted_time = t($formatted_time);
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Add custom validation for Topics and Keywords fields.
+ */
+function tre_preprocess_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
+  $excluded_types = ['media', 'place_of_business', 'person'];
+
+  if (in_array($node->bundle(), $excluded_types)) {
+    return;
+  }
+
+  $form['#validate'][] = '_tre_preprocess_validate_required_taxonomies';
+}
+
+/**
+ * Custom validation for taxonomy requirements.
+ */
+function _tre_preprocess_validate_required_taxonomies($form, FormStateInterface $form_state) {
+  $node = $form_state->getFormObject()->getEntity();
+  $bundle = $node->bundle();
+
+  $moderation_state = $form_state->getValue('moderation_state')[0]['value'];
+  if ($moderation_state != 'published') {
+    return;
+  }
+
+  $topics = $form_state->getValue('field_topics');
+  $keywords = $form_state->getValue('field_keywords');
+  $topics_none = !empty($form_state->getValue('field_no_category_topics')['value']);
+  $keywords_none = !empty($form_state->getValue('field_no_category_keywords')['value']);
+
+  $has_topics = array_filter($topics, function ($item, $key) {
+    return is_numeric($key) && !empty($item['target_id']);
+  }, ARRAY_FILTER_USE_BOTH);
+
+  $has_keywords = array_filter($keywords, function ($item, $key) {
+    return is_numeric($key) && !empty($item['target_id']);
+  }, ARRAY_FILTER_USE_BOTH);
+
+  $show_moderation_message = FALSE;
+  if (empty($has_topics) && !$topics_none) {
+    $form_state->setErrorByName('field_topics', t('Add suitable topics.'));
+    $show_moderation_message = TRUE;
+  }
+
+  $bundles_requiring_keywords = ['news_item', 'rich_article', 'small_news_item'];
+  if (in_array($bundle, $bundles_requiring_keywords)) {
+    if (empty($has_keywords) && !$keywords_none) {
+      $form_state->setErrorByName('field_keywords', t('Add suitable keywords.'));
+      $show_moderation_message = TRUE;
+    }
+  }
+  
+  if ($show_moderation_message) {
+    $form_state->setErrorByName('moderation_state', t('If you want to ask AI for suggestions for categories, first save the page as a draft (function at the bottom of the page).'));
+  }
+}
+
+/**
+ * Implement hook_form_alter().
+ */
+function tre_preprocess_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!str_ends_with($form_id, 'scheduled_transitions_add_form_form')) {
+    return;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!($node instanceof NodeInterface)) {
+    return;
+  }
+
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  if ($node->hasTranslation($langcode)) {
+    $node = $node->getTranslation($langcode);
+  }
+
+  $topics_checkbox = 1;
+  $has_topics = [];
+  if ($node->hasField('field_no_category_topics')) {
+    $topics = $node->get('field_topics')->getValue();
+    $topics_checkbox = $node->get('field_no_category_topics')->value;
+
+    $has_topics = array_filter($topics, function ($item, $key) {
+      return is_numeric($key) && !empty($item['target_id']);
+    }, ARRAY_FILTER_USE_BOTH);
+  }
+
+  $keywords_checkbox = 1;
+  $has_keywords = [];
+  if ($node->hasField('field_no_category_keywords')) {
+    $keywords = $node->get('field_keywords')->getValue();
+    $keywords_checkbox = $node->get('field_no_category_keywords')->value;
+
+    $has_keywords = array_filter($keywords, function ($item, $key) {
+      return is_numeric($key) && !empty($item['target_id']);
+    }, ARRAY_FILTER_USE_BOTH);
+  }
+
+  if ((empty($has_topics) && empty($topics_checkbox)) ||
+    (empty($has_keywords) && empty($keywords_checkbox))) {
+    $form['actions']['submit']['#disabled'] = TRUE;
+    $form['category_error_message'] = [
+      '#markup' => '<div class="messages messages--error">' .
+      t('Please add the categories required.') .
+      '</div>',
+      '#weight' => -100,
+    ];
+  }
 }

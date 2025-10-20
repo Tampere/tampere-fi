@@ -1,0 +1,21 @@
+uuid: 03eafd53-6024-410b-a54a-0de0c694e3e3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.rich_article
+id: node.rich_article.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: rich_article
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

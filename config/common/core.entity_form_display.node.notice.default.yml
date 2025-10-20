@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.notice.field_main_image
     - field.field.node.notice.field_media_caption
     - field.field.node.notice.field_minisites
+    - field.field.node.notice.field_no_category_topics
     - field.field.node.notice.field_notice_type
     - field.field.node.notice.field_paragraphs
     - field.field.node.notice.field_search_keywords
@@ -61,6 +62,7 @@ third_party_settings:
     group_categorization:
       children:
         - field_topics
+        - field_no_category_topics
         - field_keywords
         - field_life_situations
         - field_geographical_areas
@@ -120,7 +122,7 @@ third_party_settings:
       label: Avainsanat
       region: content
       parent_name: group_categorization
-      weight: 7
+      weight: 9
       format_type: fieldset
       format_settings:
         classes: ''
@@ -131,7 +133,7 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
       prompt: default_multiple_prompt
@@ -154,7 +156,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -214,7 +216,7 @@ content:
     third_party_settings: {  }
   field_geographical_areas:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -224,23 +226,30 @@ content:
     third_party_settings: {  }
   field_help_text:
     type: markup
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_life_situations:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS
@@ -265,7 +274,7 @@ content:
     third_party_settings: {  }
   field_minisites:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS
@@ -273,6 +282,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_no_category_topics:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_notice_type:
     type: options_select
     weight: 9
@@ -321,7 +342,27 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          e3ff9aaa-bed0-4cd7-8a35-6c3242617ded:
+            id: required
+            data:
+              target: field_no_category_topics
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: e3ff9aaa-bed0-4cd7-8a35-6c3242617ded
+        form:
+          type: ''
+          list:
+            e3ff9aaa-bed0-4cd7-8a35-6c3242617ded:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   langcode:
     type: language_select
     weight: 2
@@ -331,13 +372,13 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -349,7 +390,7 @@ content:
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -359,13 +400,13 @@ content:
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 6
     region: content
     settings:
       display_label: true
@@ -403,7 +444,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }

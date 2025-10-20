@@ -1,0 +1,21 @@
+uuid: 0bff41fc-954f-402d-bade-f54596b1e31d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.zoning_information
+id: node.zoning_information.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: zoning_information
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

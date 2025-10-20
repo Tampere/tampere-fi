@@ -16,6 +16,8 @@ dependencies:
     - field.field.node.rich_article.field_main_image
     - field.field.node.rich_article.field_media_caption
     - field.field.node.rich_article.field_minisites
+    - field.field.node.rich_article.field_no_category_keywords
+    - field.field.node.rich_article.field_no_category_topics
     - field.field.node.rich_article.field_paragraphs
     - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
@@ -157,6 +159,26 @@ content:
     third_party_settings: {  }
     weight: 3
     region: main_image_caption
+  field_no_category_keywords:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_no_category_topics:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden

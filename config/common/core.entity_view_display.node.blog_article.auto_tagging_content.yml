@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.blog_article.field_main_image
     - field.field.node.blog_article.field_media_caption
     - field.field.node.blog_article.field_minisites
+    - field.field.node.blog_article.field_no_category_topics
     - field.field.node.blog_article.field_paragraphs
     - field.field.node.blog_article.field_partial_ingress
     - field.field.node.blog_article.field_search_keywords
@@ -189,6 +190,7 @@ hidden:
   field_keywords: true
   field_life_situations: true
   field_minisites: true
+  field_no_category_topics: true
   field_partial_ingress: true
   field_search_keywords: true
   field_social_media_share: true

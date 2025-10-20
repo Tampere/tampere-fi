@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.city_planning_and_constructions.field_listing_search_content
     - field.field.node.city_planning_and_constructions.field_location
     - field.field.node.city_planning_and_constructions.field_main_image
+    - field.field.node.city_planning_and_constructions.field_no_category_topics
     - field.field.node.city_planning_and_constructions.field_omit_from_listing_map
     - field.field.node.city_planning_and_constructions.field_paragraphs
     - field.field.node.city_planning_and_constructions.field_partial_ingress
@@ -102,6 +103,7 @@ third_party_settings:
     group_categorization:
       children:
         - field_topics
+        - field_no_category_topics
         - field_keywords
         - field_geographical_areas
         - group_search_keywords
@@ -123,7 +125,7 @@ third_party_settings:
       label: Avainsanat
       region: content
       parent_name: group_categorization
-      weight: 32
+      weight: 34
       format_type: fieldset
       format_settings:
         classes: ''
@@ -344,7 +346,7 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
       prompt: default_multiple_prompt
@@ -424,7 +426,7 @@ content:
           add: Add
   field_city_strategy:
     type: paragraphs_classic_asymmetric
-    weight: 14
+    weight: 7
     region: content
     settings:
       title: Paragraph
@@ -441,7 +443,7 @@ content:
           add: Lisää
   field_city_strategy_work_program:
     type: paragraphs_classic_asymmetric
-    weight: 20
+    weight: 7
     region: content
     settings:
       title: Paragraph
@@ -453,7 +455,7 @@ content:
     third_party_settings: {  }
   field_computed_status:
     type: options_buttons
-    weight: 51
+    weight: 10
     region: content
     settings: {  }
     third_party_settings:
@@ -503,7 +505,7 @@ content:
     third_party_settings: {  }
   field_geographical_areas:
     type: entity_reference_autocomplete
-    weight: 31
+    weight: 33
     region: content
     settings:
       match_operator: CONTAINS
@@ -519,14 +521,21 @@ content:
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 30
+    weight: 31
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_legal_phase:
     type: paragraphs_classic_asymmetric
     weight: 8
@@ -553,6 +562,18 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_no_category_topics:
+    type: boolean_checkbox
+    weight: 30
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_omit_from_listing_map:
     type: boolean_checkbox
     weight: 18
@@ -593,7 +614,7 @@ content:
     third_party_settings: {  }
   field_phase:
     type: options_buttons
-    weight: 52
+    weight: 11
     region: content
     settings: {  }
     third_party_settings:
@@ -617,7 +638,7 @@ content:
           add: Lisää
   field_phasing_not_in_use:
     type: boolean_checkbox
-    weight: 50
+    weight: 9
     region: content
     settings:
       display_label: true
@@ -634,7 +655,7 @@ content:
     third_party_settings: {  }
   field_preparation_phase:
     type: paragraphs_classic_asymmetric
-    weight: 15
+    weight: 7
     region: content
     settings:
       title: Paragraph
@@ -646,7 +667,7 @@ content:
     third_party_settings: {  }
   field_proposal_phase:
     type: paragraphs_classic_asymmetric
-    weight: 10
+    weight: 7
     region: content
     settings:
       title: Paragraph
@@ -680,7 +701,7 @@ content:
     third_party_settings: {  }
   field_search_keywords:
     type: string_textfield
-    weight: 32
+    weight: 9
     region: content
     settings:
       size: 60
@@ -740,7 +761,27 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          04efb322-f08e-4b82-a49a-4e50060f89c2:
+            id: required
+            data:
+              target: field_no_category_topics
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: 04efb322-f08e-4b82-a49a-4e50060f89c2
+        form:
+          type: ''
+          list:
+            04efb322-f08e-4b82-a49a-4e50060f89c2:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   field_work_programme:
     type: paragraphs_classic_asymmetric
     weight: 21

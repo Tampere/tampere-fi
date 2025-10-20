@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.zoning_information.field_listing_search_content
     - field.field.node.zoning_information.field_location
     - field.field.node.zoning_information.field_main_image
+    - field.field.node.zoning_information.field_no_category_topics
     - field.field.node.zoning_information.field_omit_from_listing_map
     - field.field.node.zoning_information.field_other_identifiers
     - field.field.node.zoning_information.field_paragraphs
@@ -57,6 +58,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
           ds_content: {  }
@@ -66,7 +68,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - group_columns
@@ -195,6 +196,7 @@ hidden:
   field_listing_search_content: true
   field_location: true
   field_main_image: true
+  field_no_category_topics: true
   field_omit_from_listing_map: true
   field_other_identifiers: true
   field_paragraphs: true

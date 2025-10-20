@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.basic_content_page.field_life_situations
     - field.field.node.basic_content_page.field_main_image
     - field.field.node.basic_content_page.field_metadata_description
+    - field.field.node.basic_content_page.field_no_category_topics
     - field.field.node.basic_content_page.field_page_summary
     - field.field.node.basic_content_page.field_paragraphs
     - field.field.node.basic_content_page.field_search_keywords
@@ -32,6 +33,7 @@ third_party_settings:
     group_categorization:
       children:
         - field_topics
+        - field_no_category_topics
         - field_keywords
         - field_life_situations
         - field_geographical_areas
@@ -86,7 +88,7 @@ third_party_settings:
       label: Avainsanat
       region: content
       parent_name: group_categorization
-      weight: 7
+      weight: 9
       format_type: fieldset
       format_settings:
         classes: ''
@@ -97,7 +99,7 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
       prompt: default_multiple_prompt
@@ -120,7 +122,7 @@ content:
     third_party_settings: {  }
   field_geographical_areas:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -136,17 +138,24 @@ content:
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_life_situations:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS
@@ -182,6 +191,18 @@ content:
         maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: true
         maxlength_js_truncate_html: false
+  field_no_category_topics:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_page_summary:
     type: string_textarea
     weight: 106
@@ -238,7 +259,27 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          e7a68b9e-fd6a-46ae-946b-8d20d5dbb21e:
+            id: required
+            data:
+              target: field_no_category_topics
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: e7a68b9e-fd6a-46ae-946b-8d20d5dbb21e
+        form:
+          type: ''
+          list:
+            e7a68b9e-fd6a-46ae-946b-8d20d5dbb21e:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   langcode:
     type: language_select
     weight: 103

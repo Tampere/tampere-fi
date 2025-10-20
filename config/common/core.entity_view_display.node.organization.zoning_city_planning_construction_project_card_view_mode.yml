@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.organization.field_help_text
     - field.field.node.organization.field_keywords
     - field.field.node.organization.field_main_image
+    - field.field.node.organization.field_no_category_topics
     - field.field.node.organization.field_page_summary
     - field.field.node.organization.field_paragraphs
     - field.field.node.organization.field_partial_ingress
@@ -27,6 +28,7 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        label: ''
         classes:
           layout_class: {  }
         wrappers:
@@ -35,7 +37,6 @@ third_party_settings:
         attributes: ''
         link_attribute: ''
         link_custom: ''
-        label: ''
     regions:
       ds_content:
         - field_description
@@ -65,6 +66,7 @@ hidden:
   field_help_text: true
   field_keywords: true
   field_main_image: true
+  field_no_category_topics: true
   field_page_summary: true
   field_paragraphs: true
   field_partial_ingress: true

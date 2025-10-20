@@ -18,6 +18,7 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
   // Refs for storing the group buttons, and the first option of the opened group.
   const groupButtonRefs = useRef([]);
   const firstCheckboxRef = useRef(null);
+  const endOfFiltersRef = useRef(null);
 
   const toggleFacetAccordion = (index) => {
     setActiveGroupIndex(activeGroupIndex === index ? null : index);
@@ -58,6 +59,7 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
 
               const groupKey = filterGroup.label.toLowerCase();
               const selectedCount = selectedFilters[groupKey]?.length || 0;
+              const isLastButton = index === filterValues.length - 1;
 
               return (
                 <StyledFilterGroupLabel
@@ -72,6 +74,16 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
                         e.preventDefault();
                         firstCheckboxRef.current.focus();
                       }
+                      // If we are at the last button while any panel is open,
+                      // manually redirect focus to anchor component.
+                      else if (isLastButton && activeGroupIndex !== null) {
+                        e.preventDefault();
+                        endOfFiltersRef.current.focus();
+                      }
+                    }
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      toggleFacetAccordion(index);
                     }
                   }}
                 >
@@ -124,6 +136,13 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
                                 nextButton.focus();
                               }
                             }
+                            if (e.key === "Enter") {
+                              e.preventDefault();
+                              handleCheckboxChange(
+                                filterValues[activeGroupIndex].label,
+                                option
+                              );
+                            }
                           }}
                         />
                         {option}
@@ -138,6 +157,7 @@ const FilterGroupMenu = ({ filterValues, onFilterChange, selectedFilters }) => {
           )}
         </StyledFilterGroup>
       )}
+      <div tabIndex={-1} ref={endOfFiltersRef} />
     </StyledFilters>
   );
 };

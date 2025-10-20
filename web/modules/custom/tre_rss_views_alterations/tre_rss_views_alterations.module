@@ -47,6 +47,12 @@ function tre_rss_views_alterations_views_post_render(ViewExecutable $view, array
     }
     $alt = $thumbnail_first_value->get('alt')->getString();
 
+    if ($view->getDisplay()->display['id'] == 'news_and_articles_en' && $media_entity->hasTranslation('en')) {
+      $translated_media = $media_entity->getTranslation('en');
+      $image_item = $translated_media->get('field_media_image')->first();
+      $alt = $image_item->get('alt')->getString();
+    }
+
     foreach ($row['#row']->elements as $element_key => $element) {
       if ($element['key'] !== 'enclosure') {
         continue;
@@ -67,13 +73,21 @@ function tre_rss_views_alterations_views_pre_view(ViewExecutable $view) {
     // Get time of day and amount of days from Settings.
     $display = $view->getDisplay();
     $options = $display->getOption('filters');
+    $current_display = $view->current_display;
 
     $time_max = new DateTime('today ' . Settings::get('newsletter_fetch_time', '15:00'), new DateTimeZone('Europe/Helsinki'));
-    $time_max = $time_max->format('Y-m-d H:m:s');
+    $time_max = $time_max->format('Y-m-d H:i:s');
 
     $time_min = new DateTime('today ' . Settings::get('newsletter_fetch_time', '15:00'), new DateTimeZone('Europe/Helsinki'));
     $time_min->modify('-' . Settings::get('newsletter_fetch_day_amount', '1 day'));
-    $time_min = $time_min->format('Y-m-d H:m:s');
+    if ($current_display == 'news_and_articles_en') {
+      $time_max = new DateTime('today ' . Settings::get('newsletter_en_fetch_time', '15:00'), new DateTimeZone('Europe/Helsinki'));
+      $time_max = $time_max->format('Y-m-d H:i:s');
+
+      $time_min = new DateTime('today ' . Settings::get('newsletter_en_fetch_time', '15:00'), new DateTimeZone('Europe/Helsinki'));
+      $time_min->modify('-' . Settings::get('newsletter_en_fetch_day_amount', '7 days'));
+    }
+    $time_min = $time_min->format('Y-m-d H:i:s');
 
     $options['published_at']['value']['min'] = $time_min;
     $options['published_at']['value']['max'] = $time_max;

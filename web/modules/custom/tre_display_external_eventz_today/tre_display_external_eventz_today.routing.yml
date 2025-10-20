@@ -1,0 +1,10 @@
+tre_display_external_eventz_today.get_events:
+  path: '/api/eventz-today/{paragraph}'
+  defaults:
+    _controller: '\Drupal\tre_display_external_eventz_today\Controller\EventzApiController::getEvents'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      paragraph:
+        type: entity:paragraph

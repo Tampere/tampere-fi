@@ -1,4 +1,4 @@
-import React, { createRef, useId, useRef, useState, useEffect } from "react";
+import React, { createRef, useId, useRef, useState, useEffect, useMemo } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import styled from "styled-components";
 
@@ -59,11 +59,16 @@ export default function Filters({
   const [currentActiveIndex, setCurrentActiveIndex] = useState(0);
   const [filtersHaveFocus, setFiltersHaveFocus] = useState(false);
   
-  // Refs for the filter group content and reset button.
+  // Refs for the filter group content, reset button and anchor element.
   const contentPanelRefs = useRef({});
   const resetButtonRef = useRef(null);
+  const endAnchorRef = useRef(null);
 
-  const filterGroupRefs = filterTypes.map(() => createRef());
+  // Memoize refs for the filter group labels, 
+  // so that they dont get created on every re-render.
+  const filterGroupRefs = useMemo(() =>
+      filterTypes.map(() => createRef()),
+  [filterTypes]);
   const filtersTitleId = `filters-title-${useId()}`;
   const filterTypeIds = useRef(null);
   const filterHelpText = Drupal.t("When you select a filter, the search results are automatically narrowed down to your selection.",
@@ -113,18 +118,29 @@ export default function Filters({
 
   const moveIndexToFirst = () => {
     setCurrentActiveIndex(0);
+    filterGroupRefs[0].current?.focus();
   };
 
   const moveIndexToLast = () => {
-    setCurrentActiveIndex(filterGroupRefs.length - 1);
+    const lastIndex = filterGroupRefs.length - 1;
+    setCurrentActiveIndex(lastIndex);
+    filterGroupRefs[lastIndex].current?.focus();
   };
 
   const moveIndexToPrevious = () => {
-    setCurrentActiveIndex(prevIndex => prevIndex === 0 ? lastFilterRefIndex : prevIndex - 1);
+    setCurrentActiveIndex(prevIndex => {
+      const newIndex = prevIndex === 0 ? lastFilterRefIndex : prevIndex - 1;
+      filterGroupRefs[newIndex].current?.focus();
+      return newIndex;
+    });
   };
 
   const moveIndexToNext = () => {
-    setCurrentActiveIndex(prevIndex => prevIndex === lastFilterRefIndex ? 0 : prevIndex + 1);
+    setCurrentActiveIndex(prevIndex => {
+      const newIndex = prevIndex === lastFilterRefIndex ? 0 : prevIndex + 1;
+      filterGroupRefs[newIndex].current?.focus();
+      return newIndex;
+    });
   };
 
   // Function handles focusing on the next filter group button / reset button.
@@ -143,9 +159,38 @@ export default function Filters({
       return true;
     }
 
-    // No next element to focus, return null so browser handles the focus.
+    if (endAnchorRef.current) {
+      endAnchorRef.current.focus();
+      return true;
+    }
+
     return false;
   };
+
+   const handlePanelKeyDown = (event) => {
+     const key = event.key;
+     if (key === "ArrowLeft" || key === "ArrowRight" || key === "Home" || key === "End") {
+       event.preventDefault();
+       event.stopPropagation();
+     }
+
+     switch (key) {
+       case "ArrowLeft":
+         moveIndexToPrevious();
+         break;
+       case "ArrowRight":
+         moveIndexToNext();
+         break;
+       case "Home":
+         moveIndexToFirst();
+         break;
+       case "End":
+         moveIndexToLast();
+         break;
+       default:
+         break;
+     }
+   };
 
   const handleLabelKeyDown = (event, filterType) => {
     let preventDefaultBehavior = true;
@@ -163,6 +208,9 @@ export default function Filters({
       case "End":
         moveIndexToLast();
         break;
+      case "Enter":
+        toggleActiveFilterGroup(filterType);
+        break;
       default:
         preventDefaultBehavior = false;
         break;
@@ -174,22 +222,39 @@ export default function Filters({
     }
 
     // Handle tab navigation.
-    if (event.key === 'Tab' && !event.shiftKey) {
-      const groupIsOpen = activeFilterGroup === filterType;
-      const isLastGroupButton = filterTypes.indexOf(filterType) === filterTypes.length - 1;
+    if (event.key === 'Tab') {
+      const currentIndex = filterTypes.indexOf(filterType);
 
-      if (groupIsOpen) {
-        // If this group is open, tab into first option in the panel.
-        const panelRef = contentPanelRefs.current[filterType];
-        const firstFilter = panelRef?.current?.querySelector('input[type="checkbox"]');
-        if (firstFilter) {
+      if (event.shiftKey) {
+        // On Shift + Tab, move focus to the previous item if it exists.
+        if (currentIndex > 0) {
           event.preventDefault();
-          firstFilter.focus();
+          filterGroupRefs[currentIndex - 1].current?.focus();
         }
-      } else if (!isLastGroupButton) {
-        // If group is closed and its not the last button, tab to the next button.
-        event.preventDefault();
-        moveIndexToNext();
+      } else {
+        const groupIsOpen = activeFilterGroup === filterType;
+
+        if (groupIsOpen) {
+          // If this group is open, tab into first option in the panel.
+          const panelRef = contentPanelRefs.current[filterType];
+          const firstFilter = panelRef?.current?.querySelector('input[type="checkbox"]');
+          if (firstFilter) {
+            event.preventDefault();
+            firstFilter.focus();
+          }
+        } else {
+          // If the group is closed, tab to the next filter label.
+          const isLastGroup = currentIndex === filterTypes.length - 1;
+          if (!isLastGroup) {
+            event.preventDefault();
+            filterGroupRefs[currentIndex + 1].current?.focus();
+          } else {
+            // On the last item, tab out to the reset button.
+            if (focusNextElement(filterType)) {
+              event.preventDefault();
+            }
+          }
+        }
       }
     }
   };
@@ -225,10 +290,6 @@ export default function Filters({
   }, [filterTypes]);
 
   useEffect(() => {
-    moveFocusToCurrent();
-  }, [currentActiveIndex]);
-
-  useEffect(() => {
     if (activeFilterGroup) {
       setCurrentActiveIndex(filterTypes.indexOf(activeFilterGroup));
     }
@@ -244,7 +305,7 @@ export default function Filters({
         aria-labelledby={filtersTitleId}
         role="tablist"
         onBlur={handleBlur}
-        onFocus={handleFocus}
+        onFocus={() => setCurrentActiveIndex(index)} 
       >
         {
           filterTypeIds.current && filterTypes.map((filterType, index) => (
@@ -276,6 +337,7 @@ export default function Filters({
             key={`filterGroup${filterTypeIds.current.get(filterType)}`}
             ref={contentPanelRefs.current[filterType]}
             onLastItemTab={() => focusNextElement(filterType)}
+            onPanelKeyDown={handlePanelKeyDown}
           />
         ))
       }
@@ -287,6 +349,7 @@ export default function Filters({
           { Drupal.t("Remove filters") }
         </ResetButton>
       }
+      <div ref={endAnchorRef} tabIndex="-1" />
     </StyledFilters>
   );
 };

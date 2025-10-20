@@ -17,6 +17,8 @@ dependencies:
     - field.field.node.rich_article.field_main_image
     - field.field.node.rich_article.field_media_caption
     - field.field.node.rich_article.field_minisites
+    - field.field.node.rich_article.field_no_category_keywords
+    - field.field.node.rich_article.field_no_category_topics
     - field.field.node.rich_article.field_paragraphs
     - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
@@ -114,6 +116,8 @@ hidden:
   field_main_image: true
   field_media_caption: true
   field_minisites: true
+  field_no_category_keywords: true
+  field_no_category_topics: true
   field_paragraphs: true
   field_photographer: true
   field_search_keywords: true

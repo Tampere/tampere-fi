@@ -7,7 +7,7 @@ WEBSERVER_USER="apache"
 MAIL_ERROR=example@example.com
 
 # Set CSV_INBOUND_DIR only if it's not already set
-CSV_INBOUND_DIR=${CSV_INBOUND_DIR:=/var/www/sftp/tietoevry/uploads}
+CSV_INBOUND_DIR=${CSV_INBOUND_DIR:=/var/www/sftp/tietoevry/uploads/successfactors}
 CSV_HANDLED_DIR=/var/www/ipaas_processed
 mkdir -p "$CSV_HANDLED_DIR"
 

@@ -1,0 +1,21 @@
+uuid: 998941db-fa23-49d5-aeca-39bf2dca6b6c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_keywords
+    - node.type.small_news_item
+id: node.small_news_item.field_no_category_keywords
+field_name: field_no_category_keywords
+entity_type: node
+bundle: small_news_item
+label: 'Ei luokittelua (Ohjaukset)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

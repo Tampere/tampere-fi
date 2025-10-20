@@ -11,7 +11,7 @@ TODAYS_DATE=$(date '+%Y%m%d')
 DATE_TO_PROCESS=${1:-$TODAYS_DATE}
 
 echo "$(date '+%Y-%m-%d %H:%M:%S') Starting processing of full import for $DATE_TO_PROCESS..."
-FILENAME_PATTERN="$CSV_INBOUND_DIR/sap-hr-export_full_$DATE_TO_PROCESS*.csv"
+FILENAME_PATTERN="$CSV_INBOUND_DIR/sap-sf-export_full_$DATE_TO_PROCESS*.csv"
 
 # The $FILENAME_PATTERN cannot be wrapped in quotes here since we want it to expand to a list of filenames.
 echo "$(date '+%Y-%m-%d %H:%M:%S') Copying the combination of $FILENAME_PATTERN to $COMBINED_CSV_PATH..."

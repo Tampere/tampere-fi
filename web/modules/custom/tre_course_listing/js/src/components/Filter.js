@@ -80,6 +80,10 @@ export default function Filter({
         event.preventDefault();
       }
     }
+    if(event.key === "Enter") {
+      event.preventDefault();
+      selectFilter(filterItem);
+    }
   };
 
   return (

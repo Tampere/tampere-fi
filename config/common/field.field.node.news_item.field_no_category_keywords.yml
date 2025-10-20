@@ -1,0 +1,21 @@
+uuid: 28dc7d67-cd4a-4ed0-9b16-792399454406
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_keywords
+    - node.type.news_item
+id: node.news_item.field_no_category_keywords
+field_name: field_no_category_keywords
+entity_type: node
+bundle: news_item
+label: 'Ei luokittelua (Ohjaukset)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

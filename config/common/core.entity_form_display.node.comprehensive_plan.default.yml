@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.comprehensive_plan.field_legal_phase
     - field.field.node.comprehensive_plan.field_listing_search_content
     - field.field.node.comprehensive_plan.field_main_image
+    - field.field.node.comprehensive_plan.field_no_category_topics
     - field.field.node.comprehensive_plan.field_omit_from_listing_map
     - field.field.node.comprehensive_plan.field_other_identifiers
     - field.field.node.comprehensive_plan.field_paragraphs
@@ -89,6 +90,7 @@ third_party_settings:
     group_taxonomies_tab:
       children:
         - field_topics
+        - field_no_category_topics
         - field_keywords
         - field_geographical_areas
         - group_keywords_field_group
@@ -111,7 +113,7 @@ third_party_settings:
       label: Avainsanat
       region: content
       parent_name: group_taxonomies_tab
-      weight: 7
+      weight: 9
       format_type: fieldset
       format_settings:
         classes: ''
@@ -302,7 +304,7 @@ third_party_settings:
       label: 'Osittain lainvoimainen'
       region: content
       parent_name: group_urb_planning_related_info
-      weight: 47
+      weight: 48
       format_type: details
       format_settings:
         classes: ''
@@ -317,7 +319,7 @@ third_party_settings:
       label: Lainvoimainen
       region: content
       parent_name: group_urb_planning_related_info
-      weight: 48
+      weight: 49
       format_type: details
       format_settings:
         classes: ''
@@ -329,7 +331,7 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
       prompt: default_multiple_prompt
@@ -346,7 +348,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -369,7 +371,7 @@ content:
           add: Lisää
   field_city_strategy:
     type: paragraphs_classic_asymmetric
-    weight: 14
+    weight: 22
     region: content
     settings:
       title: Paragraph
@@ -417,7 +419,7 @@ content:
     third_party_settings: {  }
   field_geographical_areas:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -427,14 +429,21 @@ content:
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 6
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   field_legal_phase:
     type: paragraphs_classic_asymmetric
     weight: 5
@@ -454,6 +463,18 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_no_category_topics:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_omit_from_listing_map:
     type: boolean_checkbox
     weight: 22
@@ -463,7 +484,7 @@ content:
     third_party_settings: {  }
   field_other_identifiers:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS
@@ -504,7 +525,7 @@ content:
     third_party_settings: {  }
   field_phase:
     type: options_buttons
-    weight: 37
+    weight: 49
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -532,7 +553,7 @@ content:
     third_party_settings: {  }
   field_proposal_phase:
     type: paragraphs_classic_asymmetric
-    weight: 6
+    weight: 47
     region: content
     settings:
       title: Paragraph
@@ -574,7 +595,7 @@ content:
     third_party_settings: {  }
   field_start_phase:
     type: paragraphs_classic_asymmetric
-    weight: 16
+    weight: 49
     region: content
     settings:
       title: Paragraph
@@ -593,7 +614,7 @@ content:
           add: Lisää
   field_start_preparation_phase:
     type: paragraphs_classic_asymmetric
-    weight: 15
+    weight: 49
     region: content
     settings:
       title: Paragraph
@@ -612,10 +633,30 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          7a1ab55d-54f3-4036-b261-78633f32e6a8:
+            id: required
+            data:
+              target: field_no_category_topics
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: 7a1ab55d-54f3-4036-b261-78633f32e6a8
+        form:
+          type: ''
+          list:
+            7a1ab55d-54f3-4036-b261-78633f32e6a8:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   field_work_programme:
     type: paragraphs_classic_asymmetric
-    weight: 20
+    weight: 49
     region: content
     settings:
       title: Paragraph
@@ -634,44 +675,44 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 9
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 5
+    weight: 6
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   published_at:
     type: publication_date_timestamp
-    weight: 3
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 4
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 10
+    weight: 12
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 6
+    weight: 7
     region: content
     settings:
       display_label: true
@@ -703,7 +744,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 8
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

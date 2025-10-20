@@ -1,0 +1,8 @@
+eventz-loader:
+  version: 1.x
+  js:
+    js/eventz-loader.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery

@@ -22,6 +22,7 @@ const FilterGroup = forwardRef(({
   activeFilters,
   activeFilterGroup,
   onLastItemTab,
+  onPanelKeyDown
 }, ref) => {
   const isActive = activeFilterGroup === type;
   const availableFiltersForType = availableFilters.filter(isOfType).sort(sortByName);
@@ -53,6 +54,8 @@ const FilterGroup = forwardRef(({
       aria-hidden={!isActive}
       role="tabpanel"
       ref={ref}
+      onKeyDown={onPanelKeyDown}
+      tabIndex={-1}
     >
       <StyledFilterList isActive={isActive}>
         {

@@ -36,7 +36,7 @@ i18next.use(initReactI18next).init({
 let searchPageUrl =
   treDrupalSettings.currentLanguage === "en" ? "/en/search" : "/search";
 
-(async () => {
+async function initCludoApp() {
   controller = await initCludo({
     /** Required properties ~ */
     customerId: treDrupalSettings.customerId,
@@ -109,11 +109,13 @@ let searchPageUrl =
         "Geo_areas",
         "Breadcrumb",
         "Date",
-        "Description"
+        "Description",
       ],
     },
     theme: {
       resultsPerPage: 10,
     },
   });
-})();
+}
+
+document.addEventListener("DOMContentLoaded", initCludoApp);

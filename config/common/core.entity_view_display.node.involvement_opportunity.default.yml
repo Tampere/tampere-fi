@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.involvement_opportunity.field_link_single
     - field.field.node.involvement_opportunity.field_location
     - field.field.node.involvement_opportunity.field_main_image
+    - field.field.node.involvement_opportunity.field_no_category_topics
     - field.field.node.involvement_opportunity.field_opportunity_description
     - field.field.node.involvement_opportunity.field_paragraphs
     - field.field.node.involvement_opportunity.field_participate_end_time
@@ -312,6 +313,16 @@ content:
             classes: {  }
     weight: 0
     region: main_image
+  field_no_category_topics:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_opportunity_description:
     type: text_default
     label: hidden

@@ -1,0 +1,21 @@
+uuid: b76f8388-03a2-43cc-ab5f-4a3c06292d0e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.portfolio
+id: node.portfolio.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: portfolio
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

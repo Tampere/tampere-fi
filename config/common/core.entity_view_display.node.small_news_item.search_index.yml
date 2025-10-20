@@ -16,6 +16,8 @@ dependencies:
     - field.field.node.small_news_item.field_main_image
     - field.field.node.small_news_item.field_media_caption
     - field.field.node.small_news_item.field_minisites
+    - field.field.node.small_news_item.field_no_category_keywords
+    - field.field.node.small_news_item.field_no_category_topics
     - field.field.node.small_news_item.field_paragraphs
     - field.field.node.small_news_item.field_partial_ingress
     - field.field.node.small_news_item.field_photographer
@@ -182,6 +184,8 @@ hidden:
   field_date_of_publication: true
   field_help_text: true
   field_minisites: true
+  field_no_category_keywords: true
+  field_no_category_topics: true
   field_partial_ingress: true
   field_social_media_share: true
   field_topic: true

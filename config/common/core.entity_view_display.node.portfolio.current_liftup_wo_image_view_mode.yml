@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.portfolio.field_main_image
     - field.field.node.portfolio.field_main_image_caption
     - field.field.node.portfolio.field_minisites
+    - field.field.node.portfolio.field_no_category_topics
     - field.field.node.portfolio.field_paragraphs
     - field.field.node.portfolio.field_photographer
     - field.field.node.portfolio.field_search_keywords
@@ -113,6 +114,7 @@ hidden:
   field_main_image: true
   field_main_image_caption: true
   field_minisites: true
+  field_no_category_topics: true
   field_paragraphs: true
   field_photographer: true
   field_search_keywords: true

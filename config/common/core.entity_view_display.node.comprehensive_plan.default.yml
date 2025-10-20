@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.comprehensive_plan.field_legal_phase
     - field.field.node.comprehensive_plan.field_listing_search_content
     - field.field.node.comprehensive_plan.field_main_image
+    - field.field.node.comprehensive_plan.field_no_category_topics
     - field.field.node.comprehensive_plan.field_omit_from_listing_map
     - field.field.node.comprehensive_plan.field_other_identifiers
     - field.field.node.comprehensive_plan.field_paragraphs
@@ -182,6 +183,16 @@ content:
             classes: {  }
     weight: 1
     region: main_image
+  field_no_category_topics:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden

@@ -1,0 +1,21 @@
+uuid: c160e647-40cd-4645-b253-fa70ffb27b17
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.moderated_page
+id: node.moderated_page.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: moderated_page
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

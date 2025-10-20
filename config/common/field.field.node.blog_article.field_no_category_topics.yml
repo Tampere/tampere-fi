@@ -1,0 +1,21 @@
+uuid: fec7c2fc-4912-468f-aad4-2cb496eff0f3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.blog_article
+id: node.blog_article.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: blog_article
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

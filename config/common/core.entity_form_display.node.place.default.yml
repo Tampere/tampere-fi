@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.place.field_listing_search_content
     - field.field.node.place.field_location
     - field.field.node.place.field_main_image
+    - field.field.node.place.field_no_category_topics
     - field.field.node.place.field_omit_from_listing_map
     - field.field.node.place.field_page_summary
     - field.field.node.place.field_paragraphs
@@ -46,6 +47,7 @@ third_party_settings:
     group_categorization:
       children:
         - field_topics
+        - field_no_category_topics
         - field_keywords
         - field_geographical_areas
         - group_search_keywords
@@ -117,7 +119,7 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
       prompt: default_multiple_prompt
@@ -239,7 +241,7 @@ content:
     third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 27
+    weight: 28
     region: content
     settings:
       match_operator: CONTAINS
@@ -261,6 +263,18 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_no_category_topics:
+    type: boolean_checkbox
+    weight: 27
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_omit_from_listing_map:
     type: boolean_checkbox
     weight: 15
@@ -324,7 +338,27 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      limited_field_widgets:
+        limit_values: '0'
+      field_states_ui:
+        field_states:
+          ae9d8f5a-6f38-48ec-ac5f-4bbefd271ddc:
+            id: required
+            data:
+              target: field_no_category_topics
+              comparison: unchecked
+              value: ''
+              submit: 'Lisää Peruuta'
+            uuid: ae9d8f5a-6f38-48ec-ac5f-4bbefd271ddc
+        form:
+          type: ''
+          list:
+            ae9d8f5a-6f38-48ec-ac5f-4bbefd271ddc:
+              operations:
+                edit: Muokkaa
+                delete: Poista
+          add: Lisää
   langcode:
     type: language_select
     weight: 9

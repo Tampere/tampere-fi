@@ -1,0 +1,21 @@
+uuid: 55c5317f-4b4b-406f-8f8f-72596350ee1a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_topics
+    - node.type.involvement_opportunity
+id: node.involvement_opportunity.field_no_category_topics
+field_name: field_no_category_topics
+entity_type: node
+bundle: involvement_opportunity
+label: 'Ei luokittelua (Aihealueet)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

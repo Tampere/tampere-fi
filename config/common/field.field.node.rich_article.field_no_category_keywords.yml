@@ -1,0 +1,21 @@
+uuid: 528e4267-63a2-4269-82a3-c3d7b8e45cb1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_category_keywords
+    - node.type.rich_article
+id: node.rich_article.field_no_category_keywords
+field_name: field_no_category_keywords
+entity_type: node
+bundle: rich_article
+label: 'Ei luokittelua (Ohjaukset)'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean
