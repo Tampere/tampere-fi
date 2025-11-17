@@ -5,6 +5,9 @@ namespace Drupal\tre_preprocess_embedded_content_and_map_tabs\Plugin\Preprocess;
 use Drupal\node\NodeInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctions;
+use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
+use Drupal\tre_preprocess_embedded_content_and_map_tabs\Service\HorizontalAccordionBuilder;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Embedded content tab unformatted views view preprocessing.
@@ -15,6 +18,22 @@ use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctions;
  * )
  */
 class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
+
+  /**
+   * The horizontal accordion builder.
+   *
+   * @var \Drupal\tre_preprocess_embedded_content_and_map_tabs\Service\HorizontalAccordionBuilder
+   */
+  protected HorizontalAccordionBuilder $accordionBuilder;
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    $instance = parent::create($container, $configuration, $plugin_id, $plugin_definition);
+    $instance->accordionBuilder = $container->get('tre_preprocess_embedded_content_and_map_tabs.accordion_builder');
+    return $instance;
+  }
 
   /**
    * The view mode to use for the paragraph content in the list view by default.
@@ -113,6 +132,7 @@ class EmbeddedContentTabViewsViewUnformatted extends TrePreProcessPluginBase {
       array_push($tab_list_node_ids, $item['nid']);
     }
 
+    $variables['horizontal_accordion_data'] = $this->accordionBuilder->buildForNodeIds($tab_list_node_ids);
     $view = $variables['view'];
     $container_paragraph_id = $view->element['#attached']['drupalSettings']['container_paragraph_id'];
     $filtered_locations = $this->getLocationData($all_nodes_id, $container_paragraph_id);

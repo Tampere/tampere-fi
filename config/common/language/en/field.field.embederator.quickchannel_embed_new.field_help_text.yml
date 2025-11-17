@@ -1,0 +1,4 @@
+settings:
+  markup:
+    value: '<p><strong>Where can I find the embed ID?</strong></p><p>Copy the string after the last slash in the embed URL from the Quickchannel recording embed code, up to the quotation mark. See example:</p><p>Find this section at the end of the recording embed code and copy the bolded string:</p><p>"embedUrl": "<a href="https://qcnl.tv/e/">https://qcnl.tv/e/</a><strong>my9UWJraNm_wHludLxKG3w</strong>"</p>'
+    format: footer_text

@@ -1,0 +1,8 @@
+services:
+  tre_preprocess_embedded_content_and_map_tabs.accordion_builder:
+    class: Drupal\tre_preprocess_embedded_content_and_map_tabs\Service\HorizontalAccordionBuilder
+    arguments:
+      - '@entity_type.manager'
+      - '@entity.repository'
+      - '@string_translation'
+      - '@tre_preprocess_utility_functions.helper_functions'

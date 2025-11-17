@@ -1,21 +1,85 @@
 .involvement-content {
+  display: flex;
+  flex-direction: column;
+
+  @include large {
+    display: block;
+  }
 
   &__main-image {
+    padding-left: $gutter-mobile;
+    padding-right: $gutter-mobile;
+    overflow: hidden;
+    height: $hero-image-height;
+    order: 3;
+
+    div {
+      height: 100%;
+    }
+
     @include large {
       margin-right: $gutter-default;
       margin-left: $gutter-default;
+      height: $hero-image-height--desktop;
+      padding-left: 0;
+      padding-right: 0;
+      order: 1;
+    }
+  }
+
+  .involvement-header {
+    order: 1;
+
+    margin-top: $space-s;
+    margin-right: $space-s;
+    margin-left: $space-s;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include large {
+      width: 100%;
+      order: 2;
+      
+      @include centered-content;
+      margin-top: $space-xl;
+    }
+  }
+
+  &__heading {
+    order: 2;
+
+    margin-top: $space-s;
+    margin-right: $space-s;
+    margin-left: $space-s;
+
+    @include large {
+      order: 3;
+      @include centered-content;
+      margin-top: $space-xl;
+    }
+
+    .hero__header {
+      margin-bottom: $space-m;
+
+      @include large {
+        margin-bottom: 0;
+      }
     }
   }
 
   &__main-content {
+    order: 4;
+
     margin-top: $space-s;
     margin-right: $space-s;
     margin-left: $space-s;
 
     @include large {
       @include centered-content;
-
       margin-top: $space-xl;
+      order: 4;
     }
   }
 

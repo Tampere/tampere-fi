@@ -164,3 +164,11 @@ text-paragraph-in-page-menu:
     - core/drupal
     - core/once
     - tampere/anchor-link
+
+cookie-fix:
+  version: 1.0
+  js:
+    js/cookie-fix.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: 'Rikas artikkeli'
 type: rich_article
-description: null
+description: 'Journalistisiin verkkojuttuihin ja tunnelmakoosteisiin.'
 help: null
 new_revision: true
 preview_mode: 1

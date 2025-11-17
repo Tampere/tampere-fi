@@ -1,2 +1,3 @@
 name: 'Map location'
-description: 'Represents a single point on a map. Includes fields for both WGS84 and ETRS-TM35FIN coordinates. Also includes fields for the address and additional information.'
+description: 'Represents a single point on the map. Includes fields for both WGS84 and ETRS-TM35FIN coordinates and address with additional information.'
+help: ''

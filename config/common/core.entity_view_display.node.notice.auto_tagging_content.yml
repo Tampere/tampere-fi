@@ -8,6 +8,9 @@ dependencies:
     - field.field.node.notice.field_body
     - field.field.node.notice.field_date_of_publication
     - field.field.node.notice.field_display_period
+    - field.field.node.notice.field_do_not_show_the_end_time
+    - field.field.node.notice.field_do_not_show_the_start_time
+    - field.field.node.notice.field_event_end_time
     - field.field.node.notice.field_event_time
     - field.field.node.notice.field_geographical_areas
     - field.field.node.notice.field_help_text
@@ -245,6 +248,9 @@ hidden:
   content_moderation_control: true
   entitygroupfield: true
   field_date_of_publication: true
+  field_do_not_show_the_end_time: true
+  field_do_not_show_the_start_time: true
+  field_event_end_time: true
   field_geographical_areas: true
   field_help_text: true
   field_keywords: true

@@ -5,7 +5,6 @@ dependencies:
   config:
     - filter.format.limited_html
     - filter.format.notice_html
-    - media.type.dream_broker_video
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -32,7 +31,6 @@ permissions:
   - 'access content overview'
   - 'access help pages'
   - 'access media overview'
-  - 'create dream_broker_video media'
   - 'create field_eventz_display_amount'
   - 'create field_eventz_excluded_events'
   - 'create field_eventz_featured_end'

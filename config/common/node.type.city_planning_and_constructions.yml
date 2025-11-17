@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: 'Kaupunkisuunnittelu- ja rakentamishanke'
 type: city_planning_and_constructions
-description: null
+description: 'Sekä isojen että pienien kaupunkisuunnittelun ja rakentamisen hankkeiden esittelemiseen; suunnitelmien, jotka muuttavat konkreettista kaupunkiympäristöämme.'
 help: null
 new_revision: true
 preview_mode: 1

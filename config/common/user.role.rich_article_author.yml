@@ -7,7 +7,6 @@ dependencies:
     - entity_browser.browser.all_places_entity_browser
     - entity_browser.browser.persons_entity_browser
     - filter.format.notice_html
-    - media.type.dream_broker_video
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -49,7 +48,6 @@ permissions:
   - 'add scheduled transitions node rich_article'
   - 'addrow tablefield'
   - 'clone rich_article content'
-  - 'create dream_broker_video media'
   - 'create file media'
   - 'create image media'
   - 'create media'

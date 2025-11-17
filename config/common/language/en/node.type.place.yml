@@ -1,2 +1,3 @@
 name: Place
-description: "Use this content type to create a place that is not one of the city's actual places of business."
+description: 'Presents a place that has a geographical location but is not an updated service location in the Palvelutietovaranto (PTV).'
+help: ''

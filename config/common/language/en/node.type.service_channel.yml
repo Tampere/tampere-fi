@@ -1,2 +1,3 @@
 name: 'Service channel'
-description: 'Service channel (excluding service locations) description imported from the Finnish Service Catalogue (FSC).'
+description: 'Service channel imported from the Palvelutietovaranto (PTV) (other than service location).'
+help: ''

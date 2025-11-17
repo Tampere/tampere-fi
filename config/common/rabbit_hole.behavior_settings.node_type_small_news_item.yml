@@ -1,0 +1,14 @@
+uuid: c34633a3-8bc3-49b6-a92e-4da036b203c3
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.small_news_item
+id: node_type_small_news_item
+entity_type_id: node_type
+entity_id: small_news_item
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

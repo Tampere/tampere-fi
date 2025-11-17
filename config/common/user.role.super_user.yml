@@ -12,7 +12,6 @@ dependencies:
     - filter.format.notice_html
     - filter.format.page_not_found_content
     - filter.format.ptv_markdown
-    - media.type.dream_broker_video
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -183,7 +182,6 @@ permissions:
   - 'create collection_page content'
   - 'create comprehensive_plan content'
   - 'create content_in_other_language content'
-  - 'create dream_broker_video media'
   - 'create emergency_notice content'
   - 'create field_eventz_display_amount'
   - 'create field_eventz_event_end'

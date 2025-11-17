@@ -1,2 +1,3 @@
 name: 'Emergency notice'
-description: 'A content type meant for displaying information about time-sensitive, particularly acute disturbances.'
+description: 'For communicating critical, widespread incidents in exceptional circumstances.'
+help: ''

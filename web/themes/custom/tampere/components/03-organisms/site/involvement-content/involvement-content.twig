@@ -25,14 +25,15 @@
     involvement_header__sign_up: sign_up_information,
   } %}
 
+  <div {{ bem("heading", involvement_content__heading__modifiers|default([]), involvement_content__base_class) }}>
+    {% include "@molecules/hero/hero.twig" with {
+      "hero__modifiers": [ "no-header-margin" ],
+      "hero__heading": main_title,
+      "has_image": FALSE,
+    } %}
+  </div>
+
   <div {{ bem("main-content", involvement_content__main_content__modifiers|default([]), involvement_content__base_class) }}>
-    <div {{ bem("heading", involvement_content__heading__modifiers|default([]), involvement_content__base_class) }}>
-      {% include "@molecules/hero/hero.twig" with {
-        "hero__modifiers": [ "no-header-margin" ],
-        "hero__heading": main_title,
-        "has_image": FALSE,
-      } %}
-    </div>
 
     <div {{ bem("main-content-wrapper", involvement_content__main_content_wrapper__modifiers|default([]), involvement_content__base_class) }}>
       {% block involvement_content_main_content %}

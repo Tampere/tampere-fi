@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Perussisältösivu
 type: basic_content_page
-description: null
+description: 'Yleisin sisältötyyppi sivusisältöihin. Erityisesti palvelujen esittelemiseen ja niissä tapauksissa, kun ei ole syytä käyttää mitään muuta sisältötyyppiä.'
 help: null
 new_revision: true
 preview_mode: 1

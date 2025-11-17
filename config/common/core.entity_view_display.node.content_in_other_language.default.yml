@@ -68,7 +68,7 @@ content:
     type: entity_reference_entity_view
     label: hidden
     settings:
-      view_mode: hero_widescreen_view_mode
+      view_mode: hero_short_view_mode
       link: false
     third_party_settings:
       ds:
@@ -80,26 +80,6 @@ content:
             classes: {  }
     weight: 0
     region: main_image
-  field_no_category_keywords:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 6
-    region: content
-  field_no_category_topics:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 5
-    region: content
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -116,6 +96,8 @@ hidden:
   field_language: true
   field_life_situations: true
   field_metadata_description: true
+  field_no_category_keywords: true
+  field_no_category_topics: true
   field_search_keywords: true
   field_topic: true
   field_topics: true

@@ -254,7 +254,7 @@ class EventzApiController extends ControllerBase {
         'message_list' => [
           'error' => [$error_message],
         ],
-      ], 500);
+      ], 504);
     }
   }
 

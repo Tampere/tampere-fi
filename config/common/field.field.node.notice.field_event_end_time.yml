@@ -1,0 +1,21 @@
+uuid: cd2d077f-8e95-4ea2-9f2d-a9d5f69e56e5
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_end_time
+    - node.type.notice
+  module:
+    - datetime
+id: node.notice.field_event_end_time
+field_name: field_event_end_time
+entity_type: node
+bundle: notice
+label: 'Tapahtuman päättymisaika'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

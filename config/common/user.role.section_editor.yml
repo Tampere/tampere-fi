@@ -8,7 +8,6 @@ dependencies:
     - entity_browser.browser.persons_entity_browser
     - filter.format.limited_html
     - filter.format.notice_html
-    - media.type.dream_broker_video
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -80,7 +79,6 @@ permissions:
   - 'addrow tablefield'
   - 'create basic_content_page content'
   - 'create content_in_other_language content'
-  - 'create dream_broker_video media'
   - 'create field_eventz_display_amount'
   - 'create field_eventz_excluded_events'
   - 'create field_eventz_featured_end'

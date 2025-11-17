@@ -105,11 +105,6 @@
           </div>
           {# Desktop navigation container ends #}
         </div>
-        
-        {# Desktop search #}
-        <div {{ bem("search", [ "desktop" ], header__base_class)}}>
-          {% block header_search %}{% endblock %}
-        </div>
 
         {# Mobile language switcher #}
         <div {{ bem("language-switcher", [ "mobile" ], header__base_class)}}>
@@ -128,6 +123,11 @@
             "menu_button_controls": header_navigation_container_mobile_id,
             "menu_button__modifiers": [ "mobile" ],
           } %}
+        </div>
+
+        {# Desktop search #}
+        <div {{ bem("search", [ "desktop" ], header__base_class)}}>
+          {% block header_search %}{% endblock %}
         </div>
 
         {# Desktop secondary navigation #}

@@ -520,20 +520,9 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
       return $number->getLanguage() == $language;
     });
 
-    $phone_types_string_map = [
-      'fi' => [
-        'Phone' => 'puhelin',
-        'Fax' => 'faksi',
-      ],
-      'en' => [
-        'Phone' => 'phone',
-        'Fax' => 'fax',
-      ],
-    ];
-
     $phone_charge_types_string_map = [
       'fi' => [
-        'Chargeable' => 'pvm/mpm',
+        'Chargeable' => 'paikallisverkko- tai matkapuhelinmaksu',
         'FreeOfCharge' => 'maksuton',
       ],
       'en' => [
@@ -545,9 +534,8 @@ class PtvDataHelpers implements PtvDataHelpersInterface {
     foreach ($phone_number_data_in_language as $number) {
       $number_type = $number instanceof V4VmOpenApiPhoneWithType ? $number->getType() : 'Phone';
       $charge_type = $phone_charge_types_string_map[$language][$number->getServiceChargeType()] ?? '';
-      $phone_type = $phone_types_string_map[$language][$number_type] ?? '';
 
-      $phone_info_parts = array_filter([$phone_type, $charge_type]);
+      $phone_info_parts = array_filter([$charge_type]);
       $phone_info = sprintf('(%s)', implode(', ', $phone_info_parts));
       $info = $number->getAdditionalInformation();
 

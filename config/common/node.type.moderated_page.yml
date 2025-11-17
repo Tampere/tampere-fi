@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: 'Moderoitu sivu'
 type: moderated_page
-description: null
+description: 'Sisältöihin, joiden julkaisua moderoidaan eli julkaistaan erillisen hyväksyntämenettelyn kautta. Tallennetaan arviointitilaan.'
 help: null
 new_revision: true
 preview_mode: 1

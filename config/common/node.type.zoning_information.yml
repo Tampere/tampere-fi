@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Asemakaava
 type: zoning_information
-description: null
+description: 'Virallisten asemakaavojen esittelyyn.'
 help: null
 new_revision: true
 preview_mode: 1

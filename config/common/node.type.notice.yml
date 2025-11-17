@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Ilmoitus
 type: notice
-description: "Ilmoitukset ovat Tampereen\r\nkaupungin virallisia kuulutuksia, esim. kaavakuulutuksia\r\nja meluilmoituksia."
+description: 'Kuulutus tai muu ilmoitus kaupungin viralliselle ilmoitustaululle.'
 help: null
 new_revision: true
 preview_mode: 1

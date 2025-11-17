@@ -23,7 +23,11 @@
   &__pre-title-content {
     @include page-element-spacer;
 
-    order: 2;
+    order: 1;
+
+    @include large {
+      order: 2;
+    }
 
     .field-phase,
     .field-computed-visibility {
@@ -46,9 +50,19 @@
   }
 
   &__main-image-wrapper {
-    @include breakout(0);
+    height: $hero-image-height;
+    order: 3;
 
-    order: 1;
+    div {
+      height: 100%;
+    }
+
+    @include large {
+      @include breakout(0);
+      
+      height: $hero-image-height--desktop;
+      order: 1;
+    }
 
     .main-content--with-sidebar & {
       @include large {
@@ -59,7 +73,8 @@
       }
     }
 
-    .main-content--with-sidebar &:not(#{$base_class}__main-image-wrapper--no-bottom-margin) {
+    .main-content--with-sidebar
+      &:not(#{$base_class}__main-image-wrapper--no-bottom-margin) {
       @include large {
         margin-bottom: $gutter-large;
       }
@@ -80,10 +95,10 @@
   }
 
   &__heading {
-    order: 3;
-    margin-top: $gutter-medium;
+    order: 2;
 
     @include large {
+      order: 3;
       margin-top: $gutter-default;
     }
 
@@ -108,6 +123,14 @@
     .main-content--with-sidebar &--no-preceding-content {
       @include large-down {
         margin-top: 0;
+      }
+    }
+
+    .hero__header {
+      margin-bottom: $space-m;
+
+      @include large {
+        margin-bottom: 0;
       }
     }
   }

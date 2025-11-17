@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Yleiskaava
 type: comprehensive_plan
-description: null
+description: 'Virallisten yleiskaavojen esittelyyn.'
 help: null
 new_revision: true
 preview_mode: 1

@@ -1,0 +1,24 @@
+uuid: 09407aba-a6c5-4d5d-933f-d492866d17ee
+langcode: fi
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.quickchannel_embed_new
+    - field.storage.embederator.field_help_text
+  module:
+    - markup
+id: embederator.quickchannel_embed_new.field_help_text
+field_name: field_help_text
+entity_type: embederator
+bundle: quickchannel_embed_new
+label: 'help text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: '<p><strong>Mistä saan upotus-id:n?</strong></p><p>Kopioi Quickchannel-tallenteen upotuskoodista kohdan embedurl urlista viimeisen kauttaviivan jälkeinen merkkijono lainausmerkkiin asti, ks. malli:</p><p>Etsi tallenteen upotuskoodin lopusta tämä kohta, kopioi sen lihavoidusta kohdasta merkkijono:</p><p>"embedUrl": "<a href="https://qcnl.tv/e/">https://qcnl.tv/e/</a><strong>my9UWJraNm_wHludLxKG3w</strong>"</p>'
+    format: footer_text
+field_type: markup

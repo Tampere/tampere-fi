@@ -1,2 +1,3 @@
 name: Service
-description: 'Imported service information from palvelutietovaranto (PTV) open API.'
+description: 'Service description imported from the Palvelutietovaranto (PTV).'
+help: ''

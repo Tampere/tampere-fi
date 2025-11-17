@@ -212,3 +212,11 @@ function tampere_theme_suggestions_links_alter(&$suggestions, array $variables) 
     }
   }
 }
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function tampere_page_attachments_alter(array &$attachments) {
+  // Attach cookie-fix library to all pages.
+  $attachments['#attached']['library'][] = 'tampere/cookie-fix';
+}

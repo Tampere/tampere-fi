@@ -1,0 +1,21 @@
+uuid: 5c6a4cd5-5025-4b3c-a93d-610f4f0b0857
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_not_show_the_start_time
+    - node.type.notice
+id: node.notice.field_do_not_show_the_start_time
+field_name: field_do_not_show_the_start_time
+entity_type: node
+bundle: notice
+label: 'Älä näytä alkamisajassa kellonaikaa'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

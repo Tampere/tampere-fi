@@ -42,14 +42,6 @@
 >
   <div {{ bem("main-content", basic_content__main_content__modifiers|default([]), basic_content_base_class) }}>
     <div {{ bem("header-wrapper", basic_content__header_wrapper__modifiers|default([]), basic_content_base_class) }}>
-      <div {{ bem("heading", basic_content__heading__modifiers|default([]), basic_content_base_class) }}>
-        {% include "@molecules/hero/hero.twig" with {
-          "hero__modifiers": [ "no-header-margin" ],
-          "hero__heading": main_title,
-          "use_heading_element": TRUE,
-          "has_image": FALSE,
-        } %}
-      </div>
 
       {% if has_pre_title_content %}
         <div {{ bem("pre-title-content", basic_content__pre_title_content__modifiers|default([]), basic_content_base_class) }}>
@@ -58,6 +50,15 @@
           {% endblock %}
         </div>
       {% endif %}
+
+      <div {{ bem("heading", basic_content__heading__modifiers|default([]), basic_content_base_class) }}>
+        {% include "@molecules/hero/hero.twig" with {
+          "hero__modifiers": [ "no-header-margin" ],
+          "hero__heading": main_title,
+          "use_heading_element": TRUE,
+          "has_image": FALSE,
+        } %}
+      </div>
 
       {% if has_main_image %}
         <div {{ bem("main-image-wrapper", basic_content__main_image_wrapper__modifiers|default([]), basic_content_base_class) }}>

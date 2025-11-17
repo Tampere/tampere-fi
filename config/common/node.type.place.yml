@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Paikka
 type: place
-description: 'Käytä tätä sisältötyyppiä luodaksesi paikan, joka ei ole varsinainen kaupungin toimipiste.'
+description: 'Esitellään kohdetta, jolla on maantieteellinen sijainti mutta joka ei ole Palvelutietovarannossa (PTV) päivitetty palvelupaikka eli toimipiste.'
 help: null
 new_revision: true
 preview_mode: 1

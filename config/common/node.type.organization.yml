@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Organisaatio
 type: organization
-description: null
+description: 'Kaupungin organisaatioon kuuluvan yksikön organisatoriseen esittelyyn. Lisätään aina Organisaatio-ryhmään.'
 help: null
 new_revision: true
 preview_mode: 1

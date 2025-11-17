@@ -1,1 +1,3 @@
 name: 'Moderated page'
+description: 'Content whose publication is moderated, i.e., published through a separate approval process. Saved in the review mode.'
+help: ''

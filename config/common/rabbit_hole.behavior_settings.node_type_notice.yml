@@ -1,0 +1,14 @@
+uuid: bb53b426-18d5-4a6f-851d-370228967c59
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.notice
+id: node_type_notice
+entity_type_id: node_type
+entity_id: notice
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

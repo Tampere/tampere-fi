@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Theme override for the survey script block.
+ */
+#}
+
+{% extends "@molecules/_block.twig" %}
+
+{% block content %}
+  {{ attach_library("tre_survey_script/survey_modal") }}
+  {{ attach_library("tampere/external-link") }}
+  {% include "@molecules/external-link/external-link-indicator.twig" %}
+
+  <div class="survey-modal-wrapper" id="survey-modal">
+    <div class="survey-modal-overlay" data-survey-close></div>
+    <div class="survey-modal-popup">
+      <div class="survey-modal-close-row">
+        <button type="button" class="survey-modal-close" data-survey-close>
+          <span class="survey-modal-close-text">Sulje - Close</span>
+          <span class="survey-modal-close-icon">&times;</span>
+        </button>
+      </div>
+      <div class="survey-modal-header">
+        <h2 class="survey-modal-title" id="survey-modal-title">
+          Kysely verkkosivujemme käyttäjille - Survey for users of our website
+        </h2>
+      </div>
+      <div class="survey-modal-body">
+        <p>
+          Auttaisitko meitä kehittämään näitä Tampere.fi-verkkosivuja? Vastaa käyttäjäkyselyymme! Halutessasi voit
+          osallistua myös arvontaan, jossa palkintona on 4 kahden elokuvalipun pakettia.
+        </p>
+        <p>
+          Would you help us improve the Tampere.fi website? Please respond to our user survey! If you wish, you can also
+          participate in a prize draw to win one of four pairs of cinema tickets.
+        </p>
+        <div class="field survey-modal-link">
+          <a class="external-link" href="https://link.webropolsurveys.com/S/64D47EA341787F28" target="_blank" rel="noopener">
+            Vastaa kyselyyn - Respond to the survey
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

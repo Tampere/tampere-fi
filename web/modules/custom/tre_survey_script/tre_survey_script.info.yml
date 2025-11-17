@@ -1,0 +1,5 @@
+name: 'TRE Survey script'
+type: module
+description: 'Custom module for adding survey script'
+package: 'TRE'
+core_version_requirement: '>=10'

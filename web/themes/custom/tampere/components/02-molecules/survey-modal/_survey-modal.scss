@@ -1,0 +1,86 @@
+.survey-modal-wrapper {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  &.is-visible {
+    display: flex;
+  }
+}
+
+.survey-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.survey-modal-popup {
+  position: relative;
+  background: white;
+  color: black;
+  max-width: 520px;
+  width: calc(100% - 32px);
+  border-radius: 4px;
+  padding: 24px;
+  z-index: 1;
+}
+
+.survey-modal-close-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.survey-modal-header {
+  margin-bottom: 16px;
+}
+
+.survey-modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.survey-modal-close {
+  background: none;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: inherit;
+  font-size: 1rem;
+
+  &:focus {
+    outline-offset: 2px;
+  }
+
+  &:focus .survey-modal-close-text {
+    text-decoration: underline;
+  }
+}
+
+.survey-modal-close-text {
+  font-weight: normal;
+}
+
+.survey-modal-close-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.survey-modal-body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.survey-modal-link {
+  @include link;
+  font-weight: $font-weight-bold;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+}

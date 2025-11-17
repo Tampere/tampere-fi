@@ -40,6 +40,11 @@
       {{ accordion_content }}
     {% endblock %}
   </div>
+
+  {% if accordion_after_content is defined and accordion_after_content %}
+    {{ accordion_after_content }}
+  {% endif %}
+
   {% if process_accordion %}
     {% include "@atoms/04-images/icons/_icon.twig" with {
       icon_base_class: "process-icon",

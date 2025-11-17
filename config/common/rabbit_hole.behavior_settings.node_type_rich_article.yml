@@ -1,0 +1,14 @@
+uuid: cb4701be-6121-4f82-901b-c07ce93c3ba1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.rich_article
+id: node_type_rich_article
+entity_type_id: node_type
+entity_id: rich_article
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

@@ -1,0 +1,14 @@
+uuid: 972f7e91-2a7a-46c5-a391-55d621c46eed
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.content_in_other_language
+id: node_type_content_in_other_language
+entity_type_id: node_type
+entity_id: content_in_other_language
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

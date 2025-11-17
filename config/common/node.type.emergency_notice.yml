@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Häiriöilmoitus
 type: emergency_notice
-description: 'Hetkellisten, erityisen akuuttien häiriötilanteiden esittämiseen tarkoitettu sisältötyyppi.'
+description: 'Kriittisten, laajojen häiriötilanteiden viestimiseen poikkeustilanteissa.'
 help: null
 new_revision: true
 preview_mode: 1

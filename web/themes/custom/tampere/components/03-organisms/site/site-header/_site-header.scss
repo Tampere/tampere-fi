@@ -74,7 +74,7 @@ $header-secondary-inline-padding: 13px;
 
   &__second-line {
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     justify-content: flex-end;
 
     @include large {

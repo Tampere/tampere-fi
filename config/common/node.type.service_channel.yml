@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Asiointikanava
 type: service_channel
-description: 'Palvelutietovarannosta (PTV) tuotu asiointikanavan (muut kuin palvelupaikat) kuvaus.'
+description: 'Palvelutietovarannosta (PTV) tuotu asiointikanava (muut kuin palvelupaikka).'
 help: null
 new_revision: true
 preview_mode: 1

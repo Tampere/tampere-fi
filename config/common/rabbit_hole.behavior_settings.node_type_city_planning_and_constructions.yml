@@ -1,0 +1,14 @@
+uuid: 47d2e584-1e01-49b6-ac98-d28a0aabfb71
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.city_planning_and_constructions
+id: node_type_city_planning_and_constructions
+entity_type_id: node_type
+entity_id: city_planning_and_constructions
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

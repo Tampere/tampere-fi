@@ -3,7 +3,6 @@ langcode: fi
 status: true
 dependencies:
   config:
-    - media.type.dream_broker_video
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -28,7 +27,6 @@ permissions:
   - 'access files overview'
   - 'access media overview'
   - 'add embederator entity'
-  - 'create dream_broker_video media'
   - 'create file media'
   - 'create image media'
   - 'create media'

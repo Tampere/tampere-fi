@@ -11,7 +11,7 @@ third_party_settings:
     parent: 'main:'
 name: Osallistumismahdollisuus
 type: involvement_opportunity
-description: null
+description: 'Kuntalaisten ja muiden asiakassidosryhmien ajankohtaisten osallistumismahdollisuuksien esittelyyn. Tallennetaan arviointitilaan, käytössä erillinen hyväksyntämenettely.'
 help: null
 new_revision: true
 preview_mode: 1

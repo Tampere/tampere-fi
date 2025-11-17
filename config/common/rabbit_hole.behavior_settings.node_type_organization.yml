@@ -1,0 +1,14 @@
+uuid: 741b6fcb-eb4b-4e94-a096-8f9b4fe224c1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.organization
+id: node_type_organization
+entity_type_id: node_type
+entity_id: organization
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

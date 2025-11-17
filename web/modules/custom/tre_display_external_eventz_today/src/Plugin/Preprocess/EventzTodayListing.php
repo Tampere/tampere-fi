@@ -75,6 +75,9 @@ class EventzTodayListing extends TrePreProcessPluginBase {
     // Attach the JS library and pass in the pargraph id.
     $variables['#attached']['library'][] = 'tre_display_external_eventz_today/eventz-loader';
     $variables['#attached']['drupalSettings']['eventzToday']['paragraphs'][$paragraph->id()] = TRUE;
+
+    $language = $paragraph->language()->getId();
+    $variables['#attached']['drupalSettings']['eventzToday']['errorMessages'][$paragraph->id()] = self::CUSTOM_ERROR_MESSAGE[$language];
     $variables['paragraph_id'] = $paragraph->id();
 
     return $variables;

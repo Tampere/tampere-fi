@@ -1,0 +1,20 @@
+uuid: bae5c86b-ce67-4bd5-923f-e1fe0b17c49e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - tre_survey_script
+  theme:
+    - tampere
+id: tampere_surveyscriptblock
+theme: tampere
+region: footer
+weight: 0
+provider: null
+plugin: survey_script_block
+settings:
+  id: survey_script_block
+  label: 'Survey script block'
+  label_display: '0'
+  provider: tre_survey_script
+visibility: {  }

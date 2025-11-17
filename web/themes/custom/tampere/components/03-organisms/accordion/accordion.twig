@@ -41,11 +41,29 @@
   
   {% block accordion_items %}
     {% for ac_item in accordion_list %}
+
+      {% set accordion_after_content = null %}
+      {% if horizontal_accordion_data is defined and ac_item.nid is defined and horizontal_accordion_data[ac_item.nid] is defined %}
+        {% set accordion_after_content %}
+          {% include "@organisms/accordion/horizontal-accordion/horizontal-accordion.twig" with {
+            available_tabs: horizontal_accordion_data[ac_item.nid],
+            horizontal_accordion__paragraph_id: ac_item.id,
+            horizontal_accordion__heading_level: 3,
+            directory: directory,
+            base_path: base_path
+          } only %}
+        {% endset %}
+      {% endif %}
+
       {% include "@organisms/accordion/accordion-item.twig" with {
         accordion_heading: ac_item.dl_heading,
         accordion_content: ac_item.dl_content,
         id: ac_item.id,
-        nid: ac_item.nid ?? NULL
+        nid: ac_item.nid ?? NULL,
+        accordion_after_content: accordion_after_content,
+        ac__item__modifiers: (horizontal_accordion_data is defined and ac_item.nid is defined and horizontal_accordion_data[ac_item.nid] is defined)
+          ? ['has-horizontal-accordion']
+          : []
       } %}
     {% endfor %}
   {% endblock %}

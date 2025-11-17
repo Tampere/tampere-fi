@@ -45,7 +45,7 @@ $accordion-item-distance: $space-m;
         gap: $gutter-mobile;
         align-items: flex-start;
       }
-      
+
       @include large {
         font-size: $accordion-desktop-font-size;
       }
@@ -97,17 +97,16 @@ $accordion-item-distance: $space-m;
       }
 
       &-text {
-
         &--close {
           display: none;
         }
 
-        &[aria-hidden="false"] {
+        &[aria-hidden='false'] {
           margin-left: $space-xs;
           margin-right: $space-l;
         }
 
-        [aria-expanded="true"] & {
+        [aria-expanded='true'] & {
           &--open {
             display: none;
           }
@@ -117,7 +116,6 @@ $accordion-item-distance: $space-m;
           }
         }
       }
-
     }
 
     #{$class}__title-wrapper {
@@ -140,7 +138,8 @@ $accordion-item-distance: $space-m;
 
       &.active {
         display: block;
-        margin: $accordion-content-vertical-margin $accordion-content-horizontal-margin;
+        margin: $accordion-content-vertical-margin
+          $accordion-content-horizontal-margin;
 
         @include large {
           margin: $accordion-content-margin--large;
@@ -336,7 +335,6 @@ $accordion-item-distance: $space-m;
   &--navigation,
   &__item--mini {
     #{$base_class}__icon {
-
       &,
       &-text {
         margin-right: 0;
@@ -345,7 +343,6 @@ $accordion-item-distance: $space-m;
   }
 
   &--navigation {
-
     #{$base_class}__heading,
     #{$base_class}__heading.is-active {
       font-size: $font-18;
@@ -356,8 +353,6 @@ $accordion-item-distance: $space-m;
     }
 
     #{$base_class}__heading {
-
-
       background-color: clr(primary);
       border: 0;
       box-shadow: none;
@@ -372,7 +367,6 @@ $accordion-item-distance: $space-m;
 
     #{$base_class}__heading:hover,
     #{$base_class}__heading.is-active {
-
       #{$base_class}__title {
         text-decoration: underline;
       }
@@ -391,7 +385,7 @@ $accordion-item-distance: $space-m;
       &:last-child::after {
         background-color: clr(primary);
         bottom: 0;
-        content: "";
+        content: '';
         display: block;
         height: 2px;
         left: 0;
@@ -405,7 +399,6 @@ $accordion-item-distance: $space-m;
     }
 
     #{$base_class}__icon {
-
       &,
       &-text {
         color: clr(text-inverse);
@@ -421,3 +414,69 @@ $accordion-item-distance: $space-m;
 .accordions {
   @include page-element-spacer;
 }
+
+.accordion {
+  $base_class: &;
+
+  &__item--has-horizontal-accordion {
+    .horizontal-accordion {
+      display: none;
+    }
+    .accordion__content.active ~ .horizontal-accordion {
+      display: block;
+    }
+    .accordion__content[aria-hidden='false'] ~ .horizontal-accordion {
+      display: block;
+    }
+  }
+
+  &--plain {
+    .accordion__item--has-horizontal-accordion {
+      #{$base_class}__content.active {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      #{$base_class}__content.active ~ .horizontal-accordion {
+        border-left: $border-thick-primary;
+        border-right: $border-thick-primary;
+        border-bottom: $border-thick-primary;
+
+        margin: 0;
+        padding-right: $space-m;
+        padding-bottom: $space-s;
+        padding-left: $space-m;
+
+        @include large {
+          padding-right: $space-l;
+          padding-bottom: $space-l;
+          padding-left: $space-l;
+        }
+      }
+      .horizontal-accordion:not(.horizontal-accordion--involvement):not(.horizontal-accordion--general-contact) {
+        border-top: 0;
+      }
+    }
+  }
+}
+
+.accordion--plain .horizontal-accordion {
+  .accordion__heading {
+    border: 2px solid clr(accent-secondary);
+
+    &.is-active {
+      border-color: clr(primary);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+      @include large {
+        box-shadow: 0 6px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  .accordion__content.active {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+  }
+}
+

@@ -1,0 +1,19 @@
+uuid: 54599ad8-fdaa-4e19-98d5-5956cb5a6046
+langcode: fi
+status: true
+dependencies:
+  module:
+    - embederator
+    - markup
+id: embederator.field_help_text
+field_name: field_help_text
+entity_type: embederator
+type: markup
+settings: {  }
+module: markup
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

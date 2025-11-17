@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Projekti
 type: project
-description: null
+description: 'Kaupungin projektin tai kehityshankkeen esittelyyn. Lisätään aina Organisaatio-ryhmään.'
 help: null
 new_revision: true
 preview_mode: 1

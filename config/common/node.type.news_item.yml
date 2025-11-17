@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Uutinen
 type: news_item
-description: null
+description: 'Laajaan uutisointiin ja tiedottamiseen.'
 help: null
 new_revision: true
 preview_mode: 1

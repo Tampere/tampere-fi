@@ -7,6 +7,9 @@ dependencies:
     - field.field.node.notice.field_body
     - field.field.node.notice.field_date_of_publication
     - field.field.node.notice.field_display_period
+    - field.field.node.notice.field_do_not_show_the_end_time
+    - field.field.node.notice.field_do_not_show_the_start_time
+    - field.field.node.notice.field_event_end_time
     - field.field.node.notice.field_event_time
     - field.field.node.notice.field_geographical_areas
     - field.field.node.notice.field_help_text
@@ -103,6 +106,9 @@ third_party_settings:
         - field_time_limit
         - field_display_period
         - field_event_time
+        - field_do_not_show_the_start_time
+        - field_event_end_time
+        - field_do_not_show_the_end_time
         - field_notice_type
         - field_paragraphs
       label: Yleinen
@@ -208,12 +214,68 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_do_not_show_the_end_time:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_do_not_show_the_start_time:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_event_end_time:
+    type: datetime_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          640e8c8b-8222-4e68-ae28-054ad905fea9:
+            id: disabled
+            data:
+              target: field_event_time
+              comparison: empty
+              value: ''
+              submit: 'Add Cancel'
+            uuid: 640e8c8b-8222-4e68-ae28-054ad905fea9
+        form:
+          type: ''
+          list:
+            640e8c8b-8222-4e68-ae28-054ad905fea9:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
   field_event_time:
     type: datetime_default
     weight: 8
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      field_states_ui:
+        field_states:
+          2136d800-139d-4416-a012-d5d30434c373:
+            id: required
+            data:
+              target: field_event_end_time
+              comparison: filled
+              value: ''
+              submit: 'Update State Cancel'
+            uuid: 2136d800-139d-4416-a012-d5d30434c373
+        form:
+          type: ''
+          list:
+            2136d800-139d-4416-a012-d5d30434c373:
+              operations:
+                edit: Edit
+                delete: Delete
+          add: Add
   field_geographical_areas:
     type: entity_reference_autocomplete
     weight: 8
@@ -296,13 +358,13 @@ content:
           add: Add
   field_notice_type:
     type: options_select
-    weight: 9
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   field_paragraphs:
     type: paragraphs_classic_asymmetric
-    weight: 10
+    weight: 13
     region: content
     settings:
       title: Paragraph

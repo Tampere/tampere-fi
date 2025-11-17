@@ -1,0 +1,14 @@
+uuid: 63722fed-0bef-4ea0-8847-fbffe662092e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.place
+id: node_type_place
+entity_type_id: node_type
+entity_id: place
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

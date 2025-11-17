@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Pikku-uutinen
 type: small_news_item
-description: 'Käytetään lähinnä alasivusto- ja minikotisivustokohtaiseen uutisointiin.'
+description: 'Lähinnä alasivusto- ja minikotisivustokohtaiseen pienimuotoiseen uutisointiin sivustojen kohderyhmille.'
 help: null
 new_revision: true
 preview_mode: 1

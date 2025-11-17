@@ -11,7 +11,7 @@ id: node.notice.field_event_time
 field_name: field_event_time
 entity_type: node
 bundle: notice
-label: Tapahtuma-aika
+label: 'Tapahtuman alkamisaika'
 description: ''
 required: false
 translatable: true

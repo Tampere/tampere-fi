@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: 'Muunkielinen sisältö'
 type: content_in_other_language
-description: "Sisältötyyppi muunkieliselle sisällölle kuin suomi ja englanti. Tukee arabiaa, venäjää ja persiaa (farsia).\t\r\n"
+description: 'Julkaistaessa perussisältöä arabiaksi, venäjäksi tai persiaksi (farsiksi) osana joko suomen- tai englanninkielistä sivustoversiota.'
 help: null
 new_revision: true
 preview_mode: 1

@@ -1,0 +1,14 @@
+uuid: 7e41879b-8ac4-4cd4-b2f7-ebe897b5abdd
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.moderated_page
+id: node_type_moderated_page
+entity_type_id: node_type
+entity_id: moderated_page
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

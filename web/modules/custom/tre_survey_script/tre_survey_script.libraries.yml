@@ -1,0 +1,5 @@
+survey_modal:
+  js:
+    js/survey_modal.js: {}
+  dependencies:
+    - core/drupal

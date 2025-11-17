@@ -13,13 +13,27 @@
             return;
           }
 
+          // Get the default error message that was attached by the preprocess.
+          const fallbackMessage =
+            window.drupalSettings?.eventzToday?.errorMessages?.[paragraphId] ||
+            "Problems in fetching events.";
+
           try {
             // Fetch paragraph data from controller.
             const response = await fetch(`/api/eventz-today/${paragraphId}`);
-            const data = await response.json();
+            let data = null;
+
+            try {
+              data = await response.json();
+            } catch (e) {
+              // If the data is not valid json -> throw the default error message.
+              throw new Error(fallbackMessage);
+            }
 
             if (!response.ok || !data.success) {
-              throw new Error(data.message || "Failed to load events.");
+              // In case the response from controller doesnt
+              // contain a valid error message, use the fallback.
+              throw new Error(data?.message || fallbackMessage);
             }
 
             // Get the liftup container.
@@ -144,7 +158,7 @@
 
                 const errorItem = document.createElement("li");
                 errorItem.className = "status__list-item";
-                errorItem.textContent = error.message;
+                errorItem.textContent = fallbackMessage;
 
                 errorList.appendChild(errorItem);
                 statusContainer.appendChild(errorList);

@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Portfoliolistaus
 type: portfolio_listing
-description: null
+description: 'Automaattinen sivu, joka muodostuu alasivustoryhmään, kun ryhmään luodaan portfolio-sisältöjä. Aina nimellä Portfoliot.'
 help: "Uutta <i>Portfoliolistaus</i>-sisältöä luodaan sivustolle automaattisesti.<br>\r\nVoit kuitenkin tarvittaessa uudelleen tallentaa olemassa olevan Portfoliolistaus-sisällön päivittääksesi sen käytössä olevan polun."
 new_revision: true
 preview_mode: 0

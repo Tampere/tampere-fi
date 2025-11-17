@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Henkilö
 type: person
-description: null
+description: 'Lisätään yhteystiedot kaupungin ulkopuolisesta henkilöstä, joka on yhteistyökumppani. Ei käytetä kertaluonteisesti näytettäviin henkilöyhteystietoihin.'
 help: 'Muista käydä kääntämässä henkilöstön <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_titles/overview">tehtävänimikkeet</a>, <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_cost_centers/overview">kustannuspaikat</a>, <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_organization_units/overview">organisaatioyksiköt</a> ja <a target="_blank" href="/admin/structure/taxonomy/manage/personnel_companies/overview">yhtiöt</a> luokittelutermien hallinnan kautta!'
 new_revision: true
 preview_mode: 1

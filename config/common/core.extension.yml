@@ -112,7 +112,6 @@ module:
   media: 0
   media_bulk_upload: 0
   media_bulk_upload_dropzonejs: 0
-  media_entity_dreambroker: 0
   media_entity_file_replace: 0
   media_library: 0
   memcache: 0
@@ -254,6 +253,7 @@ module:
   tre_rss_views_alterations: 0
   tre_search_api_solr_customization: 0
   tre_search_exclusion: 0
+  tre_survey_script: 0
   tre_tablefield_column_drag: 0
   tre_tablefield_form_alterations: 0
   tre_translation_publication_date_clear: 0

@@ -1,0 +1,14 @@
+uuid: a4665170-7daa-43a2-af9e-1e2ba6f24383
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.basic_content_page
+id: node_type_basic_content_page
+entity_type_id: node_type
+entity_id: basic_content_page
+action: display_page
+allow_override: 1
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

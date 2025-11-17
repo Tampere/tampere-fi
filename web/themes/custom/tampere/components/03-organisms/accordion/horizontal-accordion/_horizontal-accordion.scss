@@ -150,3 +150,37 @@
 
   }
 }
+
+// Horizontal accordion used in tabbed container. Overrides the inherited background color and border.
+.tabbed-container__tab-panel {
+  .horizontal-accordion:not(.horizontal-accordion--involvement):not(.horizontal-accordion--general-contact) {
+    background-color: #fff;
+    border: 2px solid var(--c-accent-tertiary);
+
+    .horizontal-accordion__item-container {
+      border-top: 0;
+    }
+
+    .horizontal-accordion__button {
+      border: 2px solid  transparent;
+
+      &.is-active {
+        background-color: #fff;
+      }
+
+      &.is-active:not([id*="-map-popup-"]) {
+          border-color: var(--c-accent-tertiary);
+        }
+    }
+
+    .horizontal-accordion__content {
+      background-color: #fff;
+      border-top: 0;
+
+      .image-gallery {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

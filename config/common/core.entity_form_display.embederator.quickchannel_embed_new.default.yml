@@ -4,7 +4,10 @@ status: true
 dependencies:
   config:
     - embederator.embederator_type.quickchannel_embed_new
+    - field.field.embederator.quickchannel_embed_new.field_help_text
     - field.field.embederator.quickchannel_embed_new.field_quickchannel_title_new
+  module:
+    - markup
 id: embederator.quickchannel_embed_new.default
 targetEntityType: embederator
 bundle: quickchannel_embed_new
@@ -12,15 +15,21 @@ mode: default
 content:
   embed_id:
     type: string_textfield
-    weight: -6
+    weight: 1
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_help_text:
+    type: markup
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_quickchannel_title_new:
     type: string_textfield
-    weight: -4
+    weight: 2
     region: content
     settings:
       size: 60
@@ -28,7 +37,7 @@ content:
     third_party_settings: {  }
   label:
     type: string_textfield
-    weight: -8
+    weight: 0
     region: content
     settings:
       size: 60

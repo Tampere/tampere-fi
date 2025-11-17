@@ -10,7 +10,7 @@ third_party_settings:
     parent: ''
 name: Toimipiste
 type: place_of_business
-description: null
+description: 'Käytetään vain hyvin perustellusta syystä, jos kaupungin toimipistettä ei ole Palvelutietovarannossa (PTV).'
 help: null
 new_revision: true
 preview_mode: 1

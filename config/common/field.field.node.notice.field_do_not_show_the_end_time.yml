@@ -1,0 +1,21 @@
+uuid: d2a2f85e-9baf-48ba-a299-e9f0697c998f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_not_show_the_end_time
+    - node.type.notice
+id: node.notice.field_do_not_show_the_end_time
+field_name: field_do_not_show_the_end_time
+entity_type: node
+bundle: notice
+label: 'Älä näytä loppumisajankohdassa kellonaikaa'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

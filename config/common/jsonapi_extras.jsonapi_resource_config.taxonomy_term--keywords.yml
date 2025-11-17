@@ -1,35 +1,38 @@
-uuid: f7ebaa84-2278-4311-a3c7-eb8b268ab444
-langcode: fi
+uuid: e331eeff-a95c-4ffa-a56b-64bd6c8e4bfb
+langcode: en
 status: true
 dependencies:
   config:
-    - media.type.dream_broker_video
+    - taxonomy.vocabulary.keywords
   module:
     - jsonapi_defaults
 third_party_settings:
   jsonapi_defaults:
+    default_include:
+      - name
+      - description
     page_limit: 50
-id: media--dream_broker_video
+id: taxonomy_term--keywords
 disabled: false
-path: media/dream_broker_video
-resourceType: media--dream_broker_video
+path: taxonomy_term/keywords
+resourceType: taxonomy_term--keywords
 resourceFields:
-  mid:
+  tid:
     disabled: true
-    fieldName: mid
-    publicName: mid
+    fieldName: tid
+    publicName: tid
     enhancer:
       id: ''
   uuid:
-    disabled: false
+    disabled: true
     fieldName: uuid
     publicName: uuid
     enhancer:
       id: ''
-  vid:
+  revision_id:
     disabled: true
-    fieldName: vid
-    publicName: vid
+    fieldName: revision_id
+    publicName: revision_id
     enhancer:
       id: ''
   langcode:
@@ -38,10 +41,10 @@ resourceFields:
     publicName: langcode
     enhancer:
       id: ''
-  bundle:
-    disabled: true
-    fieldName: bundle
-    publicName: bundle
+  vid:
+    disabled: false
+    fieldName: vid
+    publicName: vid
     enhancer:
       id: ''
   revision_created:
@@ -63,15 +66,9 @@ resourceFields:
     enhancer:
       id: ''
   status:
-    disabled: false
+    disabled: true
     fieldName: status
     publicName: status
-    enhancer:
-      id: ''
-  uid:
-    disabled: true
-    fieldName: uid
-    publicName: uid
     enhancer:
       id: ''
   name:
@@ -80,20 +77,26 @@ resourceFields:
     publicName: name
     enhancer:
       id: ''
-  thumbnail:
-    disabled: true
-    fieldName: thumbnail
-    publicName: thumbnail
+  description:
+    disabled: false
+    fieldName: description
+    publicName: description
     enhancer:
       id: ''
-  created:
-    disabled: false
-    fieldName: created
-    publicName: created
+  weight:
+    disabled: true
+    fieldName: weight
+    publicName: weight
+    enhancer:
+      id: ''
+  parent:
+    disabled: true
+    fieldName: parent
+    publicName: parent
     enhancer:
       id: ''
   changed:
-    disabled: false
+    disabled: true
     fieldName: changed
     publicName: changed
     enhancer:
@@ -123,7 +126,7 @@ resourceFields:
     enhancer:
       id: ''
   path:
-    disabled: false
+    disabled: true
     fieldName: path
     publicName: path
     enhancer:
@@ -164,9 +167,15 @@ resourceFields:
     publicName: content_translation_outdated
     enhancer:
       id: ''
-  field_media_dreambroker:
-    disabled: false
-    fieldName: field_media_dreambroker
-    publicName: field_media_dreambroker
+  content_translation_uid:
+    disabled: true
+    fieldName: content_translation_uid
+    publicName: content_translation_uid
+    enhancer:
+      id: ''
+  content_translation_created:
+    disabled: true
+    fieldName: content_translation_created
+    publicName: content_translation_created
     enhancer:
       id: ''

@@ -8,3 +8,15 @@ dates_field_group:
     dates_content:
       label: Dates to display
   use: "@atoms/05-forms/dates-field-group/dates-field-group.twig"
+dates_field_group_event:
+  label: Dates field group for Event
+  settings:
+    use_smaller_font_size:
+      type: boolean
+      label: Use smaller font size
+  fields:
+    dates_content:
+      label: Dates to display
+    time_limits:
+      label: Time Limits
+  use: "@atoms/05-forms/dates-field-group/dates-field-group-event.twig"
