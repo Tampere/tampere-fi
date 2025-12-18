@@ -213,7 +213,8 @@
 }
 
 .text-long,
-.form-item {
+.form-item,
+.text-with-title__content {
   h2, h3, h4, h5, h6 {
     @include word-wrap;
 
@@ -226,17 +227,41 @@
 
   h2 {
     @include heading-large;
+
+    margin-top: $gutter-medium;
+
+    @include large {
+      margin-top: $space-l-plus;
+    }
   }
 
   h3 {
     @include heading-medium;
+
+    margin-top: $gutter-medium;
+
+    @include large {
+      margin-top: $space-l-plus;
+    }
   }
 
   h4 {
     @include heading-small;
+
+    margin-top: $gutter-medium;
+
+    @include large {
+      margin-top: $space-l-plus;
+    }
   }
 
   h5, h6 {
     @include heading-xs;
+
+    margin-top: $gutter-medium;
+
+    @include large {
+      margin-top: $space-l-plus;
+    }
   }
 }

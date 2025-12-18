@@ -58,7 +58,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_service_text:
     type: text_textarea
     weight: 4

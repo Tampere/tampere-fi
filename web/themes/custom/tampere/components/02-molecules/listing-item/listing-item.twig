@@ -88,7 +88,20 @@
 <{{ listing_item__element }} {{ bem(listing_item__base_class, listing_item__modifiers|default([]), listing_item__blockname, listing_item__extra_classes) }} {% for attribute,value in listing_item__attributes %}{{ attribute }}="{{ value }}"{% endfor %}>
 
   {% if ("person" not in listing_item__modifiers) and ("place" not in listing_item__modifiers) %}
-    <div {{ bem("type", listing_item__type__modifiers|default([]), listing_item__base_class) }}>
+    {% set type_modifiers = listing_item__type__modifiers|default([]) %}
+    
+    {% if listing_item__image|render|trim is not empty %}
+      {% set type_modifiers = type_modifiers|merge(['has-image']) %}
+    {% endif %}
+
+    <div {{ bem("type", type_modifiers, listing_item__base_class) }}>
+      
+      {% if listing_item__image|render|trim is not empty %}
+        <div {{ bem("image", [], listing_item__base_class) }}>
+          {{ listing_item__image }}
+        </div>
+      {% endif %}
+
       <span {{ bem("type-wrapper", listing_item__type_wrapper__modifiers|default([]), listing_item__base_class) }}>
         {{ listing_item__type }}
       </span>

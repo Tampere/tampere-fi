@@ -9,6 +9,18 @@
     @include large {
       margin-bottom: $space-l;
     }
+
+    .topics-and-life-situations--default & {
+      margin-bottom: 0;
+    }
+  }
+
+  &--default {
+    .link-list--large-icons {
+      @include large {
+        padding-top: $space-xs;
+      }
+    }
   }
 
   &--primary {

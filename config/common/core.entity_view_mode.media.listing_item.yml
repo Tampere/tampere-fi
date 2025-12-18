@@ -1,0 +1,11 @@
+uuid: 6ddd8a8a-3a54-4490-9b3d-62f1638534ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.listing_item
+label: 'Listing item'
+description: ''
+targetEntityType: media
+cache: true

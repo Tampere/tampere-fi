@@ -41,13 +41,12 @@
  * @ingroup themeable
  */
 #}
-{% set grid_modifiers = [ "3-col-expand" ] %}
-
 {% embed "@organisms/_paragraph.twig" %}
   {% block paragraph_content %}
-    {% include "@organisms/card-grid/card-grid.twig" with {
-      "card_grid__modifiers": grid_modifiers,
-      "cards": liftups,
+    {% include "@organisms/colorful-content-liftup/colorful-content-liftup.twig" with {
+      "liftup__heading": paragraph.field_title.value,
+      "liftups": liftups,
+      "grid_modifiers": [ "3-col-expand" ],
       "attributes": [],
     } %}
   {% endblock %}

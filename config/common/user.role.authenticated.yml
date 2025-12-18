@@ -23,6 +23,7 @@ dependencies:
     - feeds
     - field_permissions
     - file
+    - file_delete
     - filter
     - media
     - node
@@ -46,6 +47,8 @@ permissions:
   - 'access map data endpoint'
   - 'access openapi api docs'
   - 'access toolbar'
+  - 'delete files immediately'
+  - 'delete files override usage'
   - 'delete own files'
   - 'post comments'
   - 'use admin toolbar search'

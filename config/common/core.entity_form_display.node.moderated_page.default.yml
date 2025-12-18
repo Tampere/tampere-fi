@@ -16,7 +16,7 @@ dependencies:
     - field.field.node.moderated_page.field_topic
     - field.field.node.moderated_page.field_topics
     - node.type.moderated_page
-    - workflows.workflow.content_moderation
+    - workflows.workflow.scheduled_transitions
   module:
     - ai_auto_reference
     - ai_translate_textfield
@@ -146,7 +146,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -239,7 +239,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_search_keywords:
     type: string_textfield
     weight: 26
@@ -256,7 +256,7 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -273,7 +273,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           522231f1-1a98-4b2a-aa4b-79055a3f35f0:

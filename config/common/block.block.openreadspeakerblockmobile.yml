@@ -2,8 +2,6 @@ uuid: e1f1f1d1-d0a8-434c-b9d2-81f6b326d336
 langcode: fi
 status: true
 dependencies:
-  module:
-    - open_readspeaker
   theme:
     - tampere
 id: openreadspeakerblockmobile
@@ -11,15 +9,15 @@ theme: tampere
 region: header
 weight: -4
 provider: null
-plugin: open_readspeaker_block
+plugin: open_readspeaker_webreader
 settings:
   id: open_readspeaker_block
   label: 'Open readspeaker block mobiili'
   label_display: '0'
   provider: open_readspeaker
-  open_readspeaker_buttonstyle: open-readspeaker-button
-  open_readspeaker_buttontext: Kuuntele
-  open_readspeaker_buttontitle: 'Kuuntele tätä sivua ReadSpeakerillä'
-  open_readspeaker_reading_area: main-content
-  open_readspeaker_reading_area_class: main-content
+  button_url: '//app-[open-readspeaker:cdn].readspeaker.com/cgi-bin/rsent'
+  button_text: Kuuntele
+  button_title: 'Kuuntele tätä sivua ReadSpeakerillä'
+  reading_area: main-content
+  reading_area_class: main-content
 visibility: {  }

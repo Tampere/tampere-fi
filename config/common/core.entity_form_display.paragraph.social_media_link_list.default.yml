@@ -36,7 +36,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_summary:
     type: string_textarea
     weight: 2

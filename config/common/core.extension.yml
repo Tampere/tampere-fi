@@ -5,7 +5,6 @@ module:
   address: 0
   address_display: 0
   admin_toolbar: 0
-  admin_toolbar_links_access_filter: 0
   admin_toolbar_search: 0
   admin_toolbar_tools: 0
   ai: 0
@@ -91,6 +90,7 @@ module:
   jquery_ui_datepicker: 0
   jquery_ui_slider: 0
   jquery_ui_touch_punch: 0
+  js_cookie: 0
   jsonapi: 0
   jsonapi_defaults: 0
   jsonapi_extras: 0

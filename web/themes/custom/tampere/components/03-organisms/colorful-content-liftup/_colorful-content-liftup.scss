@@ -1,0 +1,35 @@
+.colorful-content-liftup {
+  @include page-element-spacer;
+
+  &__content {
+    max-width: --text-content-max-width;
+
+    .layout-container:not(.layout-container--with-sidebar) & {
+      @include large {
+        @include breakout(0);
+      }
+    }
+  }
+
+  &__heading {
+    @include section-heading;
+
+    margin-bottom: $space-m;
+
+    @include large {
+      margin-bottom: $space-l;
+    }
+
+    .layout-container:not(.layout-container--with-sidebar) & {
+      @include large {
+        @include centered-content($max-width: $max-width);
+
+        margin-bottom: $space-l;
+      }
+    }
+  }
+
+  .card-grid {
+    margin-top: 0;
+  }
+}

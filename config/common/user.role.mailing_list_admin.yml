@@ -6,6 +6,7 @@ dependencies:
     - content_moderation
     - content_translation
     - file
+    - file_delete
     - group
     - help
     - system
@@ -18,6 +19,8 @@ permissions:
   - 'access group overview'
   - 'access help pages'
   - 'create mailing_list group'
+  - 'delete files immediately'
+  - 'delete files override usage'
   - 'delete own files'
   - 'translate editable entities'
   - 'view any unpublished content'

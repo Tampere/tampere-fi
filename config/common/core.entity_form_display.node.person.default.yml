@@ -27,7 +27,6 @@ dependencies:
     - field.field.node.person.field_topics
     - field.field.node.person.migrate_override_data
     - node.type.person
-    - workflows.workflow.scheduled_transitions
   module:
     - address
     - allowed_formats
@@ -192,7 +191,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '5'
+        limit_values: 5
   field_address_postal:
     type: address_default
     weight: 41

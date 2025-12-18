@@ -1,0 +1,215 @@
+From bb40c5fab6b75a102077f0a25a1f4ea608268bb6 Mon Sep 17 00:00:00 2001
+From: Malcolm Young <malcolm.young@capgemini.com>
+Date: Wed, 11 Jun 2025 17:49:31 +0100
+Subject: [PATCH 1/7] Issue #3529633: Explain Unknown parsers more clearly
+
+---
+ markdown.install | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/markdown.install b/markdown.install
+index 5dcc1f7..6aeacea 100644
+--- a/markdown.install
++++ b/markdown.install
+@@ -166,12 +166,14 @@ function markdown_requirements($phase) {
+         }
+       }
+
+-      $value = '';
++      $value = $translation->translate('The following issues exist:');
++      $value .= '<ul>';
+       foreach ($statuses as $status => $count) {
+-        $value .= $translation->formatPlural($count, '1 %status parser', '@count %status parsers', [
+-          '%status' => $status,
+-        ]);
++        $value .= '<li>' . $translation->formatPlural($count, '1 %status parser', '@count %status parsers', [
++            '%status' => $status,
++          ]) . '</li>';
+       }
++      $value .= '</ul>';
+
+       $requirements['markdown']['severity'] = $severity;
+       $requirements['markdown']['value'] = Markup::create($value);
+--
+GitLab
+
+
+From da60c81b10690708dc7b546193dfb11b6e3d6aae Mon Sep 17 00:00:00 2001
+From: Malcolm Young <malcolm.young@capgemini.com>
+Date: Wed, 11 Jun 2025 17:56:12 +0100
+Subject: [PATCH 2/7] only check enabled parsers
+
+---
+ markdown.install | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/markdown.install b/markdown.install
+index 6aeacea..5c138ea 100644
+--- a/markdown.install
++++ b/markdown.install
+@@ -147,7 +147,7 @@ function markdown_requirements($phase) {
+     else {
+       $severity = REQUIREMENT_OK;
+       $statuses = [];
+-      foreach ($installed as $parserId => $parser) {
++      foreach ($enabled as $parser) {
+         $library = $parser->getInstalledLibrary();
+         $status = (string) $library->getStatus();
+         if (!isset($statuses[$status])) {
+--
+GitLab
+
+
+From e18e079428eedb51ecba9a03e76eb34a33480896 Mon Sep 17 00:00:00 2001
+From: Malcolm Young <malcolm.young@capgemini.com>
+Date: Wed, 11 Jun 2025 17:59:04 +0100
+Subject: [PATCH 3/7] message
+
+---
+ markdown.install | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/markdown.install b/markdown.install
+index 5c138ea..f661187 100644
+--- a/markdown.install
++++ b/markdown.install
+@@ -166,14 +166,17 @@ function markdown_requirements($phase) {
+         }
+       }
+
+-      $value = $translation->translate('The following issues exist:');
+-      $value .= '<ul>';
+-      foreach ($statuses as $status => $count) {
+-        $value .= '<li>' . $translation->formatPlural($count, '1 %status parser', '@count %status parsers', [
+-            '%status' => $status,
+-          ]) . '</li>';
++      $value = '';
++      if (!empty($statuses)) {
++        $value .= $translation->translate('The following issues exist:');
++        $value .= '<ul>';
++        foreach ($statuses as $status => $count) {
++          $value .= '<li>' . $translation->formatPlural($count, '1 %status parser', '@count %status parsers', [
++              '%status' => $status,
++            ]) . '</li>';
++        }
++        $value .= '</ul>';
+       }
+-      $value .= '</ul>';
+
+       $requirements['markdown']['severity'] = $severity;
+       $requirements['markdown']['value'] = Markup::create($value);
+--
+GitLab
+
+
+From 6cd45b87894cb363cee1f537de708ef6182d90fc Mon Sep 17 00:00:00 2001
+From: Malcolm Young <malcolm.young@capgemini.com>
+Date: Fri, 13 Jun 2025 11:09:10 +0100
+Subject: [PATCH 4/7] use p2 packagist API
+
+---
+ src/Annotation/ComposerPackage.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Annotation/ComposerPackage.php b/src/Annotation/ComposerPackage.php
+index 625f095..eabadf7 100644
+--- a/src/Annotation/ComposerPackage.php
++++ b/src/Annotation/ComposerPackage.php
+@@ -51,7 +51,7 @@ public function getAvailableVersions() {
+       // To ensure we have the latest versions at all times, use the
+       // https://repo.packagist.org/p/[vendor]/[package].json URL which are
+       // static files and not cached.
+-      $json = $this->requestJson(sprintf('https://repo.packagist.org/p/%s.json', $id));
++      $json = $this->requestJson(sprintf('https://repo.packagist.org/p2/%s.json', $id));
+       if (!empty($json['packages'][$id])) {
+         $this->availableVersions = array_keys($json['packages'][$id]);
+       }
+--
+GitLab
+
+
+From 69408a7a4837b2fc744381cf8bb6bb3810fd1fea Mon Sep 17 00:00:00 2001
+From: Malcolm Young <malcolm.young@capgemini.com>
+Date: Fri, 13 Jun 2025 11:17:18 +0100
+Subject: [PATCH 5/7] new API structure
+
+---
+ src/Annotation/ComposerPackage.php | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/Annotation/ComposerPackage.php b/src/Annotation/ComposerPackage.php
+index eabadf7..0c08772 100644
+--- a/src/Annotation/ComposerPackage.php
++++ b/src/Annotation/ComposerPackage.php
+@@ -53,7 +53,9 @@ public function getAvailableVersions() {
+       // static files and not cached.
+       $json = $this->requestJson(sprintf('https://repo.packagist.org/p2/%s.json', $id));
+       if (!empty($json['packages'][$id])) {
+-        $this->availableVersions = array_keys($json['packages'][$id]);
++        foreach ($json['packages'][$id] as $package) {
++          $this->availableVersions[] = $package['version'];
++        }
+       }
+     }
+     return $this->availableVersions;
+--
+GitLab
+
+
+From 1b8c7198b687755e9591af615f247937d6c07de8 Mon Sep 17 00:00:00 2001
+From: Malcolm Young <malcolm.young@capgemini.com>
+Date: Fri, 13 Jun 2025 11:26:26 +0100
+Subject: [PATCH 6/7] improve message
+
+---
+ markdown.install | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/markdown.install b/markdown.install
+index f661187..2930276 100644
+--- a/markdown.install
++++ b/markdown.install
+@@ -168,7 +168,11 @@ function markdown_requirements($phase) {
+
+       $value = '';
+       if (!empty($statuses)) {
+-        $value .= $translation->translate('The following issues exist:');
++        $value .= match ($severity) {
++          REQUIREMENT_ERROR, REQUIREMENT_WARNING => $translation->translate('The following issues exist:'),
++          default => $translation->translate('Markdown parser status:'),
++        };
++
+         $value .= '<ul>';
+         foreach ($statuses as $status => $count) {
+           $value .= '<li>' . $translation->formatPlural($count, '1 %status parser', '@count %status parsers', [
+--
+GitLab
+
+
+From 5c26d09b7ff1cec20c88a53d213010a318e4e419 Mon Sep 17 00:00:00 2001
+From: Malcolm Young <malcolm.young@capgemini.com>
+Date: Fri, 13 Jun 2025 14:23:39 +0100
+Subject: [PATCH 7/7] update comment
+
+---
+ src/Annotation/ComposerPackage.php | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/Annotation/ComposerPackage.php b/src/Annotation/ComposerPackage.php
+index 0c08772..ae91e80 100644
+--- a/src/Annotation/ComposerPackage.php
++++ b/src/Annotation/ComposerPackage.php
+@@ -48,9 +48,8 @@ public function getAvailableVersions() {
+     if (!isset($this->availableVersions)) {
+       $this->availableVersions = [];
+       $id = $this->getId();
+-      // To ensure we have the latest versions at all times, use the
+-      // https://repo.packagist.org/p/[vendor]/[package].json URL which are
+-      // static files and not cached.
++      // Get latest versions from the API.
++      // See https://packagist.org/apidoc#get-package-data.
+       $json = $this->requestJson(sprintf('https://repo.packagist.org/p2/%s.json', $id));
+       if (!empty($json['packages'][$id])) {
+         foreach ($json['packages'][$id] as $package) {
+--
+GitLab

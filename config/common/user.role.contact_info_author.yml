@@ -14,6 +14,7 @@ dependencies:
     - content_translation
     - entity_browser
     - file
+    - file_delete
     - group
     - help
     - node
@@ -81,6 +82,8 @@ permissions:
   - 'create place_of_business content'
   - 'delete any person content'
   - 'delete any place_of_business content'
+  - 'delete files immediately'
+  - 'delete files override usage'
   - 'delete own files'
   - 'delete paragraph content accordion_item'
   - 'delete paragraph content accordion_text_content'

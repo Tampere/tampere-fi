@@ -22,9 +22,12 @@ dependencies:
     - field.field.node.portfolio.field_search_keywords
     - field.field.node.portfolio.field_social_media_share
     - field.field.node.portfolio.field_topics
+    - image.style.listing_item_420x240
     - node.type.portfolio
   module:
     - ds
+    - lazy
+    - media
     - user
 third_party_settings:
   ds:
@@ -38,6 +41,8 @@ third_party_settings:
           field_templates: default
           variant: default-search
     regions:
+      listing_item__image:
+        - field_main_image
       listing_item__heading:
         - node_title
       listing_item__main_content:
@@ -45,7 +50,7 @@ third_party_settings:
     fields:
       node_title:
         plugin_id: node_title
-        weight: 0
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -67,8 +72,30 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: listing_item__main_content
+  field_main_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: listing_item_420x240
+      image_loading:
+        attribute: eager
+    third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: listing_item__image
 hidden:
   content_moderation_control: true
   entitygroupfield: true
@@ -80,7 +107,6 @@ hidden:
   field_keywords: true
   field_life_situations: true
   field_link_list: true
-  field_main_image: true
   field_main_image_caption: true
   field_minisites: true
   field_no_category_topics: true

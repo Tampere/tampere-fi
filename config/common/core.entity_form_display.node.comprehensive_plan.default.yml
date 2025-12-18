@@ -438,7 +438,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -510,7 +510,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_partially_binding_phase:
     type: paragraphs_classic_asymmetric
     weight: 18
@@ -606,7 +606,7 @@ content:
       default_paragraph_type: process_accordions_extended
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -635,7 +635,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           7a1ab55d-54f3-4036-b261-78633f32e6a8:

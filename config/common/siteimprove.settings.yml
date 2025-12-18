@@ -54,4 +54,5 @@ enabled_taxonomies:
   topics: '0'
   zoning_information_types: '0'
 overlay_default_collapse: true
+overlay_cookie_secure: false
 use_latest_experience: true

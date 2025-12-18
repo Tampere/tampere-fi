@@ -9,6 +9,7 @@ dependencies:
     - ai_translate_textfield
     - content_moderation
     - file
+    - file_delete
     - node
     - paragraphs_type_permissions
     - quick_node_clone
@@ -27,6 +28,8 @@ permissions:
   - 'create paragraph content person_liftup'
   - 'create paragraph content person_liftups'
   - 'delete any involvement_opportunity content'
+  - 'delete files immediately'
+  - 'delete files override usage'
   - 'delete involvement_opportunity revisions'
   - 'delete own files'
   - 'delete paragraph content person_liftup'

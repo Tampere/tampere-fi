@@ -193,7 +193,7 @@
         "drupal/antibot": "^2.0",
         "drupal/auto_entitylabel": "^3.0",
         "drupal/backward_compatibility": "^1.0",
-        "drupal/better_exposed_filters": "^6.0.6",
+        "drupal/better_exposed_filters": "^7.1.0",
         "drupal/cache_tags": "dev-fork",
         "drupal/ckeditor5_paste_filter": "^1.0",
         "drupal/cloudflare_purge": "^2.0",
@@ -205,9 +205,9 @@
         "drupal/config_split": "^2.0",
         "drupal/content_moderation_notifications": "^3.4",
         "drupal/cookieinformation": "^2.0",
-        "drupal/core-composer-scaffold": "~10.4.6",
-        "drupal/core-project-message": "~10.4.6",
-        "drupal/core-recommended": "~10.4.6",
+        "drupal/core-composer-scaffold": "~10.5.6",
+        "drupal/core-project-message": "~10.5.6",
+        "drupal/core-recommended": "~10.5.6",
         "drupal/dblog_filter": "^4.1",
         "drupal/decorative_image_widget": "^1.0",
         "drupal/diff": "^1.0",
@@ -231,14 +231,14 @@
         "drupal/feeds_ex": "^1.0@beta",
         "drupal/feeds_tamper": "^2.0@beta",
         "drupal/field_delimiter": "^2.0",
-        "drupal/field_group": "^3.1",
+        "drupal/field_group": "^4.0",
         "drupal/field_permissions": "^1.2",
         "drupal/field_states_ui": "^3.0",
-        "drupal/file_delete": "^2.0",
+        "drupal/file_delete": "^3.0",
         "drupal/flexible_permissions": "^2.0",
         "drupal/focal_point": "^2.0",
         "drupal/form_display_field_machine_name": "dev-fork",
-        "drupal/formdazzle": "^3.0",
+        "drupal/formdazzle": "^4.0",
         "drupal/geofield": "^1.34",
         "drupal/group": "^2.3",
         "drupal/group_content_menu": "^2.0",
@@ -255,27 +255,27 @@
         "drupal/jsonapi_include": "^1.5",
         "drupal/language_switcher_extended": "^1.0@beta",
         "drupal/lazy": "^4.0",
-        "drupal/limited_field_widgets": "^2.0",
-        "drupal/linkit": "^6.1",
+        "drupal/limited_field_widgets": "^3.0",
+        "drupal/linkit": "^7.0",
         "drupal/markdown": "^3.0",
         "drupal/markup": "^2.0@beta",
         "drupal/markup_field": "^1.1@beta",
-        "drupal/maxlength": "^2.1",
+        "drupal/maxlength": "^3.1",
         "drupal/media_bulk_upload": "^3.0",
         "drupal/media_entity_dreambroker": "^2.1",
         "drupal/media_entity_file_replace": "^1.1",
         "drupal/memcache": "^2.3",
-        "drupal/menu_item_extras": "^2.16",
+        "drupal/menu_item_extras": "^3.1",
         "drupal/message_notify": "^1.2",
         "drupal/metatag": "^2.0",
         "drupal/migrate_override": "^2.0@alpha",
         "drupal/migrate_plus": "^6.0.0",
         "drupal/migrate_source_csv": "^3.4",
         "drupal/migrate_tools": "^6.0",
-        "drupal/mimemail": "^1.0@alpha",
+        "drupal/mimemail": "^2.0",
         "drupal/oembed_providers": "^2.2",
         "drupal/office_hours": "^1.5",
-        "drupal/open_readspeaker": "^1.9",
+        "drupal/open_readspeaker": "^2.0",
         "drupal/openapi_jsonapi": "^3.0",
         "drupal/openapi_ui_swagger": "^1.0",
         "drupal/openid_connect": "^3.0@alpha",
@@ -291,8 +291,8 @@
         "drupal/pathauto": "^1.6",
         "drupal/permission_watchdog": "^2.0",
         "drupal/preprocess": "^2.0",
-        "drupal/prevent_homepage_deletion": "^2.0",
-        "drupal/publication_date": "^2.0@beta",
+        "drupal/prevent_homepage_deletion": "^3.0",
+        "drupal/publication_date": "^3.1",
         "drupal/purge": "^3.2",
         "drupal/purge_file": "^1.1",
         "drupal/queue_ui": "^3.2",
@@ -310,7 +310,7 @@
         "drupal/search_api_mapping": "^2.0",
         "drupal/search_api_solr": "^4.2",
         "drupal/simple_sitemap": "^4.1",
-        "drupal/siteimprove": "^2.0",
+        "drupal/siteimprove": "^3.0",
         "drupal/social_media": "^2.0",
         "drupal/social_media_links": "^2.8",
         "drupal/svg_image_field": "^2.2",
@@ -464,13 +464,13 @@
             "drupal/core": {
                 "#2546212: Entity view/form mode formatter/widget settings have no translation UI": "https://www.drupal.org/files/issues/2020-10-02/2546212-155.patch",
                 "2802371 - No active language in language switcher": "https://www.drupal.org/files/issues/2023-03-13/2802371-28.patch",
-                "2230909 - Simple decimals fail to pass validation for Drupal v10.2": "https://www.drupal.org/files/issues/2023-12-21/2230909-309.patch",
-                "2868014 - Views Date Filter Datetime Granularity Option": "https://www.drupal.org/files/issues/2021-04-26/2868014-110.patch",
+                "2230909 - Simple decimals fail to pass validation for Drupal v10.2": "https://www.drupal.org/files/issues/2025-09-04/2230909-381.patch",
+                "2868014 - Views Date Filter Datetime Granularity Option": "https://www.drupal.org/files/issues/2025-07-22/2868014-141.patch",
                 "2993688 - Views relationships with multi-valued entity reference fields invalidate Distinct query option - 99": "https://www.drupal.org/files/issues/2022-06-16/2993688-99.patch",
                 "3171835 - Field Groups marked as required are missing red asterisk": "https://www.drupal.org/files/issues/2024-09-05/3171835-90--reroll-74-10.3.patch",
                 "2968207 - Allow multiple instances of the same exposed filter form on a single page": "https://www.drupal.org/files/issues/2023-04-11/2968207-39.patch",
                 "2511878 - Support enclosure field in Views RssFields row plugin - D10.3": "https://www.drupal.org/files/issues/2024-06-23/2511878-add-support-for-enclosure-field-10.3.x.patch",
-               "3445965 - Content translation: remove warning message about untranslatable fields being hidden": "https://git.drupalcode.org/issue/drupal-3445965/-/commit/78cec6047a861250ae4ef65f9eb69f5947bbc1f6.patch"
+                "3445965 - Content translation: remove warning message about untranslatable fields being hidden": "https://git.drupalcode.org/issue/drupal-3445965/-/commit/78cec6047a861250ae4ef65f9eb69f5947bbc1f6.patch"
             },
             "drupal/dropzonejs": {
                 "3341846 REVERT - Media library form breaking getFormId() function": "patches/dropzonejs-remove-media-library-form-breaking-getFormId-function-added-in-issue-3341846.patch"
@@ -483,8 +483,7 @@
                 "3080098 - Delete Empty Files Created If Empty/Error Exception is Returned": "https://www.drupal.org/files/issues/2024-12-12/delete-empty-error-file_3080098_7_for_3.0-rc3.patch"
             },
             "drupal/field_group": {
-                "2969051 - HTML5 Validation Prevents Submission in Tabs": "https://www.drupal.org/files/issues/2024-08-09/2969051-148.patch",
-                "3395375 Duplicated required marks in field tabs with GIn admin theme": "https://www.drupal.org/files/issues/2024-08-06/3395375-6.patch"
+                "2969051 - HTML5 Validation Prevents Submission in Tabs": "https://www.drupal.org/files/issues/2024-08-09/2969051-148.patch"
             },
             "drupal/field_states_ui": {
                 "3166929 - Ajax error for trying to access array offset on value of type null": "https://www.drupal.org/files/issues/2022-02-07/3166929-7.patch",
@@ -507,14 +506,14 @@
                 "3339013 - implement datepicker localisation in jquery_ui 2.x": "patches/implement_datepicker_localisation_3339013.patch"
             },
             "drupal/linkit": {
-                "2886455: Add support for multilanguage": "https://www.drupal.org/files/issues/2023-10-17/2886455-73-linkit-6.1.2-multilingual.patch",
-                "3381766: Linkit Dialog list has no background color": "https://www.drupal.org/files/issues/2024-05-21/linkit-ckeditor-position-bug-2.patch"
+                "2886455: Add support for multilanguage": "https://www.drupal.org/files/issues/2025-10-22/2886455-97.patch"
             },
             "drupal/markdown": {
                 "3399837 - jquery.once still used in markdown.admin.js": "https://www.drupal.org/files/issues/2023-11-07/3399837-jquery.once-still-used-2.patch",
                 "3409277 - SubformState incorrect interface error": "patches/markdown_subform_state_incorrect_interface_error_3409277.patch",
                 "3283349 - Add support for Commonmark v2": "https://www.drupal.org/files/issues/2023-09-11/markdown-3283349--minimal-upgrade-14.patch",
-                "3463119 - Error when saving text format" : "https://git.drupalcode.org/issue/markdown-3463119/-/commit/2724dce29c5461386cbc49156a6861ddb5351b20.patch"
+                "3463119 - Error when saving text format": "https://git.drupalcode.org/issue/markdown-3463119/-/commit/2724dce29c5461386cbc49156a6861ddb5351b20.patch",
+                "3529633 - Explain Unknown parsers more clearly:": "patches/explain_unknown_parsers_more_clearly_3529633.patch"
             },
             "drupal/memcache": {
                 "#2996615: Transaction support for cache (tags) invalidation": "https://www.drupal.org/files/issues/2022-10-25/2996615-revised-woth-hooks--rerolled-against-2.5.patch"

@@ -144,7 +144,7 @@ content:
       placeholder: 'Syötä vähintään kaksi kirjainta...'
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -215,7 +215,7 @@ content:
       placeholder: 'Syötä vähintään kaksi kirjainta...'
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''

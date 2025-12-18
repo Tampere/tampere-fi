@@ -23,7 +23,6 @@ third_party_settings:
           variant: process
     regions:
       accordion_content:
-        - field_accordion_heading
         - field_accordion_content
 id: paragraph.process_accordion_item.default
 targetEntityType: paragraph
@@ -45,16 +44,9 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 1
-    region: accordion_content
-  field_accordion_heading:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
     weight: 0
     region: accordion_content
 hidden:
+  field_accordion_heading: true
   field_process_phase_status: true
   search_api_excerpt: true

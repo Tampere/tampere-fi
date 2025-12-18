@@ -1,0 +1,15 @@
+uuid: 95dca98e-ea23-4064-9b09-bfa319700731
+langcode: en
+status: true
+dependencies: {  }
+name: listing_item_420x240
+label: 'Listing item (420x240)'
+effects:
+  ae011fac-9e41-47a0-b29f-b85322b2e023:
+    uuid: ae011fac-9e41-47a0-b29f-b85322b2e023
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 420
+      height: 240
+      anchor: center-center

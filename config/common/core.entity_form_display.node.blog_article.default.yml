@@ -238,7 +238,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -279,7 +279,7 @@ content:
           type: ''
           list: ''
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_link_list:
     type: paragraphs_classic_asymmetric
     weight: 8
@@ -364,7 +364,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_search_keywords:
     type: string_textfield
     weight: 28
@@ -384,7 +384,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           fafd0fcf-9012-40bc-a7d9-0bf18c7af6f5:

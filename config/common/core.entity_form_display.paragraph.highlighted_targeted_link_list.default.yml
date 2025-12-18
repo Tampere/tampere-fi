@@ -27,7 +27,7 @@ content:
       default_paragraph_type: highlighted_link_list
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''

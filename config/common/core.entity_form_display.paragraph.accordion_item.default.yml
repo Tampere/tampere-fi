@@ -59,7 +59,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_accordion_heading:
     type: string_textfield
     weight: 0

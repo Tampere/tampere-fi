@@ -59,7 +59,7 @@ content:
       default_paragraph_type: _none
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -84,7 +84,7 @@ content:
     settings: {  }
     third_party_settings:
       limited_field_widgets:
-        limit_values: '2'
+        limit_values: 2
       field_states_ui:
         form:
           type: ''

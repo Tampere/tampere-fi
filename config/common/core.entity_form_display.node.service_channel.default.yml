@@ -187,7 +187,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_address_postal:
     type: address_default
     weight: 57

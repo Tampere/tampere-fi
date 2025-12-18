@@ -26,7 +26,7 @@ content:
       default_paragraph_type: _none
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   translation:
     weight: 10
     region: content

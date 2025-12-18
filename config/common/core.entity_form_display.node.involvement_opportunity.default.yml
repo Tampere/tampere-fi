@@ -33,7 +33,7 @@ dependencies:
     - field.field.node.involvement_opportunity.field_start_time
     - field.field.node.involvement_opportunity.field_topics
     - node.type.involvement_opportunity
-    - workflows.workflow.chance_for_participation_moderation
+    - workflows.workflow.scheduled_transitions
   module:
     - address
     - ai_auto_reference
@@ -218,7 +218,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_display_location_on_map:
     type: boolean_checkbox
     weight: 13
@@ -259,7 +259,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -350,7 +350,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_participate_end_time:
     type: datetime_default
     weight: 24
@@ -449,7 +449,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           f281bd04-3a93-49f0-8722-ee6c3c264c67:

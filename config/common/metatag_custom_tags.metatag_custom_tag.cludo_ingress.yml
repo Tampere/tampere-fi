@@ -6,5 +6,8 @@ id: cludo_ingress
 label: 'Cludo ingress'
 description: 'Metatag for partial ingress field'
 htmlElement: meta
-htmlNameAttribute: name
 htmlValueAttribute: content
+attributes:
+  -
+    name: name
+    value: cludo_ingress

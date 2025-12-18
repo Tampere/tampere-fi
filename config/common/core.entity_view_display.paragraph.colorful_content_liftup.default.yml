@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.colorful_content_liftup.field_content_liftups
+    - field.field.paragraph.colorful_content_liftup.field_title
     - paragraphs.paragraphs_type.colorful_content_liftup
   module:
     - ds
@@ -22,6 +23,19 @@ content:
     third_party_settings:
       ds:
         ds_limit: ''
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
     weight: 0
     region: content
 hidden:

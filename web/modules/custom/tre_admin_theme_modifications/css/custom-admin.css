@@ -63,3 +63,17 @@
 [data-drupal-selector*="edit-field-paragraphs"][data-drupal-selector*="subform-field"][data-drupal-selector*="content-liftups"][data-drupal-selector*="info-validation-error"] {
   display: none;
 }
+
+/* Fix for media library grid view item names being cut off */
+.media-library-item__preview {
+  padding-bottom: 3rem !important;
+}
+
+/*
+  Keep admin toolbar active items readable.
+  Same style is applied for the frontend in _04-base.scss
+*/
+.toolbar-icon.toolbar-item.is-active,
+.toolbar-item.is-active {
+  color: #fff !important;
+}

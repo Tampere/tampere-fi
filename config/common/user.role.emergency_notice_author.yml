@@ -3,6 +3,9 @@ langcode: fi
 status: true
 dependencies:
   config:
+    - entity_browser.browser.all_content_entity_browser
+    - entity_browser.browser.all_places_entity_browser
+    - entity_browser.browser.persons_entity_browser
     - node.type.emergency_notice
     - workflows.workflow.scheduled_transitions
   module:
@@ -11,6 +14,7 @@ dependencies:
     - content_translation
     - entity_browser
     - file
+    - file_delete
     - help
     - node
     - quick_node_clone
@@ -29,6 +33,8 @@ permissions:
   - 'clone emergency_notice content'
   - 'create emergency_notice content'
   - 'delete any emergency_notice content'
+  - 'delete files immediately'
+  - 'delete files override usage'
   - 'delete own files'
   - 'edit any emergency_notice content'
   - 'revert emergency_notice revisions'

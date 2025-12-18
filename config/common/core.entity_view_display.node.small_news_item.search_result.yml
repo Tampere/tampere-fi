@@ -25,9 +25,12 @@ dependencies:
     - field.field.node.small_news_item.field_social_media_share
     - field.field.node.small_news_item.field_topic
     - field.field.node.small_news_item.field_topics
+    - image.style.listing_item_420x240
     - node.type.small_news_item
   module:
     - ds
+    - lazy
+    - media
     - user
 third_party_settings:
   ds:
@@ -41,6 +44,8 @@ third_party_settings:
           field_templates: default
           variant: default-search
     regions:
+      listing_item__image:
+        - field_main_image
       listing_item__heading:
         - node_title
       listing_item__main_content:
@@ -49,7 +54,7 @@ third_party_settings:
     fields:
       node_title:
         plugin_id: node_title
-        weight: 0
+        weight: 1
         label: hidden
         formatter: default
         settings:
@@ -66,12 +71,34 @@ targetEntityType: node
 bundle: small_news_item
 mode: search_result
 content:
+  field_main_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: listing_item_420x240
+      image_loading:
+        attribute: eager
+    third_party_settings:
+      lazy:
+        lazy_image: '0'
+        placeholder_style: ''
+        data_uri: false
+      ds:
+        ft:
+          id: default
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 0
+    region: listing_item__image
   field_partial_ingress:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 2
     region: listing_item__main_content
   published_at:
     type: timestamp
@@ -97,7 +124,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 1
+    weight: 3
     region: listing_item__main_content
 hidden:
   content_moderation_control: true
@@ -111,7 +138,6 @@ hidden:
   field_lead: true
   field_life_situations: true
   field_link_list: true
-  field_main_image: true
   field_media_caption: true
   field_minisites: true
   field_no_category_keywords: true

@@ -105,7 +105,7 @@ content:
           add: Lisää
         field_states: {  }
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_service:
     type: entity_reference_autocomplete
     weight: 0
@@ -138,7 +138,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_web_displayed_fields:
     type: options_buttons
     weight: 5

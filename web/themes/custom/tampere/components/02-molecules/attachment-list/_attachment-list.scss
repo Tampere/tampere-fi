@@ -9,6 +9,12 @@
   &__heading {
     @include text-element-spacer;
     @include heading-large;
+
+    margin-bottom: $space-xs;
+
+    @include large {
+      margin-bottom: $space-xs-plus;
+    }
   }
 
   &__body {
@@ -25,6 +31,16 @@
     @include list-reset;
 
     padding: 0;
+
+    width: 100%;
+
+    @include medium {
+      width: 50%;
+    }
+
+    @include large {
+      width: 66%;
+    }
   }
 
   &__attachment {
@@ -127,6 +143,44 @@
 
       @include large {
         padding-left: $space-s;
+      }
+    }
+
+    .attachment-list {
+      &__list {
+        @include medium {
+          width: calc(50% + #{$space-xs});
+        }
+
+        @include large {
+          // This calculation is to compensate the parent's margin.
+          width: calc(0.66 * (100% + #{$space-l * 2}));
+        }
+      }
+    }
+  }
+}
+
+.collection-page-content,
+.wide-content {
+  .attachment-list {
+    &__list {
+      @include medium {
+        width: 66%;
+      }
+
+      @include large {
+        width: 50%;
+      }
+    }
+
+    &--accordion-content-view-mode {
+      .attachment-list {
+        &__list {
+          @include medium {
+            width: 66%;
+          }
+        }
       }
     }
   }

@@ -25,7 +25,6 @@ dependencies:
     - field.field.node.small_news_item.field_topic
     - field.field.node.small_news_item.field_topics
     - node.type.small_news_item
-    - workflows.workflow.scheduled_transitions
   module:
     - ai_auto_reference
     - ai_translate_textfield
@@ -228,7 +227,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           cb35073a-785c-4919-a992-f4e7cb0642b3:
@@ -373,7 +372,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_photographer:
     type: string_textarea
     weight: 7
@@ -411,7 +410,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           53238cf1-b9cb-4796-98bd-ba21b3d10be1:

@@ -34,7 +34,7 @@ content:
       default_paragraph_type: image_gallery_item
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   translation:
     weight: 2
     region: content

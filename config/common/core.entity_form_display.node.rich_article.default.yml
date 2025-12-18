@@ -26,7 +26,6 @@ dependencies:
     - field.field.node.rich_article.field_topic
     - field.field.node.rich_article.field_topics
     - node.type.rich_article
-    - workflows.workflow.scheduled_transitions
   module:
     - ai_auto_reference
     - ai_translate_textfield
@@ -224,7 +223,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           cfaa2dd0-b727-419e-aedf-459d46e7b1ee:
@@ -278,7 +277,7 @@ content:
           type: ''
           list: ''
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_link_list:
     type: paragraphs_classic_asymmetric
     weight: 8
@@ -375,7 +374,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_photographer:
     type: string_textarea
     weight: 10
@@ -413,7 +412,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           e8a0b52a-6fea-4a5b-b1d1-5a1cec24a032:

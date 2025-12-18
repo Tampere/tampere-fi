@@ -1,0 +1,29 @@
+{% set liftup__base_class = "colorful-content-liftup" %}
+
+{% set grid_modifiers = grid_modifiers|default([ "3-col-expand" ]) %}
+
+<div {{ bem(liftup__base_class, liftup__modifiers, liftup__blockname, liftup__extra_classes) }}>
+  
+  <div {{ bem("content", liftup__content__modifiers, liftup__base_class) }}>
+    
+    {# Heading (Title) #}
+    {% if liftup__heading %}
+      {{ title_prefix }}
+      {% include "@atoms/02-text/00-headings/_heading.twig" with {
+        heading_base_class: "heading",
+        heading_modifiers: liftup__heading__modifiers,
+        heading_blockname: liftup__base_class,
+        heading_level: 2,
+        heading: liftup__heading,
+      } %}
+      {{ title_suffix }}
+    {% endif %}
+  </div>
+
+  {# Card Grid #}
+  {% include "@organisms/card-grid/card-grid.twig" with {
+    "card_grid__modifiers": grid_modifiers,
+    "cards": liftups,
+    "attributes": [],
+  } %}
+</div>

@@ -26,6 +26,9 @@
   border-radius: 4px;
   padding: 24px;
   z-index: 1;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .survey-modal-close-row {

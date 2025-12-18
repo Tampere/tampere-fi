@@ -87,6 +87,14 @@
     "twig-testing-library": "^1.1.1",
     "yaml": "^1.10.0"
   },
+  "overrides": {
+    "braces": "3.0.3",
+    "micromatch": "4.0.8",
+    "postcss": "^8.4.31",
+    "trim-newlines": "^3.0.1",
+    "follow-redirects": "^1.15.4",
+    "tmp": "^0.2.3"
+  },
   "optionalDependencies": {
     "esbuild-darwin-arm64": "^0.15.18"
   }

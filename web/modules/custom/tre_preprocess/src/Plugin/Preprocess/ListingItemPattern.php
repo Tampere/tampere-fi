@@ -115,7 +115,7 @@ class ListingItemPattern extends TrePreProcessPluginBase {
 
     return [
       'basic_content_page' => $this->t('Page', [], $context),
-      'blog_article' => $this->t('Blog post', [], $context),
+      'blog_article' => $this->t('Blog article', [], $context),
       'city_planning_and_constructions' => $this->t('Page', [], $context),
       'collection_page' => $this->t('Page', [], $context),
       'comprehensive_plan' => $this->t('Page', [], $context),
@@ -128,7 +128,7 @@ class ListingItemPattern extends TrePreProcessPluginBase {
       'place' => $this->t('Page', [], $context),
       'portfolio' => $this->t('Page', [], $context),
       'project' => $this->t('Page', [], $context),
-      'rich_article' => $this->t('Rich article', [], $context),
+      'rich_article' => $this->t('Article', [], $context),
       'small_news_item' => $this->t('Page', [], $context),
       'zoning_information' => $this->t('Page', [], $context),
     ];

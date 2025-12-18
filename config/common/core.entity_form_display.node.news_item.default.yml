@@ -262,7 +262,7 @@ content:
       default_paragraph_type: _none
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_cross_site_publications:
     type: options_buttons
     weight: 10
@@ -311,7 +311,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           4550fdac-de75-4ae9-bf5e-b10f8cfe900e:
@@ -390,7 +390,7 @@ content:
       default_paragraph_type: _none
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_main_image:
     type: media_library_widget
     weight: 26
@@ -470,7 +470,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_photographer:
     type: string_textarea
     weight: 32
@@ -505,7 +505,7 @@ content:
         maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -529,7 +529,7 @@ content:
       placeholder: ''
     third_party_settings:
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
       field_states_ui:
         field_states:
           c61f4783-9e6c-4c58-8460-9e8febcfd03d:

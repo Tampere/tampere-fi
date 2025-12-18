@@ -16,7 +16,7 @@ $listing-item-person-link-column-min-width: 295px;
   width: 100%;
 
   @include large {
-    align-items: center;
+    align-items: stretch;
     border-left: 0;
     display: grid;
     grid-template-columns: 190px 1fr;
@@ -47,6 +47,15 @@ $listing-item-person-link-column-min-width: 295px;
       margin-bottom: -1px;
       height: calc(100% + 1px);
 
+      &--has-image {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;     
+        padding-top: $space-l;
+        padding-bottom: $space-m;
+        min-height: 240px;
+      }
+
       // Since the listing items can have a different accent color,
       // the pseudo elements will make sure the accent area doesn't overlap the borders.
       &::before,
@@ -66,6 +75,25 @@ $listing-item-person-link-column-min-width: 295px;
 
       &::after {
         bottom: -1px;
+      }
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @include large {
+      display: block;
+      width: 100%;
+      margin-bottom: $space-s;
+      padding-right: $space-m;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 16/9;
       }
     }
   }

@@ -59,3 +59,9 @@ body {
     }
   }
 }
+
+/* Keep admin toolbar active items readable */
+.toolbar-icon.toolbar-item.is-active,
+.toolbar-item.is-active {
+  color: #fff !important;
+}

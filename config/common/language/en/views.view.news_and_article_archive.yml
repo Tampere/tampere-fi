@@ -44,7 +44,7 @@ display:
               2:
                 title: Article
               3:
-                title: News
+                title: 'News item'
         published_at:
           expose:
             label: 'Publication date from'

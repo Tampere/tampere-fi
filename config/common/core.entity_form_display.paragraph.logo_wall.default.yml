@@ -44,7 +44,7 @@ content:
           list: ''
           add: Lisää
       limited_field_widgets:
-        limit_values: '0'
+        limit_values: 0
   field_title:
     type: string_textfield
     weight: 1
