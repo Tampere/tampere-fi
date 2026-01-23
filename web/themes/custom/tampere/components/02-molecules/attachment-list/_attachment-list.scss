@@ -18,12 +18,12 @@
   }
 
   &__body {
-    font-size: $font-18;
+    font-size: $body-font-size-mobile;
     max-width: var(--text-content-max-width);
     hyphens: auto;
 
     @include large {
-      font-size: $font-20;
+      font-size: $body-font-size;
     }
   }
 

@@ -219,6 +219,10 @@
     @include word-wrap;
 
     position: relative;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   h1 {

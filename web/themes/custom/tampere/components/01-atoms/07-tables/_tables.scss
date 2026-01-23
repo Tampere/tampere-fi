@@ -12,7 +12,6 @@ $table-margin: $space-s 0;
   @include word-wrap();
 
   border-spacing: 0;
-  margin: $table-margin;
   width: 100%;
   table-layout: fixed;
 

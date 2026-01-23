@@ -52,6 +52,14 @@
         padding-left: $space-l;
       }
     }
+
+    // Set max-width for text content elements inside text-with-bgcolor
+    .field-text-bgcolor {
+      ul,
+      ol {
+        max-width: var(--text-content-max-width);
+      }
+    }
   }
 
   &--reverse {

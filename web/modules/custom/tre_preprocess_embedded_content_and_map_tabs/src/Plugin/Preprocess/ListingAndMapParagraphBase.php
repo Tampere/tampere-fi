@@ -126,6 +126,11 @@ abstract class ListingAndMapParagraphBase extends TrePreProcessPluginBase {
       ->range(0, 400)
       ->sort('title', 'ASC');
 
+    // Apply extra conditions regardless of taxonomy selection.
+    foreach ($extra_conditions as $condition) {
+      $node_query->condition($condition['field'], $condition['value'], $condition['operator'], $current_language_id);
+    }
+
     $no_taxonomy_terms_selected = (count($taxonomy_values, COUNT_RECURSIVE) <= count(array_keys($taxonomy_values)));
     if ($no_taxonomy_terms_selected) {
       return $node_query->execute();
@@ -147,15 +152,6 @@ abstract class ListingAndMapParagraphBase extends TrePreProcessPluginBase {
         elseif (!empty($orCondition)) {
           $orCondition->condition("field_{$taxonomy}", $terms, 'IN', $current_language_id);
         }
-      }
-    }
-
-    foreach ($extra_conditions as $condition) {
-      if ($condition_group === 'and') {
-        $node_query->condition($condition['field'], $condition['value'], $condition['operator'], $current_language_id);
-      }
-      elseif (!empty($orCondition)) {
-        $orCondition->condition($condition['field'], $condition['value'], $condition['operator'], $current_language_id);
       }
     }
 

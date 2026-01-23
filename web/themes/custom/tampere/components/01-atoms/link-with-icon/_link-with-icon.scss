@@ -132,19 +132,6 @@
     @include mobile-breakpoint-down {
       flex-direction: column;
     }
-
-    &:focus,
-    &:hover {
-      #{$base_class}__icon {
-        @include dynamic-color(
-          secondary,
-          background-color,
-          $set-focus-color: false
-        );
-
-        color: clr(alternative-secondary, #{clr(secondary)});
-      }
-    }
   }
 
   &--no-left-margin {
