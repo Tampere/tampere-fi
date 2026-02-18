@@ -36,7 +36,6 @@ permissions:
   - 'delete any media'
   - 'delete embederator entity'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete own file media'
   - 'delete own files'

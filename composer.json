@@ -542,6 +542,9 @@
             },
             "drupal/views_autocomplete_filters": {
                 "XO-3817 - Change autocomplete field label to always use node title": "patches/views_autocomplete_filters_dropdown_label_alter.patch"
+            },
+            "drupal/scheduled_transitions": {
+                "XO-3817 - Better translation revision support for scheduling": "https://www.drupal.org/files/issues/2025-10-15/3083616-12.patch-2.7.x.patch"
             }
         },
         "merge-plugin": {

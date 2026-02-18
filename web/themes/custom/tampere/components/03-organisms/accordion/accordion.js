@@ -169,35 +169,72 @@ function openAllAccordions(controlButton) {
 * Handles embedded accordion behaviour
 */
 function embeddedAccordion() {
-  const accordionTitle = document.querySelectorAll('.view-urban-planning-embedded-content-tab .embedded-content-tab-accordion .accordion__title-wrapper');
-  const embededAccordion = document.querySelectorAll('.view-urban-planning-embedded-content-tab .embedded-content-tab-accordion .accordion__content');
-  const accordionButton = document.querySelectorAll('.view-urban-planning-embedded-content-tab .embedded-content-tab-accordion .accordion__heading');
-  const mql = window.themeBreakpoints.Breakpoints[2].mediaQuery; // Medium breakpoint
+  // Get the Breakpoint logic
+  if (!window.themeBreakpoints || !window.themeBreakpoints.Breakpoints[2]) return;
 
-  // Until md breakpoint or min width < 720p then activates mobile accordion else desktop accordion
-  if (!window.matchMedia(mql).matches) {
-    accordionTitle.forEach((title) => {
-      title.classList.remove('hidden');
-    });
+  const mqlString = window.themeBreakpoints.Breakpoints[2].mediaQuery; // Medium breakpoint
+  const mql = window.matchMedia(mqlString);
 
-    accordionButton.forEach((button) => {
-      button.classList.remove('is-active');
-      button.setAttribute('aria-expanded', 'false');
-    });
-  } else {
-    accordionTitle.forEach((title) => {
-      title.classList.add('hidden');
-    });
+  // Define the logic that applies the state (Desktop vs Mobile)
+  const applyState = (isDesktop) => {
+    const containerSelector = '.view-urban-planning-embedded-content-tab .embedded-content-tab-accordion';
+    const accordionTitles = document.querySelectorAll(`${containerSelector} .accordion__title-wrapper`);
+    const accordionContents = document.querySelectorAll(`${containerSelector} .accordion__content`);
+    const accordionButtons = document.querySelectorAll(`${containerSelector} .accordion__heading`);
+    const iconOpen = document.querySelectorAll(`${containerSelector} .accordion__icon-text--open`);
+    const iconClose = document.querySelectorAll(`${containerSelector} .accordion__icon-text--close`);
 
-    accordionButton.forEach((button) => {
-      button.classList.add('is-active');
-      button.setAttribute('aria-expanded', 'true');
-    });
+    if (isDesktop) {
+      // Desktop state (accordion open, title hidden)
+      accordionTitles.forEach((title) => title.classList.add('hidden'));
 
-    embededAccordion.forEach((accordion) => {
-      accordion.classList.add('active');
-      accordion.setAttribute('aria-hidden', 'false');
-    });
+      accordionButtons.forEach((button) => {
+        button.classList.add('is-active');
+        button.setAttribute('aria-expanded', 'true');
+      });
+
+      for (let i = 0; i < accordionContents.length; i += 1) {
+        const content = accordionContents[i];
+        content.classList.add('active');
+        content.setAttribute('aria-hidden', 'false');
+        content.style.display = '';
+      }
+    } else {
+      // Mobile state (force closed accordion, show title)
+      accordionTitles.forEach((title) => title.classList.remove('hidden'));
+
+      accordionButtons.forEach((button) => {
+        button.classList.remove('is-active');
+        button.setAttribute('aria-expanded', 'false');
+      });
+
+      for (let i = 0; i < accordionContents.length; i += 1) {
+        const content = accordionContents[i];
+        content.classList.remove('active');
+        content.setAttribute('aria-hidden', 'true');
+        content.style.display = '';
+      }
+
+      // Reset icons to closed state
+      iconOpen.forEach((icon) => icon.setAttribute('aria-hidden', 'false'));
+      iconClose.forEach((icon) => icon.setAttribute('aria-hidden', 'true'));
+    }
+  };
+
+  // Run immediately on load
+  applyState(mql.matches);
+
+  // Attach Resize Listener
+  // Use a global flag to ensure we don't attach this listener more than once
+  if (!window.embeddedAccordionListenerAttached) {
+    // For modern browsers
+    try {
+      mql.addEventListener('change', (event) => applyState(event.matches));
+    } catch (e) {
+      // Fallback for older browsers
+      mql.addListener((event) => applyState(event.matches));
+    }
+    window.embeddedAccordionListenerAttached = true;
   }
 }
 

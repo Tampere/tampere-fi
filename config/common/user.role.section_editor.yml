@@ -173,7 +173,6 @@ permissions:
   - 'delete any listing_content content'
   - 'delete any place content'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete moderated_page revisions'
   - 'delete own file media'

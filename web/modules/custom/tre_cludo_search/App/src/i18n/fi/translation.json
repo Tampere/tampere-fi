@@ -27,6 +27,7 @@
 	"autocomplete": {
 		"search_page_link": "/search",
 		"search_page_link_text": "Kokeile tarkennettua hakua",
-		"search_page_link_description": "Voit rajata hakutuloksia tai etsiä myös kaupungin muilta sivustoilta"
+		"search_page_link_description": "Voit rajata hakutuloksia tai etsiä myös kaupungin muilta sivustoilta",
+		"search_page_link_description_top": "Valitse alta osuma tai klikkaa ”Hae” nähdäksesi kaikki hakusi tulokset"
 	}
 }

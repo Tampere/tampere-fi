@@ -27,6 +27,8 @@
 	"autocomplete": {
 		"search_page_link": "/en/search",
 		"search_page_link_text": "Advanced search",
-		"search_page_link_description": "You can narrow down the search results or search on the city's other websites"
+		"search_page_link_description": "You can narrow down the search results or search on the city's other websites",
+		"search_page_link_description_top": "Select a result below or click 'Search' to view all results for your search"
+		
 	}
 }

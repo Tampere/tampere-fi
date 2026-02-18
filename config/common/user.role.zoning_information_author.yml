@@ -135,7 +135,6 @@ permissions:
   - 'delete any file'
   - 'delete any zoning_information content'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete own file media'
   - 'delete own files'

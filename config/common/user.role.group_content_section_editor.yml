@@ -115,7 +115,6 @@ permissions:
   - 'create paragraph content zoning_project_cards'
   - 'create remote_video media'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete own file media'
   - 'delete own files'

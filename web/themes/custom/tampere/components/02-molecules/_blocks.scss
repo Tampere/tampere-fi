@@ -34,8 +34,35 @@
   }
 
   &--tre-cludo-search-block {
+    width: 100%;
+
+    .search-bar--with-label {
+      width: 100%;
+    }
+
     .search-bar__label {
       @include visually-hidden;
+    }
+
+    .search-bar__button {
+      max-width: unset;
+      padding: 13px $space-s;
+      width: unset;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+
+      .button__text {
+        padding-right: $space-s;
+        font-size: $font-14;
+
+        @include large {
+          font-size: $font-20;
+        }
+      }
     }
   }
 

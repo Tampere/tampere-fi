@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
     - field.field.node.rich_article.field_search_keywords
+    - field.field.node.rich_article.field_series_info
     - field.field.node.rich_article.field_social_media_share
     - field.field.node.rich_article.field_topic
     - field.field.node.rich_article.field_topics
@@ -44,6 +45,12 @@ third_party_settings:
           field_templates: default
           variant: default
     regions:
+      main_title:
+        - node_title
+      summary:
+        - field_lead
+      series_info:
+        - field_series_info
       main_image_tag:
         - 'dynamic_twig_field:node-content_type_display_name'
       publication_date:
@@ -52,10 +59,6 @@ third_party_settings:
         - field_main_image
       main_image_caption:
         - field_media_caption
-      main_title:
-        - node_title
-      summary:
-        - field_lead
       main_content:
         - field_body
         - field_paragraphs
@@ -64,14 +67,9 @@ third_party_settings:
         - field_photographer
         - field_social_media_share
     fields:
-      'dynamic_twig_field:node-content_type_display_name':
-        plugin_id: 'dynamic_twig_field:node-content_type_display_name'
-        weight: 0
-        label: hidden
-        formatter: default
       node_title:
         plugin_id: node_title
-        weight: 4
+        weight: 0
         label: hidden
         formatter: default
         settings:
@@ -79,6 +77,11 @@ third_party_settings:
           'link class': ''
           wrapper: ''
           class: ''
+      'dynamic_twig_field:node-content_type_display_name':
+        plugin_id: 'dynamic_twig_field:node-content_type_display_name'
+        weight: 3
+        label: hidden
+        formatter: default
 id: node.rich_article.default
 targetEntityType: node
 bundle: rich_article
@@ -117,21 +120,21 @@ content:
             fi-def-at: false
             prefix: ''
             suffix: ''
-    weight: 9
+    weight: 10
     region: main_content
   field_body:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 6
+    weight: 7
     region: main_content
   field_lead:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 5
+    weight: 1
     region: summary
   field_link_list:
     type: entity_reference_revisions_entity_view
@@ -140,7 +143,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 8
+    weight: 9
     region: main_content
   field_main_image:
     type: entity_reference_entity_view
@@ -149,7 +152,7 @@ content:
       view_mode: article_main_image_view_mode
       link: false
     third_party_settings: {  }
-    weight: 2
+    weight: 5
     region: main_image
   field_media_caption:
     type: string
@@ -157,28 +160,8 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
-    region: main_image_caption
-  field_no_category_keywords:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
     weight: 6
-    region: content
-  field_no_category_topics:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 5
-    region: content
+    region: main_image_caption
   field_paragraphs:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -186,7 +169,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 7
+    weight: 8
     region: main_content
   field_photographer:
     type: basic_string
@@ -221,14 +204,22 @@ content:
             fi-def-at: false
             prefix: ''
             suffix: ''
-    weight: 10
+    weight: 11
     region: main_content
+  field_series_info:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: series_info
   field_social_media_share:
     type: social_media_default
-    label: inline
+    label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 12
     region: main_content
   published_at:
     type: timestamp
@@ -254,7 +245,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 1
+    weight: 4
     region: publication_date
 hidden:
   content_moderation_control: true
@@ -266,6 +257,8 @@ hidden:
   field_keywords: true
   field_life_situations: true
   field_minisites: true
+  field_no_category_keywords: true
+  field_no_category_topics: true
   field_partial_ingress: true
   field_search_keywords: true
   field_topic: true

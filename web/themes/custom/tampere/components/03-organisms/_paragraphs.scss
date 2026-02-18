@@ -169,11 +169,11 @@
       // Accordion mobile for exposed filter list
       .embedded-content-tab-accordion {
         .accordion__title-wrapper {
+          display: none;
+
           @include medium-down {
             display: block;
           }
-
-          display: none;
 
           .accordion__heading {
             border: none;

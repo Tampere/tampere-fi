@@ -78,7 +78,7 @@
 
     @include large {
       @include centered-content;
-      margin-top: $space-xl;
+      margin-top: $space-m-plus;
       order: 4;
     }
   }

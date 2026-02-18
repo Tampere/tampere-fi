@@ -375,7 +375,7 @@
 @mixin caption {
   @include margin();
 
-  background-color: clr(muted);
+  background-color: clr(caption-background);
   font-family: $font-body;
   font-size: $font-14;
   padding: $space-xs;

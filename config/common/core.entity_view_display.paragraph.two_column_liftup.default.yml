@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.two_column_liftup.field_left_column
     - field.field.paragraph.two_column_liftup.field_right_column
+    - field.field.paragraph.two_column_liftup.field_title
     - paragraphs.paragraphs_type.two_column_liftup
   module:
     - ds
@@ -20,6 +21,8 @@ third_party_settings:
         pattern:
           field_templates: only_content
     regions:
+      title:
+        - field_title
       left_column:
         - field_left_column
       right_column:
@@ -36,7 +39,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: left_column
   field_right_column:
     type: entity_reference_revisions_entity_view
@@ -45,7 +48,20 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: right_column
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 0
+    region: title
 hidden:
   search_api_excerpt: true

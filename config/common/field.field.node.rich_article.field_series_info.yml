@@ -1,0 +1,19 @@
+uuid: 6fe2c6d7-8fb3-4358-9299-02871ad748bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_series_info
+    - node.type.rich_article
+id: node.rich_article.field_series_info
+field_name: field_series_info
+entity_type: node
+bundle: rich_article
+label: 'Series info'
+description: 'The maximum number of characters is 200.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -31,7 +31,6 @@ permissions:
   - 'access help pages'
   - 'access persons_entity_browser entity browser pages'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete own files'
   - 'edit any ptv_service content'
   - 'edit any service_channel content'

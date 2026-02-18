@@ -80,6 +80,13 @@
     </div>
   {% endif %}
 
+  {# Series Info #}
+  {% if series_info is not empty %}
+    <div {{ bem("series-info", (topical_content__series_info__modifiers), topical_content_base_class) }}>
+      {{ series_info }}
+    </div>
+  {% endif %}
+
   <div {{ bem("main-image", (topical_content__main_image__modifiers), topical_content_base_class) }}>
     {% include "@molecules/content-image/content-image.twig" with {
       "content_img__img__caption": main_image_caption,

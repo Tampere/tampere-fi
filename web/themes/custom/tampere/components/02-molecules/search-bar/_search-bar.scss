@@ -36,6 +36,7 @@ $search-bar-max-width--long: 640px;
     &::placeholder {
       color: clr(text);
       opacity: 100%;
+      font-size: $font-16;
     }
   }
 
@@ -91,10 +92,6 @@ $search-bar-max-width--long: 640px;
 
   &--with-label {
     height: auto;
-
-    @include large {
-      width: auto;
-    }
 
     #{$base_class}__search-form {
       flex-wrap: wrap;
@@ -157,8 +154,20 @@ $search-bar-max-width--long: 640px;
     max-width: $search-bar-max-width--long;
   }
 
+  .autocomplete-suggestions-result-container {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: $space-s;
+
+    @include medium {
+      marging-top: $space-m;
+    }
+  }
+
   ul {
     width: 100%;
+    margin-top: unset;
   }
 
   li {
@@ -181,5 +190,30 @@ $search-bar-max-width--long: 640px;
       margin: 0;
       padding: $space-xs 0;
     }
-  } 
+  }
+
+  .autocomplete-description-top {
+    font-size: 1rem;
+    margin: 0;
+    padding: $space-m-plus;
+  }
+}
+// Course and content listing search bar
+.listing-search-bar {
+  &__button {
+    max-width: unset;
+    padding: 13px $space-s;
+    width: unset;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      text-underline-position: under;
+    }
+
+    .button__text {
+      padding-right: $space-s;
+      font-family: $font-heading;
+    }
+  }
 }

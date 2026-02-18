@@ -1,6 +1,8 @@
 two_column_container:
   label: Two-column container
   fields:
+    title:
+      label: Title
     left_column:
       label: Left column
     right_column:

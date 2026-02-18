@@ -131,7 +131,6 @@ permissions:
   - 'delete any content_in_other_language content'
   - 'delete any file'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete own file media'
   - 'delete own files'

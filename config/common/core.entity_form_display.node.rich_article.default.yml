@@ -22,10 +22,12 @@ dependencies:
     - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
     - field.field.node.rich_article.field_search_keywords
+    - field.field.node.rich_article.field_series_info
     - field.field.node.rich_article.field_social_media_share
     - field.field.node.rich_article.field_topic
     - field.field.node.rich_article.field_topics
     - node.type.rich_article
+    - workflows.workflow.scheduled_transitions
   module:
     - ai_auto_reference
     - ai_translate_textfield
@@ -47,7 +49,7 @@ third_party_settings:
       children:
         - field_main_image
         - field_media_caption
-      label: 'Pääkuva ja kuvateksti'
+      label: 'Main image and caption'
       region: content
       parent_name: group_general
       weight: 2
@@ -56,13 +58,13 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
-        description: ''
+        description: 'Main image and its caption'
         required_fields: true
     group_tabs:
       children:
         - group_general
         - group_categorization
-      label: Välilehdet
+      label: Tabs
       region: content
       parent_name: ''
       weight: 0
@@ -78,12 +80,13 @@ third_party_settings:
         - langcode
         - translation
         - field_lead
+        - field_series_info
         - field_body
         - field_paragraphs
         - field_link_list
         - field_author
         - field_photographer
-      label: Yleinen
+      label: General
       region: content
       parent_name: group_tabs
       weight: 20
@@ -104,7 +107,7 @@ third_party_settings:
         - field_geographical_areas
         - group_search_keywords
         - field_minisites
-      label: Luokittelut
+      label: Categorization
       region: content
       parent_name: group_tabs
       weight: 21
@@ -118,10 +121,10 @@ third_party_settings:
     group_search_keywords:
       children:
         - field_search_keywords
-      label: Avainsanat
+      label: 'Search keywords'
       region: content
       parent_name: group_categorization
-      weight: 11
+      weight: 12
       format_type: fieldset
       format_settings:
         classes: ''
@@ -158,7 +161,7 @@ content:
     third_party_settings: {  }
   field_author:
     type: string_textarea
-    weight: 9
+    weight: 10
     region: content
     settings:
       rows: 1
@@ -176,7 +179,7 @@ content:
         maxlength_js_truncate_html: false
   field_body:
     type: text_textarea_with_summary
-    weight: 6
+    weight: 7
     region: content
     settings:
       rows: 9
@@ -198,7 +201,7 @@ content:
         maxlength_js_enforce: false
   field_geographical_areas:
     type: entity_reference_autocomplete
-    weight: 10
+    weight: 11
     region: content
     settings:
       match_operator: CONTAINS
@@ -255,7 +258,7 @@ content:
         enable_translations: true
       maxlength:
         maxlength_js: 450
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: true
       field_states_ui:
         form:
@@ -280,7 +283,7 @@ content:
         limit_values: 0
   field_link_list:
     type: paragraphs_classic_asymmetric
-    weight: 8
+    weight: 9
     region: content
     settings:
       title: Linkkilista
@@ -324,7 +327,7 @@ content:
           add: Add
   field_minisites:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 13
     region: content
     settings:
       match_operator: CONTAINS
@@ -358,7 +361,7 @@ content:
           add: Add
   field_paragraphs:
     type: paragraphs_classic_asymmetric
-    weight: 7
+    weight: 8
     region: content
     settings:
       title: Paragraafi
@@ -377,7 +380,7 @@ content:
         limit_values: 0
   field_photographer:
     type: string_textarea
-    weight: 10
+    weight: 11
     region: content
     settings:
       rows: 1
@@ -396,6 +399,14 @@ content:
   field_search_keywords:
     type: string_textfield
     weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_series_info:
+    type: string_textfield
+    weight: 6
     region: content
     settings:
       size: 60

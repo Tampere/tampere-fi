@@ -40,4 +40,40 @@
  */
 #}
 
-{% include "paragraph--person-liftup.html.twig" %}
+{% set contact_phone_number_markup = contact_phone_number|render %}
+{% set contact_additional_phones_markup = contact_additional_phones|render %}
+{% set contact_email_address_markup = contact_email_address|render %}
+
+{% if
+  contact_title or
+  contact_full_name or
+  contact_phone_number_markup|trim or
+  contact_additional_phones_markup|trim or
+  contact_email_address_markup|trim or
+  contact_description
+%}
+  {% embed "@organisms/_paragraph.twig" %}
+    {% block paragraph_content %}
+      
+      {% embed "@molecules/person-contact/person-contact.twig" with {
+        "person_contact__preheading": contact_title,
+        "person_contact__legend": contact_legend,
+        "person_contact__name": contact_full_name,
+        "person_contact__subheading": contact_area_of_responsibility,
+        "person_contact__phone_number": contact_phone_number_markup,
+        "person_contact__additional_phones": contact_additional_phones_markup,
+        "person_contact__email_address": contact_email_address_markup,
+        "person_contact__description": contact_description,
+        "attributes": [],
+      } %}
+        
+        {% block person_contact_image %}
+          {# Intentionally left empty to remove both the user image and the default placeholder #}
+        {% endblock %}
+
+      {% endembed %}
+
+      {{ content['#cache'] }}
+    {% endblock %}
+  {% endembed %}
+{% endif %}

@@ -1,3 +1,4 @@
+<!-- USING page--clud-search.html.twig -->
 {{ attach_library('tre_cludo_search/cludo-search') }}
 
 {# For header quick search #}
@@ -7,10 +8,12 @@
     "search_bar_input_id": "mysearch",
     "search_bar_form_id": "cludo-search-input",
     "search_bar_input_label": "Site search"|t,
-    "search_bar_input_placeholder": "Search"|t,
+    "search_bar_input_placeholder": "Type search term or terms"|t,
     "search_bar_button_type": "submit",
     "search_bar_button_aria_label": "Search"|t,
+    "search_bar_button_text": "Search"|t ({}, { "context" : "Cludo search" }),
   } %}
+
 {% else %}
   {% embed "@templates/search-page/search-page.twig" %}
 

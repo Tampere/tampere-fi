@@ -34,7 +34,6 @@ permissions:
   - 'create emergency_notice content'
   - 'delete any emergency_notice content'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete own files'
   - 'edit any emergency_notice content'
   - 'revert emergency_notice revisions'

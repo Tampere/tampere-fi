@@ -1,0 +1,19 @@
+uuid: 3c956f0a-dd62-4a24-a270-cf7790a9068a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.two_column_liftup
+id: paragraph.two_column_liftup.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: two_column_liftup
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

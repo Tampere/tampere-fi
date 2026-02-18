@@ -25,6 +25,16 @@
 } %}
   {% block paragraph_content %}
     <div {{ bem(two_col_container__base_class, two_col_container__modifiers|default([]), two_col_container__blockname) }}>
+      {% if title|render|trim %}
+        {{ title_prefix }}
+        {% include "@atoms/02-text/00-headings/_heading.twig" with {
+          heading_base_class: "heading",
+          heading_blockname: two_col_container__base_class,
+          heading_level: 2, 
+          heading: title,
+        } %}
+        {{ title_suffix }}
+      {% endif %}
       <div {{ bem("content", two_col_container__content__modifiers|default([]), two_col_container__base_class) }}>
         <div {{ bem("left-column", two_col_container__left_column__modifiers|default([]), two_col_container__base_class) }}>
           {% block two_column_container_left_column %}

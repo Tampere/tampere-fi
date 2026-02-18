@@ -120,7 +120,6 @@ permissions:
   - 'create remote_video media'
   - 'delete any blog_article content'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete own files'
   - 'delete paragraph content accordion_item'

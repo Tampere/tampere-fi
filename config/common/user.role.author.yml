@@ -167,7 +167,6 @@ permissions:
   - 'delete any listing_content content'
   - 'delete any place content'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete own file media'
   - 'delete own files'

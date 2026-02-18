@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.rich_article.field_partial_ingress
     - field.field.node.rich_article.field_photographer
     - field.field.node.rich_article.field_search_keywords
+    - field.field.node.rich_article.field_series_info
     - field.field.node.rich_article.field_social_media_share
     - field.field.node.rich_article.field_topic
     - field.field.node.rich_article.field_topics
@@ -181,6 +182,7 @@ hidden:
   field_no_category_keywords: true
   field_no_category_topics: true
   field_partial_ingress: true
+  field_series_info: true
   field_social_media_share: true
   field_topic: true
   langcode: true

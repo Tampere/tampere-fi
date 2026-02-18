@@ -121,7 +121,6 @@ permissions:
   - 'create rich_article content'
   - 'delete any rich_article content'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete media'
   - 'delete own files'
   - 'delete paragraph content accordion_item'

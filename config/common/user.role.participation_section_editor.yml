@@ -29,7 +29,6 @@ permissions:
   - 'create paragraph content person_liftups'
   - 'delete any involvement_opportunity content'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete involvement_opportunity revisions'
   - 'delete own files'
   - 'delete paragraph content person_liftup'

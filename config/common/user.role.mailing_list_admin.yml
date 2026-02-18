@@ -20,7 +20,6 @@ permissions:
   - 'access help pages'
   - 'create mailing_list group'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete own files'
   - 'translate editable entities'
   - 'view any unpublished content'

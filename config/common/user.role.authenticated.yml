@@ -48,7 +48,6 @@ permissions:
   - 'access openapi api docs'
   - 'access toolbar'
   - 'delete files immediately'
-  - 'delete files override usage'
   - 'delete own files'
   - 'post comments'
   - 'use admin toolbar search'

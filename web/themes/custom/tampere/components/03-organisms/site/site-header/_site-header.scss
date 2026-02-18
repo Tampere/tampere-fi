@@ -98,6 +98,7 @@ $header-secondary-inline-padding: 13px;
       margin-right: auto;
       margin-left: $space-xs;
       margin-top: 0;
+      min-width: 33%; // Makes the search placeholder visible.
     }
 
     &--mobile {

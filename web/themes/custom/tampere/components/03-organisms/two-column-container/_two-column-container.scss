@@ -3,6 +3,24 @@
 
   @include page-element-spacer;
 
+  &__heading {
+    @include section-heading;
+
+    margin-bottom: $space-m;
+
+    @include large {
+      margin-bottom: $space-l;
+    }
+
+    .layout-container:not(.layout-container--with-sidebar) & {
+      @include large {
+        @include centered-content($max-width: $max-width);
+
+        margin-bottom: $space-l;
+      }
+    }
+  }
+
   &__content {
     display: grid;
     column-gap: $gutter-small;

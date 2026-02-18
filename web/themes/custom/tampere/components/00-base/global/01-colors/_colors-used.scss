@@ -49,6 +49,8 @@ $defaultColors: (
   minisite-identifier-background: $color-warm-red,
   search-bar: $color-dark-blue,
   card-border: $color-light-middle-gray,
+  caption-background: $color-light-gray,
+  series-info-background: $color-light-blue-gray,
 );
 
 // Minisite palettes
@@ -357,6 +359,12 @@ $projectColors: (
     .palette-#{$i} {
       @each $name, $color in $palette {
         --c-#{$name}: #{$color};
+      }
+
+      // default color palette has it's own caption background color variable.
+      // Minisite palettes should just use the muted color unless explicitly overridden.
+      @if not map-has-key($palette, caption-background) {
+       --c-caption-background: var(--c-muted);
       }
     }
   }

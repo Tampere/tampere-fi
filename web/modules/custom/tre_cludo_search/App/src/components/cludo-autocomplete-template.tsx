@@ -36,20 +36,23 @@ export function CludoAutocompleteTemplate() {
         </div>
       ) : suggestions.length > 0 && 
         <div className="cludo-search-autocomplete-suggestions">
-          <ul>
-            {suggestions.map((suggestion, i) => {
-              const isSelected = i === selectedSuggestion;
-              return (
-                <SaytSuggestion
-                  key={i}
-                  suggestion={suggestion}
-                  isSelected={isSelected}
-                  suggestionIndex={i}
-                  className="autocomplete-suggestion autocomplete-suggestion-label"
-                />
-              );
-            })}
-          </ul>
+          <div className="autocomplete-suggestions-result-container">
+            <p className="autocomplete-description-top">{t("translation:autocomplete:search_page_link_description_top")}</p>
+            <ul>
+              {suggestions.map((suggestion, i) => {
+                const isSelected = i === selectedSuggestion;
+                return (
+                  <SaytSuggestion
+                    key={i}
+                    suggestion={suggestion}
+                    isSelected={isSelected}
+                    suggestionIndex={i}
+                    className="autocomplete-suggestion autocomplete-suggestion-label"
+                  />
+                );
+              })}
+            </ul>
+          </div>
           <div className="autocomplete-link-container">
             <a href={t("translation:autocomplete:search_page_link")} className="link field-link">{t("translation:autocomplete:search_page_link_text")}</a>
             <p>{t("translation:autocomplete:search_page_link_description")}</p>

@@ -53,9 +53,10 @@ $field-sections-v-gutter-desktop: $space-xl;
     margin-bottom: $space-m;
   }
 
-  &-description {
+  &-description,
+  &-description-formatted {
     &.field--view-mode-full {
-      @include page-element-spacer;
+      @include text-element-spacer;
 
       max-width: var(--text-content-max-width);
     }
@@ -172,6 +173,22 @@ $field-sections-v-gutter-desktop: $space-xl;
     p:first-of-type {
       margin-top: 0;
       margin-bottom: 0;
+    }
+  }
+
+&-series-info {
+    background-color: clr(series-info-background);
+    padding: $space-xs $space-s; 
+    
+    font-family: $font-body;
+    font-weight: $font-weight-regular;
+    font-size: $font-14;
+    line-height: 20px;
+
+    @include large {
+      font-size: $font-18;   
+      line-height: 28px;
+      padding: $space-xs $space-l;
     }
   }
 }

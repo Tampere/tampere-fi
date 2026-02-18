@@ -79,7 +79,9 @@ class MigrateSubscriber implements EventSubscriberInterface {
   /**
    * Reacts on detecting a list of missing source rows after an import.
    *
-   * We delete nodes and map entry of unpublished nodes only.
+   * Soft deletes Person nodes when migration notices removed Persons in CSV source:
+   * 1. Unpublishes the node if it's currently published (and missing in the source CSV)
+   * 2. Deletes the node only if it's already unpublished (and missing in the source CSV)
    *
    * @param \Drush\Drupal\Migrate\MigrateMissingSourceRowsEvent $event
    *   The event object.
@@ -103,7 +105,8 @@ class MigrateSubscriber implements EventSubscriberInterface {
       foreach ($event->getDestinationIds() as $nid) {
         $node = $this->entityTypeManager->getStorage('node')->load($nid['nid']);
 
-        // If any of the translations is published, don't delete.
+        // If published content - we unpublish it first
+        // If already unpublished content - we delete it
         $isTranslationPublished = FALSE;
         if ($node instanceof NodeInterface) {
           foreach ($node->getTranslationLanguages() as $langcode => $language) {
@@ -112,14 +115,22 @@ class MigrateSubscriber implements EventSubscriberInterface {
               if ($translation instanceof NodeInterface) {
                 if ($translation->isPublished()) {
                   $isTranslationPublished = TRUE;
+                  $translation->setUnpublished();
                 }
               }
             }
           }
-
-          if (!$isTranslationPublished) {
+          // If isTranslationPublished is true - it means that we have unpublished the content in previous foreach()
+          // -> Save status update for the content
+          if ($isTranslationPublished) {
+            $node->save();
+            $this->loggerFactory->get('tre_hr_import')->info("Person content with node ID: @id is now Unpublished and will be removed in next migration", ['@id' => $nid['nid']]);
+          }
+          // Else - means its already unpublished content -> Delete the node
+          else {
             $node->delete();
             $id_map->deleteDestination(['nid' => $nid['nid']]);
+            $this->loggerFactory->get('tre_hr_import')->info("Person content with node ID: @id is now Deleted", ['@id' => $nid['nid']]);
           }
         }
       }

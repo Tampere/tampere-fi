@@ -35,6 +35,9 @@ settings:
     -
       value: bluesky
       label: Bluesky
+    -
+      value: spotify
+      label: Spotify
   allowed_values_function: ''
 module: options
 locked: false

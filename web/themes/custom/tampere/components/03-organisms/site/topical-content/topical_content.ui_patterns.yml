@@ -12,6 +12,8 @@ topical_content:
       label: Main title
     summary:
       label: Summary
+    series_info:
+      label: Series Info
     main_image_tag:
       label: Main image tag
     main_image_optional_tag:

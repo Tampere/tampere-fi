@@ -5,9 +5,12 @@ dependencies:
   config:
     - field.field.paragraph.two_column_liftup.field_left_column
     - field.field.paragraph.two_column_liftup.field_right_column
+    - field.field.paragraph.two_column_liftup.field_title
     - paragraphs.paragraphs_type.two_column_liftup
   module:
+    - ai_translate_textfield
     - field_states_ui
+    - maxlength
     - paragraphs_asymmetric_translation_widgets
 id: paragraph.two_column_liftup.default
 targetEntityType: paragraph
@@ -16,11 +19,11 @@ mode: default
 content:
   field_left_column:
     type: paragraphs_classic_asymmetric
-    weight: 1
+    weight: 2
     region: content
     settings:
-      title: Sisältönosto
-      title_plural: Sisältönostot
+      title: 'Content liftup'
+      title_plural: 'Content liftups'
       edit_mode: closed
       add_mode: button
       form_display_mode: default
@@ -36,8 +39,8 @@ content:
     weight: 3
     region: content
     settings:
-      title: Sisältönosto
-      title_plural: Sisältönostot
+      title: 'Content liftup'
+      title_plural: 'Content liftups'
       edit_mode: closed
       add_mode: button
       form_display_mode: default
@@ -48,8 +51,28 @@ content:
           type: ''
           list: ''
           add: Lisää
+  field_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      ai_translate_textfield:
+        strip_tags: false
+        enable_translations: true
+      maxlength:
+        maxlength_js: null
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_enforce: false
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Lisää
   translation:
-    weight: 2
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
