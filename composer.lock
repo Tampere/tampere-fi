@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a9eb7cd61f3a51a6ebfe8932c78c35c",
+    "content-hash": "4019c353bcf551bebc5e2325b69a46c3",
     "packages": [
         {
             "name": "afarkas/lazysizes",

@@ -170,12 +170,16 @@
 
 a.coi-banner__policy {
   display: block;
-  font-size: 1rem;
-  padding: 4px 0;
+  font-size:15px;
+  padding: 16px 0 8px 0;
 }
 
 .coi-banner__page p{
   font-size:1em;
+}
+
+div.coi-banner__google-policy-container {
+  padding: 8px 0 8px 0;
 }
 
 .cookiedeclaration_wrapper h2,
@@ -245,7 +249,6 @@ a.coi-banner__policy {
   line-height: 1.1 !important;
   font-size: 1em;
   font-weight: 400;
-  white-space:pre-line !important;
 }
 
 .coi-banner__cookiedeclaration .coi-banner__maintext {
@@ -278,7 +281,7 @@ a.coi-banner__policy {
 .coi-banner__page-footer {
   background: #FFFFFF;
   width: 100%;
-  padding: 20px 40px;
+  padding: 18px 40px;
   position: sticky;
   position: -webkit-sticky;
   top:0;
@@ -303,10 +306,10 @@ a.coi-banner__policy {
 .coi-banner__decline:not(:disabled),
 .coi-banner__lastpage:not(:disabled), 
 .coi-banner__nextpage:not(:disabled) {
-  padding: 15px;
+  padding: 12px;
   text-align: center;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -354,13 +357,13 @@ button.coi-banner__accept:hover{
 #show_details,
 #hide_details{
   color: var(--text-color);
-  margin-top:10px;
+  margin-top: unset;
   border:0;
-  padding:4px 0;
+  padding:8px 0;
   background:none;
   text-decoration:underline;
   cursor:pointer;
-  font-size:1rem;
+  font-size:15px;
 }
 #hide_details,#updateButton{
   display:none;
@@ -384,7 +387,7 @@ button.coi-banner__accept:hover{
   flex-direction:column;
   justify-content:space-between;
   border-right: solid 1px #ccc;
-  padding: 20px 0;
+  padding: 18px 0;
 }
 .coi-banner-consent-field:last-child{
   border-right:0;
@@ -425,8 +428,8 @@ input[type=checkbox]:disabled{
 }
 .coi-checkboxes .checkbox-toggle {
   background: #888888;
-  width: 65px;
-  height: 40px;
+  width: 50px;
+  height: 30px;
   border-radius: 100px;
   position: relative;
   cursor: pointer;
@@ -452,8 +455,8 @@ input[type=checkbox]:disabled{
 .coi-checkboxes .checkbox-toggle:before {
   transition: .3s ease;
   content: '';
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   position: absolute;
   background: #fff;
   left: 5px;

@@ -26,6 +26,12 @@ $search-panel-results-restricted-height--mobile: 321px;
       padding-right: $space-l;
       padding-left: $space-l;
     }
+
+    .search-bar {
+      @include large {
+        width: 100%;
+      }
+    }
   }
 
   &__loading-text {

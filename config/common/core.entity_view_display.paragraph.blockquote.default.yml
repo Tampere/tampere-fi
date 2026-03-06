@@ -1,0 +1,31 @@
+uuid: a3633fa6-6e5f-4c95-94fc-76fbf381074b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.blockquote.field_author
+    - field.field.paragraph.blockquote.field_quote
+    - paragraphs.paragraphs_type.blockquote
+id: paragraph.blockquote.default
+targetEntityType: paragraph
+bundle: blockquote
+mode: default
+content:
+  field_author:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_quote:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  search_api_excerpt: true

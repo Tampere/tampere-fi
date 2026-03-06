@@ -1,0 +1,28 @@
+{% set blockquote__base_class = "blockquote" %}
+
+<div {{ bem(blockquote__base_class, blockquote__modifiers, blockquote__blockname, blockquote__extra_classes) }}>
+
+  <div {{ bem("icon", [], blockquote__base_class) }} aria-hidden="true">
+    {% include "@atoms/04-images/icons/_icon.twig" with {
+      icon_name: "quote",
+      icon_base_class: "icon",
+      icon_blockname: blockquote__base_class
+    } %}
+  </div>
+
+  <div {{ bem("container", [], blockquote__base_class) }}>
+    
+    {% if quote %}
+      <blockquote {{ bem("text", [], blockquote__base_class) }}>
+        {{ quote|raw }}
+      </blockquote>
+    {% endif %}
+
+    {% if author %}
+      <figcaption {{ bem("author", [], blockquote__base_class) }}>
+        <cite>{{ author }}</cite>
+      </figcaption>
+    {% endif %}
+
+  </div>
+</div>

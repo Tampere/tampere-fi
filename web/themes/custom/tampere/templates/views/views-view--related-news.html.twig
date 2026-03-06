@@ -35,6 +35,7 @@
   {% embed "@organisms/topical-listing/topical-listing.twig" with {
     "topical_listing__modifiers": [ "no-top-wrapper-margin", "large-bottom-wrapper-margin", "always-full-width" ],
     "topical_listing__heading": view.getTitle(),
+    "topical_listing__heading_id": dom_id ~ "-h2",
     "attributes": [],
   } %}
     {% block topical_listing_liftups %}

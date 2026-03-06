@@ -1,0 +1,9 @@
+content:
+  field_contact_info_paragraph:
+    third_party_settings:
+      ds:
+        ft:
+          id: expert
+          settings:
+            lb: 'Further information'
+            lb-col: true

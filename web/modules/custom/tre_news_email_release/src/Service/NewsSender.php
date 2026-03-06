@@ -4,6 +4,7 @@ namespace Drupal\tre_news_email_release\Service;
 
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Language\LanguageManagerInterface; // Added
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\message\Entity\Message;
@@ -20,81 +21,119 @@ final class NewsSender {
 
   /**
    * The message_notify.sender service.
-   *
-   * @var \Drupal\message_notify\MessageNotifier
    */
   private MessageNotifier $notifier;
 
   /**
    * Message storage.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
    */
   private EntityStorageInterface $messageStorage;
 
   /**
    * TRE custom entity renderer service.
-   *
-   * @var \Drupal\tre_jsonapi_custom\EntityRendererInterface
    */
   private EntityRendererInterface $entityRenderer;
 
   /**
+   * The language manager.
+   */
+  private LanguageManagerInterface $languageManager;
+
+  /**
    * Constructor for the service.
    */
-  public function __construct(MessageNotifier $message_notifier, EntityTypeManagerInterface $entity_type_manager, EntityRendererInterface $entity_renderer) {
+  public function __construct(
+    MessageNotifier $message_notifier,
+    EntityTypeManagerInterface $entity_type_manager,
+    EntityRendererInterface $entity_renderer,
+    LanguageManagerInterface $language_manager
+  ) {
     $this->notifier = $message_notifier;
     $this->messageStorage = $entity_type_manager->getStorage('message');
     $this->entityRenderer = $entity_renderer;
+    $this->languageManager = $language_manager;
   }
 
   /**
    * Service function for sending a news_item node by email to recipients.
-   *
-   * @param \Drupal\node\NodeInterface $node
-   *   The node to send.
-   * @param \Drupal\paragraphs\ParagraphInterface[] $delivery_lists
-   *   The lists containing metadata and the recipients.
-   *
-   * @throws \Drupal\Core\Entity\EntityStorageException
-   * @throws \Drupal\message_notify\Exception\MessageNotifyException
    */
   public function sendMailForNewsNode(NodeInterface $node, array $delivery_lists) {
-    // Create a message with node author as message creator.
+    // Determine the language of the news item.
+    $langcode = $node->language()->getId();
+    $target_language = $this->languageManager->getLanguage($langcode);
+
+    // Ensure we use the translated version of the node for title and rendering.
+    if ($node->hasTranslation($langcode)) {
+      $node = $node->getTranslation($langcode);
+    }
+
+    // Switch the global translation context to the node's language.
+    $original_language = $this->languageManager->getConfigOverrideLanguage();
+    $this->languageManager->setConfigOverrideLanguage($target_language);
+
     $messages_created = [];
 
-    foreach ($delivery_lists as $list) {
-      $message = Message::create(['template' => 'news_item_to_media']);
-      $news_item_title = $this->t('News release: @label', ['@label' => $node->label()], ['context' => 'Tampere.fi news email releases']);
-      $message->set('field_news_item_title', $news_item_title);
+    try {
+      foreach ($delivery_lists as $list) {
+        /** @var \Drupal\message\MessageInterface $message */
+        $message = Message::create([
+          'template' => 'news_item_to_media',
+          'langcode' => $langcode,
+        ]);
 
-      $node_url = $node->toUrl('canonical', ['absolute' => TRUE])->toString();
-      // @todo Add and acquire here translation of configuration.
-      $link_defaults = $message->get('field_link_to_content')->getFieldDefinition()->getDefaultValue($node);
-      $first_default_link = current($link_defaults);
-      $first_default_link['uri'] = $node_url;
-      $message->set('field_link_to_content', $first_default_link);
+        // Translate the subject line.
+        $subject = $this->t('News release: @label', 
+          ['@label' => $node->label()], 
+          ['context' => 'Tampere.fi news email releases', 'langcode' => $langcode]
+        );
+        $message->set('field_news_item_title', $subject);
 
-      $message->set('field_news_markup', ['markup' => $this->entityRenderer->renderEntity($node, 'news_media_delivery')]);
+        // Build the absolute URL.
+        $node_url = $node->toUrl('canonical', [
+          'absolute' => TRUE, 
+          'language' => $target_language
+        ])->toString();
 
-      $message->save();
-      $messages_created[] = $message;
+        // Translate the link title.
+        $link_title = $this->t('Read the news release on Tampere.fi', [], [
+          'context' => 'Tampere.fi news email releases',
+          'langcode' => $langcode,
+        ]);
 
-      $address_lists = $list->get('field_mailing_list_group')->referencedEntities();
-      $address_list = reset($address_lists);
+        $message->set('field_link_to_content', [
+          'uri' => $node_url,
+          'title' => $link_title,
+        ]);
 
-      if ($address_list instanceof GroupInterface && $address_list->hasField('field_emails')) {
-        /** @var \Drupal\Core\Field\FieldItemInterface $email_value */
-        foreach ($address_list->get('field_emails') as $email_value) {
-          $mail = $email_value->getString();
-          $this->notifier->send($message, [
-            'mail' => $mail,
-          ]);
+        // Render the node content in the correct language.
+        $message->set('field_news_markup', [
+          'markup' => $this->entityRenderer->renderEntity($node, 'news_media_delivery'),
+        ]);
+
+        $message->save();
+        $messages_created[] = $message;
+
+        $address_lists = $list->get('field_mailing_list_group')->referencedEntities();
+        $address_list = reset($address_lists);
+
+        if ($address_list instanceof GroupInterface && $address_list->hasField('field_emails')) {
+          foreach ($address_list->get('field_emails') as $email_value) {
+            $this->notifier->send($message, ['mail' => $email_value->getString()]);
+          }
         }
       }
     }
-
-    $this->messageStorage->delete($messages_created);
+    catch (\Exception $e) {
+      throw $e;
+    }
+    finally {
+      // Restore the original language context.
+      $this->languageManager->setConfigOverrideLanguage($original_language);
+      
+      if (!empty($messages_created)) {
+        $this->messageStorage->delete($messages_created);
+      }
+    }
   }
 
 }

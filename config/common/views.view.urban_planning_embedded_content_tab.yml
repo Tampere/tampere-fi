@@ -1132,8 +1132,8 @@ display:
               media_editor: '0'
               front_page_author: '0'
               author: '0'
-              group_content_section_editor: '0'
               section_editor: '0'
+              group_content_section_editor: '0'
               participation_section_editor: '0'
               super_user: '0'
               administrator: '0'
@@ -1142,7 +1142,7 @@ display:
             autocomplete_min_chars: '3'
             autocomplete_items: '10'
             autocomplete_field: field_listing_search_content
-            autocomplete_raw_suggestion: 1
+            autocomplete_raw_suggestion: 0
             autocomplete_raw_dropdown: 1
             autocomplete_dependent: 0
             autocomplete_contextual: 0

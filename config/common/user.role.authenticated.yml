@@ -79,6 +79,7 @@ permissions:
   - 'view paragraph content automatic_phase_accordion'
   - 'view paragraph content back_to_top_link'
   - 'view paragraph content balanced_content_liftup'
+  - 'view paragraph content blockquote'
   - 'view paragraph content city_construction_project_card'
   - 'view paragraph content city_construction_project_cards'
   - 'view paragraph content colorful_content_liftup'

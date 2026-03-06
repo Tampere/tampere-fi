@@ -46,8 +46,12 @@
 
     .search-bar__button {
       max-width: unset;
-      padding: 13px $space-s;
+      padding: $small-button-padding;
       width: unset;
+
+      @include large {
+        padding: 13px $space-s;
+      }
 
       &:hover,
       &:focus {
@@ -56,11 +60,22 @@
       }
 
       .button__text {
-        padding-right: $space-s;
         font-size: $font-14;
 
         @include large {
+          padding-right: $space-s;
+        }
+
+        @include large {
           font-size: $font-20;
+        }
+      }
+
+      .search-bar__icon  {
+        display: none;
+
+        @include large {
+          display: block;
         }
       }
     }

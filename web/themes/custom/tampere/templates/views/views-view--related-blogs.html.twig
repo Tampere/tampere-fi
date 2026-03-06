@@ -44,6 +44,7 @@
   {% embed "@organisms/topical-listing/topical-listing.twig" with {
     "topical_listing__modifiers": [ "no-top-wrapper-margin", "large-bottom-wrapper-margin" ],
     "topical_listing__heading": view.getTitle(),
+    "topical_listing__heading_id": dom_id ~ "-h2",
     "topical_listing__link__url": link__url,
     "topical_listing__link__text": link__text,
     "attributes": [],

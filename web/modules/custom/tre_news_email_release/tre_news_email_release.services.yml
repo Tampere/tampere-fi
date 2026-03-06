@@ -5,6 +5,7 @@ services:
       - '@message_notify.sender'
       - '@entity_type.manager'
       - '@tre_jsonapi_custom.entity_renderer'
+      - '@language_manager'
   logger.channel.tre_news_email_release:
     parent: logger.channel_base
     arguments: [ 'tre_news_email_release' ]
