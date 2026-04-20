@@ -4,6 +4,7 @@ namespace Drupal\tre_preprocess\Traits;
 
 use Drupal\node\NodeInterface;
 use Drupal\feeds\Entity\Feed;
+use Drupal\Component\Utility\Unicode;
 
 /**
  * Trait for using a pattern for listing rows.
@@ -21,6 +22,7 @@ trait ListingRowPatternTrait {
     if ($feed) {
       $feed_type = $feed->bundle();
       $variables['feed_type'] = $feed_type;
+      $feed_uuid = $feed->uuid();
     }
 
     $rows = $variables['rows'];
@@ -56,6 +58,16 @@ trait ListingRowPatternTrait {
           $date = $translated_node->getCreatedTime();
           $formatted_date = $this->dateFormatter->format($date, 'custom', 'j.n.Y');
           $variables['rows'][$key]['content']['#fields']['rss_card__date'] = $formatted_date;
+
+          // Corresponds to Tekoälyrekisteri, feed in production
+          if ($feed_uuid === 'dcfa8dee-c947-4061-8a4e-5075b93c8772') {
+            $description = $translated_node->get('body')->value;
+            $description = strip_tags($description);
+            $description = trim($description);
+            $description = preg_replace('/\s+/', ' ', $description);
+            $description = Unicode::truncate($description, 450, TRUE, TRUE);
+            $variables['rows'][$key]['content']['#fields']['rss_card__description'] = $description;
+          }
         }
       }
       else {

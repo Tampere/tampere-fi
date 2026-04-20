@@ -37,7 +37,7 @@ dependencies:
 _core:
   default_config_hash: d_KQifzyNj19PRtlwHHYN-KTG-t4yLUYnd0STLE6dYA
 id: authenticated
-label: 'Sisäänkirjautunut käyttäjä'
+label: 'Authenticated user'
 weight: -10
 is_admin: false
 permissions:
@@ -65,9 +65,11 @@ permissions:
   - 'use text format webform_default'
   - 'view 404_page_content config page entity'
   - 'view embederator entity'
+  - 'view field_is_main_front_page'
   - 'view field_search_keywords'
   - 'view footer_information config page entity'
   - 'view media'
+  - 'view own field_is_main_front_page'
   - 'view own unpublished content'
   - 'view paragraph content accordion_item'
   - 'view paragraph content accordion_text_content'

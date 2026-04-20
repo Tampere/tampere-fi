@@ -1,0 +1,23 @@
+uuid: d5642860-aa60-40b0-9981-72f1f5935a33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_is_main_front_page
+    - node.type.front_page
+id: node.front_page.field_is_main_front_page
+field_name: field_is_main_front_page
+entity_type: node
+bundle: front_page
+label: 'Use hero with a link list'
+description: 'Specifies whether to use a hero containing a link list and an image in wave form (instead of a hero containing a full-width image and a single highlight).'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

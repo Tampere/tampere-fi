@@ -1,0 +1,16 @@
+tre_healthcheck.settings:
+  path: '/admin/config/services/tre_healthcheck'
+  defaults:
+    _form: '\Drupal\tre_healthcheck\Form\SettingsForm'
+    _title: 'Healthcheck ping reply settings'
+    _title_context: 'Tampere Healthcheck'
+  requirements:
+    _permission: 'administer site configuration'
+
+tre_healthcheck.ping:
+  path: '/healthcheck'
+  defaults:
+    _controller: '\Drupal\tre_healthcheck\Controller\PingController::response'
+    _title: 'Ping'
+  requirements:
+    _permission: 'access content'

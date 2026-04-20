@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Generic functionality for the healthcheck module.
+ *
+ * This file is primarily for hooks.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tre_healthcheck_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.tre_healthcheck':
+      $output = '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The TRE Healthcheck module provides a simple healthcheck endpoint that can be used by monitoring systems to verify that the Drupal site is operational.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Configuring the healthcheck endpoint') . '</dt>';
+      $output .= '<dd>' . t('Visit the <a href=":settings">Healthcheck settings page</a> to enable or disable the endpoint and configure access tokens. At least one access token is required for security.', [':settings' => '/admin/config/services/tre_healthcheck']) . '</dd>';
+      $output .= '<dt>' . t('Using the healthcheck endpoint') . '</dt>';
+      $output .= '<dd>' . t('Send a request to <code>/healthcheck</code> with a valid access token in the <code>token</code> query parameter. A successful response returns a JSON object with status "OK" and HTTP status 200. Failed authentication returns HTTP status 401 (unauthorized) or 403 (too many failed attempts).') . '</dd>';
+      $output .= '<dt>' . t('Security features') . '</dt>';
+      $output .= '<dd>' . t('The endpoint includes flood protection. After 5 failed authentication attempts from the same IP address, requests are blocked for 10 minutes.') . '</dd>';
+      $output .= '</dl>';
+      return $output;
+
+    case 'tre_healthcheck.settings':
+      return '<p>' . t('Configure the healthcheck endpoint settings. Enable or disable the service and manage access tokens for authentication.') . '</p>';
+  }
+}

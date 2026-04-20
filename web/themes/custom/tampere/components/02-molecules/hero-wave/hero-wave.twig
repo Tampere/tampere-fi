@@ -1,0 +1,49 @@
+{#
+ # Available variables:
+ # - main_image: Render array for the hero image.
+ # - news_links: Render array for the news links.
+ # - cta_link_url: The URL for the fixed CTA link.
+ # - cta_link_text: The text for the fixed CTA link.
+ #}
+
+<div class="hero-wave">
+  <div class="hero-wave__image-container">
+    {{ main_image }}
+  </div>
+
+  <div class="hero-wave__content-container">
+    {% include "@atoms/02-text/00-headings/_heading.twig" with {
+      "heading_base_class": "heading",
+      "heading_blockname": "hero-wave",
+      "heading_level": 2,
+      "heading": 'Current topics'|t,
+    } %}
+    
+    {# Loop through the news links data #}
+    {% if extracted_news_links %}
+      <div class="hero-wave__news-links">
+        {% for link in extracted_news_links %}
+          {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+            "link_with_icon__url": link.url,
+            "link_with_icon__link_text": link.text,
+            "link_with_icon__link_icon": link.icon,
+            "link_with_icon__custom_classes": ["hero-wave__plain-link"],
+          } %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# The Fixed Link CTA #}
+    {% if cta_link_url %}
+      <div class="hero-wave__fixed-link">
+        {% include "@atoms/link-with-icon/link-with-icon.twig" with {
+          "link_with_icon__modifiers": [], 
+          "link_with_icon__custom_classes": ["hero-wave__plain-link"],
+          "link_with_icon__url": cta_link_url,
+          "link_with_icon__link_text": cta_link_text,
+          "link_with_icon__link_icon": "arrow", 
+        } %}
+      </div>
+    {% endif %}
+  </div>
+</div>

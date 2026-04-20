@@ -1,0 +1,11 @@
+uuid: ef4be88e-019e-4330-bd59-17c20232ccdf
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.hero_wave
+label: 'Hero Wave'
+description: ''
+targetEntityType: media
+cache: true

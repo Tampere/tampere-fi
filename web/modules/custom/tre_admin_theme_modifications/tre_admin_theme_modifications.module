@@ -56,3 +56,85 @@ function tre_admin_theme_modifications_form_views_exposed_form_alter(&$form, For
     $form['revision_uid']['#size'] = 30;
   }
 }
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for node forms.
+ * PURPOSE: 
+ * Cleans up the editorial UI on the Front Page content type by toggling 
+ * between the new "Main Site Wave Hero" fields and the "Legacy Mini-site Hero" fields.
+ */
+function tre_admin_theme_modifications_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, ['node_front_page_edit_form', 'node_front_page_form'])) {
+    
+    $node = $form_state->getFormObject()->getEntity();
+    
+    // Determine if this is a minisite front page by checking if any Group of type 'minisite' references this node as its front page.
+    $is_minisite = FALSE;
+    if ($node->id()) {
+      $query = \Drupal::entityQuery('group')
+        ->condition('type', 'minisite')
+        ->condition('field_front_page', $node->id())
+        ->accessCheck(FALSE) 
+        ->range(0, 1);
+      
+      $group_ids = $query->execute();
+      if (!empty($group_ids)) {
+        $is_minisite = TRUE;
+      }
+    }
+
+    $legacy_fields = ['field_main_image_caption', 'field_main_image_link'];
+    $new_fields = ['field_hero_news_links', 'field_main_hero_target'];
+
+    // Apply form logic
+    if ($is_minisite) {
+      // SCENARIO: MINISITE
+      if (isset($form['field_is_main_front_page'])) {
+        $form['field_is_main_front_page']['#access'] = FALSE;
+      }
+      foreach ($new_fields as $field) {
+        if (isset($form[$field])) $form[$field]['#access'] = FALSE;
+      }
+      foreach ($legacy_fields as $field) {
+        if (isset($form[$field])) $form[$field]['#access'] = TRUE;
+      }
+    } 
+    else {
+      // SCENARIO: MAIN SITE
+      $is_wave_hero = $node->hasField('field_is_main_front_page') ? (bool) $node->get('field_is_main_front_page')->value : FALSE;
+      $is_default_translation = $node->isDefaultTranslation();
+      
+      // Check if the user is allowed to edit the checkbox
+      $can_edit_toggle = $node->get('field_is_main_front_page')->access('edit');
+
+      if ($is_default_translation && $can_edit_toggle) {
+        foreach ($legacy_fields as $field) {
+          if (isset($form[$field])) {
+            $form[$field]['#states'] = [
+              'visible' => [':input[name="field_is_main_front_page[value]"]' => ['checked' => FALSE]],
+            ];
+          }
+        }
+        foreach ($new_fields as $field) {
+          if (isset($form[$field])) {
+            $form[$field]['#states'] = [
+              'visible' => [':input[name="field_is_main_front_page[value]"]' => ['checked' => TRUE]],
+            ];
+          }
+        }
+      } 
+      else {
+        foreach ($legacy_fields as $field) {
+          if (isset($form[$field])) {
+            $form[$field]['#access'] = !$is_wave_hero; 
+          }
+        }
+        foreach ($new_fields as $field) {
+          if (isset($form[$field])) {
+            $form[$field]['#access'] = $is_wave_hero;
+          }
+        }
+      }
+    }
+  }
+}

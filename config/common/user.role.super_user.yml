@@ -103,7 +103,7 @@ dependencies:
     - webform
     - webform_translation_permissions
 id: super_user
-label: Pääkäyttäjä
+label: 'Super user'
 weight: 8
 is_admin: null
 permissions:
@@ -205,6 +205,7 @@ permissions:
   - 'create field_eventz_featured_start'
   - 'create field_exclude_from_search'
   - 'create field_ignore_omit_checkbox'
+  - 'create field_is_main_front_page'
   - 'create field_keep_public'
   - 'create field_omit_from_listing_map'
   - 'create field_search_keywords'
@@ -547,6 +548,7 @@ permissions:
   - 'edit field_eventz_featured_start'
   - 'edit field_exclude_from_search'
   - 'edit field_ignore_omit_checkbox'
+  - 'edit field_is_main_front_page'
   - 'edit field_keep_public'
   - 'edit field_omit_from_listing_map'
   - 'edit field_search_keywords'
@@ -575,6 +577,7 @@ permissions:
   - 'edit own field_eventz_featured_start'
   - 'edit own field_exclude_from_search'
   - 'edit own field_ignore_omit_checkbox'
+  - 'edit own field_is_main_front_page'
   - 'edit own field_keep_public'
   - 'edit own field_omit_from_listing_map'
   - 'edit search api exclude entity'
@@ -802,6 +805,7 @@ permissions:
   - 'view field_eventz_featured_start'
   - 'view field_exclude_from_search'
   - 'view field_ignore_omit_checkbox'
+  - 'view field_is_main_front_page'
   - 'view field_keep_public'
   - 'view field_omit_from_listing_map'
   - 'view footer_information config page entity'
@@ -834,6 +838,7 @@ permissions:
   - 'view own field_eventz_featured_start'
   - 'view own field_exclude_from_search'
   - 'view own field_ignore_omit_checkbox'
+  - 'view own field_is_main_front_page'
   - 'view own field_keep_public'
   - 'view own field_omit_from_listing_map'
   - 'view own unpublished media'

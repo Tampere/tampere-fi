@@ -11,8 +11,8 @@ label: Ylläpitäjä
 weight: 9
 is_admin: true
 permissions:
-  - 'create field_keep_public'
-  - 'edit field_keep_public'
-  - 'edit own field_keep_public'
-  - 'view field_keep_public'
-  - 'view own field_keep_public'
+  - 'create field_is_main_front_page'
+  - 'edit field_is_main_front_page'
+  - 'edit own field_is_main_front_page'
+  - 'view field_is_main_front_page'
+  - 'view own field_is_main_front_page'

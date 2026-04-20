@@ -1,0 +1,9 @@
+services:
+  tre_ai_auto_reference.similar_searcher:
+    class: Drupal\tre_ai_auto_reference\Service\SimilarContentSearcher
+    arguments: ['@entity_type.manager', '@logger.channel.default', '@plugin.manager.search_api.parse_mode']
+
+  tre_ai_auto_reference.ai_references_generator_decorator:
+    class: Drupal\tre_ai_auto_reference\Service\TreAiReferencesGenerator
+    decorates: ai_auto_reference.ai_references_generator
+    arguments: ['@tre_ai_auto_reference.ai_references_generator_decorator.inner', '@tre_ai_auto_reference.similar_searcher', '@entity_type.manager']

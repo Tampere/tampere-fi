@@ -28,23 +28,34 @@
   {% endif %}
 
   <div {{ bem("main-content", wide_content__main_content__modifiers|default([]), wide_content_base_class) }}>
-    <div {{ bem("header", wide_content__header__modifiers|default([]), wide_content_base_class) }}>
-      {% embed "@molecules/hero/hero.twig" with {
-        "hero__heading": hero_title,
-        "use_heading_element": cta_link_url ? TRUE : FALSE,
-        "hero__modifiers": [ "title-without-icon" ],
-        "has_image": has_image,
-        "hero__heading__level": hero_heading_level,
-        "hero__cta__url": cta_link_url,
-        "hero__cta__text": cta_link_text,
-        "cta_link_requires_login": cta_link_requires_login,
-        "cta_link_is_internal": cta_link_is_internal,
+    
+    {% if is_wave_hero %}
+      {% include "@molecules/hero-wave/hero-wave.twig" with {
+        "main_image": main_image,
+        "extracted_news_links": extracted_news_links,
+        "cta_link_url": cta_link_url,
+        "cta_link_text": cta_link_text,
       } %}
-        {% block hero__img %}
-          {{ main_image }}
-        {% endblock %}
-      {% endembed %}
-    </div>
+
+    {% else %}
+      <div {{ bem("header", wide_content__header__modifiers|default([]), wide_content_base_class) }}>
+        {% embed "@molecules/hero/hero.twig" with {
+          "hero__heading": hero_title,
+          "use_heading_element": cta_link_url ? TRUE : FALSE,
+          "hero__modifiers": [ "title-without-icon" ],
+          "has_image": has_image,
+          "hero__heading__level": hero_heading_level,
+          "hero__cta__url": cta_link_url,
+          "hero__cta__text": cta_link_text,
+          "cta_link_requires_login": cta_link_requires_login,
+          "cta_link_is_internal": cta_link_is_internal,
+        } %}
+          {% block hero__img %}
+            {{ main_image }}
+          {% endblock %}
+        {% endembed %}
+      </div>
+    {% endif %}
 
     {% block wide_content_main_content %}
       {{ main_content }}

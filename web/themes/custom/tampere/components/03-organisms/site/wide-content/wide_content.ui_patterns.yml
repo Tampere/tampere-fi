@@ -9,4 +9,6 @@ wide_content:
       label: Main image caption
     main_content:
       label: Main content
+    news_links:
+      label: News links
   use: "@organisms/site/wide-content/wide-content.twig"

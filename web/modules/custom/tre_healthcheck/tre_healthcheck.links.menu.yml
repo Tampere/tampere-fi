@@ -1,0 +1,5 @@
+tre_healthcheck.settings:
+  title: 'Healthcheck ping reply settings'
+  parent: system.admin_config_services
+  route_name: tre_healthcheck.settings
+  weight: 1

@@ -5,8 +5,11 @@ dependencies:
   config:
     - field.field.node.front_page.field_geographical_areas
     - field.field.node.front_page.field_help_text
+    - field.field.node.front_page.field_hero_news_links
+    - field.field.node.front_page.field_is_main_front_page
     - field.field.node.front_page.field_keywords
     - field.field.node.front_page.field_life_situations
+    - field.field.node.front_page.field_main_hero_target
     - field.field.node.front_page.field_main_image
     - field.field.node.front_page.field_main_image_caption
     - field.field.node.front_page.field_main_image_link
@@ -23,6 +26,7 @@ dependencies:
     - field_group
     - field_states_ui
     - limited_field_widgets
+    - link
     - markup
     - media_library
     - paragraphs_asymmetric_translation_widgets
@@ -33,7 +37,7 @@ third_party_settings:
       children:
         - group_common
         - group_categorization
-      label: Välilehdet
+      label: Tabs
       region: content
       parent_name: ''
       weight: 0
@@ -52,7 +56,7 @@ third_party_settings:
         - field_life_situations
         - field_geographical_areas
         - group_search_keywords
-      label: Luokittelut
+      label: Categorization
       region: content
       parent_name: group_tabs
       weight: 21
@@ -67,13 +71,16 @@ third_party_settings:
     group_common:
       children:
         - title
+        - field_is_main_front_page
         - field_main_image
         - field_main_image_caption
+        - field_hero_news_links
         - field_main_image_link
+        - field_main_hero_target
         - langcode
         - translation
         - field_paragraphs
-      label: Yleinen
+      label: Common
       region: content
       parent_name: group_tabs
       weight: 20
@@ -88,7 +95,7 @@ third_party_settings:
     group_search_keywords:
       children:
         - field_search_keywords
-      label: Avainsanat
+      label: 'Search keywords'
       region: content
       parent_name: group_categorization
       weight: 20
@@ -119,7 +126,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 3
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -139,9 +146,33 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_hero_news_links:
+    type: paragraphs_classic_asymmetric
+    weight: 6
+    region: content
+    settings:
+      title: Link
+      title_plural: Links
+      edit_mode: preview
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings:
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
+  field_is_main_front_page:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_keywords:
     type: entity_reference_autocomplete
-    weight: 16
+    weight: 17
     region: content
     settings:
       match_operator: CONTAINS
@@ -166,16 +197,24 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_main_hero_target:
+    type: link_default
+    weight: 8
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
   field_main_image:
     type: media_library_widget
-    weight: 3
+    weight: 4
     region: content
     settings:
       media_types: {  }
     third_party_settings: {  }
   field_main_image_caption:
     type: string_textfield
-    weight: 4
+    weight: 5
     region: content
     settings:
       size: 60
@@ -186,7 +225,7 @@ content:
         enable_translations: true
       maxlength:
         maxlength_js: 65
-        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
         maxlength_js_enforce: false
       field_states_ui:
         form:
@@ -195,11 +234,11 @@ content:
           add: Lisää
   field_main_image_link:
     type: paragraphs_classic_asymmetric
-    weight: 5
+    weight: 7
     region: content
     settings:
-      title: Linkki
-      title_plural: Linkit
+      title: Link
+      title_plural: Links
       edit_mode: preview
       add_mode: button
       form_display_mode: default
@@ -219,7 +258,7 @@ content:
           add: Add
   field_paragraphs:
     type: paragraphs_classic_asymmetric
-    weight: 8
+    weight: 11
     region: content
     settings:
       title: Paragraafi
@@ -276,7 +315,7 @@ content:
           add: Lisää
   langcode:
     type: language_select
-    weight: 6
+    weight: 9
     region: content
     settings:
       include_locked: false
@@ -323,13 +362,13 @@ content:
         strip_tags: false
         enable_translations: true
   translation:
-    weight: 7
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS

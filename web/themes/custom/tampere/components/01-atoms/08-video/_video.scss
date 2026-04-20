@@ -2,18 +2,21 @@ $video-padding-top: $space-l;
 $video-mediaserver-video-wide-content-two-column-breakpoint: 1112px;
 
 /* Responsive Video using CSS only */
-.video, 
+.video,
 .embederator--quickchannel-embed,
 .embederator--quickchannel-embed-new,
 .embederator--mediaserver-live,
 .embederator--mediaserver-video {
-  @include small-down {
+  @include medium-down {
     height: 100%;
   }
 
   @include text-element-spacer;
 
-  height: 0;
+  @include medium {
+    height: 0;
+  }
+
   overflow: hidden;
   padding-top: $video-padding-top;
   padding-bottom: 56.25%; // 56.25% = 16x9

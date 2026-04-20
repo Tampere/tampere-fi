@@ -1,0 +1,5 @@
+name: 'TRE Healthcheck'
+type: module
+description: 'Handles healthcheck ping replies.'
+core_version_requirement: '>=10'
+package: 'TRE'

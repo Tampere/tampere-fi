@@ -10,9 +10,23 @@
 
       const wrapperSelector = '#cookie-information-template-wrapper';
       const buttonSelector = '#Coi-Renew';
+      const overlaySelector = '#coiOverlay';
+      const bannerWrapperSelector = '#coi-banner-wrapper';
+      const renewButtonSelector = '#Coi-Renew, .consent-placeholder__button';
 
       const targetAttribute = 'tabindex';
       const desiredValue = '0';
+
+      const showAfterMs = 5000;
+
+      // consent cookie name(s) to check for before showing the banner
+      const consentCookieName = 'CookieInformationConsent';
+      const delayClass = 'coi-delay-active';
+      
+      // Session key: keeps the first-visit timestamp for this browser tab/session.
+      const sessionStartKey = 'coi-first-visit-timestamp';
+
+      let delayTimerId = null;
 
       // This function will be called when the wrapper is found
       const fixCookieComponent = (wrapperElement) => {
@@ -55,6 +69,148 @@
         fixCookieComponent(existingWrapper);
         observer.disconnect();
       }
+
+      function hasConsentCookie() {
+        return (`: ${document.cookie}`).includes(`: ${consentCookieName}=`);
+      }
+
+      function getOverlay() {
+        return document.querySelector(overlaySelector);
+      }
+
+      function getBannerWrapper() {
+        return document.querySelector(bannerWrapperSelector);
+      }
+
+      function isOverlayVisible() {
+        const overlay = getOverlay();
+        if (!overlay) {
+          return false;
+        }
+
+        return (
+          getComputedStyle(overlay).display !== 'none' &&
+          overlay.getAttribute('aria-hidden') !== 'true'
+        );
+      }
+
+      function openOverlay() {
+        const overlay = getOverlay();
+        const bannerWrapper = getBannerWrapper();
+
+        if (!overlay || !bannerWrapper) {
+          return;
+        }
+
+        overlay.style.removeProperty('display');
+        bannerWrapper.style.removeProperty('display');
+
+        if (getComputedStyle(overlay).display === 'none') {
+          overlay.style.display = 'flex';
+        }
+
+        if (getComputedStyle(bannerWrapper).display === 'none') {
+          bannerWrapper.style.display = 'block';
+        }
+
+        overlay.setAttribute('aria-hidden', 'false');
+        bannerWrapper.setAttribute('aria-hidden', 'false');
+
+        bannerWrapper.setAttribute('tabindex', '-1');
+        bannerWrapper.focus();
+      }
+
+
+      function closeOverlay() {
+        const overlay = getOverlay();
+        const bannerWrapper = getBannerWrapper();
+
+        if (!overlay || !bannerWrapper) {
+          return;
+        }
+
+        overlay.style.display = 'none';
+        overlay.setAttribute('aria-hidden', 'true');
+        bannerWrapper.setAttribute('aria-hidden', 'true');
+      }
+
+      function toggleOverlay() {
+        if (isOverlayVisible()) {
+          closeOverlay();
+        } else {
+          openOverlay();
+        }
+      }
+
+      function getSessionStartTime() {
+        const stored = window.sessionStorage.getItem(sessionStartKey);
+
+        if (stored) {
+          const parsed = parseInt(stored, 10);
+          if (!Number.isNaN(parsed)) {
+            return parsed;
+          }
+        }
+
+        const now = Date.now();
+        window.sessionStorage.setItem(sessionStartKey, String(now));
+        return now;
+      }
+
+      function startInitialDelay() {
+        if (hasConsentCookie()) {
+          document.documentElement.classList.remove(delayClass);
+          return;
+        }
+
+        const sessionStartTime = getSessionStartTime();
+        const elapsedMs = Date.now() - sessionStartTime;
+        const remainingMs = Math.max(0, showAfterMs - elapsedMs);
+
+        if (remainingMs <= 0) {
+          document.documentElement.classList.remove(delayClass);
+          return;
+        }
+
+        document.documentElement.classList.add(delayClass);
+
+        delayTimerId = window.setTimeout(function () {
+          document.documentElement.classList.remove(delayClass);
+          delayTimerId = null;
+        }, remainingMs);
+      }
+
+      function cancelInitialDelay() {
+        if (delayTimerId) {
+          window.clearTimeout(delayTimerId);
+          delayTimerId = null;
+        }
+
+        document.documentElement.classList.remove(delayClass);
+      }
+
+      // Start delay immediately so the banner cannot flash open before we react.
+      startInitialDelay();
+
+      // If user clicks a consent action, stop any pending initial delay.
+      document.addEventListener('click', function (event) {
+        const clickedConsentAction = event.target.closest(
+          '.coi-banner__accept, .coi-banner__decline, #updateButton'
+        );
+
+        if (clickedConsentAction) {
+          cancelInitialDelay();
+          return;
+        }
+
+        const renewButton = event.target.closest(renewButtonSelector);
+
+        if (renewButton) {
+          event.preventDefault();
+          cancelInitialDelay();
+          toggleOverlay();
+        }
+      });
     },
   };
 })(Drupal);

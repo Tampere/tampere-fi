@@ -1,0 +1,23 @@
+uuid: bd304582-8919-43b7-905a-d1aef2e777c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_main_hero_target
+    - node.type.front_page
+  module:
+    - link
+id: node.front_page.field_main_hero_target
+field_name: field_main_hero_target
+entity_type: node
+bundle: front_page
+label: 'Fixed Hero Link'
+description: 'This is the fixed link for the hero (e.g., "See all current news"). Since this links to the news section on the front page, enter the anchor of the desired news paragraph in the URL field (e.g., #paragraph-72990).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

@@ -1,0 +1,15 @@
+uuid: 7f3560e9-5c90-44f9-ba0f-92522fe756e4
+langcode: en
+status: true
+dependencies: {  }
+name: hero_wave_medium_1200w
+label: 'Hero Wave - medium (1200w)'
+effects:
+  52a00bfd-4f4b-4342-b4ec-494f2d608b3f:
+    uuid: 52a00bfd-4f4b-4342-b4ec-494f2d608b3f
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: null
+      upscale: false

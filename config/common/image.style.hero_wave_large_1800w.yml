@@ -1,0 +1,15 @@
+uuid: d6736aa7-d5df-46d2-98e9-ccad05a26ce8
+langcode: en
+status: true
+dependencies: {  }
+name: hero_wave_large_1800w
+label: 'Hero Wave - large (1800w)'
+effects:
+  aa2a604b-58fd-4d4f-bd90-814e0141be6b:
+    uuid: aa2a604b-58fd-4d4f-bd90-814e0141be6b
+    id: image_scale
+    weight: 1
+    data:
+      width: 1800
+      height: null
+      upscale: false

@@ -80,6 +80,12 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
     $entity_repository = \Drupal::service('entity.repository');
 
     $node = $data['node'];
+    /**
+     * Get the current langcode for the node - this is necessary so that we can provide correct language context when nodes are updated in cron hook
+     * Without the langcode the getTranslationFromContext() would always fallback to the Original language -
+     * in our case to the Finnish content - even if handling English translation of the node
+     */
+    $langcode = $node->language()->getId();
 
     if (!($node instanceof NodeInterface)) {
       return $replacements;
@@ -104,7 +110,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
             ->referencedEntities());
           if ($group_front_page instanceof EntityInterface) {
             $bubbleable_metadata->addCacheableDependency($group_front_page);
-            $translated_front_page = $entity_repository->getTranslationFromContext($group_front_page);
+            $translated_front_page = $entity_repository->getTranslationFromContext($group_front_page, $langcode);
             $replacements[$original] = $translated_front_page->label();
           }
           break;
@@ -119,7 +125,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
                   ->referencedEntities());
                 if ($topic_front_page instanceof EntityInterface) {
                   $bubbleable_metadata->addCacheableDependency($topic_front_page);
-                  $translated_front_page = $entity_repository->getTranslationFromContext($topic_front_page);
+                  $translated_front_page = $entity_repository->getTranslationFromContext($topic_front_page, $langcode);
                   $replacements[$original] = $translated_front_page->label();
                 }
               }
@@ -137,7 +143,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
                   ->referencedEntities());
                 if ($life_situation_front_page instanceof EntityInterface) {
                   $bubbleable_metadata->addCacheableDependency($life_situation_front_page);
-                  $translated_front_page = $entity_repository->getTranslationFromContext($life_situation_front_page);
+                  $translated_front_page = $entity_repository->getTranslationFromContext($life_situation_front_page, $langcode);
                   $replacements[$original] = $translated_front_page->label();
                 }
               }
@@ -155,7 +161,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
                   ->referencedEntities());
                 if ($theme_front_page instanceof EntityInterface) {
                   $bubbleable_metadata->addCacheableDependency($theme_front_page);
-                  $translated_front_page = $entity_repository->getTranslationFromContext($theme_front_page);
+                  $translated_front_page = $entity_repository->getTranslationFromContext($theme_front_page, $langcode);
                   $replacements[$original] = $translated_front_page->label();
                 }
               }
@@ -173,7 +179,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
                   ->referencedEntities());
                 if ($life_situation_front_page instanceof EntityInterface) {
                   $bubbleable_metadata->addCacheableDependency($life_situation_front_page);
-                  $translated_front_page = $entity_repository->getTranslationFromContext($life_situation_front_page);
+                  $translated_front_page = $entity_repository->getTranslationFromContext($life_situation_front_page, $langcode);
                   $replacements[$original] = $translated_front_page->label();
                 }
               }
@@ -191,7 +197,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
                   ->referencedEntities());
                 if ($topic_front_page instanceof EntityInterface) {
                   $bubbleable_metadata->addCacheableDependency($topic_front_page);
-                  $translated_front_page = $entity_repository->getTranslationFromContext($topic_front_page);
+                  $translated_front_page = $entity_repository->getTranslationFromContext($topic_front_page, $langcode);
                   $replacements[$original] = $translated_front_page->label();
                 }
               }
@@ -212,7 +218,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
                     ->referencedEntities());
                   if ($topic_front_page instanceof EntityInterface) {
                     $bubbleable_metadata->addCacheableDependency($topic_front_page);
-                    $translated_front_page = $entity_repository->getTranslationFromContext($topic_front_page);
+                    $translated_front_page = $entity_repository->getTranslationFromContext($topic_front_page, $langcode);
                     $replacements[$original] = $translated_front_page->label();
                   }
                 }
@@ -234,7 +240,7 @@ function tre_custom_paths_tokens($type, $tokens, array $data, array $options, Bu
                     ->referencedEntities());
                   if ($life_situation_front_page instanceof EntityInterface) {
                     $bubbleable_metadata->addCacheableDependency($life_situation_front_page);
-                    $translated_front_page = $entity_repository->getTranslationFromContext($life_situation_front_page);
+                    $translated_front_page = $entity_repository->getTranslationFromContext($life_situation_front_page, $langcode);
                     $replacements[$original] = $translated_front_page->label();
                   }
                 }

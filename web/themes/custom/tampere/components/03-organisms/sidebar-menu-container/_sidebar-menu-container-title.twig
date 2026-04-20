@@ -1,11 +1,23 @@
 {% set sidebar_menu_container__base_class = "sidebar-menu-container-title" %}
+{% set custom_classes = ['h2', 'hyphenate'] %}
 
-{% include "@atoms/02-text/00-headings/_heading.twig" with {
-  "heading_level": 2,
-  "heading_base_class": sidebar_menu_container__base_class,
-  "heading": sidebar_menu_container__heading,
-  "heading_url": sidebar_menu_container_heading__url,
-  "heading_link_base_class": "heading-link",
-  "heading_link_blockname": sidebar_menu_container__base_class,
-  "heading_modifiers": sidebar_menu_container_title__modifiers,
-} %}
+<div {{ bem(sidebar_menu_container__base_class, sidebar_menu_container_title__modifiers|default([]), null, custom_classes) }} role="navigation" aria-label={{ 'Sidebar menu'|t({}, {'context': 'Subsite sidebar navigation label'}) }}>
+  {% if sidebar_menu_container_heading__url %}
+    {% include "@atoms/01-links/link/link.twig" with {
+      "link_content": sidebar_menu_container__heading,
+      "link_url": sidebar_menu_container_heading__url,
+      "link_base_class": "heading-link",
+      "link_blockname": sidebar_menu_container__base_class|default(sidebar_menu_container__base_class),
+    } only %}
+  {% else %}
+    {% if wrap_heading %}
+      <span {{ bem(heading_span_blockname|default("span-wrapper"), heading_span_modifiers|default([]), heading_blockname) }}>
+    {% endif %}
+      {% block heading_content %}
+        {{ sidebar_menu_container__heading }}
+      {% endblock %}
+    {% if wrap_heading %}
+      </span>
+    {% endif %}
+  {% endif %}
+</div>

@@ -19,7 +19,6 @@ source:
   header_offset: null
   ids:
     - central_person_nbr
-    - contract_nbr
   delimiter: '|'
   enclosure: '"'
   fields:

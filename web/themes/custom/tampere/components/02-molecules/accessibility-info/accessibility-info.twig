@@ -3,14 +3,14 @@
 <div {{ bem(accessibility_info__base_class) }}>
   {% for info in accessibility_information_list %}
     <div {{ bem('group', [], accessibility_info__base_class) }}>
-      <b>{{ info.title }}</b>
-      <div>
+      <strong class="{{ accessibility_info__base_class }}__title">{{ info.title }}</strong>
+      <ul class="{{ accessibility_info__base_class }}__list">
         {% for sentence in info.sentences %}
           {% if sentence is not empty %}
-            <span>{{ sentence }}</span>
+            <li class="{{ accessibility_info__base_class }}__item">{{ sentence }}</li>
           {% endif %}
         {% endfor %}
-      </div>
+      </ul>
     </div>
   {% endfor %}
 </div>

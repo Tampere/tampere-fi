@@ -22,7 +22,7 @@ dependencies:
 _core:
   default_config_hash: PRgsXScWElXgDAlO9iSG4jEIe-1s92TA_Sxb6D2nR6w
 id: anonymous
-label: 'Anonyymi käyttäjä'
+label: 'Anonymous user'
 weight: -11
 is_admin: false
 permissions:
@@ -35,9 +35,11 @@ permissions:
   - 'use text format limited_html'
   - 'view 404_page_content config page entity'
   - 'view embederator entity'
+  - 'view field_is_main_front_page'
   - 'view field_search_keywords'
   - 'view footer_information config page entity'
   - 'view media'
+  - 'view own field_is_main_front_page'
   - 'view paragraph content accordion_item'
   - 'view paragraph content accordion_text_content'
   - 'view paragraph content accordions'

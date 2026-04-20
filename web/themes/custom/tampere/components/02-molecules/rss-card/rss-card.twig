@@ -55,6 +55,17 @@
             } %}
             {{ title_suffix }}
           {% endif %}
+
+          {# Description #}
+          {% if rss_card__description %}
+            {% include "@atoms/02-text/text/07-text-block.twig" with {
+              text_block_base_class:rss_card__heading__base_class|default("description"),
+              text_block_modifiers: rss_card__heading__modifiers,
+              text_block_blockname: rss_card__base_class,
+              text_block_extra_classes: [ "p", "hyphenate" ],
+              text_block_content: rss_card__description,
+            } %}
+          {% endif %}
         </div>
       {% endif %}
 

@@ -226,6 +226,7 @@ module:
   tre_geofield_customization: 0
   tre_group_admin_fixes: 0
   tre_group_module_custom: 0
+  tre_healthcheck: 0
   tre_hr_import: 0
   tre_jsonapi_custom: 0
   tre_language_switcher_links: 0

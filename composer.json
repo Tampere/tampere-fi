@@ -183,7 +183,7 @@
         "dropzone/dropzone": "5.9.3",
         "drupal/address": "^2.0",
         "drupal/address_display": "^1.0",
-        "drupal/admin_toolbar": "^3.0",
+        "drupal/admin_toolbar": "^3.6",
         "drupal/ai": "^1.1",
         "drupal/ai_auto_reference": "^1.0@RC",
         "drupal/ai_provider_deepl": "^1.0@alpha",
@@ -195,7 +195,7 @@
         "drupal/backward_compatibility": "^1.0",
         "drupal/better_exposed_filters": "^7.1.0",
         "drupal/cache_tags": "dev-fork",
-        "drupal/ckeditor5_paste_filter": "^1.0",
+        "drupal/ckeditor5_paste_filter": "^1.1",
         "drupal/cloudflare_purge": "^2.0",
         "drupal/color_field": "^3.0",
         "drupal/components": "^3.0@beta",
@@ -208,9 +208,10 @@
         "drupal/core-composer-scaffold": "~10.5.6",
         "drupal/core-project-message": "~10.5.6",
         "drupal/core-recommended": "~10.5.6",
+        "drupal/crop": "^2.6",
         "drupal/dblog_filter": "^4.1",
         "drupal/decorative_image_widget": "^1.0",
-        "drupal/diff": "^1.0",
+        "drupal/diff": "^1.10",
         "drupal/ds": "^3.9",
         "drupal/dynamic_entity_reference": "^3.0",
         "drupal/easy_breadcrumb": "^2.0",
@@ -219,6 +220,7 @@
         "drupal/emulsify_twig": "^5.0",
         "drupal/entity_browser": "^2.5",
         "drupal/entity_log": "^1.4",
+        "drupal/entity_reference_revisions": "^1.14",
         "drupal/entity_reference_unpublished": "^2.0",
         "drupal/entity_usage": "^2.0@beta",
         "drupal/entitygroupfield": "^2.0@alpha",
@@ -232,14 +234,14 @@
         "drupal/feeds_tamper": "^2.0@beta",
         "drupal/field_delimiter": "^2.0",
         "drupal/field_group": "^4.0",
-        "drupal/field_permissions": "^1.2",
+        "drupal/field_permissions": "^1.5",
         "drupal/field_states_ui": "^3.0",
         "drupal/file_delete": "^3.0",
         "drupal/flexible_permissions": "^2.0",
         "drupal/focal_point": "^2.0",
         "drupal/form_display_field_machine_name": "dev-fork",
         "drupal/formdazzle": "^4.0",
-        "drupal/geofield": "^1.34",
+        "drupal/geofield": "^1.67",
         "drupal/group": "^2.3",
         "drupal/group_content_menu": "^2.0",
         "drupal/group_scheduled_transitions": "^2.0",
@@ -250,9 +252,10 @@
         "drupal/jquery_ui_slider": "^2.0.0",
         "drupal/jquery_ui_touch_punch": "^1.1",
         "drupal/jsonapi_boost": "^2.0",
-        "drupal/jsonapi_extras": "^3.24",
+        "drupal/jsonapi_extras": "^3.28",
         "drupal/jsonapi_image_styles": "^3.0",
         "drupal/jsonapi_include": "^1.5",
+        "drupal/key": "^1.22",
         "drupal/language_switcher_extended": "^1.0@beta",
         "drupal/lazy": "^4.0",
         "drupal/limited_field_widgets": "^3.0",
@@ -284,8 +287,8 @@
         "drupal/options_table": "^2.0",
         "drupal/override_node_options": "^2.6",
         "drupal/paragraph_view_mode": "^3.0.0",
-        "drupal/paragraphs": "^1.16",
-        "drupal/paragraphs_admin": "^1.1",
+        "drupal/paragraphs": "^1.20",
+        "drupal/paragraphs_admin": "^1.7",
         "drupal/paragraphs_asymmetric_translation_widgets": "^1.0@beta",
         "drupal/path_guard": "dev-fork",
         "drupal/pathauto": "^1.6",
@@ -453,7 +456,8 @@
             "drupal/ai_translate_textfield": {
                 "3490601: Add feature to select languages this feature is enabled on": "https://git.drupalcode.org/issue/ai_translate_textfield-3490601/-/commit/7bc89a0a91291805646de0e23414d7477bed53fe.patch",
                 "3503517: Support for other field types like Link or Table fields": "https://www.drupal.org/files/issues/2025-02-04/Support-for-other-field-types_3503517_3.patch",
-                "3504251:The wrapper class not getting added for image focal point widget": "https://www.drupal.org/files/issues/2025-02-04/wrapper-class-not-getting-added-3504251_1.patch"
+                "3504251:The wrapper class not getting added for image focal point widget": "https://www.drupal.org/files/issues/2025-02-04/wrapper-class-not-getting-added-3504251_1.patch",
+                "3582430: Pass explicit source language to AI Provider to support glossaries": "https://www.drupal.org/files/issues/2026-03-31/ai_translate_textfield-source-lang.patch"
             },
             "drupal/components": {
                 "3107993 - Template is not defined error on admin pages when using administration theme": "patches/components__template_is_not_defined_error_on_admin_pages_when_using_administration_theme__3107993.patch"
@@ -545,6 +549,9 @@
             },
             "drupal/scheduled_transitions": {
                 "XO-3817 - Better translation revision support for scheduling": "https://www.drupal.org/files/issues/2025-10-15/3083616-12.patch-2.7.x.patch"
+            },
+            "drupal/ai_provider_deepl": {
+                "3549076: Use glossary feature": "https://git.drupalcode.org/project/ai_provider_deepl/-/merge_requests/3.patch"
             }
         },
         "merge-plugin": {
@@ -556,7 +563,7 @@
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
         "drupal/coder": "^8.3",
-        "drupal/stage_file_proxy": "^2.1",
+        "drupal/stage_file_proxy": "^3.1",
         "mglaman/phpstan-drupal": "^1.1",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^1.4",

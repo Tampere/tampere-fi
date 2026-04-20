@@ -6,8 +6,11 @@ dependencies:
     - core.entity_view_mode.node.search_result
     - field.field.node.front_page.field_geographical_areas
     - field.field.node.front_page.field_help_text
+    - field.field.node.front_page.field_hero_news_links
+    - field.field.node.front_page.field_is_main_front_page
     - field.field.node.front_page.field_keywords
     - field.field.node.front_page.field_life_situations
+    - field.field.node.front_page.field_main_hero_target
     - field.field.node.front_page.field_main_image
     - field.field.node.front_page.field_main_image_caption
     - field.field.node.front_page.field_main_image_link
@@ -58,8 +61,11 @@ hidden:
   entitygroupfield: true
   field_geographical_areas: true
   field_help_text: true
+  field_hero_news_links: true
+  field_is_main_front_page: true
   field_keywords: true
   field_life_situations: true
+  field_main_hero_target: true
   field_main_image: true
   field_main_image_caption: true
   field_main_image_link: true

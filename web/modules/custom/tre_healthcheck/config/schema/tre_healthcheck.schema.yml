@@ -1,0 +1,13 @@
+tre_healthcheck.settings:
+  type: config_object
+  label: 'Healthcheck ping reply settings'
+  mapping:
+    enabled:
+      type: boolean
+      label: 'Enable healthcheck endpoint'
+    ping_auth_tokens:
+      type: sequence
+      label: 'Access tokens for healthcheck authentication'
+      sequence:
+        type: string
+        label: 'Access token'

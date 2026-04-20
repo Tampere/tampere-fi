@@ -1,0 +1,15 @@
+uuid: df069a00-d72f-40b1-a8e2-835721312d77
+langcode: en
+status: true
+dependencies: {  }
+name: hero_wave_small_800w
+label: 'Hero Wave - small (800w)'
+effects:
+  aa03c8d3-5e9b-4d81-ad32-acd67d66cccc:
+    uuid: aa03c8d3-5e9b-4d81-ad32-acd67d66cccc
+    id: image_scale
+    weight: 1
+    data:
+      width: 800
+      height: null
+      upscale: false
