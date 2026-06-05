@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.person.field_contract_ends
     - field.field.node.person.field_email
     - field.field.node.person.field_first_names
+    - field.field.node.person.field_hide_email_in_search
     - field.field.node.person.field_hr_company
     - field.field.node.person.field_hr_cost_center
     - field.field.node.person.field_hr_id
@@ -23,6 +24,7 @@ dependencies:
     - field.field.node.person.field_phone
     - field.field.node.person.field_phone_supplementary
     - field.field.node.person.field_place
+    - field.field.node.person.field_removed_from_source
     - field.field.node.person.field_search_keywords
     - field.field.node.person.field_topics
     - field.field.node.person.migrate_override_data
@@ -75,6 +77,7 @@ hidden:
   field_contract_begins: true
   field_contract_ends: true
   field_first_names: true
+  field_hide_email_in_search: true
   field_hr_company: true
   field_hr_cost_center: true
   field_hr_id: true
@@ -84,6 +87,7 @@ hidden:
   field_last_name: true
   field_phone_supplementary: true
   field_place: true
+  field_removed_from_source: true
   field_search_keywords: true
   field_topics: true
   langcode: true

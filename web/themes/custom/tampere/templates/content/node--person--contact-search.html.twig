@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Theme override for Person in the 'Contact Search' view mode.
+ */
+#}
+<div class="node--person--contact-search">
+  {% set person_img_html = person_image|render %}
+  {% set hide_email = node.field_hide_email_in_search.value %}
+
+  {% embed "@molecules/person-contact/person-contact.twig" with {
+    "person_contact__preheading": person_preheading,
+    "person_contact__name": person_name,
+    "person_contact__url": url,
+    "person_contact__phone_number": person_phones,
+    "person_contact__email_address": hide_email ? '' : person_email,
+  } %}
+
+    {# This block handles the logic for the photo vs. the placeholder #}
+    {% block person_contact_image %}
+      {% if person_img_html|trim %}
+        {{ person_img_html }}
+      {% else %}
+        {# This tells the molecule to use its own default placeholder #}
+        {{ parent() }}
+      {% endif %}
+    {% endblock %}
+
+  {% endembed %}
+</div>

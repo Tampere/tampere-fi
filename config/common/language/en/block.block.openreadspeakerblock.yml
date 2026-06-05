@@ -1,4 +1,3 @@
 settings:
-  label: 'Open readspeaker block mobile'
   button_text: Listen
   button_title: 'Listen to this page with ReadSpeaker'

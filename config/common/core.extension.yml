@@ -214,6 +214,7 @@ module:
   tre_breadcrumbs_custom: 0
   tre_cloned_node_alteration: 0
   tre_cludo_search: 0
+  tre_contact_search: 0
   tre_content_listing: 0
   tre_course_listing: 0
   tre_current_content_archive_search_content: 0
@@ -223,6 +224,7 @@ module:
   tre_display_external_events: 0
   tre_display_external_eventz_today: 0
   tre_external_publish_permissions: 0
+  tre_generate_menu_from_groups: 0
   tre_geofield_customization: 0
   tre_group_admin_fixes: 0
   tre_group_module_custom: 0

@@ -1,0 +1,23 @@
+uuid: 26087fda-5d23-4251-b59d-bbc929eab708
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_email_in_search
+    - node.type.person
+id: node.person.field_hide_email_in_search
+field_name: field_hide_email_in_search
+entity_type: node
+bundle: person
+label: 'Hide email in search'
+description: 'Hide email address in contact search results.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes (Hide)'
+  off_label: 'No (Show normally)'
+field_type: boolean

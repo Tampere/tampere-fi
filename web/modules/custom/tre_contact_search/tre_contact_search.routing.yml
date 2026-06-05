@@ -1,0 +1,7 @@
+tre_contact_search.contact_search:
+  path: '/contact-search'
+  defaults:
+    _controller: '\Drupal\tre_contact_search\Controller\ContactSearchController::build'
+    _title: 'Contact search'
+  requirements:
+    _permission: 'access content'

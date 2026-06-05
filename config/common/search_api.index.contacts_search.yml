@@ -1,0 +1,198 @@
+uuid: db5126d8-f4c3-4928-805e-99fcf4619d84
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alternative_name
+    - field.storage.node.field_first_names
+    - field.storage.node.field_hide_email_in_search
+    - field.storage.node.field_hr_title
+    - field.storage.node.field_last_name
+    - search_api.server.solr
+  module:
+    - node
+    - search_api_mapping
+    - search_api_solr
+    - taxonomy
+    - tre_contact_search
+third_party_settings:
+  search_api_solr:
+    finalize: false
+    commit_before_finalize: false
+    commit_after_finalize: false
+    debug_finalize: false
+    highlighter:
+      maxAnalyzedChars: 51200
+      fragmenter: gap
+      usePhraseHighlighter: true
+      highlightMultiTerm: true
+      preserveMulti: false
+      regex:
+        slop: 0.5
+        pattern: blank
+        maxAnalyzedChars: 10000
+      highlight:
+        mergeContiguous: false
+        requireFieldMatch: false
+        snippets: 3
+        fragsize: 0
+    mlt:
+      mintf: 1
+      mindf: 1
+      maxdf: 0
+      maxdfpct: 0
+      minwl: 0
+      maxwl: 0
+      maxqt: 100
+      maxntp: 2000
+      boost: false
+      interestingTerms: none
+    term_modifiers:
+      slop: 3
+      fuzzy: 1
+      fuzzy_analyzer: true
+    advanced:
+      index_prefix: ''
+      collection: ''
+      timezone: ''
+    multilingual:
+      limit_to_content_language: false
+      include_language_independent: true
+      use_language_undefined_as_fallback_language: false
+      specific_languages:
+        fi: '0'
+        en: '0'
+      use_universal_collation: false
+id: contacts_search
+name: 'Contacts Search'
+description: 'Index for Person and Place of Business search'
+read_only: false
+field_settings:
+  field_alternative_name:
+    label: 'Alternative name'
+    datasource_id: 'entity:node'
+    property_path: field_alternative_name
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_alternative_name
+  field_first_names:
+    label: 'First name'
+    datasource_id: 'entity:node'
+    property_path: field_first_names
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_first_names
+  field_hide_email_in_search:
+    label: 'Hide email in search'
+    datasource_id: 'entity:node'
+    property_path: field_hide_email_in_search
+    type: boolean
+    dependencies:
+      config:
+        - field.storage.node.field_hide_email_in_search
+  field_last_name:
+    label: 'Last name'
+    datasource_id: 'entity:node'
+    property_path: field_last_name
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_last_name
+  name:
+    label: 'HR Title'
+    datasource_id: 'entity:node'
+    property_path: 'field_hr_title:entity:name'
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_hr_title
+      module:
+        - taxonomy
+  title:
+    label: Title
+    datasource_id: 'entity:node'
+    property_path: title
+    type: text
+    dependencies:
+      module:
+        - node
+  title_string:
+    label: 'Title (string)'
+    datasource_id: 'entity:node'
+    property_path: title
+    type: string
+    dependencies:
+      module:
+        - node
+  type:
+    label: 'Content type'
+    datasource_id: 'entity:node'
+    property_path: type
+    type: string
+    dependencies:
+      module:
+        - node
+  uid:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: integer
+    dependencies:
+      module:
+        - node
+datasource_settings:
+  'entity:node':
+    bundles:
+      default: false
+      selected:
+        - person
+        - place_of_business
+    languages:
+      default: true
+      selected: {  }
+processor_settings:
+  add_url: {  }
+  aggregated_field: {  }
+  auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
+  entity_status: {  }
+  entity_type: {  }
+  html_filter:
+    weights:
+      preprocess_index: -15
+      preprocess_query: -15
+    all_fields: false
+    fields:
+      - field_alternative_name
+      - field_first_names
+      - field_last_name
+      - name
+      - title
+    title: true
+    alt: true
+    tags:
+      b: 2.0
+      em: 1.5
+      h1: 5.0
+      h2: 3.0
+      h3: 2.0
+      strong: 2.0
+      u: 1.5
+  language_with_fallback: {  }
+  mapped_field: {  }
+  rendered_item: {  }
+  solr_date_range:
+    weights:
+      preprocess_index: 0
+  tre_contact_search_filter: {  }
+tracker_settings:
+  default:
+    indexing_order: fifo
+options:
+  cron_limit: 50
+  delete_on_fail: true
+  index_directly: true
+  track_changes_in_references: true
+server: solr

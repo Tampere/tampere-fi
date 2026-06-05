@@ -1,0 +1,10 @@
+name: 'Tampere Contact Search'
+type: module
+description: 'Handles the custom Solr search logic, routing, and indexing for Contacts (Persons and Locations).'
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - search_api:search_api
+  - views:views
+  - paragraphs:paragraphs
+  - tre_preprocess_utility_functions:tre_preprocess_utility_functions

@@ -1,8 +1,9 @@
-uuid: 5f514c61-ac16-4274-9124-8305e1788266
+uuid: df47fcae-943c-463b-9a2f-d38b6d12d92a
 langcode: fi
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.contact_search
     - field.field.node.person.field_additional_information
     - field.field.node.person.field_additional_phones
     - field.field.node.person.field_address_postal
@@ -23,7 +24,6 @@ dependencies:
     - field.field.node.person.field_phone
     - field.field.node.person.field_phone_supplementary
     - field.field.node.person.field_place
-    - field.field.node.person.field_removed_from_source
     - field.field.node.person.field_search_keywords
     - field.field.node.person.field_topics
     - field.field.node.person.migrate_override_data
@@ -34,10 +34,10 @@ dependencies:
     - text
     - tre_phone_field_formatter
     - user
-id: node.person.default
+id: node.person.contact_search
 targetEntityType: node
 bundle: person
-mode: default
+mode: contact_search
 content:
   content_moderation_control:
     settings: {  }
@@ -195,7 +195,6 @@ hidden:
   field_contract_ends: true
   field_hide_email_in_search: true
   field_hr_id: true
-  field_removed_from_source: true
   field_search_keywords: true
   langcode: true
   migrate_override_data: true

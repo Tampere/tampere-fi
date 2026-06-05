@@ -1,0 +1,39 @@
+uuid: 550e101a-cfb0-4976-a7df-9bb1b35a9e81
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.contacts_search
+    - views.view.contact_search
+  module:
+    - views
+id: contact_search
+label: 'Contact Search'
+index_id: contacts_search
+suggester_settings:
+  live_results:
+    fields: {  }
+    highlight:
+      enabled: false
+      field: ''
+    suggest_keys: true
+    view_modes:
+      'entity:node':
+        person: ''
+        place_of_business: ''
+suggester_weights:
+  live_results: 0
+suggester_limits:
+  live_results: 10
+search_settings:
+  'views:contact_search':
+    displays:
+      default: true
+      selected: {  }
+options:
+  limit: 10
+  min_length: 3
+  show_count: false
+  delay: null
+  submit_button_selector: ':submit'
+  autosubmit: false

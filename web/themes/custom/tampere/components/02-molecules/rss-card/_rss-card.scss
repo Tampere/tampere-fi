@@ -97,7 +97,7 @@
 
     @include mobile-breakpoint {
       overflow-wrap: initial;
-      word-break: initial;
+      word-break: break-word;
     }
     @include large {
       font-size: $font-20;

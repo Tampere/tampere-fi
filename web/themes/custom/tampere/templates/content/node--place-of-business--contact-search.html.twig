@@ -1,0 +1,73 @@
+{#
+/**
+ * @file
+ * Theme override for Place of Business in the 'Contact Search' view mode.
+ */
+#}
+<div class="paragraph paragraph--type-place-of-business-liftup">
+
+  {% set place_of_business_location_content = {
+    pob_addresses,
+    pob_postaddress,
+  } %}
+
+  {% set accordion_tabs = [] %}
+
+  {% if pob_accessibility_taxonomies|render|trim or pob_access_info_list is not empty %}
+    {% set accordion_tabs = accordion_tabs|merge([{
+      "title": pob_accessibility_title,
+      "content": pob_accessibility_taxonomies,
+      "accessibility_sentences": pob_access_info_list
+    }]) %}
+  {% endif %}
+
+  {% if pob_map %}
+    {% set accordion_tabs = accordion_tabs|merge([{
+      "title": "Location on map"|t,
+      "content": pob_map,
+      "accordion_content_modifiers": [ "no-margin" ]
+    }]) %}
+  {% endif %}
+
+  {% if pob_image_gallery|render|trim %}
+    {% set accordion_tabs = accordion_tabs|merge([{
+      "title": "Images of the location"|t,
+      "content": pob_image_gallery
+    }]) %}
+  {% endif %}
+
+  {% embed "@molecules/place-of-business-contact/place-of-business-contact.twig" with {
+    "place_of_business_contact__name": pob_title,
+    "place_of_business_contact__url": url,
+    "place_of_business_contact__summary": pob_summary,
+    "place_of_business_contact__additional_information": pob_additional_information,
+    "place_of_business_location_content": place_of_business_location_content|render|trim ? place_of_business_location_content : null,
+    
+    "right_column_content": pob_right_column|length > 0 ? true : false,
+    "place_of_business_contact__right_column_content": pob_right_column,
+    "place_of_business_contact__right_column__modifiers": ['right'],
+    
+    "place_of_business_contact__accordion_tabs": accordion_tabs|length > 0 ? accordion_tabs : null,
+    "place_of_business_contact__paragraph_id": node.id(),
+    "place_of_business_contact__accordion_heading_level": 3,
+    "place_of_business_contact__access_info_list": pob_access_info_list,
+    
+    "place_of_business_links": pob_links|render|trim ? true : false,
+    "place_of_business_phones": pob_phones|render|trim ? true : false,
+    "place_of_business_email": pob_email|render|trim ? true : false,
+    "place_of_business_email_2": pob_email_2|render|trim ? true : false,
+    
+    "attributes": attributes,
+  } %}
+    
+    {% block links_block %}{{ pob_links }}{% endblock %}
+    {% block phone_block %}{{ pob_phones }}{% endblock %}
+    {% block email_block %}{{ pob_email }}{% endblock %}
+    {% block email_2_block %}{{ pob_email_2 }}{% endblock %}
+
+    {% block right_column %}
+      {{ pob_right_column }}
+    {% endblock %}
+
+  {% endembed %}
+</div>

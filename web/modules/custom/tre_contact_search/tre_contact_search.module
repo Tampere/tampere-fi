@@ -1,0 +1,398 @@
+<?php
+
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\node\NodeInterface;
+use Drupal\search_api\Entity\Index;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Provides temporary memory storage to hold Person IDs during the save process.
+ */
+function &_tre_contact_search_static_old_persons() {
+  $persons = &drupal_static(__FUNCTION__, []);
+  return $persons;
+}
+
+/**
+ * Recursively extracts Person IDs from paragraph fields across all translations.
+ */
+function _tre_contact_search_extract_person_ids(ContentEntityInterface $entity) {
+  $ids = [];
+
+  // We loop through every available translation to ensure we don't miss
+  // references that only exist in specific language versions of the paragraph.
+  foreach ($entity->getTranslationLanguages() as $langcode => $language) {
+    $translation = $entity->getTranslation($langcode);
+
+    if ($translation->getEntityTypeId() === 'paragraph') {
+      if ($translation->hasField('field_person_liftup') && !$translation->get('field_person_liftup')->isEmpty()) {
+        $ids[] = $translation->get('field_person_liftup')->target_id;
+      }
+      if ($translation->hasField('field_person_liftups') && !$translation->get('field_person_liftups')->isEmpty()) {
+        foreach ($translation->get('field_person_liftups') as $item) {
+          if (!empty($item->target_id)) {
+            $ids[] = $item->target_id;
+          }
+        }
+      }
+    }
+
+    foreach ($translation->getFieldDefinitions() as $field_name => $field_definition) {
+      if ($field_definition->getType() === 'entity_reference_revisions') {
+        if ($translation->hasField($field_name) && !$translation->get($field_name)->isEmpty()) {
+          $target_type = $field_definition->getSetting('target_type'); 
+          
+          foreach ($translation->get($field_name) as $item) {
+            // If the paragraph is new and unsaved, it won't have a revision ID yet,
+            // so we extract directly from the entity object in memory.
+            if ($item->entity && empty($item->target_revision_id)) {
+              $ids = array_merge($ids, _tre_contact_search_extract_person_ids($item->entity));
+            }
+            // For saved paragraphs, we load the exact historical revision from 
+            // the database to bypass caching issues.
+            elseif (!empty($item->target_revision_id)) {
+              $child_entity = \Drupal::entityTypeManager()->getStorage($target_type)->loadRevision($item->target_revision_id);
+              if ($child_entity instanceof ContentEntityInterface) {
+                 $ids = array_merge($ids, _tre_contact_search_extract_person_ids($child_entity));
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return array_unique(array_filter($ids));
+}
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Captures the old state of the node before it is modified. We load the 
+ * unchanged entity directly from the database because $node->original can 
+ * sometimes miss nested paragraph trees or specific translations.
+ */
+function tre_contact_search_node_presave(NodeInterface $node) {
+  if (!$node->isNew()) {
+    $pristine_node = \Drupal::entityTypeManager()->getStorage('node')->loadUnchanged($node->id());
+    
+    $static_old = &_tre_contact_search_static_old_persons();
+    $static_old[$node->id()] = _tre_contact_search_extract_person_ids($pristine_node);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for paragraphs.
+ *
+ * Stores Person IDs from paragraphs before they are modified in the database.
+ * This ensures we catch instances where a referenced Person is swapped out 
+ * for another within an existing paragraph.
+ */
+function tre_contact_search_paragraph_presave(EntityInterface $paragraph) {
+  if ($paragraph->original) {
+    $static_old = &_tre_contact_search_static_old_persons();
+    
+    if (!isset($static_old['paragraph_pool'])) {
+      $static_old['paragraph_pool'] = [];
+    }
+    
+    $ids = _tre_contact_search_extract_person_ids($paragraph->original);
+    $static_old['paragraph_pool'] = array_merge($static_old['paragraph_pool'], $ids);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for paragraphs.
+ *
+ * Captures referenced persons right before a paragraph is explicitly deleted.
+ */
+function tre_contact_search_paragraph_predelete(EntityInterface $paragraph) {
+  $static_old = &_tre_contact_search_static_old_persons();
+  if (!isset($static_old['paragraph_pool'])) {
+    $static_old['paragraph_pool'] = [];
+  }
+  
+  $ids = _tre_contact_search_extract_person_ids($paragraph);
+  $static_old['paragraph_pool'] = array_merge($static_old['paragraph_pool'], $ids);
+}
+
+/**
+ * Implements hook_node_predelete().
+ *
+ * Captures referenced persons right before the parent node is deleted.
+ */
+function tre_contact_search_node_predelete(NodeInterface $node) {
+  $static_old = &_tre_contact_search_static_old_persons();
+  $static_old[$node->id()] = _tre_contact_search_extract_person_ids($node);
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function tre_contact_search_node_insert(NodeInterface $node) {
+  _tre_contact_search_trigger_reindex($node);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function tre_contact_search_node_update(NodeInterface $node) {
+  _tre_contact_search_trigger_reindex($node);
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function tre_contact_search_node_delete(NodeInterface $node) {
+  _tre_contact_search_trigger_reindex($node, TRUE);
+}
+
+/**
+ * Triggers an immediate Search API update for the affected persons.
+ *
+ * Collects IDs from both the previous state (stored in memory) and the new 
+ * state, then flags them for the Search API indexer to process immediately.
+ */
+function _tre_contact_search_trigger_reindex(NodeInterface $node, $is_delete = FALSE) {
+  $static_old = &_tre_contact_search_static_old_persons();
+  
+  $old_persons = $static_old[$node->id()] ?? [];
+  $paragraph_pool = $static_old['paragraph_pool'] ?? [];
+
+  // Skip extracting new persons if the parent node is being deleted.
+  $new_persons = $is_delete ? [] : _tre_contact_search_extract_person_ids($node);
+
+  $person_ids = array_unique(array_filter(array_merge($new_persons, $old_persons, $paragraph_pool)));
+
+  if (empty($person_ids)) {
+    return;
+  }
+
+  try {
+    $datasource_id = 'entity:node';
+    $index = Index::load('contacts_search');
+    
+    if (!$index || !$index->isValidDatasource($datasource_id)) {
+      return;
+    }
+    
+    $tracker = $index->getTrackerInstance();
+    $search_api_ids = [];
+    $languages = \Drupal::languageManager()->getLanguages();
+    
+    // Ensure the person is updated across all active site languages.
+    foreach ($person_ids as $pid) {
+      foreach ($languages as $langcode => $language) {
+        $search_api_ids[] = $datasource_id . '/' . $pid . ':' . $langcode;
+      }
+    }
+    
+    if (!empty($search_api_ids)) {
+      // Tell the tracker these items need updating.
+      $tracker->trackItemsUpdated($search_api_ids);
+      
+      // Load the specific item objects based on the IDs we just tracked.
+      $items_to_index = $index->loadItemsMultiple($search_api_ids);
+      
+      // Immediately index only these specific items, skipping the queue.
+      if (!empty($items_to_index)) {
+        $index->indexSpecificItems($items_to_index);
+      }
+    }
+  } catch (\Exception $e) {
+    \Drupal::logger('tre_contact_search')->error('Search API indexing failed: ' . $e->getMessage());
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function tre_contact_search_preprocess_node__place_of_business__contact_search(&$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  $node = \Drupal::service('entity.repository')->getTranslationFromContext($node);
+  $node_id = $node->id();
+
+  $master_view_mode = 'contact_information_liftup_view_mode';
+
+  $variables['pob_title'] = $node->label();
+  
+  // Basic Fields
+  $fields_to_map = [
+    'pob_summary' => 'field_summary',
+    'pob_addresses' => 'field_addresses',
+    'pob_postaddress' => 'field_address_postal',
+    'pob_links' => 'field_links',
+    'pob_phones' => 'field_additional_phones',
+    'pob_email' => 'field_email',
+    'pob_email_2' => 'field_email_2',
+    'pob_additional_information' => 'field_additional_information',
+  ];
+
+  foreach ($fields_to_map as $var_name => $field_name) {
+    if ($node->hasField($field_name) && !$node->get($field_name)->isEmpty()) {
+      $variables[$var_name] = $node->get($field_name)->view($master_view_mode);
+    } else {
+      $variables[$var_name] = NULL;
+    }
+  }
+
+  // Get title link. If the field is empty, it will remain NULL and the template will render the title without a link.
+  $variables['url'] = NULL;
+
+  if ($node->hasField('field_links') && !$node->get('field_links')->isEmpty()) {
+    $link_item = $node->get('field_links')->first();
+    
+    if (!$link_item->isEmpty()) {
+      $variables['url'] = $link_item->getUrl()->toString();
+    }
+  }
+
+  // Fix missing accessibility icons
+  if ($node->hasField('field_accessibility_and_services') && !$node->get('field_accessibility_and_services')->isEmpty()) {
+    $variables['pob_accessibility_taxonomies'] = $node->get('field_accessibility_and_services')->view('default');
+  } else {
+    $variables['pob_accessibility_taxonomies'] = NULL;
+  }
+
+  $variables['pob_image_gallery'] = ($node->hasField('field_image_gallery') && !$node->get('field_image_gallery')->isEmpty()) 
+    ? $node->get('field_image_gallery')->view('default') 
+    : NULL;
+
+  // Dynamic Accessibility Title
+  if ($node->hasField('field_accessibility_info_title') && !$node->get('field_accessibility_info_title')->isEmpty()) {
+    $field = $node->get('field_accessibility_info_title');
+    $val = $field->value;
+    $allowed_values = $field->getFieldDefinition()->getSetting('allowed_values');
+    $variables['pob_accessibility_title'] = $allowed_values[$val] ?? $val;
+  } else {
+    $variables['pob_accessibility_title'] = t('Esteettömyys ja palvelut');
+  }
+
+  // Right column logic
+  $variables['pob_right_column'] = [];
+  $weight_counter = 10;
+  $hours_combos = [
+    ['hours' => 'field_opening_hours', 'info' => 'field_opening_hours_info'],
+    ['hours' => 'field_opening_hours_2', 'info' => 'field_opening_hours_info_2'],
+    ['hours' => 'field_opening_hours_3', 'info' => 'field_opening_hours_info_3'],
+  ];
+
+  foreach ($hours_combos as $combo) {
+    if ($node->hasField($combo['hours']) && !$node->get($combo['hours'])->isEmpty()) {
+      $view = $node->get($combo['hours'])->view($master_view_mode);
+      if ($node->hasField($combo['info']) && !$node->get($combo['info'])->isEmpty()) {
+        $view['#title'] = $node->get($combo['info'])->getString();
+        $view['#label_display'] = 'above';
+      }
+      $view['#weight'] = $weight_counter++;
+      $view['#attributes']['class'][] = 'margin-bottom'; 
+      $variables['pob_right_column'][] = $view;
+    }
+  }
+
+  if ($node->hasField('field_exception_hours') && !$node->get('field_exception_hours')->isEmpty()) {
+    $exc_view = $node->get('field_exception_hours')->view($master_view_mode);
+    $exc_view['#weight'] = $weight_counter++;
+    $variables['pob_right_column'][] = $exc_view;
+  }
+
+  // Accessibility Sentences & Map logic
+  $access_info_list = [];
+  $locations = [];
+  
+  $lat_field = \Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface::LATITUDE_FIELD_NAME;
+  $lon_field = \Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface::LONGITUDE_FIELD_NAME;
+
+  if ($node->hasField('field_addresses')) {
+    foreach ($node->get('field_addresses')->referencedEntities() as $addr_node) {
+      $addr_node = \Drupal::service('entity.repository')->getTranslationFromContext($addr_node);
+
+      if ($addr_node->hasField('field_access_info_sentences_json') && !empty($json = $addr_node->get('field_access_info_sentences_json')->value)) {
+        if ($decoded = json_decode($json, TRUE)) {
+          $access_info_list = array_merge($access_info_list, $decoded);
+        }
+      }
+
+      if ($addr_node->hasField($lat_field) && $addr_node->hasField($lon_field) && !$addr_node->get($lat_field)->isEmpty() && !$addr_node->get($lon_field)->isEmpty()) {
+        $locations[] = [
+          'latitude' => $addr_node->get($lat_field)->getString(),
+          'longitude' => $addr_node->get($lon_field)->getString()
+        ];
+      }
+    }
+  }
+  
+  $variables['pob_access_info_list'] = $access_info_list;
+
+  if (!empty($locations)) {
+    $helper = \Drupal::service('tre_preprocess_utility_functions.helper_functions');
+    $variables['pob_map'] = $helper->getNodeLiftupMap($node, 'liftup-map');
+    $variables['#attached']['drupalSettings']['tampere']['nodeLiftupLocations'][$node_id] = $locations;
+    $variables['#attached']['drupalSettings']['tampere']['mmlMapIframeDomain'] = \Drupal\Core\Site\Settings::get('mml_map_iframe_domain');
+  }
+}
+
+/**
+ * Implements hook_preprocess_node() for Person nodes in Contact Search.
+ */
+function tre_contact_search_preprocess_node__person__contact_search(&$variables) {
+  /** @var \Drupal\node\NodeInterface $node */
+  $node = $variables['node'];
+  $current_node = \Drupal::service('entity.repository')->getTranslationFromContext($node);
+  
+  $master_view_mode = 'contact_information_liftup_view_mode';
+
+  // Name Construction
+  $first_name = $current_node->hasField('field_first_names') ? $current_node->get('field_first_names')->value : '';
+  $last_name = $current_node->hasField('field_last_name') ? $current_node->get('field_last_name')->value : '';
+  $variables['person_name'] = trim($first_name . ' ' . $last_name) ?: $current_node->label();
+  
+  // Mapping basic fields
+  $fields = [
+    'person_preheading' => 'field_hr_title',
+    'person_organization' => 'field_hr_organizational_unit',
+    'person_phones' => 'field_phone',
+    'person_email' => 'field_email',
+  ];
+
+  foreach ($fields as $var => $field_name) {
+    if ($current_node->hasField($field_name) && !$current_node->get($field_name)->isEmpty()) {
+      $variables[$var] = $current_node->get($field_name)->view($master_view_mode);
+    } else {
+      $variables[$var] = NULL;
+    }
+  }
+
+  // Image logic
+  $image_field_name = 'field_image';
+  $image_render_array = NULL;
+
+  // Check current translation first, then fallback to original node
+  $image_source = (!$current_node->get($image_field_name)->isEmpty()) ? $current_node : $node;
+
+  if ($image_source->hasField($image_field_name) && !$image_source->get($image_field_name)->isEmpty()) {
+    $field_item = $image_source->get($image_field_name)->first();
+    
+    // Check if it's a Media Entity or a direct File/Image
+    $entity = $field_item->entity;
+    
+    if ($entity instanceof \Drupal\media\MediaInterface) {
+      $image_render_array = $entity->get('field_media_image')->view([
+        'label' => 'hidden',
+        'type' => 'responsive_image',
+        'settings' => ['responsive_image_style' => 'contact_information_liftup_responsive_image_style'],
+      ]);
+    } else {
+      $image_render_array = $image_source->get($image_field_name)->view([
+        'label' => 'hidden',
+        'type' => 'responsive_image',
+        'settings' => ['responsive_image_style' => 'contact_information_liftup_responsive_image_style'],
+      ]);
+    }
+  }
+
+  $variables['person_image'] = $image_render_array;
+}

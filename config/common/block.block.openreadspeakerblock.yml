@@ -2,6 +2,8 @@ uuid: bbdf945b-3d0d-4d64-a04c-3536d2909541
 langcode: fi
 status: true
 dependencies:
+  module:
+    - open_readspeaker
   theme:
     - tampere
 id: openreadspeakerblock

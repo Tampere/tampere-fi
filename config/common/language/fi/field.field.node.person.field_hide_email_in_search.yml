@@ -1,0 +1,5 @@
+label: 'Piilota sähköposti haussa'
+description: 'Ei näytetä sähköpostiosoitetta yhteystietohaun hakutuloksessa.'
+settings:
+  on_label: 'Kyllä (Piilota)'
+  off_label: 'Ei (Näytä normaalisti)'

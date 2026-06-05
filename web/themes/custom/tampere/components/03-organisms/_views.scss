@@ -13,4 +13,52 @@
       }
     }
   }
+
+  &--contact-search {
+    .views-exposed-form {
+      margin-bottom: 2.5rem;
+
+      @include large {
+        max-width: 50%;
+      }
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    // Reset button styles
+    button[name='reset'] {
+      @include button-reset;
+      @include link;
+
+      margin: 0;
+      line-height: 1;
+      text-decoration: underline;
+
+      .button__icon {
+        display: none;
+      }
+
+      .button__text {
+        padding: 0;
+      }
+    }
+
+    // Main Search button styles
+    .search-bar__button {
+      max-width: unset;
+      width: unset;
+      padding: $space-m-plus $space-l;
+      white-space: nowrap;
+
+      .search-bar__icon {
+        margin-left: $space-s; 
+      }
+    }
+  }
 }

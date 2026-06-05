@@ -1,0 +1,11 @@
+uuid: a9cbb04f-c6a6-4a52-8503-cf3d4f54fd69
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.contact_search
+label: 'Contact Search'
+description: ''
+targetEntityType: node
+cache: true

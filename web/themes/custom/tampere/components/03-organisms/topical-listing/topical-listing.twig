@@ -55,7 +55,7 @@
 {% set liftups_wrapper_element = liftups_wrapper_element|default("ul") %}
 
 <div {{ bem(topical_listing__base_class, topical_listing__modifiers|default([]), topical_listing__blockname, topical_listing__extra_classes) }}>
-  <div {{ bem("wrapper", topical_listing__wrapper__modifiers|default([]), topical_listing__base_class) }} role="region" aria-labelledby="{{ topical_listing__heading_id }}">
+  <div {{ bem("wrapper", topical_listing__wrapper__modifiers|default([]), topical_listing__base_class) }} role="region" aria-label="{{ 'Content listing'|t({}, {'context': 'Accessibility landmark label for topical listing'}) }}" aria-labelledby="{{ topical_listing__heading_id }}">
     {# Heading #}
     {% if topical_listing__heading %}
       {{ title_prefix }}

@@ -9,7 +9,7 @@ core_version_requirement: '>=9'
 # Libraries (These are loaded on every page. Use https://www.drupal.org/developing/api/8/assets#twig whenever possible.)
 libraries:
   - 'tampere/global'
-  # - 'tampere/hyphenation'
+  - 'tampere/hyphenation'
 
 # Libraries override allows you to remove libraries added by other projects.
 # libraries-override:

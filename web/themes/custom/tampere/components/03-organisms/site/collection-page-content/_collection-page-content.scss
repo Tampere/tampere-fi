@@ -24,4 +24,15 @@
       padding: 0 $gutter-large;
     }
   }
+
+  .search-blocks-divider {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border-top: $border-default;
+  }
+
+  .search-container-persons {
+    margin-bottom: 4rem;
+  }
 }

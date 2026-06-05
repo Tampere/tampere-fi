@@ -1,0 +1,7 @@
+name: TRE Generate Menu From Groups
+type: module
+description: Generates menu structures from Group hierarchy data.
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - group:group

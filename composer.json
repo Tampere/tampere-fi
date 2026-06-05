@@ -552,6 +552,9 @@
             },
             "drupal/ai_provider_deepl": {
                 "3549076: Use glossary feature": "https://git.drupalcode.org/project/ai_provider_deepl/-/merge_requests/3.patch"
+            },
+            "drupal/open_readspeaker": {
+                "3533644: Incorrect use of the customTransLangs configuration": "https://git.drupalcode.org/project/open_readspeaker/-/merge_requests/40.diff"
             }
         },
         "merge-plugin": {

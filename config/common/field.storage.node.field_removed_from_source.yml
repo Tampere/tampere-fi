@@ -1,0 +1,18 @@
+uuid: 5bf38685-b6ee-4c3b-a4f1-75b0a9734178
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_removed_from_source
+field_name: field_removed_from_source
+entity_type: node
+type: timestamp
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

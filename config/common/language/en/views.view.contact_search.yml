@@ -1,0 +1,26 @@
+display:
+  block_locations:
+    display_options:
+      header:
+        area:
+          content:
+            value: '<p>Search for service locations by name.</p>'
+            format: basic_html
+  block_persons:
+    display_options:
+      header:
+        area:
+          content:
+            value: '<p>Search for persons by first name and/or last name.</p>'
+            format: basic_html
+  default:
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Clear
+          submit_button: Search
+      empty:
+        area:
+          content:
+            value: '<p>No results</p>'
+            format: footer_text

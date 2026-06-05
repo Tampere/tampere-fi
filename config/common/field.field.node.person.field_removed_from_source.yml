@@ -1,0 +1,19 @@
+uuid: 7a95d1ba-c5a8-47ca-bde5-7730e87f5f20
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_removed_from_source
+    - node.type.person
+id: node.person.field_removed_from_source
+field_name: field_removed_from_source
+entity_type: node
+bundle: person
+label: 'Removed from source'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for the submit buttons in the Contact Search view.
+ */
+#}
+
+{% if attributes.name == 'reset' %}
+  {% include "@atoms/06-buttons/01-button.twig" with {
+    "button_attributes": attributes,
+    "button_content": attributes.value
+  } %}
+{% else %}
+  {% include "@atoms/06-buttons/01-button.twig" with {
+    "button_blockname": "search-bar",
+    "button_attributes": attributes,
+    "button_icon_name": "search",
+    "button_icon_blockname": "search-bar",
+    "button_content": attributes.value
+  } %}
+{% endif %}
