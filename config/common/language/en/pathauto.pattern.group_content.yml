@@ -1,4 +1,5 @@
 label: 'Group relationship'
+pattern: 'group/[group_content:group:id]/[group_content:pretty-path-key]/[group_content:id]'
 relationships:
   'group_content:langcode:language':
     label: Language

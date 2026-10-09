@@ -5,6 +5,8 @@
  * Hook implementations for tre_news_email_release module.
  */
 
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\node\NodeInterface;
 use Symfony\Component\Mime\Address;
@@ -51,5 +53,115 @@ function tre_news_email_release_mail_alter(&$message) {
     $original_to = $message['to'];
     $message['to'] = 'undisclosed-recipients:;';
     $message['headers']['Bcc'] = $original_to;
+  }
+}
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Removes render-cache keys during email sending so the renderer always
+ * produces a fresh render per language. In cron, all translations share the
+ * same cache key because languages:language_content resolves to the site
+ * default, meaning a cached Finnish render would otherwise be served for
+ * English without running any preprocess hooks.
+ */
+function tre_news_email_release_entity_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  if (empty(drupal_static('tre_news_email_release_rendering_langcode'))) {
+    return;
+  }
+  unset($build['#cache']['keys']);
+  $build['#cache']['max-age'] = 0;
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ *
+ * Swaps the paragraph to its correct translation. In cron the content
+ * language context is always the site default, so getTranslationFromContext()
+ * would otherwise return the Finnish paragraph for every language.
+ */
+function tre_news_email_release_preprocess_paragraph(&$variables) {
+  $langcode = drupal_static('tre_news_email_release_rendering_langcode');
+  if (empty($langcode)) {
+    return;
+  }
+
+  $paragraph = $variables['paragraph'];
+  if (!($paragraph instanceof \Drupal\paragraphs\ParagraphInterface)) {
+    return;
+  }
+
+  if ($paragraph->hasTranslation($langcode)) {
+    $variables['paragraph'] = $paragraph->getTranslation($langcode);
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Overrides DS field labels with the correct language. DS caches label
+ * settings in a PHP static keyed by entity type/bundle/view mode, so when
+ * two translations are rendered in the same cron run the second render reuses
+ * the first language's labels. This hook reads the label directly from the
+ * language config override storage, bypassing that static.
+ *
+ * For fields using DS field templates (expert, minimal, reset), DS injects a
+ * second ds_preprocess_field call into the suggestion's preprocess chain,
+ * which runs after this generic hook and resets the label. The
+ * suggestion-specific hooks below run last and apply the override correctly.
+ */
+function tre_news_email_release_preprocess_field(&$variables) {
+  _tre_news_email_release_apply_ds_label_override($variables);
+}
+
+/**
+ * Implements hook_preprocess_field__ds_field_expert().
+ */
+function tre_news_email_release_preprocess_field__ds_field_expert(&$variables) {
+  _tre_news_email_release_apply_ds_label_override($variables);
+}
+
+/**
+ * Implements hook_preprocess_field__ds_field_minimal().
+ */
+function tre_news_email_release_preprocess_field__ds_field_minimal(&$variables) {
+  _tre_news_email_release_apply_ds_label_override($variables);
+}
+
+/**
+ * Implements hook_preprocess_field__ds_field_reset().
+ */
+function tre_news_email_release_preprocess_field__ds_field_reset(&$variables) {
+  _tre_news_email_release_apply_ds_label_override($variables);
+}
+
+/**
+ * Reads the correct-language DS 'lb' label and sets $variables['label'].
+ */
+function _tre_news_email_release_apply_ds_label_override(array &$variables): void {
+  $langcode = drupal_static('tre_news_email_release_rendering_langcode');
+  if (empty($langcode)) {
+    return;
+  }
+
+  $view_mode = $variables['element']['#ds_view_mode'] ?? $variables['element']['#view_mode'];
+  $field_name = $variables['element']['#field_name'];
+  $entity_type = $variables['element']['#entity_type'];
+  $bundle = $variables['element']['#bundle'];
+  $config_name = "core.entity_view_display.{$entity_type}.{$bundle}.{$view_mode}";
+  $lb_path = "content.{$field_name}.third_party_settings.ds.ft.settings.lb";
+
+  /** @var \Drupal\language\Config\LanguageConfigFactoryOverrideInterface $override_service */
+  $override_service = \Drupal::service('language.config_factory_override');
+  $lb = $override_service->getOverride($langcode, $config_name)->get($lb_path);
+
+  // Fall back to base config for languages without an override (the site
+  // default language stores its labels in the base config, not an overlay).
+  if ($lb === NULL) {
+    $lb = \Drupal::configFactory()->getEditable($config_name)->get($lb_path);
+  }
+
+  if ($lb !== NULL) {
+    $variables['label'] = $lb;
   }
 }

@@ -1,0 +1,10 @@
+name: 'TRE AI Alt Text'
+type: module
+description: 'Adds an AI-powered "Request alternative text from AI" button to the image field on media edit forms and the media library add dialog.'
+core_version_requirement: '>=10'
+package: 'TRE'
+dependencies:
+  - drupal:media
+  - drupal:media_library
+  - ai:ai
+  - ai_auto_reference:ai_auto_reference

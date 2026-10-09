@@ -1,11 +1,9 @@
-label: 'Moderated content'
-description: 'Find and moderate content.'
 display:
   default:
-    display_title: Default
     display_options:
-      title: 'Moderated content'
       fields:
+        revision_uid:
+          label: 'Latest editor'
         title:
           label: Title
           separator: ', '
@@ -20,8 +18,23 @@ display:
           separator: ', '
         operations:
           label: Operations
+      filters:
         revision_uid:
-          label: 'Latest editor'
+          expose:
+            label: 'Latest editor'
+        title:
+          expose:
+            label: Title
+        type:
+          expose:
+            label: 'Content type'
+        moderation_state:
+          expose:
+            label: 'Moderation state'
+        langcode:
+          expose:
+            label: Language
+      title: 'Moderated content'
       pager:
         options:
           tags:
@@ -43,21 +56,8 @@ display:
       empty:
         area_text_custom:
           content: 'No moderated content available. Only pending versions of content, such as drafts, are listed here.'
-      filters:
-        title:
-          expose:
-            label: Title
-        type:
-          expose:
-            label: 'Content type'
-        moderation_state:
-          expose:
-            label: 'Moderation state'
-        langcode:
-          expose:
-            label: Language
-        revision_uid:
-          expose:
-            label: 'Latest editor'
+    display_title: Default
   moderated_content:
     display_title: 'Moderated content'
+label: 'Moderated content'
+description: 'Find and moderate content.'

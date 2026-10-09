@@ -1,0 +1,14 @@
+diff --git a/migrate_override.info.yml b/migrate_override.info.yml
+index 0b8adf0..ae3afac 100644
+--- a/migrate_override.info.yml
++++ b/migrate_override.info.yml
+@@ -1,8 +1,7 @@
+ name: 'Migrate Override'
+ type: module
+ description: 'Allow field level overrides of migrated content'
+-core: 8.x
+-core_version_requirement: ^8 || ^9 || ^10
++core_version_requirement: ^8 || ^9 || ^10 || ^11
+ package: 'Migration'
+ dependencies:
+   - drupal:migrate

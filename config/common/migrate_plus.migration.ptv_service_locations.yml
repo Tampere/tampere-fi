@@ -67,6 +67,9 @@ process:
         bundle: geographical_areas
         bundle_key: vid
         value_key: name
+  field_place_area_text:
+    plugin: get
+    source: place_area_text
   field_epsg_3067_point_strings:
     plugin: get
     source: epsg_points
@@ -156,6 +159,26 @@ process:
     -
       plugin: skip_on_empty
       method: process
+  field_opening_hours_4:
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 3
+    -
+      plugin: skip_on_empty
+      method: process
+  field_opening_hours_5:
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 4
+    -
+      plugin: skip_on_empty
+      method: process
   field_opening_hours_info:
     -
       plugin: extract
@@ -185,6 +208,28 @@ process:
       default: {  }
       index:
         - 2
+      language: fi
+    -
+      plugin: skip_on_empty
+      method: process
+  field_opening_hours_info_4:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 3
+      language: fi
+    -
+      plugin: skip_on_empty
+      method: process
+  field_opening_hours_info_5:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 4
       language: fi
     -
       plugin: skip_on_empty

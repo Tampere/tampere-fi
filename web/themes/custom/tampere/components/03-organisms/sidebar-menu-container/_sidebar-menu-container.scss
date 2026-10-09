@@ -125,6 +125,14 @@
     --sidebar-menu-container-border-color: #{clr(primary-light)};
   }
 
+  // Hide the empty sidebar menu container on mobile only. On desktop it is
+  // kept visible so the page does not shift when the menu has no items.
+  &--empty {
+    @include large-down {
+      display: none;
+    }
+  }
+
   &--is-heading {
     @include wrapper($h-padding: 0, $h-padding-large: 0);
 

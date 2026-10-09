@@ -172,3 +172,10 @@ cookie-fix:
   dependencies:
     - core/drupal
     - core/once
+
+menu-new-menu:
+  js:
+    dist/js/02-molecules/menus/new-menu/menu-new-menu.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

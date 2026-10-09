@@ -27,9 +27,14 @@ dependencies:
     - field.field.node.place_of_business.field_opening_hours
     - field.field.node.place_of_business.field_opening_hours_2
     - field.field.node.place_of_business.field_opening_hours_3
+    - field.field.node.place_of_business.field_opening_hours_4
+    - field.field.node.place_of_business.field_opening_hours_5
     - field.field.node.place_of_business.field_opening_hours_info
     - field.field.node.place_of_business.field_opening_hours_info_2
     - field.field.node.place_of_business.field_opening_hours_info_3
+    - field.field.node.place_of_business.field_opening_hours_info_4
+    - field.field.node.place_of_business.field_opening_hours_info_5
+    - field.field.node.place_of_business.field_place_area_text
     - field.field.node.place_of_business.field_search_keywords
     - field.field.node.place_of_business.field_summary
     - field.field.node.place_of_business.field_topics
@@ -67,20 +72,27 @@ third_party_settings:
         - field_links
         - field_address_postal
         - field_additional_phones
-        - field_geographical_areas
+        - field_place_area_text
         - field_email
+        - field_geographical_areas
         - field_email_2
       right_column:
         - group_opening_hours_1
         - group_opening_hours_2
         - group_opening_hours_3
         - field_opening_hours_info
-        - field_exception_hours
+        - group_aukioloajat_4
         - field_opening_hours
+        - group_aukioloajat_5
+        - field_opening_hours_info_5
+        - field_opening_hours_5
+        - field_exception_hours
         - field_opening_hours_info_2
         - field_opening_hours_2
         - field_opening_hours_info_3
         - field_opening_hours_3
+        - field_opening_hours_info_4
+        - field_opening_hours_4
       post_columns_content:
         - field_additional_information
   field_group:
@@ -88,6 +100,7 @@ third_party_settings:
       children:
         - field_addresses
         - field_address_postal
+        - field_place_area_text
         - field_geographical_areas
       label: Osoitteet
       parent_name: ''
@@ -210,6 +223,42 @@ third_party_settings:
             display_colon_after_label: '1'
         show_empty_fields: 0
         pattern_variant: above
+    group_aukioloajat_4:
+      children:
+        - field_opening_hours_info_4
+        - field_opening_hours_4
+      label: 'Aukioloajat 4'
+      parent_name: ''
+      region: right_column
+      weight: 12
+      format_type: pattern_formatter
+      format_settings:
+        pattern: regular_field
+        pattern_mapping: {  }
+        pattern_settings:
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+        label_as_html: 0
+        pattern_variant: above
+    group_aukioloajat_5:
+      children:
+        - field_opening_hours_info_5
+        - field_opening_hours_5
+      label: 'Aukioloajat 5'
+      parent_name: ''
+      region: right_column
+      weight: 13
+      format_type: pattern_formatter
+      format_settings:
+        pattern: regular_field
+        pattern_mapping: {  }
+        pattern_settings:
+          regular_field:
+            display_colon_after_label: 0
+        show_empty_fields: 0
+        label_as_html: 0
+        pattern_variant: above
 id: node.place_of_business.contact_information_liftup_view_mode
 targetEntityType: node
 bundle: place_of_business
@@ -227,7 +276,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 13
+    weight: 15
     region: post_columns_content
   field_additional_phones:
     type: tre_phone_field_plain
@@ -426,7 +475,7 @@ content:
             lb: ''
             lb-col: false
             classes: {  }
-    weight: 12
+    weight: 14
     region: right_column
   field_geographical_areas:
     type: entity_reference_label
@@ -442,7 +491,7 @@ content:
             lb: ''
             lb-col: true
             classes: {  }
-    weight: 7
+    weight: 8
     region: left_column
   field_hr_organizational_unit:
     type: entity_reference_label
@@ -611,6 +660,98 @@ content:
             classes: {  }
     weight: 19
     region: right_column
+  field_opening_hours_4:
+    type: office_hours
+    label: above
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_empty: false
+      show_closed: all
+      closed_format: Closed
+      all_day_format: 'All day open'
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        replace_exceptions: false
+        restrict_exceptions_to_num_days: 7
+        restrict_seasons_to_num_days: 366
+        date_format: long
+        all_day_format: 'All day open'
+      timezone_field: ''
+      office_hours_first_day: ''
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 22
+    region: right_column
+  field_opening_hours_5:
+    type: office_hours
+    label: above
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_empty: false
+      show_closed: all
+      closed_format: Closed
+      all_day_format: 'All day open'
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        replace_exceptions: false
+        restrict_exceptions_to_num_days: 7
+        restrict_seasons_to_num_days: 366
+        date_format: long
+        all_day_format: 'All day open'
+      timezone_field: ''
+      office_hours_first_day: ''
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: false
+            classes: {  }
+    weight: 14
+    region: right_column
   field_opening_hours_info:
     type: basic_string
     label: hidden
@@ -647,6 +788,30 @@ content:
             lb: ''
     weight: 18
     region: right_column
+  field_opening_hours_info_4:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 21
+    region: right_column
+  field_opening_hours_info_5:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: reset
+          settings:
+            lb: ''
+    weight: 13
+    region: right_column
   field_phone:
     type: string
     label: above
@@ -662,6 +827,13 @@ content:
             classes: {  }
     weight: 3
     region: footer
+  field_place_area_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: left_column
   field_summary:
     type: basic_string
     label: hidden

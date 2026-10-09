@@ -7,12 +7,14 @@ dependencies:
     - entity_browser.browser.all_places_entity_browser
     - entity_browser.browser.persons_entity_browser
     - filter.format.notice_html
+    - media.type.audio
     - media.type.file
     - media.type.image
     - media.type.remote_video
     - node.type.rich_article
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_auto_reference
     - ai_translate_textfield
     - content_moderation
     - content_translation
@@ -37,6 +39,7 @@ weight: 1
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access ai auto-reference suggestion tools'
   - 'access all_content_entity_browser entity browser pages'
   - 'access all_places_entity_browser entity browser pages'
   - 'access content overview'
@@ -49,6 +52,7 @@ permissions:
   - 'add scheduled transitions node rich_article'
   - 'addrow tablefield'
   - 'clone rich_article content'
+  - 'create audio media'
   - 'create file media'
   - 'create image media'
   - 'create media'
@@ -56,6 +60,7 @@ permissions:
   - 'create paragraph content accordion_text_content'
   - 'create paragraph content accordions'
   - 'create paragraph content attachment'
+  - 'create paragraph content audio_player'
   - 'create paragraph content balanced_content_liftup'
   - 'create paragraph content blockquote'
   - 'create paragraph content city_construction_project_card'
@@ -120,14 +125,18 @@ permissions:
   - 'create paragraph content zoning_project_cards'
   - 'create remote_video media'
   - 'create rich_article content'
+  - 'delete any audio media'
+  - 'delete any audio media revisions'
   - 'delete any rich_article content'
   - 'delete files immediately'
   - 'delete media'
+  - 'delete own audio media'
   - 'delete own files'
   - 'delete paragraph content accordion_item'
   - 'delete paragraph content accordion_text_content'
   - 'delete paragraph content accordions'
   - 'delete paragraph content attachment'
+  - 'delete paragraph content audio_player'
   - 'delete paragraph content balanced_content_liftup'
   - 'delete paragraph content blockquote'
   - 'delete paragraph content city_construction_project_card'
@@ -190,10 +199,13 @@ permissions:
   - 'delete paragraph content video_embed'
   - 'delete paragraph content zoning_project_card'
   - 'delete paragraph content zoning_project_cards'
+  - 'edit any audio media'
   - 'edit any rich_article content'
+  - 'edit own audio media'
   - 'import tablefield'
   - 'rebuild tablefield'
   - 'reschedule scheduled transitions node rich_article'
+  - 'revert any audio media revisions'
   - 'revert rich_article revisions'
   - 'translate editable entities'
   - 'update any media'
@@ -201,6 +213,7 @@ permissions:
   - 'update paragraph content accordion_text_content'
   - 'update paragraph content accordions'
   - 'update paragraph content attachment'
+  - 'update paragraph content audio_player'
   - 'update paragraph content balanced_content_liftup'
   - 'update paragraph content blockquote'
   - 'update paragraph content city_construction_project_card'
@@ -269,6 +282,7 @@ permissions:
   - 'use scheduled_transitions transition restore_draft'
   - 'use text format notice_html'
   - 'view all media revisions'
+  - 'view any audio media revisions'
   - 'view any unpublished content'
   - 'view latest version'
   - 'view own unpublished media'

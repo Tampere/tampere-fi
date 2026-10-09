@@ -1,0 +1,19 @@
+uuid: e2522b54-941a-4bb4-ae1d-63c1559bbc78
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - ai_auto_reference
+id: auto_reference
+label: 'AI Auto-reference'
+variables:
+  -
+    name: contents
+    help_text: 'The contents to analyze to suggest automated references for.'
+    required: true
+  -
+    name: possible_results
+    help_text: 'The target terms or nodes that could be suitable that the AI should consider.'
+    required: true
+tokens: {  }

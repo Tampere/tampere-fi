@@ -1,0 +1,24 @@
+uuid: 4bcc66d1-0f9c-45a4-a60c-5d9f3a2c16c8
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ai_auto_reference
+id: auto_reference__default_single
+label: 'Default prompt for a single target reference'
+type: auto_reference
+prompt: |
+  For the contents within the code block: 
+  ```{contents}```
+
+  Which one of the following `|` separated options are highly relevant and moderately relevant?
+  ```{possible_results}```
+
+  Return a single selection from within the square brackets only and as a valid RFC8259 compliant JSON array within one array key `highly` without deviation.
+  Example:
+  {
+      "highly": [
+          "Your suggestion here"
+      ]
+  }

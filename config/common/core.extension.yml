@@ -19,7 +19,6 @@ module:
   block: 0
   block_content: 0
   breakpoint: 0
-  cache_tags: 0
   ckeditor5: 0
   ckeditor5_paste_filter: 0
   cloudflare_purge: 0
@@ -53,6 +52,7 @@ module:
   entity: 0
   entity_browser: 0
   entity_log: 0
+  entity_notify: 0
   entity_reference_revisions: 0
   entity_reference_unpublished: 0
   entity_usage: 0
@@ -74,6 +74,7 @@ module:
   file: 0
   file_delete: 0
   filter: 0
+  filter_perms: 0
   flexible_permissions: 0
   focal_point: 0
   form_display_field_machine_name: 0
@@ -144,7 +145,6 @@ module:
   openapi_ui_swagger: 0
   openid_connect: 0
   openid_connect_windows_aad: 0
-  openy_gtranslate: 0
   options: 0
   options_table: 0
   override_node_options: 0
@@ -152,17 +152,20 @@ module:
   paragraph_view_mode: 0
   paragraphs_admin: 0
   paragraphs_asymmetric_translation_widgets: 0
+  paragraphs_features: 0
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
-  path_guard: 0
   permission_watchdog: 0
   phpass: 0
   preprocess: 0
   prevent_homepage_deletion: 0
+  protected_pages: 0
   purge: 0
   purge_drush: 0
   purge_file: 0
+  purge_processor_cron: 0
+  purge_processor_lateruntime: 0
   purge_queuer_coretags: 0
   purge_tokens: 0
   purge_ui: 0
@@ -180,7 +183,6 @@ module:
   scheduled_transitions: 0
   schemata: 0
   schemata_json_schema: 0
-  scn: 0
   search_api: 0
   search_api_autocomplete: 0
   search_api_exclude_entity: 0
@@ -196,10 +198,10 @@ module:
   svg_image_field: 0
   syslog: 0
   system: 0
-  system_status: 0
   tablefield: 0
   tamper: 0
   taxonomy: 0
+  telegram_api: 0
   telephone: 0
   telephone_plus: 0
   term_reference_tree: 0
@@ -209,7 +211,9 @@ module:
   token: 0
   toolbar: 0
   tre_admin_theme_modifications: 0
+  tre_ai_alt_text: 0
   tre_ai_auto_reference: 0
+  tre_ai_page_summary: 0
   tre_alphabetical_job_titles: 0
   tre_breadcrumbs_custom: 0
   tre_cloned_node_alteration: 0
@@ -273,7 +277,6 @@ module:
   update: 0
   user: 0
   username_enumeration_prevention: 0
-  variationcache: 0
   varnish_focal_point_purge: 0
   varnish_image_purge: 0
   varnish_purge_tags: 0

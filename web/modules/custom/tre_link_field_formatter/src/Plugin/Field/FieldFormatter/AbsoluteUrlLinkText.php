@@ -32,6 +32,25 @@ class AbsoluteUrlLinkText extends LinkFormatter {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
+    $entity = $items->getEntity();
+    /**
+     * Part of the PTV 12 updates / improvements:
+     * Preserve the original link title for place of business and service channel
+     * links instead of replacing it with the URL.
+     */
+    if (
+      in_array($entity->bundle(), ['place_of_business', 'service_channel'], TRUE)
+      && $items->getName() === 'field_links'
+    ) {
+      $elements = parent::viewElements($items, $langcode);
+
+      foreach ($elements as &$element) {
+        $element['#options']['attributes']['class'][] = 'link';
+      }
+
+      return $elements;
+    }
+
     $options = ['absolute' => TRUE];
 
     /** @var \Drupal\link\Plugin\Field\FieldType\LinkItem $item */

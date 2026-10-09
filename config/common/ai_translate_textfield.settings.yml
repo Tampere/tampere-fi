@@ -1,9 +1,13 @@
 _core:
   default_config_hash: _5K3fTbQA3g3zKYrcHTDpA4HdQwalmhgaUZcZXqpWcQ
 langcode: fi
-enabled_languages:
-  - en
-provider: deepl
+languages:
+  fi:
+    disabled: true
+    model: deepl__default
+  en:
+    disabled: false
+    model: deepl__default
 button_text: 'Käännä tekoälyn avulla'
 warning_enabled: true
 dialog_title: 'Huomio! Lue tämä, ennen kuin jatkat'
@@ -18,5 +22,4 @@ translator_config:
     class_name: \Drupal\ai_translate_textfield\DeepLTranslator
     api_key: override-this-in-a-settings-file
     api_endpoint: 'https://api.deepl.com/v2/translate'
-model: default
 strip_tags: null

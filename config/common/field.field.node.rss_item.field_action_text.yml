@@ -9,7 +9,7 @@ id: node.rss_item.field_action_text
 field_name: field_action_text
 entity_type: node
 bundle: rss_item
-label: toimenpideteksti
+label: Toimenpideteksti
 description: ''
 required: false
 translatable: true

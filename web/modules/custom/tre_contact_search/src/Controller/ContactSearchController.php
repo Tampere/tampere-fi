@@ -27,7 +27,7 @@ class ContactSearchController extends ControllerBase {
     $build['wrapper']['header'] = [
       '#type' => 'container',
       '#attributes' => [
-        'class' => ['collection-page-content__header'],
+        'class' => ['collection-page-content__header', 'search-container-header'],
       ],
       'page_title' => [
         '#type' => 'html_tag',
@@ -99,19 +99,6 @@ class ContactSearchController extends ControllerBase {
         '#name' => 'contact_search',
         '#display_id' => 'block_persons',
       ],
-    ];
-
-    // Prevent search engines from indexing the page
-    $build['#attached']['html_head'][] = [
-      [
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => [
-          'name' => 'robots',
-          'content' => 'noindex, nofollow',
-        ],
-      ],
-      'contact_search_noindex',
     ];
 
     // Ensure the page cache is invalidated if the view changes.

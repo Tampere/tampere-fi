@@ -2,6 +2,8 @@ uuid: 52d63f07-85f0-4aac-ab3a-11a865e11173
 langcode: en
 status: true
 dependencies:
+  config:
+    - media.type.image
   module:
     - media
 _core:
@@ -9,12 +11,11 @@ _core:
 id: media_image
 label: 'Media Image'
 type: 'canonical_entities:media'
-pattern: 'image/[media:name]'
+pattern: '/image/[media:name]'
 selection_criteria:
   a56ceba4-5873-432b-9cf1-363dd536347b:
     id: 'entity_bundle:media'
     negate: false
-    uuid: a56ceba4-5873-432b-9cf1-363dd536347b
     context_mapping:
       media: media
     bundles:

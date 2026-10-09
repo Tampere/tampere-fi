@@ -1,0 +1,22 @@
+uuid: 6032d22d-f1b0-447f-bf99-aee693af5a9d
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.listing_content
+id: node.listing_content.promote
+field_name: promote
+entity_type: node
+bundle: listing_content
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

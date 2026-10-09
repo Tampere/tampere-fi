@@ -11,7 +11,7 @@ id: node.rss_item.field_publication_time
 field_name: field_publication_time
 entity_type: node
 bundle: rss_item
-label: julkaisuAlkaa
+label: 'Julkaisu alkaa'
 description: ''
 required: false
 translatable: true

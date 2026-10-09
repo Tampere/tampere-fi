@@ -68,6 +68,7 @@
       flex-wrap: nowrap;
       gap: $space-l;
       justify-content: space-between;
+      flex-grow: 1;
     }
   }
 
@@ -87,7 +88,6 @@
   &__heading {
     @include word-wrap;
 
-    border-bottom: $border-thick-transparent;
     font-size: $font-16;
     font-weight: $font-weight-regular;
     line-height: 1.75;

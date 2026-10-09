@@ -1,0 +1,30 @@
+# Finnish translation of tre_ai_page_summary
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+
+msgid "Request a summary from AI"
+msgstr "Pyydä tiivistelmä tekoälyltä"
+
+msgid "Generating summary..."
+msgstr "Luodaan tiivistelmää..."
+
+msgid "Use this summary"
+msgstr "Käytä tätä tiivistelmää"
+
+msgid "Discard"
+msgstr "Hylkää"
+
+msgid "AI provider is not configured. Please configure the AI Auto Reference settings first."
+msgstr "Tekoälypalvelua ei ole määritetty. Määritä AI Auto Reference -asetukset ensin."
+
+msgid "The AI returned an empty response. Please try again."
+msgstr "Tekoäly palautti tyhjän vastauksen. Yritä uudelleen."
+
+msgid "Failed to generate AI summary. Please try again."
+msgstr "Tekoälytiivistelmän luominen epäonnistui. Yritä uudelleen."
+
+msgid "Please note – check that the summary text is clear and accurate before approving it for use."
+msgstr "Huomio – tarkista tiivistelmätekstin selkeys ja oikeellisuus ennen kuin hyväksyt sen käyttöön."

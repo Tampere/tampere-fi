@@ -87,6 +87,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 10
           total_pages: null
           id: 0
@@ -104,7 +105,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 3
-          pagination_heading_level: h4
       exposed_form:
         type: bef
         options:
@@ -122,12 +122,12 @@ display:
               autosubmit: false
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
               secondary_label: Lisävaihtoehdot
               secondary_open: false
-              autosubmit_textfield_minimum_length: 3
             filter:
               type:
                 plugin_id: default
@@ -136,8 +136,8 @@ display:
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
-                  is_secondary: false
                   collapsible_disable_automatic_open: false
+                  is_secondary: false
                   hide_label: false
               field_topics_target_id:
                 plugin_id: default
@@ -146,8 +146,8 @@ display:
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
-                  is_secondary: false
                   collapsible_disable_automatic_open: false
+                  is_secondary: false
                   hide_label: false
               field_geographical_areas_target_id:
                 plugin_id: default
@@ -156,8 +156,8 @@ display:
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
-                  is_secondary: false
                   collapsible_disable_automatic_open: false
+                  is_secondary: false
                   hide_label: false
               field_life_situations_target_id:
                 plugin_id: default
@@ -166,15 +166,17 @@ display:
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
-                  is_secondary: false
                   collapsible_disable_automatic_open: false
+                  is_secondary: false
                   hide_label: false
               published_at:
                 plugin_id: bef_datepicker
                 advanced:
                   placeholder_text: ''
                   collapsible: false
+                  collapsible_disable_automatic_open: false
                   is_secondary: false
+                  hide_label: false
                   datepicker_options:
                     altField: ''
                     altFormat: ''
@@ -212,14 +214,14 @@ display:
                     weekHeader: ''
                     yearRange: ''
                     yearSuffix: ''
-                  collapsible_disable_automatic_open: false
-                  hide_label: false
               published_at_1:
                 plugin_id: bef_datepicker
                 advanced:
                   placeholder_text: ''
                   collapsible: false
+                  collapsible_disable_automatic_open: false
                   is_secondary: false
+                  hide_label: false
                   datepicker_options:
                     altField: ''
                     altFormat: ''
@@ -257,8 +259,6 @@ display:
                     weekHeader: ''
                     yearRange: ''
                     yearSuffix: ''
-                  collapsible_disable_automatic_open: false
-                  hide_label: false
       access:
         type: perm
         options:
@@ -417,25 +417,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: true
           is_grouped: true
           group_info:
@@ -553,25 +534,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -617,25 +579,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -681,25 +624,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -751,25 +675,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              participation_section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: pp.kk.vvvv
@@ -817,25 +722,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              participation_section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: pp.kk.vvvv
@@ -877,25 +763,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -1044,114 +911,7 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:core.entity_view_display.node.basic_content_page.default'
-        - 'config:core.entity_view_display.node.basic_content_page.search_index'
-        - 'config:core.entity_view_display.node.basic_content_page.search_result'
-        - 'config:core.entity_view_display.node.blog_article.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.blog_article.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.blog_article.default'
-        - 'config:core.entity_view_display.node.blog_article.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.blog_article.liftup'
-        - 'config:core.entity_view_display.node.blog_article.search_index'
-        - 'config:core.entity_view_display.node.blog_article.search_result'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.default'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_index'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_result'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.collection_page.default'
-        - 'config:core.entity_view_display.node.collection_page.search_index'
-        - 'config:core.entity_view_display.node.collection_page.search_result'
-        - 'config:core.entity_view_display.node.content_in_other_language.default'
-        - 'config:core.entity_view_display.node.content_in_other_language.search_index'
-        - 'config:core.entity_view_display.node.content_in_other_language.search_result'
-        - 'config:core.entity_view_display.node.emergency_notice.default'
-        - 'config:core.entity_view_display.node.front_page.default'
-        - 'config:core.entity_view_display.node.front_page.search_index'
-        - 'config:core.entity_view_display.node.front_page.search_result'
-        - 'config:core.entity_view_display.node.involvement_opportunity.default'
-        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opp_sign_up_information_view_mode'
-        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opportunity_card_view_mode'
-        - 'config:core.entity_view_display.node.involvement_opportunity.search_index'
-        - 'config:core.entity_view_display.node.involvement_opportunity.search_result'
-        - 'config:core.entity_view_display.node.map_point.address_only'
-        - 'config:core.entity_view_display.node.map_point.default'
-        - 'config:core.entity_view_display.node.moderated_page.default'
-        - 'config:core.entity_view_display.node.moderated_page.search_index'
-        - 'config:core.entity_view_display.node.moderated_page.search_result'
-        - 'config:core.entity_view_display.node.news_item.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.news_item.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.news_item.default'
-        - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.news_item.jsonapi'
-        - 'config:core.entity_view_display.node.news_item.news_media_delivery'
-        - 'config:core.entity_view_display.node.news_item.pdf'
-        - 'config:core.entity_view_display.node.news_item.search_index'
-        - 'config:core.entity_view_display.node.news_item.search_result'
-        - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.notice.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.notice.default'
-        - 'config:core.entity_view_display.node.notice.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.notice.search_index'
-        - 'config:core.entity_view_display.node.notice.search_result'
-        - 'config:core.entity_view_display.node.organization.default'
-        - 'config:core.entity_view_display.node.organization.search_index'
-        - 'config:core.entity_view_display.node.organization.search_result'
-        - 'config:core.entity_view_display.node.organization.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.person.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.person.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.person.default'
-        - 'config:core.entity_view_display.node.person.full'
-        - 'config:core.entity_view_display.node.person.liftup'
-        - 'config:core.entity_view_display.node.person.liftup_without_image'
-        - 'config:core.entity_view_display.node.person.news_media_delivery'
-        - 'config:core.entity_view_display.node.person.person_contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.person.phone_number_and_email_view_mode'
-        - 'config:core.entity_view_display.node.person.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.place.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.place.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.place.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place.default'
-        - 'config:core.entity_view_display.node.place.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place.news_media_delivery'
-        - 'config:core.entity_view_display.node.place.search_index'
-        - 'config:core.entity_view_display.node.place.search_result'
-        - 'config:core.entity_view_display.node.place_of_business.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.default'
-        - 'config:core.entity_view_display.node.place_of_business.liftup'
-        - 'config:core.entity_view_display.node.place_of_business.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.news_media_delivery'
-        - 'config:core.entity_view_display.node.project.default'
-        - 'config:core.entity_view_display.node.project.search_index'
-        - 'config:core.entity_view_display.node.project.search_result'
-        - 'config:core.entity_view_display.node.project.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.ptv_service.default'
-        - 'config:core.entity_view_display.node.ptv_service.liftup'
-        - 'config:core.entity_view_display.node.rich_article.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.rich_article.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.rich_article.default'
-        - 'config:core.entity_view_display.node.rich_article.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.rich_article.search_index'
-        - 'config:core.entity_view_display.node.rich_article.search_result'
-        - 'config:core.entity_view_display.node.rss_item.default'
-        - 'config:core.entity_view_display.node.service_channel.default'
-        - 'config:core.entity_view_display.node.service_channel.eservice_channel_liftup_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.default'
-        - 'config:core.entity_view_display.node.small_news_item.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.small_news_item.search_index'
-        - 'config:core.entity_view_display.node.small_news_item.search_result'
-        - 'config:core.entity_view_display.node.zoning_information.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.zoning_information.default'
-        - 'config:core.entity_view_display.node.zoning_information.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.zoning_information.search_index'
-        - 'config:core.entity_view_display.node.zoning_information.search_result'
-        - 'config:core.entity_view_display.node.zoning_information.zoning_city_planning_construction_project_card_view_mode'
+      tags: {  }
   archive_en:
     id: archive_en
     display_title: Arkisto_en
@@ -1290,25 +1050,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: true
           is_grouped: true
           group_info:
@@ -1426,25 +1167,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1490,25 +1212,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1554,25 +1257,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -1624,25 +1308,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              participation_section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: dd.mm.yyyy
@@ -1690,25 +1355,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              participation_section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: dd.mm.yyyy
@@ -1750,25 +1396,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
-              participation_section_editor: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -1905,114 +1532,7 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:core.entity_view_display.node.basic_content_page.default'
-        - 'config:core.entity_view_display.node.basic_content_page.search_index'
-        - 'config:core.entity_view_display.node.basic_content_page.search_result'
-        - 'config:core.entity_view_display.node.blog_article.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.blog_article.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.blog_article.default'
-        - 'config:core.entity_view_display.node.blog_article.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.blog_article.liftup'
-        - 'config:core.entity_view_display.node.blog_article.search_index'
-        - 'config:core.entity_view_display.node.blog_article.search_result'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.default'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_index'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_result'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.collection_page.default'
-        - 'config:core.entity_view_display.node.collection_page.search_index'
-        - 'config:core.entity_view_display.node.collection_page.search_result'
-        - 'config:core.entity_view_display.node.content_in_other_language.default'
-        - 'config:core.entity_view_display.node.content_in_other_language.search_index'
-        - 'config:core.entity_view_display.node.content_in_other_language.search_result'
-        - 'config:core.entity_view_display.node.emergency_notice.default'
-        - 'config:core.entity_view_display.node.front_page.default'
-        - 'config:core.entity_view_display.node.front_page.search_index'
-        - 'config:core.entity_view_display.node.front_page.search_result'
-        - 'config:core.entity_view_display.node.involvement_opportunity.default'
-        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opp_sign_up_information_view_mode'
-        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opportunity_card_view_mode'
-        - 'config:core.entity_view_display.node.involvement_opportunity.search_index'
-        - 'config:core.entity_view_display.node.involvement_opportunity.search_result'
-        - 'config:core.entity_view_display.node.map_point.address_only'
-        - 'config:core.entity_view_display.node.map_point.default'
-        - 'config:core.entity_view_display.node.moderated_page.default'
-        - 'config:core.entity_view_display.node.moderated_page.search_index'
-        - 'config:core.entity_view_display.node.moderated_page.search_result'
-        - 'config:core.entity_view_display.node.news_item.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.news_item.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.news_item.default'
-        - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.news_item.jsonapi'
-        - 'config:core.entity_view_display.node.news_item.news_media_delivery'
-        - 'config:core.entity_view_display.node.news_item.pdf'
-        - 'config:core.entity_view_display.node.news_item.search_index'
-        - 'config:core.entity_view_display.node.news_item.search_result'
-        - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.notice.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.notice.default'
-        - 'config:core.entity_view_display.node.notice.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.notice.search_index'
-        - 'config:core.entity_view_display.node.notice.search_result'
-        - 'config:core.entity_view_display.node.organization.default'
-        - 'config:core.entity_view_display.node.organization.search_index'
-        - 'config:core.entity_view_display.node.organization.search_result'
-        - 'config:core.entity_view_display.node.organization.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.person.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.person.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.person.default'
-        - 'config:core.entity_view_display.node.person.full'
-        - 'config:core.entity_view_display.node.person.liftup'
-        - 'config:core.entity_view_display.node.person.liftup_without_image'
-        - 'config:core.entity_view_display.node.person.news_media_delivery'
-        - 'config:core.entity_view_display.node.person.person_contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.person.phone_number_and_email_view_mode'
-        - 'config:core.entity_view_display.node.person.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.place.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.place.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.place.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place.default'
-        - 'config:core.entity_view_display.node.place.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place.news_media_delivery'
-        - 'config:core.entity_view_display.node.place.search_index'
-        - 'config:core.entity_view_display.node.place.search_result'
-        - 'config:core.entity_view_display.node.place_of_business.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.default'
-        - 'config:core.entity_view_display.node.place_of_business.liftup'
-        - 'config:core.entity_view_display.node.place_of_business.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.news_media_delivery'
-        - 'config:core.entity_view_display.node.project.default'
-        - 'config:core.entity_view_display.node.project.search_index'
-        - 'config:core.entity_view_display.node.project.search_result'
-        - 'config:core.entity_view_display.node.project.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.ptv_service.default'
-        - 'config:core.entity_view_display.node.ptv_service.liftup'
-        - 'config:core.entity_view_display.node.rich_article.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.rich_article.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.rich_article.default'
-        - 'config:core.entity_view_display.node.rich_article.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.rich_article.search_index'
-        - 'config:core.entity_view_display.node.rich_article.search_result'
-        - 'config:core.entity_view_display.node.rss_item.default'
-        - 'config:core.entity_view_display.node.service_channel.default'
-        - 'config:core.entity_view_display.node.service_channel.eservice_channel_liftup_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.default'
-        - 'config:core.entity_view_display.node.small_news_item.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.small_news_item.search_index'
-        - 'config:core.entity_view_display.node.small_news_item.search_result'
-        - 'config:core.entity_view_display.node.zoning_information.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.zoning_information.default'
-        - 'config:core.entity_view_display.node.zoning_information.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.zoning_information.search_index'
-        - 'config:core.entity_view_display.node.zoning_information.search_result'
-        - 'config:core.entity_view_display.node.zoning_information.zoning_city_planning_construction_project_card_view_mode'
+      tags: {  }
   archive_fi:
     id: archive_fi
     display_title: Arkisto_fi
@@ -2037,111 +1557,4 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:core.entity_view_display.node.basic_content_page.default'
-        - 'config:core.entity_view_display.node.basic_content_page.search_index'
-        - 'config:core.entity_view_display.node.basic_content_page.search_result'
-        - 'config:core.entity_view_display.node.blog_article.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.blog_article.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.blog_article.default'
-        - 'config:core.entity_view_display.node.blog_article.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.blog_article.liftup'
-        - 'config:core.entity_view_display.node.blog_article.search_index'
-        - 'config:core.entity_view_display.node.blog_article.search_result'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.default'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_index'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.search_result'
-        - 'config:core.entity_view_display.node.city_planning_and_constructions.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.collection_page.default'
-        - 'config:core.entity_view_display.node.collection_page.search_index'
-        - 'config:core.entity_view_display.node.collection_page.search_result'
-        - 'config:core.entity_view_display.node.content_in_other_language.default'
-        - 'config:core.entity_view_display.node.content_in_other_language.search_index'
-        - 'config:core.entity_view_display.node.content_in_other_language.search_result'
-        - 'config:core.entity_view_display.node.emergency_notice.default'
-        - 'config:core.entity_view_display.node.front_page.default'
-        - 'config:core.entity_view_display.node.front_page.search_index'
-        - 'config:core.entity_view_display.node.front_page.search_result'
-        - 'config:core.entity_view_display.node.involvement_opportunity.default'
-        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opp_sign_up_information_view_mode'
-        - 'config:core.entity_view_display.node.involvement_opportunity.involvement_opportunity_card_view_mode'
-        - 'config:core.entity_view_display.node.involvement_opportunity.search_index'
-        - 'config:core.entity_view_display.node.involvement_opportunity.search_result'
-        - 'config:core.entity_view_display.node.map_point.address_only'
-        - 'config:core.entity_view_display.node.map_point.default'
-        - 'config:core.entity_view_display.node.moderated_page.default'
-        - 'config:core.entity_view_display.node.moderated_page.search_index'
-        - 'config:core.entity_view_display.node.moderated_page.search_result'
-        - 'config:core.entity_view_display.node.news_item.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.news_item.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.news_item.default'
-        - 'config:core.entity_view_display.node.news_item.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.news_item.jsonapi'
-        - 'config:core.entity_view_display.node.news_item.news_media_delivery'
-        - 'config:core.entity_view_display.node.news_item.pdf'
-        - 'config:core.entity_view_display.node.news_item.search_index'
-        - 'config:core.entity_view_display.node.news_item.search_result'
-        - 'config:core.entity_view_display.node.notice.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.notice.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.notice.default'
-        - 'config:core.entity_view_display.node.notice.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.notice.search_index'
-        - 'config:core.entity_view_display.node.notice.search_result'
-        - 'config:core.entity_view_display.node.organization.default'
-        - 'config:core.entity_view_display.node.organization.search_index'
-        - 'config:core.entity_view_display.node.organization.search_result'
-        - 'config:core.entity_view_display.node.organization.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.person.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.person.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.person.default'
-        - 'config:core.entity_view_display.node.person.full'
-        - 'config:core.entity_view_display.node.person.liftup'
-        - 'config:core.entity_view_display.node.person.liftup_without_image'
-        - 'config:core.entity_view_display.node.person.news_media_delivery'
-        - 'config:core.entity_view_display.node.person.person_contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.person.phone_number_and_email_view_mode'
-        - 'config:core.entity_view_display.node.person.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.place.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.place.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.place.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place.default'
-        - 'config:core.entity_view_display.node.place.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place.news_media_delivery'
-        - 'config:core.entity_view_display.node.place.search_index'
-        - 'config:core.entity_view_display.node.place.search_result'
-        - 'config:core.entity_view_display.node.place_of_business.contact_information_liftup_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.contact_information_list_content_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.default'
-        - 'config:core.entity_view_display.node.place_of_business.liftup'
-        - 'config:core.entity_view_display.node.place_of_business.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.place_of_business.news_media_delivery'
-        - 'config:core.entity_view_display.node.project.default'
-        - 'config:core.entity_view_display.node.project.search_index'
-        - 'config:core.entity_view_display.node.project.search_result'
-        - 'config:core.entity_view_display.node.project.zoning_city_planning_construction_project_card_view_mode'
-        - 'config:core.entity_view_display.node.ptv_service.default'
-        - 'config:core.entity_view_display.node.ptv_service.liftup'
-        - 'config:core.entity_view_display.node.rich_article.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.rich_article.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.rich_article.default'
-        - 'config:core.entity_view_display.node.rich_article.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.rich_article.search_index'
-        - 'config:core.entity_view_display.node.rich_article.search_result'
-        - 'config:core.entity_view_display.node.rss_item.default'
-        - 'config:core.entity_view_display.node.service_channel.default'
-        - 'config:core.entity_view_display.node.service_channel.eservice_channel_liftup_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.current_liftup_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.current_liftup_wo_image_view_mode'
-        - 'config:core.entity_view_display.node.small_news_item.default'
-        - 'config:core.entity_view_display.node.small_news_item.highlighted_current_liftup'
-        - 'config:core.entity_view_display.node.small_news_item.search_index'
-        - 'config:core.entity_view_display.node.small_news_item.search_result'
-        - 'config:core.entity_view_display.node.zoning_information.content_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.zoning_information.default'
-        - 'config:core.entity_view_display.node.zoning_information.map_tab_card_view_mode'
-        - 'config:core.entity_view_display.node.zoning_information.search_index'
-        - 'config:core.entity_view_display.node.zoning_information.search_result'
-        - 'config:core.entity_view_display.node.zoning_information.zoning_city_planning_construction_project_card_view_mode'
+      tags: {  }

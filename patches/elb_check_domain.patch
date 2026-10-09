@@ -1,0 +1,17 @@
+diff --git a/src/BlocklistService.php b/src/BlocklistService.php
+index d5708a9..63d76ef 100644
+--- a/src/BlocklistService.php
++++ b/src/BlocklistService.php
+@@ -71,8 +71,11 @@ class BlocklistService {
+    *   The uri string.
+    */
+   public function isBlocklisted($uri) {
++    $host = parse_url($uri, PHP_URL_HOST);
++    $domain = preg_replace('/^www\./', '', $host);
++
+     foreach ($this->blocklist as $prohibited_string) {
+-      if (substr_count($uri, $prohibited_string) && !$this->isExceptedFromBlocklist($uri)) {
++      if ($domain === $prohibited_string && !$this->isExceptedFromBlocklist($uri)) {
+         return TRUE;
+       }
+     }

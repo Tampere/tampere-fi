@@ -1,0 +1,8 @@
+uuid: f40dd407-67d4-4076-9f8a-67e664acbe7b
+langcode: fi
+status: true
+dependencies: {  }
+id: main-navigation-fi
+label: 'Main navigation FI'
+description: 'Generated menu created from Group hierarchy data.'
+locked: false

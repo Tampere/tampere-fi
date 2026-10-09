@@ -1,0 +1,29 @@
+uuid: caba64c6-024c-4a8a-9123-2e9098d3f50f
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_audio_file
+    - media.type.audio
+    - paragraphs.paragraphs_type.audio_player
+id: paragraph.audio_player.field_audio_file
+field_name: field_audio_file
+entity_type: paragraph
+bundle: audio_player
+label: 'Audio file'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      audio: audio
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

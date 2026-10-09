@@ -9,7 +9,7 @@ dependencies:
 id: tre_cludo_search_block
 theme: tampere
 region: header
-weight: -21
+weight: -24
 provider: null
 plugin: cludo_search_block
 settings:

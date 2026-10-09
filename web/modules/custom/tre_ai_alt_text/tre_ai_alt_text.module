@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for tre_ai_alt_text module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+use Drupal\media\MediaInterface;
+use Drupal\tre_ai_alt_text\AiAltTextCallbacks;
+
+/**
+ * Implements hook_form_media_form_alter().
+ *
+ * The base form ID for all media edit forms is "media_form".
+ */
+function tre_ai_alt_text_form_media_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  /** @var \Drupal\Core\Entity\EntityFormInterface $form_object */
+  $form_object = $form_state->getFormObject();
+  $media = $form_object->getEntity();
+  $bundles = ['image', 'image_in_other_language'];
+  if ($media instanceof MediaInterface && in_array($media->bundle(), $bundles, TRUE) && $media->hasField('field_media_image')) {
+    _tre_ai_alt_text_attach($form, $form, [], 'field_media_image', 'edit', 'field_media_image[0][alt]');
+    $form['#attached']['library'][] = 'tre_ai_alt_text/ai-alt-text';
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function tre_ai_alt_text_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  if ($form_id === 'media_library_add_form' && isset($form['media'])) {
+    $attached = FALSE;
+    foreach (Element::children($form['media']) as $delta) {
+      $fields = $form['media'][$delta]['fields'] ?? [];
+      if (AiAltTextCallbacks::findFieldPath($fields, 'field_media_image') !== NULL) {
+        $path_prefix = ['media', $delta, 'fields'];
+        $alt_target = 'media[' . $delta . '][fields][field_media_image][0][alt]';
+        $attached = _tre_ai_alt_text_attach($form, $fields, $path_prefix, 'field_media_image', (string) $delta, $alt_target) || $attached;
+      }
+    }
+    if ($attached) {
+      $form['#attached']['library'][] = 'tre_ai_alt_text/ai-alt-text';
+    }
+  }
+}
+
+/**
+ * Attaches the AI alt text button and preview to the image field.
+ *
+ * @param array $form
+ *   The complete form array (by reference).
+ * @param array $search_root
+ *   The part of the form to search the image field in.
+ * @param array $path_prefix
+ *   The path from $form to $search_root.
+ * @param string $field_name
+ *   The image field name to attach to.
+ * @param string $suffix
+ *   Unique suffix for the wrapper/preview IDs (form type or delta).
+ * @param string $alt_target
+ *   The name attribute of the alt text input the JS should fill.
+ *
+ * @return bool
+ *   TRUE if the button was attached, FALSE if the field was not found.
+ */
+function _tre_ai_alt_text_attach(array &$form, array $search_root, array $path_prefix, string $field_name, string $suffix, string $alt_target): bool {
+  $relative_path = AiAltTextCallbacks::findFieldPath($search_root, $field_name);
+  if ($relative_path === NULL) {
+    return FALSE;
+  }
+
+  // The widget delta holds #value and the alt field.
+  // phpcs:ignore DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
+  $field = &$form;
+  foreach (array_merge($path_prefix, $relative_path, ['widget', 0]) as $key) {
+    $field = &$field[$key];
+  }
+
+  // Core overwrites the delta's #prefix/#suffix, so use a child wrapper.
+  $wrapper_id = 'ai-alt-text-wrapper-' . $suffix;
+  $field['#process'][] = [AiAltTextCallbacks::class, 'processImageField'];
+  $field['ai_alt_text'] = [
+    '#type' => 'container',
+    '#attributes' => ['id' => $wrapper_id],
+    // Before the decorative checkbox (weight -12).
+    '#weight' => -12.5,
+  ];
+
+  $button_name = $suffix === 'edit' ? 'ai_alt_text_request' : 'ai_alt_text_request_' . $suffix;
+  $field['ai_alt_text']['request'] = [
+    '#type' => 'button',
+    '#value' => t('Request alternative text from AI'),
+    '#name' => $button_name,
+    '#ajax' => [
+      'callback' => [AiAltTextCallbacks::class, 'generateAltText'],
+      'wrapper' => $wrapper_id,
+      'effect' => 'fade',
+      'progress' => [
+        'type' => 'throbber',
+        'message' => t('Generating alt text...'),
+      ],
+    ],
+    '#limit_validation_errors' => [],
+  ];
+
+  $field['ai_alt_text']['preview'] = [
+    '#type' => 'container',
+    '#attributes' => [
+      'id' => 'ai-alt-text-preview-' . $suffix,
+      'class' => ['ai-alt-text-preview'],
+      'style' => 'display:none',
+    ],
+  ];
+
+  return TRUE;
+}

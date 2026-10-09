@@ -5,6 +5,7 @@ dependencies:
   config:
     - filter.format.limited_html
     - filter.format.notice_html
+    - media.type.audio
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -46,6 +47,7 @@ permissions:
   - 'create paragraph content anchor_link'
   - 'create paragraph content anchor_list'
   - 'create paragraph content attachment'
+  - 'create paragraph content audio_player'
   - 'create paragraph content automatic_anchor_list'
   - 'create paragraph content back_to_top_link'
   - 'create paragraph content balanced_content_liftup'
@@ -114,6 +116,7 @@ permissions:
   - 'create paragraph content zoning_project_card'
   - 'create paragraph content zoning_project_cards'
   - 'create remote_video media'
+  - 'delete any audio media revisions'
   - 'delete files immediately'
   - 'delete media'
   - 'delete own file media'
@@ -125,6 +128,7 @@ permissions:
   - 'delete paragraph content anchor_link'
   - 'delete paragraph content anchor_list'
   - 'delete paragraph content attachment'
+  - 'delete paragraph content audio_player'
   - 'delete paragraph content automatic_anchor_list'
   - 'delete paragraph content back_to_top_link'
   - 'delete paragraph content balanced_content_liftup'
@@ -193,16 +197,19 @@ permissions:
   - 'delete paragraph content zoning_project_card'
   - 'delete paragraph content zoning_project_cards'
   - 'dropzone upload files'
+  - 'edit any audio media'
   - 'edit field_eventz_display_amount'
   - 'edit field_eventz_excluded_events'
   - 'edit field_eventz_featured_end'
   - 'edit field_eventz_featured_event_id'
   - 'edit field_eventz_featured_start'
+  - 'edit own audio media'
   - 'edit own field_eventz_display_amount'
   - 'edit own field_eventz_excluded_events'
   - 'edit own field_eventz_featured_end'
   - 'edit own field_eventz_featured_event_id'
   - 'edit own field_eventz_featured_start'
+  - 'revert any audio media revisions'
   - 'translate editable entities'
   - 'update any media'
   - 'update paragraph content accordion_item'
@@ -211,6 +218,7 @@ permissions:
   - 'update paragraph content anchor_link'
   - 'update paragraph content anchor_list'
   - 'update paragraph content attachment'
+  - 'update paragraph content audio_player'
   - 'update paragraph content automatic_anchor_list'
   - 'update paragraph content back_to_top_link'
   - 'update paragraph content balanced_content_liftup'
@@ -290,6 +298,7 @@ permissions:
   - 'use text format limited_html'
   - 'use text format notice_html'
   - 'view all media revisions'
+  - 'view any audio media revisions'
   - 'view any unpublished content'
   - 'view field_eventz_display_amount'
   - 'view field_eventz_event_end'

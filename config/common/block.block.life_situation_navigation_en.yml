@@ -1,0 +1,33 @@
+uuid: 2d36fcff-e184-4209-8e99-8e3a10716213
+langcode: fi
+status: true
+dependencies:
+  config:
+    - system.menu.life-situation-navigation-en
+  module:
+    - language
+    - system
+  theme:
+    - tampere
+id: life_situation_navigation_en
+theme: tampere
+region: header
+weight: -20
+provider: null
+plugin: 'system_menu_block:life-situation-navigation-en'
+settings:
+  id: 'system_menu_block:life-situation-navigation-en'
+  label: 'Life situation navigation EN'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 5
+  expand_all_items: true
+visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      en: en

@@ -2,6 +2,7 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
+use Drupal\block\Entity\Block;
 use Drupal\Core\Menu\MenuTreeParameters;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\group\Entity\GroupRelationship;
@@ -41,17 +42,30 @@ class GroupContentMenuBlock extends TrePreProcessPluginBase {
     $group_front_page_details = $this->helperFunctions->getGroupFrontPageDetails(NULL, $group);
     $current_node = $this->routeMatch->getParameter('node');
 
-    if (isset($variables['content']['#attributes']['region'])) {
-      $group_menu_block_region = $variables['content']['#attributes']['region'];
+    $group_menu_block_region = '';
+
+    // Fetch the block's machine name identifier if it exists.
+    if (!empty($variables['elements']['#id'])) {
+      $block_id = $variables['elements']['#id'];
+      $block_entity = Block::load($block_id);
+      if ($block_entity) {
+        $group_menu_block_region = $block_entity->getRegion();
+      }
     }
 
     // Minisites use the parent menu link title as the sidebar heading instead
     // of the group's front page title.
-    if ($group->bundle() === 'minisite' && isset($group_menu_block_region) && $group_menu_block_region === 'sidebar') {
+    if ($group->bundle() === 'minisite' && $group_menu_block_region === 'sidebar') {
       [$heading_title, $heading_url] = $this->getMinisiteMenuBlockHeadingLinkInformation($current_node);
 
       $variables['minisite_sidebar_heading_title'] = $heading_title;
       $variables['minisite_sidebar_heading_url'] = $heading_url;
+
+      // Whether the sidebar menu has any items to render. The block template
+      // uses this to avoid rendering an empty menu container. The menu render
+      // array only carries #items when it is non-empty, so this is a reliable
+      // check for an empty menu.
+      $variables['group_sidebar__has_content'] = isset($variables['content']['#items']);
 
       // Return early as minisite menu blocks don't currently
       // use any of the following variables.
@@ -74,9 +88,7 @@ class GroupContentMenuBlock extends TrePreProcessPluginBase {
       $variables['group_sidebar__has_content'] = FALSE;
     }
 
-    if (isset($group_menu_block_region)) {
-      $variables['group_menu_block_region'] = $group_menu_block_region;
-    }
+    $variables['group_menu_block_region'] = $group_menu_block_region;
 
     if ($current_node instanceof NodeInterface) {
       $node_id = $current_node->id();

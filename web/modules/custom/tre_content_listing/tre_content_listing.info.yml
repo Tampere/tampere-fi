@@ -1,5 +1,5 @@
 name: 'TRE Content Listing'
 type: module
 description: 'Custom module for Content Listing paragraph'
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 package: 'TRE'

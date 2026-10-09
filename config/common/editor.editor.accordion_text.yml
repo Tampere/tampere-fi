@@ -39,6 +39,7 @@ settings:
       properties:
         reversed: false
         startIndex: false
+        styles: true
       multiBlock: true
     ckeditor5_paste_filter_pasteFilter:
       enabled: true
@@ -115,7 +116,6 @@ settings:
           replace: $1
     ckeditor5_sourceEditing:
       allowed_tags:
-        - '<ul type>'
         - '<a hreflang accesskey id rel target title data-entity-type data-entity-uuid data-entity-substitution>'
         - '<drupal-media data-entity-type data-entity-uuid data-view-mode data-align data-caption alt title>'
         - '<h4 id>'

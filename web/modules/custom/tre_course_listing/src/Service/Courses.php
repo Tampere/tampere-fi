@@ -10,6 +10,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Header;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Utility\Error;
 
 /**
  * Courses service for Hellewi API courses.
@@ -247,9 +248,9 @@ class Courses {
       $cache_expiry_time = $current_time + $token_duration_in_seconds * $cache_expiry_coefficient;
       $this->cache->set($response_cid, $data, $cache_expiry_time);
       return $data;
-    }
-    catch (RequestException $e) {
-      watchdog_exception('tre_course_listing', $e);
+    } catch (RequestException $e) {
+      // Pass the logger service channel name, and the exception object
+      Error::logException(\Drupal::logger('tre_course_listing'), $e);
     }
 
     return [];

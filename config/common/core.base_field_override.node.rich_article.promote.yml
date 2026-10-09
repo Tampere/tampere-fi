@@ -1,0 +1,22 @@
+uuid: d49931a1-bfce-48d0-abe0-91c01c36cc8e
+langcode: fi
+status: true
+dependencies:
+  config:
+    - node.type.rich_article
+id: node.rich_article.promote
+field_name: promote
+entity_type: node
+bundle: rich_article
+label: 'Näytetään etusivulla'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

@@ -1,0 +1,10 @@
+uuid: eaf93cbf-eb21-4060-b894-948605b979a3
+langcode: fi
+status: true
+dependencies: {  }
+id: audio_player
+label: 'Audio player'
+icon_uuid: null
+icon_default: null
+description: 'Displays an MP3 audio file in an audio player.'
+behavior_plugins: {  }

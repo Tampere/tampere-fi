@@ -50,8 +50,8 @@ $sidebar-menu-link-letter-spacing: 0.0415rem; // ~0.5pt
     @include word-wrap;
 
     display: block;
-    padding-top: $space-s;
-    padding-bottom: $space-s;
+    padding-top: $space-xs-plus; // Corresponds to $menu-spacing in menu-new-menu.scss
+    padding-bottom: $space-xs-plus;
     padding-left: var(--sidebar-menu-link-left-padding);
     padding-right: var(--sidebar-menu-link-right-padding);
     position: relative;
@@ -73,6 +73,7 @@ $sidebar-menu-link-letter-spacing: 0.0415rem; // ~0.5pt
       @include large {
         &::before {
           --sidebar-menu-accent-color: #{clr(primary-light)};
+          left: 1rem; // align with the left padding of the link
         }
       }
     }

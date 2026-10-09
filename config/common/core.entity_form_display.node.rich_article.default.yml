@@ -39,7 +39,8 @@ dependencies:
     - markup
     - maxlength
     - media_library
-    - paragraphs_asymmetric_translation_widgets
+    - paragraphs
+    - paragraphs_features
     - path
     - publication_date
     - text
@@ -49,7 +50,7 @@ third_party_settings:
       children:
         - field_main_image
         - field_media_caption
-      label: 'Main image and caption'
+      label: 'Pääkuva ja kuvateksti'
       region: content
       parent_name: group_general
       weight: 2
@@ -58,13 +59,13 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
-        description: 'Main image and its caption'
+        description: ''
         required_fields: true
     group_tabs:
       children:
         - group_general
         - group_categorization
-      label: Tabs
+      label: Välilehdet
       region: content
       parent_name: ''
       weight: 0
@@ -86,7 +87,7 @@ third_party_settings:
         - field_link_list
         - field_author
         - field_photographer
-      label: General
+      label: Yleinen
       region: content
       parent_name: group_tabs
       weight: 20
@@ -107,7 +108,7 @@ third_party_settings:
         - field_geographical_areas
         - group_search_keywords
         - field_minisites
-      label: Categorization
+      label: Luokittelut
       region: content
       parent_name: group_tabs
       weight: 21
@@ -121,7 +122,7 @@ third_party_settings:
     group_search_keywords:
       children:
         - field_search_keywords
-      label: 'Search keywords'
+      label: Avainsanat
       region: content
       parent_name: group_categorization
       weight: 12
@@ -135,19 +136,19 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: customized_prompt_for_multiple_geographical_references
+      prompt: auto_reference__customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_life_situations:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_minisites:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_topics:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
 id: node.rich_article.default
 targetEntityType: node
 bundle: rich_article
@@ -258,7 +259,7 @@ content:
         enable_translations: true
       maxlength:
         maxlength_js: 450
-        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: true
       field_states_ui:
         form:
@@ -282,17 +283,33 @@ content:
       limited_field_widgets:
         limit_values: 0
   field_link_list:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 9
     region: content
     settings:
       title: Linkkilista
       title_plural: Linkkilistat
       edit_mode: preview
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      limited_field_widgets:
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -360,17 +377,31 @@ content:
           list: ''
           add: Add
   field_paragraphs:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 8
     region: content
     settings:
       title: Paragraafi
       title_plural: Paragraafit
       edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
       field_states_ui:
         form:
           type: ''

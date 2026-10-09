@@ -1,0 +1,38 @@
+--- web/modules/contrib/varnish_purge/modules/varnish_image_purge/src/Form/VarnishImagePurgeConfiguration.php.orig	2026-09-23 11:10:12
++++ web/modules/contrib/varnish_purge/modules/varnish_image_purge/src/Form/VarnishImagePurgeConfiguration.php	2026-09-23 11:10:28
+@@ -3,6 +3,7 @@
+ namespace Drupal\varnish_image_purge\Form;
+ 
+ use Drupal\Core\Config\ConfigFactoryInterface;
++use Drupal\Core\Config\TypedConfigManagerInterface;
+ use Drupal\Core\Entity\ContentEntityType;
+ use Drupal\Core\Entity\EntityTypeBundleInfo;
+ use Drupal\Core\Entity\EntityTypeManagerInterface;
+@@ -38,13 +39,16 @@
+    *   The entity type manager.
+    * @param \Drupal\Core\Entity\EntityTypeBundleInfo $entityTypeBundleInfo
+    *   The entity type bundle info.
++   * @param \Drupal\Core\Config\TypedConfigManagerInterface $typedConfigManager
++   *   The typed config manager.
+    */
+   public function __construct(
+     ConfigFactoryInterface $config_factory,
+     EntityTypeManagerInterface $entityTypeManager,
+     EntityTypeBundleInfo $entityTypeBundleInfo,
++    TypedConfigManagerInterface $typedConfigManager
+   ) {
+-    parent::__construct($config_factory);
++    parent::__construct($config_factory, $typedConfigManager);
+     $this->entityTypeManager = $entityTypeManager;
+     $this->entityTypeBundleInfo = $entityTypeBundleInfo;
+   }
+@@ -56,7 +60,8 @@
+     return new static(
+       $container->get('config.factory'),
+       $container->get('entity_type.manager'),
+-      $container->get('entity_type.bundle.info')
++      $container->get('entity_type.bundle.info'),
++      $container->get('config.typed')
+     );
+   }
+ 

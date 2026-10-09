@@ -13,6 +13,7 @@ dependencies:
     - node.type.notice
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_auto_reference
     - ai_translate_textfield
     - content_moderation
     - content_translation
@@ -37,6 +38,7 @@ weight: -3
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access ai auto-reference suggestion tools'
   - 'access all_content_entity_browser entity browser pages'
   - 'access all_places_entity_browser entity browser pages'
   - 'access content overview'

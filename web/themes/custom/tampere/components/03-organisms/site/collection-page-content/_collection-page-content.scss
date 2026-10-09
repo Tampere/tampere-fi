@@ -35,4 +35,8 @@
   .search-container-persons {
     margin-bottom: 4rem;
   }
+
+  .search-container-header {
+    max-width: var(--text-content-max-width);
+  }
 }

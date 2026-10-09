@@ -9,7 +9,7 @@ dependencies:
 id: openreadspeakerblockmobile
 theme: tampere
 region: header
-weight: -5
+weight: -1
 provider: null
 plugin: open_readspeaker_webreader
 settings:

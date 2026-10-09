@@ -13,13 +13,16 @@ settings:
   allowed_values:
     -
       value: arb
-      label: Arabia
+      label: 'Arabia (Legacy)'
     -
       value: ru
       label: Venäjä
     -
       value: fa
       label: 'Persia (Farsi)'
+    -
+      value: ar
+      label: Arabia
   allowed_values_function: null
 module: options
 locked: false

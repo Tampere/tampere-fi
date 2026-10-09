@@ -1,0 +1,18 @@
+_core:
+  default_config_hash: nM1NQDdqXwoCVJALeIKuwdDwVCZzJLdgvLDwFVOLbnE
+enable: true
+ignore_paths: ''
+enabled_target_entity_types: {  }
+entity_notify_admin: false
+entity_notify_roles:
+  - super_user
+entity_notify_maillist: ''
+entity_notify_telegram: false
+entity_notify_telegram_bottoken: ''
+entity_notify_telegram_chatids: ''
+entity_notify_telegram_proxy: false
+entity_notify_telegram_proxy_server: ''
+entity_notify_telegram_proxy_login: ''
+entity_notify_telegram_proxy_password: ''
+entity_notify_telegram_queue: false
+entity_notify_telegram_endpoint: ''

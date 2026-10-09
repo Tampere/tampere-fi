@@ -2,9 +2,10 @@
 
 namespace Drupal\tre_news_email_release\Service;
 
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Language\LanguageManagerInterface; // Added
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\group\Entity\GroupInterface;
 use Drupal\message\Entity\Message;
@@ -67,10 +68,6 @@ final class NewsSender {
       $node = $node->getTranslation($langcode);
     }
 
-    // Switch the global translation context to the node's language.
-    $original_language = $this->languageManager->getConfigOverrideLanguage();
-    $this->languageManager->setConfigOverrideLanguage($target_language);
-
     $messages_created = [];
 
     try {
@@ -105,10 +102,18 @@ final class NewsSender {
           'title' => $link_title,
         ]);
 
+        // Signal the current rendering langcode so preprocess hooks can read
+        // it. We cannot rely on #object->language() there because
+        // non-translatable fields always set #object to the default translation.
+        $rendering_langcode = &drupal_static('tre_news_email_release_rendering_langcode');
+        $rendering_langcode = $langcode;
+
         // Render the node content in the correct language.
         $message->set('field_news_markup', [
-          'markup' => $this->entityRenderer->renderEntity($node, 'news_media_delivery'),
+          'markup' => $this->entityRenderer->renderEntity($node, 'news_media_delivery', $langcode),
         ]);
+
+        $rendering_langcode = NULL;
 
         $message->save();
         $messages_created[] = $message;
@@ -127,9 +132,10 @@ final class NewsSender {
       throw $e;
     }
     finally {
-      // Restore the original language context.
-      $this->languageManager->setConfigOverrideLanguage($original_language);
-      
+      // Invalidate the node's render cache so other renders later in the same
+      // cron run get a fresh build.
+      Cache::invalidateTags(['node:' . $node->id()]);
+
       if (!empty($messages_created)) {
         $this->messageStorage->delete($messages_created);
       }

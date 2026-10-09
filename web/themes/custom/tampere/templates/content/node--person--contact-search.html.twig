@@ -8,11 +8,39 @@
   {% set person_img_html = person_image|render %}
   {% set hide_email = node.field_hide_email_in_search.value %}
 
+  {% set phone_items %}
+    {% for phone in person_additional_phones %}
+      {% if phone.telephone_number|trim %}
+        <div class="field__item">
+          {{ phone.telephone_number }}
+          {% if phone.telephone_supplementary %}
+            <div class="person-contact__details">
+              {{ phone.telephone_supplementary }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endset %}
+
+  {% set additional_phone_content %}
+    {% if phone_items|trim %}
+      <div class="field field-name-field-additional-phones">
+        <div class="field field-name-field-additional-phones field-label-inline">{{ 'Phone'|t }}:</div>
+        <div class="field__items">
+          {{ phone_items }}
+        </div>
+      </div>
+    {% endif %}
+  {% endset %}
+
+  {% set override_phone = (node.field_override_phone.value == 1 and phone_items|trim) %}
+
   {% embed "@molecules/person-contact/person-contact.twig" with {
     "person_contact__preheading": person_preheading,
     "person_contact__name": person_name,
     "person_contact__url": url,
-    "person_contact__phone_number": person_phones,
+    "person_contact__phone_number": override_phone ? additional_phone_content : person_phones,
     "person_contact__email_address": hide_email ? '' : person_email,
   } %}
 

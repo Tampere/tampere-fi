@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.person.field_image
     - field.field.node.person.field_keywords
     - field.field.node.person.field_last_name
+    - field.field.node.person.field_override_phone
     - field.field.node.person.field_phone
     - field.field.node.person.field_phone_supplementary
     - field.field.node.person.field_place
@@ -68,6 +69,7 @@ third_party_settings:
         - field_last_name
         - migrate_override_data
         - field_hide_email_in_search
+        - field_override_phone
       label: 'Nimi ja kuva'
       region: content
       parent_name: group_tabs
@@ -111,7 +113,7 @@ third_party_settings:
       label: 'Integroidut tiedot'
       region: content
       parent_name: group_tabs
-      weight: 21
+      weight: 20
       format_type: tab
       format_settings:
         classes: ''
@@ -128,7 +130,7 @@ third_party_settings:
       label: Luokittelut
       region: content
       parent_name: group_tabs
-      weight: 22
+      weight: 21
       format_type: tab
       format_settings:
         classes: ''
@@ -163,7 +165,7 @@ content:
     third_party_settings: {  }
   field_additional_information:
     type: text_textarea
-    weight: 36
+    weight: 37
     region: content
     settings:
       rows: 5
@@ -179,7 +181,7 @@ content:
         maxlength_js_truncate_html: false
   field_additional_phones:
     type: tre_telephone_plus_widget
-    weight: 32
+    weight: 33
     region: content
     settings:
       hide_subelements:
@@ -197,14 +199,14 @@ content:
         limit_values: 5
   field_address_postal:
     type: address_default
-    weight: 35
+    weight: 36
     region: content
     settings:
       wrapper_type: details
     third_party_settings: {  }
   field_address_street:
     type: address_default
-    weight: 34
+    weight: 35
     region: content
     settings:
       wrapper_type: details
@@ -240,7 +242,7 @@ content:
     third_party_settings: {  }
   field_hr_cost_center:
     type: options_select
-    weight: 33
+    weight: 32
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -252,7 +254,7 @@ content:
     third_party_settings: {  }
   field_hr_title:
     type: options_select
-    weight: 32
+    weight: 31
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -281,9 +283,16 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_override_phone:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_phone:
     type: telephone_default
-    weight: 31
+    weight: 30
     region: content
     settings:
       placeholder: ''
@@ -298,7 +307,7 @@ content:
     third_party_settings: {  }
   field_place:
     type: entity_browser_entity_reference
-    weight: 33
+    weight: 34
     region: content
     settings:
       entity_browser: all_places_entity_browser

@@ -1,0 +1,95 @@
+{{ attach_library('tampere/menu-new-menu') }}
+
+{% import _self as menus %}
+
+{% if "secondary" in main_menu_modifiers %}
+  {% set main_menu_container_class = "secondary-main-menu-container" %}
+  {% set main_menu_id = main_menu_id|default("secondary-main-menu") %}
+{% endif %}
+
+{% if main_menu_title %}
+  {% set main_menu_label_id = main_menu_title_id %}
+{% endif %}
+
+<nav class="custom-menu" aria-labelledby="{{ main_menu_label_id }}">
+  {% if main_menu_aria_label %}
+    <span id="{{ main_menu_label_id }}" class="visually-hidden">{{ main_menu_aria_label }}</span>
+  {% endif %}
+
+  <div id="{{ main_menu_id|default("main-nav") }}" class="{{ main_menu_container_class|default("main-menu-container") }}">
+    {% if main_menu_title %}
+      <span id="{{ main_menu_title_id }}" class="main-menu__title">{{ main_menu_title }}</span>
+    {% endif %}
+
+    <div class="menu-drilldown-header" hidden data-return-main-text="{{ 'Back to main menu'|t }}">
+      <button class="menu-current-title" type="button" aria-label="Current menu title">
+        {% include "@atoms/04-images/icons/_icon.twig" with {
+          icon_base_class: item_base_class|default(menu_class ~ "__icon"),
+          icon_name: "arrow-sharp",
+          icon_decorative: true,
+        } %}
+        <span class="menu-current-title__text"></span>
+      </button>
+    </div>
+
+    {{ menus.menu_links(items, attributes, 0, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname, directory) }}
+  </div>
+</nav>
+
+{% macro menu_links(items, attributes, menu_level, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname, directory) %}
+  {% import _self as menus %}
+
+  {% if items %}
+
+    {# Set classes #}
+    {% set menu_class = menu_class|default("menu") %}
+    {% if not menu_modifiers %}
+      {% set menu_modifiers = [] %}
+    {% endif %}
+    {% if menu_level > 0 %}
+      {% set menu_modifiers = menu_modifiers|merge(["sub", "sub-" ~ menu_level]) %}
+    {% endif %}
+
+    {% if menu_level == 0 %}
+      <ul id="{{ main_menu_id|default("main-nav") }}" class="main-menu">
+    {% else %}
+      <ul class="submenu" hidden>
+    {% endif %}
+
+    {% for item in items %}
+      {% set item_classes = [
+        'menu-item',
+        'main-menu__item',
+        item.below ? 'menu-item--has-children',
+        item.in_active_trail ? 'menu-item--active-trail',
+      ] %}
+
+      <li{{ item.attributes.addClass(item_classes) }}>
+        {% if item.below %}
+          <div class="menu-item__row">
+            {{ link(item.title, item.url, create_attribute({'class': ['menu-link', 'main-menu__link']})) }}
+            <button
+              class="submenu-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-label="Open submenu for {{ item.title }}"
+            >
+              {% include "@atoms/04-images/icons/_icon.twig" with {
+                icon_base_class: item_base_class|default(menu_class ~ "__icon"),
+                icon_name: "arrow-sharp",
+                icon_decorative: true,
+                icon_path: "/" ~ directory ~ "/dist/main-site-icons.svg",
+              } %}
+            </button>
+          </div>
+
+          {{ menus.menu_links(item.below, attributes, menu_level + 1, menu_class, menu_modifiers, menu_blockname, item_base_class, item_modifiers, item_blockname, directory) }}
+        {% else %}
+          {{ link(item.title, item.url, create_attribute({'class': ['menu-link', 'main-menu__link']})) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    </ul>
+  {% endif %}
+{% endmacro %}

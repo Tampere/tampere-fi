@@ -95,6 +95,7 @@ content:
     settings: {  }
     third_party_settings:
       field_states_ui:
+        field_states: {  }
         form:
           type: ''
           list:
@@ -103,7 +104,6 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states: {  }
       limited_field_widgets:
         limit_values: 0
   field_service:
@@ -117,6 +117,7 @@ content:
       placeholder: ''
     third_party_settings:
       field_states_ui:
+        field_states: {  }
         form:
           type: ''
           list:
@@ -125,12 +126,12 @@ content:
                 edit: Muokkaa
                 delete: Poista
           add: Lisää
-        field_states: {  }
   field_service_displayed_fields:
     type: options_table
     weight: 1
     region: content
-    settings: {  }
+    settings:
+      toggle_label: Enabled
     third_party_settings:
       field_states_ui:
         form:

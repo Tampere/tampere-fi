@@ -25,6 +25,7 @@ dependencies:
     - field.field.node.small_news_item.field_topic
     - field.field.node.small_news_item.field_topics
     - node.type.small_news_item
+    - workflows.workflow.scheduled_transitions
   module:
     - ai_auto_reference
     - ai_translate_textfield
@@ -36,7 +37,8 @@ dependencies:
     - markup
     - maxlength
     - media_library
-    - paragraphs_asymmetric_translation_widgets
+    - paragraphs
+    - paragraphs_features
     - path
     - publication_date
     - text
@@ -131,19 +133,19 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: customized_prompt_for_multiple_geographical_references
+      prompt: auto_reference__customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_life_situations:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_minisites:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_topics:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
 id: node.small_news_item.default
 targetEntityType: node
 bundle: small_news_item
@@ -277,17 +279,33 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_link_list:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 9
     region: content
     settings:
       title: Linkkilista
       title_plural: Linkkilistat
       edit_mode: preview
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      limited_field_widgets:
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
@@ -355,17 +373,31 @@ content:
           list: ''
           add: Add
   field_paragraphs:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 8
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
       field_states_ui:
         form:
           type: ''

@@ -2,18 +2,19 @@ uuid: 64c09b26-af56-4c22-8a7f-047a8900deb4
 langcode: fi
 status: true
 dependencies:
+  config:
+    - node.type.involvement_opportunity
   module:
     - language
     - node
 id: involvement_opportunity_fi
 label: 'Osallistumismahdollisuus FI'
 type: 'canonical_entities:node'
-pattern: 'osallistu-ja-vaikuta/[node:title]'
+pattern: '/kaupunki-ja-paatoksenteko/osallistu-ja-vaikuta/[node:title]'
 selection_criteria:
   334e2b73-7c3e-40f9-9e1c-70cae8367b79:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 334e2b73-7c3e-40f9-9e1c-70cae8367b79
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   f5865a6b-f197-4e92-8d76-048bfbcefbfb:
     id: language
     negate: false
-    uuid: f5865a6b-f197-4e92-8d76-048bfbcefbfb
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

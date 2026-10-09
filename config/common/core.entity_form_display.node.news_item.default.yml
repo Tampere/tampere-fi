@@ -46,7 +46,8 @@ dependencies:
     - markup
     - maxlength
     - media_library
-    - paragraphs_asymmetric_translation_widgets
+    - paragraphs
+    - paragraphs_features
     - path
     - publication_date
     - search_api_exclude_entity
@@ -177,19 +178,19 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: customized_prompt_for_multiple_geographical_references
+      prompt: auto_reference__customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_life_situations:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_minisites:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_topics:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
 id: node.news_item.default
 targetEntityType: node
 bundle: news_item
@@ -250,19 +251,38 @@ content:
         maxlength_js_label_summary: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
   field_contact_info_paragraph:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 30
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
       limited_field_widgets:
         limit_values: 0
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_cross_site_publications:
     type: options_buttons
     weight: 10
@@ -361,33 +381,55 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_link_list:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 29
     region: content
     settings:
       title: Linkkilista
       title_plural: Linkkilistat
       edit_mode: preview
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      limited_field_widgets:
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
   field_mailing_list_information:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 34
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: button
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
     third_party_settings:
       limited_field_widgets:
         limit_values: 0
@@ -411,7 +453,7 @@ content:
         enable_translations: true
       maxlength:
         maxlength_js: null
-        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
       field_states_ui:
         form:
@@ -453,17 +495,31 @@ content:
           list: ''
           add: Add
   field_paragraphs:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 28
     region: content
     settings:
       title: Paragraafi
       title_plural: Paragraafit
       edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
       field_states_ui:
         form:
           type: ''
@@ -502,7 +558,7 @@ content:
         enable_translations: true
       maxlength:
         maxlength_js: null
-        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+        maxlength_js_label: 'Tekstin enimmäispituus on @limit merkkiä, josta jäljellä on <strong>@remaining</strong>'
         maxlength_js_enforce: false
       limited_field_widgets:
         limit_values: 0

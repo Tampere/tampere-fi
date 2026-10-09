@@ -1,0 +1,41 @@
+uuid: 5f37d82d-6b88-42ef-9e5a-aefaf1e88c96
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.audio_player.field_audio_file
+    - field.field.paragraph.audio_player.field_audio_title
+    - field.field.paragraph.audio_player.field_show_title
+    - paragraphs.paragraphs_type.audio_player
+  module:
+    - media_library
+id: paragraph.audio_player.default
+targetEntityType: paragraph
+bundle: audio_player
+mode: default
+content:
+  field_audio_file:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_audio_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_show_title:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,10 @@
+langcode: fi
+status: true
+dependencies:
+  enforced:
+    module:
+      - ai_auto_reference
+id: auto_reference__default_multiple_prompt
+label: 'Default prompt for multiple target references'
+type: auto_reference
+prompt: 'For the contents within the code block: \r\n```{contents}```\r\n\r\n{RECENT_EXAMPLES}\r\n\r\nWhich two to four of the following `|` separated options are highly relevant and moderately relevant?\r\n```{possible_results}```\r\n\r\nReturn selections from within the square brackets only and as a valid RFC8259 compliant JSON array within two array keys `highly` and `moderately` without deviation.\r\nExample:\r\n{\r\n    \"highly\": [\r\n        \"First suggestion\",\r\n        \"Second suggestion\"\r\n    ],\r\n    \"moderately\": [\r\n        \"Third suggestion\",\r\n        \"Fourth suggestion\"\r\n    ]\r\n}'

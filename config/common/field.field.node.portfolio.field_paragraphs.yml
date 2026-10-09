@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.field_paragraphs
     - node.type.portfolio
     - paragraphs.paragraphs_type.accordions
+    - paragraphs.paragraphs_type.audio_player
     - paragraphs.paragraphs_type.city_construction_project_cards
     - paragraphs.paragraphs_type.contact_information_liftups
     - paragraphs.paragraphs_type.embederator_embed
@@ -56,6 +57,7 @@ settings:
       image: image
       image_gallery: image_gallery
       list_of_attachments: list_of_attachments
+      logo_wall: logo_wall
       material_download_list: material_download_list
       metadata_attachment_list: metadata_attachment_list
       involvement_opportunity_cards: involvement_opportunity_cards
@@ -68,7 +70,7 @@ settings:
       process_accordions: process_accordions
       video_embed: video_embed
       contact_information_liftups: contact_information_liftups
-      logo_wall: logo_wall
+      audio_player: audio_player
     negate: 0
     target_bundles_drag_drop:
       accordion_item:
@@ -89,14 +91,23 @@ settings:
       attachment:
         weight: 84
         enabled: false
+      audio_player:
+        weight: 102
+        enabled: true
       automatic_anchor_list:
         weight: 85
+        enabled: false
+      automatic_phase_accordion:
+        weight: 104
         enabled: false
       back_to_top_link:
         weight: 86
         enabled: false
       balanced_content_liftup:
         weight: 87
+        enabled: false
+      blockquote:
+        weight: 107
         enabled: false
       city_construction_project_card:
         weight: 88
@@ -115,6 +126,9 @@ settings:
         enabled: false
       content_liftup:
         weight: 93
+        enabled: false
+      content_listing:
+        weight: 114
         enabled: false
       course_listing:
         weight: 94
@@ -140,6 +154,9 @@ settings:
       event_and_hobby_listing:
         weight: 101
         enabled: false
+      eventz_today_listing:
+        weight: 122
+        enabled: false
       external_link:
         weight: 102
         enabled: false
@@ -164,6 +181,9 @@ settings:
       highlighted_links_with_feedback:
         weight: 109
         enabled: false
+      highlighted_targeted_link_list:
+        weight: 132
+        enabled: false
       icon_and_text_link:
         weight: 110
         enabled: false
@@ -175,6 +195,9 @@ settings:
         enabled: true
       image_gallery_item:
         weight: 113
+        enabled: false
+      image_gallery_limited_images:
+        weight: 137
         enabled: false
       infograph:
         weight: 114
@@ -260,6 +283,9 @@ settings:
       process_accordions:
         weight: 31
         enabled: true
+      process_accordions_extended:
+        weight: 165
+        enabled: false
       project_and_organization_cards:
         weight: 25
         enabled: true
@@ -271,6 +297,9 @@ settings:
         enabled: false
       rss_feed:
         weight: 142
+        enabled: false
+      script:
+        weight: 171
         enabled: false
       separator:
         weight: 11
@@ -313,6 +342,9 @@ settings:
         enabled: false
       two_column_liftup:
         weight: 152
+        enabled: false
+      urban_planning_listing_and_map:
+        weight: 186
         enabled: false
       video_embed:
         weight: 32

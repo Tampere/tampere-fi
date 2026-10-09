@@ -49,6 +49,17 @@ $field-sections-v-gutter-desktop: $space-xl;
     }
   }
 
+  .field-place-area-text {
+    margin-top: $space-m;
+    .field__label.above {
+      font-weight: var(--field-label-font-weight);
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
   &-name-field-address-street {
     margin-bottom: $space-m;
   }

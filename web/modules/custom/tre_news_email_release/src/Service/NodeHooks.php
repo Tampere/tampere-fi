@@ -7,6 +7,7 @@ use Drupal\node\NodeInterface;
 use Drupal\tre_node_logger\Service\NodeLogger;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 use Psr\Log\LoggerInterface;
+use Drupal\Core\Utility\Error;
 
 /**
  * Service to implement node hooks utilising other services.
@@ -99,6 +100,7 @@ final class NodeHooks {
     // bound to this one save event instance.
     $new_send_data = [
       'time_added' => $node->getRevisionCreationTime(),
+      'langcode' => $node->language()->getId(),
       'delivery_lists' => $node->get('field_mailing_list_information'),
     ];
     $node_media_send_data[] = $new_send_data;
@@ -131,12 +133,13 @@ final class NodeHooks {
       }
 
       // Skip processing altogether and clear the item from queue if the
-      // timestamps don't match.
+      // timestamps or language don't match.
       $time_added = $node_emails_paragraph_list_with_send_time['time_added'];
+      $state_langcode = $node_emails_paragraph_list_with_send_time['langcode'] ?? NULL;
 
-      if ($time_added !== $node_updated_time) {
+      if ($time_added !== $node_updated_time || $state_langcode !== $node->language()->getId()) {
         unset($node_media_send_data[$key]);
-        $this->logger->warning('Tried to send stale emails for node @nid', $log_message_context);
+        $this->logger->warning('Tried to send stale or language-mismatched emails for node @nid', $log_message_context);
         continue;
       }
       /** @var \Drupal\paragraphs\ParagraphInterface[] $mail_paragraphs */
@@ -150,10 +153,9 @@ final class NodeHooks {
         // $node_logger->saveLog();
         $this->node_logger->saveLog($message, $node->id());
 
-      }
-      catch (\Exception $e) {
+      } catch (\Exception $e) {
         $this->logger->error('Failed to send an email for node @nid', $log_message_context);
-        watchdog_exception('tre_news_email_release', $e);
+        Error::logException(\Drupal::logger('tre_news_email_release'), $e);
       }
       unset($node_media_send_data[$key]);
     }

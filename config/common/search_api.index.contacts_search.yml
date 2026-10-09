@@ -48,9 +48,9 @@ third_party_settings:
       boost: false
       interestingTerms: none
     term_modifiers:
-      slop: 3
-      fuzzy: 1
-      fuzzy_analyzer: true
+      slop: 0
+      fuzzy: 0
+      fuzzy_analyzer: false
     advanced:
       index_prefix: ''
       collection: ''
@@ -72,7 +72,7 @@ field_settings:
     label: 'Alternative name'
     datasource_id: 'entity:node'
     property_path: field_alternative_name
-    type: text
+    type: solr_text_unstemmed
     dependencies:
       config:
         - field.storage.node.field_alternative_name
@@ -80,7 +80,8 @@ field_settings:
     label: 'First name'
     datasource_id: 'entity:node'
     property_path: field_first_names
-    type: text
+    type: solr_text_unstemmed
+    boost: 3.0
     dependencies:
       config:
         - field.storage.node.field_first_names
@@ -96,7 +97,24 @@ field_settings:
     label: 'Last name'
     datasource_id: 'entity:node'
     property_path: field_last_name
-    type: text
+    type: solr_text_unstemmed
+    boost: 3.0
+    dependencies:
+      config:
+        - field.storage.node.field_last_name
+  first_names_string:
+    label: 'First name (string)'
+    datasource_id: 'entity:node'
+    property_path: field_first_names
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_first_names
+  last_name_string:
+    label: 'Last name (string)'
+    datasource_id: 'entity:node'
+    property_path: field_last_name
+    type: string
     dependencies:
       config:
         - field.storage.node.field_last_name
@@ -104,7 +122,7 @@ field_settings:
     label: 'HR Title'
     datasource_id: 'entity:node'
     property_path: 'field_hr_title:entity:name'
-    type: text
+    type: solr_text_unstemmed
     dependencies:
       config:
         - field.storage.node.field_hr_title
@@ -114,7 +132,7 @@ field_settings:
     label: Title
     datasource_id: 'entity:node'
     property_path: title
-    type: text
+    type: solr_text_unstemmed
     dependencies:
       module:
         - node
@@ -187,6 +205,8 @@ processor_settings:
     weights:
       preprocess_index: 0
   tre_contact_search_filter: {  }
+  tre_hr_title_multilingual_indexer: {  }
+  tre_person_language_deduplicator: {  }
 tracker_settings:
   default:
     indexing_order: fifo

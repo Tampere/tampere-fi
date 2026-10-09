@@ -184,16 +184,24 @@ function tampere_theme_suggestions_form_element_alter(array &$suggestions, array
  */
 function tampere_theme_suggestions_menu_alter(&$suggestions, array $variables) {
   if (isset($variables['theme_hook_original'])) {
+    $base = $variables['theme_hook_original'];
+    // Group content menus (group_content_menu 2.0.x) render with the base
+    // "menu" theme hook and expose the menu bundle in the group_content_menu
+    // variable. Build region suggestions off the bundle so per-region templates
+    // (e.g. menu--group-menu--minisite-main-menu-fi--sidebar.html.twig) match.
+    if (!empty($variables['group_content_menu']['group_content_menu_type'])) {
+      $base = 'menu__group_menu__' . strtr($variables['group_content_menu']['group_content_menu_type'], '-', '_');
+    }
     if (isset($variables['attributes']['region'])) {
       $region = $variables['attributes']['region'];
 
-      $suggestion = $variables['theme_hook_original'] . '__' . $variables['attributes']['region'];
+      $suggestion = $base . '__' . $region;
       $suggestion = str_replace('-', '_', $suggestion);
       $suggestions[] = $suggestion;
 
       if (isset($variables['attributes']['block'])) {
         $block = str_replace(['block-', '-'], ['', '_'], $variables['attributes']['block']);
-        $suggestions[] = $variables['theme_hook_original'] . '__' . $region . '__' . $block;
+        $suggestions[] = str_replace('-', '_', $base . '__' . $region . '__' . $block);
       }
     }
   }
@@ -219,4 +227,42 @@ function tampere_theme_suggestions_links_alter(&$suggestions, array $variables) 
 function tampere_page_attachments_alter(array &$attachments) {
   // Attach cookie-fix library to all pages.
   $attachments['#attached']['library'][] = 'tampere/cookie-fix';
+}
+
+/**
+ * Pass the Audio player paragraph title ID to the referenced media.
+ *
+ * Basically this adds the labelledby ID to the referenced medias render array.
+ * In tampere_preprocess_media() we pick up the ID and add it to the audio_file
+ * render array attributes, which are later rendered by the Twig template.
+ */
+function tampere_preprocess_paragraph(array &$variables) {
+  $paragraph = $variables['paragraph'] ?? NULL;
+
+  if (!$paragraph || $paragraph->bundle() !== 'audio_player') {
+    return;
+  }
+
+  if (empty($variables['content']['field_audio_file'][0])) {
+    return;
+  }
+
+  $title_id = 'audio-player-title-' . $paragraph->id();
+
+  $variables['content']['field_audio_file'][0]['#audio_player_labelledby'] = $title_id;
+}
+
+/**
+ * Add the paragraph title ID to the actual audio element.
+ *
+ * Used as aria-labelledby for Audio player accessibility.
+ */
+function tampere_preprocess_media(array &$variables) {
+  $title_id = $variables['elements']['#audio_player_labelledby'] ?? NULL;
+  if (!$title_id || empty($variables['content']['field_media_audio_file'][0])) {
+    return;
+  }
+  // We modified the media render array in tampere_preprocess_paragraph().
+  // Here we add the passed title ID to the audio element attributes.
+  $variables['content']['field_media_audio_file'][0]['#attributes']['aria-labelledby'] = $title_id;
 }

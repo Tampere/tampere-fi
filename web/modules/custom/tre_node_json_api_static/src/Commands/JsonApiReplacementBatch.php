@@ -19,6 +19,7 @@ use Drupal\node\NodeInterface;
 use Drupal\node\NodeStorageInterface;
 use Drush\Commands\DrushCommands;
 use Drush\Exceptions\CommandFailedException;
+use Drupal\Core\File\FileExists;
 
 /**
  * Drush commands for generating static JSON listings of nodes.
@@ -189,7 +190,7 @@ final class JsonApiReplacementBatch extends DrushCommands {
     fclose($handle);
 
     $destination = $base_path . '/' . $content_type . '_' . $langcode . '.json';
-    $this->fileSystem->move($temp_file, $destination, FileSystemInterface::EXISTS_REPLACE);
+    $this->fileSystem->move($temp_file, $destination, FileExists::Replace);
 
     $absolute_destination = $this->fileUrlGenerator->generate($destination)->setAbsolute()->toString();
     $this->logger()->success("Output written to file {destination}!", ['destination' => $absolute_destination]);

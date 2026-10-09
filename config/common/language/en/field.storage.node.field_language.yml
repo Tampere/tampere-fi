@@ -1,8 +1,10 @@
 settings:
   allowed_values:
     -
-      label: Arabic
+      label: 'Arabic (Legacy)'
     -
       label: Russian
     -
       label: 'Persian (Farsi)'
+    -
+      label: Arabic

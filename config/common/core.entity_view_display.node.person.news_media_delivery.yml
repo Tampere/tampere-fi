@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.person.field_image
     - field.field.node.person.field_keywords
     - field.field.node.person.field_last_name
+    - field.field.node.person.field_override_phone
     - field.field.node.person.field_phone
     - field.field.node.person.field_phone_supplementary
     - field.field.node.person.field_place
@@ -130,6 +131,7 @@ hidden:
   field_image: true
   field_keywords: true
   field_last_name: true
+  field_override_phone: true
   field_phone_supplementary: true
   field_place: true
   field_removed_from_source: true

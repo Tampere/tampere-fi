@@ -2,18 +2,21 @@ uuid: 2051ad41-05d9-4cd1-bf91-3fd759a75a81
 langcode: fi
 status: true
 dependencies:
+  config:
+    - node.type.news_item
+    - node.type.rich_article
+    - node.type.small_news_item
   module:
     - language
     - node
 id: topical_content_en
 label: 'Topical content EN'
 type: 'canonical_entities:node'
-pattern: 'current/[node:published:html_year]/[node:published:custom:m]/[node:published:custom:d]/[node:title]'
+pattern: '/current/[node:published:html_year]/[node:published:custom:m]/[node:published:custom:d]/[node:title]'
 selection_criteria:
   1188bc31-d7f5-4adb-a578-5ad6d5880cf8:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 1188bc31-d7f5-4adb-a578-5ad6d5880cf8
     context_mapping:
       node: node
     bundles:
@@ -23,7 +26,6 @@ selection_criteria:
   490317e6-cfd1-4179-8f5e-fd9cc7147d11:
     id: language
     negate: false
-    uuid: 490317e6-cfd1-4179-8f5e-fd9cc7147d11
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

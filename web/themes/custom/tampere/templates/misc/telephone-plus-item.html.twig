@@ -1,0 +1,62 @@
+{#
+/**
+ * @file
+ * Custom theme override for Telephone Plus formatter.
+ * 
+ * Overridden from: /contrib/telephone_plus/templates/telephone-plus-item.html.twig
+ * Custom changes:
+ * - Removed parentheses surrounding the {{ supplementary }} element.
+ * @ingroup themeable
+ */
+#}
+{% set title_attributes = create_attribute() %}
+{% set link_attributes = create_attribute() %}
+{% set number_attributes = create_attribute() %}
+{% set supplementary_attributes = create_attribute() %}
+
+{%
+  set title_classes = [
+  'telephone-plus__item-title',
+  vcard ? 'p-name',
+]
+%}
+{%
+  set link_classes = [
+  'telephone-plus__item-number',
+  vcard ? 'u-url',
+]
+%}
+{%
+  set number_classes = [
+  (url is not defined or not url) ? 'telephone-plus__item-number' : '',
+  vcard ? 'value',
+]
+%}
+{%
+  set supplementary_classes = [
+  'telephone-plus__item-supplementary',
+  vcard ? 'p-note',
+]
+%}
+
+
+{% apply spaceless %}
+  {% if title %}
+    <span {{ title_attributes.addClass(title_classes) }}>{{ title }}:</span>&nbsp;
+  {% endif %}
+
+  {% if url %}
+    <a href="{{ url }}" {{ link_attributes.addClass(link_classes) }}>
+  {% endif %}
+
+  <span {{ number_attributes.addClass(number_classes) }}>{{ number }}</span>
+
+  {% if url %}
+    </a>
+  {% endif %}
+
+  {% if supplementary %}
+    &nbsp;<span {{ supplementary_attributes.addClass(supplementary_classes) }}>{{ supplementary }}</span>
+  {% endif %}
+
+{% endapply %}

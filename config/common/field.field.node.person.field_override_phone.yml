@@ -1,0 +1,21 @@
+uuid: 339baf5a-d0d6-4a18-b087-fd57cc361be2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_override_phone
+    - node.type.person
+id: node.person.field_override_phone
+field_name: field_override_phone
+entity_type: node
+bundle: person
+label: 'Show additional phone instead of integrated'
+description: 'Display the additional phone number and its description in contact search results instead of the automatically imported number.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

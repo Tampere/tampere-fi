@@ -44,9 +44,6 @@
 
     // First level main menu items
     > #{$base_class}__item {
-      @include large {
-        border-left: 2px solid var(--main-menu-border-color);
-      }
       @include xl {
         // CARE-4598 fix alphabetical order of items due to css grid columns used
         &:nth-child(1) {

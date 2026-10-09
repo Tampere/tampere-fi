@@ -1,0 +1,45 @@
+{#
+/**
+ * @file
+ * Theme implementation for the Audio player paragraph.
+ *
+ * The audio title is always included in the page markup.
+ * When "Show title" is disabled, the title remains available to screen
+ * readers through visually-hidden utility class.
+ */
+#}
+
+{% set classes = [
+  'paragraph',
+  'paragraph--type--' ~ paragraph.bundle|clean_class,
+  view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  'audio-player',
+] %}
+
+{% set show_title = paragraph.field_show_title.value == '1' %}
+{% set title_id = 'audio-player-title-' ~ paragraph.id() %}
+
+<div
+  {{ attributes
+    .addClass(classes)
+    .setAttribute('role', 'group')
+    .setAttribute('aria-labelledby', title_id)
+  }}
+>
+  <p
+    id="{{ title_id }}"
+    class="audio-player__title{{ show_title ? '' : ' visually-hidden' }}"
+  >
+    {{ paragraph.field_audio_title.value }}
+  </p>
+
+  <div class="audio-player__player">
+    {{ content.field_audio_file }}
+  </div>
+
+  {{ content|without(
+    'field_audio_title',
+    'field_show_title',
+    'field_audio_file'
+  ) }}
+</div>

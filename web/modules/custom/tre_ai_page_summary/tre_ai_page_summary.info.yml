@@ -1,0 +1,9 @@
+name: 'TRE AI Page Summary'
+type: module
+description: 'Adds an AI-powered "Request a summary from AI" button to the Sivun sisältö lyhyesti (field_page_summary) field on node edit forms.'
+core_version_requirement: '>=10'
+package: 'TRE'
+dependencies:
+  - drupal:node
+  - ai:ai
+  - ai_auto_reference:ai_auto_reference

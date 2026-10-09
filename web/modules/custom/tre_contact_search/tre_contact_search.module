@@ -1,11 +1,10 @@
 <?php
 
-use Drupal\views\ViewExecutable;
-use Drupal\views\Plugin\views\query\QueryPluginBase;
 use Drupal\node\NodeInterface;
 use Drupal\search_api\Entity\Index;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\RevisionableStorageInterface;
 
 /**
  * Provides temporary memory storage to hold Person IDs during the save process.
@@ -21,8 +20,6 @@ function &_tre_contact_search_static_old_persons() {
 function _tre_contact_search_extract_person_ids(ContentEntityInterface $entity) {
   $ids = [];
 
-  // We loop through every available translation to ensure we don't miss
-  // references that only exist in specific language versions of the paragraph.
   foreach ($entity->getTranslationLanguages() as $langcode => $language) {
     $translation = $entity->getTranslation($langcode);
 
@@ -42,20 +39,24 @@ function _tre_contact_search_extract_person_ids(ContentEntityInterface $entity) 
     foreach ($translation->getFieldDefinitions() as $field_name => $field_definition) {
       if ($field_definition->getType() === 'entity_reference_revisions') {
         if ($translation->hasField($field_name) && !$translation->get($field_name)->isEmpty()) {
-          $target_type = $field_definition->getSetting('target_type'); 
-          
+          $target_type = $field_definition->getSetting('target_type');
           foreach ($translation->get($field_name) as $item) {
-            // If the paragraph is new and unsaved, it won't have a revision ID yet,
-            // so we extract directly from the entity object in memory.
+            // New/unsaved entity: extract directly from the in-memory object.
             if ($item->entity && empty($item->target_revision_id)) {
               $ids = array_merge($ids, _tre_contact_search_extract_person_ids($item->entity));
             }
-            // For saved paragraphs, we load the exact historical revision from 
-            // the database to bypass caching issues.
+            // Saved entity: load the exact revision to bypass static cache.
             elseif (!empty($item->target_revision_id)) {
-              $child_entity = \Drupal::entityTypeManager()->getStorage($target_type)->loadRevision($item->target_revision_id);
-              if ($child_entity instanceof ContentEntityInterface) {
-                 $ids = array_merge($ids, _tre_contact_search_extract_person_ids($child_entity));
+              // $child_entity = \Drupal::entityTypeManager()->getStorage($target_type)->loadRevision($item->target_revision_id);
+              $storage = \Drupal::entityTypeManager()->getStorage($target_type);
+
+              // Ensure the storage handler is capable of loading revisions
+              if ($storage instanceof RevisionableStorageInterface) {
+                $child_entity = $storage->loadRevision($item->target_revision_id);
+
+                if ($child_entity instanceof ContentEntityInterface) {
+                  $ids = array_merge($ids, _tre_contact_search_extract_person_ids($child_entity));
+                }
               }
             }
           }
@@ -70,9 +71,8 @@ function _tre_contact_search_extract_person_ids(ContentEntityInterface $entity) 
 /**
  * Implements hook_node_presave().
  *
- * Captures the old state of the node before it is modified. We load the 
- * unchanged entity directly from the database because $node->original can 
- * sometimes miss nested paragraph trees or specific translations.
+ * Captures the old person list before the save, using loadUnchanged() to
+ * avoid stale caches or missing translations from $node->original.
  */
 function tre_contact_search_node_presave(NodeInterface $node) {
   if (!$node->isNew()) {
@@ -86,9 +86,8 @@ function tre_contact_search_node_presave(NodeInterface $node) {
 /**
  * Implements hook_ENTITY_TYPE_presave() for paragraphs.
  *
- * Stores Person IDs from paragraphs before they are modified in the database.
- * This ensures we catch instances where a referenced Person is swapped out 
- * for another within an existing paragraph.
+ * Captures persons before a paragraph is modified, so swapped references
+ * trigger reindexing.
  */
 function tre_contact_search_paragraph_presave(EntityInterface $paragraph) {
   if ($paragraph->original) {
@@ -119,9 +118,49 @@ function tre_contact_search_paragraph_predelete(EntityInterface $paragraph) {
 }
 
 /**
- * Implements hook_node_predelete().
+ * Implements hook_ENTITY_TYPE_delete() for paragraphs.
  *
- * Captures referenced persons right before the parent node is deleted.
+ * Handles direct paragraph deletion (outside a node save). Finds the root
+ * node and triggers reindexing for previously referenced persons.
+ */
+function tre_contact_search_paragraph_delete(EntityInterface $paragraph) {
+  $static_old = &_tre_contact_search_static_old_persons();
+  $paragraph_pool = $static_old['paragraph_pool'] ?? [];
+
+  if (empty($paragraph_pool)) {
+    return;
+  }
+
+  $parent_node = NULL;
+  $parent_type = $paragraph->get('parent_type')->getString();
+  $parent_id = $paragraph->get('parent_id')->getString();
+
+  // Walk up the parent chain to find the root node.
+  while ($parent_type && $parent_id) {
+    $parent = \Drupal::entityTypeManager()->getStorage($parent_type)->loadUnchanged($parent_id);
+    if (!$parent) {
+      break;
+    }
+    if ($parent instanceof NodeInterface) {
+      $parent_node = $parent;
+      break;
+    }
+    if ($parent->getEntityTypeId() === 'paragraph') {
+      $parent_type = $parent->get('parent_type')->getString();
+      $parent_id = $parent->get('parent_id')->getString();
+    }
+    else {
+      break;
+    }
+  }
+
+  if ($parent_node) {
+    _tre_contact_search_trigger_reindex($parent_node);
+  }
+}
+
+/**
+ * Implements hook_node_predelete().
  */
 function tre_contact_search_node_predelete(NodeInterface $node) {
   $static_old = &_tre_contact_search_static_old_persons();
@@ -150,10 +189,10 @@ function tre_contact_search_node_delete(NodeInterface $node) {
 }
 
 /**
- * Triggers an immediate Search API update for the affected persons.
+ * Triggers an immediate Search API reindex for all affected persons.
  *
- * Collects IDs from both the previous state (stored in memory) and the new 
- * state, then flags them for the Search API indexer to process immediately.
+ * Merges persons from old state, new state, and any paragraph pool, then
+ * indexes them synchronously (bypassing the queue).
  */
 function _tre_contact_search_trigger_reindex(NodeInterface $node, $is_delete = FALSE) {
   $static_old = &_tre_contact_search_static_old_persons();
@@ -161,7 +200,6 @@ function _tre_contact_search_trigger_reindex(NodeInterface $node, $is_delete = F
   $old_persons = $static_old[$node->id()] ?? [];
   $paragraph_pool = $static_old['paragraph_pool'] ?? [];
 
-  // Skip extracting new persons if the parent node is being deleted.
   $new_persons = $is_delete ? [] : _tre_contact_search_extract_person_ids($node);
 
   $person_ids = array_unique(array_filter(array_merge($new_persons, $old_persons, $paragraph_pool)));
@@ -169,6 +207,15 @@ function _tre_contact_search_trigger_reindex(NodeInterface $node, $is_delete = F
   if (empty($person_ids)) {
     return;
   }
+
+  // Expose in-memory node state to the processor so it can bypass stale DB
+  // state for this request (async ERR orphan purge, or new paragraphs without
+  // parent_id written yet).
+  $indexing_context = &drupal_static('tre_contact_search_indexing_context', []);
+  $indexing_context = [
+    'triggering_node_id' => (string) $node->id(),
+    'new_persons' => $new_persons,
+  ];
 
   try {
     $datasource_id = 'entity:node';
@@ -182,7 +229,7 @@ function _tre_contact_search_trigger_reindex(NodeInterface $node, $is_delete = F
     $search_api_ids = [];
     $languages = \Drupal::languageManager()->getLanguages();
     
-    // Ensure the person is updated across all active site languages.
+    // Index across all site languages.
     foreach ($person_ids as $pid) {
       foreach ($languages as $langcode => $language) {
         $search_api_ids[] = $datasource_id . '/' . $pid . ':' . $langcode;
@@ -190,19 +237,16 @@ function _tre_contact_search_trigger_reindex(NodeInterface $node, $is_delete = F
     }
     
     if (!empty($search_api_ids)) {
-      // Tell the tracker these items need updating.
       $tracker->trackItemsUpdated($search_api_ids);
-      
-      // Load the specific item objects based on the IDs we just tracked.
       $items_to_index = $index->loadItemsMultiple($search_api_ids);
-      
-      // Immediately index only these specific items, skipping the queue.
       if (!empty($items_to_index)) {
         $index->indexSpecificItems($items_to_index);
       }
     }
   } catch (\Exception $e) {
     \Drupal::logger('tre_contact_search')->error('Search API indexing failed: ' . $e->getMessage());
+  } finally {
+    $indexing_context = [];
   }
 }
 
@@ -352,7 +396,6 @@ function tre_contact_search_preprocess_node__person__contact_search(&$variables)
   
   // Mapping basic fields
   $fields = [
-    'person_preheading' => 'field_hr_title',
     'person_organization' => 'field_hr_organizational_unit',
     'person_phones' => 'field_phone',
     'person_email' => 'field_email',
@@ -363,6 +406,22 @@ function tre_contact_search_preprocess_node__person__contact_search(&$variables)
       $variables[$var] = $current_node->get($field_name)->view($master_view_mode);
     } else {
       $variables[$var] = NULL;
+    }
+  }
+
+  // field_hr_title is a taxonomy term reference. Rendering it via ->view() on
+  // a FI-only person node always produces the Finnish term label, even when the
+  // interface language is English, because Drupal uses the node's own language
+  // as context for referenced entities. We load the term explicitly and call
+  // getTranslationFromContext() on it so the term's own EN translation is used
+  // when available, independently of whether the person node itself has been
+  // translated.
+  $variables['person_preheading'] = NULL;
+  if ($current_node->hasField('field_hr_title') && !$current_node->get('field_hr_title')->isEmpty()) {
+    $term = $current_node->get('field_hr_title')->entity;
+    if ($term) {
+      $translated_term = \Drupal::service('entity.repository')->getTranslationFromContext($term);
+      $variables['person_preheading'] = ['#markup' => $translated_term->label()];
     }
   }
 
@@ -395,4 +454,5 @@ function tre_contact_search_preprocess_node__person__contact_search(&$variables)
   }
 
   $variables['person_image'] = $image_render_array;
+  $variables['person_additional_phones'] = $current_node->get('field_additional_phones');
 }

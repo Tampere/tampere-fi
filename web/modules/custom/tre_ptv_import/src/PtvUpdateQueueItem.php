@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\tre_ptv_import;
 
 /**
@@ -21,26 +23,24 @@ final class PtvUpdateQueueItem {
    *
    * @var string[]
    */
-  private array $services;
+  private array $services = [];
 
   /**
    * Holds the UUIDs of service locations needing update.
    *
    * @var string[]
    */
-  private array $serviceLocations;
+  private array $serviceLocations = [];
 
   /**
    * Holds the UUIDs of service channels other than locations needing update.
    *
    * @var string[]
    */
-  private array $serviceChannels;
+  private array $serviceChannels = [];
 
   /**
    * The language code for the update migration needed.
-   *
-   * @var string
    */
   private string $langcode;
 
@@ -57,7 +57,7 @@ final class PtvUpdateQueueItem {
    * @return string
    *   The langcode for the migration.
    */
-  public function getLangcode() {
+  public function getLangcode(): string {
     return $this->langcode;
   }
 
@@ -67,47 +67,56 @@ final class PtvUpdateQueueItem {
    * @param string[] $services
    *   The UUIDs for the services to update.
    */
-  public function setServices(array $services) {
-    $non_strings = array_filter($services, function ($item) {
-      return !is_string($item);
-    });
-    if (!empty($non_strings)) {
-      throw new \InvalidArgumentException("Only service id strings should be set.");
+  public function setServices(array $services): void {
+    $nonStrings = array_filter(
+      $services,
+      static fn (mixed $item): bool => !is_string($item)
+    );
+
+    if (!empty($nonStrings)) {
+      throw new \InvalidArgumentException('Only service id strings should be set.');
     }
+
     $this->services = $services;
   }
 
   /**
    * Setter for the service location UUIDs.
    *
-   * @param string[] $service_locations
+   * @param string[] $serviceLocations
    *   The UUIDs for the service locations to update.
    */
-  public function setServiceLocations(array $service_locations) {
-    $non_strings = array_filter($service_locations, function ($item) {
-      return !is_string($item);
-    });
-    if (!empty($non_strings)) {
-      throw new \InvalidArgumentException("Only service location id strings should be set.");
+  public function setServiceLocations(array $serviceLocations): void {
+    $nonStrings = array_filter(
+      $serviceLocations,
+      static fn (mixed $item): bool => !is_string($item)
+    );
+
+    if (!empty($nonStrings)) {
+      throw new \InvalidArgumentException('Only service location id strings should be set.');
     }
-    $this->serviceLocations = $service_locations;
+
+    $this->serviceLocations = $serviceLocations;
   }
 
   /**
    * Setter for the service channel UUIDs.
    *
-   * @param string[] $service_channels
+   * @param string[] $serviceChannels
    *   The UUIDs for the service channels, other than service locations, to
    *   update.
    */
-  public function setServiceChannels(array $service_channels) {
-    $non_strings = array_filter($service_channels, function ($item) {
-      return !is_string($item);
-    });
-    if (!empty($non_strings)) {
-      throw new \InvalidArgumentException("Only service channel id strings should be set.");
+  public function setServiceChannels(array $serviceChannels): void {
+    $nonStrings = array_filter(
+      $serviceChannels,
+      static fn (mixed $item): bool => !is_string($item)
+    );
+
+    if (!empty($nonStrings)) {
+      throw new \InvalidArgumentException('Only service channel id strings should be set.');
     }
-    $this->serviceChannels = $service_channels;
+
+    $this->serviceChannels = $serviceChannels;
   }
 
   /**
@@ -117,7 +126,7 @@ final class PtvUpdateQueueItem {
    *   The service UUIDs.
    */
   public function getServices(): array {
-    return $this->services ?? [];
+    return $this->services;
   }
 
   /**
@@ -127,7 +136,7 @@ final class PtvUpdateQueueItem {
    *   The service location UUIDs.
    */
   public function getServiceLocations(): array {
-    return $this->serviceLocations ?? [];
+    return $this->serviceLocations;
   }
 
   /**
@@ -137,7 +146,7 @@ final class PtvUpdateQueueItem {
    *   The service channel UUIDs.
    */
   public function getServiceChannels(): array {
-    return $this->serviceChannels ?? [];
+    return $this->serviceChannels;
   }
 
 }

@@ -6,6 +6,7 @@ dependencies:
     - node.type.involvement_opportunity
     - workflows.workflow.chance_for_participation_moderation
   module:
+    - ai_auto_reference
     - ai_translate_textfield
     - content_moderation
     - file
@@ -20,6 +21,7 @@ label: 'Osallistumisen osiovastaava'
 weight: 7
 is_admin: null
 permissions:
+  - 'access ai auto-reference suggestion tools'
   - 'access content'
   - 'access content overview'
   - 'add scheduled transitions node involvement_opportunity'

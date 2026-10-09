@@ -7,6 +7,7 @@ use Drupal\media\MediaInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
 use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
+use Drupal\Core\StringTranslation\ByteSizeMarkup;
 
 /**
  * List of attachments paragraph preprocessing.
@@ -59,7 +60,7 @@ class AttachmentList extends TrePreProcessPluginBase {
         $file_url = $this->fileUrlGenerator->generateAbsoluteString($file_uri);
 
         $file_extension = $this->helperFunctions->getFileExtensionFromUrl($file_url);
-        $file_size = format_size($file_entity->getSize());
+        $file_size = ByteSizeMarkup::create($file_entity->getSize());
 
         $file_info = '';
         if ($file_extension) {

@@ -13,7 +13,7 @@ dependencies:
 id: search_form
 theme: tampere
 region: header
-weight: -3
+weight: 0
 provider: null
 plugin: 'views_exposed_filter_block:search-page_1'
 settings:

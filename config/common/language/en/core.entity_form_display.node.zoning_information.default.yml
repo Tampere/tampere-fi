@@ -34,3 +34,8 @@ third_party_settings:
       label: 'Work programme'
     group_city_strategy_work_program:
       label: 'City Strategy and work programme'
+content:
+  field_search_keywords:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'

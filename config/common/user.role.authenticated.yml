@@ -38,7 +38,7 @@ dependencies:
 _core:
   default_config_hash: d_KQifzyNj19PRtlwHHYN-KTG-t4yLUYnd0STLE6dYA
 id: authenticated
-label: 'Authenticated user'
+label: 'Sisäänkirjautunut käyttäjä'
 weight: -10
 is_admin: false
 permissions:
@@ -79,6 +79,7 @@ permissions:
   - 'view paragraph content anchor_link'
   - 'view paragraph content anchor_list'
   - 'view paragraph content attachment'
+  - 'view paragraph content audio_player'
   - 'view paragraph content automatic_anchor_list'
   - 'view paragraph content automatic_phase_accordion'
   - 'view paragraph content back_to_top_link'

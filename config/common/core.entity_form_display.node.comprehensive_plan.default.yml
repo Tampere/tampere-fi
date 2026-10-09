@@ -43,7 +43,8 @@ dependencies:
     - content_moderation
     - field_group
     - media_library
-    - paragraphs_asymmetric_translation_widgets
+    - paragraphs
+    - paragraphs_features
     - path
     - publication_date
     - webform
@@ -331,16 +332,16 @@ third_party_settings:
   ai_auto_reference:
     field_geographical_areas:
       view_mode: auto_tagging_content
-      prompt: customized_prompt_for_multiple_geographical_references
+      prompt: auto_reference__customized_prompt_for_multiple_geographical_references
     field_keywords:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
     field_other_identifiers:
       view_mode: auto_tagging_content
-      prompt: default_single_prompt
+      prompt: auto_reference__default_single_prompt
     field_topics:
       view_mode: auto_tagging_content
-      prompt: default_multiple_prompt
+      prompt: auto_reference__default_multiple_prompt
 id: node.comprehensive_plan.default
 targetEntityType: node
 bundle: comprehensive_plan
@@ -353,51 +354,98 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_acceptance_phase:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 4
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
   field_city_strategy:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 22
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
   field_city_strategy_work_program:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 19
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_description:
     type: string_textarea
     weight: 17
@@ -445,17 +493,36 @@ content:
           list: ''
           add: Lisää
   field_legal_phase:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 5
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_main_image:
     type: media_library_widget
     weight: 15
@@ -493,36 +560,69 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_paragraphs:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 20
     region: content
     settings:
       title: Paragraafi
       title_plural: Paragraafit
       edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      limited_field_widgets:
+        limit_values: 0
       field_states_ui:
         form:
           type: ''
           list: ''
-          add: Lisää
-      limited_field_widgets:
-        limit_values: 0
+          add: Add
   field_partially_binding_phase:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 18
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_phase:
     type: options_buttons
     weight: 49
@@ -540,29 +640,67 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_preparation_phase:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 14
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_proposal_phase:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 47
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_record_number:
     type: entity_reference_autocomplete
     weight: 36
@@ -574,17 +712,35 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_revised_proposal:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 17
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
   field_search_keywords:
     type: string_textfield
     weight: 0
@@ -594,36 +750,67 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_start_phase:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 49
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
     third_party_settings:
-      limited_field_widgets:
-        limit_values: 0
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
       field_states_ui:
         form:
           type: ''
           list: ''
           add: Lisää
   field_start_preparation_phase:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 49
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   field_topics:
     type: entity_reference_autocomplete
     weight: 4
@@ -655,17 +842,36 @@ content:
                 delete: Poista
           add: Lisää
   field_work_programme:
-    type: paragraphs_classic_asymmetric
+    type: paragraphs
     weight: 49
     region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
       edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: process_accordions_extended
-    third_party_settings: {  }
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        convert: '0'
+        duplicate: duplicate
+    third_party_settings:
+      paragraphs_features:
+        add_in_between: false
+        add_in_between_link_count: 3
+        delete_confirmation: true
+        show_drag_and_drop: true
+        show_collapse_all: true
+      field_states_ui:
+        form:
+          type: ''
+          list: ''
+          add: Add
   langcode:
     type: language_select
     weight: 18

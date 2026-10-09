@@ -57,6 +57,12 @@ settings:
       value: opening_hours_3
       label: 'Aukioloajat 3'
     -
+      value: opening_hours_4
+      label: 'Aukioloajat 4'
+    -
+      value: opening_hours_5
+      label: 'Aukioloajat 5'
+    -
       value: additional_information
       label: Lisätietoja
     -

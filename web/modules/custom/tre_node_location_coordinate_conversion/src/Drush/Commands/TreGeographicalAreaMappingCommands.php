@@ -16,6 +16,7 @@ use Drush\Attributes as CLI;
 use Drush\Commands\AutowireTrait;
 use Drush\Commands\DrushCommands;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * A Drush commandfile.
@@ -35,6 +36,8 @@ final class TreGeographicalAreaMappingCommands extends DrushCommands {
     #[Autowire(service: 'tre_node_location_coordinate_conversion.storage')]
     private RegionRepositoryInterface $regionRepository,
     private EntityTypeManagerInterface $entityTypeManager,
+    #[Autowire(service: 'service_container')]
+    private ContainerInterface $container,
   ) {
     parent::__construct();
   }
@@ -62,7 +65,7 @@ final class TreGeographicalAreaMappingCommands extends DrushCommands {
     $fetcher = $this->feedsPluginManager->createInstance('http', ['feed_type' => $feed_type]);
 
     // Dummy state to be able to use the fetch method from $fetcher.
-    $state_csv = new CleanState(0);
+    $state_csv = CleanState::create($this->container, 0);
 
     // Use Feeds fetcher plugin to get the CSV from the URL.
     $fetcher_result = $fetcher->fetch($csv_feed, $state_csv);

@@ -1,0 +1,9 @@
+email:
+  body: "Dear friend,\r\n\r\nI just created a new page on my website and wanted to invite you to visit. The page is protected by password. Please find the details below:-\r\n\r\nPage Url = [protected-page-url]\r\n\r\nPage Password = password here\r\n\r\nThank you.\r\n[site-name]\r\n\r\nsuomi"
+others:
+  protected_pages_description: 'Tämä sivu on suojattu salasanalla. Kirjoitathan salasanan alla olevaan kenttään.'
+  protected_pages_title: 'Suojattu sivu -- Salasana vaaditaan'
+  protected_pages_password_fieldset_legend: 'Salasana vaaditaan'
+  protected_pages_password_label: 'Kirjoita salasana'
+  protected_pages_submit_button_text: Tarkista
+  protected_pages_incorrect_password_msg: 'Salasana on väärin. Ole hyvä ja kirjoita salasana uudestaan.'

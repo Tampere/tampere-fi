@@ -1,16 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\tre_ptv_import\Plugin\QueueWorker;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\Core\Queue\SuspendQueueException;
+use Drupal\tre_ptv_import\Service\Storage\PtvIntermediateStorageInterface;
 use Drupal\tre_ptv_import\PtvUpdateQueueItem;
-use Drupal\tre_ptv_import\Service\PtvDataHelpers;
-use Drupal\tre_ptv_import\Service\PtvServiceIntermediateStorage;
+use Drupal\tre_ptv_import\Service\Api\PtvApiFetcher;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Tampere\PtvV11\ApiException;
 
 /**
  * Queue worker handling the ptv_api_migrations queue.
@@ -24,11 +25,18 @@ use Tampere\PtvV11\ApiException;
 final class PtvApiQueueWorker extends QueueWorkerBase implements ContainerFactoryPluginInterface {
 
   /**
+   * The PTV API fetcher.
+   *
+   * @var \Drupal\tre_ptv_import\Service\Api\PtvApiFetcher
+   */
+  private PtvApiFetcher $apiFetcher;
+
+  /**
    * The PTV intermediate storage service.
    *
-   * @var \Drupal\tre_ptv_import\Service\PtvServiceIntermediateStorage
+   * @var \Drupal\tre_ptv_import\Service\Storage\PtvIntermediateStorageInterface
    */
-  private PtvServiceIntermediateStorage $ptvStorage;
+  private PtvIntermediateStorageInterface $ptvStorage;
 
   /**
    * The queue for creating new items to update using Migrate API.
@@ -38,106 +46,185 @@ final class PtvApiQueueWorker extends QueueWorkerBase implements ContainerFactor
   private QueueInterface $queue;
 
   /**
-   * The PTV data helpers service.
-   *
-   * @var \Drupal\tre_ptv_import\Service\PtvDataHelpers
-   */
-  private PtvDataHelpers $dataHelpers;
-
-  /**
    * Processes queue items for PTV updates.
    *
-   * This is the first-round queue which handles two tasks: it fetches refreshed
-   * data from the PTV API for the items set to update in the queue and creates
-   * new queue items of type ptv_node_migrations which will be handled
-   * separately.
+   * This queue fetches refreshed PTV data, stores it in intermediate storage
+   * and creates node migration queue items.
    *
-   * @{inheritdoc}
+   * {@inheritdoc}
    */
   public function processItem($data) {
     if (!($data instanceof PtvUpdateQueueItem)) {
       return;
     }
 
-    // Since $data now is quaranteed to be a PtvUpdateQueueItem, we can use the
-    // API to fetch the data.
-    if (!empty($data->getServiceLocations())) {
-      try {
-        $channels = $this->ptvStorage->getServiceChannelsByIdsFromApi($data->getServiceLocations(), TRUE);
-        $this->ptvStorage->insertServiceChannels($channels);
-        foreach (array_keys($channels) as $location_id) {
-          $new_data = new PtvUpdateQueueItem($data->getLangcode());
-          $new_data->setServiceLocations([$location_id]);
-          $this->queue->createItem($new_data);
-        }
+    try {
+      $langcode = $data->getLangcode();
+
+      $this->refreshChannels($data->getServiceLocations(), $langcode);
+      $this->refreshChannels($data->getServiceChannels(), $langcode);
+      $this->refreshServices($data->getServices(), $langcode);
+    }
+    catch (\Throwable $exception) {
+      throw new SuspendQueueException(
+        'PTV API update failed: ' . $exception->getMessage(),
+        0,
+        $exception
+      );
+    }
+  }
+
+  /**
+   * Fetches, stores and queues updates for selected service channels.
+   *
+   * Service locations are also service channels in the API, so both
+   * service-channel and place-of-business updates use this method.
+   *
+   * @param string[] $channelContentIds
+   *   PTV service channel content IDs.
+   * @param string $langcode
+   *   Content language.
+   */
+  private function refreshChannels(
+    array $channelContentIds,
+    string $langcode,
+  ): void {
+    if ($channelContentIds === []) {
+      return;
+    }
+
+    $importData = $this->apiFetcher->fetchImportDataForChannels(
+      $channelContentIds
+    );
+
+    $this->storeAndQueueImportData($importData, $langcode);
+  }
+
+  /**
+   * Fetches, stores and queues updates for selected services.
+   *
+   * A service refresh also fetches its connections and connected channels.
+   * Channels and locations are queued before services to retain the existing
+   * migration dependency order.
+   *
+   * @param string[] $serviceContentIds
+   *   PTV service content IDs.
+   * @param string $langcode
+   *   Content language.
+   */
+  private function refreshServices(
+    array $serviceContentIds,
+    string $langcode,
+  ): void {
+    if ($serviceContentIds === []) {
+      return;
+    }
+
+    $importData = $this->apiFetcher->fetchImportDataForServices(
+      $serviceContentIds
+    );
+
+    $this->storeAndQueueImportData($importData, $langcode);
+  }
+
+  /**
+   * Stores import data and queues the affected node migrations.
+   *
+   * @param array<string, mixed> $importData
+   *   Fetched import data.
+   * @param string $langcode
+   *   Content language.
+   */
+  private function storeAndQueueImportData(
+    array $importData,
+    string $langcode,
+  ): void {
+    $preparedImportData = $this->ptvStorage->prepareImportDataForStorage(
+      $importData
+    );
+
+    $this->ptvStorage->upsertImportData($preparedImportData);
+
+    $channelRows = $preparedImportData['channels'] ?? [];
+    $serviceRows = $preparedImportData['services'] ?? [];
+
+    if (is_array($channelRows)) {
+      $this->queueChannelMigrations($channelRows, $langcode);
+    }
+
+    if (is_array($serviceRows)) {
+      $this->queueServiceMigrations($serviceRows, $langcode);
+    }
+  }
+
+  /**
+   * Queues service channel and service location migrations.
+   *
+   * Non-location channels are queued first, followed by locations.
+   *
+   * @param array<string, array<string, mixed>> $channelRows
+   *   Prepared channel rows keyed by content ID.
+   * @param string $langcode
+   *   Content language.
+   */
+  private function queueChannelMigrations(
+    array $channelRows,
+    string $langcode,
+  ): void {
+    $serviceChannelIds = [];
+    $serviceLocationIds = [];
+
+    foreach ($channelRows as $channelRow) {
+      $uuid = $channelRow['uuid'] ?? NULL;
+      $type = $channelRow['type'] ?? NULL;
+
+      if (!is_string($uuid) || trim($uuid) === '') {
+        continue;
       }
-      catch (ApiException $e) {
-        throw new SuspendQueueException("API connection failed.", $e->getCode(), $e);
+
+      if ($type === 'ServiceLocation') {
+        $serviceLocationIds[] = $uuid;
+      }
+      else {
+        $serviceChannelIds[] = $uuid;
       }
     }
 
-    if (!empty($data->getServiceChannels())) {
-      try {
-        $channels = $this->ptvStorage->getServiceChannelsByIdsFromApi($data->getServiceChannels(), TRUE);
-        $this->ptvStorage->insertServiceChannels($channels);
-        foreach (array_keys($channels) as $channel_id) {
-          $new_data = new PtvUpdateQueueItem($data->getLangcode());
-          $new_data->setServiceChannels([$channel_id]);
-          $this->queue->createItem($new_data);
-        }
-      }
-      catch (ApiException $e) {
-        throw new SuspendQueueException("API connection failed.", $e->getCode(), $e);
-      }
+    foreach ($serviceChannelIds as $channelId) {
+      $queueItem = new PtvUpdateQueueItem($langcode);
+      $queueItem->setServiceChannels([$channelId]);
+      $this->queue->createItem($queueItem);
     }
 
-    if (!empty($data->getServices())) {
-      $location_data = [];
-      $channel_data = [];
+    foreach ($serviceLocationIds as $locationId) {
+      $queueItem = new PtvUpdateQueueItem($langcode);
+      $queueItem->setServiceLocations([$locationId]);
+      $this->queue->createItem($queueItem);
+    }
+  }
 
-      $services = $this->ptvStorage->getSpecificServicesFromApi($data->getServices());
-      if (empty($services)) {
-        throw new SuspendQueueException("No services received from API using IDs: " . implode(", ", $data->getServices()));
-      }
-      $this->ptvStorage->insertServices($services);
-      $service_data = new PtvUpdateQueueItem($data->getLangcode());
-      $service_data->setServices(array_keys($services));
+  /**
+   * Queues service migrations.
+   *
+   * @param array<string, array<string, mixed>> $serviceRows
+   *   Prepared service rows keyed by content ID.
+   * @param string $langcode
+   *   Content language.
+   */
+  private function queueServiceMigrations(
+    array $serviceRows,
+    string $langcode,
+  ): void {
+    foreach ($serviceRows as $serviceRow) {
+      $uuid = $serviceRow['uuid'] ?? NULL;
 
-      try {
-        $channels = $this->ptvStorage->getServiceChannelsForServicesFromApi($services, FALSE);
-        $this->ptvStorage->insertServiceChannels($channels);
-
-        [$service_locations, $service_channels] = $this->dataHelpers::separateLocationsFromOtherServiceChannels($channels);
-        foreach (array_keys($service_channels) as $channel_id) {
-          $channel_item = new PtvUpdateQueueItem($data->getLangcode());
-          $channel_item->setServiceChannels([$channel_id]);
-          $channel_data[] = $channel_item;
-        }
-
-        foreach (array_keys($service_locations) as $location_id) {
-          $location_item = new PtvUpdateQueueItem($data->getLangcode());
-          $location_item->setServiceLocations([$location_id]);
-          $location_data[] = $location_item;
-        }
-      }
-      catch (ApiException $e) {
-        throw new SuspendQueueException("API connection failed.", $e->getCode(), $e);
+      if (!is_string($uuid) || trim($uuid) === '') {
+        continue;
       }
 
-      // Ensure that the dependencies of the service are queued first and the
-      // service itself last.
-      if (!empty($channel_data)) {
-        foreach ($channel_data as $channel_item) {
-          $this->queue->createItem($channel_item);
-        }
-      }
-      if (!empty($location_data)) {
-        foreach ($location_data as $location_item) {
-          $this->queue->createItem(($location_item));
-        }
-      }
-      $this->queue->createItem($service_data);
-
+      $queueItem = new PtvUpdateQueueItem($langcode);
+      $queueItem->setServices([$uuid]);
+      $this->queue->createItem($queueItem);
     }
   }
 
@@ -146,9 +233,9 @@ final class PtvApiQueueWorker extends QueueWorkerBase implements ContainerFactor
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $instance = new self($configuration, $plugin_id, $plugin_definition);
-    $instance->ptvStorage = $container->get('tre_ptv_import.ptv_intermediate_storage');
+    $instance->apiFetcher = $container->get('tre_ptv_import.api_fetcher');
+    $instance->ptvStorage = $container->get('tre_ptv_import.intermediate_storage');
     $instance->queue = $container->get('queue')->get('ptv_node_migrations', TRUE);
-    $instance->dataHelpers = $container->get('tre_ptv_import.ptv_data_helpers');
 
     return $instance;
   }

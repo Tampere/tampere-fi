@@ -1,0 +1,187 @@
+--- a/b/src/AiTranslateTextfieldCallbacks.php	2026-09-25 13:00:49
++++ b/src/AiTranslateTextfieldCallbacks.php	2026-09-25 13:01:28
+@@ -31,6 +31,10 @@
+     'string_textfield',
+     'text_textfield',
+     'text_textarea_with_summary',
++    'ext_link_blocklist_widget',
++    'tablefield',
++    'image_focal_point',
++    'heading',
+   ];
+ 
+   /**
+@@ -83,6 +87,8 @@
+     $id = ($parents ? $parents . '-ai-translator-' : 'ai-translator-') . $fieldName . '-' . $context['delta'];
+     $element['#prefix'] = '<div class="' . $id . '">';
+     $element['#suffix'] = '</div>';
++    $element['#wrapper_attributes']['class'][] = $id;
++
+     $settings = [
+       'strip_tags' => $context['widget']->getThirdPartySetting('ai_translate_textfield', 'strip_tags'),
+       'html' => str_starts_with($context['items']->getFieldDefinition()->getType(), 'text_'),
+@@ -176,9 +182,6 @@
+ 
+     $selector = $element['#attributes']['data-ai-translator'];
+ 
+-    // Get the current field value.
+-    $fieldValue = $formState->getValue(array_merge($parents, ['value']));
+-
+     $entity = $formState->getFormObject()->getEntity();
+     $target_language = $entity->language()->getId();
+ 
+@@ -192,74 +195,101 @@
+       $source_language = $default_langcode;
+     }
+ 
+-    try {
+-      $success = FALSE;
+-      // Translate the text using the selected service.
+-      $translated = self::translateText($fieldValue, $widgetSettings, $target_language, $source_language);
++    // Translate the relevant sub-fields of the widget (e.g. the alt text and
++    // title of an image field, or the text of a heading widget).
++    $targetFieldNames = ['value', 'title', 'caption', 'alt', 'textForHeader'];
+ 
+-      if ($fieldValue === $translated) {
+-        $messages = [
+-          MessengerInterface::TYPE_ERROR => [t(
+-              'The text and its translation are the same so maybe there was an error trying to translate it. Was the text already written on the current language?',
+-            ),
+-          ],
+-        ];
++    $response = new AjaxResponse();
++
++    foreach ($targetFieldNames as $targetFieldName) {
++      // If the target field name is textForHeader, it means the widget is a
++      // heading widget. Its text is stored under a container wrapper.
++      $loopParents = $parents;
++      $loopArrayParents = $array_parents;
++      if ($targetFieldName === 'textForHeader') {
++        $targetFieldName = 'text';
++        $loopParents = array_merge($loopParents, ['container']);
++        $loopArrayParents = array_merge($loopArrayParents, ['container']);
+       }
+-      elseif (empty($translated)) {
+-        $messages = [
+-          MessengerInterface::TYPE_ERROR => [t(
+-              'The translation result is empty for an unknown reason. Not replacing the original content.',
+-            ),
+-          ],
+-        ];
++
++      // Get the current field value.
++      $fieldValue = $formState->getValue(array_merge($loopParents, [$targetFieldName]));
++
++      // If the field value is NULL, the sub-field does not exist for this
++      // widget, so skip it.
++      if (is_null($fieldValue)) {
++        continue;
+       }
+-      else {
+-        $success = TRUE;
+-        $messages = [
+-          MessengerInterface::TYPE_STATUS => [
+-            [
+-              '#markup' => (string) t(
+-                  'Replaced text with an AI translation. Please review it thoroughly before saving. The original text was:'
+-              ) . '<br>' . $fieldValue,
+-              '#type' => 'markup',
++
++      try {
++        $success = FALSE;
++        // Translate the text using the selected service.
++        $translated = self::translateText($fieldValue, $widgetSettings, $target_language, $source_language);
++
++        if ($fieldValue === $translated) {
++          $messages = [
++            MessengerInterface::TYPE_ERROR => [t(
++                'The text and its translation are the same so maybe there was an error trying to translate it. Was the text already written on the current language?',
++              ),
++            ],
++          ];
++        }
++        elseif (empty($translated)) {
++          $messages = [
++            MessengerInterface::TYPE_ERROR => [t(
++                'The translation result is empty for an unknown reason. Not replacing the original content.',
++              ),
++            ],
++          ];
++        }
++        else {
++          $success = TRUE;
++          $messages = [
++            MessengerInterface::TYPE_STATUS => [
++              [
++                '#markup' => (string) t(
++                    'Replaced text with an AI translation. Please review it thoroughly before saving. The original text was:'
++                ) . '<br>' . $fieldValue,
++                '#type' => 'markup',
++              ],
+             ],
++          ];
++        }
++      }
++      catch (\Throwable $e) {
++        $translated = '';
++        $messages = [
++          MessengerInterface::TYPE_ERROR => [
++            t('The translation failed and the service returned the following error: @error',
++              ['@error' => $e->getMessage()],
++            ),
+           ],
+         ];
+       }
+-    }
+-    catch (\Throwable $e) {
+-      $translated = '';
++
+       $messages = [
+-        MessengerInterface::TYPE_ERROR => [
+-          t('The translation failed and the service returned the following error: @error',
+-            ['@error' => $e->getMessage()],
+-          ),
+-        ],
++        '#message_list' => $messages,
++        '#theme' => 'status_messages',
++        '#weight' => -1000,
+       ];
+-    }
+ 
+-    $messages = [
+-      '#message_list' => $messages,
+-      '#theme' => 'status_messages',
+-      '#weight' => -1000,
+-    ];
++      // The rendering system insist on not rendering groups again. That's
++      // cool, but works against our purpose, if the element happens to be
++      // inside one.
++      unset($form[$loopArrayParents[0]]['#group']);
+ 
+-    // The rendering system insist on not rendering groups again. That's cool,
+-    // but works against our purpose, if the element happens to be inside one.
+-    unset($form[$array_parents[0]]['#group']);
++      NestedArray::setValue($form, array_merge($loopArrayParents, ['messages']), $messages);
+ 
+-    NestedArray::setValue($form, array_merge($array_parents, ['messages']), $messages);
++      // Only change the field value on success.
++      if ($success) {
++        $formState->setValue(array_merge($loopParents, [$targetFieldName]), $translated);
++        NestedArray::setValue($form, array_merge($loopArrayParents, [$targetFieldName, '#value']), $translated);
++      }
+ 
+-    // Only change the field value on success.
+-    if ($success) {
+-      $formState->setValue(array_merge($parents, ['value']), $translated);
+-      NestedArray::setValue($form, array_merge($array_parents, ['value', '#value']), $translated);
++      $changed = NestedArray::getValue($form, $loopArrayParents);
++      $response->addCommand(new ReplaceCommand('.' . $selector, $changed));
+     }
+ 
+-    $changed = NestedArray::getValue($form, $array_parents);
+-    $response = new AjaxResponse();
+-    $response->addCommand(new ReplaceCommand('.' . $selector, $changed));
+-
+     return $response;
+   }
+ 

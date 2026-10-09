@@ -2,18 +2,19 @@ uuid: 90bdf1cb-1c80-4efd-9149-0a5fd3ead285
 langcode: fi
 status: true
 dependencies:
+  config:
+    - node.type.notice
   module:
     - language
     - node
 id: bulletins_fi
 label: 'Ilmoitustaulu FI'
 type: 'canonical_entities:node'
-pattern: 'ilmoitustaulu/[node:title]'
+pattern: '/ilmoitustaulu/[node:title]'
 selection_criteria:
   15008fc3-43c7-4be3-9b72-faddce0648e4:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 15008fc3-43c7-4be3-9b72-faddce0648e4
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   4b8f4640-b183-490d-9928-6d9f1e5402db:
     id: language
     negate: false
-    uuid: 4b8f4640-b183-490d-9928-6d9f1e5402db
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

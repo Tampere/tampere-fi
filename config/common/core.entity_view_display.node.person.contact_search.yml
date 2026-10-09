@@ -21,15 +21,18 @@ dependencies:
     - field.field.node.person.field_image
     - field.field.node.person.field_keywords
     - field.field.node.person.field_last_name
+    - field.field.node.person.field_override_phone
     - field.field.node.person.field_phone
     - field.field.node.person.field_phone_supplementary
     - field.field.node.person.field_place
+    - field.field.node.person.field_removed_from_source
     - field.field.node.person.field_search_keywords
     - field.field.node.person.field_topics
     - field.field.node.person.migrate_override_data
     - node.type.person
   module:
     - address
+    - field_delimiter
     - telephone
     - text
     - tre_phone_field_formatter
@@ -53,10 +56,12 @@ content:
     region: content
   field_additional_phones:
     type: tre_phone_field_plain
-    label: above
+    label: hidden
     settings:
       force_format: default
-    third_party_settings: {  }
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
     weight: 11
     region: content
   field_address_postal:
@@ -195,6 +200,8 @@ hidden:
   field_contract_ends: true
   field_hide_email_in_search: true
   field_hr_id: true
+  field_override_phone: true
+  field_removed_from_source: true
   field_search_keywords: true
   langcode: true
   migrate_override_data: true

@@ -1,5 +1,5 @@
 {% set attachment__base_class = attachment__base_class|default("attachment-list") %}
-{% set use_left_to_right = attachment__content_lang == "arb" or attachment__content_lang == "fa" %}
+{% set use_left_to_right = attachment__content_lang == "ar" or attachment__content_lang == "arb" or attachment__content_lang == "fa" %}
 
 <li {{ bem("attachment", attachment__modifiers|default([]), attachment__base_class)}}>
 

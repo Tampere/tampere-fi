@@ -6,7 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
-use Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface;
+use Drupal\tre_ptv_import\Service\Migration\SingleItemUpdaterInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -17,7 +17,7 @@ final class PtvRefreshForm extends FormBase {
   /**
    * The Single Item Updater service.
    *
-   * @var \Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface
+   * @var \Drupal\tre_ptv_import\Service\Migration\SingleItemUpdaterInterface
    */
   private SingleItemUpdaterInterface $updater;
 

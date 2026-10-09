@@ -6,6 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.without_content_language
 label: 'Ilman kielivalintaa'
-description: ''
+description: null
 targetEntityType: paragraph
 cache: true

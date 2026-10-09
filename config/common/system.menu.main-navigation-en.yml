@@ -1,0 +1,8 @@
+uuid: 18b81069-be28-4913-a571-c20e35383528
+langcode: en
+status: true
+dependencies: {  }
+id: main-navigation-en
+label: 'Main navigation EN'
+description: 'Generated menu created from Group hierarchy data.'
+locked: false

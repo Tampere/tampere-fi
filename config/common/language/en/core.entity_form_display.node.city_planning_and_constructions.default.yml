@@ -34,3 +34,12 @@ third_party_settings:
       label: 'Partially legally binding'
     group_legal_phase:
       label: 'Legally binding'
+content:
+  field_address:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'
+  field_search_keywords:
+    third_party_settings:
+      maxlength:
+        maxlength_js_label: 'Content limited to @limit characters, remaining: <strong>@remaining</strong>'

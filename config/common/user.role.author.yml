@@ -8,6 +8,7 @@ dependencies:
     - entity_browser.browser.persons_entity_browser
     - filter.format.limited_html
     - filter.format.notice_html
+    - media.type.audio
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -38,6 +39,7 @@ dependencies:
     - workflows.workflow.chance_for_participation_moderation
     - workflows.workflow.content_moderation
   module:
+    - ai_auto_reference
     - ai_translate_textfield
     - content_moderation
     - content_translation
@@ -63,6 +65,7 @@ weight: 5
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access ai auto-reference suggestion tools'
   - 'access all_content_entity_browser entity browser pages'
   - 'access all_places_entity_browser entity browser pages'
   - 'access content overview'
@@ -76,6 +79,7 @@ permissions:
   - 'access taxonomy overview'
   - 'add scheduled transitions node involvement_opportunity'
   - 'addrow tablefield'
+  - 'create audio media'
   - 'create basic_content_page content'
   - 'create content_in_other_language content'
   - 'create file media'
@@ -90,6 +94,7 @@ permissions:
   - 'create paragraph content anchor_link'
   - 'create paragraph content anchor_list'
   - 'create paragraph content attachment'
+  - 'create paragraph content audio_player'
   - 'create paragraph content automatic_anchor_list'
   - 'create paragraph content automatic_phase_accordion'
   - 'create paragraph content back_to_top_link'
@@ -162,12 +167,15 @@ permissions:
   - 'create person content'
   - 'create place content'
   - 'create remote_video media'
+  - 'delete any audio media'
+  - 'delete any audio media revisions'
   - 'delete any file'
   - 'delete any involvement_opportunity content'
   - 'delete any listing_content content'
   - 'delete any place content'
   - 'delete files immediately'
   - 'delete media'
+  - 'delete own audio media'
   - 'delete own file media'
   - 'delete own files'
   - 'delete own image media'
@@ -178,6 +186,7 @@ permissions:
   - 'delete paragraph content anchor_link'
   - 'delete paragraph content anchor_list'
   - 'delete paragraph content attachment'
+  - 'delete paragraph content audio_player'
   - 'delete paragraph content automatic_anchor_list'
   - 'delete paragraph content automatic_phase_accordion'
   - 'delete paragraph content back_to_top_link'
@@ -248,16 +257,19 @@ permissions:
   - 'delete paragraph content zoning_project_card'
   - 'delete paragraph content zoning_project_cards'
   - 'dropzone upload files'
+  - 'edit any audio media'
   - 'edit any involvement_opportunity content'
   - 'edit any listing_content content'
   - 'edit any place content'
   - 'edit any ptv_service content'
   - 'edit any service_channel content'
+  - 'edit own audio media'
   - 'edit own listing_content content'
   - 'edit own moderated_page content'
   - 'import tablefield'
   - 'rebuild tablefield'
   - 'reschedule scheduled transitions node involvement_opportunity'
+  - 'revert any audio media revisions'
   - 'revert basic_content_page revisions'
   - 'revert city_planning_and_constructions revisions'
   - 'revert comprehensive_plan revisions'
@@ -280,6 +292,7 @@ permissions:
   - 'update paragraph content anchor_link'
   - 'update paragraph content anchor_list'
   - 'update paragraph content attachment'
+  - 'update paragraph content audio_player'
   - 'update paragraph content automatic_anchor_list'
   - 'update paragraph content automatic_phase_accordion'
   - 'update paragraph content back_to_top_link'
@@ -360,6 +373,7 @@ permissions:
   - 'use text format limited_html'
   - 'use text format notice_html'
   - 'view all media revisions'
+  - 'view any audio media revisions'
   - 'view any unpublished content'
   - 'view basic_content_page revisions'
   - 'view blog_article revisions'

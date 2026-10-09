@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Hook implementations for tre_ai_page_summary module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+use Drupal\tre_ai_page_summary\AiPageSummaryCallbacks;
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function tre_ai_page_summary_form_node_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
+  $node = $form_state->getFormObject()->getEntity();
+
+  if (!$node instanceof NodeInterface || $node->isNew() || !$node->hasField('field_page_summary')) {
+    return;
+  }
+
+  $form['field_page_summary']['#prefix'] = '<div id="ai-page-summary-wrapper">';
+  $form['field_page_summary']['#suffix'] = '</div>';
+
+  $form['field_page_summary']['ai_summary_request'] = [
+    '#type' => 'button',
+    '#value' => t('Request a summary from AI'),
+    '#name' => 'ai_page_summary_request',
+    '#ajax' => [
+      'callback' => [AiPageSummaryCallbacks::class, 'generateSummary'],
+      'wrapper' => 'ai-page-summary-wrapper',
+      'effect' => 'fade',
+      'progress' => [
+        'type' => 'throbber',
+        'message' => t('Generating summary...'),
+      ],
+    ],
+    '#limit_validation_errors' => [],
+    '#weight' => 100,
+  ];
+
+  $form['field_page_summary']['ai_summary_preview'] = [
+    '#type' => 'container',
+    '#attributes' => [
+      'id' => 'ai-page-summary-preview',
+      'class' => ['ai-page-summary-preview'],
+      'style' => 'display:none',
+    ],
+    '#weight' => 101,
+  ];
+
+  $form['#attached']['library'][] = 'tre_ai_page_summary/ai-page-summary';
+}

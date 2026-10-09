@@ -9,7 +9,7 @@ id: node.rss_item.field_construction_site
 field_name: field_construction_site
 entity_type: node
 bundle: rss_item
-label: rakennuspaikka
+label: Rakennuspaikka
 description: ''
 required: false
 translatable: true

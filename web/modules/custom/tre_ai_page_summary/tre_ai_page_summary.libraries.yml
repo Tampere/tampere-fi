@@ -1,0 +1,6 @@
+ai-page-summary:
+  js:
+    js/ai-page-summary.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

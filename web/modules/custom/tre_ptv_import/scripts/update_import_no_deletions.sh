@@ -17,7 +17,7 @@ source "$SCRIPT_PATH/common.sh.inc"
 echo "$(date '+%Y-%m-%d %H:%M:%S') Running Drush command to refresh content from PTV into storage..."
 refresh_retries=0
 until
-  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" tre_ptv_import:ptv_data_refresh --refresh-cache
+  sudo -u "$WEBSERVER_USER" "$DRUSH_BIN" tre_ptv_import:ptv_data_refresh
 do
   # Artificial resting break for the remote end.
   sleep 1

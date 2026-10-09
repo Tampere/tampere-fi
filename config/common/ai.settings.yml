@@ -30,10 +30,14 @@ default_providers:
     model_id: whisper-1
   text_to_image:
     provider_id: openai
-    model_id: dall-e-3
+    model_id: gpt-image-1
   text_to_speech:
     provider_id: openai
     model_id: tts-1-hd
   translate_text:
     provider_id: deepl
     model_id: default
+request_timeout: 60
+allowed_hosts: {  }
+allowed_hosts_rewrite_links: false
+global_guardrails: {  }

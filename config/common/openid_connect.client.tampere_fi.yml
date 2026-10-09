@@ -26,3 +26,4 @@ settings:
   hide_email_address_warning: true
   subject_key: sub
   front_channel_logout_url: ''
+  prompt: {  }

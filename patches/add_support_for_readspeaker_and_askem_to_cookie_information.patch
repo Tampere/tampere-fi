@@ -1,20 +1,19 @@
 diff --git a/js/iframes.js b/js/iframes.js
-index bcce008..cf14916 100644
 --- a/js/iframes.js
 +++ b/js/iframes.js
-@@ -39,7 +39,7 @@
-                 { context: 'Cookie information' }
-               ) +
-               '</h2>' +
--              '<p class="consent-placeholder__text">' +
-+              '<p class="consent-placeholder__text rs_skip">' +
-               Drupal.t(
+@@ -64,7 +64,7 @@
+                 {},
+                 { context: 'Cookie information' },
+               )}</h2>` +
+-              `<p class='consent-placeholder__text'>${Drupal.t(
++              `<p class='consent-placeholder__text rs_skip'>${Drupal.t(
                  "Unfortunately you are not able to view this content since you haven't accepted required cookie category @category.",
-                 { '@category': blocked_iframes_category_name },
-@@ -58,6 +58,132 @@
-           );
-         }
-       });
+                 { '@category': blockedIframesCategoryName },
+                 { context: 'Cookie information' },
+@@ -84,6 +84,132 @@
+       $(once('cookieinformation-iframe', 'iframe', context)).each(
+         processIframe,
+       );
 +
 +      // Create a copy from ReadSpeaker buttons without the play link to prevent user from palying
 +      // and create a consent button if there is at least one embed iframe.
@@ -143,4 +142,4 @@ index bcce008..cf14916 100644
 +      });
      },
    };
- })(jQuery, Drupal, once);
+ }

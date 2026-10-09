@@ -272,8 +272,10 @@ $footer-background-image-bottom-position--desktop: 93px;
 
       + #{$base_class}__paragraph {
         @include large {
-          border-left: $border-thick-inverse;
+          border-left-width: $thick-border-width;
+          border-left-style: solid;
           padding-left: $footer-gap-size;
+          @include dynamic-color(minisite-identifier-background, border-left-color, $set-focus-color: false);
         }
       }
 

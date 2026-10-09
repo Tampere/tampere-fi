@@ -1,0 +1,13 @@
+form.protected-pages-enter-password {
+  padding-left: $gutter-medium-plus;
+  padding-right: $gutter-medium-plus;
+
+  @include large {
+    padding-left: $gutter-large;
+    padding-right: $gutter-large;
+
+    input {
+      width: 50%;
+    }
+  }
+}

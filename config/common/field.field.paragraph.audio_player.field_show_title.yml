@@ -1,0 +1,23 @@
+uuid: c4f53eb6-6681-4655-8c2d-55a79680085a
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_show_title
+    - paragraphs.paragraphs_type.audio_player
+id: paragraph.audio_player.field_show_title
+field_name: field_show_title
+entity_type: paragraph
+bundle: audio_player
+label: 'Show title'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: Käytössä
+  off_label: 'Pois päältä'
+field_type: boolean

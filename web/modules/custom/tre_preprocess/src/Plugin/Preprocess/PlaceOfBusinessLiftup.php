@@ -103,8 +103,8 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
           }
 
           if (in_array('region', $fields_selected_for_display, TRUE)) {
-            if (!$translated_pob_node->get('field_geographical_areas')->isEmpty()) {
-              $variables['place_of_business_region'] = $translated_pob_node->get('field_geographical_areas')->view(self::LIFTUP_VIEW_MODE);
+            if (!$translated_pob_node->get('field_place_area_text')->isEmpty()) {
+              $variables['place_of_business_region'] = $translated_pob_node->get('field_place_area_text')->view(self::LIFTUP_VIEW_MODE);
             }
           }
 
@@ -149,6 +149,18 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
           if (in_array('opening_hours_3', $fields_selected_for_display, TRUE)) {
             $hours_field_name = 'field_opening_hours_3';
             $hours_info_field_name = 'field_opening_hours_info_3';
+            $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
+          }
+
+          if (in_array('opening_hours_4', $fields_selected_for_display, TRUE)) {
+            $hours_field_name = 'field_opening_hours_4';
+            $hours_info_field_name = 'field_opening_hours_info_4';
+            $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
+          }
+
+          if (in_array('opening_hours_5', $fields_selected_for_display, TRUE)) {
+            $hours_field_name = 'field_opening_hours_5';
+            $hours_info_field_name = 'field_opening_hours_info_5';
             $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
           }
 

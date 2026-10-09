@@ -18,10 +18,18 @@
  *   - in_active_trail: TRUE if the link is in the active trail.
  */
 #}
-{% include "@molecules/menus/main-menu/main-menu.twig" with {
+{# {% include "@molecules/menus/main-menu/main-menu.twig" with {
   "main_menu_title_id": "life-situation-menu-title",
   "main_menu_title": "Information by region and in different life situations"|t,
   "menu_items": items,
   "main_menu_modifiers": [ "secondary" ],
   "attributes": [],
-} %}
+} %} #}
+
+{% include "@molecules/menus/new-menu/menu--new-menu.html.twig" with {
+  "main_menu_title_id": "life-situation-menu-title",
+  "main_menu_title": "Information by region and in different life situations"|t,
+  "menu_items": items,
+  "main_menu_modifiers": [ "secondary" ],
+  "attributes": [],
+}%}

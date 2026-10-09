@@ -1,18 +1,4 @@
 services:
-  cache.tre_ptv_import_services_response:
-    class: Drupal\Core\Cache\CacheBackendInterface
-    tags:
-      - { name: cache.bin }
-    factory: cache_factory:get
-    arguments:
-      - tre_ptv_import_services_response
-  cache.tre_ptv_import_servicechannels_response:
-    class: Drupal\Core\Cache\CacheBackendInterface
-    tags:
-      - { name: cache.bin }
-    factory: cache_factory:get
-    arguments:
-      - tre_ptv_import_servicechannels_response
   cache.tre_ptv_import_organization_names:
     class: Drupal\Core\Cache\CacheBackendInterface
     tags:
@@ -20,56 +6,129 @@ services:
     factory: cache_factory:get
     arguments:
       - tre_ptv_import_organization_names
+
+  tre_ptv_import.intermediate_storage:
+    class: Drupal\tre_ptv_import\Service\Storage\PtvIntermediateStorage
+    arguments:
+      - '@database'
+
   tre_ptv_import.single_item_updater:
-    class: Drupal\tre_ptv_import\Service\SingleItemUpdater
+    class: Drupal\tre_ptv_import\Service\Migration\SingleItemUpdater
     arguments:
       - '@plugin.manager.migration'
       - '@queue'
-  tre_ptv_import.import_config:
-    class: Drupal\tre_ptv_import\PtvV11\PtvApi\PtvConfiguration
-    arguments:
-      - '%tre_ptv_import.api_host%'
-  tre_ptv_import.service_api:
-    class: Tampere\PtvV11\PtvApi\ServiceApi
-    arguments:
-      - '@http_client'
-      - '@tre_ptv_import.import_config'
-  tre_ptv_import.servicechannel_api:
-    class: Drupal\tre_ptv_import\PtvV11\PtvApi\CorrectedServiceChannelApi
-    arguments:
-      - '@http_client'
-      - '@tre_ptv_import.import_config'
-  tre_ptv_import.service_iterator:
-    class: Drupal\tre_ptv_import\Service\PtvServiceListIterator
-    arguments:
-      - '@tre_ptv_import.service_api'
-      - '%tre_ptv_import.include_whole_country_data%'
-      - '%tre_ptv_import.include_general_descriptions%'
-      - '%tre_ptv_import.include_headers%'
-      - '%tre_ptv_import.organization_guid%'
-  tre_ptv_import.servicechannel_iterator:
-    class: Drupal\tre_ptv_import\Service\PtvServiceChannelListIterator
-    arguments:
-      - '@tre_ptv_import.servicechannel_api'
-      - '%tre_ptv_import.include_headers%'
-  tre_ptv_import.ptv_data_helpers:
-    class: Drupal\tre_ptv_import\Service\PtvDataHelpers
-  tre_ptv_import.ptv_intermediate_storage:
-    class: Drupal\tre_ptv_import\Service\PtvServiceIntermediateStorage
-    arguments:
-      - '@database'
-      - '@tre_ptv_import.ptv_data_helpers'
-      - '@tre_ptv_import.service_iterator'
-      - '@tre_ptv_import.servicechannel_iterator'
-      - '@cache.tre_ptv_import_services_response'
-      - '@cache.tre_ptv_import_servicechannels_response'
-      - '@serialization.phpserialize'
+
+  tre_ptv_import.service_hours_mapper:
+    class: Drupal\tre_ptv_import\Service\Migration\PtvServiceHoursMapper
+
   tre_ptv_import.map_point_cleaner:
     class: Drupal\tre_ptv_import\EventSubscriber\MigrateImportPrepareSubscriber
     arguments:
       - '@entity_type.manager'
     tags:
       - { name: event_subscriber }
+
+  tre_ptv_import.api_settings:
+    class: Drupal\tre_ptv_import\Service\Api\PtvApiSettings
+
+  tre_ptv_import.api_client_factory:
+    class: Drupal\tre_ptv_import\Service\Api\PtvApiClientFactory
+    arguments:
+      - '@tre_ptv_import.api_settings'
+
+  tre_ptv_import.api_http_client:
+    class: GuzzleHttp\Client
+    factory:
+      - '@tre_ptv_import.api_client_factory'
+      - createHttpClient
+
+  tre_ptv_import.api_service:
+    class: OpenAPI\Client\Api\ServiceApi
+    factory:
+      - '@tre_ptv_import.api_client_factory'
+      - createServiceApi
+    arguments:
+      - '@tre_ptv_import.api_http_client'
+
+  tre_ptv_import.api_connection:
+    class: OpenAPI\Client\Api\ConnectionApi
+    factory:
+      - '@tre_ptv_import.api_client_factory'
+      - createConnectionApi
+    arguments:
+      - '@tre_ptv_import.api_http_client'
+
+  tre_ptv_import.api_service_channel:
+    class: OpenAPI\Client\Api\ServiceChannelApi
+    factory:
+      - '@tre_ptv_import.api_client_factory'
+      - createServiceChannelApi
+    arguments:
+      - '@tre_ptv_import.api_http_client'
+
+  tre_ptv_import.api_organization:
+    class: OpenAPI\Client\Api\OrganizationApi
+    factory:
+      - '@tre_ptv_import.api_client_factory'
+      - createOrganizationApi
+    arguments:
+      - '@tre_ptv_import.api_http_client'
+
+  tre_ptv_import.api_municipalities:
+    class: OpenAPI\Client\Api\MunicipalitiesApi
+    factory:
+      - '@tre_ptv_import.api_client_factory'
+      - createMunicipalitiesApi
+    arguments:
+      - '@tre_ptv_import.api_http_client'
+
+  tre_ptv_import.api_fetcher:
+    class: Drupal\tre_ptv_import\Service\Api\PtvApiFetcher
+    arguments:
+      - '@tre_ptv_import.api_service'
+      - '@tre_ptv_import.api_connection'
+      - '@tre_ptv_import.api_service_channel'
+      - '@tre_ptv_import.api_organization'
+      - '@tre_ptv_import.api_municipalities'
+      - '@tre_ptv_import.api_http_client'
+      - '@tre_ptv_import.api_settings'
+      - '@tre_ptv_import.tpr_accessibility_fetcher'
+      - '@logger.factory'
+
+  tre_ptv_import.organization_name_resolver:
+    class: Drupal\tre_ptv_import\Service\Migration\PtvOrganizationNameResolver
+    arguments:
+      - '@tre_ptv_import.api_fetcher'
+      - '@cache.tre_ptv_import_organization_names'
+      - '@datetime.time'
+
+  tre_ptv_import.service_source_mapper:
+    class: Drupal\tre_ptv_import\Service\Migration\PtvServiceSourceMapper
+    arguments:
+      - '@tre_ptv_import.organization_name_resolver'
+
+  tre_ptv_import.channel_source_mapper:
+    class: Drupal\tre_ptv_import\Service\Migration\PtvChannelSourceMapper
+    arguments:
+      - '@tre_ptv_import.organization_name_resolver'
+      - '@tre_ptv_import.service_hours_mapper'
+
+  tre_ptv_import.service_location_source_mapper:
+    class: Drupal\tre_ptv_import\Service\Migration\PtvServiceLocationSourceMapper
+    arguments:
+      - '@tre_ptv_import.service_hours_mapper'
+      - '@tre_node_location_coordinate_conversion.point_to_region_name'
+
+  tre_ptv_import.import_validator:
+    class: Drupal\tre_ptv_import\Service\Migration\PtvImportValidator
+    arguments:
+      - '@logger.factory'
+  tre_ptv_import.tpr_accessibility_fetcher:
+    class: Drupal\tre_ptv_import\Service\Api\TprAccessibilityFetcher
+    arguments:
+      - '@http_client'
+      - '@tre_ptv_import.api_settings'
+      - '@logger.factory'
 parameters:
   tre_ptv_import.include_whole_country_data: 'false'
   tre_ptv_import.include_general_descriptions: 'true'

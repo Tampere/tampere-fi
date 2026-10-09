@@ -67,6 +67,10 @@ process:
         bundle_key: vid
         value_key: name
 
+  field_place_area_text:
+    plugin: get
+    source: place_area_text
+
   field_epsg_3067_point_strings:
     plugin: get
     source: epsg_points
@@ -186,6 +190,32 @@ process:
       plugin: skip_on_empty
       method: process
 
+  field_opening_hours_4:
+    # As the field only supports 1 value, we extract the fourth value from the input array.
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 3
+      language: en
+    -
+      plugin: skip_on_empty
+      method: process
+
+  field_opening_hours_5:
+    # As the field only supports 1 value, we extract the fifth value from the input array.
+    -
+      plugin: extract
+      source: regular_hours_hours
+      default: {  }
+      index:
+        - 4
+      language: en
+    -
+      plugin: skip_on_empty
+      method: process
+
   field_opening_hours_info:
     -
       plugin: extract
@@ -220,6 +250,30 @@ process:
       default: {  }
       index:
         - 2
+      language: en
+    -
+      plugin: skip_on_empty
+      method: process
+
+  field_opening_hours_info_4:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 3
+      language: en
+    -
+      plugin: skip_on_empty
+      method: process
+
+  field_opening_hours_info_5:
+    -
+      plugin: extract
+      source: regular_hours_info
+      default: {  }
+      index:
+        - 4
       language: en
     -
       plugin: skip_on_empty

@@ -34,9 +34,7 @@ class ContactSearchFilter extends ProcessorPluginBase {
         continue;
       }
 
-      // We only want to index persons created by the automated integration.
-      // Integration users are typically User 0 (system) or User 1 (admin).
-      // If a standard user created this person manually, we exclude them from the index.
+      // Only index persons created by the automated integration (owner 0 or 1).
       $owner_id = (int) $entity->getOwnerId();
       if ($owner_id !== 0 && $owner_id !== 1) {
         unset($items[$item_id]);
@@ -45,13 +43,10 @@ class ContactSearchFilter extends ProcessorPluginBase {
 
       $person_id = (int) $entity->id();
 
-      // Check if we have already calculated this person's reference status in this batch.
       if (!isset($this->referencedPersonsCache[$person_id])) {
         $this->referencedPersonsCache[$person_id] = $this->isPersonReferenced($person_id);
       }
 
-      // Ensure the person is actually placed on a published page.
-      // If they are not referenced anywhere active, we exclude them.
       if (!$this->referencedPersonsCache[$person_id]) {
         unset($items[$item_id]);
       }
@@ -68,10 +63,21 @@ class ContactSearchFilter extends ProcessorPluginBase {
    * True if the person is referenced by an active paragraph on a published node.
    */
   private function isPersonReferenced(int $person_id): bool {
+    $indexing_context = drupal_static('tre_contact_search_indexing_context', []);
+    $triggering_node_id = isset($indexing_context['triggering_node_id'])
+      ? (string) $indexing_context['triggering_node_id']
+      : NULL;
+    $new_persons = $indexing_context['new_persons'] ?? [];
+
+    // Short-circuit: person is in the triggering node's in-memory state (ADD
+    // case, new paragraphs may not have parent_id in DB yet).
+    if ($triggering_node_id !== NULL && in_array($person_id, $new_persons)) {
+      return TRUE;
+    }
+
     $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
 
-    // Check matching paragraphs in small batches so we do not load every
-    // reference into memory when a person is heavily referenced.
+    // Query in small batches to avoid loading all references into memory.
     $batch_size = 50;
     $offset = 0;
 
@@ -94,8 +100,16 @@ class ContactSearchFilter extends ProcessorPluginBase {
 
       $paragraphs = $paragraph_storage->loadMultiple($pids);
 
-      // Check each paragraph to see if it belongs to a published node.
       foreach ($paragraphs as $paragraph) {
+        // Skip paragraphs on the triggering node — ERR orphan deletion is async
+        // (cron queue), so DB state is stale during this request.
+        if ($triggering_node_id !== NULL) {
+          $root_node_id = $this->getParagraphRootNodeId($paragraph);
+          if ($root_node_id === $triggering_node_id) {
+            continue;
+          }
+        }
+
         if ($this->isParagraphActiveOnPublishedNode($paragraph)) {
           return TRUE;
         }
@@ -108,27 +122,52 @@ class ContactSearchFilter extends ProcessorPluginBase {
   }
 
   /**
-   * Recursively verifies that a paragraph is actively attached to a published node.
-   * * This handles nested structures where a paragraph might be attached to another 
-   * paragraph rather than directly to a node.
+   * Walks up the paragraph parent chain and returns the root node ID.
    *
-   * @param \Drupal\Core\Entity\EntityInterface $paragraph
-   * The paragraph entity to check.
+   * Uses paragraphs_item_field_data (entity base table) which is updated
+   * synchronously, unlike the ERR field tables which are async-purged.
+   */
+  private function getParagraphRootNodeId($paragraph): ?string {
+    $parent_type = $paragraph->get('parent_type')->getString();
+    $parent_id = $paragraph->get('parent_id')->getString();
+    $depth = 0;
+
+    while ($parent_type === 'paragraph' && !empty($parent_id) && $depth < 10) {
+      $parent = \Drupal::entityTypeManager()->getStorage('paragraph')->load($parent_id);
+      if (!$parent) {
+        return NULL;
+      }
+      $parent_type = $parent->get('parent_type')->getString();
+      $parent_id = $parent->get('parent_id')->getString();
+      $depth++;
+    }
+
+    return ($parent_type === 'node' && !empty($parent_id)) ? (string) $parent_id : NULL;
+  }
+
+  /**
+   * Returns TRUE if the paragraph is attached to a published node.
    *
-   * @return bool
-   * True if the paragraph tree ultimately resolves to a published node.
+   * Walks the parent chain to handle nested paragraph structures.
    */
   private function isParagraphActiveOnPublishedNode($paragraph): bool {
-    $parent = $paragraph->getParentEntity();
+    $parent_type = $paragraph->get('parent_type')->getString();
+    $parent_id = $paragraph->get('parent_id')->getString();
+    $parent_field_name = $paragraph->get('parent_field_name')->getString();
+
+    if (empty($parent_type) || empty($parent_id) || empty($parent_field_name)) {
+      return FALSE;
+    }
+
+    // loadUnchanged() bypasses the static cache, ensuring we see the current
+    // DB state and not a pre-save cached revision.
+    $parent = \Drupal::entityTypeManager()->getStorage($parent_type)->loadUnchanged($parent_id);
 
     if (!$parent) {
       return FALSE;
     }
 
-    // Verify the paragraph still exists in the parent's current active revision.
-    // This prevents old, deleted references from keeping a person in the index.
-    $parent_field_name = $paragraph->get('parent_field_name')->getString();
-    if (empty($parent_field_name) || !$parent->hasField($parent_field_name)) {
+    if (!$parent->hasField($parent_field_name)) {
       return FALSE;
     }
 
@@ -140,22 +179,18 @@ class ContactSearchFilter extends ProcessorPluginBase {
       }
     }
 
-    // If the paragraph was removed from the parent, we consider it a dead reference.
     if (!$is_active) {
       return FALSE;
     }
 
-    // If we have reached the top of the tree and found a node, check its published status.
     if ($parent instanceof \Drupal\node\NodeInterface) {
       return $parent->isPublished();
     }
 
-    // If the parent is another paragraph, we need to recursively walk further up the tree.
     if ($parent->getEntityTypeId() === 'paragraph') {
       return $this->isParagraphActiveOnPublishedNode($parent);
     }
 
-    // If the parent is a different entity type like a block or term, skip it.
     return FALSE;
   }
 

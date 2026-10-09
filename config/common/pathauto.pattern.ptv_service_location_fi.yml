@@ -2,18 +2,19 @@ uuid: 1ad7fd95-12ac-4fa7-9c10-664978b529cf
 langcode: fi
 status: true
 dependencies:
+  config:
+    - node.type.place_of_business
   module:
     - language
     - node
 id: ptv_service_location_fi
 label: 'PTV-palvelupaikka FI'
 type: 'canonical_entities:node'
-pattern: 'ptv/palvelupaikka/[node:title]'
+pattern: '/ptv/palvelupaikka/[node:title]'
 selection_criteria:
   7b8086b6-d36e-4112-9337-e9cfe9de4a02:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 7b8086b6-d36e-4112-9337-e9cfe9de4a02
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   eafd8813-c706-47e5-90a3-266700613fc0:
     id: language
     negate: false
-    uuid: eafd8813-c706-47e5-90a3-266700613fc0
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

@@ -1,0 +1,6 @@
+ai-alt-text:
+  js:
+    js/ai-alt-text.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

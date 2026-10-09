@@ -2,18 +2,19 @@ uuid: 3a573c52-49e7-4fb6-8360-b4c7cb5e2fba
 langcode: fi
 status: true
 dependencies:
+  config:
+    - node.type.blog_article
   module:
     - language
     - node
 id: blogs_en
 label: 'Blogs EN'
 type: 'canonical_entities:node'
-pattern: 'blogs/[node:title]'
+pattern: '/blogs/[node:title]'
 selection_criteria:
   9b618b07-1358-4eb1-b9b1-c79783bf16db:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 9b618b07-1358-4eb1-b9b1-c79783bf16db
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   50193f15-0b8a-4d18-aa92-8d92515e3316:
     id: language
     negate: false
-    uuid: 50193f15-0b8a-4d18-aa92-8d92515e3316
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

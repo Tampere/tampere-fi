@@ -1,0 +1,19 @@
+auth_method: bearer
+storage_method: key
+auto_purge_enabled: false
+auto_purge_entity_types:
+  - node
+  - taxonomy_term
+  - media
+auto_purge_use_queue: false
+queue_max_age_enabled: false
+queue_max_age: 900
+tag_prefix: ''
+auto_purge_filter_header_tags: true
+auto_purge_hash_tags: false
+auto_purge_hash_length: 16
+auto_purge_header_max_bytes: 7168
+rate_limit_enabled: false
+rate_limit_per_minute: 60
+logging_enabled: false
+history_limit: 100

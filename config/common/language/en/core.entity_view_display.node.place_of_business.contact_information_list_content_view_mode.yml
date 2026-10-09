@@ -1,11 +1,4 @@
 content:
-  field_additional_phones:
-    third_party_settings:
-      ds:
-        ds_limit: ''
-        ft:
-          settings:
-            lb: Phone
   field_address:
     third_party_settings:
       ds:

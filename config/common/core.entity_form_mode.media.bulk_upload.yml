@@ -6,6 +6,6 @@ dependencies:
     - media
 id: media.bulk_upload
 label: Massatuonti
-description: ''
+description: null
 targetEntityType: media
 cache: true

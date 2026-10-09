@@ -1,6 +1,6 @@
 {% set basic_content_base_class = basic_content_base_class|default("basic-content") %}
 
-{% set use_right_to_left = content_language == "arb" or content_language == "fa" %}
+{% set use_right_to_left = content_language == "arb" or content_language == "ar" or content_language == "fa" %}
 
 {% if not basic_content__heading__modifiers %}
   {% set basic_content__heading__modifiers = [] %}

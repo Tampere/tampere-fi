@@ -36,10 +36,6 @@
       {{ elements.languageswitcher }}
     {% endblock %}
 
-    {% block header_google_translate %}
-      {{ elements.tampere_openygoogletranslate}}
-    {% endblock %}
-
     {% block header_text_logo_with_tagline %}
       {% if group_logo %}
         {% embed "@molecules/text-logo-with-tagline/text-logo-with-tagline.twig" with {
@@ -96,13 +92,13 @@
   {% endembed %}
 {% else %}
   {% set contents_by_topic_menu_accordion_content %}
-    {{ elements.main_menu_mobile_fi }}
-    {{ elements.main_menu_mobile_en }}
+    {{ elements.main_navigation_fi_mobile }}
+    {{ elements.main_navigation_en_mobile }}
   {% endset %}
 
   {% set life_situation_menu_accordion_content %}
-    {{ elements.life_situation_menu_mobile_fi }}
-    {{ elements.life_situation_menu_mobile_en }}
+    {{ elements.life_situation_navigation_fi_mobile }}
+    {{ elements.life_situation_navigation_en_mobile }}
   {% endset %}
 
   {% embed "@organisms/site/site-header/site-header.twig" with {
@@ -122,10 +118,6 @@
       {{ elements.languageswitcher }}
     {% endblock %}
 
-    {% block header_google_translate %}
-      {{ elements.tampere_openygoogletranslate}}
-    {% endblock %}
-
     {% block header_secondary_navigation %}
       {{ elements.secondary_menu_fi }}
       {{ elements.secondary_menu_en }}
@@ -137,8 +129,8 @@
     {% endblock %}
 
     {% block header_main_navigation %}
-      {{ elements.main_menu_fi }}
-      {{ elements.main_menu_en }}
+      {{ elements.main_navigation_fi }}
+      {{ elements.main_navigation_en }}
     {% endblock %}
 
     {% block header_hamburger_menu_secondary_navigation %}
@@ -152,8 +144,8 @@
     {% endblock %}
 
     {% block header_secondary_main_navigation %}
-      {{ elements.life_situation_menu_fi }}
-      {{ elements.life_situation_menu_en }}
+      {{ elements.life_situation_navigation_fi }}
+      {{ elements.life_situation_navigation_en }}
     {% endblock %}
 
     {% block header_search %}

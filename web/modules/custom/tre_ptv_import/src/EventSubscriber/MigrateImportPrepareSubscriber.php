@@ -24,14 +24,14 @@ class MigrateImportPrepareSubscriber implements EventSubscriberInterface {
   /**
    * Class constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
-    $this->nodeStorage = $entity_type_manager->getStorage('node');
+  public function __construct(EntityTypeManagerInterface $entityTypeManager) {
+    $this->nodeStorage = $entityTypeManager->getStorage('node');
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     $events[MigrateEvents::POST_IMPORT][] = 'onPostImport';
 
     return $events;
@@ -43,7 +43,7 @@ class MigrateImportPrepareSubscriber implements EventSubscriberInterface {
    * @param \Drupal\migrate\Event\MigrateImportEvent $event
    *   The migrate import event subscribed to.
    */
-  public function onPostImport(MigrateImportEvent $event) {
+  public function onPostImport(MigrateImportEvent $event): void {
     $migration = $event->getMigration();
     if ($migration->id() !== 'ptv_service_locations') {
       // Only act after imports of the ptv_service_locations migration.
@@ -54,48 +54,50 @@ class MigrateImportPrepareSubscriber implements EventSubscriberInterface {
 
     // First, find out which map_point nodes are referred to by the current
     // place_of_business nodes.
-    $places_of_business = $storage->loadByProperties(['type' => 'place_of_business']);
-    $related_map_point_nids = [];
-    /** @var \Drupal\node\NodeInterface $pob_node */
-    foreach ($places_of_business as $pob_node) {
-      foreach ($pob_node->get('field_addresses') as $field_value) {
+    $placesOfBusiness = $storage->loadByProperties(['type' => 'place_of_business']);
+    $relatedMapPointNids = [];
+
+    /** @var \Drupal\node\NodeInterface $pobNode */
+    foreach ($placesOfBusiness as $pobNode) {
+      foreach ($pobNode->get('field_addresses') as $fieldValue) {
         // @phpstan-ignore-next-line
-        $related_map_point_nids[$field_value->target_id] = $field_value->target_id;
+        $relatedMapPointNids[$fieldValue->target_id] = $fieldValue->target_id;
       }
     }
 
     // Construct the query for map points to remove.
-    $map_point_query = $storage->getQuery()->accessCheck(FALSE);
-    $map_point_query->condition('type', 'map_point');
+    $mapPointQuery = $storage->getQuery()->accessCheck(FALSE);
+    $mapPointQuery->condition('type', 'map_point');
 
     // Imported map_points are written by the anonymous user.
-    $map_point_query->condition('uid', 0);
-    $or_condition = $map_point_query->orConditionGroup();
+    $mapPointQuery->condition('uid', 0);
+    $orCondition = $mapPointQuery->orConditionGroup();
 
     // Include all map_point nodes that don't have a value in
     // field_address_hash. These are from the old days before the field was
     // introduced. Note that we're also requiring for the uid on the node to be
     // 0, meaning that any nodes created by actual users are left alone.
-    $or_condition->notExists('field_address_hash');
+    $orCondition->notExists('field_address_hash');
+
     // Also leave alone any nodes that are currently used in place_of_business
     // nodes.
-    $or_condition->condition('nid', $related_map_point_nids, 'NOT IN');
-    $map_point_query->condition($or_condition);
+    $orCondition->condition('nid', $relatedMapPointNids, 'NOT IN');
+    $mapPointQuery->condition($orCondition);
 
-    $map_points_to_delete_nids = $map_point_query->execute();
-    $nid_chunks = array_chunk($map_points_to_delete_nids, 50);
-    $map_point_filter = function ($node) {
-      return ($node instanceof NodeInterface) && $node->bundle() === 'map_point';
-    };
+    $mapPointsToDeleteNids = $mapPointQuery->execute();
+    $nidChunks = array_chunk($mapPointsToDeleteNids, 50);
+    $mapPointFilter = static fn (mixed $node): bool => $node instanceof NodeInterface
+      && $node->bundle() === 'map_point';
 
-    foreach ($nid_chunks as $chunk) {
+    foreach ($nidChunks as $chunk) {
       // Prevent accidents if $chunk happens to be NULL for any reason.
       if (empty($chunk)) {
         continue;
       }
-      $nodes_to_delete = $storage->loadMultiple($chunk);
-      $map_points_to_delete = array_filter($nodes_to_delete, $map_point_filter);
-      $storage->delete($map_points_to_delete);
+
+      $nodesToDelete = $storage->loadMultiple($chunk);
+      $mapPointsToDelete = array_filter($nodesToDelete, $mapPointFilter);
+      $storage->delete($mapPointsToDelete);
     }
   }
 

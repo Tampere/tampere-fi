@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\tre_ptv_import\Plugin\QueueWorker;
 
 use Drupal\Core\Logger\LoggerChannelInterface;
@@ -9,7 +11,7 @@ use Drupal\migrate\MigrateMessage;
 use Drupal\migrate\Plugin\MigrationInterface;
 use Drupal\migrate\Plugin\MigrationPluginManager;
 use Drupal\tre_ptv_import\PtvUpdateQueueItem;
-use Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface;
+use Drupal\tre_ptv_import\Service\Migration\SingleItemUpdaterInterface;
 use Drush\Drupal\Migrate\MigrateExecutable;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -45,10 +47,10 @@ final class PtvNodeQueueWorker extends QueueWorkerBase implements ContainerFacto
    * The items from this queue generate work for Migrate API: each queue item
    * can hold any number of source IDs for nodes to update. In our
    * implementation however, this number is usually exactly 1 to keep the length
-   * of the processing manageable and to be able to monitor queue lenghts more
+   * of the processing manageable and to be able to monitor queue lengths more
    * easily.
    *
-   * @{inheritdoc}
+   * {@inheritdoc}
    */
   public function processItem($data) {
     if (!($data instanceof PtvUpdateQueueItem)) {
@@ -80,13 +82,13 @@ final class PtvNodeQueueWorker extends QueueWorkerBase implements ContainerFacto
    *
    * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
-  private function handleMigrationItem(PtvUpdateQueueItem $item) {
-    $migration_language_map = SingleItemUpdaterInterface::CONTENT_TYPES_TO_MIGRATIONS_MAP;
+  private function handleMigrationItem(PtvUpdateQueueItem $item): void {
+    $migrationLanguageMap = SingleItemUpdaterInterface::CONTENT_TYPES_TO_MIGRATIONS_MAP;
 
     $langcode = $item->getLangcode();
-    $this->handleMigration($item->getServiceChannels(), $migration_language_map['service_channel'][$langcode]);
-    $this->handleMigration($item->getServiceLocations(), $migration_language_map['place_of_business'][$langcode]);
-    $this->handleMigration($item->getServices(), $migration_language_map['ptv_service'][$langcode]);
+    $this->handleMigration($item->getServiceChannels(), $migrationLanguageMap['service_channel'][$langcode]);
+    $this->handleMigration($item->getServiceLocations(), $migrationLanguageMap['place_of_business'][$langcode]);
+    $this->handleMigration($item->getServices(), $migrationLanguageMap['ptv_service'][$langcode]);
   }
 
   /**
@@ -94,7 +96,7 @@ final class PtvNodeQueueWorker extends QueueWorkerBase implements ContainerFacto
    *
    * @param string[] $items
    *   The UUIDs of the items to migrate.
-   * @param string $migration_id
+   * @param string $migrationId
    *   The ID of the migration to run on the UUIDs (source IDs).
    *
    * @throws \Drupal\Component\Plugin\Exception\PluginException
@@ -106,24 +108,30 @@ final class PtvNodeQueueWorker extends QueueWorkerBase implements ContainerFacto
    * @see \Drupal\migrate_tools\MigrateTools::buildIdList()
    * @see \Drupal\migrate_tools\Commands\MigrateToolsCommands::executeMigration()
    */
-  private function handleMigration(array $items, string $migration_id) {
+  private function handleMigration(array $items, string $migrationId): void {
     if (empty($items)) {
       return;
     }
 
-    $non_strings = array_filter($items, function ($item) {
-      return !is_string($item);
-    });
+    $nonStrings = array_filter(
+      $items,
+      static fn (mixed $item): bool => !is_string($item)
+    );
 
     // PHPStan thinks that the string[] in the phpdoc comment applies inside
     // this method but in fact it does not.
     // @phpstan-ignore-next-line
-    if (!empty($non_strings)) {
-      throw new \InvalidArgumentException("Passed argument contains items other than strings.");
+    if (!empty($nonStrings)) {
+      throw new \InvalidArgumentException('Passed argument contains items other than strings.');
     }
 
     /** @var \Drupal\migrate\Plugin\MigrationInterface $migration */
-    $migration = $this->migrationPluginManager->createInstance($migration_id);
+    $migration = $this->migrationPluginManager->createInstance($migrationId);
+
+    $sourceConfiguration = $migration->getSourceConfiguration();
+    $sourceConfiguration['ptv_content_ids'] = array_values($items);
+    $migration->set('source', $sourceConfiguration);
+
     $migration->setStatus(MigrationInterface::STATUS_IDLE);
 
     // Inferred keys like in
@@ -132,14 +140,32 @@ final class PtvNodeQueueWorker extends QueueWorkerBase implements ContainerFacto
     foreach ($items as $item) {
       $migration->getIdMap()->setUpdate(array_combine($keys, [$item]));
     }
-    $options = [
-      'idlist' => implode(',', $items),
-    ];
 
-    $executable = new MigrateExecutable($migration, new MigrateMessage(), new NullOutput(), $options);
-    $this->logger->info("Starting import for items for {$migration_id}: " . implode(",", $items));
+    $executable = new MigrateExecutable(
+      $migration,
+      new MigrateMessage(),
+      new NullOutput()
+    );
+
+    $itemsText = implode(',', $items);
+
+    $this->logger->info(
+      'Starting import for items for @migration_id: @items',
+      [
+        '@migration_id' => $migrationId,
+        '@items' => $itemsText,
+      ]
+    );
+
     $executable->import();
-    $this->logger->info("Ended import for items for {$migration_id}: " . implode(",", $items));
+
+    $this->logger->info(
+      'Ended import for items for @migration_id: @items',
+      [
+        '@migration_id' => $migrationId,
+        '@items' => $itemsText,
+      ]
+    );
   }
 
 }

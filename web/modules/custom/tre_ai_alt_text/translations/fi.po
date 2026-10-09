@@ -1,0 +1,36 @@
+# Finnish translation of tre_ai_alt_text
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+
+msgid "Request alternative text from AI"
+msgstr "Pyydä vaihtoehtoinen teksti tekoälyltä"
+
+msgid "Generating alt text..."
+msgstr "Luodaan alt-tekstiä..."
+
+msgid "Use this alt text"
+msgstr "Käytä tätä alt-tekstiä"
+
+msgid "Discard"
+msgstr "Hylkää"
+
+msgid "No image is selected. Please upload an image first."
+msgstr "Kuvaa ei ole valittu. Lataa kuva ensin."
+
+msgid "AI provider is not configured. Please configure the AI Auto Reference settings first."
+msgstr "Tekoälypalvelua ei ole määritetty. Määritä AI Auto Reference -asetukset ensin."
+
+msgid "Failed to read the image file. Please try again."
+msgstr "Kuva-tiedoston lukeminen epäonnistui. Yritä uudelleen."
+
+msgid "The AI returned an empty response. Please try again."
+msgstr "Tekoäly palautti tyhjän vastauksen. Yritä uudelleen."
+
+msgid "Failed to generate AI alt text. Please try again."
+msgstr "Tekoälyn alt-tekstin luominen epäonnistui. Yritä uudelleen."
+
+msgid "Please note – check that the alt text is clear and free from errors before approving it for use, and make any necessary amendments. If the image shows a recognisable location in Tampere, please state this in the text using the correct place names."
+msgstr "Huomio – tarkista alt-tekstin selkeys ja virheettömyys ennen kuin hyväksyt sen käyttöön, ja muokkaa tarvittavat. Jos kuva on tunnistettavasta paikasta Tampereelta, kerro se tekstissä oikeilla paikannimillä."

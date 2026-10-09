@@ -1,10 +1,12 @@
 services:
   tre_ptv_import.commands:
-    class: \Drupal\tre_ptv_import\Commands\TrePtvImportCommands
+    class: Drupal\tre_ptv_import\Commands\TrePtvImportCommands
     arguments:
       - '@entity_type.manager'
-      - '@tre_ptv_import.ptv_intermediate_storage'
-      - '@tre_ptv_import.single_item_updater'
+      - '@tre_ptv_import.intermediate_storage'
       - '@database'
+      - '@tre_ptv_import.api_fetcher'
+      - '@tre_ptv_import.import_validator'
+      - '@tre_ptv_import.single_item_updater'
     tags:
       - { name: drush.command }

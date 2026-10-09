@@ -4,6 +4,7 @@ namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\tre_preprocess\TrePreProcessPluginBase;
+use Drupal\Core\StringTranslation\ByteSizeMarkup;
 
 /**
  * Metadata attachment list preprocessing.
@@ -58,7 +59,7 @@ class MetadataAttachmentList extends TrePreProcessPluginBase {
 
         $file_uri = $file_entity->getFileUri();
         $file_url = $this->fileUrlGenerator->generateAbsoluteString($file_uri);
-        $formatted_file_size = format_size($file_entity->getSize());
+        $formatted_file_size = ByteSizeMarkup::create($file_entity->getSize());
         $file_extension = $this->helperFunctions->getFileExtensionFromUrl($file_url);
 
         $attachments[] = [
@@ -91,24 +92,37 @@ class MetadataAttachmentList extends TrePreProcessPluginBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getAttachmentListMediaFileIds(string $current_language_id, array $taxonomy_values): ?array {
-    $media_file_query = $this->entityTypeManager->getStorage('media')->getQuery()->accessCheck(TRUE);
-    $media_file_query
-      ->condition('bundle', 'file')
-      ->condition('status', 1)
-      ->condition('langcode', $current_language_id)
-      ->sort('name', 'ASC')
-      ->range(0, 100);
+    $database = \Drupal::database();
 
-    foreach ($taxonomy_values as $taxonomy => $terms) {
-      if (!empty($terms)) {
-        foreach ($terms as $term) {
-          $media_file_query->condition($media_file_query->andConditionGroup()
-            ->condition("field_{$taxonomy}", $term, '=', $current_language_id));
+    // 1. Initialize base query on media_field_data
+    $query = $database->select('media_field_data', 'm')
+      ->fields('m', ['mid'])
+      ->condition('m.bundle', 'file')
+      ->condition('m.status', 1)
+      ->condition('m.langcode', $current_language_id);
+
+      // 2. Add an EXISTS subquery per term
+      foreach ($taxonomy_values as $taxonomy => $terms) {
+        if (!empty($terms)) {
+          foreach ($terms as $term) {
+            $subquery = $database->select("media__field_{$taxonomy}", 'f')
+            ->fields('f', ['entity_id'])
+            ->where("f.entity_id = m.mid")
+            ->condition("f.field_{$taxonomy}_target_id", $term)
+            ->condition('f.langcode', $current_language_id);
+
+          $query->exists($subquery);
         }
       }
     }
 
-    return $media_file_query->execute();
+    // 3. Get matching IDs
+    $mids = $query->orderBy('m.name', 'ASC')
+      ->range(0, 100)
+      ->execute()
+      ->fetchCol();
+
+    return $mids;
   }
 
 }

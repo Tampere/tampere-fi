@@ -1,0 +1,8 @@
+uuid: eada4a4f-f163-4790-9fb1-b4a167f042e8
+langcode: fi
+status: true
+dependencies: {  }
+id: life-situation-navigation-fi
+label: 'Life situation navigation FI'
+description: 'Generated menu created from Group hierarchy data.'
+locked: false

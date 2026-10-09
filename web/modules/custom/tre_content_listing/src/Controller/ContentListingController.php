@@ -321,10 +321,10 @@ class ContentListingController extends ControllerBase {
           // This query returns nodes that match at least one
           // of the filter options.
           $group_query = $this->entityTypeManager->getStorage('node')->getQuery();
+          $group_query->accessCheck(TRUE);
           $group_query->condition('type', 'listing_content')
             ->condition('field_filter_options', $matched_term_ids, 'IN')
-            ->condition('langcode', $langcode)
-            ->accessCheck(TRUE);
+            ->condition('langcode', $langcode);
           $group_nids = $group_query->execute();
 
           // If this is the first filter group, we initialize the matching

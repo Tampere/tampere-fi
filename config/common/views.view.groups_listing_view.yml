@@ -472,6 +472,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 50
           total_pages: null
           id: 0
@@ -489,7 +490,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
-          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -540,23 +540,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              content_author: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              contact_info_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -598,23 +581,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              content_author: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              contact_info_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -656,23 +622,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              content_author: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              contact_info_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              front_page_author: '0'
-              author: '0'
-              section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             reduce: false
           is_grouped: false
           group_info:
@@ -759,6 +708,7 @@ display:
           empty_table: false
           caption: ''
           description: ''
+          class: ''
       row:
         type: fields
       query:

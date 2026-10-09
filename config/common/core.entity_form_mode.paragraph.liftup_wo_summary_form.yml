@@ -6,6 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.liftup_wo_summary_form
 label: 'Nosto ilman lyhennelmää'
-description: ''
+description: null
 targetEntityType: paragraph
 cache: true

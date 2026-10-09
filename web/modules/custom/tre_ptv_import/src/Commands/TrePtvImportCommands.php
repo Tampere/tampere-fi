@@ -1,299 +1,290 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\tre_ptv_import\Commands;
 
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Site\Settings;
 use Drupal\node\NodeInterface;
-use Drupal\tre_ptv_import\PtvServiceIntermediateStorageInterface;
-use Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface;
+use Drupal\tre_ptv_import\Service\Storage\PtvIntermediateStorageInterface;
+use Drupal\tre_ptv_import\Service\Api\PtvApiFetcher;
+use Drupal\tre_ptv_import\Service\Migration\PtvImportValidator;
+use Drupal\tre_ptv_import\Service\Migration\SingleItemUpdaterInterface;
 use Drush\Commands\DrushCommands;
 use Drush\Exceptions\CommandFailedException;
 
 /**
- * Drush commandfile for the tre_ptv_import module.
+ * Drush commands for the PTV import module.
  */
-class TrePtvImportCommands extends DrushCommands {
+final class TrePtvImportCommands extends DrushCommands {
 
   /**
-   * The entity storage service.
-   *
-   * @var \Drupal\Core\Entity\EntityStorageInterface
+   * The node storage.
    */
-  protected EntityStorageInterface $nodeStorage;
-
-  /**
-   * The PTV data intermediate storage.
-   *
-   * @var \Drupal\tre_ptv_import\PtvServiceIntermediateStorageInterface
-   */
-  private PtvServiceIntermediateStorageInterface $ptvStorage;
-
-  /**
-   * The PTV single item updater service.
-   *
-   * @var \Drupal\tre_ptv_import\Service\SingleItemUpdaterInterface
-   */
-  private SingleItemUpdaterInterface $ptvUpdater;
-
-  /**
-   * The database connection.
-   *
-   * @var \Drupal\Core\Database\Connection
-   */
-  protected Connection $db;
+  private EntityStorageInterface $nodeStorage;
 
   /**
    * Constructs the commands object.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, PtvServiceIntermediateStorageInterface $ptv_storage, SingleItemUpdaterInterface $ptv_updater, Connection $database) {
-    $this->nodeStorage = $entity_type_manager->getStorage('node');
-    $this->ptvStorage = $ptv_storage;
-    $this->ptvUpdater = $ptv_updater;
-    $this->db = $database;
+  public function __construct(
+    EntityTypeManagerInterface $entityTypeManager,
+    private readonly PtvIntermediateStorageInterface $ptvStorage,
+    private readonly Connection $database,
+    private readonly PtvApiFetcher $ptvFetcher,
+    private readonly PtvImportValidator $ptvImportValidator,
+    private readonly SingleItemUpdaterInterface $ptvUpdater,
+  ) {
+    $this->nodeStorage = $entityTypeManager->getStorage('node');
   }
 
   /**
    * Queues a single node for direct update from the PTV API.
    *
    * @param int $nid
-   *   The node id of the node to update.
+   *   The node ID to update.
+   *
+   * @usage tre_ptv_import:update_single_node 667623
+   *   Queues one PTV-backed node for an API refresh and migration update.
    *
    * @command tre_ptv_import:update_single_node
    * @aliases ptv_single_node_update
-   *
-   * @throws \Drush\Exceptions\CommandFailedException
    */
-  public function updateSingleNode(int $nid) {
+  public function updateSingleNode(int $nid): void {
     $node = $this->nodeStorage->load($nid);
-    if (!($node instanceof NodeInterface) || !$this->ptvUpdater->checkMigrationSource($node)) {
-      throw new CommandFailedException("Given node is not refreshable from PTV.");
+
+    if (
+      !($node instanceof NodeInterface)
+      || !$this->ptvUpdater->checkMigrationSource($node)
+    ) {
+      throw new CommandFailedException(
+        'Given node is not refreshable from PTV.'
+      );
     }
 
-    $this->ptvUpdater->updateSingleItem($node);
-    $this->logger()->success("Queued node $nid to update from PTV.");
+    if (!$this->ptvUpdater->updateSingleItem($node)) {
+      throw new CommandFailedException(
+        'Unable to queue node ' . $nid . ' for a PTV update.'
+      );
+    }
+
+    $this->io()->success(
+      'Queued node ' . $nid . ' to update from PTV.'
+    );
   }
 
   /**
-   * Refreshes services and related data from PTV API into intermediate storage.
+   * Refreshes PTV data into intermediate storage.
    *
-   * @param string $service_ids
-   *   The UUIDs of the services as a comma-separated string. Defaults to 'all'
-   *   in which case all the services and related data will be refreshed.
+   * @param string $serviceIds
+   *   Either "all" or a comma-separated list of service content IDs.
    *
-   * @option refresh-cache
-   *   When given, refreshes the cached service and service channel definitions.
+   * @option dry-run
+   *   Fetches, validates and prepares import data without changing storage.
    *
+   * @usage tre_ptv_import:ptv_data_refresh all --dry-run
+   *   Fetches and validates the full import package without writing data.
+   * @usage tre_ptv_import:ptv_data_refresh all
+   *   Replaces intermediate storage with fresh PTV API data.
    * @usage tre_ptv_import:ptv_data_refresh <uuid1>,<uuid2>
-   *   (Re-)imports the data of given PTV services from the PTV API into the
-   *   intermediate storage.
+   *   Updates only the selected services and their connected channels.
    *
    * @command tre_ptv_import:ptv_data_refresh
    * @aliases ptv_data_refresh
    */
-  public function refreshPtvServicesAndServiceChannels($service_ids = 'all') {
-    $refresh_requested = $this->input()->hasOption('refresh-cache');
-    if ($service_ids !== 'all') {
-      $uuids = str_getcsv($service_ids);
-      $services = $this->ptvStorage->getSpecificServicesFromApi($uuids);
-    }
-    else {
-      $services = $this->ptvStorage->getServicesFromApi($refresh_requested);
-    }
+  public function refreshPtvServicesAndServiceChannels(
+    string $serviceIds = 'all',
+  ): void {
+    $serviceIds = trim($serviceIds);
+    $isFullRefresh = $serviceIds === 'all';
+    $dryRun = (bool) $this->input()->getOption('dry-run');
 
-    if (is_array($services) && count($services) > 0) {
-      // Only clean the intermediate tables in case _all_ services are being
-      // updated.
-      if ($service_ids === 'all') {
-        $this->ptvStorage->wipePtvData();
+    if ($serviceIds === '') {
+      throw new CommandFailedException(
+        'Provide "all" or a comma-separated list of service content IDs.'
+      );
+    }
+    /**
+     * You can think this command as 4 step flow:
+     * 1. Fetch the Services, Connections and Service channels, Connections are PTV12 data that connects Services
+     * with Service channels
+     * 2. After we have fetched all the data, we validate the data
+     * 3. After validation we convert / prepare the data for the storage - basically converting DTOs into storeable encoded JSON
+     * 4. Based on the refresh type (single or all) we either upsert or replace the storage tables
+     */
+    try {
+      if ($isFullRefresh) {
+        // 1. STEP : Fetch all Services, Connections and Service channels
+        $importData = $this->ptvFetcher->fetchImportData();
+      }
+      else {
+        $selectedServiceIds = array_values(array_filter(
+          array_map('trim', str_getcsv($serviceIds)),
+          static fn (string $serviceId): bool => $serviceId !== '',
+        ));
+
+        if ($selectedServiceIds === []) {
+          throw new CommandFailedException(
+            'Provide at least one valid service content ID.'
+          );
+        }
+
+        $importData = $this->ptvFetcher->fetchImportDataForServices(
+          $selectedServiceIds
+        );
+      }
+      // 2. STEP validate the data and get a summary (summary is more for development / debugging).
+      $report = $this->ptvImportValidator->validate($importData);
+      $summary = $report['summary'] ?? [];
+
+      if (($summary['is_valid'] ?? FALSE) !== TRUE) {
+        throw new CommandFailedException(
+          'PTV import validation failed with '
+          . (int) ($summary['error_count'] ?? 0)
+          . ' error(s). Intermediate storage was not changed.'
+        );
       }
 
-      $this->ptvStorage->insertServices($services);
-      $service_chunks = array_chunk($services, Settings::get('ptv_service_import_batch_size', 50));
-      foreach ($service_chunks as $chunk) {
-        $service_channels = $this->ptvStorage->getServiceChannelsForServicesFromApi($chunk, $refresh_requested);
-        $this->ptvStorage->insertServiceChannels($service_channels);
+      if ((int) ($summary['service_count'] ?? 0) === 0) {
+        throw new CommandFailedException(
+          'PTV import returned zero services. Intermediate storage was not changed.'
+        );
       }
+    /**
+     * 3. STEP: Prepares the validated import data for intermediate storage.
+     *
+     * Generated DTOs are converted into JSON-compatible data and encoded as JSON.
+     * Migration source plugins later decode the records and deserialize payloads
+     * back into generated DTOs for migration mapping (DTO are needed to access the getters).
+     */
+      $preparedImportData = $this->ptvStorage
+        ->prepareImportDataForStorage($importData);
+
+      $summaryMessage = 'PTV import is valid. Services: '
+        . (int) ($summary['service_count'] ?? 0)
+        . ', connections: '
+        . (int) ($summary['connection_count'] ?? 0)
+        . ', channels: '
+        . (int) ($summary['channel_count'] ?? 0)
+        . ', warnings: '
+        . (int) ($summary['warning_count'] ?? 0)
+        . '.';
+      // If dry run was added for the drush command - stop here - does not update the storage
+      if ($dryRun) {
+        $this->io()->success(
+          $summaryMessage . ' Dry run completed; intermediate storage was not changed.'
+        );
+
+        return;
+      }
+      /**
+       * 4. STEP: Based on the drush command we either replace or upsert -
+       *  if list of uuid values were provided -> Upsert, if not -> All is replaces
+       */ 
+      $writtenStatistics = $isFullRefresh
+        ? $this->ptvStorage->replaceImportData($preparedImportData)
+        : $this->ptvStorage->upsertImportData($preparedImportData);
+
+      $storageAction = $isFullRefresh ? 'replaced' : 'updated';
+
+      $this->io()->success(
+        $summaryMessage
+        . ' Intermediate storage '
+        . $storageAction
+        . ' with '
+        . $writtenStatistics['service_count']
+        . ' service row(s) and '
+        . $writtenStatistics['channel_count']
+        . ' channel row(s).'
+      );
+    }
+    catch (CommandFailedException $exception) {
+      throw $exception;
+    }
+    catch (\Throwable $exception) {
+      throw new CommandFailedException(
+        'PTV refresh failed before intermediate storage was changed: '
+        . $exception->getMessage(),
+        0,
+        $exception
+      );
     }
   }
 
   /**
-   * Updates the data of a single service channel from PTV API to DB storage.
+   * Deletes unused service nodes and map points through delete hooks.
    *
-   * @param string $id
-   *   The UUID to update from the API.
-   *
-   * @command tre_ptv_import:update_channel
-   * @aliases update_ptv_channel
-   */
-  public function updateSingleServiceChannel(string $id) {
-    $service_channel_response = $this->ptvStorage->getServiceChannelsByIdsFromApi([$id], TRUE);
-    $this->ptvStorage->insertServiceChannels($service_channel_response);
-
-    $this->io()->success("Service channel with $id updated successfully.");
-  }
-
-  /**
-   * Shows debug output for PTV data from storage or from the API.
-   *
-   * @param string $type
-   *   The type of the item to show. Either 'channel' for service channels or
-   *   'service' for services.
-   * @param string $storage
-   *   The storage to use for fetching the data. Either 'db' for intermediate DB
-   *   storage or 'api' for fetching the data directly from the API.
-   * @param string $id
-   *   The UUID of the item to show.
-   *
-   * @command tre_ptv_import:debug
-   * @aliases ptv_debug,debug_ptv
-   */
-  public function debugSingleItem(string $type, string $storage, string $id) {
-    if (!in_array($type, ['service', 'channel'], TRUE)) {
-      throw new \InvalidArgumentException("Invalid type requested. Use either 'service' or 'channel'.");
-    }
-
-    if (!in_array($storage, ['api', 'db'])) {
-      throw new \InvalidArgumentException("Invalid storage requested. Use either 'api' or 'db'.");
-    }
-
-    switch ($type) {
-      case 'service':
-        $this->debugService($storage, $id);
-        break;
-
-      case 'channel':
-        $this->debugServiceChannel($storage, $id);
-        break;
-    }
-  }
-
-  /**
-   * Outputs debug data about a PTV service.
-   *
-   * @param string $storage
-   *   The type of storage to use for fetching the data. Either 'db' or 'api'.
-   * @param string $id
-   *   The UUID of the service to output.
-   */
-  private function debugService(string $storage, string $id) {
-    $service = NULL;
-    switch ($storage) {
-      case 'db':
-        $service = $this->ptvStorage->getServiceFromStorage($id);
-        break;
-
-      case 'api':
-        $services = $this->ptvStorage->getServicesFromApi(TRUE);
-        if (is_array($services)) {
-          $filtered_services = array_filter($services, function ($service) use ($id) {
-            return $service->getId() === $id;
-          });
-          $service = reset($filtered_services);
-        }
-        break;
-    }
-
-    $this->io()->text(print_r($service, TRUE));
-  }
-
-  /**
-   * Outputs debug data for a PTV service channel.
-   *
-   * @param string $storage
-   *   The type of storage to use for fetching the data. Either 'db' or 'api'.
-   * @param string $id
-   *   The UUID of the service channel to output.
-   */
-  private function debugServiceChannel(string $storage, string $id) {
-    $channel = NULL;
-    switch ($storage) {
-      case 'db':
-        $channel = $this->ptvStorage->getServiceChannelFromStorageById($id);
-        break;
-
-      case 'api':
-        $channels = $this->ptvStorage->getServiceChannelsByIdsFromApi([$id], TRUE);
-        if (is_array($channels)) {
-          $channel = reset($channels);
-        }
-        break;
-    }
-
-    $this->io()->text(print_r($channel, TRUE));
-  }
-
-  /**
-   * Deletes unused service nodes and map points (via delete hook).
-   *
-   * @param string $content_type
+   * @param string $contentType
    *   The content type to process.
    * @param string $language
    *   The language to process.
-   * @param bool $dry_run
-   *   Whether to perform a dry run (no deletion) (default: TRUE).
+   * @param bool $dryRun
+   *   Whether to perform a dry run.
    *
    * @usage tre_ptv_import:delete_unused_service_nodes_and_map_points <content-type> <language> <dry-run>
-   *   Deleting all services not in the migrate map.
-   *   Defaults to dry-run, use '0' as third parameter to actually delete.
+   *   Deletes nodes not found in the relevant migration map. Use "0" as the
+   *   third parameter to perform deletion.
    *
    * @command tre_ptv_import:delete_unused_service_nodes_and_map_points
    * @aliases ptv_rm_services
    */
-  public function deleteUnusedServiceNodesAndMapPoints($content_type, $language, $dry_run = TRUE): void {
+  public function deleteUnusedServiceNodesAndMapPoints(
+    string $contentType,
+    string $language,
+    bool $dryRun = TRUE,
+  ): void {
+    $migrateTable = match ($contentType) {
+      'place_of_business' => 'migrate_map_ptv_service_locations'
+        . ($language === 'en' ? '_en' : ''),
+      'ptv_service' => 'migrate_map_ptv_services'
+        . ($language === 'en' ? '_en' : ''),
+      'service_channel' => 'migrate_map_ptv_service_channels'
+        . ($language === 'en' ? '_en' : ''),
+      default => throw new \InvalidArgumentException(
+        'This content type cannot be processed.'
+      ),
+    };
 
-    $service_node_deleted = 0;
-    // Let's exit the script if the content type is not supported.
-    switch ($content_type) {
-      case 'place_of_business':
-        $migrate_table = 'migrate_map_ptv_service_locations' . (($language === 'en') ? '_en' : '');
-        break;
+    $query = $this->database->select('node', 'node');
+    $query->fields('node', ['nid']);
+    $query->condition('node.type', $contentType);
+    $query->condition('node.langcode', $language);
 
-      case 'ptv_service':
-        $migrate_table = 'migrate_map_ptv_services' . (($language === 'en') ? '_en' : '');
-        break;
+    $query->join('node_field_data', 'node_field_data', 'node.nid = node_field_data.nid');
+    $query->condition('node_field_data.uid', 0);
 
-      case 'service_channel':
-        $migrate_table = 'migrate_map_ptv_service_channels' . (($language === 'en') ? '_en' : '');
-        break;
-
-      default:
-        throw new \Exception(message: dt(string: 'This content type cannot be processed.'));
-    }
-
-    $query = $this->db->select(table: 'node', alias: 'n');
-
-    $query->fields(table_alias: 'n', fields: ['nid']);
-    $query->condition(field: 'n.type', value: $content_type, operator: '=');
-    $query->condition(field: 'n.langcode', value: $language, operator: '=');
-
-    $query->join(table: 'node_field_data', alias: 'nf', condition: 'n.nid = nf.nid');
-    $query->condition(field: 'nf.uid', value: 0, operator: '=');
-
-    $query->leftJoin(table: $migrate_table, alias: 'm', condition: 'n.nid = m.destid1');
-
-    // Find the non-matching set.
-    $query->isNull(field: 'm.destid1');
+    $query->leftJoin(
+      $migrateTable,
+      'migration_map',
+      'node.nid = migration_map.destid1'
+    );
+    $query->isNull('migration_map.destid1');
 
     $results = $query->execute()->fetchAll();
 
-    // If we are not in a dry run, delete the nodes.
-    if (!$dry_run) {
-      foreach ($results as $result) {
-        $node_to_delete = $this->nodeStorage->load(id: $result->nid);
-        if ($node_to_delete instanceof NodeInterface) {
-          $node_to_delete->delete();
-          $service_node_deleted++;
-        }
+    if ($dryRun) {
+      $this->io()->writeln(
+        count($results) . ' node(s) of type ' . $contentType . ' would be deleted.'
+      );
+
+      return;
+    }
+
+    $deletedCount = 0;
+
+    foreach ($results as $result) {
+      $node = $this->nodeStorage->load($result->nid);
+
+      if ($node instanceof NodeInterface) {
+        $node->delete();
+        $deletedCount++;
       }
-      $this->io()->success(message: "Deleted {$service_node_deleted} {$content_type} node(s).");
     }
-    else {
-      $amount = count(value: $results);
-      $this->io()->writeln(messages: "{$amount} node(s) of type {$content_type} would be deleted.");
-    }
+
+    $this->io()->success(
+      'Deleted ' . $deletedCount . ' ' . $contentType . ' node(s).'
+    );
   }
 
 }

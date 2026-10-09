@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme implementation for rendering audio files.
+ *
+ * Hides the browser-provided download control when supported.
+ */
+#}
+
+<audio controlslist="nodownload" {{ attributes }}>
+  {% for file in files %}
+    <source {{ file.source_attributes }} />
+  {% endfor %}
+</audio>

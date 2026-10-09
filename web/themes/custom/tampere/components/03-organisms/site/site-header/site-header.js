@@ -135,7 +135,8 @@ function handleMenuButtonInteraction(event) {
 function handleHeaderBodyInteraction(event) {
   const selectedHeaderMenuContainer = event.target.closest('.site-header__navigation-container')
     || event.target.closest('.site-header__menu')
-    || event.target.closest('.minisite-header__navigation');
+    || event.target.closest('.minisite-header__navigation')
+    || event.target.closest('.custom-menu');
 
   const expandedNavContainerButton = document.querySelector(
     '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]',
@@ -157,17 +158,23 @@ function handleHeaderBodyInteraction(event) {
 function handleHeaderFocusOut(event) {
   const header = event.currentTarget;
 
-  if (header.contains(event.relatedTarget)) {
-    return;
-  }
+  setTimeout(() => {
+    const { activeElement } = document;
 
-  const expandedNavContainerButton = header.querySelector(
-    '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]',
-  );
+    if (
+      header.contains(activeElement) || activeElement.closest('.custom-menu') || event.target.closest('.custom-menu')
+    ) {
+      return;
+    }
 
-  if (expandedNavContainerButton) {
-    toggleMenuContainer(expandedNavContainerButton);
-  }
+    const expandedNavContainerButton = header.querySelector(
+      '.menu-button--desktop[aria-expanded=true], .menu-button--minisite[aria-expanded=true]',
+    );
+
+    if (expandedNavContainerButton) {
+      toggleMenuContainer(expandedNavContainerButton);
+    }
+  }, 0);
 }
 
 /**
@@ -269,138 +276,5 @@ Drupal.behaviors.siteHeader = {
         window.addEventListener('resize', () => requestAnimationFrame(handleResize));
       }
     }
-
-    const translateBlockForMinisite = document.querySelector('.minisite-header__translate');
-    if (translateBlockForMinisite) {
-      const desktopTarget = document.querySelector('.minisite-header__language-switcher');
-      const mobileTarget = document.querySelector('.minisite-header__language-switcher--mobile');
-
-      // eslint-disable-next-line
-      function moveTranslateBlock() {
-        const mediaQuery = window.matchMedia('(max-width: 61.56rem)');
-        const isMobile = mediaQuery.matches;
-
-        const target = isMobile ? mobileTarget : desktopTarget;
-
-        if (translateBlockForMinisite && target
-          && translateBlockForMinisite.parentElement !== target.parentElement) {
-          // Move translateBlock right after the target element
-          target.insertAdjacentElement('afterend', translateBlockForMinisite);
-        }
-      }
-
-      // Initial move on load
-      moveTranslateBlock();
-
-      // Move again on resize
-      window.addEventListener('resize', moveTranslateBlock);
-    }
-
-    const initialPageLang = document.documentElement.lang;
-
-    once('toggle-translate', '.site-header__translate, .minisite-header__translate, .minisite-header__translate-mobile').forEach((translateBlock) => {
-      const translateButton = translateBlock.querySelector(
-        '.header-translate-expand',
-      );
-
-      const translateMenu = translateBlock.querySelector(
-        '.header-translate-block',
-      );
-
-      const manageCookiesSection = translateBlock.querySelector(
-        '.manage-cookies-section',
-      );
-
-      const googleTranslate = translateBlock.querySelector(
-        '#block-tampere-openygoogletranslate',
-      );
-
-      // Helper for checking if the lang attribute has changed from initial value.
-      function isTranslationActive() {
-        return document.documentElement.lang !== initialPageLang;
-      }
-
-      // Returns user cookie consent status.
-      function hasConsent() {
-        const cookieTypes = ['cookie_cat_necessary', 'cookie_cat_functional'];
-        return cookieTypes.every((type) =>
-          // eslint-disable-next-line
-          CookieInformation.getConsentGivenFor(type));
-      }
-
-      // Function creates an observer that looks for the Google translate
-      // banner in the DOM. Once its injected by the script, this updates
-      // it to hidden / visible based on user consent and translation selection.
-      function setupBannerObserver() {
-        // eslint-disable-next-line no-unused-vars
-        const observer = new MutationObserver((mutations, obs) => {
-          const banner = document.querySelector('[class="skiptranslate"]');
-          if (banner) {
-            const consentGiven = hasConsent();
-            const translationActive = isTranslationActive();
-
-            if (consentGiven && translationActive) {
-              banner.firstChild.setAttribute('style', 'visibility:visibile');
-              document.body.classList.remove('no-translate-banner');
-            } else {
-              banner.firstChild.setAttribute('style', 'visibility:hidden');
-              document.body.classList.add('no-translate-banner');
-            }
-          }
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-      }
-
-      // Toggles translate widget / cookie menu based on user consent.
-      function updateWidgetState() {
-        const consentGiven = hasConsent();
-
-        if (consentGiven) {
-          manageCookiesSection.hidden = true;
-          googleTranslate.hidden = false;
-        } else {
-          manageCookiesSection.hidden = false;
-          googleTranslate.hidden = true;
-        }
-      }
-
-      updateWidgetState();
-      setupBannerObserver();
-
-      // When cookie consent changes, update state again.
-      window.addEventListener('CookieInformationConsentGiven', () => {
-        updateWidgetState();
-        setupBannerObserver();
-      });
-
-      // Event listener for toggling the translate menu.
-      translateButton.addEventListener('click', () => {
-        translateMenu.hidden = !translateMenu.hidden;
-
-        const googleTranslateDropDown = translateMenu.querySelector(
-          '.goog-te-combo',
-        );
-
-        // Add translated text after the dropdown
-        if (googleTranslateDropDown
-          && (!googleTranslateDropDown.nextElementSibling
-          || !googleTranslateDropDown.nextElementSibling.classList.contains('translator-message'))) {
-          googleTranslateDropDown.insertAdjacentHTML(
-            'afterend',
-            `<div class="translator-message">
-              ${Drupal.t('The City of Tampere is not responsible for translations made by Google Translate.')}
-            </div>`,
-          );
-        }
-      });
-
-      // Close the translate menu if clicked outside.
-      document.addEventListener('click', (event) => {
-        if (!translateBlock.contains(event.target)) {
-          translateMenu.hidden = true;
-        }
-      });
-    });
   },
 };

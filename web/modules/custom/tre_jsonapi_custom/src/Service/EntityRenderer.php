@@ -107,7 +107,7 @@ class EntityRenderer implements EntityRendererInterface {
 
     // As mentioned in the documentation, the renderPlain method is not actually
     // for rendering plaintext but instead rendering without assets or metadata.
-    $result = $this->renderer->renderPlain($build);
+    $result = $this->renderer->renderInIsolation($build);
 
     // Restore the original theme if themes got switched before.
     if ($active_theme_switched) {

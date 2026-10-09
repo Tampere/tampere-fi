@@ -157,7 +157,6 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
-                  sort_options_unsupported: ''
       access:
         type: none
         options: {  }
@@ -207,27 +206,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              siteimprove_user: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              group_content_section_editor: '0'
-              section_editor: '0'
-              participation_section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             expose_fields: false
             placeholder: ''
             searched_fields_id: search_api_fulltext_searched_fields
@@ -392,27 +370,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              siteimprove_user: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              group_content_section_editor: '0'
-              section_editor: '0'
-              participation_section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             expose_fields: false
             placeholder: ''
             searched_fields_id: search_api_fulltext_searched_fields
@@ -439,7 +396,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          parse_mode: phrase
+          parse_mode: terms
           min_length: null
           fields:
             - field_alternative_name
@@ -615,6 +572,46 @@ display:
     display_plugin: block
     position: 1
     display_options:
+      sorts:
+        search_api_relevance:
+          id: search_api_relevance
+          table: search_api_index_contacts_search
+          field: search_api_relevance
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        last_name_string:
+          id: last_name_string
+          table: search_api_index_contacts_search
+          field: last_name_string
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        first_names_string:
+          id: first_names_string
+          table: search_api_index_contacts_search
+          field: first_names_string
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
       filters:
         search_api_fulltext:
           id: search_api_fulltext
@@ -642,27 +639,6 @@ display:
             multiple: false
             remember_roles:
               authenticated: authenticated
-              anonymous: '0'
-              siteimprove_user: '0'
-              mailing_list_admin: '0'
-              emergency_notice_author: '0'
-              service_author: '0'
-              contact_info_author: '0'
-              blog_article_author: '0'
-              notice_author: '0'
-              zoning_information_author: '0'
-              small_news_item_author: '0'
-              news_item_author: '0'
-              rich_article_author: '0'
-              basic_content_page_author: '0'
-              media_editor: '0'
-              front_page_author: '0'
-              author: '0'
-              group_content_section_editor: '0'
-              section_editor: '0'
-              participation_section_editor: '0'
-              super_user: '0'
-              administrator: '0'
             expose_fields: false
             placeholder: ''
             searched_fields_id: search_api_fulltext_searched_fields
@@ -689,7 +665,7 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          parse_mode: phrase
+          parse_mode: terms
           min_length: null
           fields:
             - field_first_names
@@ -736,11 +712,53 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
+        search_api_language:
+          id: search_api_language
+          table: search_api_index_contacts_search
+          field: search_api_language
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: search_api_language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+            '***LANGUAGE_site_default***': '***LANGUAGE_site_default***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
       defaults:
+        sorts: false
         filters: false
         filter_groups: false
         header: false

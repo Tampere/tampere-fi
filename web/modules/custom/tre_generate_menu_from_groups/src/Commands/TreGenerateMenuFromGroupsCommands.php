@@ -326,15 +326,62 @@ class TreGenerateMenuFromGroupsCommands extends DrushCommands {
     if (!$this->isAllowedMenuNode($subsiteFrontPage)) {
       return 0;
     }
-
-    $this->createMenuLinkFromNode(
+    
+    // Get the nodes related to the subsite group and create menu levels for those
+    $subsiteNodes = $this->loadNodesForSubsite($subsite, $subsiteFrontPage);
+    // 1. - First create the subsite frontpage menu level (2nd or 3rd level based on the specific group)
+    $subsitePluginId = $this->createMenuLinkFromNode(
       $subsiteFrontPage,
       $parentPluginId,
       $weight,
-      FALSE
+      !empty($subsiteNodes)
     );
 
-    return 1;
+    $createdCount = 1;
+    $childWeight = 0;
+    // 2. - Create the subsite related node menu links as child links (3rd or 4th level based on the subsite level)
+    foreach ($subsiteNodes as $node) {
+      $this->createMenuLinkFromNode(
+        $node,
+        $subsitePluginId,
+        $childWeight++,
+        FALSE
+      );
+      $createdCount++;
+    }
+
+    return $createdCount;
+  }
+
+  /**
+   * Loads all allowed node entities related to a subsite group.
+   */
+  protected function loadNodesForSubsite(GroupInterface $subsite, NodeInterface $subsiteFrontPage): array {
+    $nodes = [];
+
+    foreach ($subsite->getRelatedEntities() as $entity) {
+      if (!$entity instanceof NodeInterface) {
+        continue;
+      }
+      // Dont add the subsite front page to the next menu level again
+      if ((int) $entity->id() === (int) $subsiteFrontPage->id()) {
+        continue;
+      }
+
+      if (!$entity->hasTranslation($this->langcode)) {
+        continue;
+      }
+
+      $node = $entity->getTranslation($this->langcode);
+
+      if (!$this->isAllowedMenuNode($node)) {
+        continue;
+      }
+
+      $nodes[(int) $node->id()] = $node;
+    }
+
+    return $nodes;
   }
 
   /**

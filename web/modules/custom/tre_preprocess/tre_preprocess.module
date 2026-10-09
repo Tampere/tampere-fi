@@ -426,3 +426,27 @@ function tre_preprocess_form_alter(&$form, FormStateInterface $form_state, $form
     ];
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Remove Clear and delete menu button
+ */
+function tre_preprocess_form_menu_edit_form_alter(array &$form, FormStateInterface $form_state) {
+  unset($form['actions']['clear']);
+  unset($form['actions']['delete']);
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function tre_preprocess_page_attachments_alter(array &$attachments) {
+  // Remove the generator meta tag from the HTML head (content Drupal).
+  if (isset($attachments['#attached']['html_head'])) {
+    foreach ($attachments['#attached']['html_head'] as $index => $attachment) {
+      // $attachment[1] contains the unique key name
+      if (isset($attachment[1]) && $attachment[1] === 'system_meta_generator') {
+        unset($attachments['#attached']['html_head'][$index]);
+      }
+    }
+  }
+}

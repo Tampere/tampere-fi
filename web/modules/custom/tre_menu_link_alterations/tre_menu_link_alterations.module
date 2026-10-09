@@ -21,11 +21,19 @@ function tre_menu_link_alterations_form_menu_link_content_form_alter(&$form, For
   foreach ($menu_link_widgets as $widget_delta) {
     $widget =& $form['link']['widget'][$widget_delta];
     $widget['uri']['#link_type'] = LinkItemInterface::LINK_INTERNAL;
-    $descriptions =& $widget['uri']['#description']['#items'];
-    foreach ($descriptions as &$description) {
+
+    // 1. Target #description directly
+    if (isset($widget['uri']['#description'])) {
+      $description = $widget['uri']['#description'];
       $default_link_string = 'Start typing the title of a piece of content to select it. You can also enter an internal path such as %add-node or an external URL such as %url. Enter %front to link to the front page. Enter %nolink to display link text only. Enter %button to display keyboard-accessible link text only.';
-      if (($description instanceof TranslatableMarkup) && ($description->getUntranslatedString() == $default_link_string)) {
-        $description = new TranslatableMarkup("Start typing the title of a piece of content to select it.", [], ['context' => 'TRE customised description for menu item link fields.']);
+
+      // 2. Check if #description is a TranslatableMarkup matching the default string
+      if (($description instanceof TranslatableMarkup) && ($description->getUntranslatedString() === $default_link_string)) {
+        $widget['uri']['#description'] = new TranslatableMarkup(
+          'Start typing the title of a piece of content to select it.',
+          [],
+          ['context' => 'TRE customised description for menu item link fields.']
+        );
       }
     }
   }

@@ -2,18 +2,19 @@ uuid: caf948b1-fc1f-416a-9103-ab65e35fc91e
 langcode: fi
 status: true
 dependencies:
+  config:
+    - node.type.involvement_opportunity
   module:
     - language
     - node
 id: involvement_opportunity_en
 label: 'Involvement opportunity EN'
 type: 'canonical_entities:node'
-pattern: 'take-part-and-influence/[node:title]'
+pattern: '/city-and-decision-making/participate-and-have-impact/[node:title]'
 selection_criteria:
   d76ade99-a03f-4234-8ca2-3540f19eb63f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: d76ade99-a03f-4234-8ca2-3540f19eb63f
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   3cbb087e-65e6-4f04-aec7-e12c18172489:
     id: language
     negate: false
-    uuid: 3cbb087e-65e6-4f04-aec7-e12c18172489
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

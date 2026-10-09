@@ -1,0 +1,440 @@
+@mixin back-button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin menu-icon-dimension {
+  width: 3.125rem;
+  height: 0.938rem;
+}
+
+@mixin submenu-toggle-styles {
+    all: unset;
+    font-size: 14px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin menu-border-accent-fix {
+  top: -1px; // Push up due to border
+  height: 101%; // Push down due to border
+}
+
+$menu-color: $color-light-gray;
+$menu-border: 1px solid $menu-color;
+$menu-spacing: $space-xs-plus;
+
+.new-menu {
+  .custom-menu {
+    .main-menu-container,
+    .secondary-main-menu-container {
+        width: clamp(297px, 30vw, 430px);
+
+      @include main-menu-breakpoint {
+        width: clamp(400px, 42vw, 615px);
+      }
+    }
+  }
+
+  .site-header__secondary-navigation--hamburger-menu {
+    padding: unset;
+  }
+
+  .main-menu,
+  .sub-menu {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .menu-item,
+  .menu-item__row,
+  .menu-link {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .menu-item__row {
+    display: flex;
+  }
+
+  .menu-link {
+    flex: 1;
+    min-width: 0;
+    font-family: $font-body;
+    border-right: $menu-border;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+
+      @include large {
+        &::before {
+          @include menu-border-accent-fix();
+        }
+      }
+    }
+  }
+
+  .submenu-toggle {
+    flex-shrink: 0;
+  }
+
+  .main-menu {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .menu-drilldown-header[hidden] {
+    display: none;
+  }
+
+  .is-hidden-row {
+    display: none;
+  }
+
+  .menu-item[hidden],
+  .submenu[hidden],
+  .submenu-toggle[hidden],
+  .menu-item__row[hidden] {
+    display: none;
+  }
+
+  .menu-drilldown-header {
+    display: flex;
+    align-items: center;
+    gap: $space-s;
+    margin-bottom: -32px; // Unset the margin top on main-menu
+    padding: $space-s;
+    background-color: $menu-color;
+    border-left: 2px solid #{clr(secondary)};
+    position: relative;
+    padding-left: 10px;
+
+    &:hover,
+    &:focus {
+      background-color: $menu-color;
+      text-decoration: underline;
+    }
+  }
+
+  .submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-item--current-parent .menu-item__row .menu-link {
+    padding-left: 40px;
+  }
+
+  .menu-item--current-parent > .submenu > .menu-item > .menu-link,
+  .menu-item--current-parent > .submenu > .menu-item > .menu-item__row > .menu-link {
+    padding-left: 54px;
+  }
+
+  .site-header__navigation-inside {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .link-home {
+    flex-basis: 100%;
+  }
+
+  .navigation-container {
+    display: flex;
+    flex-direction: row;
+    gap: $space-l;
+  }
+
+  .menu-item__row {
+    display: flex;
+  }
+
+  .menu-current-title {
+    @include back-button();
+
+    svg {
+      @include menu-icon-dimension();
+
+      width: 1.025rem;
+      flex-shrink: 0;
+      transform: rotate(180deg);
+    }
+
+    .menu-current-title__text {
+      @include large {
+        font-size: $font-18;
+        margin-left: 0.9rem; // Value to align with submenu items
+      }
+    }
+  }
+
+  .submenu-toggle {
+    @include submenu-toggle-styles();
+
+    position: relative;
+    display: inline-flex;
+  }
+
+  .menu__icon {
+    @include menu-icon-dimension();
+
+    flex-shrink: 0;
+  }
+
+  .menu-link,
+  .submenu-toggle {
+    border-top: $menu-border;
+    padding-top: $menu-spacing;
+    padding-bottom: $menu-spacing;
+  }
+
+  .submenu-toggle::after {
+    content: '';
+    position: absolute;
+    width: 0.8em;
+    height: 1px;
+    bottom: 30%;
+    background: currentColor;
+    opacity: 0;
+  }
+
+  .submenu-toggle:hover::after {
+    opacity: 1;
+  }
+
+  .menu-link.is-active {
+    @include left-border-accent($color: $color-warm-red);
+    text-decoration: underline;
+
+    @include large {
+      &::before {
+        @include menu-border-accent-fix();
+      }
+    }
+  }
+
+  .submenu-toggle {
+    border-right: $menu-border;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $menu-color;
+    }
+  }
+
+  .menu-item:last-child .menu-link {
+    border-bottom: $menu-border;
+  }
+
+  .menu-item:last-child .submenu-toggle {
+    border-bottom: $menu-border;
+  }
+
+  .menu-item:last-child,
+  .submenu .menu-item:last-child {
+    .menu-link {
+      @include large {
+        &::before {
+          height: 103%;
+        }
+      }
+    }
+  }
+
+  .inline-menu__icon {
+    @include menu-icon-dimension();
+
+    display: unset;
+    color: $color-darkest-blue;
+  }
+}
+
+#main-nav {
+  .main-menu__item {
+    @include xl {
+      // Fix alphabetical order of items due to css grid columns used
+      &:nth-child(1) {
+        order: unset;
+      }
+
+      &:nth-child(2) {
+        order: unset;
+      }
+
+      &:nth-child(3) {
+        order: unset;
+      }
+    }
+  }
+}
+
+// Mobile navigation
+.custom-menu {
+  .mobile-main-nav,
+  .mobile-secondary-main-menu {
+    .menu-drilldown-header[hidden] {
+      display: none;
+    }
+
+    .is-hidden-row {
+      display: none;
+    }
+
+    .menu-item[hidden],
+    .submenu[hidden],
+    .submenu-toggle[hidden],
+    .menu-item__row[hidden] {
+      display: none;
+    }
+
+    .menu-drilldown-header {
+      background-color: $menu-color;
+    }
+
+    .submenu-toggle {
+      @include submenu-toggle-styles();
+
+      display: flex;
+    }
+
+    .menu-current-title {
+      @include back-button();
+
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+
+      svg {
+        @include menu-icon-dimension();
+
+        flex-shrink: 0;
+        transform: rotate(180deg);
+      }
+    }
+
+    .menu-item__row {
+      display: flex;
+    }
+
+    .menu-link {
+      font-size: $space-s;
+      margin-right: 0;
+      border-bottom: unset;
+
+      &.is-active {
+        border-left: 0.625rem solid $color-warm-red;
+        padding-left: 10px; // Reduce padding due to border
+      }
+    }
+
+    .menu-item--current-parent .menu-link {
+       padding-left: 28px; // Same reason as above
+    }
+
+    .menu-link,
+    .submenu-toggle {
+
+      padding-top: $menu-spacing;
+      padding-bottom: $menu-spacing;
+    }
+
+    .menu-item .menu-link {
+      border-top: $menu-border;
+    }
+
+    .menu-item:last-child .submenu-toggle {
+      border-bottom: $menu-border;
+    }
+    
+    .submenu-toggle {
+      border-left: $menu-border;
+      border-top: $menu-border;
+    }
+
+    .menu-item {
+      list-style: none;
+    }
+
+    .menu__icon {
+      @include menu-icon-dimension();
+
+      flex-shrink: 0;
+    }
+
+    ul {
+      padding-left: unset;
+    }
+
+    .menu-item--current-parent > .submenu > .menu-item > .menu-link,
+    .menu-item--current-parent > .submenu > .menu-item > .menu-item__row > .menu-link {
+      padding-left: 2.375rem;
+    }
+  }
+
+  .mobile-secondary-main-menu {
+    .menu-link.is-active {
+      border-left: 0.625rem solid var(--c-primary);
+    }
+  }
+}
+
+.site-header__navigation-container--mobile {
+  .link-home {
+    justify-content: center;
+    margin: auto;
+    padding: 1.375rem 0;
+  }
+}
+
+.custom-menu .main-menu-container .main-menu {
+    border-left: 2px solid #{clr(secondary)};
+}
+
+.custom-menu .secondary-main-menu-container {
+  .menu-drilldown-header {
+    border-left-color: var(--c-primary);
+  }
+
+  .main-menu {
+    border-left: 2px solid var(--c-primary);
+
+    .menu-link {
+      &:hover,
+      &:focus {
+        @include left-border-accent($color: var(--c-primary));
+
+        &::before {
+          @include menu-border-accent-fix();
+        }
+      }
+    }
+  }
+
+  .menu-link.is-active {
+    @include left-border-accent($color: var(--c-primary));
+    @include large {
+      &::before {
+        @include menu-border-accent-fix();
+      }
+    }
+  }
+
+  .menu-item:last-child,
+  .submenu .menu-item:last-child {
+    .menu-link {
+      @include large {
+        &::before {
+          height: 103%;
+        }
+      }
+    }
+  }
+}

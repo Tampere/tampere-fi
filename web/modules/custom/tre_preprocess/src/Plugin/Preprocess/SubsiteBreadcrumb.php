@@ -58,7 +58,7 @@ class SubsiteBreadcrumb extends TrePreProcessPluginBase {
     $breadcrumb['#cache']['tags'][] = "node:{$node_id}";
     $variables['breadcrumb_mobile'] = $breadcrumb;
 
-    // @phpstan-ignore-nextline
+    // @phpstan-ignore-next-line
     $group_frontpage_node = $group->get('field_front_page')->entity;
 
     if (!($group_frontpage_node instanceof NodeInterface)) {

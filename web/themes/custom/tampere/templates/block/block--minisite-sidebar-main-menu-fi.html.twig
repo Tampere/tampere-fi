@@ -25,14 +25,20 @@
  *   heading link as a string.
  * - minisite_sidebar_heading_url: The URL for the menu container heading link
  *   as a string.
+ * - group_sidebar__has_content: Boolean indicating whether the menu has any
+ *   items to render. When empty, an "empty" modifier is added so the container
+ *   can be hidden on mobile (kept visible on desktop to avoid layout shift).
  *
  * @see template_preprocess_block()
  */
 #}
 
+{% set empty_modifiers = group_sidebar__has_content ? [] : [ "empty" ] %}
+
 {% embed "@organisms/sidebar-menu-container/sidebar-menu-container.twig" with {
   "sidebar_menu_container__heading": minisite_sidebar_heading_title,
   "sidebar_menu_container_heading__url": minisite_sidebar_heading_url,
+  "sidebar_menu_container__modifiers": empty_modifiers,
   "attributes": []
 } %}
   {% block sidebar_menu_container_menu %}

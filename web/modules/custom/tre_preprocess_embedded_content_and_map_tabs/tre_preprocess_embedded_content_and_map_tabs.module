@@ -44,9 +44,24 @@ function _tre_preprocess_embedded_content_and_map_tabs_update_field_listing_sear
   if ($use_formatted_description && $node->hasField('field_description_formatted') && !$node->get('field_description_formatted')->isEmpty()) {
     $view_mode = 'content_tab_card_view_mode_formatted_description';
   }
+  // Get the services needed to inspect and switch the active theme
+  $theme_manager = \Drupal::service('theme.manager');
+  $theme_initialization = \Drupal::service('theme.initialization');
+  // Keep the current admin theme so it can be restored after rendering
+  $original_theme = $theme_manager->getActiveTheme();
+  $tampere_theme = $theme_initialization->getActiveThemeByName('tampere');
 
-  $build = $view_builder->view($node, $view_mode);
-  $text_content[] = $renderer->renderPlain($build);
+  try {
+    // Render the view mode using the frontend theme so its Twig namespaces are available
+    $theme_manager->setActiveTheme($tampere_theme);
+
+    $build = $view_builder->view($node, $view_mode);
+    $text_content[] = $renderer->renderInIsolation($build);
+  }
+  finally {
+    // Restore the original theme after rendering
+    $theme_manager->setActiveTheme($original_theme);
+  }
 
   $text_string = implode("\n", $text_content);
   $text_without_tags = strip_tags($text_string);
@@ -81,8 +96,7 @@ function _tre_preprocess_embedded_content_and_map_tabs_update_field_computed_vis
 
   $node_visible = FALSE;
 
-  // If any of the daterange fields match the current date, the computed
-  // visibility is 'visible'; otherwise 'invisible'.
+  // 1. Loop through all phase accordion field names
   foreach (array_keys(AutomaticPhaseAccordionParagraph::FIXED_PHASE_FIELDS) as $field_name) {
     if (!$translated_node->hasField($field_name) || $translated_node->get($field_name)->isEmpty()) {
       continue;
@@ -101,33 +115,47 @@ function _tre_preprocess_embedded_content_and_map_tabs_update_field_computed_vis
       continue;
     }
 
-    $interval_value = $translated_phase->get('field_materials_visibility')->first();
-    // Note: DateRangeItem does not implement an interface that would guarantee
-    // the existence of the start_date and end_date properties so comparing
-    // against an implementation is necessary.
-    if (!($interval_value instanceof DateRangeItem)) {
-      continue;
+    // --- START: LOOP THROUGH ALL 5 ITEMS ---
+    
+    // Grab the entire FieldItemList list wrapper instead of calling ->first()
+    $visibility_intervals = $translated_phase->get('field_materials_visibility');
+
+    foreach ($visibility_intervals as $interval_value) {
+      
+      // Safety check: Is this specific slot a valid DateRangeItem?
+      if (!($interval_value instanceof DateRangeItem)) {
+        continue;
+      }
+
+      $start_date = $interval_value->get('start_date')->getValue();
+      if (!($start_date instanceof DrupalDateTime)) {
+        continue;
+      }
+      $start_date_formatted = $start_date->format('Y-m-d');
+
+      $end_date = $interval_value->get('end_date')->getValue();
+      if (!($end_date instanceof DrupalDateTime)) {
+        continue;
+      }
+      $end_date_formatted = $end_date->format('Y-m-d');
+
+      // Check if today falls cleanly within this specific interval slot
+      if ($start_date_formatted <= $current_date_formatted && $current_date_formatted <= $end_date_formatted) {
+        $node_visible = TRUE;
+        break; // Stop checking further intervals in this paragraph
+      }
     }
 
-    $start_date = $interval_value->get('start_date')->getValue();
-    if (!$start_date instanceof DrupalDateTime) {
-      continue;
-    }
-    $start_date_formatted = $start_date->format('Y-m-d');
+    // --- END ---
 
-    $end_date = $interval_value->get('end_date')->getValue();
-    if (!$end_date instanceof DrupalDateTime) {
-      continue;
-    }
-    $end_date_formatted = $end_date->format('Y-m-d');
-
-    $node_visible = $start_date_formatted <= $current_date_formatted && $current_date_formatted <= $end_date_formatted;
-
+    // If we found a matching date range inside this phase, break the outer loop too.
+    // There's no need to spend resources checking the other phase accordion fields.
     if ($node_visible) {
       break;
     }
   }
 
+  // Final confirmation logic
   if ($node_visible) {
     $node->set('field_computed_visibility', 'visible');
   }

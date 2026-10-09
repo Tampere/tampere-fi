@@ -36,7 +36,7 @@ function tre_current_content_archive_search_content_node_presave(NodeInterface $
     switch ($bundle) {
       case 'text':
         $rendered_text = $translated_paragraph->get('field_text')->view();
-        $text_content[] = $renderer->renderPlain($rendered_text);
+        $text_content[] = $renderer->renderInIsolation($rendered_text);
         break;
 
       case 'accordions':
@@ -72,7 +72,7 @@ function tre_current_content_archive_search_content_node_presave(NodeInterface $
             /** @var \Drupal\paragraphs\ParagraphInterface $translated_accordion_text_paragraph */
             $translated_accordion_text_paragraph = \Drupal::service('entity.repository')->getTranslationFromContext($accordion_content_paragraph);
             $rendered_text = $translated_accordion_text_paragraph->get('field_accordion_text')->view();
-            $text_content[] = $renderer->renderPlain($rendered_text);
+            $text_content[] = $renderer->renderInIsolation($rendered_text);
           }
         }
 
@@ -94,7 +94,7 @@ function tre_current_content_archive_search_content_node_presave(NodeInterface $
     }
 
     $rendered_field = $node->get($text_field)->view();
-    $text_content[] = $renderer->renderPlain($rendered_field);
+    $text_content[] = $renderer->renderInIsolation($rendered_field);
   }
 
   $text_string = implode("\n", $text_content);

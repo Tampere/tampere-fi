@@ -1,11 +1,9 @@
-label: Content
-description: 'Find and manage content.'
 display:
   default:
-    display_title: Default
     display_options:
-      title: Content
       fields:
+        revision_uid:
+          label: 'Latest editor'
         title:
           label: Title
         type:
@@ -18,28 +16,15 @@ display:
             format_custom_true: Published
         changed:
           label: Updated
+        langcode:
+          label: Language
+          separator: ', '
         operations:
           label: Operations
-        revision_uid:
-          label: 'Latest editor'
-      pager:
-        options:
-          tags:
-            next: 'Next ›'
-            previous: '‹ Previous'
-            first: '« First'
-            last: 'Last »'
-      exposed_form:
-        options:
-          submit_button: Filter
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      empty:
-        area_text_custom:
-          content: 'No content available.'
       filters:
+        revision_uid:
+          expose:
+            label: 'Latest editor'
         title:
           expose:
             label: Title
@@ -59,9 +44,25 @@ display:
         langcode:
           expose:
             label: Language
-        revision_uid:
-          expose:
-            label: 'Latest editor'
+      title: Content
+      pager:
+        options:
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      empty:
+        area_text_custom:
+          content: 'No content available.'
+    display_title: Default
   page_1:
     display_title: Page
     display_options:
@@ -70,3 +71,5 @@ display:
       tab_options:
         title: Content
         description: 'Find and manage content'
+label: Content
+description: 'Find and manage content.'

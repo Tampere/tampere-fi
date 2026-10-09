@@ -55,7 +55,7 @@
   "event_and_hobby_listing",
 ] %}
 
-{% set use_right_to_left = lang_code == "arb" or lang_code == "fa" %}
+{% set use_right_to_left = lang_code == "arb" or lang_code == "ar" or lang_code == "fa" %}
 
 {% if (paragraph.bundle in extra_wide_parents) or display_extra_wide %}
   {% set paragraph_anchor_link__modifiers = paragraph_anchor_link__modifiers|merge([ "extra-wide-parent" ]) %}

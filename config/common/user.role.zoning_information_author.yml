@@ -7,6 +7,7 @@ dependencies:
     - entity_browser.browser.all_places_entity_browser
     - entity_browser.browser.persons_entity_browser
     - filter.format.notice_html
+    - media.type.audio
     - media.type.file
     - media.type.image
     - media.type.remote_video
@@ -14,6 +15,7 @@ dependencies:
     - node.type.zoning_information
     - workflows.workflow.scheduled_transitions
   module:
+    - ai_auto_reference
     - ai_translate_textfield
     - content_moderation
     - content_translation
@@ -38,6 +40,7 @@ weight: -2
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access ai auto-reference suggestion tools'
   - 'access all_content_entity_browser entity browser pages'
   - 'access all_places_entity_browser entity browser pages'
   - 'access content overview'
@@ -53,6 +56,7 @@ permissions:
   - 'addrow tablefield'
   - 'clone comprehensive_plan content'
   - 'clone zoning_information content'
+  - 'create audio media'
   - 'create comprehensive_plan content'
   - 'create file media'
   - 'create image media'
@@ -63,6 +67,7 @@ permissions:
   - 'create paragraph content anchor_link'
   - 'create paragraph content anchor_list'
   - 'create paragraph content attachment'
+  - 'create paragraph content audio_player'
   - 'create paragraph content automatic_phase_accordion'
   - 'create paragraph content back_to_top_link'
   - 'create paragraph content balanced_content_liftup'
@@ -131,11 +136,14 @@ permissions:
   - 'create paragraph content zoning_project_cards'
   - 'create remote_video media'
   - 'create zoning_information content'
+  - 'delete any audio media'
+  - 'delete any audio media revisions'
   - 'delete any comprehensive_plan content'
   - 'delete any file'
   - 'delete any zoning_information content'
   - 'delete files immediately'
   - 'delete media'
+  - 'delete own audio media'
   - 'delete own file media'
   - 'delete own files'
   - 'delete own image media'
@@ -145,6 +153,7 @@ permissions:
   - 'delete paragraph content anchor_link'
   - 'delete paragraph content anchor_list'
   - 'delete paragraph content attachment'
+  - 'delete paragraph content audio_player'
   - 'delete paragraph content automatic_phase_accordion'
   - 'delete paragraph content back_to_top_link'
   - 'delete paragraph content balanced_content_liftup'
@@ -211,12 +220,15 @@ permissions:
   - 'delete paragraph content video_embed'
   - 'delete paragraph content zoning_project_card'
   - 'delete paragraph content zoning_project_cards'
+  - 'edit any audio media'
   - 'edit any comprehensive_plan content'
   - 'edit any zoning_information content'
+  - 'edit own audio media'
   - 'import tablefield'
   - 'rebuild tablefield'
   - 'reschedule scheduled transitions node comprehensive_plan'
   - 'reschedule scheduled transitions node zoning_information'
+  - 'revert any audio media revisions'
   - 'revert comprehensive_plan revisions'
   - 'revert zoning_information revisions'
   - 'translate editable entities'
@@ -227,6 +239,7 @@ permissions:
   - 'update paragraph content anchor_link'
   - 'update paragraph content anchor_list'
   - 'update paragraph content attachment'
+  - 'update paragraph content audio_player'
   - 'update paragraph content automatic_phase_accordion'
   - 'update paragraph content back_to_top_link'
   - 'update paragraph content balanced_content_liftup'
@@ -299,6 +312,7 @@ permissions:
   - 'use scheduled_transitions transition restore_draft'
   - 'use text format notice_html'
   - 'view all media revisions'
+  - 'view any audio media revisions'
   - 'view any unpublished content'
   - 'view comprehensive_plan revisions'
   - 'view latest version'

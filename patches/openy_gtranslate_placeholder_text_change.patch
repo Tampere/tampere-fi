@@ -1,0 +1,10 @@
+--- a/templates/openy-gtranslate.html.twig	2026-05-20 10:27:28
++++ b/templates/openy-gtranslate.html.twig	2026-05-20 10:28:03
+@@ -7,6 +7,6 @@
+   {% if in_preview %}
+     <div class="container">{{ in_preview_placeholder }}</div>
+   {% else %}
+-    <a class="openy-gtranslate-placeholder">{{ "Select Language" | t }}</a>
++    <a class="openy-gtranslate-placeholder">{{ "Translate" | t }}</a>
+     <div class="openy-google-translate d-none"></div>
+   {% endif %}
