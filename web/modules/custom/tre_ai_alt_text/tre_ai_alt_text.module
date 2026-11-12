@@ -30,7 +30,13 @@ function tre_ai_alt_text_form_media_form_alter(array &$form, FormStateInterface 
  * Implements hook_form_alter().
  */
 function tre_ai_alt_text_form_alter(array &$form, FormStateInterface $form_state, string $form_id): void {
-  if ($form_id === 'media_library_add_form' && isset($form['media'])) {
+  // The media library add form is built with the base form ID
+  // "media_library_add_form", but the actual form ID (and the one passed to
+  // hook_form_alter) is "media_library_add_form_upload". This covers both the
+  // standalone media library and the media library widget used on node forms
+  // (e.g. the main image field), which render the same form.
+  $media_library_form_ids = ['media_library_add_form_upload', 'media_library_add_form'];
+  if (in_array($form_id, $media_library_form_ids, TRUE) && isset($form['media'])) {
     $attached = FALSE;
     foreach (Element::children($form['media']) as $delta) {
       $fields = $form['media'][$delta]['fields'] ?? [];

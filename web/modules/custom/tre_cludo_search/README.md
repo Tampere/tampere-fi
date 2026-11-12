@@ -15,7 +15,11 @@ can access with client login credentials.
 - Drupal's `web/sites/default/settings.local.php` file as following:<br>
   `$settings ['cludo_customer_id'] = <customeridhere>;` <br>
   `$settings ['cludo_engine_id'] = <engineidhere>;` <br>
+  `$settings ['cludo_ai_summary_xid_fi'] = <fi-summary-experience-id>;` <br>
+  `$settings ['cludo_ai_summary_xid_en'] = <en-summary-experience-id>;` <br>
   You can find in these id's from clients [MyCludo](https://my.cludo.com/) service.
+  The AI summary experience ids belong to the engine in use, so each environment
+  needs its own. The summary is not shown if its id is not set.
 - Create personal token (classic) in your Github account. This will be needed
 only while installing required npm packages in your local. Make sure the token
 has  `read:packages`  access. Read more about tokens in

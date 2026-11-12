@@ -8,11 +8,26 @@
   {% set column_field_group__modifiers = column_field_group__modifiers|merge([ variant ]) %}
 {% endif %}
 
+{% set left_column_groups = left_column|default([]) %}
+{% set opening_hours_extra = {
+  "group_opening_hours_4": left_column_groups.group_opening_hours_4|default([]),
+  "group_opening_hours_5": left_column_groups.group_opening_hours_5|default([]),
+} %}
+{% set extra_opening_hours_markup = opening_hours_extra|render %}
+{% set exception_hours = left_column_groups.group_exception_hours|default(left_column_groups.field_exception_hours|default([])) %}
+{% set exception_hours_markup = exception_hours|render %}
+{% set left_column_content = left_column_groups|without(
+  "group_opening_hours_4",
+  "group_opening_hours_5",
+  "group_exception_hours",
+  "field_exception_hours"
+)|render %}
+
 {% if pre_columns_content|render|trim %}
   {% set has_pre_columns_content = TRUE %}
 {% endif %}
 
-{% if left_column|render|trim %}
+{% if left_column_content|trim or extra_opening_hours_markup|trim or exception_hours_markup|trim %}
   {% set has_left_column = TRUE %}
 {% endif %}
 
@@ -34,7 +49,18 @@
   <div {{ bem("columns", column_field_group__columns__modifiers|default([]), column_field_group__base_class) }}>
     {% if has_left_column %}
       <div {{ bem("column", "", column_field_group__base_class) }}>
-        {{ left_column }}
+        {{ left_column_content }}
+        {% if extra_opening_hours_markup|trim %}
+          {% include "@organisms/accordion/accordion-item.twig" with {
+            "id": "opening-hours-extra-" ~ random(),
+            "ac__item__modifiers": [ "mini", "more-opening-hours" ],
+            "accordion_heading": "More opening hours"|t,
+            "accordion_content": extra_opening_hours_markup,
+          } %}
+        {% endif %}
+        {% if exception_hours_markup|trim %}
+          {{ exception_hours_markup }}
+        {% endif %}
       </div>
     {% endif %}
 

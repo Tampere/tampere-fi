@@ -1,0 +1,12 @@
+--- a/includes/field_ui.inc
++++ b/includes/field_ui.inc
+@@ -237,7 +237,8 @@
+         if ($form_state->has('plugin_settings')) {
+           $plugin_settings = $form_state->get('plugin_settings');
+           if (isset($plugin_settings[$name]['ft']['settings']) && !empty($plugin_settings[$name]['ft']['settings']['lb'])) {
+-            $row['human_name']['#plain_text'] = $plugin_settings[$name]['ft']['settings']['lb'] . ' ' . t('(Original: @orig)', ['@orig' => $row['human_name']['#plain_text']]);
++            $orig_name = $row['human_name']['#plain_text'] ?? $row['human_name']['#markup'] ?? (string) ($row['human_name'] ?? '');
++            $row['human_name']['#plain_text'] = $plugin_settings[$name]['ft']['settings']['lb'] . ' ' . t('(Original: @orig)', ['@orig' => (string) $orig_name]);
+           }
+         }
+       }

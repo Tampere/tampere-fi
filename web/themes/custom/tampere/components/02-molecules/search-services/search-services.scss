@@ -1,0 +1,110 @@
+.search-service {
+  $base_class: &;
+
+  @include page-element-spacer;
+  @include mobile-breakpoint {
+    display: grid;
+    column-gap: 0;
+    row-gap: 0;
+    overflow: hidden;
+  }
+
+  hyphens: auto;
+
+  @include medium {
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+  }
+
+  &__container {
+    background: #E5EEF8;
+    padding: $space-l $gutter-medium;
+    margin: 0 1rem;
+
+    @include medium {
+      margin: 0;
+      padding: $space-xl $gutter-large;
+    }
+
+    &__title {
+      color: clr(primary);
+      font-family: $font-heading;
+      font-size: $font-24;
+      font-weight: $font-weight-black;
+      margin: 0 0 $space-s;
+
+      @include large {
+        font-size: $font-32;
+        margin-bottom: $space-l;
+      }
+    }
+
+    &__overview {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @include medium {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .introduction__text {
+        @include medium {
+          padding-bottom: unset;
+        }
+
+        margin: unset;
+        padding-bottom: $space-s;
+      }
+
+      .service__directory {
+        @include page-element-spacer;
+
+        padding: 0;
+        max-width: var(--basic-component-max-width);
+        margin: unset;
+
+        @include medium {
+          width: 65%;
+        }
+      }
+      
+      .list {
+        @include list-reset;
+
+        padding: 0;
+        width: 100%;
+      }
+
+      .list-item {
+        border-bottom: 2px solid clr(border);
+
+        .list-item-link {
+          @include attachment-and-search-services-link;
+
+          &:focus,
+          &:hover {
+              text-decoration: underline;
+              text-underline-offset: 3px;
+          }
+
+          .link-content {
+            @include attachment-and-search-services-link-file;
+
+            .content-heading-container {
+              @include attachment-and-search-services-link-file-heading;
+
+              .content-heading-text {
+                margin: unset;
+              }
+            }
+
+            .content-icon {
+              @include attachment-and-search-services-icon;
+            }
+          }
+        }
+      }
+    }
+  }
+}

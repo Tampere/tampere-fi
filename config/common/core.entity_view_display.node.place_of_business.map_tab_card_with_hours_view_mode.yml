@@ -80,8 +80,14 @@ third_party_settings:
         - field_opening_hours
         - field_opening_hours_2
         - field_opening_hours_3
-        - group_exception_hours
+        - group_opening_hours_4
         - field_exception_hours
+        - group_opening_hours_5
+        - group_exception_hours
+        - field_opening_hours_info_4
+        - field_opening_hours_4
+        - field_opening_hours_info_5
+        - field_opening_hours_5
     fields:
       node_title:
         plugin_id: node_title
@@ -107,21 +113,21 @@ third_party_settings:
       weight: 2
       format_type: pattern_formatter
       format_settings:
+        show_empty_fields: false
         pattern: icon_field_group
+        pattern_variant: location
         pattern_mapping:
           'fields:field_addresses':
-            destination: icon_field_group_content
-            weight: 0
             plugin: fields
             source: field_addresses
+            destination: icon_field_group_content
+            weight: 0
         pattern_settings:
           icon_field_group:
             field_label: ''
             field_label_token: ''
           regular_field:
             display_colon_after_label: 0
-        show_empty_fields: 0
-        pattern_variant: location
     group_opening_hours_1:
       children:
         - field_opening_hours_info
@@ -132,25 +138,25 @@ third_party_settings:
       weight: 7
       format_type: pattern_formatter
       format_settings:
+        show_empty_fields: false
         pattern: icon_field_group
+        pattern_variant: no-icon
         pattern_mapping:
           'fields:field_opening_hours_info':
-            destination: icon_field_group_content
-            weight: 0
             plugin: fields
             source: field_opening_hours_info
-          'fields:field_opening_hours':
             destination: icon_field_group_content
-            weight: 1
+            weight: 0
+          'fields:field_opening_hours':
             plugin: fields
             source: field_opening_hours
+            destination: icon_field_group_content
+            weight: 1
         pattern_settings:
           icon_field_group:
             field_label: ''
             field_label_token: ''
             label_highlight: 0
-        show_empty_fields: 0
-        pattern_variant: no-icon
     group_opening_hours_2:
       children:
         - field_opening_hours_info_2
@@ -161,25 +167,25 @@ third_party_settings:
       weight: 8
       format_type: pattern_formatter
       format_settings:
+        show_empty_fields: false
         pattern: icon_field_group
+        pattern_variant: no-icon
         pattern_mapping:
           'fields:field_opening_hours_info_2':
-            destination: icon_field_group_content
-            weight: 0
             plugin: fields
             source: field_opening_hours_info_2
-          'fields:field_opening_hours_2':
             destination: icon_field_group_content
-            weight: 1
+            weight: 0
+          'fields:field_opening_hours_2':
             plugin: fields
             source: field_opening_hours_2
+            destination: icon_field_group_content
+            weight: 1
         pattern_settings:
           icon_field_group:
             field_label: ''
             field_label_token: ''
             label_highlight: 0
-        show_empty_fields: 0
-        pattern_variant: no-icon
     group_opening_hours_3:
       children:
         - field_opening_hours_info_3
@@ -190,48 +196,106 @@ third_party_settings:
       weight: 9
       format_type: pattern_formatter
       format_settings:
+        show_empty_fields: false
         pattern: icon_field_group
+        pattern_variant: no-icon
         pattern_mapping:
           'fields:field_opening_hours_info_3':
-            destination: icon_field_group_content
-            weight: 0
             plugin: fields
             source: field_opening_hours_info_3
-          'fields:field_opening_hours_3':
             destination: icon_field_group_content
-            weight: 1
+            weight: 0
+          'fields:field_opening_hours_3':
             plugin: fields
             source: field_opening_hours_3
+            destination: icon_field_group_content
+            weight: 1
         pattern_settings:
           icon_field_group:
             field_label: ''
             field_label_token: ''
             label_highlight: 0
-        show_empty_fields: 0
-        pattern_variant: no-icon
     group_exception_hours:
       children:
         - field_exception_hours
       label: 'Exception hours'
       parent_name: ''
       region: second_column_content
-      weight: 10
+      weight: 12
       format_type: pattern_formatter
       format_settings:
+        show_empty_fields: false
         pattern: icon_field_group
+        pattern_variant: no-icon
         pattern_mapping:
           'fields:field_exception_hours':
-            destination: icon_field_group_content
-            weight: 0
             plugin: fields
             source: field_exception_hours
+            destination: icon_field_group_content
+            weight: 0
         pattern_settings:
           icon_field_group:
             field_label: ''
             field_label_token: ''
             label_highlight: 0
-        show_empty_fields: 0
+    group_opening_hours_4:
+      children:
+        - field_opening_hours_info_4
+        - field_opening_hours_4
+      label: 'Aukioloajat 4'
+      parent_name: ''
+      region: second_column_content
+      weight: 10
+      format_type: pattern_formatter
+      format_settings:
+        show_empty_fields: false
+        pattern: icon_field_group
         pattern_variant: no-icon
+        pattern_mapping:
+          'fields:field_opening_hours_info_4':
+            plugin: fields
+            source: field_opening_hours_info_4
+            destination: icon_field_group_content
+            weight: 0
+          'fields:field_opening_hours_4':
+            plugin: fields
+            source: field_opening_hours_4
+            destination: icon_field_group_content
+            weight: 1
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+            label_highlight: 0
+    group_opening_hours_5:
+      children:
+        - field_opening_hours_info_5
+        - field_opening_hours_5
+      label: 'Aukioloajat 5'
+      parent_name: ''
+      region: second_column_content
+      weight: 11
+      format_type: pattern_formatter
+      format_settings:
+        show_empty_fields: false
+        pattern: icon_field_group
+        pattern_variant: no-icon
+        pattern_mapping:
+          'fields:field_opening_hours_info_5':
+            plugin: fields
+            source: field_opening_hours_info_5
+            destination: icon_field_group_content
+            weight: 0
+          'fields:field_opening_hours_5':
+            plugin: fields
+            source: field_opening_hours_5
+            destination: icon_field_group_content
+            weight: 1
+        pattern_settings:
+          icon_field_group:
+            field_label: ''
+            field_label_token: ''
+            label_highlight: 0
 id: node.place_of_business.map_tab_card_with_hours_view_mode
 targetEntityType: node
 bundle: place_of_business
@@ -280,19 +344,19 @@ content:
           id: pattern
           settings:
             pattern: icon_field_group
+            pattern_variant: contact
             pattern_mapping:
               'ds_field_template:field_email':
-                destination: icon_field_group_content
-                weight: 0
                 plugin: ds_field_template
                 source: field_email
+                destination: icon_field_group_content
+                weight: 0
             pattern_settings:
               icon_field_group:
                 field_label: Sähköposti
                 field_label_token: ''
               regular_field:
                 display_colon_after_label: 0
-            pattern_variant: contact
     weight: 5
     region: second_column_content
   field_email_2:
@@ -305,18 +369,18 @@ content:
           id: pattern
           settings:
             pattern: icon_field_group
+            pattern_variant: contact
             pattern_mapping:
               'ds_field_template:field_email_2':
-                destination: icon_field_group_content
-                weight: 0
                 plugin: ds_field_template
                 source: field_email_2
+                destination: icon_field_group_content
+                weight: 0
             pattern_settings:
               icon_field_group:
                 field_label: Sähköposti
                 field_label_token: ''
                 label_highlight: 0
-            pattern_variant: contact
     weight: 6
     region: second_column_content
   field_exception_hours:
@@ -491,6 +555,96 @@ content:
             classes: {  }
     weight: 10
     region: second_column_content
+  field_opening_hours_4:
+    type: office_hours
+    label: hidden
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_empty: false
+      show_closed: open
+      closed_format: kiinni
+      all_day_format: 'All day open'
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        replace_exceptions: false
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        all_day_format: 'All day open'
+      timezone_field: ''
+      office_hours_first_day: '1'
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 33
+    region: second_column_content
+  field_opening_hours_5:
+    type: office_hours
+    label: hidden
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_empty: false
+      show_closed: open
+      closed_format: kiinni
+      all_day_format: 'All day open'
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        replace_exceptions: false
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        all_day_format: 'All day open'
+      timezone_field: ''
+      office_hours_first_day: '1'
+      schema:
+        enabled: false
+    third_party_settings:
+      field_delimiter:
+        delimiter: ''
+      ds:
+        ds_limit: ''
+        ft:
+          id: minimal
+          settings:
+            lb: ''
+            lb-col: true
+            classes: {  }
+    weight: 34
+    region: second_column_content
   field_opening_hours_info:
     type: basic_string
     label: hidden
@@ -501,16 +655,16 @@ content:
           id: pattern
           settings:
             pattern: regular_field
+            pattern_variant: above
             pattern_mapping:
               'ds_field_template:field_opening_hours_info':
-                destination: field_label
-                weight: 0
                 plugin: ds_field_template
                 source: field_opening_hours_info
+                destination: field_label
+                weight: 0
             pattern_settings:
               regular_field:
                 display_colon_after_label: '1'
-            pattern_variant: above
     weight: 9
     region: second_column_content
   field_opening_hours_info_2:
@@ -523,16 +677,16 @@ content:
           id: pattern
           settings:
             pattern: regular_field
+            pattern_variant: above
             pattern_mapping:
               'ds_field_template:field_opening_hours_info_2':
-                destination: field_label
-                weight: 0
                 plugin: ds_field_template
                 source: field_opening_hours_info_2
+                destination: field_label
+                weight: 0
             pattern_settings:
               regular_field:
                 display_colon_after_label: '1'
-            pattern_variant: above
     weight: 9
     region: second_column_content
   field_opening_hours_info_3:
@@ -545,17 +699,61 @@ content:
           id: pattern
           settings:
             pattern: regular_field
+            pattern_variant: above
             pattern_mapping:
               'ds_field_template:field_opening_hours_info_3':
-                destination: field_label
-                weight: 0
                 plugin: ds_field_template
                 source: field_opening_hours_info_3
+                destination: field_label
+                weight: 0
             pattern_settings:
               regular_field:
                 display_colon_after_label: '1'
-            pattern_variant: above
     weight: 9
+    region: second_column_content
+  field_opening_hours_info_4:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: regular_field
+            pattern_variant: above
+            pattern_mapping:
+              'ds_field_template:field_opening_hours_info_4':
+                plugin: ds_field_template
+                source: field_opening_hours_info_4
+                destination: field_label
+                weight: 0
+            pattern_settings:
+              regular_field:
+                display_colon_after_label: '1'
+    weight: 32
+    region: second_column_content
+  field_opening_hours_info_5:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings:
+      ds:
+        ft:
+          id: pattern
+          settings:
+            pattern: regular_field
+            pattern_variant: above
+            pattern_mapping:
+              'ds_field_template:field_opening_hours_info_5':
+                plugin: ds_field_template
+                source: field_opening_hours_info_5
+                destination: field_label
+                weight: 0
+            pattern_settings:
+              regular_field:
+                display_colon_after_label: '1'
+    weight: 33
     region: second_column_content
   field_summary:
     type: basic_string
@@ -580,10 +778,6 @@ hidden:
   field_life_situations: true
   field_listing_search_content: true
   field_omit_from_listing_map: true
-  field_opening_hours_4: true
-  field_opening_hours_5: true
-  field_opening_hours_info_4: true
-  field_opening_hours_info_5: true
   field_place_area_text: true
   field_search_keywords: true
   field_topics: true

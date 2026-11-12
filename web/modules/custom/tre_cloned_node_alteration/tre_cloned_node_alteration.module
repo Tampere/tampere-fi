@@ -14,4 +14,11 @@ function tre_cloned_node_alteration_cloned_node_alter(&$clone, $original) {
   if (isset($clone->published_at)) {
     unset($clone->published_at);
   }
+
+  // Reset the moderation state for cloned rich articles.
+  if ($clone->bundle() === 'rich_article'
+    && $clone->hasField('moderation_state')) {
+    $clone->set('moderation_state', 'draft');
+    $clone->setUnpublished();
+  }
 }

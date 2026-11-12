@@ -1,0 +1,19 @@
+uuid: 1f1426cd-48b2-4075-8cc0-cba88fe8077e
+langcode: fi
+status: true
+dependencies:
+  module:
+    - heading
+    - paragraphs
+id: paragraph.field_heading__web_page
+field_name: field_heading__web_page
+entity_type: paragraph
+type: heading
+settings: {  }
+module: heading
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -19,7 +19,8 @@ final class PtvStorageRecordDecoder {
    *   payload: array<string, mixed>,
    *   connections: array<int, array<string, mixed>>,
    *   accessibility: array<string, mixed>,
-   *   areas: array<int, array{code: string, name: array<string, string|null>}>
+   *   areas: array<int, array{code: string, name: array<string, string|null>}>,
+   *   postal_address_areas: array<int, array{code: string, name: array<string, string|null>}|null>
    * }
    *   The decoded and validated storage record.
    */
@@ -87,11 +88,14 @@ final class PtvStorageRecordDecoder {
       }
     }
 
+    $postalAddressAreas = $record['postal_address_areas'] ?? [];
+
     return [
       'payload' => $payload,
       'connections' => $connections,
       'accessibility' => $accessibility,
       'areas' => $areas,
+      'postal_address_areas' => $postalAddressAreas,
     ];
   }
 

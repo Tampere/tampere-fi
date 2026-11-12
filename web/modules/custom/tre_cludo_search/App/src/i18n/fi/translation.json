@@ -1,14 +1,21 @@
 {
 	"controls": {
 		"filters_description": "Kun valitset suodattimen, hakutulokset rajautuvat automaattisesti valintasi mukaisiksi.",
-		"filters_label": "Suodata hakutuloksia",
-		"filters_reset_label": "Poista suodatus",
+		"filters_label": "Rajaa hakutuloksia",
+		"filters_reset_label": "Poista rajaus",
 		"external_search_label": "Hakusi tulokset kaupungin muilta sivustoilta",
 		"internal_search_label": "Hakusi tulokset Tampere.fi:stä",
 		"internal_search_page_title": "Hakutulokset Tampere.fi:stä",
 		"external_search_page_title": "Hakutulokset kaupungin muilta sivustoilta",
 		"open": "Avaa",
-		"close": "Sulje"
+		"close": "Sulje",
+		"listen": "Kuuntele",
+		"listen_summary": "Kuuntele tiivistelmä",
+		"open_summary": "Avaa tiivistelmä",
+		"close_summary": "Sulje tiivistelmä",
+		"ai_icon": "AI",
+		"feedback_yes": "Kyllä, tiivistelmä oli hyödyllinen",
+		"feedback_no": "Ei, tiivistelmä ei ollut hyödyllinen"
 	},
 	"facets": {
 		"content_type": "Sisällön tyyppi",
@@ -29,5 +36,12 @@
 		"search_page_link_text": "Kokeile tarkennettua hakua",
 		"search_page_link_description": "Voit rajata hakutuloksia tai etsiä myös kaupungin muilta sivustoilta",
 		"search_page_link_description_top": "Valitse alta osuma tai klikkaa ”Hae” nähdäksesi kaikki hakusi tulokset"
+	},
+	"search_services": {
+		"search_service_title": "Etsitkö yhteystietoja, tapahtumia tai pöytäkirjoja?",
+		"search_service_introduction_text": "Kokeile muita hakujamme",
+		"search_service_search_link_1_text": "Siirry yhteystietohakuun",
+		"search_service_search_link_2_text": "Siirry tapahtumahakuun (tapahtumat.tampere.fi)",
+		"search_service_search_link_3_text": "Siirry esityslista- ja pöytäkirjahakuun (tampere.cloudnc.fi)"
 	}
 }

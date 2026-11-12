@@ -1,0 +1,38 @@
+uuid: 99c8e893-7764-4b39-a442-76cf5ab76533
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading__web_page
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - content_translation
+    - heading
+third_party_settings:
+  content_translation:
+    translation_sync:
+      size: size
+      text: text
+id: paragraph.ptv_service_liftup.field_heading__web_page
+field_name: field_heading__web_page
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Yliajo-otsikko: Verkkosivu'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    text: 'Lue lisää'
+    size: h3
+default_value_callback: ''
+settings:
+  label: Heading
+  allowed_sizes:
+    h3: h3
+    h1: '0'
+    h2: '0'
+    h4: '0'
+    h5: '0'
+    h6: '0'
+field_type: heading

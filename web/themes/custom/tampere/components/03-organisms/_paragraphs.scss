@@ -54,8 +54,25 @@
   &--type-ptv-service-liftup {
     @include page-element-spacer;
 
+    h2 {
+      @include heading-large;
+
+      margin-top: $gutter-medium;
+
+      @include large {
+        margin-top: $space-l-plus;
+      }
+    }
+
     .ptv-service-liftup-section-heading + * {
       margin-top: 0;
+    }
+
+    .accordion__title-wrapper--ptv-service-liftup {
+      background-color: clr(background);
+      position: sticky;
+      top: 1rem;
+      z-index: 2;
     }
   }
 

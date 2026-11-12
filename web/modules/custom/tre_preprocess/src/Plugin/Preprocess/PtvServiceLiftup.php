@@ -2,7 +2,7 @@
 
 namespace Drupal\tre_preprocess\Plugin\Preprocess;
 
-use Drupal\Core\Entity\EntityInterface;
+use Drupal\Component\Utility\Html;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
@@ -22,9 +22,9 @@ use Drupal\tre_preprocess_utility_functions\Utils\HelperFunctionsInterface;
 class PtvServiceLiftup extends TrePreProcessPluginBase {
 
   /**
-   * The view mode to use for the Service node in the liftup.
+   * The view mode to use for Service node fields in the paragraph liftup.
    */
-  const LIFTUP_VIEW_MODE = 'liftup';
+  const LIFTUP_VIEW_MODE = 'service_liftup';
 
   /**
    * The view mode to use for 'E-Service channel' nodes in the liftup.
@@ -53,6 +53,13 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
    * @var \Drupal\node\NodeInterface
    */
   protected NodeInterface $service;
+
+  /**
+   * The collator for Finnish alphabetical sorting.
+   *
+   * @var \Collator|null
+   */
+  private ?\Collator $collatorFi = NULL;
 
   /**
    * {@inheritdoc}
@@ -114,9 +121,29 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
     // As the field field_service_displayed_fields also has the ordering
     // information for the fields to display, the $delta becomes important to
     // preserve.
+    // Some selections share one renderer (for example online and form
+    // channels), so track those groups to avoid rendering the same accordion
+    // more than once when both selections are enabled.
+    $rendered_callback_groups = [];
     foreach ($service_fields_selected_for_display as $delta => $field_to_display) {
       if (!array_key_exists($field_to_display, $field_map)) {
         continue;
+      }
+
+      $render_group = $field_map[$field_to_display]['render_group'] ?? NULL;
+      if ($render_group !== NULL && isset($rendered_callback_groups[$render_group])) {
+        continue;
+      }
+
+      if ($render_group !== NULL) {
+        $rendered_callback_groups[$render_group] = TRUE;
+      }
+
+      if (isset($field_map[$field_to_display]['required_service_field'])) {
+        $required_service_field = $field_map[$field_to_display]['required_service_field'];
+        if (!$this->service->hasField($required_service_field) || $this->service->get($required_service_field)->isEmpty()) {
+          continue;
+        }
       }
 
       if ($field_map[$field_to_display]['type'] == 'entity_field_view') {
@@ -155,17 +182,120 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
    * @param string $type
    *   The type of the service channel to retrieve.
    *
-   * @return array[]
-   *   Render arrays for the service_channel nodes.
+   * @return array
+   *   An accordion render array containing the service_channel nodes.
    */
   protected function getServiceChannelsRendered(string $type): array {
-    $rendered = [];
+    $rendered = $this->getServiceChannelItemsRendered($type);
 
-    if (!$this->service->hasField("field_{$type}_channels") ||
-      $this->service->get("field_{$type}_channels")->isEmpty()) {
-      return $rendered;
+    if (!$rendered) {
+      return [];
     }
 
+    $heading = match ($type) {
+      'phone_service' => $this->getAccordionHeadingOverride('field_heading__phone_service', count($rendered))
+        ?? new TranslatableMarkup('Call (@count)', ['@count' => count($rendered)], ['context' => 'PTV service liftup accordion heading']),
+      'web_page' => $this->getAccordionHeadingOverride('field_heading__web_page', count($rendered))
+        ?? new TranslatableMarkup('Read more (@count)', ['@count' => count($rendered)], ['context' => 'PTV service liftup accordion heading']),
+      default => throw new \InvalidArgumentException(sprintf('Unsupported service channel type: %s', $type)),
+    };
+
+    return $this->buildAccordion(
+      $heading,
+      $rendered,
+      $type
+    );
+  }
+
+  /**
+   * Renders the electronic service and form channels in one accordion.
+   *
+   * @return array
+   *   An accordion render array containing the electronic service channels.
+   */
+  protected function getElectronicServiceChannelsRendered(): array {
+    // Online and form channels are separate selectable fields in the
+    // paragraph, but are presented together in one electronic-services
+    // accordion.
+    $combined = [];
+
+    $online_fields = $this->getChannelDisplayedFields('eservice');
+    if ($online_fields) {
+      foreach ($this->getServiceChannelNodes('eservice') as $node) {
+        $combined[] = ['node' => $node, 'type' => 'eservice', 'fields' => $online_fields];
+      }
+    }
+
+    $form_fields = $this->getChannelDisplayedFields('form_service');
+    if ($form_fields) {
+      foreach ($this->getServiceChannelNodes('form_service') as $node) {
+        $combined[] = ['node' => $node, 'type' => 'form_service', 'fields' => $form_fields];
+      }
+    }
+
+    if (!$combined) {
+      return [];
+    }
+
+    // Present the combined online and form channels in one alphabetical list,
+    // ordered by the service channel title.
+    $collator = $this->getCollator();
+    usort($combined, function ($a, $b) use ($collator) {
+      return $collator->compare($a['node']->getTitle(), $b['node']->getTitle());
+    });
+
+    $rendered = [];
+    foreach ($combined as $item) {
+      $rendered[] = $this->renderServiceChannelNode($item['node'], $item['type'], $item['fields']);
+    }
+
+    return $this->buildAccordion(
+      $this->getAccordionHeadingOverride('field_heading__e_service', count($rendered))
+        ?? new TranslatableMarkup('Use online services (@count)', ['@count' => count($rendered)], ['context' => 'PTV service liftup accordion heading']),
+      $rendered,
+      'electronic-service'
+    );
+  }
+
+  /**
+   * Builds the render arrays for a PTV service's service channel nodes.
+   *
+   * The channels are ordered alphabetically by their title.
+   *
+   * @param string $type
+   *   The type of service channel to retrieve.
+   *
+   * @return array
+   *   Channel render arrays.
+   */
+  private function getServiceChannelItemsRendered(string $type): array {
+    $fields_selected_for_display = $this->getChannelDisplayedFields($type);
+    if (!$fields_selected_for_display) {
+      return [];
+    }
+
+    $nodes = $this->getServiceChannelNodes($type);
+    $this->sortNodesByTitle($nodes);
+
+    $rendered = [];
+    foreach ($nodes as $node) {
+      $rendered[] = $this->renderServiceChannelNode($node, $type, $fields_selected_for_display);
+    }
+
+    return $rendered;
+  }
+
+  /**
+   * Gets the display field keys selected for a service channel type.
+   *
+   * @param string $type
+   *   The type of service channel.
+   *
+   * @return string[]
+   *   The selected display field keys, or an empty array when nothing is
+   *   selected for the type.
+   */
+  private function getChannelDisplayedFields(string $type): array {
     $ptv_service_liftup_display_field_names_by_type = [
       'phone_service' => 'field_phone_displayed_fields',
       'eservice' => 'field_online_displayed_fields',
@@ -177,13 +307,63 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
 
     if (!$this->paragraph->hasField($fields_to_display_field_name) ||
       $this->paragraph->get($fields_to_display_field_name)->isEmpty()) {
-      return $rendered;
+      return [];
     }
 
     $service_channel_fields_to_display_value = $this->paragraph->get($fields_to_display_field_name)->getValue();
-    $fields_selected_for_display = $this->helperFunctions->getListFieldValues($service_channel_fields_to_display_value);
+
+    return $this->helperFunctions->getListFieldValues($service_channel_fields_to_display_value);
+  }
+
+  /**
+   * Gets the referenced service channel nodes for a channel type.
+   *
+   * @param string $type
+   *   The type of service channel.
+   *
+   * @return \Drupal\node\NodeInterface[]
+   *   The referenced service channel nodes, excluding any that have been
+   *   deleted.
+   */
+  private function getServiceChannelNodes(string $type): array {
+    $nodes = [];
+
+    $service_channel_field = "field_{$type}_channels";
+    if (!$this->service->hasField($service_channel_field) ||
+      $this->service->get($service_channel_field)->isEmpty()) {
+      return $nodes;
+    }
+
+    foreach ($this->service->get($service_channel_field)->referencedEntities() as $referenced_service_channel) {
+      // If the service_channel node has been deleted, we don't want to try to
+      // render it.
+      if ($referenced_service_channel instanceof NodeInterface) {
+        $nodes[] = $referenced_service_channel;
+      }
+    }
+
+    return $nodes;
+  }
+
+  /**
+   * Renders a single service channel node for the liftup.
+   *
+   * @param \Drupal\node\NodeInterface $referenced_service_channel
+   *   The service channel node to render.
+   * @param string $type
+   *   The type of service channel, used to pick the view mode.
+   * @param string[] $fields_selected_for_display
+   *   The display field keys selected for the channel type.
+   *
+   * @return array
+   *   The render array for the service channel.
+   */
+  private function renderServiceChannelNode(NodeInterface $referenced_service_channel, string $type, array $fields_selected_for_display): array {
     $view_builder = $this->entityTypeManager->getViewBuilder('node');
 
+    // Each channel type has its own paragraph field for selecting which of its
+    // PTV fields to show. Values here map those selection keys to the actual
+    // fields on the referenced service-channel node.
     // Names for all fields that should be displayed in the content region
     // of the component except for boolean fields that are handled
     // separately at the end. Keyed by their corresponding display field keys.
@@ -220,80 +400,86 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
       ],
     ];
 
-    // Currently only phone and e service channels have their own heading.
-    $service_channel_headings_by_type = [
-      'phone_service' => new TranslatableMarkup("Telephone services", [], ['context' => 'PTV Service liftup heading for phone services']),
-      'eservice' => new TranslatableMarkup("E-services", [], ['context' => 'PTV Service liftup heading for E-services']),
+    $fields_to_render = array_filter($content_field_names_by_display_field_keys, function ($key) use ($fields_selected_for_display) {
+      return in_array($key, $fields_selected_for_display, TRUE);
+    }, ARRAY_FILTER_USE_KEY);
+
+    $fields_with_values = [];
+    foreach ($fields_to_render as $field_name) {
+      if (is_array($field_name)) {
+        foreach ($field_name as $field_name_group_item) {
+          if ($referenced_service_channel->hasField($field_name_group_item)) {
+            $fields_with_values[$field_name_group_item] = $referenced_service_channel->get($field_name_group_item)->getValue();
+          }
+        }
+      }
+      elseif ($referenced_service_channel->hasField($field_name)) {
+        $fields_with_values[$field_name] = $referenced_service_channel->get($field_name)->getValue();
+      }
+    }
+
+    $service_channel_title = $referenced_service_channel->getTitle();
+    $show_title = in_array('name', $fields_selected_for_display, TRUE);
+    // Build a temporary node with only the selected source values so the
+    // existing service-channel view modes can format the liftup consistently.
+    $node_information = [
+      'type' => 'service_channel',
+      'title' => $service_channel_title,
+      'field_channel_display_name' => $show_title ? $service_channel_title : NULL,
     ];
 
-    if (isset($service_channel_headings_by_type[$type])) {
-      $rendered[] = ['#markup' => '<h2 class="ptv-service-liftup-section-heading">' . $service_channel_headings_by_type[$type] . '</h2>'];
+    $node_configuration = array_merge($node_information, $fields_with_values);
+    $service_channel_liftup_node = Node::create($node_configuration);
+
+    $content_boolean_fields_by_display_field_key = [
+      'electronic_id_required' => 'field_electronic_id_required',
+      'electronic_signature_required' => 'field_electronic_signature_rqd',
+    ];
+
+    // Remove boolean fields that have not been selected for display from the
+    // newly created node as the boolean fields will otherwise always be
+    // displayed.
+    foreach ($content_boolean_fields_by_display_field_key as $key => $boolean_field) {
+      if ($referenced_service_channel->hasField($boolean_field)) {
+        $field_not_selected_for_display = !in_array($key, $fields_selected_for_display, TRUE);
+        if ($field_not_selected_for_display) {
+          unset($service_channel_liftup_node->$boolean_field);
+        }
+      }
     }
 
-    foreach ($this->service->get("field_{$type}_channels")->referencedEntities() as $referenced_service_channel) {
-      // If the service_channel node has been deleted, we don't want to try to
-      // render it.
-      if (!($referenced_service_channel instanceof NodeInterface)) {
-        continue;
-      }
+    $service_channel_liftup_node->addCacheTags($referenced_service_channel->getCacheTags());
+    $service_channel_liftup_node->addCacheContexts($referenced_service_channel->getCacheContexts());
 
-      $fields_to_render = array_filter($content_field_names_by_display_field_keys, function ($key) use ($fields_selected_for_display) {
-        return in_array($key, $fields_selected_for_display, TRUE);
-      }, ARRAY_FILTER_USE_KEY);
+    $view_mode = $type === 'eservice' ? self::ESERVICE_CHANNEL_LIFTUP_VIEW_MODE : 'default';
 
-      $fields_with_values = [];
-      foreach ($fields_to_render as $field_name) {
-        if (is_array($field_name)) {
-          foreach ($field_name as $field_name_group_item) {
-            if ($referenced_service_channel->hasField($field_name_group_item)) {
-              $fields_with_values[$field_name_group_item] = $referenced_service_channel->get($field_name_group_item)->getValue();
-            }
-          }
-        }
-        elseif ($referenced_service_channel->hasField($field_name)) {
-          $fields_with_values[$field_name] = $referenced_service_channel->get($field_name)->getValue();
-        }
-      }
+    return $view_builder->view($service_channel_liftup_node, $view_mode);
+  }
 
-      $service_channel_title = $referenced_service_channel->getTitle();
-      $show_title = in_array('name', $fields_selected_for_display, TRUE);
-      $node_information = [
-        'type' => 'service_channel',
-        'title' => $service_channel_title,
-        'field_channel_display_name' => $show_title ? $service_channel_title : NULL,
-      ];
+  /**
+   * Sorts an array of nodes alphabetically by title using Finnish rules.
+   *
+   * @param \Drupal\node\NodeInterface[] $nodes
+   *   The nodes to sort, by reference.
+   */
+  private function sortNodesByTitle(array &$nodes): void {
+    $collator = $this->getCollator();
+    usort($nodes, function ($a, $b) use ($collator) {
+      return $collator->compare($a->getTitle(), $b->getTitle());
+    });
+  }
 
-      $node_configuration = array_merge($node_information, $fields_with_values);
-      $service_channel_liftup_node = Node::create($node_configuration);
-
-      $content_boolean_fields_by_display_field_key = [
-        'electronic_id_required' => 'field_electronic_id_required',
-        'electronic_signature_required' => 'field_electronic_signature_rqd',
-      ];
-
-      // Remove boolean fields that have not been selected for display from the
-      // newly created node as the boolean fields will otherwise always be
-      // displayed.
-      foreach ($content_boolean_fields_by_display_field_key as $key => $boolean_field) {
-        if ($referenced_service_channel->hasField($boolean_field)) {
-          $field_not_selected_for_display = !in_array($key, $fields_selected_for_display, TRUE);
-          if ($field_not_selected_for_display) {
-            unset($service_channel_liftup_node->$boolean_field);
-          }
-        }
-      }
-
-      $service_channel_liftup_node->addCacheTags($referenced_service_channel->getCacheTags());
-      $service_channel_liftup_node->addCacheContexts($referenced_service_channel->getCacheContexts());
-
-      if ($type === 'eservice') {
-        $view_mode = self::ESERVICE_CHANNEL_LIFTUP_VIEW_MODE;
-      }
-
-      $rendered[] = $view_builder->view($service_channel_liftup_node, $view_mode ?? 'default');
+  /**
+   * Gets the Finnish collator used for alphabetical sorting.
+   *
+   * @return \Collator
+   *   The Finnish collator, lazily initialized.
+   */
+  private function getCollator(): \Collator {
+    if ($this->collatorFi === NULL) {
+      $this->collatorFi = new \Collator('fi_FI');
     }
-
-    return $rendered;
+    return $this->collatorFi;
   }
 
   /**
@@ -303,11 +489,17 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
    * liftup paragraphs where the field used for selecting the node fields to
    * display is the same as the one used in this paragraph.
    *
-   * @return array[]
-   *   Render arrays for the place_of_business nodes.
+   * @return array
+   *   An accordion render array containing the place_of_business nodes.
    */
   protected function getPlacesOfBusinessRendered() {
     $rendered = [];
+
+    // Do not render the accordion if no fields are selected for display.
+    if (!$this->paragraph->hasField('field_pob_displayed_fields') ||
+      $this->paragraph->get('field_pob_displayed_fields')->isEmpty()) {
+      return $rendered;
+    }
 
     if (!$this->service->hasField('field_places_of_business') ||
       $this->service->get('field_places_of_business')->isEmpty()) {
@@ -317,13 +509,18 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
     $place_of_business_fields_to_display_value = $this->paragraph->get('field_pob_displayed_fields');
     $view_builder = $this->entityTypeManager->getViewBuilder('paragraph');
 
+    // Collect the referenced places of business, skipping any that have been
+    // deleted, so they can be sorted alphabetically by name.
+    $places_of_business = [];
     foreach ($this->service->get('field_places_of_business')->referencedEntities() as $place_of_business) {
-      // If the place_of_business node has been deleted, we don't want to try to
-      // render it.
-      if (!($place_of_business instanceof EntityInterface)) {
-        continue;
+      if ($place_of_business instanceof NodeInterface) {
+        $places_of_business[] = $place_of_business;
       }
+    }
 
+    $this->sortNodesByTitle($places_of_business);
+
+    foreach ($places_of_business as $place_of_business) {
       // The 'id' property is needed in order to render an anchor link for the
       // artificial paragraph. So we create an artificial ID based on the node.
       $place_liftup = Paragraph::create([
@@ -336,7 +533,94 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
       $rendered[] = $view_builder->view($place_liftup, PlaceOfBusinessLiftup::LIFTUP_VIEW_MODE);
     }
 
-    return $rendered;
+    if (!$rendered) {
+      return [];
+    }
+
+    return $this->buildAccordion(
+      $this->getAccordionHeadingOverride('field_heading__pob', count($rendered))
+        ?? new TranslatableMarkup('Visit in person (@count)', ['@count' => count($rendered)], ['context' => 'PTV service liftup accordion heading']),
+      $rendered,
+      'places-of-business'
+    );
+  }
+
+  /**
+   * Gets the override accordion heading, if one is set on the paragraph.
+   *
+   * The item count is always appended to the override label.
+   *
+   * @param string $override_field
+   *   The machine name of the heading override field on the paragraph.
+   * @param int $count
+   *   The number of items in the accordion.
+   *
+   * @return \Drupal\Core\StringTranslation\TranslatableMarkup|null
+   *   The override heading, or NULL when no override is set.
+   */
+  private function getAccordionHeadingOverride(string $override_field, int $count): ?TranslatableMarkup {
+    $override_text = $this->getHeadingOverrideText($override_field);
+    if ($override_text === '') {
+      return NULL;
+    }
+
+    return new TranslatableMarkup('@label (@count)', [
+      '@label' => $override_text,
+      '@count' => $count,
+    ], ['context' => 'PTV service liftup accordion heading']);
+  }
+
+  /**
+   * Gets the override heading text for a field, if set.
+   *
+   * @param string $field_name
+   *   The machine name of the heading override field.
+   *
+   * @return string
+   *   The override heading text, or an empty string when not set.
+   */
+  private function getHeadingOverrideText(string $field_name): string {
+    if (!$this->paragraph->hasField($field_name)) {
+      return '';
+    }
+
+    $field = $this->paragraph->get($field_name);
+    if ($field->isEmpty()) {
+      return '';
+    }
+
+    return trim((string) $field->first()->get('text')->getValue());
+  }
+
+  /**
+   * Wraps a group of service liftup items in the theme's accordion component.
+   *
+   * @param string|\Drupal\Core\StringTranslation\TranslatableMarkup $heading
+   *   The translated accordion heading.
+   * @param array $content
+   *   Render arrays for the accordion content.
+   * @param string $suffix
+   *   A unique suffix for the accordion ID within this paragraph.
+   *
+   * @return array
+   *   The accordion render array.
+   */
+  private function buildAccordion(
+    string|TranslatableMarkup $heading,
+    array $content,
+    string $suffix,
+  ): array {
+    // Include both the paragraph ID and group suffix so multiple accordions
+    // from the same paragraph have unique control/content IDs.
+    return [
+      '#theme' => 'tre_preprocess_ptv_service_accordion',
+      '#heading' => $heading,
+      '#content' => $content,
+      '#accordion_id' => 'ptv-service-liftup-' . $this->paragraph->id() . '-' . $suffix,
+      '#cache' => [
+        'contexts' => ['languages:language_interface'],
+      ],
+    ];
   }
 
   /**
@@ -354,8 +638,20 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
       return [];
     }
 
+    $chargeability_heading_field = $this->service->get('field_chargeability_heading');
+    $chargeability_heading_text = $chargeability_heading_field->isEmpty()
+      ? ''
+      : Html::decodeEntities(strip_tags($chargeability_heading_field->first()->get('markup')->getString()));
+    $chargeability_heading = $chargeability_heading_text === ''
+      ? []
+      : [
+        '#type' => 'html_tag',
+        '#tag' => 'h3',
+        '#value' => $chargeability_heading_text,
+      ];
+
     $rendered = [
-      'heading' => $this->service->get('field_chargeability_heading')->view(self::LIFTUP_VIEW_MODE),
+      'heading' => $chargeability_heading,
       'chargeability' => $this->service->get('field_service_charge_type')->view(self::LIFTUP_VIEW_MODE),
       'chargeability_info' => $this->service->get('field_chargeability_info_md')->view(self::LIFTUP_VIEW_MODE),
     ];
@@ -425,6 +721,8 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
    */
   private function getFieldRenderMap(ParagraphInterface $paragraph, NodeInterface $service_node): array {
     $field_map = [
+      // These configurable section headings belong to the paragraph, while
+      // the service details below are rendered from the referenced PTV node.
       'heading__basic_info' => [
         'type' => 'entity_field_view',
         'entity' => $paragraph,
@@ -434,11 +732,13 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
         'type' => 'entity_field_view',
         'entity' => $paragraph,
         'field' => 'field_heading__instruction',
+        'required_service_field' => 'field_user_instruction_md',
       ],
       'heading__requirements' => [
         'type' => 'entity_field_view',
         'entity' => $paragraph,
         'field' => 'field_heading__requirements',
+        'required_service_field' => 'field_requirements_md',
       ],
       'name' => [
         'type' => 'entity_field_view',
@@ -507,9 +807,10 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
         'type' => 'callable',
         'callable' => [
           $this,
-          'getServiceChannelsRendered',
+          'getElectronicServiceChannelsRendered',
         ],
-        'service_channel_type' => 'eservice',
+        // Both selectable channel groups contribute to the same accordion.
+        'render_group' => 'electronic_channels',
       ],
       'web_channels' => [
         'type' => 'callable',
@@ -531,9 +832,9 @@ class PtvServiceLiftup extends TrePreProcessPluginBase {
         'type' => 'callable',
         'callable' => [
           $this,
-          'getServiceChannelsRendered',
+          'getElectronicServiceChannelsRendered',
         ],
-        'service_channel_type' => 'form_service',
+        'render_group' => 'electronic_channels',
       ],
     ];
     return $field_map;

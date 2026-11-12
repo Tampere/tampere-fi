@@ -68,6 +68,8 @@
 {% if inside_accordion %}
   {% set heading_level = 4 %}
   {% set accordion_heading_level = 5 %}
+{% elseif view_mode == 'contact_information_liftup_view_mode' %}
+  {% set heading_level = 3 %}
 {% endif %}
 
 {% set place_of_business_organisation_markup = place_of_business_organisation|render %}
@@ -79,7 +81,11 @@
 {% set place_of_business_phones_markup = place_of_business_phones|render %}
 {% set place_of_business_email_markup = place_of_business_email|render %}
 {% set place_of_business_email_2_markup = place_of_business_email_2|render %}
-{% set right_column_content_markup = right_column_content|render %}
+{% set hours_normal_markup = right_column_content|without('field_opening_hours_4', 'field_opening_hours_5', 'field_exception_hours')|render %}
+{% set hours_4_markup = right_column_content.field_opening_hours_4|render %}
+{% set hours_5_markup = right_column_content.field_opening_hours_5|render %}
+{% set exception_hours_markup = right_column_content.field_exception_hours|render %}
+{% set has_right_column_content = hours_normal_markup|trim or hours_4_markup|trim or hours_5_markup|trim or exception_hours_markup|trim %}
 {% set place_of_business_accessibility_taxonomies_markup = place_of_business_accessibility_taxonomies|render %}
 {% set place_of_business_map_markup = place_of_business_map|render %}
 
@@ -88,11 +94,11 @@
   place_of_business_postaddress_markup|trim or
   place_of_business_region_markup|trim
 %}
-  {% set place_of_business_location_content = {
+  {% set place_of_business_location_content = [
     place_of_business_addresses,
     place_of_business_postaddress,
     place_of_business_region,
-  } %}
+  ] %}
 {% endif %}
 
 {% if place_of_business_accessibility_taxonomies_markup|trim or access_info_list is not empty %}
@@ -144,7 +150,7 @@
   place_of_business_phones_markup|trim or
   place_of_business_email_markup|trim or
   place_of_business_email_2_markup|trim or
-  right_column_content_markup|trim or
+  has_right_column_content or
   place_of_business_accessibility_taxonomies_markup|trim or
   place_of_business_map_markup|trim
 %}
@@ -185,7 +191,22 @@
         {% endblock %}
 
         {% block right_column %}
-          {{ right_column_content_markup }}
+          {{ hours_normal_markup }}
+
+          {% if hours_4_markup|trim or hours_5_markup|trim %}
+            {% embed "@organisms/accordion/accordion-item.twig" with {
+              "id": "opening-hours-extra-" ~ paragraph.id.value ~ "-" ~ random(),
+              "ac__item__modifiers": [ "mini", "more-opening-hours" ],
+              "accordion_heading": "More opening hours"|t,
+            } %}
+              {% block accordion_item_content %}
+                {{ hours_4_markup }}
+                {{ hours_5_markup }}
+              {% endblock %}
+            {% endembed %}
+          {% endif %}
+
+          {{ exception_hours_markup }}
         {% endblock %}
       {% endembed %}
 

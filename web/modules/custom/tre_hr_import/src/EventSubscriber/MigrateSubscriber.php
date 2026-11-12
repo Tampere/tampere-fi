@@ -5,6 +5,7 @@ namespace Drupal\tre_hr_import\EventSubscriber;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\Site\Settings;
 use Drupal\migrate\Event\MigrateEvents;
 use Drupal\migrate\Event\MigrateImportEvent;
 use Drupal\migrate\Event\MigratePostRowSaveEvent;
@@ -104,7 +105,63 @@ class MigrateSubscriber implements EventSubscriberInterface {
     $id_map = $migration->getIdMap();
 
     if ($migration_name == 'ipaas_import_csv') {
-      foreach ($event->getDestinationIds() as $nid) {
+      $destination_ids = $event->getDestinationIds();
+      $missing_count = count($destination_ids);
+
+      // Default threshold defined in code, overridable via settings.
+      $max_new_missing_count = Settings::get('tre_hr_import_max_missing_count', 200);
+
+      // Extract destination node IDs.
+      $nids = array_map(static function ($item) {
+        return (int) $item['nid'];
+      }, $destination_ids);
+
+      // Count only newly missing nodes (where field_removed_from_source is empty).
+      // Nodes already in the grace period must be excluded to prevent the
+      // cumulative missing count from incorrectly triggering the safety limit.
+      $new_missing_count = 0;
+      foreach (array_chunk($nids, 1000) as $chunk) {
+        $new_missing_count += (int) $this->entityTypeManager->getStorage('node')->getQuery()
+          ->accessCheck(FALSE)
+          ->condition('nid', $chunk, 'IN')
+          ->notExists('field_removed_from_source')
+          ->count()
+          ->execute();
+      }
+
+      $in_grace_period_count = $missing_count - $new_missing_count;
+
+      $this->loggerFactory->get('tre_hr_import')->info(
+        'Migration @migration detected @total missing rows (@new new, @grace in grace period).',
+        [
+          '@migration' => $migration_name,
+          '@total' => $missing_count,
+          '@new' => $new_missing_count,
+          '@grace' => $in_grace_period_count,
+        ]
+      );
+
+      // Prevent mass unpublishing or deleting nodes if an unexpectedly
+      // large number of source rows is reported missing.
+      if ($new_missing_count > $max_new_missing_count) {
+        $this->loggerFactory->get('tre_hr_import')->error(
+          'Migration @migration detected @count NEW missing source rows, exceeding the safety limit of @max. All missing-source processing was skipped.',
+          [
+            '@migration' => $migration_name,
+            '@count' => $new_missing_count,
+            '@max' => $max_new_missing_count,
+          ]
+        );
+
+        $event->stopPropagation();
+        return;
+      }
+
+      $soft_deleted_count = 0;
+      $unpublished_count = 0;
+      $deleted_count = 0;
+
+      foreach ($destination_ids as $nid) {
         $node_id = (int) $nid['nid'];
         $node = $this->entityTypeManager->getStorage('node')->load($node_id);
 
@@ -131,6 +188,7 @@ class MigrateSubscriber implements EventSubscriberInterface {
           $removed_from_source = $current_time;
           $node->set('field_removed_from_source', $removed_from_source);
           $removedFromSourceChanged = TRUE;
+          $soft_deleted_count++;
 
           $this->loggerFactory->get('tre_hr_import')->info(
             'Person content @id is missing from source. Soft-delete waiting period started.',
@@ -157,6 +215,8 @@ class MigrateSubscriber implements EventSubscriberInterface {
         }
 
         if ($isTranslationPublished) {
+          $unpublished_count++;
+
           $this->loggerFactory->get('tre_hr_import')->info(
             'Person content @id is now Unpublished',
             ['@id' => $node_id]
@@ -170,6 +230,7 @@ class MigrateSubscriber implements EventSubscriberInterface {
         if ($current_time >= $delete_after) {
           $node->delete();
           $id_map->deleteDestination(['nid' => $node_id]);
+          $deleted_count++;
 
           $this->loggerFactory->get('tre_hr_import')->info(
             'Person content @id DELETED after 1 month waiting period',
@@ -189,6 +250,17 @@ class MigrateSubscriber implements EventSubscriberInterface {
           );
         }
       }
+
+      $this->loggerFactory->get('tre_hr_import')->info(
+        'Migration @migration missing-source processing completed. Missing: @missing, new soft-delete timestamps: @soft_deleted, unpublished nodes: @unpublished, deleted nodes: @deleted.',
+        [
+          '@migration' => $migration_name,
+          '@missing' => $missing_count,
+          '@soft_deleted' => $soft_deleted_count,
+          '@unpublished' => $unpublished_count,
+          '@deleted' => $deleted_count,
+        ]
+      );
 
       // We stop nodes from being deleted by default.
       $event->stopPropagation();

@@ -586,3 +586,46 @@
     width: $contact-card-icon-size;
   }
 }
+
+@mixin attachment-and-search-services-link {
+  text-decoration: none;
+  color: clr(text);
+  display: flex;
+  flex-direction: column;
+  padding: 0 $space-xs-plus;
+  gap: $space-m;
+
+  @include mobile-breakpoint-down {
+    padding-top: $space-xs-plus;
+    padding-bottom: $space-xs-plus;
+  }
+}
+
+
+@mixin attachment-and-search-services-link-file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mobile-breakpoint-down {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@mixin attachment-and-search-services-link-file-heading {
+  display: flex;
+  margin: $space-s $space-xs;
+  margin-inline-end: auto;
+
+  @include mobile-breakpoint-down {
+    flex-direction: column;
+  }
+}
+
+@mixin attachment-and-search-services-icon {
+  flex-shrink: 0;
+  margin: 0 $space-xs;
+  height: $icon-default;
+  width: $icon-default;
+}

@@ -70,6 +70,10 @@ final class PtvIntermediateStorage implements PtvIntermediateStorageInterface {
       $payload = $this->getPayload($channel, $id);
       $accessibility = $this->getAccessibility($channel, $id);
       $areas = $this->getAreas($channel, $id);
+      $postalAddressAreas = isset($channel['postal_address_areas'])
+        && is_array($channel['postal_address_areas'])
+        ? $channel['postal_address_areas']
+        : [];
 
       $preparedChannels[$id] = [
         'uuid' => $id,
@@ -78,7 +82,8 @@ final class PtvIntermediateStorage implements PtvIntermediateStorageInterface {
           $payload,
           [],
           $accessibility,
-          $areas
+          $areas,
+          $postalAddressAreas
         ),
       ];
     }
@@ -404,6 +409,8 @@ final class PtvIntermediateStorage implements PtvIntermediateStorageInterface {
    *   Optional accessibility information.
    * @param array<int, array{code: string, name: array<string, string|null>}> $areas
    *   Optional area details.
+   * @param array<int, array{code: string, name: array<string, string|null>}|null> $postalAddressAreas
+   *   Municipality details matching physical street addresses by position.
    *
    * @return string
    *   The JSON encoded storage record.
@@ -416,6 +423,7 @@ final class PtvIntermediateStorage implements PtvIntermediateStorageInterface {
     array $connections,
     array $accessibility = [],
     array $areas = [],
+    array $postalAddressAreas = [],
   ): string {
     $storageRecord = [
       'payload' => ObjectSerializer::sanitizeForSerialization(
@@ -432,6 +440,10 @@ final class PtvIntermediateStorage implements PtvIntermediateStorageInterface {
 
     if ($areas !== []) {
       $storageRecord['areas'] = $areas;
+    }
+
+    if ($postalAddressAreas !== []) {
+      $storageRecord['postal_address_areas'] = $postalAddressAreas;
     }
 
     try {

@@ -1,0 +1,19 @@
+uuid: 5e189fbd-3351-4d18-9db9-c714ff75f4f3
+langcode: fi
+status: true
+dependencies:
+  module:
+    - heading
+    - paragraphs
+id: paragraph.field_heading__e_service
+field_name: field_heading__e_service
+entity_type: paragraph
+type: heading
+settings: {  }
+module: heading
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

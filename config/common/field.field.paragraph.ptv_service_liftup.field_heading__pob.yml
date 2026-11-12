@@ -1,0 +1,38 @@
+uuid: 08931d5f-7fc8-49fd-8aaf-789c58d2b2a1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading__pob
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - content_translation
+    - heading
+third_party_settings:
+  content_translation:
+    translation_sync:
+      size: size
+      text: text
+id: paragraph.ptv_service_liftup.field_heading__pob
+field_name: field_heading__pob
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Yliajo-otsikko: Palvelupaikat'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    text: 'Asioi paikan päällä'
+    size: h3
+default_value_callback: ''
+settings:
+  label: Heading
+  allowed_sizes:
+    h3: h3
+    h1: '0'
+    h2: '0'
+    h4: '0'
+    h5: '0'
+    h6: '0'
+field_type: heading

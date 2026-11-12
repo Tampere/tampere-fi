@@ -537,6 +537,20 @@ final class PtvApiFetcher {
     $municipalityCodes = $this->extractMunicipalityCodes(
       array_merge($servicesById, $channelsById)
     );
+    $postalAddressMunicipalityCodesByChannel = [];
+    foreach ($channelsById as $channelId => $channel) {
+      $postalAddressMunicipalityCodes = $this->extractPostalAddressMunicipalityCodes(
+        $channel
+      );
+      $postalAddressMunicipalityCodesByChannel[$channelId]
+        = $postalAddressMunicipalityCodes;
+      foreach ($postalAddressMunicipalityCodes as $code) {
+        if ($code !== NULL) {
+          $municipalityCodes[] = $code;
+        }
+      }
+    }
+    $municipalityCodes = array_values(array_unique($municipalityCodes));
 
     $this->logger->notice(
       'PTV API Fetcher: Extracted @code_count unique municipality code(s) from @service_count services and @channel_count channels. Sample codes: @codes',
@@ -571,10 +585,17 @@ final class PtvApiFetcher {
     foreach ($channelsById as $channelId => $channel) {
       $channelCodes = $this->extractMunicipalityCodesFromEntity($channel);
       $channelAreas = array_intersect_key($areasByCode, array_flip($channelCodes));
+      $postalAddressAreas = [];
+      foreach ($postalAddressMunicipalityCodesByChannel[$channelId] ?? [] as $code) {
+        $postalAddressAreas[] = $code !== NULL
+          ? ($areasByCode[$code] ?? NULL)
+          : NULL;
+      }
 
       $channelRecord = [
         'payload' => $channel,
         'areas' => array_values($channelAreas),
+        'postal_address_areas' => $postalAddressAreas,
       ];
 
       $accessibility = $this->fetchChannelAccessibility($channel);
@@ -658,6 +679,42 @@ final class PtvApiFetcher {
     }
 
     return array_filter($municipalities, 'is_string');
+  }
+
+  /**
+   * Extracts municipality codes from a ServiceLocation's street addresses.
+   *
+   * @return array<int, string|null>
+   *   Municipality codes in street-address order.
+   */
+  private function extractPostalAddressMunicipalityCodes(
+    ModelInterface $channel,
+  ): array {
+    if (!$channel instanceof ServiceLocationChannelResponse) {
+      return [];
+    }
+
+    $location = $channel->getLocation();
+    if (!is_object($location) || !method_exists($location, 'getStreetAddresses')) {
+      return [];
+    }
+
+    $streetAddresses = $location->getStreetAddresses();
+    if (!is_array($streetAddresses)) {
+      return [];
+    }
+
+    $codes = [];
+    foreach ($streetAddresses as $address) {
+      $code = is_object($address) && method_exists($address, 'getMunicipalityCode')
+        ? $address->getMunicipalityCode()
+        : NULL;
+      $codes[] = is_string($code) && trim($code) !== ''
+        ? trim($code)
+        : NULL;
+    }
+
+    return $codes;
   }
 
   /**

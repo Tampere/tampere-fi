@@ -1,0 +1,19 @@
+uuid: b1e8c915-e902-4260-adf9-20e2b15d8ca9
+langcode: fi
+status: true
+dependencies:
+  module:
+    - heading
+    - paragraphs
+id: paragraph.field_heading__pob
+field_name: field_heading__pob
+entity_type: paragraph
+type: heading
+settings: {  }
+module: heading
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

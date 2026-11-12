@@ -13,6 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\file\Entity\File;
+use Drupal\media\MediaInterface;
 
 /**
  * AJAX callbacks for the TRE AI Alt Text feature.
@@ -45,7 +46,10 @@ class AiAltTextCallbacks implements TrustedCallbackInterface {
     . "Noudata alt-tekstin laatimisessa seuraavia ohjeita:\n"
     . "- Kerro kuvan olennaisin sisältö. Tarvittaessa voit kertoa toisella lauseella joitakin yksityiskohtia, jos niillä on merkitystä kuvan sisällön ymmärtämisessä.\n"
     . "- Kuvaile vain käyttäjän ymmärtämisen kannalta merkitykselliset asiat.\n"
-    . "- Älä tulkitse tunteita, tarkoitusperiä, henkilöllisyyksiä, sukupuolia äläkä etnistä alkuperää. Pyri mahdollisimman neutraaliin henkilöiden kuvailuun. Älä kuvaile henkilöiden ulkonäköä ja kehoa millään tavalla. Älä esimerkiksi kuvaile pituutta tai olemuksen kokoa.\n"
+    . "- Älä tulkitse tunteita, tarkoitusperiä, henkilöllisyyksiä, sukupuolia äläkä etnistä alkuperää. Pyri mahdollisimman neutraaliin henkilöiden kuvailuun. Älä kuvaile henkilöiden ulkonäköä ja kehoa millään tavalla. Älä esimerkiksi kuvaile pituutta tai olemuksen kokoa. Älä kuvaile, onko henkilö mies, nainen tai jotain muuta sukupuolta. Kun kuvassa on henkilö, käytä hänestä ilmaisua \"henkilö\".\n"
+    . "  Esimerkki:\n"
+    . "  Kuvan sisältö: Kuvassa naiselta näyttävä henkilö istuu tietokoneen äärellä ja pöydällä on kahvikuppi.\n"
+    . "  Alt-teksti: Henkilö istuu tietokoneen äärellä. Pöydällä on kahvikuppi.\n"
     . "- Jos kyseessä on ulkona kuvattu maisemakuva, sisällytä mukaan tieto, onko syksy, talvi, kevät vai kesä silloin, kun se on ilmiselvää. Jos vuodenajasta on epävarmuus, älä mainitse mitään vuodenaikaa.\n"
     . "- Älä aloita sanoilla \"Kuvassa näkyy\" tai \"Tässä kuvassa\" tai muulla vastaavalla ilmauksella, joka kertoo, että kyseessä on kuva. Joskus sisällön mukaisesti, jos kyseessä ei ole valokuva, voi kuitenkin olla tarpeen tähdentää, että on kyse maalauksesta, infografiikasta tai piirroskuvituksesta.\n"
     . "- Jos kuva sisältää tekstiä, sisällytä siitä alt-tekstiin vain olennaisimman tiedon ymmärtämisen kannalta olennainen teksti.\n"
@@ -100,11 +104,30 @@ class AiAltTextCallbacks implements TrustedCallbackInterface {
 
   /**
    * Shows the AI button only when an image is present (#process callback).
+   *
+   * On the media library add form the widget #value.fids is empty on AJAX
+   * rebuilds, so the media entity in the form state is used instead.
    */
   public static function processImageField(array $element, FormStateInterface $form_state, array $form): array {
-    if (isset($element['ai_alt_text'])) {
-      $element['ai_alt_text']['#access'] = !empty($element['#value']['fids']);
+    if (!isset($element['ai_alt_text'])) {
+      return $element;
     }
+
+    $has_image = FALSE;
+    // Media library add form: use the media entity from the form state.
+    $media_items = $form_state->get('media');
+    if (is_array($media_items) && !empty($element['#parents'])) {
+      $delta = (int) $element['#parents'][1];
+      if (isset($media_items[$delta]) && $media_items[$delta] instanceof MediaInterface) {
+        $has_image = !$media_items[$delta]->get(self::IMAGE_FIELD)->isEmpty();
+      }
+    }
+    // Fallback for the media edit form: use the widget value.
+    if (!$has_image) {
+      $has_image = !empty($element['#value']['fids']);
+    }
+
+    $element['ai_alt_text']['#access'] = $has_image;
     return $element;
   }
 
@@ -115,18 +138,14 @@ class AiAltTextCallbacks implements TrustedCallbackInterface {
     $response = new AjaxResponse();
     $user_input = $form_state->getUserInput();
 
-    // Determine which button was pressed: the edit form or a media
-    // library add dialog delta.
-    $suffix = 'edit';
-    foreach ($user_input as $key => $value) {
-      if ($key === 'ai_alt_text_request') {
-        $suffix = 'edit';
-        break;
-      }
-      if (is_string($key) && str_starts_with($key, 'ai_alt_text_request_') && !empty($value)) {
-        $suffix = substr($key, strlen('ai_alt_text_request_'));
-        break;
-      }
+    // Determine which button was pressed. The button name is not serialized,
+    // so use the triggering element name.
+    $trigger_name = $form_state->getTriggeringElement()['#name'] ?? '';
+    if (str_starts_with($trigger_name, 'ai_alt_text_request_')) {
+      $suffix = substr($trigger_name, strlen('ai_alt_text_request_'));
+    }
+    else {
+      $suffix = 'edit';
     }
 
     if ($suffix === 'edit') {
@@ -146,9 +165,16 @@ class AiAltTextCallbacks implements TrustedCallbackInterface {
       $alt_target = self::IMAGE_FIELD . '[0][alt]';
     }
     else {
-      $media = NULL;
       $field_path = ['media', $suffix, 'fields', self::IMAGE_FIELD, 'widget', 0, 'ai_alt_text'];
-      $fids = $user_input['media'][$suffix]['fields'][self::IMAGE_FIELD][0]['fids'] ?? '';
+      // The widget fids are empty on this AJAX rebuild, so read the fid from
+      // the media entity in the form state.
+      $media = NULL;
+      $fids = '';
+      $media_items = $form_state->get('media');
+      if (is_array($media_items) && isset($media_items[$suffix]) && $media_items[$suffix] instanceof MediaInterface) {
+        $media = $media_items[$suffix];
+        $fids = $media->get(self::IMAGE_FIELD)->target_id ?? '';
+      }
       // The dialog has no entity of its own; use the request language.
       $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
       $alt_target = 'media[' . $suffix . '][fields][' . self::IMAGE_FIELD . '][0][alt]';

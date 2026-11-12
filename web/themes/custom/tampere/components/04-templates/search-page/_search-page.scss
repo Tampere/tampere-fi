@@ -121,3 +121,214 @@
 .cludo-assistant-header h2 {
   hyphens: auto;
 }
+
+// Cludo AI summary (Experience Builder inline element).
+// Cludo injects its stylesheet at runtime, after ours. Rules here either use a
+// doubled `.cludo-ai-summary` to out-specify Cludo's, or `!important` where
+// Cludo itself uses `!important`.
+.cludo-ai-summary {
+  // Same size as the chatbot icon.
+  --size-avatar: 24px;
+
+  font-family: $font-body;
+
+  *,
+  *::before,
+  *::after {
+    font-family: $font-body !important;
+  }
+
+  .cludo-generative-ai__answer-text {
+    font-size: $body-font-size-mobile;
+    line-height: $line-height-base;
+    @include large {
+      font-size: $body-font-size;
+    }
+  }
+
+  // Same box model as .cludo-banner so the content lines up with it.
+  .cludo-ai-summary #cludo-generative-ai {
+    margin-left: $space-s;
+    margin-right: $space-s;
+    padding-left: $gutter-medium;
+    padding-right: $gutter-medium;
+
+    @include large {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: clamp($gutter-small, 5%, $gutter-default);
+      padding-right: clamp($gutter-small, 5%, $gutter-default);
+    }
+  }
+
+  // AI icon in front of the title, on the same row. While loading, Cludo has
+  // not yet added the expandable wrapper, so the card holds the title itself.
+  .cludo-ai-summary .cludo_expandable-content,
+  .cludo-ai-summary #cludo-generative-ai:has(> .cludo-generative-ai__header) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: $space-s;
+    align-items: start;
+  }
+
+  .cludo-ai-summary .cludo-generative-ai__answer-container {
+    display: contents;
+  }
+
+  .cludo-ai-summary .cludo-generative-ai__icon-container {
+    grid-area: 1 / 1;
+    align-self: center;
+    margin: 0;
+
+    // Cludo insets the icon by 18%; fill the whole circle instead.
+    .cludo-icon {
+      padding: 0;
+    }
+  }
+
+  .cludo-ai-summary .cludo-generative-ai__answer,
+  .cludo-ai-summary .cludo-ai-summary-feedback {
+    grid-column: 1 / -1;
+  }
+
+  .cludo-ai-summary .cludo-generative-ai__answer {
+    margin-top: $space-xs;
+  }
+
+  @media (max-width: 1024px) {
+    .cludo-ai-summary .cludo-generative-ai__answer > span {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    .cludo-ai-summary .cludo-generative-ai-references {
+      margin-left: 0 !important;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .cludo-ai-summary .cludo-generative-ai__header {
+    grid-area: 1 / 2;
+    align-self: center;
+    font-family: $font-heading !important;
+    font-weight: $font-weight-bold;
+    font-size: $h3-font-size;
+    line-height: $h3-line-height--mobile;
+    margin: 0 !important;
+    text-transform: none;
+    @include large {
+      font-size: $h3-font-size-desktop;
+      line-height: $h3-line-height;
+    }
+  }
+
+  // Site arrow as a CSS mask, tinted primary blue.
+  .cludo_expandable-container > button .cludo-icon {
+    background-color: $color-darkest-blue !important;
+    background-image: none;
+    -webkit-mask-image: url("/themes/custom/tampere/images/icon-sets/main-site-icons/arrow-plain-new.svg");
+    mask-image: url("/themes/custom/tampere/images/icon-sets/main-site-icons/arrow-plain-new.svg");
+    -webkit-mask-size: 20px 10px;
+    mask-size: 20px 10px;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+
+  .cludo_expandable-container > button[aria-expanded="true"] .cludo-icon {
+    transform: none;
+  }
+
+  .cludo_expandable-container > button[aria-expanded="false"] .cludo-icon {
+    transform: rotate(180deg);
+  }
+
+  .cludo-ai-summary .cludo_expandable-container > button.cludo-cursor-pointer {
+    align-self: flex-start;
+    padding-left: 0;
+    border: none;
+    color: $color-darkest-blue;
+    background-color: transparent;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &::after {
+      content: var(--ai-summary-open);
+      margin-left: 1rem;
+    }
+
+    &[aria-expanded="true"]::after {
+      content: var(--ai-summary-close);
+    }
+  }
+
+  .cludo-ai-summary .cludo-ai-summary-read-aloud__button {
+    gap: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: clr(text-secondary);
+
+    &:hover,
+    &[aria-pressed="true"] {
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      color: clr(text-secondary);
+    }
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &::before {
+      content: var(--ai-summary-listen);
+      margin-right: $space-xs;
+      font-family: $font-heading !important;
+      font-size: $font-16;
+      font-weight: $font-weight-regular;
+
+      @include large {
+        font-size: $font-18;
+      }
+    }
+
+    &::after {
+      content: "";
+      width: 28px;
+      height: 28px;
+      background-color: currentColor;
+      -webkit-mask: url("/themes/custom/tampere/images/icon-sets/main-site-icons/readspeaker.svg") center / contain no-repeat;
+      mask: url("/themes/custom/tampere/images/icon-sets/main-site-icons/readspeaker.svg") center / contain no-repeat;
+
+      @include large {
+        width: $icon-medium;
+        height: $icon-medium;
+      }
+    }
+
+    svg {
+      display: none;
+    }
+
+    &[aria-pressed="true"] {
+      svg {
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin: 4px;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

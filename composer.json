@@ -224,7 +224,7 @@
         "drupal/admin_toolbar": "^3.6",
         "drupal/ai": "^1.1",
         "drupal/ai_auto_reference": "^1.0@RC",
-        "drupal/ai_provider_deepl": "^1.0@alpha",
+        "drupal/ai_provider_deepl": "^1.0@beta",
         "drupal/ai_provider_openai": "^1.1",
         "drupal/ai_translate_textfield": "2.0.0-alpha2",
         "drupal/allowed_formats": "^3.0",
@@ -390,6 +390,7 @@
         "proj4php/proj4php": "^2.0",
         "tampere/ptv-client-v12": "^1.0",
         "tampere/ptv-php-client-v11": "^2.0.2",
+        "twig/twig": "3.29.0",
         "wikimedia/composer-merge-plugin": "^2.1"
     },
     "conflict": {
@@ -510,7 +511,8 @@
                 "3171835 - Field Groups marked as required are missing red asterisk": "https://www.drupal.org/files/issues/2024-09-05/3171835-90--reroll-74-10.3.patch",
                 "3445965 - Content translation: remove warning message about untranslatable fields being hidden": "https://git.drupalcode.org/issue/drupal-3445965/-/commit/78cec6047a861250ae4ef65f9eb69f5947bbc1f6.patch",
                 "1166282 - Remove truncation from parent menu": "https://www.drupal.org/files/issues/2023-01-15/1166282-56.patch",
-                "2511878 - Support enclosure field in Views RssFields row plugin - D11.4": "https://www.drupal.org/files/issues/2026-08-10/drupal-core-2511878-95_0.patch"
+                "2511878 - Support enclosure field in Views RssFields row plugin - D11.4": "https://www.drupal.org/files/issues/2026-08-10/drupal-core-2511878-95_0.patch",
+                "3109772 - Exception when deleting a translation that is the default translation on the content moderation state entity": "https://www.drupal.org/files/issues/2020-02-10/3109772-test-only.patch"
             },
             "drupal/dropzonejs": {
                 "3341846 REVERT - Media library form breaking getFormId() function": "patches/dropzonejs-remove-media-library-form-breaking-getFormId-function-added-in-issue-3341846.patch"
@@ -518,9 +520,13 @@
             "drupal/elb": {
                 "CARE-8696 - When checking prohibited strings, only check the link domain": "patches/elb_check_domain.patch"
             },
+            "drupal/entity_reference_revisions": {
+                "3582279 - hasAffectingChanges ignores delta 2+ if first one was not updated": "https://git.drupalcode.org/project/entity_reference_revisions/-/merge_requests/92.diff"
+            },
             "drupal/external_data_source": {
                 "3259684 - ExternalDataSource widgets break Dependency Injection - fix-5": "https://www.drupal.org/files/issues/2023-08-22/3259684_dependency_injection_fix-5.patch",
-                "3371626 - Can't add new elements with autocomplete widget": "https://www.drupal.org/files/issues/2023-08-22/3371626_multiple_value_auto_complete_fix.patch"
+                "3371626 - Can't add new elements with autocomplete widget": "https://www.drupal.org/files/issues/2023-08-22/3371626_multiple_value_auto_complete_fix.patch",
+                "ASSERTION ERROR - Fix field category": "patches/external-data-source-category.patch"
             },
             "drupal/feeds": {
                 "3080098 - Delete Empty Files Created If Empty/Error Exception is Returned": "https://www.drupal.org/files/issues/2024-12-12/delete-empty-error-file_3080098_7_for_3.0-rc3.patch"
@@ -556,15 +562,16 @@
             "drupal/views_autocomplete_filters": {
                 "XO-3817 - Change autocomplete field label to always use node title": "./patches/views_autocomplete_filters_dropdown_label_alter.patch"
             },
-            "drupal/ai_provider_deepl": {
-                "3549076: Use glossary feature": "https://git.drupalcode.org/project/ai_provider_deepl/-/merge_requests/3.patch"
-            },
             "drupal/cookieinformation": {
                 "Add support for ReadSpeaker and Askem to cookie information": "patches/add_support_for_readspeaker_and_askem_to_cookie_information.patch"
             },
+            "drupal/ds": {
+                "Fix null label TypeError (lb (ds label) config value is giving issues)": "./patches/ds-fix-null-label-php8.patch"
+            },
             "drupal/ai_translate_textfield": {
                 "3582430: Pass explicit source language to AI Provider to support glossaries (ported to 2.0.0-alpha2)": "https://www.drupal.org/files/issues/2026-09-25/ai_translate_textfield-source-lang-alpha2.patch",
-                "3503517 + 3504251: Support for other field types like Link, Table, focal point and heading widgets (ported to 2.0.0-alpha2)": "./patches/ai_translate_textfield-extra-field-types-alpha2.patch"
+                "3503517 + 3504251: Support for other field types like Link, Table, focal point and heading widgets (ported to 2.0.0-alpha2)": "./patches/ai_translate_textfield-extra-field-types-alpha2.patch",
+                "Prevent locale from overwriting English config override (change text to string in schema)": "./patches/ai_translate_textfield-schema-not-translatable.patch"
             },
             "drupal/open_readspeaker": {
                 "3533644: Incorrect use of the customTransLangs configuration": "https://git.drupalcode.org/project/open_readspeaker/-/merge_requests/40.diff"
@@ -589,6 +596,12 @@
             },
             "drupal/openid_connect_windows_aad": {
                 "Fix logout redirect issue": "https://www.drupal.org/files/issues/2026-07-15/openid-connect-windows-aad-null-client-on-logout-3611080-2.patch"
+            },
+            "drupal/paragraphs_asymmetric_translation_widgets": {
+                "3367713 - Warning: Undefined array key 'subform' in ParagraphsAsymmetricWidget->formElement()": "https://www.drupal.org/files/issues/2023-06-20/isset-3367713-4.patch"
+            },
+            "drupal/quick_node_clone": {
+                "2975704 - Cloning Multilanguage content, editing translations causes error": "https://www.drupal.org/files/issues/2025-11-26/2975704-13.patch"
             }
         },
         "merge-plugin": {

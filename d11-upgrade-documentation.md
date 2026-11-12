@@ -1,15 +1,16 @@
-# Requirements
+# Drupal core 11 upgrade documentation
+## Requirements
 
 - PHP version 8.3 minimum,
 - Composer version 2.7
 - Drush 13
 - Production server using database version 5.0 compared to dev servers which is 8.0
 
-# Before D11 production(also dev servers) deployment:
+## Before D11 production(also dev servers) deployment:
 
 - Remove incompatible modules from core.extension.yml file and make a deployment first, so that the changes in composer from D11 branch will uninstall the modules.
 
-# Documentation
+## Documentation
 
 - Removed jsonapi_boost inactive module, as it was not compatible
 - Uninstalled cache_tags module, as it was not compatible
@@ -19,19 +20,19 @@
 - Webform module updated from version (6.2.9) as it does not support Drupal 11. To move forward with the D11 upgrade, updated to the newer 6.3.0-rc2
 - Down scale components module as the 3.2 version contains a bug that will break drupal core 11.
 
-# DB updates required by
+## DB updates required by
 
 - group content menu
 - Quick node clone
 
-# In the server
+## In the server
 
 - updated composer in dev to 2.7
 - Update drush, minimum version is 13
   -- Error after updating to drush 13, logger error on running drush commands
   --- https://www.drupal.org/project/do_username/issues/3472367
 
-# To check
+## To check
 
 - Check if the patch for markdown module needs to be added:
   -- // "drupal/markdown": {
@@ -51,16 +52,16 @@
 - Check in staging, how the overides option work for feeds or whatever that I don'¨t know yet
   -- Migrate Override module update
 
-# In the next iteration
+## In the next iteration
 
 - Remove cache tags module from composer, currently only removed from drush, drupal.
 - Remove path_guard module
 
-# To client
+## To client
 
 - Inform the client, that the path guard module has been installed and path validation won't work any more.
 
-# Uninstalled but needs to be removed from composer
+## Uninstalled but needs to be removed from composer
 
 - System status
 - Cache tags
@@ -69,7 +70,7 @@
   -- Included in core and current version is obsolete after core 10.2 version [variationcache](https://www.drupal.org/project/variationcache)
   -- Checked the customs module section and found no traces of code Drupal\variationcache namespace
 
-# Remove older modules with better alternatives or update to newer versions
+## Remove older modules with better alternatives or update to newer versions
 
 - Update telephone_plus to version 2.x
   -- https://www.drupal.org/project/telephone_plus/issues/3434933
@@ -83,7 +84,7 @@
 - theme_breakpoints_js, updated to version 2.x that is compatible with php version 8.3
   -- https://www.drupal.org/project/theme_breakpoints_js
 
-# Overidden repositories/ modules:
+## Overidden repositories/ modules:
 
 Old versions of the modules have been added by tricking composer and then tweaked so that it is compatible with D11. Some have working patches, but others custom changes.
 - "drupal/form_display_field_machine_name",
@@ -92,7 +93,7 @@ Old versions of the modules have been added by tricking composer and then tweake
 - "drupal/group_scheduled_transitions"
 - "drupal/form_display_field_machine_name"
 
-# Test custom module, in servers
+## Test custom module, in servers
 
 - Tre contact search
 - Email release
@@ -101,7 +102,7 @@ Old versions of the modules have been added by tricking composer and then tweake
 - Tre jsonapi_custom
 - Tre preprocess embedded content and map tabs
 
-# After D11 patches not working and no working solution:
+## After D11 patches not working and no working solution:
 
 - "2968207 - Allow multiple instances of the same exposed filter form on a single page": "https://www.drupal.org/files/issues/2023-11-06/2968207-44.patch"
 - "2511878 - Support enclosure field in Views RssFields row plugin - D10.3": "https://www.drupal.org/files/issues/2026-04-16/drupal-core-2511878-94.patch"
@@ -124,8 +125,9 @@ Old versions of the modules have been added by tricking composer and then tweake
   },
   },
 
-# Deploying to production
+## Deploying to production
 - First deploy SCN module uninstall in separate deployment. So it requires to deployment. 
-- Second deployment will fail when trying to clear cache before drupal updates.
-- So, run a thrid deployment after, manually updating database.
-- then manually import configs.
+- Change the settings.local php according to things in staging. 
+- Second deployment will fail when trying to clear cache before drupal updates. (Run deployment without importing configs) 
+-   So need to update database first then clear cache
+- Then manually import configs.

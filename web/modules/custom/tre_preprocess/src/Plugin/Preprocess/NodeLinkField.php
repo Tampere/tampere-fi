@@ -26,11 +26,14 @@ class NodeLinkField extends TrePreProcessPluginBase {
       return $variables;
     }
 
+    // An unsaved node has no ID, so it has no URL (e.g. rendering in presave).
+    if ($node->isNew()) {
+      return $variables;
+    }
+
     $node_url = $node->toUrl()->setAbsolute(TRUE)->toString();
 
-    $link_text = preg_replace("(^https?://)", "", $node_url);
-
-    $variables['link_text'] = $link_text;
+    $variables['link_text'] = $node->label();
     $variables['link_url'] = $node_url;
 
     return $variables;

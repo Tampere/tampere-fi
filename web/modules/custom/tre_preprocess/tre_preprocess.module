@@ -17,6 +17,22 @@ use Drupal\paragraphs\ParagraphInterface;
 use Drupal\views\ViewExecutable;
 
 /**
+ * Implements hook_theme().
+ */
+function tre_preprocess_theme($existing, $type, $theme, $path) {
+  return [
+    'tre_preprocess_ptv_service_accordion' => [
+      'template' => 'ptv-service-accordion',
+      'variables' => [
+        'heading' => NULL,
+        'content' => [],
+        'accordion_id' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
  * Implements hook_views_pre_build().
  */
 function tre_preprocess_views_pre_build(ViewExecutable $view) {

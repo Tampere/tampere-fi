@@ -137,43 +137,44 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
           if (in_array('opening_hours', $fields_selected_for_display, TRUE)) {
             $hours_field_name = 'field_opening_hours';
             $hours_info_field_name = 'field_opening_hours_info';
-            $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
+            $variables['right_column_content'][$hours_field_name] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
           }
 
           if (in_array('opening_hours_2', $fields_selected_for_display, TRUE)) {
             $hours_field_name = 'field_opening_hours_2';
             $hours_info_field_name = 'field_opening_hours_info_2';
-            $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
+            $variables['right_column_content'][$hours_field_name] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
           }
 
           if (in_array('opening_hours_3', $fields_selected_for_display, TRUE)) {
             $hours_field_name = 'field_opening_hours_3';
             $hours_info_field_name = 'field_opening_hours_info_3';
-            $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
+            $variables['right_column_content'][$hours_field_name] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
           }
 
           if (in_array('opening_hours_4', $fields_selected_for_display, TRUE)) {
             $hours_field_name = 'field_opening_hours_4';
             $hours_info_field_name = 'field_opening_hours_info_4';
-            $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
+            $variables['right_column_content'][$hours_field_name] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
           }
 
           if (in_array('opening_hours_5', $fields_selected_for_display, TRUE)) {
             $hours_field_name = 'field_opening_hours_5';
             $hours_info_field_name = 'field_opening_hours_info_5';
-            $variables['right_column_content'][] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
+            $variables['right_column_content'][$hours_field_name] = static::getOpeningHoursRendered($translated_pob_node, $hours_field_name, $hours_info_field_name);
           }
 
           if (in_array('exception_hours', $fields_selected_for_display, TRUE)) {
             if (!$translated_pob_node->get('field_exception_hours')->isEmpty()) {
-              $variables['right_column_content'][] = $translated_pob_node->get('field_exception_hours')->view(self::LIFTUP_VIEW_MODE);
+              $variables['right_column_content']['field_exception_hours'] = $translated_pob_node->get('field_exception_hours')->view(self::LIFTUP_VIEW_MODE);
             }
           }
 
           // Make sure the elements get ordered correctly by assigning a weight
           // to each of the rendered elements.
-          foreach ($variables['right_column_content'] as $weight => $renderable) {
-            $variables['right_column_content'][$weight]['#weight'] = $weight;
+          $weight = 0;
+          foreach ($variables['right_column_content'] as $key => $renderable) {
+            $variables['right_column_content'][$key]['#weight'] = $weight++;
           }
 
           $variables['right_column_modifier'] = ['right'];
@@ -190,7 +191,7 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
             if (!$translated_pob_node->get('field_accessibility_info_title')->isEmpty()) {
               $accessibility_selected_label = $translated_pob_node->field_accessibility_info_title->value;
             }
-            
+
             $title_label = $translated_pob_node->field_accessibility_info_title->getSetting('allowed_values')[$accessibility_selected_label];
             $variables['place_of_business_accessibility_title'] = $title_label;
 
@@ -329,8 +330,8 @@ class PlaceOfBusinessLiftup extends TrePreProcessPluginBase {
 
     }
     elseif ($heading_field_is_filled_in) {
-      // The hard-coded classes are the same as field known as $hours_heading_field
-      // would have on its output, were it rendered with field $hours_field_name.
+      // The hard-coded classes match the heading field's output when rendered
+      // with the opening-hours field.
       $view = [
         '#type' => 'html_tag',
         '#tag' => 'div',

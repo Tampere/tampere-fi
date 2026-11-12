@@ -21,17 +21,20 @@ class CludoSearch extends trePreProcessPluginBase {
   public function preprocess(array $variables): array {
     $engine_id = !empty(Settings::get('cludo_engine_id_fi')) ? Settings::get('cludo_engine_id_fi') : '';
     $customer_id = !empty(Settings::get('cludo_customer_id')) ? Settings::get('cludo_customer_id') : '';
-    $lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $ai_summary_xid = !empty(Settings::get('cludo_ai_summary_xid_fi')) ? Settings::get('cludo_ai_summary_xid_fi') : '';
+    $lang_code = $this->languageManager->getCurrentLanguage()->getId();
 
-    // English search has its own engine id.
+    // English search has its own engine id and AI summary experience id.
     if ($lang_code == 'en') {
       $engine_id = !empty(Settings::get('cludo_engine_id_en')) ? Settings::get('cludo_engine_id_en') : '';
+      $ai_summary_xid = !empty(Settings::get('cludo_ai_summary_xid_en')) ? Settings::get('cludo_ai_summary_xid_en') : '';
     }
 
     $variables['#attached']['drupalSettings']['tre_cludo_search'] = [
       'customerId' => $customer_id,
       'engineId' => $engine_id,
       'currentLanguage' => $lang_code,
+      'aiSummaryXid' => $ai_summary_xid,
     ];
 
     $variables['cludo_customer_id'] = $customer_id;

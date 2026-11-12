@@ -43,6 +43,10 @@ final class PtvServiceLocationSourceMapper {
    *   The requested content language.
    * @param array<string, mixed> $accessibilityByServicePointId
    *   Accessibility information keyed by service point ID.
+   * @param array<int, array{code: string, name: array<string, string|null>}> $areas
+   *   Service-area municipality details.
+   * @param array<int, array{code: string, name: array<string, string|null>}|null> $postalAddressAreas
+   *   Municipality details matching physical street addresses by position.
    *
    * @return array<string, mixed>
    *   Existing migration source values, or an empty array when the row should
@@ -52,7 +56,8 @@ final class PtvServiceLocationSourceMapper {
     ServiceLocationChannelResponse $serviceLocation,
     string $language,
     array $accessibilityByServicePointId = [],
-    array $areas = [], 
+    array $areas = [],
+    array $postalAddressAreas = [],
   ): array {
     $language = trim($language);
 
@@ -104,17 +109,24 @@ final class PtvServiceLocationSourceMapper {
     $location = $this->getObjectFromGetter($serviceLocation, 'getLocation');
 
     if ($location !== NULL) {
-      foreach ($this->getArrayFromGetter($location, 'getStreetAddresses') as $address) {
+      foreach ($this->getArrayFromGetter($location, 'getStreetAddresses') as $index => $address) {
         if (!is_object($address)) {
           continue;
         }
+
+        $addressLocality = $this->getLocality(
+          isset($postalAddressAreas[$index])
+            ? [$postalAddressAreas[$index]]
+            : [],
+          $language
+        );
 
         $mappedAddress = $this->mapPhysicalStreetAddress(
           $address,
           $name,
           $language,
           $accessibilityByServicePointId,
-          $locality,
+          $addressLocality,
         );
 
         if ($mappedAddress === NULL) {

@@ -8,7 +8,14 @@
 		"internal_search_page_title": "Search results from Tampere.fi",
 		"external_search_page_title": "Search results from other sites maintained by the city",
 		"open": "Open",
-		"close": "Close"
+		"close": "Close",
+		"listen": "Listen",
+		"listen_summary": "Listen to the summary",
+		"open_summary": "Open the summary",
+		"close_summary": "Close the summary",
+		"ai_icon": "AI",
+		"feedback_yes": "Yes, the summary was helpful",
+		"feedback_no": "No, the summary was not helpful"
 	},
 	"facets": {
 		"content_type": "Content type",
@@ -30,5 +37,12 @@
 		"search_page_link_description": "You can narrow down the search results or search on the city's other websites",
 		"search_page_link_description_top": "Select a result below or click 'Search' to view all results for your search"
 		
+	},
+	"search_services": {
+		"search_service_title": "Looking for contact information, events or meeting minutes?",
+		"search_service_introduction_text": "Try our other searches",
+		"search_service_search_link_1_text": "Go to Contact search",
+		"search_service_search_link_2_text": "Go to Event search (tapahtumat.tampere.fi)",
+		"search_service_search_link_3_text": "Go to Agenda and minutes search (tampere.cloudnc.fi, in Finnish)"
 	}
 }

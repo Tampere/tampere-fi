@@ -104,6 +104,8 @@ In practice, this allows the migration mappers to use the generated DTO getter m
 
 TPR accessibility information is already mapped into ordinary PHP arrays when it is fetched. It is therefore stored directly alongside the sanitized Service Location payload and does not need to be converted back into a generated DTO.
 
+Street-address municipality codes are read from the generated address DTO and their names are stored as `postal_address_areas` alongside the channel payload. The existing `areas` data continues to represent service coverage.
+
 ## `Service/Migration`
 
 This area contains the logic that maps stored PTV data into the existing Drupal migration source contract.

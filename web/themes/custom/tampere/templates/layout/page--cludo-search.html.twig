@@ -5,6 +5,7 @@
 {% if not search_results_page %}
   {% include "@molecules/search-bar/search-bar-with-label.twig" with {
     "use_form": true,
+    "search_bar_show_clear": true,
     "search_bar_input_id": "mysearch",
     "search_bar_form_id": "cludo-search-input",
     "search_bar_input_label": "Site search"|t,

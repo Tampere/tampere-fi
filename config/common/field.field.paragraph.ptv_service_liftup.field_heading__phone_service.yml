@@ -1,0 +1,38 @@
+uuid: 536159bb-df20-4e79-add5-dd9c782bada1
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading__phone_service
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - content_translation
+    - heading
+third_party_settings:
+  content_translation:
+    translation_sync:
+      size: size
+      text: text
+id: paragraph.ptv_service_liftup.field_heading__phone_service
+field_name: field_heading__phone_service
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Yliajo-otsikko: Puhelin'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    text: Soita
+    size: h3
+default_value_callback: ''
+settings:
+  label: Heading
+  allowed_sizes:
+    h3: h3
+    h1: '0'
+    h2: '0'
+    h4: '0'
+    h5: '0'
+    h6: '0'
+field_type: heading

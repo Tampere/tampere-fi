@@ -1,0 +1,42 @@
+--- a/config/schema/ai_translate_textfield.schema.yml
++++ b/config/schema/ai_translate_textfield.schema.yml
+@@ -33,7 +33,7 @@
+       label: 'Translator Configuration'
+ 
+     button_text:
+-      type: text
++      type: string
+       label: 'The copy for the added button element on the form'
+ 
+     warning_enabled:
+@@ -41,7 +41,7 @@
+       label: 'Modal dialog warning before sending the content to the translator'
+ 
+     dialog_title:
+-      type: text
++      type: string
+       label: 'The modal dialog text title'
+ 
+     dialog_content:
+@@ -49,18 +49,18 @@
+       label: 'The modal dialog text content'
+       mapping:
+         value:
+-          type: text
++          type: string
+           label: 'The content value'
+         format:
+           type: string
+           label: 'The text content format format'
+ 
+     dialog_ok_button:
+-      type: text
++      type: string
+       label: 'The modal dialog Ok button'
+ 
+     dialog_cancel_button:
+-      type: text
++      type: string
+       label: 'The modal dialog Cancel button'
+ 
+ field.widget.third_party.ai_translate_textfield:

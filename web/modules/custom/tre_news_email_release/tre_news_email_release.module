@@ -9,6 +9,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Site\Settings;
 use Drupal\node\NodeInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Header\MailboxHeader;
 
@@ -87,7 +88,7 @@ function tre_news_email_release_preprocess_paragraph(&$variables) {
   }
 
   $paragraph = $variables['paragraph'];
-  if (!($paragraph instanceof \Drupal\paragraphs\ParagraphInterface)) {
+  if (!($paragraph instanceof ParagraphInterface)) {
     return;
   }
 
@@ -161,7 +162,8 @@ function _tre_news_email_release_apply_ds_label_override(array &$variables): voi
     $lb = \Drupal::configFactory()->getEditable($config_name)->get($lb_path);
   }
 
-  if ($lb !== NULL) {
+  // An empty 'lb' means "use the field's own label", so leave it alone.
+  if ($lb !== NULL && $lb !== '') {
     $variables['label'] = $lb;
   }
 }

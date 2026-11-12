@@ -61,6 +61,7 @@
         id: ac_item.id,
         nid: ac_item.nid ?? NULL,
         accordion_after_content: accordion_after_content,
+        ac__title_wrapper__modifiers: ac_item.title_wrapper_modifiers ?? [],
         ac__item__modifiers: (horizontal_accordion_data is defined and ac_item.nid is defined and horizontal_accordion_data[ac_item.nid] is defined)
           ? ['has-horizontal-accordion']
           : []

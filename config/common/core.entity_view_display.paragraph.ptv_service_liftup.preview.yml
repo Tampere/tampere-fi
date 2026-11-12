@@ -7,8 +7,12 @@ dependencies:
     - field.field.paragraph.ptv_service_liftup.field_field_selection_help
     - field.field.paragraph.ptv_service_liftup.field_form_displayed_fields
     - field.field.paragraph.ptv_service_liftup.field_heading__basic_info
+    - field.field.paragraph.ptv_service_liftup.field_heading__e_service
     - field.field.paragraph.ptv_service_liftup.field_heading__instruction
+    - field.field.paragraph.ptv_service_liftup.field_heading__phone_service
+    - field.field.paragraph.ptv_service_liftup.field_heading__pob
     - field.field.paragraph.ptv_service_liftup.field_heading__requirements
+    - field.field.paragraph.ptv_service_liftup.field_heading__web_page
     - field.field.paragraph.ptv_service_liftup.field_online_displayed_fields
     - field.field.paragraph.ptv_service_liftup.field_phone_displayed_fields
     - field.field.paragraph.ptv_service_liftup.field_pob_displayed_fields
@@ -84,6 +88,10 @@ content:
 hidden:
   field_field_selection_help: true
   field_heading__basic_info: true
+  field_heading__e_service: true
   field_heading__instruction: true
+  field_heading__phone_service: true
+  field_heading__pob: true
   field_heading__requirements: true
+  field_heading__web_page: true
   search_api_excerpt: true

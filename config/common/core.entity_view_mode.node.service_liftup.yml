@@ -1,0 +1,11 @@
+uuid: 5177d129-1c1c-429b-98d2-21c553b96a9a
+langcode: fi
+status: true
+dependencies:
+  module:
+    - node
+id: node.service_liftup
+label: 'Service liftup'
+description: null
+targetEntityType: node
+cache: true

@@ -67,6 +67,18 @@
 
     {% block right_column %}
       {{ pob_right_column }}
+
+      {% if pob_more_opening_hours %}
+        {% embed "@organisms/accordion/accordion-item.twig" with {
+          "id": "opening-hours-extra-" ~ node.id() ~ "-" ~ random(),
+          "ac__item__modifiers": [ "mini", "more-opening-hours" ],
+          "accordion_heading": "More opening hours"|t,
+        } %}
+          {% block accordion_item_content %}
+            {{ pob_more_opening_hours }}
+          {% endblock %}
+        {% endembed %}
+      {% endif %}
     {% endblock %}
 
   {% endembed %}

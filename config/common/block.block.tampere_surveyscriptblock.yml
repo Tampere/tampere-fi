@@ -17,4 +17,5 @@ settings:
   label: 'Survey script block'
   label_display: '0'
   provider: tre_survey_script
+  survey_url: ''
 visibility: {  }

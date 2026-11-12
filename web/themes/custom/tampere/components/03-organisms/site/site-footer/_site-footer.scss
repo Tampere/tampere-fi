@@ -285,9 +285,7 @@ $footer-background-image-bottom-position--desktop: 93px;
     }
 
     #{$base_class}__links {
-      @include large {
         display: none;
-      }
     }
   }
 }

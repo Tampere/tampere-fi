@@ -69,6 +69,10 @@
     }
   }
 
+  &__column--right .accordion__item--more-opening-hours {
+    margin-bottom: $space-s;
+  }
+
   &__additional-content {
     margin-top: $space-s;
 

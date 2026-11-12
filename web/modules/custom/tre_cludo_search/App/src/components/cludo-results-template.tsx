@@ -4,37 +4,31 @@ import {
   CustomResult,
   Pagination,
   ResultBadge,
-  ResultCount,
   ResultTitle,
   ResultsList,
   useBanners,
-  useSearchInput,
+  useSearchResults,
 } from "@cludo/cludo-search-components";
-import { CludoAiSummary } from "./cludo-ai-summary";
-import {
-  setGlobalSearchMode,
-  getGlobalSearchMode,
-} from "../lib/globalSearchMode";
+import CludoHeaderResults from "./cludo-header-results";
+import CludoSearchServices from './cludo-search-services';
+import { getGlobalSearchMode } from "../lib/globalSearchMode";
+import { replayMissedSearchForAiSummary } from "../lib/aiSummaryReplay";
 import { useTranslation } from "react-i18next";
 import { treDrupalSettings } from "../config";
 
 export function CludoResultsTemplate() {
-  const [searchInputState, searchInputDispatchers] = useSearchInput();
   const [bannerState] = useBanners();
   const { banners } = bannerState;
+  const [{resultCount, isLoading}] = useSearchResults();
   const { t } = useTranslation();
 
-  // Function gets the current search domain mode and toggles it.
-  const toggleResults = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const mode = getGlobalSearchMode();
-    const newMode = mode === "main" ? "external" : "main";
-
-    // Change search mode and do a search with current the query.
-    // This then triggers Cludo callback function that applies domain filters.
-    setGlobalSearchMode(newMode);
-    searchInputDispatchers.search(searchInputState.query);
-  };
+  useEffect(
+    () =>
+      treDrupalSettings.aiSummaryXid
+        ? replayMissedSearchForAiSummary()
+        : undefined,
+    [],
+  );
 
   useEffect(() => {
     if (!document.getElementById("cludo-experience-manager")) {
@@ -106,19 +100,29 @@ export function CludoResultsTemplate() {
         banners.map((banner, i) => {
           return <Banner key={i} banner={banner} />;
         })}
-      <CludoAiSummary />
-      <div className="search-page__header__results">
-        <ResultCount disableTheme={true} />
-        <a
-          href="#"
-          onClick={(e) => toggleResults(e)}
-          className="search-page__header__results__link"
+      {treDrupalSettings.aiSummaryXid && (
+        <div
+          data-read-aloud-label={t("controls.listen_summary")}
+          data-open-label={t("controls.open_summary")}
+          data-close-label={t("controls.close_summary")}
+          data-ai-icon-label={t("controls.ai_icon")}
+          data-feedback-yes-label={t("controls.feedback_yes")}
+          data-feedback-no-label={t("controls.feedback_no")}
+          style={
+            {
+              "--ai-summary-open": JSON.stringify(t("controls.open")),
+              "--ai-summary-close": JSON.stringify(t("controls.close")),
+              "--ai-summary-listen": JSON.stringify(t("controls.listen")),
+            } as React.CSSProperties
+          }
         >
-          {getGlobalSearchMode() === "external"
-            ? t("translation:controls:internal_search_label")
-            : t("translation:controls:external_search_label")}
-        </a>
-      </div>
+          <cludo-element
+            data-type="AISummaryModule"
+            data-xid={treDrupalSettings.aiSummaryXid}
+          ></cludo-element>
+        </div>
+      )}
+      <CludoHeaderResults showResults={true}/>
       <ResultsList
         disableTheme={true}
         className="search-page__search-results"
@@ -210,17 +214,10 @@ export function CludoResultsTemplate() {
         )}
       />
       <Pagination disableTheme={true} className="pager pager__items" />
-      <div className="search-page__header__results">
-        <a
-          href="#"
-          onClick={(e) => toggleResults(e)}
-          className="search-page__header__results__link"
-        >
-          {getGlobalSearchMode() === "external"
-            ? t("translation:controls:internal_search_label")
-            : t("translation:controls:external_search_label")}
-        </a>
-      </div>
+      {resultCount > 0 && !isLoading && (
+        <CludoHeaderResults showResults={false}/>
+      )}
+      <CludoSearchServices />
     </>
   );
 }

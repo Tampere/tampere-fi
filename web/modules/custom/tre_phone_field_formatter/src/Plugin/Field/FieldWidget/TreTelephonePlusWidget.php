@@ -135,9 +135,10 @@ class TreTelephonePlusWidget extends TelephonePlusWidget {
     }
 
     if ($settings['supplementary_enabled'] && !in_array('telephone_supplementary', $hidden_subelements, TRUE)) {
-      $element['telephone_supplementary'] = [
+      $element['telephone_container']['telephone_supplementary'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Supplementary', [], ['context' => 'TelephonePlus field']),
+        '#label_attributes' => ['style' => ['display: block']],
         '#default_value' => $items[$delta]->telephone_supplementary ?? NULL,
         '#description' => $this->t('Additional information such as operating hours.', [], ['context' => 'TelephonePlus field']),
       ];

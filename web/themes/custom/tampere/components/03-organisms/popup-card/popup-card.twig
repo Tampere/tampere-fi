@@ -14,6 +14,20 @@
  #}
 {% set popup_card__base_class = "popup-card" %}
 
+{% set second_column_groups = second_column_content|default([]) %}
+{% set extra_opening_hours = {
+  "group_opening_hours_4": second_column_groups.group_opening_hours_4|default([]),
+  "group_opening_hours_5": second_column_groups.group_opening_hours_5|default([]),
+} %}
+{% set extra_opening_hours_markup = extra_opening_hours|render %}
+{% set exception_hours = second_column_groups.group_exception_hours|default(second_column_groups.field_exception_hours|default([])) %}
+{% set exception_hours_markup = exception_hours|render %}
+{% set second_column_content = second_column_groups|without(
+  "group_opening_hours_4",
+  "group_opening_hours_5",
+  "group_exception_hours",
+  "field_exception_hours"
+) %}
 {% set columns = [ first_column_content, second_column_content, third_column_content] %}
 
 <div {{ bem(popup_card__base_class, popup_card__modifiers|default([ variant ]), popup_card__blockname) }}>
@@ -29,7 +43,7 @@
   <div {{ bem("columns", popup_card__columns__modifiers|default([]), popup_card__base_class) }}>
     {% for column in columns %}
       {% set column_content = column|render %}
-      {% if column_content|trim is not empty or loop.first %}
+      {% if column_content|trim is not empty or loop.first or (loop.index == 2 and (extra_opening_hours_markup|trim or exception_hours_markup|trim)) %}
         <div {{ bem("column", popup_card__column__modifiers|default([]), popup_card__base_class) }}>
           {% if loop.first %}
             {% include "@atoms/02-text/00-headings/_heading.twig" with {
@@ -44,6 +58,17 @@
             } %}
           {% endif %}
           {{ column }}
+          {% if loop.index == 2 and extra_opening_hours_markup|trim %}
+            {% include "@organisms/accordion/accordion-item.twig" with {
+              "id": "opening-hours-extra-" ~ random(),
+              "ac__item__modifiers": [ "mini", "more-opening-hours" ],
+              "accordion_heading": "More opening hours"|t,
+              "accordion_content": extra_opening_hours_markup,
+            } %}
+          {% endif %}
+          {% if loop.index == 2 and exception_hours_markup|trim %}
+            {{ exception_hours_markup }}
+          {% endif %}
         </div>
       {% endif %}
     {% endfor %}

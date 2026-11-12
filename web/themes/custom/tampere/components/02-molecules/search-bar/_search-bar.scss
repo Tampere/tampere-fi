@@ -50,6 +50,7 @@ $search-bar-max-width--long: 640px;
     flex-shrink: 0;
     height: 100%;
     max-width: $search-bar-height;
+    order: 1;
     justify-content: center;
     padding: $space-xs;
     width: $search-bar-height;
@@ -71,6 +72,44 @@ $search-bar-max-width--long: 640px;
   &__icon {
     height: $icon-small;
     width: $icon-small;
+  }
+
+  &__clear {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    color: clr(text);
+    cursor: pointer;
+    display: inline-flex;
+    flex-shrink: 0;
+    height: $search-bar-height;
+    justify-content: flex-end;
+    margin-left: -42px;
+    padding-right: 16px;
+    position: relative;
+    width: 40px;
+    z-index: 1;
+
+    &[hidden] {
+      display: none;
+    }
+
+    &:focus {
+      outline: 2px solid clr(text);
+    }
+
+    .icon,
+    #{$base_class}__icon {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  // Keeps typed text clear of the overlapping X.
+  &--has-value {
+    #{$base_class}__input {
+      padding-right: 40px;
+    }
   }
 
   // Variations
@@ -134,6 +173,7 @@ $search-bar-max-width--long: 640px;
       }
     }
   }
+
 }
 
 .cludo-search-autocomplete-suggestions {

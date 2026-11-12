@@ -669,7 +669,7 @@ content:
       compress: false
       grouped: false
       show_empty: false
-      show_closed: all
+      show_closed: open
       closed_format: Closed
       all_day_format: 'All day open'
       separator:
@@ -702,7 +702,7 @@ content:
           id: minimal
           settings:
             lb: ''
-            lb-col: false
+            lb-col: true
             classes: {  }
     weight: 22
     region: right_column
@@ -715,7 +715,7 @@ content:
       compress: false
       grouped: false
       show_empty: false
-      show_closed: all
+      show_closed: open
       closed_format: Closed
       all_day_format: 'All day open'
       separator:
@@ -748,7 +748,7 @@ content:
           id: minimal
           settings:
             lb: ''
-            lb-col: false
+            lb-col: true
             classes: {  }
     weight: 14
     region: right_column

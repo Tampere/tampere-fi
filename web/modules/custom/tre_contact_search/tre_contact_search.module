@@ -315,13 +315,16 @@ function tre_contact_search_preprocess_node__place_of_business__contact_search(&
     $variables['pob_accessibility_title'] = t('Esteettömyys ja palvelut');
   }
 
-  // Right column logic
+  // Right column logic.
   $variables['pob_right_column'] = [];
+  $variables['pob_more_opening_hours'] = [];
   $weight_counter = 10;
   $hours_combos = [
-    ['hours' => 'field_opening_hours', 'info' => 'field_opening_hours_info'],
-    ['hours' => 'field_opening_hours_2', 'info' => 'field_opening_hours_info_2'],
-    ['hours' => 'field_opening_hours_3', 'info' => 'field_opening_hours_info_3'],
+    ['hours' => 'field_opening_hours', 'info' => 'field_opening_hours_info', 'more' => FALSE],
+    ['hours' => 'field_opening_hours_2', 'info' => 'field_opening_hours_info_2', 'more' => FALSE],
+    ['hours' => 'field_opening_hours_3', 'info' => 'field_opening_hours_info_3', 'more' => FALSE],
+    ['hours' => 'field_opening_hours_4', 'info' => 'field_opening_hours_info_4', 'more' => TRUE],
+    ['hours' => 'field_opening_hours_5', 'info' => 'field_opening_hours_info_5', 'more' => TRUE],
   ];
 
   foreach ($hours_combos as $combo) {
@@ -332,8 +335,13 @@ function tre_contact_search_preprocess_node__place_of_business__contact_search(&
         $view['#label_display'] = 'above';
       }
       $view['#weight'] = $weight_counter++;
-      $view['#attributes']['class'][] = 'margin-bottom'; 
-      $variables['pob_right_column'][] = $view;
+      $view['#attributes']['class'][] = 'margin-bottom';
+      if ($combo['more']) {
+        $variables['pob_more_opening_hours'][] = $view;
+      }
+      else {
+        $variables['pob_right_column'][] = $view;
+      }
     }
   }
 

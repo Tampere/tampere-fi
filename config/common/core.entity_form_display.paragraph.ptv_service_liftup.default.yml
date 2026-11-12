@@ -6,8 +6,12 @@ dependencies:
     - field.field.paragraph.ptv_service_liftup.field_field_selection_help
     - field.field.paragraph.ptv_service_liftup.field_form_displayed_fields
     - field.field.paragraph.ptv_service_liftup.field_heading__basic_info
+    - field.field.paragraph.ptv_service_liftup.field_heading__e_service
     - field.field.paragraph.ptv_service_liftup.field_heading__instruction
+    - field.field.paragraph.ptv_service_liftup.field_heading__phone_service
+    - field.field.paragraph.ptv_service_liftup.field_heading__pob
     - field.field.paragraph.ptv_service_liftup.field_heading__requirements
+    - field.field.paragraph.ptv_service_liftup.field_heading__web_page
     - field.field.paragraph.ptv_service_liftup.field_online_displayed_fields
     - field.field.paragraph.ptv_service_liftup.field_phone_displayed_fields
     - field.field.paragraph.ptv_service_liftup.field_pob_displayed_fields
@@ -29,6 +33,10 @@ third_party_settings:
         - field_heading__instruction
         - field_heading__requirements
         - field_heading__basic_info
+        - field_heading__e_service
+        - field_heading__phone_service
+        - field_heading__pob
+        - field_heading__web_page
       label: Yliajo-otsikot
       region: content
       parent_name: ''
@@ -60,6 +68,12 @@ content:
     third_party_settings: {  }
   field_heading__basic_info:
     type: heading
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading__e_service:
+    type: heading
     weight: 12
     region: content
     settings: {  }
@@ -70,9 +84,27 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_heading__phone_service:
+    type: heading
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading__pob:
+    type: heading
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_heading__requirements:
     type: heading
     weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading__web_page:
+    type: heading
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }

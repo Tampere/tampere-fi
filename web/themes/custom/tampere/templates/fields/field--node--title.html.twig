@@ -43,7 +43,7 @@
   {% set h = 3 %}
   {% if view_mode|clean_class == "default" or view_mode|clean_class == "full" %}
     {% set h = 1 %}
-  {% elseif view_mode|clean_class == "liftup" %}
+  {% elseif view_mode|clean_class == "liftup" or view_mode|clean_class == "service-liftup" %}
     {% set h = 2 %}
   {% elseif view_mode|clean_class == "inside-accordion" %}
     {% set h = 4 %}

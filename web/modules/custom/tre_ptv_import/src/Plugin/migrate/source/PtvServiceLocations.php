@@ -123,7 +123,8 @@ final class PtvServiceLocations extends SqlBase {
       $location,
       $this->contentLanguage,
       $record['accessibility'],
-      $record['areas'] ?? [],
+      $record['areas'],
+      $record['postal_address_areas'],
     );
 
     if ($values === []) {

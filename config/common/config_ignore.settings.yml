@@ -5,3 +5,4 @@ ignored_config_entities:
   - 'siteimprove.settings:api_key'
   - 'siteimprove.settings:api_username'
   - 'webform.webform.*'
+  - block.block.tampere_surveyscriptblock

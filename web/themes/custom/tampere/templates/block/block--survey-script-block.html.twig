@@ -8,6 +8,7 @@
 {% extends "@molecules/_block.twig" %}
 
 {% block content %}
+  {% if configuration.survey_url %}
   {{ attach_library("tre_survey_script/survey_modal") }}
   {{ attach_library("tampere/external-link") }}
   {% include "@molecules/external-link/external-link-indicator.twig" %}
@@ -36,11 +37,12 @@
           participate in a prize draw to win one of four pairs of cinema tickets.
         </p>
         <div class="field survey-modal-link">
-          <a class="external-link" href="https://link.webropolsurveys.com/S/64D47EA341787F28" target="_blank" rel="noopener">
+          <a class="external-link" href="{{ configuration.survey_url }}" target="_blank" rel="noopener">
             Vastaa kyselyyn - Respond to the survey
           </a>
         </div>
       </div>
     </div>
   </div>
+  {% endif %}
 {% endblock %}

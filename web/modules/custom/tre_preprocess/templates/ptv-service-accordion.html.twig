@@ -1,0 +1,12 @@
+{% include "@organisms/accordion/accordion.twig" with {
+  accordion_list: [
+    {
+      id: accordion_id,
+      dl_heading: heading,
+      dl_content: content,
+      title_wrapper_modifiers: ['ptv-service-liftup']
+    }
+  ],
+  accordion_toggle_all_buttons: false,
+  ac_modifiers: ["ptv-service-liftup"]
+} %}

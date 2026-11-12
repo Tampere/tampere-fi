@@ -84,7 +84,7 @@ process:
     default_value: ptv_markdown
   field_chargeability_heading:
     plugin: default_value
-    default_value: '<h2>Payment details</h2>'
+    default_value: '<h3>Payment details</h3>'
   field_service_vouchers_in_use:
     plugin: get
     source: service_vouchers_in_use
@@ -95,7 +95,7 @@ process:
     language: constants/LANGUAGE
   field_service_voucher_heading:
     plugin: default_value
-    default_value: '<h2>Service vouchers</h2>'
+    default_value: '<h3>Service vouchers</h3>'
   field_available_languages:
     plugin: get
     source: languages

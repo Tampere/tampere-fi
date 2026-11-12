@@ -104,6 +104,13 @@ search-toggle:
     - core/drupal
     - core/once
 
+search-bar-clear:
+  js:
+    dist/js/02-molecules/search-bar/search-bar-clear.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
 anchor-link:
   js:
     dist/js/01-atoms/anchor-link/anchor-link.js: {}

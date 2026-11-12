@@ -54,17 +54,17 @@ settings:
       value: production_info
       label: 'Palvelun toteutustapa ja tuottaja'
     -
-      value: places_of_business
-      label: Palvelupaikat
-    -
       value: online_channels
       label: Verkkoasiointikanavat
     -
-      value: web_channels
-      label: Verkkosivuasiointikanavat
-    -
       value: phone_channels
       label: Puhelinasiointikanavat
+    -
+      value: places_of_business
+      label: Palvelupaikat
+    -
+      value: web_channels
+      label: Verkkosivuasiointikanavat
     -
       value: form_channels
       label: Lomakeasiointikanavat

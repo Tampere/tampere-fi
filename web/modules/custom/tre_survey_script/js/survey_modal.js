@@ -9,6 +9,27 @@
         return;
       }
 
+      // The popup is shown to the same user at most once per 24 hours.
+      const STORAGE_KEY = "treSurveyModalShownAt";
+      const SUPPRESS_MS = 24 * 60 * 60 * 1000;
+
+      const isSuppressed = () => {
+        try {
+          const shownAt = Number(localStorage.getItem(STORAGE_KEY));
+          return shownAt > 0 && Date.now() - shownAt < SUPPRESS_MS;
+        } catch (e) {
+          return sessionStorage.getItem("modalClosed") === "true";
+        }
+      };
+
+      const markShown = () => {
+        try {
+          localStorage.setItem(STORAGE_KEY, String(Date.now()));
+        } catch (e) {
+          sessionStorage.setItem("modalClosed", "true");
+        }
+      };
+
       let keyupHandler;
       let lastFocusedElement;
 
@@ -30,7 +51,7 @@
           lastFocusedElement.focus();
         }
 
-        sessionStorage.setItem("modalClosed", "true");
+        markShown();
       };
 
       // Function for making the survey popup modal visible
@@ -39,9 +60,11 @@
           return;
         }
 
-        if (sessionStorage.getItem("modalClosed") === "true") {
+        if (isSuppressed()) {
           return;
         }
+
+        markShown();
 
         // Save the last focused element and make the popup visible.
         lastFocusedElement = document.activeElement;

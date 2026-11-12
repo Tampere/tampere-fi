@@ -1,0 +1,38 @@
+uuid: 3cff8c10-790e-42db-8460-3d15aafd955c
+langcode: fi
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading__e_service
+    - paragraphs.paragraphs_type.ptv_service_liftup
+  module:
+    - content_translation
+    - heading
+third_party_settings:
+  content_translation:
+    translation_sync:
+      size: size
+      text: text
+id: paragraph.ptv_service_liftup.field_heading__e_service
+field_name: field_heading__e_service
+entity_type: paragraph
+bundle: ptv_service_liftup
+label: 'Yliajo-otsikko: Verkkoasiointi'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    text: 'Asioi sähköisesti'
+    size: h3
+default_value_callback: ''
+settings:
+  label: Heading
+  allowed_sizes:
+    h3: h3
+    h1: '0'
+    h2: '0'
+    h4: '0'
+    h5: '0'
+    h6: '0'
+field_type: heading
